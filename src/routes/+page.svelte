@@ -1,6 +1,6 @@
 <script>
-	import Nested from '../components/Menu/Nested.svelte';
 	import BottomBar from '../components/Menu/BottomBar.svelte';
+	import ActionBar from '../components/Actions/ActionBar.svelte';
 </script>
 
 <svelte:head>
@@ -8,10 +8,11 @@
 	<meta name="description" content="Genshin Impact Calculator" />
 </svelte:head>
 
-<section>
-	<Nested answer={42} />
-</section>
-<BottomBar />
+<div class="px-5">
+	<section />
+	<ActionBar />
+	<BottomBar />
+</div>
 
 <style lang="postcss">
 	:global(body) {
