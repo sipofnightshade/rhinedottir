@@ -14,3 +14,10 @@
 
 	<Nested answer={42} />
 </section>
+
+<style lang="postcss">
+	:global(body) {
+		background-color: theme(colors.slate.800);
+		font-weight: theme(fontWeight.medium);
+	}
+</style>
