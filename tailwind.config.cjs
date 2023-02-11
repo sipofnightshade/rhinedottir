@@ -38,6 +38,9 @@ module.exports = {
 			},
 			width: {
 				'94p': '94%'
+			},
+			grayscale: {
+				80: '80%'
 			}
 		},
 		screens: {
