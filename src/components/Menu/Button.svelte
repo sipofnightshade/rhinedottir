@@ -1,10 +1,11 @@
-<script>
-  /**
-   * @type {string}
-   */
-  export let url;
+<script lang="ts">
+	export let url: string;
+	export let selected = false;
 </script>
 
-<button class="flex h-12 w-12 items-center justify-center rounded-lg">
-  <img class="h-8 w-8" src={`/images/ui/${url}.png`} alt="Menu UI Icon" />
-</button>
+<button
+	class="flex h-12 w-12 items-center justify-center rounded-lg"
+	class:bg-anemo={selected}
+>
+	<img class="h-8 w-8" src="/images/ui/{url}" alt="Menu UI Icon:{url}" /></button
+>
