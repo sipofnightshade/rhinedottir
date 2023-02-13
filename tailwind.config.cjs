@@ -33,7 +33,7 @@ module.exports = {
 			height: {
 				// rename to vh-208
 				vh208: 'calc(100vh - 208px)',
-				vh160: 'calc(100vh - 160px)',
+				'mb-screen': 'calc(100vh - 236px)',
 				'94p': '94%'
 			},
 			width: {
