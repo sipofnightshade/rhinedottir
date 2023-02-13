@@ -1,0 +1,32 @@
+<script lang="ts">
+	export let items: any = [];
+	export let activeTabValue = 1;
+	export let height: string;
+
+	const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
+</script>
+
+<ul
+	class="my-2 grid list-none grid-cols-3 justify-between rounded-full bg-slate-700 p-0.5"
+>
+	{#each items as item}
+		<li
+			class="flex items-center justify-center rounded-full"
+			class:bg-slate-50={activeTabValue === item.value}
+			class:text-slate-700={activeTabValue === item.value}
+		>
+			<button class="h-full w-full rounded-full py-2" on:click={handleClick(item.value)}
+				>{item.label}</button
+			>
+		</li>
+	{/each}
+</ul>
+<section class="w-full overflow-y-auto {height}">
+	{#each items as item (item.value)}
+		{#if activeTabValue == item.value}
+			<div class="bg-slate-800">
+				<svelte:component this={item.component} />
+			</div>
+		{/if}
+	{/each}
+</section>
