@@ -9,7 +9,7 @@
 	<meta name="description" content="Genshin Impact Calculator" />
 </svelte:head>
 
-<div class="flex h-screen flex-col px-5">
+<div class="flex h-screen flex-col px-4">
 	<section class="">
 		<MobileTabContainer />
 	</section>
