@@ -21,6 +21,16 @@
         src="/images/elements/hydro.svg"
         alt="element"
       />
+      <!-- <img
+        class="relative top-1 z-10 -m-[13px]  h-6 w-6 self-center"
+        src="/images/elements/separator.svg"
+        alt="element"
+      />
+      <img
+        class="relative top-1.5 h-5 w-5 self-center"
+        src="/images/elements/hydro.svg"
+        alt="element"
+      /> -->
     {/if}
   </div>
 </button>
