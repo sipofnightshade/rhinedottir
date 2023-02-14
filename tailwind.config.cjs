@@ -28,7 +28,8 @@ module.exports = {
         base: ['16px', '20px'],
         lg: ['18px', '23px'],
         xl: ['20px', '25px'],
-        '2xl': ['24px', '30px']
+        '2xl': ['24px', '30px'],
+        tb: ['15px', '18px']
       },
       height: {
         // rename to vh-208
@@ -44,6 +45,11 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans]
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        20: 'repeat(20, minmax(0, 1fr))',
+        24: 'repeat(24, minmax(0, 1fr))'
       }
     },
 
