@@ -12,30 +12,22 @@
   interface MenuItem {
     id: string;
     img: string;
-    component: string;
+    component: any;
   }
 
   const menuItems: MenuItem[] = [
-    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: 'Updates' },
-    { id: 'item2', img: 'UI_BtnIcon_CharacterData.png', component: 'Details' },
-    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: 'Team' },
-    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: 'Builds' },
-    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: 'Settings' }
+    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: Updates },
+    { id: 'item2', img: 'UI_BtnIcon_CharacterData.png', component: Details },
+    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: Team },
+    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: Builds },
+    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: Settings }
   ];
-
-  const components = {
-    Builds,
-    Details,
-    Settings,
-    Team,
-    Updates
-  };
 
   let currentMenuItem: MenuItem | undefined = undefined;
 
   function handleMenu(event: any) {
     if (event.detail === currentMenuItem) {
-      // Clicked the same button again
+      // Clicked the same button again to close menu
       currentMenuItem = undefined;
     } else {
       currentMenuItem = event.detail;
@@ -80,7 +72,7 @@
     <div
       class="menu absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  rounded-lg bg-slate-700 p-4"
     >
-      <svelte:component this={components[currentMenuItem.component]} />
+      <svelte:component this={currentMenuItem.component} />
     </div>
   {/if}
 </div>
