@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { destroy_block } from 'svelte/internal';
   import Button from './Button.svelte';
   import Builds from './_Builds.svelte';
   import Details from './_Details.svelte';
@@ -46,6 +47,34 @@
     }
   }
 
+  // custom svelte 'use' action
+  function clickOutside(element, callbackFunction) {
+    function onClick(event) {
+      if (!element.contains(event.target)) {
+        callbackFunction();
+      }
+    }
+
+    document.body.addEventListener('click', onClick);
+
+    return {
+      update(newCallbackFunction) {
+        callbackFunction = newCallbackFunction;
+      },
+      destroy() {
+        document.body.removeEventListener('click', onClick);
+      }
+    };
+  }
+
+  // if menu is open and user clicks outside, close menu
+  function handleOutsideClick() {
+    if (currentMenuItem) {
+      currentMenuItem = undefined;
+    }
+    return null;
+  }
+
   // Add an event listener to detect the Escape key press
   onMount(() => {
     window.addEventListener('keydown', handleEscape);
@@ -55,7 +84,7 @@
   });
 </script>
 
-<div class="relative">
+<div class="relative" use:clickOutside={handleOutsideClick}>
   <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
     {#each menuItems as item (item.id)}
       <Button
