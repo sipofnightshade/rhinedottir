@@ -1,15 +1,25 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-
-  const { handleMenu } = getContext('btn');
+  import { createEventDispatcher } from 'svelte';
 
   export let url: string;
   export let selected = false;
-  export let id: any;
+  export let item: MenuItem;
+
+  interface MenuItem {
+    id: string;
+    img: string;
+    component: string;
+  }
+
+  const dispatch = createEventDispatcher();
+
+  function handleClick(item: MenuItem) {
+    dispatch('menuHandler', item);
+  }
 </script>
 
 <button
-  on:click={() => handleMenu(id)}
+  on:click={() => handleClick(item)}
   class="flex h-12 w-12 items-center justify-center rounded-lg"
   class:bg-anemo={selected}
 >

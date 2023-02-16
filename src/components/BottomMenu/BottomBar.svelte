@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, setContext } from 'svelte';
+  import { onMount } from 'svelte';
   import Button from './Button.svelte';
   import Builds from './_Builds.svelte';
   import Details from './_Details.svelte';
@@ -31,16 +31,14 @@
 
   let currentMenuItem: MenuItem | undefined = undefined;
 
-  function handleMenu(item: MenuItem) {
-    if (item === currentMenuItem) {
+  function handleMenu(event: any) {
+    if (event.detail === currentMenuItem) {
       // Clicked the same button again
       currentMenuItem = undefined;
     } else {
-      currentMenuItem = item;
+      currentMenuItem = event.detail;
     }
   }
-
-  setContext('btn', { handleMenu });
 
   function handleEscape(event: KeyboardEvent) {
     if (event.key === 'Escape') {
@@ -60,7 +58,12 @@
 <div class="relative">
   <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
     {#each menuItems as item (item.id)}
-      <Button url={item.img} selected={currentMenuItem?.id === item.id} id={item} />
+      <Button
+        on:menuHandler={handleMenu}
+        url={item.img}
+        selected={currentMenuItem?.id === item.id}
+        {item}
+      />
     {/each}
   </nav>
   {#if currentMenuItem}
