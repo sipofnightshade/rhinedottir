@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { destroy_block } from 'svelte/internal';
   import Button from './Button.svelte';
   import Builds from './_Builds.svelte';
   import Details from './_Details.svelte';
   import Settings from './_Settings.svelte';
   import Team from './_Team.svelte';
   import Updates from './_Updates.svelte';
+
+  import { clickOutside } from '$lib/helpers/clickOutside';
 
   interface MenuItem {
     id: string;
@@ -15,11 +16,11 @@
   }
 
   const menuItems: MenuItem[] = [
-    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: 'Builds' },
+    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: 'Updates' },
     { id: 'item2', img: 'UI_BtnIcon_CharacterData.png', component: 'Details' },
-    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: 'Settings' },
-    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: 'Team' },
-    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: 'Updates' }
+    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: 'Team' },
+    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: 'Builds' },
+    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: 'Settings' }
   ];
 
   const components = {
@@ -45,26 +46,6 @@
     if (event.key === 'Escape') {
       currentMenuItem = undefined;
     }
-  }
-
-  // custom svelte 'use' action
-  function clickOutside(element, callbackFunction) {
-    function onClick(event) {
-      if (!element.contains(event.target)) {
-        callbackFunction();
-      }
-    }
-
-    document.body.addEventListener('click', onClick);
-
-    return {
-      update(newCallbackFunction) {
-        callbackFunction = newCallbackFunction;
-      },
-      destroy() {
-        document.body.removeEventListener('click', onClick);
-      }
-    };
   }
 
   // if menu is open and user clicks outside, close menu
