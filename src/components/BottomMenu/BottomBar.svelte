@@ -1,39 +1,83 @@
 <script lang="ts">
+  import { onMount, setContext } from 'svelte';
   import Button from './Button.svelte';
-  let showMenu = false;
-  let menuContent = '';
-  function handleMenu(id: string) {
-    // close menu if same button pressed again
-    if (menuContent === id) {
-      showMenu = false;
-    }
+  import Builds from './_Builds.svelte';
+  import Details from './_Details.svelte';
+  import Settings from './_Settings.svelte';
+  import Team from './_Team.svelte';
+  import Updates from './_Updates.svelte';
 
-    menuContent = id;
-    showMenu = !showMenu;
+  interface MenuItem {
+    id: string;
+    img: string;
+    component: string;
   }
 
-  /**
-   * create a svelte:component
-   * render the svelte:component in the menu
-   * create a function that takes a button ID like in reusable modals
-   * - menu should change if a different button is clicked
-   * - if the same button is clicked, or outside, or escape key,
-   *   (and maybe alt + left arrow) then close the menu.
-   *
-   */
+  const menuItems: MenuItem[] = [
+    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: 'Builds' },
+    { id: 'item2', img: 'UI_BtnIcon_CharacterData.png', component: 'Details' },
+    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: 'Settings' },
+    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: 'Team' },
+    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: 'Updates' }
+  ];
+
+  const components = {
+    Builds,
+    Details,
+    Settings,
+    Team,
+    Updates
+  };
+
+  let showMenu = false;
+  let currentMenuItem: MenuItem | undefined = undefined;
+
+  function handleMenu(item: MenuItem) {
+    if (item === currentMenuItem) {
+      // Clicked the same button again
+      currentMenuItem = undefined;
+    } else {
+      currentMenuItem = item;
+    }
+
+    // Attach click event listener to close menu when user clicks outside of it
+    if (showMenu) {
+      const closeMenu = () => {
+        showMenu = false;
+        document.removeEventListener('click', closeMenu);
+      };
+      document.addEventListener('click', closeMenu);
+    }
+  }
+
+  setContext('btn', { handleMenu });
+
+  function handleEscape(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      currentMenuItem = undefined;
+    }
+  }
+
+  // Add an event listener to detect the Escape key press
+  onMount(() => {
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  });
 </script>
 
 <div class="relative">
   <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
-    <Button url="UI_BtnIcon_Feedback.png" selected={false} />
-    <Button url="UI_BtnIcon_CharacterData.png" selected={false} />
-    <Button url="UI_BtnIcon_Team.png" selected={true} />
-    <Button url="UI_BtnIcon_AvatarList.png" selected={false} />
-    <Button url="UI_Icon_Intee_Mechanism.png" selected={false} />
+    {#each menuItems as item (item.id)}
+      <Button url={item.img} selected={currentMenuItem?.id === item.id} id={item} />
+    {/each}
   </nav>
-  <div
-    class="menu absolute right-0 bottom-14 z-10 mb-1 flex w-full flex-col bg-slate-700"
-  >
-    <div class="grid auto-rows-min grid-cols-5 gap-2 p-2">Test</div>
-  </div>
+  {#if currentMenuItem}
+    <div
+      class="menu absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  rounded-lg bg-slate-700 p-4"
+    >
+      <svelte:component this={components[currentMenuItem.component]} />
+    </div>
+  {/if}
 </div>
