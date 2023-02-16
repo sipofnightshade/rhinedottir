@@ -29,7 +29,6 @@
     Updates
   };
 
-  let showMenu = false;
   let currentMenuItem: MenuItem | undefined = undefined;
 
   function handleMenu(item: MenuItem) {
@@ -38,15 +37,6 @@
       currentMenuItem = undefined;
     } else {
       currentMenuItem = item;
-    }
-
-    // Attach click event listener to close menu when user clicks outside of it
-    if (showMenu) {
-      const closeMenu = () => {
-        showMenu = false;
-        document.removeEventListener('click', closeMenu);
-      };
-      document.addEventListener('click', closeMenu);
     }
   }
 
