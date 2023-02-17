@@ -16,11 +16,11 @@
   }
 
   const menuItems: MenuItem[] = [
-    { id: 'item1', img: 'UI_BtnIcon_Feedback.png', component: Updates },
-    { id: 'item2', img: 'UI_BtnIcon_CharacterData.png', component: Details },
-    { id: 'item3', img: 'UI_BtnIcon_Team.png', component: Team },
-    { id: 'item4', img: 'UI_BtnIcon_AvatarList.png', component: Builds },
-    { id: 'item5', img: 'UI_Icon_Intee_Mechanism.png', component: Settings }
+    { id: 'updates', img: 'UI_BtnIcon_Feedback.png', component: Updates },
+    { id: 'details', img: 'UI_BtnIcon_CharacterData.png', component: Details },
+    { id: 'team', img: 'UI_BtnIcon_Team.png', component: Team },
+    { id: 'builds', img: 'UI_BtnIcon_AvatarList.png', component: Builds },
+    { id: 'settings', img: 'UI_Icon_Intee_Mechanism.png', component: Settings }
   ];
 
   let currentMenuItem: MenuItem | undefined = undefined;
@@ -41,7 +41,7 @@
   }
 
   // if menu is open and user clicks outside, close menu
-  function handleOutsideClick() {
+  function closeMenu() {
     if (currentMenuItem) {
       currentMenuItem = undefined;
     }
@@ -57,7 +57,7 @@
   });
 </script>
 
-<div class="relative" use:clickOutside={handleOutsideClick}>
+<div class="relative" use:clickOutside={closeMenu}>
   <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
     {#each menuItems as item (item.id)}
       <Button
@@ -70,7 +70,7 @@
   </nav>
   {#if currentMenuItem}
     <div
-      class="menu max-h-vh50 absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  overflow-scroll rounded-lg bg-slate-700 p-4"
+      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col  overflow-scroll rounded-lg bg-slate-700 p-4"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
