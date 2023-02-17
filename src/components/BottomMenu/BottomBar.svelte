@@ -70,7 +70,7 @@
   </nav>
   {#if currentMenuItem}
     <div
-      class="menu absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  rounded-lg bg-slate-700 p-4"
+      class="menu max-h-vh50 absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  overflow-scroll rounded-lg bg-slate-700 p-4"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>

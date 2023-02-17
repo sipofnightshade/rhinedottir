@@ -37,6 +37,9 @@ module.exports = {
         'mb-screen': 'calc(100vh - 236px)',
         '94p': '94%'
       },
+      maxHeight: {
+        vh50: 'calc(50vh - 16px)'
+      },
       width: {
         '94p': '94%'
       },
