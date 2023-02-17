@@ -41,7 +41,7 @@
   }
 
   // if menu is open and user clicks outside, close menu
-  function handleOutsideClick() {
+  function closeMenu() {
     if (currentMenuItem) {
       currentMenuItem = undefined;
     }
@@ -57,7 +57,7 @@
   });
 </script>
 
-<div class="relative" use:clickOutside={handleOutsideClick}>
+<div class="relative" use:clickOutside={closeMenu}>
   <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
     {#each menuItems as item (item.id)}
       <Button
@@ -70,7 +70,7 @@
   </nav>
   {#if currentMenuItem}
     <div
-      class="menu max-h-vh50 absolute bottom-16 right-0 z-10 mb-1 flex w-full flex-col  overflow-scroll rounded-lg bg-slate-700 p-4"
+      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col  overflow-scroll rounded-lg bg-slate-700 p-4"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
