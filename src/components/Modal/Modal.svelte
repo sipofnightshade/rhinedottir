@@ -1,5 +1,6 @@
 <script lang="ts">
   export let modalContent: any;
+  export let modalTitle: string | undefined;
   export let classes: string;
 </script>
 
@@ -12,7 +13,7 @@
     <div
       class="relative flex w-full items-start justify-center border-b border-slate-500 p-2 xs:p-4"
     >
-      <h3 class="">Character</h3>
+      <h3>{modalTitle}</h3>
       <button
         on:click|self|stopPropagation
         class="absolute right-2 rounded-md bg-anemo px-3 text-slate-200 xs:right-4"
