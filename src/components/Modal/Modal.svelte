@@ -1,72 +1,26 @@
 <script lang="ts">
-  import { createDialog } from 'svelte-headlessui';
-  import Transition from 'svelte-transition';
-
-  const dialog = createDialog({ label: 'Payment Success' });
+  export let modalContent: any;
+  export let classes: string;
 </script>
 
-<div class="flex w-full flex-col items-center justify-center">
-  <div class="flex w-full flex-col items-center justify-center">
-    <div class="fixed inset-0 flex items-center justify-center">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div
+  on:click|self|stopPropagation
+  class="fixed top-0 left-0 flex h-full w-full items-center justify-center bg-slate-900/40"
+>
+  <div class={classes}>
+    <div
+      class="relative flex w-full items-start justify-center border-b border-slate-500 p-2 xs:p-4"
+    >
+      <h3 class="">Character</h3>
       <button
-        type="button"
-        class="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        on:click={dialog.open}>Open dialog</button
+        on:click|self|stopPropagation
+        class="absolute right-2 rounded-md bg-anemo px-3 text-slate-200 xs:right-4"
+        >X</button
       >
     </div>
-  </div>
-
-  <div class="relative z-10">
-    <Transition show={$dialog.expanded}>
-      <Transition
-        enter="ease-out duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="ease-in duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="fixed inset-0 bg-black bg-opacity-25" on:click={dialog.close} />
-      </Transition>
-
-      <div class="fixed inset-0 overflow-y-auto">
-        <div class="min-h-full flex items-center justify-center p-4 text-center">
-          <Transition
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <div
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
-              use:dialog.modal
-            >
-              <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Payment successful
-              </h3>
-              <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you an email
-                  with all of the details of your order.
-                </p>
-              </div>
-
-              <div class="mt-4">
-                <button
-                  type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  on:click={dialog.close}
-                >
-                  Got it, thanks!
-                </button>
-              </div>
-            </div>
-          </Transition>
-        </div>
-      </div>
-    </Transition>
+    <div class="overflow-hidden p-2 xs:p-4">
+      <svelte:component this={modalContent} />
+    </div>
   </div>
 </div>
