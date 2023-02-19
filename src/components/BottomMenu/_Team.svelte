@@ -1,64 +1,122 @@
 <script lang="ts">
   import Modal from '../Modal/Modal.svelte';
-  import Builds from './_Builds.svelte';
-  import Updates from './_Updates.svelte';
-  import Team from './_Team.svelte';
+  // modal pages
+  import Character from '../Modal/Pages/Character.svelte';
+  import Weapon from '../Modal/Pages/Weapon.svelte';
+  import Party1 from '../Modal/Pages/Party1.svelte';
+  import Party2 from '../Modal/Pages/Party2.svelte';
+  import Party3 from '../Modal/Pages/Party3.svelte';
+  import Flower from '../Modal/Pages/Flower.svelte';
+  import Feather from '../Modal/Pages/Feather.svelte';
+  import Sands from '../Modal/Pages/Sands.svelte';
+  import Goblet from '../Modal/Pages/Goblet.svelte';
+  import Circlet from '../Modal/Pages/Circlet.svelte';
 
   // initialise modal state and content
+
+  const menuModals = [
+    {
+      id: 'Character',
+      size: 'lg',
+      img: '/images/character/wanderer.webp',
+      component: Character
+    },
+    {
+      id: 'Weapon',
+      size: 'lg',
+      img: '/images/weapon/thewidsith.webp',
+      component: Weapon
+    },
+    {
+      id: 'Party 1',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_Team.png',
+      component: Party1
+    },
+    {
+      id: 'Party 2',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_Team.png',
+      component: Party2
+    },
+    {
+      id: 'Party 3',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_Team.png',
+      component: Party3
+    },
+    {
+      id: 'Flower',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_RelicType1.png',
+      component: Flower
+    },
+    {
+      id: 'Feather',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_RelicType2.png',
+      component: Feather
+    },
+    {
+      id: 'Sands',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_RelicType3.png',
+      component: Sands
+    },
+    {
+      id: 'Goblet',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_RelicType4.png',
+      component: Goblet
+    },
+    {
+      id: 'Circlet',
+      size: 'sm',
+      img: '/images/ui/UI_BtnIcon_RelicType5.png',
+      component: Circlet
+    }
+  ];
+
   let showModal = false;
-  let modalContent: string | undefined = undefined;
+  let modalContent: any = undefined;
+  let modalTitle: string | undefined = undefined;
 
   // pass in component as parameter and toggle modal state
-  function toggleModal(component: any) {
-    modalContent = component;
+  function toggleModal(modal: any) {
+    modalContent = modal.component;
+    modalTitle = modal.id;
     showModal = !showModal;
   }
+
+  function closeModal() {
+    modalContent = undefined;
+    modalTitle = undefined;
+    showModal = false;
+  }
+
+  /**
+   * @Important
+   * use the temporary image icon to show the placeholder images
+   * but render a Thumbnail component for selected buttons
+   */
 </script>
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
-  <button
-    class="aspect-square rounded-md bg-slate-800"
-    on:click={() => toggleModal(Builds)}
-  >
-    <img src="/images/character/wanderer.webp" alt="wanderer icon" />
-  </button>
-  <button
-    class="aspect-square rounded-md bg-slate-800"
-    on:click={() => toggleModal(Updates)}
-  >
-    <img src="/images/weapon/thewidsith.webp" alt="wanderer icon" />
-  </button>
-  <button
-    class="aspect-square rounded-md bg-slate-800"
-    on:click={() => toggleModal(Team)}
-  >
-    <img src="/images/character/faruzan.webp" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/character/bennett.webp" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/character/zhongli.webp" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/ui/UI_BtnIcon_RelicType1.png" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/ui/UI_BtnIcon_RelicType2.png" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/ui/UI_BtnIcon_RelicType3.png" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/ui/UI_BtnIcon_RelicType4.png" alt="wanderer icon" />
-  </button>
-  <button class="aspect-square rounded-md bg-slate-800">
-    <img src="/images/ui/UI_BtnIcon_RelicType5.png" alt="wanderer icon" />
-  </button>
+  {#each menuModals as modal (modal.id)}
+    <button
+      class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+      on:click={() => toggleModal(modal)}
+    >
+      <img src={modal.img} alt="{modal.id} image" class:w-10={modal.size === 'sm'} />
+      <!-- <Thumbnail/> -->
+    </button>
+  {/each}
 </div>
 {#if showModal}
   <Modal
-    on:click={toggleModal}
+    on:click={closeModal}
+    on:escapeClick={closeModal}
+    {modalTitle}
     {modalContent}
     classes="h-screen w-screen xs:w-[452px] xs:h-[90vh] mx-auto rounded-xl flex flex-col items-center bg-slate-700 relative"
   />
