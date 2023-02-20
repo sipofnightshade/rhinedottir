@@ -19,6 +19,6 @@
   :global(body) {
     background-color: theme(colors.slate.800);
     font-weight: theme(fontWeight.medium);
-    color: theme(textColor.slate.400);
+    color: theme(textColor.slate.300);
   }
 </style>
