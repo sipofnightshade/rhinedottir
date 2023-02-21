@@ -4,7 +4,6 @@
   export let data: any;
   export let type: string;
   export let h: number;
-  console.log(h);
 </script>
 
 <div
