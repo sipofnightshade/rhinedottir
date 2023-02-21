@@ -16,7 +16,7 @@
     <Thumbnail img="/images/character/wanderer.webp" vision="anemo" alt="wanderer" />
     <div class="col-span-2 flex flex-col justify-end">
       <div>
-        <h3 class="text-lg">ClientH - {profileH}</h3>
+        <h3 class="text-lg">Wanderer</h3>
         <StarGroup rating={5} />
       </div>
       <div class="grid grid-cols-2 gap-x-2">
@@ -33,7 +33,7 @@
     <Picker
       data={CharacterData}
       type="character"
-      h={contentH - profileH - 16 - 46 - 12}
+      h={contentH - profileH - 16 - 46 - 16}
     />
   </div>
 </div>
