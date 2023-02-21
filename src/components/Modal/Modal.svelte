@@ -38,7 +38,7 @@
         >X</button
       >
     </div>
-    <div class="overflow-hidden p-2 xs:p-4">
+    <div class="h-full overflow-hidden p-2 xs:p-4">
       <svelte:component this={modalContent} />
     </div>
   </div>
