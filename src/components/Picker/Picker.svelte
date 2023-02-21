@@ -15,7 +15,7 @@
       <Thumbnail
         alt={item.fullName}
         img="/images/{type}/{item.name}.webp"
-        vision={type === 'character' ? item.vision : undefined}
+        vision={item.vision}
       />
       <p class="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium">
         {item.fullName}
