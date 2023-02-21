@@ -1,16 +1,16 @@
 <script lang="ts">
   import Modal from '../Modal/Modal.svelte';
   // modal pages
-  import Character from '../Modal/Pages/Character.svelte';
-  import Weapon from '../Modal/Pages/Weapon.svelte';
-  import Party1 from '../Modal/Pages/Party1.svelte';
-  import Party2 from '../Modal/Pages/Party2.svelte';
-  import Party3 from '../Modal/Pages/Party3.svelte';
-  import Flower from '../Modal/Pages/Flower.svelte';
-  import Feather from '../Modal/Pages/Feather.svelte';
-  import Sands from '../Modal/Pages/Sands.svelte';
-  import Goblet from '../Modal/Pages/Goblet.svelte';
-  import Circlet from '../Modal/Pages/Circlet.svelte';
+  import Character from '../Modal/Character/Character.svelte';
+  import Weapon from '../Modal/Weapon/Weapon.svelte';
+  import Party1 from '../Modal/Party/Party1.svelte';
+  import Party2 from '../Modal/Party/Party2.svelte';
+  import Party3 from '../Modal/Party/Party3.svelte';
+  import Flower from '../Modal/Artifact/Flower.svelte';
+  import Feather from '../Modal/Artifact/Feather.svelte';
+  import Sands from '../Modal/Artifact/Sands.svelte';
+  import Goblet from '../Modal/Artifact/Goblet.svelte';
+  import Circlet from '../Modal/Artifact/Circlet.svelte';
 
   // initialise modal state and content
 

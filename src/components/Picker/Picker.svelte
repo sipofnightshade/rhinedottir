@@ -17,9 +17,9 @@
         img="/images/{type}/{item.name}.webp"
         vision={item.vision}
       />
-      <p class="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium">
+      <!-- <p class="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium">
         {item.fullName}
-      </p>
+      </p> -->
     </button>
   {/each}
 </div>
