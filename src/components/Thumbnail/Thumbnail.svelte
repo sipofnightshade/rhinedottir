@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let vision: string | undefined;
+  export let vision: string | undefined = undefined;
   export let img: string;
   export let alt: string;
   //   export let rating: 5 | 4 | 3 | 1;
