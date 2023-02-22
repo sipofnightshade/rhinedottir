@@ -17,10 +17,16 @@
     <Thumbnail img="/images/weapon/thewidsith.webp" alt="wanderer" />
     <div class="col-span-2 flex flex-col justify-end">
       <div>
-        <h3 class="text-lg">The Widsith</h3>
-        <StarGroup rating={5} />
+        <div class="flex items-end justify-between text-sm font-bold">
+          <h2>Lost prayer of the sacred winds</h2>
+          <h2 class="ml-2 text-xl">608</h2>
+        </div>
+        <div class="flex justify-between text-sm font-bold text-anemo">
+          <span>CRIT Rate</span>
+          <span>33.1%</span>
+        </div>
       </div>
-      <div class="grid grid-cols-2 gap-x-2">
+      <div class="mt-0.5 grid grid-cols-2 gap-x-2">
         <LevelGroup label="Level" value="80/90" />
         <LevelGroup label="Refinement" value="1/5" />
       </div>
