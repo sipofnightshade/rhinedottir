@@ -32,8 +32,8 @@
   }
 </script>
 
-<div class="grid grid-cols-3 gap-x-2">
-  <select
+<div class="grid grid-cols-3 gap-x-1">
+  <!-- <select
     style="appearance: none;"
     class="col-span-2 appearance-none rounded-md bg-slate-800 py-2 pl-1"
     bind:value={selected}
@@ -44,12 +44,13 @@
         {stat.label}
       </option>
     {/each}
-  </select>
-  <!-- <div class="relative col-span-2">
+  </select> -->
+  <div class="relative col-span-2 text-sm">
     <button
       use:listbox.button
       on:select={onSelect}
-      class="relative w-full cursor-default text-ellipsis rounded-md bg-slate-800 py-2 pl-2 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+      class="relative h-10 w-full cursor-default text-ellipsis rounded-md border-2 border-slate-800 bg-slate-800 py-2 pl-2 text-left sm:text-sm"
+      class:border-slate-400={$listbox.expanded}
     >
       <span class="block">{$listbox.selected.name}</span>
     </button>
@@ -59,14 +60,17 @@
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <ul use:listbox.items class="absolute z-10 bg-slate-200">
+      <ul
+        use:listbox.items
+        class="absolute z-10 mt-0.5 w-full rounded-md bg-slate-800 shadow-md"
+      >
         {#each people as value, i}
           {@const active = $listbox.active === value}
           {@const selected = $listbox.selected === value}
           <li
-            class=" cursor-default select-none p-2 {active
-              ? 'bg-amber-100 text-amber-900'
-              : 'text-gray-900'}"
+            class="cursor-default select-none p-2"
+            class:bg-slate-300={active}
+            class:text-slate-900={active}
             use:listbox.item={{ value }}
           >
             <span class="block truncate {selected ? 'font-medium' : 'font-normal'}"
@@ -76,9 +80,9 @@
         {/each}
       </ul>
     </Transition>
-  </div> -->
+  </div>
   <input
-    class="col-span-1 rounded-md bg-slate-800 py-2 px-1 text-right"
+    class="col-span-1 appearance-none rounded-md border border-slate-800 bg-slate-800 py-1 px-1 text-right focus:border-slate-400 focus:ring-slate-300"
     bind:value={statValue}
     placeholder="0"
     autocomplete="off"
@@ -86,14 +90,13 @@
   />
 </div>
 
-<style>
-  select {
+<style lang="postcss">
+  input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
+    margin: 0;
   }
-  select::-ms-expand {
-    display: none;
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
   }
 </style>
