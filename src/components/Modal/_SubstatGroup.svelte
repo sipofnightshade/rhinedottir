@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="grid grid-cols-3 gap-x-1">
+<div class="grid grid-cols-3 gap-x-1 pr-0.5">
   <!-- <select
     style="appearance: none;"
     class="col-span-2 appearance-none rounded-md bg-slate-800 py-2 pl-1"
