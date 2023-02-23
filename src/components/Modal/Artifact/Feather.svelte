@@ -1,1 +1,5 @@
-<h1>Feather</h1>
+<script>
+  import Artifact from '../_Artifact.svelte';
+</script>
+
+<Artifact type="feather" />
