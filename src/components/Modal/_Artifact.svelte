@@ -4,6 +4,7 @@
   import Picker from '../Picker/Picker.svelte';
   import SubstatGroup from './_SubstatGroup.svelte';
   import StarSelector from '../Stars/StarSelector.svelte';
+  import MainStat from './Artifact/_MainStat.svelte';
 
   import { ArtifactData } from '$lib/data/Artifacts';
 
@@ -27,21 +28,22 @@
     <Thumbnail img="/images/artifact/{type}/gladiators.webp" alt="wanderer" />
     <div class="col-span-2 flex flex-col justify-end">
       <div class="grid grid-cols-2 gap-x-2">
-        <StarSelector />
-        <div />
-        <LevelGroup label="Level" value="80/90" />
-        <LevelGroup label="Refinement" value="1/5" />
+        <div>
+          <StarSelector />
+          <LevelGroup label="Level" value="80/90" />
+        </div>
+        <MainStat {type} />
       </div>
     </div>
     <button
       on:click|stopPropagation={() => (passive = !passive)}
       class="relative col-span-3 flex w-full justify-between rounded-md bg-slate-800 py-2 px-3"
     >
-      <div class="text-base">
+      <div class="text-sm">
         <span>Gliadator's Finale </span>
         <span class:text-green-500={true}>(1/4)</span>
       </div>
-      <span class="text-base">></span>
+      <span class="text-sm">🔽</span>
 
       {#if passive}
         <div
@@ -55,7 +57,7 @@
         </div>
       {/if}
     </button>
-    <div class="col-span-3 grid grid-cols-2 gap-4">
+    <div class="col-span-3 grid grid-cols-2 gap-2">
       <SubstatGroup />
       <SubstatGroup />
       <SubstatGroup />
