@@ -17,7 +17,7 @@
     <Thumbnail img="/images/weapon/thewidsith.webp" alt="wanderer" />
     <div class="col-span-2 flex flex-col justify-end">
       <div>
-        <div class="flex items-end justify-between text-sm font-bold">
+        <div class="flex items-end justify-between font-bold">
           <h2>Lost prayer of the sacred winds</h2>
           <h2 class="ml-2 text-xl">608</h2>
         </div>
