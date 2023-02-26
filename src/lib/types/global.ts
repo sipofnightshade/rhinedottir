@@ -1,25 +1,25 @@
 import type { CharacterNames } from './characters';
+import type { WeaponNames } from './weapons';
 
-export type Character = {
-  fullName: string;
+export type SelectedCharacter = {
   name: CharacterNames;
+  fullName: string;
   rating: 4 | 5;
-  weapon: string;
-  vision: string;
-  specialized: string;
+  weapon: WeaponCategory;
+  vision: Visions;
+  specialized: CharacterSpecialized;
 };
 
-export type Weapon = {
+export type SelectedWeapon = {
+  name: WeaponNames;
   fullName: string;
-  name: string;
-  rating: 4 | 5;
-  weapon: string;
-  vision: string;
-  specialized: string;
+  rating: 5 | 4 | 3;
+  type: WeaponCategory;
+  specialized: WeaponSpecialized;
 };
 
 export type Visions = 'anemo' | 'cryo' | 'dendro' | 'electro' | 'geo' | 'hydro' | 'pyro';
-export type DamageTypes =
+export type DamageType =
   | 'anemo'
   | 'cryo'
   | 'dendro'
@@ -29,7 +29,7 @@ export type DamageTypes =
   | 'pyro'
   | 'physical';
 
-export type WeaponTypes = 'sword' | 'catalyst' | 'polearm' | 'claymore' | 'bow';
+export type WeaponCategory = 'sword' | 'catalyst' | 'polearm' | 'claymore' | 'bow';
 
 export type CharacterSpecialized =
   | 'atk%'
