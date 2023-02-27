@@ -8,7 +8,7 @@
 </script>
 
 <ul
-  class="my-2 grid list-none justify-between rounded-full bg-slate-700 p-0.5 {buttonGrid}"
+  class="my-2 grid list-none justify-between rounded-full bg-slate-700 p-1 {buttonGrid}"
 >
   {#each items as item}
     <li
@@ -16,7 +16,7 @@
       class:bg-slate-50={activeTabValue === item.value}
       class:text-slate-700={activeTabValue === item.value}
     >
-      <button class="h-full w-full rounded-full py-1" on:click={handleClick(item.value)}
+      <button class="h-full w-full rounded-full py-1.5" on:click={handleClick(item.value)}
         >{item.label}</button
       >
     </li>
