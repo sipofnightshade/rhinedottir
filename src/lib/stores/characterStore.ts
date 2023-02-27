@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { GenshinStats } from '$lib/data/genshinStatsAll';
+import GenshinStats from '$lib/data/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
 import type { SelectedCharacter } from '$lib/types/global';
 
@@ -7,15 +7,17 @@ type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
 type CurrentCharacter = {
   selected: SelectedCharacter;
-  stats: {
-    ascension: number;
-    attack: number;
-    defense: number;
-    hp: number;
-    level: number;
-    specialized: number;
-    substat: string;
-  };
+  stats:
+    | {
+        level: string | undefined;
+        ascension: number;
+        hp: unknown;
+        attack: unknown;
+        defense: unknown;
+        specialized: unknown;
+        substat: unknown;
+      }
+    | undefined;
   lvl: number;
   constellation: number;
   atk: number;
@@ -40,7 +42,7 @@ const initialState: CurrentCharacter = {
   stats: GenshinStats.calcStatsForCharacter('aether', labels.lvlValues[13])
 };
 
-function createCharacterStore() {
+function createCharacter() {
   const { subscribe, set, update } = writable(initialState);
 
   return {
@@ -82,4 +84,4 @@ function createCharacterStore() {
   };
 }
 
-export const character = createCharacterStore();
+export const character = createCharacter();

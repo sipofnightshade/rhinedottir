@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { GenshinStats } from '$lib/data/genshinStatsAll';
+import GenshinStats from '$lib/data/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
 import type { SelectedWeapon } from '$lib/types/global';
 
@@ -7,13 +7,15 @@ type Adjustable = 'lvl' | 'refinement';
 
 type CurrentWeapon = {
   selected: SelectedWeapon;
-  stats: {
-    ascension: number;
-    attack: number;
-    level: number;
-    specialized: number;
-    substat: string;
-  };
+  stats:
+    | {
+        level: string | undefined;
+        ascension: number;
+        attack: unknown;
+        specialized: number;
+        substat: unknown;
+      }
+    | undefined;
   lvl: number;
   refinement: number;
 };
@@ -31,7 +33,7 @@ const initialState: CurrentWeapon = {
   stats: GenshinStats.calcStatsForWeapon('prototyperancour', labels.lvlValues[13])
 };
 
-function createCharacterStore() {
+function createWeapon() {
   const { subscribe, set, update } = writable(initialState);
 
   return {
@@ -71,4 +73,4 @@ function createCharacterStore() {
   };
 }
 
-export const character = createCharacterStore();
+export const weapon = createWeapon();
