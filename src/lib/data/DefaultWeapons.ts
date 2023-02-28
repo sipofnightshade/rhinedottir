@@ -1,37 +1,44 @@
 export const DefaultWeapons = {
   sword: {
-    name: "prototyperancour",
+    name: 'prototyperancour',
+    fullName: 'Prototype Rancour',
     rating: 4,
-    type: "sword",
-    specialName: "Physical DMG",
-    special: "physical",
+    type: 'sword',
+    specialized: 'physical'
   },
   claymore: {
-    name: "prototypearchaic",
+    name: 'prototypearchaic',
+    fullName: 'Prototype Archaic',
     rating: 4,
-    type: "claymore",
-    specialName: "ATK",
-    special: "atk%",
+    type: 'claymore',
+    specialized: 'atk%'
   },
   bow: {
-    name: "prototypecrescent",
+    name: 'prototypecrescent',
+    fullName: 'Prototype Crescent',
     rating: 4,
-    type: "bow",
-    specialName: "ATK",
-    special: "atk%",
+    type: 'bow',
+    specialized: 'atk%'
   },
   polearm: {
-    name: "prototypestarglitter",
+    name: 'prototypestarglitter',
+    fullName: 'Prototype Starglitter',
     rating: 4,
-    type: "polearm",
-    specialName: "Energy Recharge",
-    special: "energy",
+    type: 'polearm',
+    specialized: 'energy'
   },
   catalyst: {
-    name: "prototypeamber",
+    name: 'prototypeamber',
+    fullName: 'Prototype Amber',
     rating: 4,
-    type: "catalyst",
-    specialName: "HP",
-    special: "hp%",
-  },
-} as const;
+    type: 'catalyst',
+    specialized: 'hp%'
+  }
+};
+
+export type DefaultTypes =
+  | 'prototyperancour'
+  | 'prototypearchaic'
+  | 'prototypecrescent'
+  | 'prototypestarglitter'
+  | 'prototypeamber';
