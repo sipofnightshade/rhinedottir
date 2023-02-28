@@ -20,5 +20,6 @@
     background-color: theme(colors.slate.800);
     font-weight: theme(fontWeight.medium);
     color: theme(textColor.slate.300);
+    line-height: 1.2;
   }
 </style>
