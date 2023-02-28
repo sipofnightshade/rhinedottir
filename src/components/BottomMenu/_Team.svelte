@@ -1,5 +1,7 @@
 <script lang="ts">
   import Modal from '../Modal/Modal.svelte';
+  import { DefaultWeapons } from '$lib/data/DefaultWeapons';
+  import type { WeaponNames } from '$lib/types/weapons';
   // modal pages
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
@@ -12,66 +14,51 @@
   import Goblet from '../Modal/Artifact/Goblet.svelte';
   import Circlet from '../Modal/Artifact/Circlet.svelte';
 
+  // store imports
+  import { character } from '$lib/stores/characterStore';
+  import { weapon } from '$lib/stores/weaponStore';
+  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+
   // initialise modal state and content
 
   const menuModals = [
     {
-      id: 'Character',
-      size: 'lg',
-      img: '/images/character/wanderer.webp',
-      component: Character
-    },
-    {
-      id: 'Weapon',
-      size: 'lg',
-      img: '/images/weapon/thewidsith.webp',
-      component: Weapon
-    },
-    {
       id: 'Party 1',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_Team.png',
       component: Party1
     },
     {
       id: 'Party 2',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_Team.png',
       component: Party2
     },
     {
       id: 'Party 3',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_Team.png',
       component: Party3
     },
     {
       id: 'Flower',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_RelicType1.png',
       component: Flower
     },
     {
       id: 'Feather',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_RelicType2.png',
       component: Feather
     },
     {
       id: 'Sands',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_RelicType3.png',
       component: Sands
     },
     {
       id: 'Goblet',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_RelicType4.png',
       component: Goblet
     },
     {
       id: 'Circlet',
-      size: 'sm',
       img: '/images/ui/UI_BtnIcon_RelicType5.png',
       component: Circlet
     }
@@ -82,9 +69,9 @@
   let modalTitle: string | undefined = undefined;
 
   // pass in component as parameter and toggle modal state
-  function toggleModal(modal: any) {
-    modalContent = modal.component;
-    modalTitle = modal.id;
+  function toggleModal(component: any, title: string) {
+    modalContent = component;
+    modalTitle = title;
     showModal = !showModal;
   }
 
@@ -93,21 +80,34 @@
     modalTitle = undefined;
     showModal = false;
   }
-
-  /**
-   * @Important
-   * use the temporary image icon to show the placeholder images
-   * but render a Thumbnail component for selected buttons
-   */
 </script>
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
+  <button
+    class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    on:click={() => toggleModal(Character, 'Character')}
+  >
+    <Thumbnail
+      img="/images/character/{$character.selected.name}.webp"
+      vision={$character.selected.vision}
+      alt={$character.selected.fullName}
+    />
+  </button>
+  <button
+    class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    on:click={() => toggleModal(Weapon, 'Weapon')}
+  >
+    <Thumbnail
+      img="/images/weapon/{$weapon.selected.name}.webp"
+      alt={$weapon.selected.fullName}
+    />
+  </button>
   {#each menuModals as modal (modal.id)}
     <button
       class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
-      on:click={() => toggleModal(modal)}
+      on:click={() => toggleModal(modal.component, modal.id)}
     >
-      <img src={modal.img} alt="{modal.id} image" class:w-10={modal.size === 'sm'} />
+      <img src={modal.img} alt="{modal.id} image" />
       <!-- <Thumbnail/> -->
     </button>
   {/each}
