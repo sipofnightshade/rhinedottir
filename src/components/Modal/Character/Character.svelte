@@ -8,15 +8,17 @@
   import { character } from '$lib/stores/characterStore';
   import { labels } from '$lib/data/Levels';
 
-  // // store
-  $character;
-
+  // // store methods
   function handleIncrement(event: any) {
     character.increment(event.detail.groupID);
   }
 
   function handleDecrement(event: any) {
     character.decrement(event.detail.groupID);
+  }
+
+  function handleCharacterSelect(event: any) {
+    character.setChar(event.detail.selected);
   }
 
   let profileH;
@@ -77,6 +79,7 @@
   <div class="h-full">
     <Filters selected="anemo" />
     <Picker
+      on:selected={handleCharacterSelect}
       data={CharacterData}
       type="character"
       h={contentH - profileH - 16 - 46 - 16}
