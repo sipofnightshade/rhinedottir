@@ -8,6 +8,7 @@
   import { character } from '$lib/stores/characterStore';
   import { labels } from '$lib/data/Levels';
 
+  // filter data
   const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
 
   // state
