@@ -8,7 +8,15 @@
   import { character } from '$lib/stores/characterStore';
   import { labels } from '$lib/data/Levels';
 
-  // // store methods
+  const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
+
+  // state
+  let profileH;
+  let contentH;
+  let filter = '';
+  let filteredData = CharacterData;
+
+  // methods
   function handleIncrement(event: any) {
     character.increment(event.detail.groupID);
   }
@@ -21,8 +29,19 @@
     character.setChar(event.detail.selected);
   }
 
-  let profileH;
-  let contentH;
+  function handleFilters(event: any) {
+    console.log(event.detail.selected);
+    if (event.detail.selected === filter) {
+      filter = '';
+    } else {
+      filter = event.detail.selected;
+    }
+  }
+
+  // reactive expressions
+  $: filteredData = filter
+    ? CharacterData.filter((item) => item.vision === filter)
+    : CharacterData;
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -77,10 +96,10 @@
     />
   </div>
   <div class="h-full">
-    <Filters selected="anemo" />
+    <Filters selected={filter} {filters} on:filter={handleFilters} />
     <Picker
       on:selected={handleCharacterSelect}
-      data={CharacterData}
+      data={filteredData}
       type="character"
       h={contentH - profileH - 16 - 46 - 16}
     />
