@@ -11,11 +11,11 @@ type CurrentCharacter = {
     | {
         level: string | undefined;
         ascension: number;
-        hp: unknown;
-        attack: unknown;
-        defense: unknown;
-        specialized: unknown;
-        substat: unknown;
+        hp: number;
+        attack: number;
+        defense: number;
+        specialized: number;
+        substat: string;
       }
     | undefined;
   lvl: number;

@@ -11,9 +11,9 @@ type CurrentWeapon = {
     | {
         level: string | undefined;
         ascension: number;
-        attack: unknown;
+        attack: number;
         specialized: number;
-        substat: unknown;
+        substat: string;
       }
     | undefined;
   lvl: number;
@@ -47,7 +47,7 @@ function createWeapon() {
         );
         return state;
       }),
-    increase: (key: Adjustable) =>
+    increment: (key: Adjustable) =>
       update((state) => {
         if (state[key] < labels[key].length - 1) {
           state[key]++;
@@ -58,7 +58,7 @@ function createWeapon() {
         }
         return state;
       }),
-    decrease: (key: Adjustable) =>
+    decrement: (key: Adjustable) =>
       update((state) => {
         if (state[key] > 0) {
           state[key]--;
