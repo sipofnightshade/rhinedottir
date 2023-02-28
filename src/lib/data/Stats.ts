@@ -1,40 +1,51 @@
 export const artifactMainStats = {
   sands: [
-    { label: "HP (%)", value: "hp%" },
-    { label: "ATK (%)", value: "atk%" },
-    { label: "DEF (%)", value: "def%" },
-    { label: "EM", value: "em" },
-    { label: "ER (%)", value: "energy" },
+    { label: 'HP (%)', value: 'hp%' },
+    { label: 'ATK (%)', value: 'atk%' },
+    { label: 'DEF (%)', value: 'def%' },
+    { label: 'EM', value: 'em' },
+    { label: 'ER (%)', value: 'energy' }
   ],
   circlet: [
-    { label: "HP (%)", value: "hp%" },
-    { label: "ATK (%)", value: "atk%" },
-    { label: "DEF (%)", value: "def%" },
-    { label: "EM", value: "em" },
-    { label: "CRIT Rate", value: "critrate" },
-    { label: "CRIT DMG", value: "critdmg" },
-    { label: "Healing (%)", value: "healing" },
+    { label: 'HP (%)', value: 'hp%' },
+    { label: 'ATK (%)', value: 'atk%' },
+    { label: 'DEF (%)', value: 'def%' },
+    { label: 'EM', value: 'em' },
+    { label: 'CRIT Rate', value: 'critrate' },
+    { label: 'CRIT DMG', value: 'critdmg' },
+    { label: 'Healing (%)', value: 'healing' }
   ],
   goblet: [
-    { label: "HP (%)", value: "hp%" },
-    { label: "ATK (%)", value: "atk%" },
-    { label: "DEF (%)", value: "def%" },
-    { label: "EM", value: "em" },
-    { label: "Elemental (%)", value: "elemental" },
-    { label: "Physical (%)", value: "physical" },
-  ],
+    { label: 'HP (%)', value: 'hp%' },
+    { label: 'ATK (%)', value: 'atk%' },
+    { label: 'DEF (%)', value: 'def%' },
+    { label: 'EM', value: 'em' },
+    { label: 'Elemental (%)', value: 'elemental' },
+    { label: 'Physical (%)', value: 'physical' }
+  ]
 };
 
 export const artifactSubStats = [
-  { label: "Select...", value: "" },
-  { label: "HP", value: "hp" },
-  { label: "ATK", value: "atk" },
-  { label: "DEF", value: "def" },
-  { label: "HP (%)", value: "hp%" },
-  { label: "ATK (%)", value: "atk%" },
-  { label: "DEF (%)", value: "def%" },
-  { label: "EM", value: "em" },
-  { label: "ER", value: "energy" },
-  { label: "CRIT Rate", value: "critrate" },
-  { label: "CRIT DMG", value: "critdmg" },
+  { label: 'Select...', value: '' },
+  { label: 'HP', value: 'hp' },
+  { label: 'ATK', value: 'atk' },
+  { label: 'DEF', value: 'def' },
+  { label: 'HP (%)', value: 'hp%' },
+  { label: 'ATK (%)', value: 'atk%' },
+  { label: 'DEF (%)', value: 'def%' },
+  { label: 'EM', value: 'em' },
+  { label: 'ER', value: 'energy' },
+  { label: 'CRIT Rate', value: 'critrate' },
+  { label: 'CRIT DMG', value: 'critdmg' }
 ];
+
+export const weaponStatLabels = {
+  critdmg: 'CRIT DMG',
+  critrate: 'CRIT Rate',
+  'hp%': 'HP',
+  'atk%': 'ATK',
+  'def%': 'DEF',
+  em: 'Elemental Mastery',
+  energy: 'Energy Recharge',
+  physical: 'Physical DMG Bonus'
+};
