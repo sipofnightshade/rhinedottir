@@ -18,8 +18,6 @@
       groupID: id
     });
   }
-
-  // export let max:number; // maximum input value
 </script>
 
 <div>
