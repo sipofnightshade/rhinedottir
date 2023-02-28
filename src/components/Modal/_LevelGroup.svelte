@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let label: string = 'Level';
-  export let value: string = '80/90';
+  export let label: string;
+  export let value: string | number;
   // export let max:number; // maximum input value
 </script>
 
