@@ -1,27 +1,33 @@
 export const artifactMainStats = {
   sands: [
-    { label: 'HP (%)', value: 'hp%' },
-    { label: 'ATK (%)', value: 'atk%' },
-    { label: 'DEF (%)', value: 'def%' },
+    { label: 'ATK%', value: 'atk%' },
+    { label: 'HP%', value: 'hp%' },
+    { label: 'DEF%', value: 'def%' },
     { label: 'EM', value: 'em' },
-    { label: 'ER (%)', value: 'energy' }
+    { label: 'Energy', value: 'energy' }
   ],
   circlet: [
-    { label: 'HP (%)', value: 'hp%' },
-    { label: 'ATK (%)', value: 'atk%' },
-    { label: 'DEF (%)', value: 'def%' },
-    { label: 'EM', value: 'em' },
     { label: 'CRIT Rate', value: 'critrate' },
+    { label: 'HP%', value: 'hp%' },
+    { label: 'ATK%', value: 'atk%' },
+    { label: 'DEF%', value: 'def%' },
+    { label: 'EM', value: 'em' },
     { label: 'CRIT DMG', value: 'critdmg' },
-    { label: 'Healing (%)', value: 'healing' }
+    { label: 'Healing%', value: 'healing' }
   ],
   goblet: [
-    { label: 'HP (%)', value: 'hp%' },
-    { label: 'ATK (%)', value: 'atk%' },
-    { label: 'DEF (%)', value: 'def%' },
+    { label: 'HP%', value: 'hp%' },
+    { label: 'ATK%', value: 'atk%' },
+    { label: 'DEF%', value: 'def%' },
     { label: 'EM', value: 'em' },
-    { label: 'Elemental (%)', value: 'elemental' },
-    { label: 'Physical (%)', value: 'physical' }
+    { label: 'Anemo DMG', value: 'anemo' },
+    { label: 'Cryo DMG', value: 'cryo' },
+    { label: 'Dendro DMG', value: 'dendro' },
+    { label: 'Electro DMG', value: 'electro' },
+    { label: 'Geo DMG', value: 'geo' },
+    { label: 'Hydro DMG', value: 'hydro' },
+    { label: 'Pyro DMG', value: 'pyro' },
+    { label: 'Physical DMG', value: 'physical' }
   ]
 };
 
@@ -30,9 +36,9 @@ export const artifactSubStats = [
   { label: 'HP', value: 'hp' },
   { label: 'ATK', value: 'atk' },
   { label: 'DEF', value: 'def' },
-  { label: 'HP (%)', value: 'hp%' },
-  { label: 'ATK (%)', value: 'atk%' },
-  { label: 'DEF (%)', value: 'def%' },
+  { label: 'HP%', value: 'hp%' },
+  { label: 'ATK%', value: 'atk%' },
+  { label: 'DEF%', value: 'def%' },
   { label: 'EM', value: 'em' },
   { label: 'ER', value: 'energy' },
   { label: 'CRIT Rate', value: 'critrate' },
