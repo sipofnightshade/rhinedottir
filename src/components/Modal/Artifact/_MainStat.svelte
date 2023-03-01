@@ -1,39 +1,31 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
-  import { addPercentage } from '$lib/helpers/addPercentage';
+  import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import { artifactMainStats } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
+  import { artifact } from '$lib/stores/artifactStore';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
   export let value = 0;
   export let stat: string;
 
-  let render = type == 'flower' || type == 'feather';
-
-  // const people = [
-  //   { name: 'Wade Cooper' },
-  //   { name: 'Arlene Mccoy' },
-  //   { name: 'Devon Webb' },
-  //   { name: 'Tom Cook' },
-  //   { name: 'Tanya Fox' },
-  //   { name: 'Hellen Schmidt' }
-  // ];
-
   let listbox = createListbox({
     label: 'MainStats',
-    selected: artifactMainStats[type][0].label
+    selected:
+      artifactMainStats[type === 'flower' || type === 'feather' ? 'sands' : type][0]
   });
 
   function onSelect(e: Event) {
-    console.log('changed', (e as CustomEvent).detail);
+    console.log((e as CustomEvent).detail.selected);
+    artifact.setMainStat(type, (e as CustomEvent).detail.selected.value);
   }
 </script>
 
 <div class="mt-auto">
   <p class="mb-[1px] text-right text-2xl font-bold">
-    {value}{addPercentage(stat, value)}
+    {artifactStatFormatter(stat, value)}
   </p>
-  {#if render}
+  {#if type === 'flower' || type === 'feather'}
     <div
       class="flex h-10 w-full items-center justify-center rounded-md bg-slate-600 py-2 pl-2"
     >
@@ -49,15 +41,10 @@
       >
         <span class="block">{$listbox.selected.label}</span>
       </button>
-      <Transition
-        show={$listbox.expanded}
-        leave="transition ease-in duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
+      <Transition show={$listbox.expanded}>
         <ul
           use:listbox.items
-          class="absolute z-10 mt-0.5 w-full rounded-md bg-slate-800 shadow-md"
+          class="absolute z-10 mt-0.5 max-h-40 w-full overflow-y-scroll rounded-md bg-slate-800 shadow-md"
         >
           {#each artifactMainStats[type] as value, i}
             {@const active = $listbox.active === value}
@@ -68,8 +55,10 @@
               class:text-slate-900={active}
               use:listbox.item={{ value }}
             >
-              <span class="block truncate {selected ? 'font-medium' : 'font-normal'}"
-                >{value.label}</span
+              <span
+                class="center block truncate capitalize {selected
+                  ? 'font-medium'
+                  : 'font-normal'}">{value.label}</span
               >
             </li>
           {/each}
