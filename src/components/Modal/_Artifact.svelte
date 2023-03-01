@@ -5,8 +5,10 @@
   import SubstatGroup from './_SubstatGroup.svelte';
   import StarSelector from '../Stars/StarSelector.svelte';
   import MainStat from './Artifact/_MainStat.svelte';
+  import { artifact } from '$lib/stores/artifactStore';
 
   import { ArtifactData } from '$lib/data/Artifacts';
+  import { labels } from '$lib/data/Levels';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
 
@@ -19,20 +21,46 @@
   };
 
   let passive = false;
-  let profileHeight;
-  let contentHeight;
+  let profile;
+  let contentH;
+
+  // methods
+  function handleIncrement(event: any) {
+    artifact.increment(event.detail.groupID);
+  }
+
+  function handleDecrement(event: any) {
+    artifact.decrement(event.detail.groupID);
+  }
+
+  function handleArtifactSelect(event: any) {
+    artifact.setArtifact(type, event.detail.selected);
+  }
 </script>
 
-<div class="h-full overflow-hidden" bind:clientHeight={contentHeight}>
-  <div bind:clientHeight={profileHeight} class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
-    <Thumbnail img="/images/artifact/{type}/gladiators.webp" alt="wanderer" />
+<div class="h-full overflow-hidden" bind:clientHeight={contentH}>
+  <div bind:clientHeight={profile} class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
+    <Thumbnail
+      img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
+      alt="wanderer"
+    />
     <div class="col-span-2 flex flex-col justify-end">
       <div class="grid grid-cols-2 gap-x-2">
         <div>
           <StarSelector />
-          <LevelGroup label="Level" value="80/90" />
+          <LevelGroup
+            label="Level"
+            value={labels.artifactLevels[$artifact[type].lvl]}
+            id={type}
+            on:increment={handleIncrement}
+            on:decrement={handleDecrement}
+          />
         </div>
-        <MainStat {type} />
+        <MainStat
+          stat={$artifact[type].mainStat.stat}
+          {type}
+          value={$artifact[type].mainStat.value}
+        />
       </div>
     </div>
     <button
@@ -66,9 +94,10 @@
   </div>
   <div class="h-full">
     <Picker
+      on:selected={handleArtifactSelect}
       data={ArtifactData}
       type={imgType[type]}
-      h={contentHeight - profileHeight - 16}
+      h={contentH - profile - 16}
     />
   </div>
 </div>
