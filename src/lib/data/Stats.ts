@@ -8,11 +8,11 @@ export const artifactMainStats = {
   ],
   circlet: [
     { label: 'CRIT Rate', value: 'critrate' },
+    { label: 'CRIT DMG', value: 'critdmg' },
     { label: 'HP%', value: 'hp%' },
     { label: 'ATK%', value: 'atk%' },
     { label: 'DEF%', value: 'def%' },
     { label: 'EM', value: 'em' },
-    { label: 'CRIT DMG', value: 'critdmg' },
     { label: 'Healing%', value: 'healing' }
   ],
   goblet: [
