@@ -184,19 +184,21 @@ function createArtifact() {
 
     setRating: (relic: ArtifactType) =>
       update((state) => {
-        state[relic].isFiveStar = !state[relic].isFiveStar;
-        if (state[relic].isFiveStar) {
-          state[relic].lvl = 20;
-        } else {
-          state[relic].lvl = 16;
-        }
+        if (state[relic].selected.rating.length > 1) {
+          state[relic].isFiveStar = !state[relic].isFiveStar;
+          if (state[relic].isFiveStar) {
+            state[relic].lvl = 20;
+          } else {
+            state[relic].lvl = 16;
+          }
 
-        if (state[relic].mainStat.stat) {
-          state[relic].mainStat.value = getArtifactStat(
-            state[relic].isFiveStar,
-            state[relic].mainStat.stat,
-            state[relic].lvl
-          );
+          if (state[relic].mainStat.stat) {
+            state[relic].mainStat.value = getArtifactStat(
+              state[relic].isFiveStar,
+              state[relic].mainStat.stat,
+              state[relic].lvl
+            );
+          }
         }
         return state;
       }),
