@@ -219,16 +219,16 @@ function createArtifact() {
         return state;
       }),
 
-    setSubstats: (relic: ArtifactType, id: 1 | 2 | 3 | 4, stat: string) =>
+    setSubstats: (relic: ArtifactType, id: 0 | 1 | 2 | 3, stat: string) =>
       update((state) => {
         state[relic].substats[id].stat = stat;
         return state;
       }),
 
-    setInput: (relic: ArtifactType, id: 1 | 2 | 3 | 4, stat: string) =>
+    setInput: (relic: ArtifactType, id: 0 | 1 | 2 | 3, value: number) =>
       update((state) => {
-        if (stat) {
-          state[relic].substats[id].value = +stat;
+        if (value) {
+          state[relic].substats[id].value = value;
         }
         return state;
       }),
