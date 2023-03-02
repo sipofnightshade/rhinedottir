@@ -23,7 +23,7 @@ const initialState: ArtifactState = {
   flower: {
     selected: {
       name: 'none',
-      fullName: 'one',
+      fullName: 'None',
       rating: []
     },
     lvl: 0,
@@ -42,7 +42,7 @@ const initialState: ArtifactState = {
   feather: {
     selected: {
       name: 'none',
-      fullName: 'one',
+      fullName: 'None',
       rating: []
     },
     lvl: 0,
@@ -61,7 +61,7 @@ const initialState: ArtifactState = {
   sands: {
     selected: {
       name: 'none',
-      fullName: 'one',
+      fullName: 'None',
       rating: []
     },
     lvl: 0,
@@ -80,7 +80,7 @@ const initialState: ArtifactState = {
   goblet: {
     selected: {
       name: 'none',
-      fullName: 'one',
+      fullName: 'None',
       rating: []
     },
     lvl: 0,
@@ -99,7 +99,7 @@ const initialState: ArtifactState = {
   circlet: {
     selected: {
       name: 'none',
-      fullName: 'one',
+      fullName: 'None',
       rating: []
     },
     lvl: 0,
