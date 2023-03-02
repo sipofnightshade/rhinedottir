@@ -86,10 +86,10 @@
       {/if}
     </button>
     <div class="col-span-3 grid grid-cols-2 gap-2">
-      <SubstatGroup />
-      <SubstatGroup />
-      <SubstatGroup />
-      <SubstatGroup />
+      <SubstatGroup {type} id={0} />
+      <SubstatGroup {type} id={1} />
+      <SubstatGroup {type} id={2} />
+      <SubstatGroup {type} id={3} />
     </div>
   </div>
   <div class="h-full">
