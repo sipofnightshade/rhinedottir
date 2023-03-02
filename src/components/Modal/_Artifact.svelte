@@ -47,7 +47,7 @@
     <div class="col-span-2 flex flex-col justify-end">
       <div class="grid grid-cols-2 gap-x-2">
         <div>
-          <StarSelector />
+          <StarSelector {type} />
           <LevelGroup
             label="Level"
             value={labels.artifactLevels[$artifact[type].lvl]}
