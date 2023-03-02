@@ -1,50 +1,29 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
+  import { artifactSubStats } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
+  import { artifact } from '$lib/stores/artifactStore';
 
-  let stats = [
-    { id: 1, label: 'CRIT DMG' },
-    { id: 2, label: 'CRIT Rate' },
-    { id: 3, label: 'ATK %' }
-  ];
+  export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
+  export let id: 0 | 1 | 2 | 3;
 
-  let selected: any;
-  let statValue: any;
+  let statValue: number;
 
-  type Person = { name: string };
-  type People = Person[];
-
-  // prettier-ignore
-  const people = [
-		{ name: 'Wade Cooper' },
-		{ name: 'Arlene Mccoy' },
-		{ name: 'Devon Webb' },
-		{ name: 'Tom Cook' },
-		{ name: 'Tanya Fox' },
-		{ name: 'Hellen Schmidt' },
-	]
-
-  // TODO: type list so 'selected' isn't 'any'
-  const listbox = createListbox({ label: 'Actions', selected: people[2] });
+  let listbox = createListbox({
+    label: 'SubStats',
+    selected: artifactSubStats[0]
+  });
 
   function onSelect(e: Event) {
-    console.log('select', (e as CustomEvent).detail);
+    artifact.setSubstats(type, id, (e as CustomEvent).detail.selected.value);
+  }
+
+  function setInputValue() {
+    artifact.setInput(type, id, statValue);
   }
 </script>
 
 <div class="grid grid-cols-3 gap-x-1 pr-0.5">
-  <!-- <select
-    style="appearance: none;"
-    class="col-span-2 appearance-none rounded-md bg-slate-800 py-2 pl-1"
-    bind:value={selected}
-    on:change={() => console.log(selected)}
-  >
-    {#each stats as stat}
-      <option value={stat}>
-        {stat.label}
-      </option>
-    {/each}
-  </select> -->
   <div class="relative col-span-2 text-sm">
     <button
       use:listbox.button
@@ -52,19 +31,14 @@
       class="relative h-10 w-full cursor-default text-ellipsis rounded-md border-2 border-slate-800 bg-slate-800 py-2 pl-2 text-left sm:text-sm"
       class:border-slate-400={$listbox.expanded}
     >
-      <span class="block">{$listbox.selected.name}</span>
+      <span class="block">{$listbox.selected.label}</span>
     </button>
-    <Transition
-      show={$listbox.expanded}
-      leave="transition ease-in duration-100"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0"
-    >
+    <Transition show={$listbox.expanded}>
       <ul
         use:listbox.items
-        class="absolute z-10 mt-0.5 w-full rounded-md bg-slate-800 shadow-md"
+        class="absolute z-10 mt-0.5 max-h-40 w-full overflow-y-scroll rounded-md bg-slate-800 shadow-md"
       >
-        {#each people as value, i}
+        {#each artifactSubStats as value, i}
           {@const active = $listbox.active === value}
           {@const selected = $listbox.selected === value}
           <li
@@ -73,8 +47,10 @@
             class:text-slate-900={active}
             use:listbox.item={{ value }}
           >
-            <span class="block truncate {selected ? 'font-medium' : 'font-normal'}"
-              >{value.name}</span
+            <span
+              class="center block truncate capitalize {selected
+                ? 'font-medium'
+                : 'font-normal'}">{value.label}</span
             >
           </li>
         {/each}
@@ -84,6 +60,7 @@
   <input
     class="col-span-1 appearance-none rounded-md border border-slate-800 bg-slate-800 py-1 px-1 text-right focus:border-slate-400 focus:ring-slate-300"
     bind:value={statValue}
+    on:blur={setInputValue}
     placeholder="0"
     autocomplete="off"
     type="number"
