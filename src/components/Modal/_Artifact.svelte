@@ -68,7 +68,7 @@
       class="relative col-span-3 flex w-full justify-between rounded-md bg-slate-800 py-2 px-3"
     >
       <div class="text-sm">
-        <span>Gliadator's Finale </span>
+        <span>{$artifact[type].selected.fullName}</span>
         <span class:text-green-500={true}>(1/4)</span>
       </div>
       <span class="text-sm">🔽</span>
