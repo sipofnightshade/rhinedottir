@@ -8,7 +8,7 @@ type Artifact = {
   lvl: number;
   isFiveStar: boolean;
   mainStat: { stat: ArtifactStats; value: number };
-  substats: { stat: string; value: number }[];
+  substats: { stat: ArtifactStats; value: number }[];
 };
 
 interface ArtifactState {
@@ -86,7 +86,7 @@ const initialState: ArtifactState = {
     lvl: 0,
     isFiveStar: false,
     mainStat: {
-      stat: 'anemo',
+      stat: 'atk%',
       value: 0
     },
     substats: [
@@ -219,7 +219,7 @@ function createArtifact() {
         return state;
       }),
 
-    setSubstats: (relic: ArtifactType, id: 0 | 1 | 2 | 3, stat: string) =>
+    setSubstats: (relic: ArtifactType, id: 0 | 1 | 2 | 3, stat: ArtifactStats) =>
       update((state) => {
         state[relic].substats[id].stat = stat;
         return state;

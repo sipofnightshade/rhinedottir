@@ -1,29 +1,33 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
-  import { artifactMainStats } from '$lib/data/Stats';
+  import { artifactMainStats, StatLabels } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
+  import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
+  import { stats } from '$lib/stores/statsStore';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
-  export let value = 0;
-  export let stat: string;
+
+  const dispatch = createEventDispatcher();
 
   let listbox = createListbox({
     label: 'MainStats',
-    selected:
-      artifactMainStats[type === 'flower' || type === 'feather' ? 'sands' : type][0]
+    selected: $artifact[type].mainStat.stat
   });
 
   function onSelect(e: Event) {
-    console.log((e as CustomEvent).detail.selected);
-    artifact.setMainStat(type, (e as CustomEvent).detail.selected.value);
+    dispatch('selected', {
+      value: (e as CustomEvent).detail.selected.value
+    });
   }
+
+  $: console.log($stats);
 </script>
 
 <div class="mt-auto">
   <p class="mb-[1px] text-right text-2xl font-bold">
-    {artifactStatFormatter(stat, value)}
+    {artifactStatFormatter($artifact[type].mainStat.stat, $artifact[type].mainStat.value)}
   </p>
   {#if type === 'flower' || type === 'feather'}
     <div
@@ -39,7 +43,7 @@
         class="relative h-10 w-full cursor-default text-ellipsis rounded-md border-2 border-slate-800 bg-slate-800 py-2 pl-2 text-left sm:text-sm"
         class:border-slate-400={$listbox.expanded}
       >
-        <span class="block">{$listbox.selected.label}</span>
+        <span class="block">{StatLabels[$artifact[type].mainStat.stat]}</span>
       </button>
       <Transition show={$listbox.expanded}>
         <ul

@@ -24,7 +24,11 @@
   let profile;
   let contentH;
 
-  // methods
+  // state methods
+  function handleArtifactSelect(event: any) {
+    artifact.setArtifact(type, event.detail.selected);
+  }
+
   function handleIncrement(event: any) {
     artifact.increment(event.detail.groupID);
   }
@@ -33,8 +37,16 @@
     artifact.decrement(event.detail.groupID);
   }
 
-  function handleArtifactSelect(event: any) {
-    artifact.setArtifact(type, event.detail.selected);
+  function handleMainstat(event: CustomEvent) {
+    artifact.setMainStat(type, event.detail.value);
+  }
+
+  function handleSubstats(event: any) {
+    artifact.setSubstats(type, event.detail.id, event.detail.value);
+  }
+
+  function handleInput(event: any) {
+    artifact.setInput(type, event.detail.id, event.detail.value);
   }
 </script>
 
@@ -56,11 +68,7 @@
             on:decrement={handleDecrement}
           />
         </div>
-        <MainStat
-          stat={$artifact[type].mainStat.stat}
-          {type}
-          value={$artifact[type].mainStat.value}
-        />
+        <MainStat {type} on:selected={handleMainstat} />
       </div>
     </div>
     <button
@@ -86,10 +94,30 @@
       {/if}
     </button>
     <div class="col-span-3 grid grid-cols-2 gap-2">
-      <SubstatGroup {type} id={0} />
-      <SubstatGroup {type} id={1} />
-      <SubstatGroup {type} id={2} />
-      <SubstatGroup {type} id={3} />
+      <SubstatGroup
+        {type}
+        id={0}
+        on:inputBlur={handleInput}
+        on:selected={handleSubstats}
+      />
+      <SubstatGroup
+        {type}
+        id={1}
+        on:inputBlur={handleInput}
+        on:selected={handleSubstats}
+      />
+      <SubstatGroup
+        {type}
+        id={2}
+        on:inputBlur={handleInput}
+        on:selected={handleSubstats}
+      />
+      <SubstatGroup
+        {type}
+        id={3}
+        on:inputBlur={handleInput}
+        on:selected={handleSubstats}
+      />
     </div>
   </div>
   <div class="h-full">

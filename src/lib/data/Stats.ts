@@ -45,6 +45,29 @@ export const artifactSubStats = [
   { label: 'CRIT DMG', value: 'critdmg' }
 ];
 
+export const StatLabels = {
+  '': 'Select...',
+  hp: 'HP',
+  atk: 'ATK',
+  def: 'DEF',
+  'hp%': 'HP%',
+  'atk%': 'ATK%',
+  'def%': 'DEF%',
+  em: 'EM',
+  energy: 'ER',
+  critrate: 'CRIT Rate',
+  critdmg: 'CRIT DMG',
+  anemo: 'Anemo DMG',
+  cryo: 'Cryo DMG',
+  dendro: 'Dendro DMG',
+  electro: 'Electro DMG',
+  geo: 'Geo DMG',
+  hydro: 'Hydro DMG',
+  pyro: 'Pyro DMG',
+  physical: 'Physical DMG',
+  healing: 'Healing BONUS'
+};
+
 export const weaponStatLabels = {
   critdmg: 'CRIT DMG',
   critrate: 'CRIT Rate',

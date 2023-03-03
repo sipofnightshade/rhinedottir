@@ -68,6 +68,7 @@ export type WeaponSpecialized =
   | 'energy';
 
 export type ArtifactStats =
+  | ''
   | 'hp'
   | 'atk'
   | 'hp%'
