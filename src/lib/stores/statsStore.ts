@@ -1,8 +1,5 @@
 import { derived } from 'svelte/store';
 import { getCalculatedStat } from '$lib/helpers/getCalculatedStat';
-// import { labels } from '$lib/data/Levels';
-// import genshinStatsAll from '$lib/data/genshinStatsAll';
-// store imports
 import { character } from './characterStore';
 import { weapon } from './weaponStore';
 import { artifact } from './artifactStore';
@@ -80,7 +77,7 @@ function createStats() {
       return [...flatStats, characterStat, weaponStat];
     };
 
-    const totalStats: any = combinedStats().reduce(
+    const totalStats = combinedStats().reduce(
       (acc, { stat, value }) => {
         if (stat.includes('%')) {
           return {
@@ -100,11 +97,17 @@ function createStats() {
         atk: 0,
         def: 0,
         em: 0,
-        elemental: 0,
+        anemo: 0,
+        cryo: 0,
+        dendro: 0,
+        electro: 0,
+        geo: 0,
+        hydro: 0,
+        pyro: 0,
         physical: 0,
         critrate: 0,
         critdmg: 0,
-        energy: 0,
+        energy: 100,
         healing: 0
       }
     );
