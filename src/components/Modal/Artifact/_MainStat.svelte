@@ -5,7 +5,6 @@
   import Transition from 'svelte-transition';
   import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
-  import { stats } from '$lib/stores/statsStore';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
 
@@ -21,8 +20,6 @@
       value: (e as CustomEvent).detail.selected.value
     });
   }
-
-  $: console.log($stats);
 </script>
 
 <div class="mt-auto">
