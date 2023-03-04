@@ -3718,6 +3718,246 @@ var _ = {
           specialized: 0.23999999463558197
         }
       ]
+    },
+    yaoyao: {
+      base: {
+        hp: 1030.3238525390625,
+        attack: 17.808000564575195,
+        defense: 62.9474983215332,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S4',
+        attack: 'GROW_CURVE_ATTACK_S4',
+        defense: 'GROW_CURVE_HP_S4'
+      },
+      specialized: 'FIGHT_PROP_HP_PERCENT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 769.7046508789062,
+          attack: 13.303799629211426,
+          defense: 47.025001525878906,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1316.60009765625,
+          attack: 22.756500244140625,
+          defense: 80.4375,
+          specialized: 0.05999999865889549
+        },
+        {
+          maxlevel: 60,
+          hp: 2045.7939453125,
+          attack: 35.36009979248047,
+          defense: 124.98750305175781,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 70,
+          hp: 2592.689453125,
+          attack: 44.812801361083984,
+          defense: 158.39999389648438,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 80,
+          hp: 3139.584716796875,
+          attack: 54.265499114990234,
+          defense: 191.8125,
+          specialized: 0.18000000715255737
+        },
+        {
+          maxlevel: 90,
+          hp: 3686.480224609375,
+          attack: 63.71820068359375,
+          defense: 225.22500610351562,
+          specialized: 0.23999999463558197
+        }
+      ]
+    },
+    alhaitham: {
+      base: {
+        hp: 1039.1187744140625,
+        attack: 24.392200469970703,
+        defense: 60.847110748291016,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S5',
+        attack: 'GROW_CURVE_ATTACK_S5',
+        defense: 'GROW_CURVE_HP_S5'
+      },
+      specialized: 'FIGHT_PROP_GRASS_ADD_HURT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 890.950439453125,
+          attack: 20.912578582763672,
+          defense: 52.17210006713867,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1523.994140625,
+          attack: 35.771514892578125,
+          defense: 89.24175262451172,
+          specialized: 0.07199999690055847
+        },
+        {
+          maxlevel: 60,
+          hp: 2368.052490234375,
+          attack: 55.583431243896484,
+          defense: 138.66795349121094,
+          specialized: 0.14399999380111694
+        },
+        {
+          maxlevel: 70,
+          hp: 3001.09619140625,
+          attack: 70.44236755371094,
+          defense: 175.7375946044922,
+          specialized: 0.14399999380111694
+        },
+        {
+          maxlevel: 80,
+          hp: 3634.139892578125,
+          attack: 85.30130767822266,
+          defense: 212.8072509765625,
+          specialized: 0.2160000056028366
+        },
+        {
+          maxlevel: 90,
+          hp: 4267.18359375,
+          attack: 100.16024017333984,
+          defense: 249.8769073486328,
+          specialized: 0.2879999876022339
+        }
+      ]
+    },
+    dehya: {
+      base: {
+        hp: 1220.2496337890625,
+        attack: 20.66819953918457,
+        defense: 48.88111114501953,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S5',
+        attack: 'GROW_CURVE_ATTACK_S5',
+        defense: 'GROW_CURVE_HP_S5'
+      },
+      specialized: 'FIGHT_PROP_HP_PERCENT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 1046.253662109375,
+          attack: 17.719818115234375,
+          defense: 41.91210174560547,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1789.64453125,
+          attack: 30.31021499633789,
+          defense: 71.6917495727539,
+          specialized: 0.07199999690055847
+        },
+        {
+          maxlevel: 60,
+          hp: 2780.832275390625,
+          attack: 47.097412109375,
+          defense: 111.39794921875,
+          specialized: 0.14399999380111694
+        },
+        {
+          maxlevel: 70,
+          hp: 3524.222900390625,
+          attack: 59.687808990478516,
+          defense: 141.17759704589844,
+          specialized: 0.14399999380111694
+        },
+        {
+          maxlevel: 80,
+          hp: 4267.61376953125,
+          attack: 72.27820587158203,
+          defense: 170.95724487304688,
+          specialized: 0.2160000056028366
+        },
+        {
+          maxlevel: 90,
+          hp: 5011.00439453125,
+          attack: 84.86859893798828,
+          defense: 200.7368927001953,
+          specialized: 0.2879999876022339
+        }
+      ]
+    },
+    mika: {
+      base: {
+        hp: 1048.5596923828125,
+        attack: 18.698400497436523,
+        defense: 59.80012512207031,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S4',
+        attack: 'GROW_CURVE_ATTACK_S4',
+        defense: 'GROW_CURVE_HP_S4'
+      },
+      specialized: 'FIGHT_PROP_HP_PERCENT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 783.3277587890625,
+          attack: 13.968990325927734,
+          defense: 44.67375183105469,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1339.9027099609375,
+          attack: 23.894325256347656,
+          defense: 76.4156265258789,
+          specialized: 0.05999999865889549
+        },
+        {
+          maxlevel: 60,
+          hp: 2082.002685546875,
+          attack: 37.12810516357422,
+          defense: 118.73812866210938,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 70,
+          hp: 2638.57763671875,
+          attack: 47.05344009399414,
+          defense: 150.47999572753906,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 80,
+          hp: 3195.152587890625,
+          attack: 56.97877502441406,
+          defense: 182.2218780517578,
+          specialized: 0.18000000715255737
+        },
+        {
+          maxlevel: 90,
+          hp: 3751.7275390625,
+          attack: 66.90411376953125,
+          defense: 213.9637451171875,
+          specialized: 0.23999999463558197
+        }
+      ]
     }
   },
   e = {
@@ -4835,6 +5075,20 @@ var a = {
         { maxlevel: 90, attack: 186.6999969482422 }
       ]
     },
+    lightoffoliarincision: {
+      base: { attack: 44.33580017089844, specialized: 0.19200000166893005 },
+      curve: { attack: 'GROW_CURVE_ATTACK_304', specialized: 'GROW_CURVE_CRITICAL_301' },
+      specialized: 'FIGHT_PROP_CRITICAL_HURT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 31.100000381469727 },
+        { maxlevel: 50, attack: 62.20000076293945 },
+        { maxlevel: 60, attack: 93.4000015258789 },
+        { maxlevel: 70, attack: 124.5 },
+        { maxlevel: 80, attack: 155.60000610351562 },
+        { maxlevel: 90, attack: 186.6999969482422 }
+      ]
+    },
     wastergreatsword: {
       base: { attack: 23.2450008392334, specialized: 0 },
       curve: { attack: 'GROW_CURVE_ATTACK_101', specialized: 'GROW_CURVE_CRITICAL_101' },
@@ -5151,6 +5405,20 @@ var a = {
         { maxlevel: 90, attack: 155.60000610351562 }
       ]
     },
+    mailedflower: {
+      base: { attack: 43.734901428222656, specialized: 24 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_ELEMENT_MASTERY',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
     skywardpride: {
       base: { attack: 47.5369987487793, specialized: 0.07999999821186066 },
       curve: { attack: 'GROW_CURVE_ATTACK_302', specialized: 'GROW_CURVE_CRITICAL_301' },
@@ -5211,6 +5479,20 @@ var a = {
       base: { attack: 44.33580017089844, specialized: 0.19200000166893005 },
       curve: { attack: 'GROW_CURVE_ATTACK_304', specialized: 'GROW_CURVE_CRITICAL_301' },
       specialized: 'FIGHT_PROP_CRITICAL_HURT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 31.100000381469727 },
+        { maxlevel: 50, attack: 62.20000076293945 },
+        { maxlevel: 60, attack: 93.4000015258789 },
+        { maxlevel: 70, attack: 124.5 },
+        { maxlevel: 80, attack: 155.60000610351562 },
+        { maxlevel: 90, attack: 186.6999969482422 }
+      ]
+    },
+    beaconofthereedsea: {
+      base: { attack: 45.9364013671875, specialized: 0.07199999690055847 },
+      curve: { attack: 'GROW_CURVE_ATTACK_301', specialized: 'GROW_CURVE_CRITICAL_301' },
+      specialized: 'FIGHT_PROP_CRITICAL',
       promotion: [
         { maxlevel: 20, attack: 0 },
         { maxlevel: 40, attack: 31.100000381469727 },
@@ -8443,13 +8725,13 @@ var C = {
     const C = _[a];
     if (void 0 === C) return;
     const T = C.promotion[C.promotion.length - 1].maxlevel;
-    let [A, t] = (function (_) {
+    let [t, A] = (function (_) {
       const e = /([0-9]+)(\+?)/.exec(_);
       return null !== e ? [e[1], e[2]] : [void 0, void 0];
     })(R);
-    if (void 0 === A) return;
-    if (((A = parseInt(A, 10)), isNaN(A))) return;
-    if (A > T || A < 1) return;
+    if (void 0 === t) return;
+    if (((t = parseInt(t, 10)), isNaN(t))) return;
+    if (t > T || t < 1) return;
     const [l, c] = (function (_, e, a) {
       for (let R = _.length - 2; R >= 0; R--) {
         if (e > _[R].maxlevel) return [R + 1, _[R + 1]];
@@ -8459,13 +8741,13 @@ var C = {
             : [R, _[R]];
       }
       return [0, _[0]];
-    })(C.promotion, A, t);
+    })(C.promotion, t, A);
     let E = {
-      level: A,
+      level: t,
       ascension: l,
-      hp: C.base.hp * e[A][C.curve.hp] + c.hp,
-      attack: C.base.attack * e[A][C.curve.attack] + c.attack,
-      defense: C.base.defense * e[A][C.curve.defense] + c.defense,
+      hp: C.base.hp * e[t][C.curve.hp] + c.hp,
+      attack: C.base.attack * e[t][C.curve.attack] + c.attack,
+      defense: C.base.defense * e[t][C.curve.defense] + c.defense,
       specialized: c.specialized,
       substat: C.specialized
     };
@@ -8481,13 +8763,13 @@ var C = {
     const C = a[_];
     if (void 0 === C) return;
     const T = C.promotion[C.promotion.length - 1].maxlevel;
-    let [A, t] = (function (_) {
+    let [t, A] = (function (_) {
       let e = /([0-9]+)(\+?)/.exec(_);
       return null !== e ? [e[1], e[2]] : [void 0, void 0];
     })(e);
-    if (void 0 === A) return;
-    if (((A = parseInt(A, 10)), isNaN(A))) return;
-    if (A > T || A < 1) return;
+    if (void 0 === t) return;
+    if (((t = parseInt(t, 10)), isNaN(t))) return;
+    if (t > T || t < 1) return;
     const [l, c] = (function (_, e, a) {
       for (let R = _.length - 2; R >= 0; R--) {
         if (e > _[R].maxlevel) return [R + 1, _[R + 1]];
@@ -8497,12 +8779,12 @@ var C = {
             : [R, _[R]];
       }
       return [0, _[0]];
-    })(C.promotion, A, t);
+    })(C.promotion, t, A);
     return {
-      level: A,
+      level: t,
       ascension: l,
-      attack: C.base.attack * R[A][C.curve.attack] + c.attack,
-      specialized: C.base.specialized * R[A][C.curve.specialized],
+      attack: C.base.attack * R[t][C.curve.attack] + c.attack,
+      specialized: C.base.specialized * R[t][C.curve.specialized],
       substat: C.specialized
     };
   }

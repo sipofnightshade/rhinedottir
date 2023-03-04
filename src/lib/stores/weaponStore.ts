@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import GenshinStats from '$lib/data/genshinStatsAll';
+import GenshinStats from '$lib/helpers/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
 import type { SelectedWeapon } from '$lib/types/global';
 
