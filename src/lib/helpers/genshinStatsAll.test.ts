@@ -15,8 +15,6 @@ describe('Test genshinStatsAll script', () => {
         expect(result).toHaveProperty('defense');
         expect(result).toHaveProperty('specialized');
         expect(result).toHaveProperty('substat');
-
-        // Add more expect statements to test the result here
       });
     });
   });
@@ -30,8 +28,6 @@ describe('Test genshinStatsAll script', () => {
         expect(result).toHaveProperty('attack');
         expect(result).toHaveProperty('specialized');
         expect(result).toHaveProperty('substat');
-
-        // Add more expect statements to test the result here
       });
     });
   });
