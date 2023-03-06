@@ -1,4 +1,4 @@
-import type { TalentRecords } from './TalentsTypes';
+import type { TalentRecords } from '../types/talents';
 
 export const Talents: TalentRecords = {
   traveleranemo: {
