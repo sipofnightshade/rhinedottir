@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Hit } from '$lib/data/TalentsTypes';
+  import type { Hit } from '$lib/types/talents';
   import type { DamageType } from '$lib/types/global';
   import TalentValues from '$lib/data/TalentValues.json';
   import Cell from './Cell.svelte';
