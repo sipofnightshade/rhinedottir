@@ -32,11 +32,10 @@
 
   $: {
     onSelect(selected);
-    console.log($action);
   }
 
   // handle Modal
-  let showModal = true;
+  let showModal = false;
   function toggleModal() {
     showModal = !showModal;
   }
@@ -61,47 +60,45 @@
     buttonType="Select"
     details={data.description}
   >
-    <div class="flex items-center space-x-2">
-      <ul class="flex space-x-1" class:bg-red-700={false}>
+    <ul class="flex space-x-1" class:bg-red-700={false}>
+      <li
+        class="flex h-10 w-10 items-center justify-center rounded-full"
+        class:bg-slate-600={selected === undefined}
+      >
+        <input
+          type="radio"
+          bind:group={selected}
+          name="radio"
+          id="empty"
+          value={undefined}
+          class="hidden"
+        />
+        <label for="empty"
+          ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
+        </label>
+      </li>
+      {#each data.values as item}
         <li
-          class="flex h-10 w-10 items-center justify-center rounded-full"
-          class:bg-slate-600={selected === undefined}
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-600"
+          class:bg-slate-600={selected === item}
         >
           <input
             type="radio"
             bind:group={selected}
             name="radio"
-            id="empty"
-            value={undefined}
+            id={item.scaling}
+            value={item}
             class="hidden"
           />
-          <label for="empty"
-            ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
+          <label for={item.scaling}
+            ><img
+              class="w-6"
+              src="/images/elements/{item.scaling}.svg"
+              alt={item.scaling}
+            />
           </label>
         </li>
-        {#each data.values as item}
-          <li
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-600"
-            class:bg-slate-600={selected === item}
-          >
-            <input
-              type="radio"
-              bind:group={selected}
-              name="radio"
-              id={item.scaling}
-              value={item}
-              class="hidden"
-            />
-            <label for={item.scaling}
-              ><img
-                class="w-6"
-                src="/images/elements/{item.scaling}.svg"
-                alt={item.scaling}
-              />
-            </label>
-          </li>
-        {/each}
-      </ul>
-    </div>
+      {/each}
+    </ul>
   </ActionModal>
 {/if}
