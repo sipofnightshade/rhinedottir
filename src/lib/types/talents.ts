@@ -84,7 +84,6 @@ export type Action = {
   target: 'self' | 'enemy' | 'party' | 'all'; // re-evaluate this
   damageBonus?: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
   actionType: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
-
   values: {
     scaling: ALL_STATS;
     coef: number;
