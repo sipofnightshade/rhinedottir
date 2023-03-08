@@ -3,48 +3,105 @@
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../ActionModal/ActionModal.svelte';
-
+  import type { ALL_STATS } from '$lib/types/talents';
   import { action } from '$lib/stores/actionStore';
 
   export let element: Visions;
   export let data: Action;
 
-  let scoops = 1;
+  let selected: { scaling: ALL_STATS; coef: number } | undefined;
+  let prevSelected: { scaling: ALL_STATS; coef: number } | undefined;
 
-  function handleSelect() {}
+  function onSelect(selected: { scaling: ALL_STATS; coef: number } | undefined) {
+    if (selected !== undefined) {
+      action.addStat(selected.scaling, selected.coef);
+      //   console.log(`ADD -> ${selected.scaling}`);
+      if (prevSelected) {
+        action.removeStat(prevSelected.scaling, prevSelected.coef);
+        // console.log(`MINUS -> ${prevSelected.scaling}`);
+      }
+    } else {
+      if (prevSelected !== undefined) {
+        // console.log(`MINUS -> ${prevSelected.scaling}`);
+        action.removeStat(prevSelected.scaling, prevSelected.coef);
+      }
+    }
 
-  let showModal = false;
+    prevSelected = selected;
+  }
 
+  $: {
+    onSelect(selected);
+    console.log($action);
+  }
+
+  // handle Modal
+  let showModal = true;
   function toggleModal() {
     showModal = !showModal;
   }
-
-  function closeModal() {
-    showModal = false;
-  }
 </script>
 
-<button on:click={toggleModal} class="relative shadow-red-300">
-  <ActionButton {element} isActive={scoops > 0} />
-  {#if scoops > 0}
-    <div class="absolute bottom-0 right-0">
-      <input type="radio" bind:group={scoops} name="scoops" value={1} />
-
-      <input type="radio" bind:group={scoops} name="scoops" value={2} />
-
-      <input type="radio" bind:group={scoops} name="scoops" value={3} />
+<button on:click={toggleModal} class="relative">
+  <ActionButton {element} isActive={selected != undefined} />
+  {#if selected != undefined}
+    <div class="absolute bottom-0 right-0 z-20 flex ">
+      <div class="rounded-full bg-slate-800 p-1">
+        <img class="w-4" src="/images/elements/{selected.scaling}.svg" alt="close" />
+      </div>
     </div>
   {/if}
 </button>
 {#if showModal}
   <ActionModal
-    on:click={closeModal}
-    on:escapeClick={closeModal}
+    on:click={toggleModal}
+    on:escapeClick={toggleModal}
     modalTitle={data.name}
     actionType="Elemental Burst"
     buttonType="Select"
     details={data.description}
   >
-    <input type="text" />
+    <div class="flex items-center space-x-2">
+      <ul class="flex space-x-1" class:bg-red-700={false}>
+        <li
+          class="flex h-10 w-10 items-center justify-center rounded-full"
+          class:bg-slate-600={selected === undefined}
+        >
+          <input
+            type="radio"
+            bind:group={selected}
+            name="radio"
+            id="empty"
+            value={undefined}
+            class="hidden"
+          />
+          <label for="empty"
+            ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
+          </label>
+        </li>
+        {#each data.values as item}
+          <li
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-600"
+            class:bg-slate-600={selected === item}
+          >
+            <input
+              type="radio"
+              bind:group={selected}
+              name="radio"
+              id={item.scaling}
+              value={item}
+              class="hidden"
+            />
+            <label for={item.scaling}
+              ><img
+                class="w-6"
+                src="/images/elements/{item.scaling}.svg"
+                alt={item.scaling}
+              />
+            </label>
+          </li>
+        {/each}
+      </ul>
+    </div>
   </ActionModal>
 {/if}
