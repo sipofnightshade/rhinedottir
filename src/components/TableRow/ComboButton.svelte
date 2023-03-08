@@ -12,7 +12,7 @@
     <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
     {#if reaction === true}
       <img
-        class="relative z-10 -ml-[14px] h-6 w-6 self-center"
+        class="relative -ml-[14px] h-6 w-6 self-center"
         src="/images/elements/separator.svg"
         alt="element"
       />
