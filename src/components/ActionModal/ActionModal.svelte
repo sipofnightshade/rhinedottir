@@ -2,6 +2,7 @@
   export let modalTitle: string;
   export let actionType: string;
   export let buttonType: string;
+  export let details: string;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -19,20 +20,13 @@
         <h2 class="text-base font-bold">{modalTitle}</h2>
         <h3 class="mt-0.5 text-xs">{actionType} Lv. 10</h3>
       </div>
-      <button on:click|self|stopPropagation class="rounded-md text-slate-200 ">
-        <img class="mt-1 w-3" src="/images/ui/close.svg" alt="close icon" />
+      <button on:click|stopPropagation class="w-3 ">
+        <img class="mt-1 " src="/images/ui/close.svg" alt="close icon" />
       </button>
     </div>
     <div class="h-full overflow-hidden px-4 pt-3 pb-4">
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores repellendus non
-        perferendis, magni excepturi provident est tenetur incidunt, laudantium placeat,
-        fugit eveniet eaque itaque minima. Aliquam quos, nihil magni sint deleniti eos
-        dolorem repudiandae ex? Nihil vero incidunt accusantium amet similique libero quae
-        quasi earum et consequuntur quidem, accusamus maiores. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Incidunt eos nesciunt unde amet molestias commodi
-        doloremque deleniti non, expedita sequi quas temporibus nisi sint fugit rem quo,
-        atque voluptas itaque.
+      <p class="text-base">
+        {details}
       </p>
     </div>
     <div
