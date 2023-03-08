@@ -1,15 +1,32 @@
-<script>
-	import ActionButton from './ActionButton.svelte';
+<script lang="ts">
+  import { Talents } from '$lib/data/Talents';
+  import { character } from '$lib/stores/characterStore';
+
+  // import components
+  import ToggleButton from './_ToggleButton.svelte';
+  import PassiveButton from './_PassiveButton.svelte';
+  import StackButton from './_StackButton.svelte';
+  import SelectButton from './_SelectButton.svelte';
+  import MultiSelectButton from './_MultiSelectButton.svelte';
+
+  // import { onMount } from 'svelte';
+  const charName = 'traveleranemo';
 </script>
 
 <section
-	class="relative my-4 flex w-full overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
+  class="relative my-4 flex w-full space-x-1 overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
 >
-	<ActionButton />
-	<ActionButton />
-	<ActionButton element={'pyro'} />
-	<ActionButton element={'hydro'} />
-	<ActionButton />
-	<ActionButton />
-	<ActionButton />
+  {#each Talents[charName].actions as data}
+    {#if data.actionType === 'toggle'}
+      <ToggleButton {data} element={$character.selected.vision} />
+    {:else if data.actionType === 'stack'}
+      <StackButton {data} element={$character.selected.vision} />
+    {:else if data.actionType === 'passive'}
+      <PassiveButton {data} element={$character.selected.vision} />
+    {:else if data.actionType === 'select'}
+      <SelectButton {data} element={$character.selected.vision} />
+    {:else if data.actionType === 'multiSelect'}
+      <MultiSelectButton {data} element={$character.selected.vision} />
+    {/if}
+  {/each}
 </section>
