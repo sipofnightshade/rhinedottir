@@ -22,7 +22,7 @@ describe('ToggleButton', () => {
         level: 1,
         constellation: 2,
         target: 'self',
-        actionType: 'passive',
+        actionType: 'toggle',
         values: [{ scaling: 'energy', coef: 0.16 }]
       }
     });
