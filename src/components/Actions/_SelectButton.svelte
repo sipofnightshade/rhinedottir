@@ -5,6 +5,7 @@
   import ActionModal from '../ActionModal/ActionModal.svelte';
   import type { ALL_STATS } from '$lib/types/talents';
   import { action } from '$lib/stores/actionStore';
+  import { stripStat } from '$lib/helpers/stripStats';
 
   export let element: Visions;
   export let data: Action;
@@ -46,7 +47,11 @@
   {#if selected != undefined}
     <div class="absolute bottom-0 right-0 z-20 flex ">
       <div class="rounded-full bg-slate-800 p-1">
-        <img class="w-4" src="/images/elements/{selected.scaling}.svg" alt="close" />
+        <img
+          class="w-4"
+          src="/images/elements/{stripStat(selected.scaling)}.svg"
+          alt="close"
+        />
       </div>
     </div>
   {/if}
@@ -93,7 +98,7 @@
           <label for={item.scaling}
             ><img
               class="w-6"
-              src="/images/elements/{item.scaling}.svg"
+              src="/images/elements/{stripStat(item.scaling)}.svg"
               alt={item.scaling}
             />
           </label>
