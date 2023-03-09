@@ -36,7 +36,6 @@
     }
 
     prevStats = selectedStats ? [...selectedStats] : [];
-    console.log($action);
   }
 
   // handle Modal
