@@ -46,8 +46,8 @@
 </script>
 
 <button on:click={toggleModal} class="relative">
-  <ActionButton {element} isActive={selectedStats != undefined} />
-  {#if selectedStats != undefined}
+  <ActionButton {element} isActive={selectedStats.length > 0} />
+  {#if selectedStats.length > 0}
     <div class="absolute bottom-0 right-0 z-20 flex -space-x-2.5">
       {#each selectedStats as stat}
         <div class="rounded-full bg-slate-800 p-1">
