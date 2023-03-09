@@ -13,11 +13,9 @@
     isActive = !isActive;
     if (isActive) {
       data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef));
-      console.log($action);
       return;
     } else {
       data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
-      console.log($action);
       return;
     }
   }
