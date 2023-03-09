@@ -13,18 +13,16 @@
   <div
     class="relative mx-auto flex h-fit w-[90vw] flex-col items-center overflow-hidden  rounded-xl bg-slate-700 xs:w-[380px]"
   >
-    <div
-      class="relative flex w-full items-start justify-between border-b border-slate-500 px-4 py-3"
-    >
+    <div class="relative flex w-full items-start justify-between px-4 py-3">
       <div class="text-slate-100">
         <h2 class="text-base font-bold">{modalTitle}</h2>
-        <h3 class="mt-0.5 text-xs">{actionType} Lv. 10</h3>
+        <h3 class="mt-1 text-sm text-anemo">{actionType} Lv. 10</h3>
       </div>
       <button on:click|stopPropagation class="w-3 ">
         <img class="mt-1 " src="/images/ui/close.svg" alt="close icon" />
       </button>
     </div>
-    <div class="h-full overflow-hidden px-4 pt-3 pb-4">
+    <div class="h-full overflow-hidden px-4 pb-4">
       <p class="text-base">
         {details}
       </p>
