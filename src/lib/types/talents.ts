@@ -67,6 +67,8 @@ export type ALL_STATS =
   | 'geoRes'
   | 'hydroRes'
   | 'pyroRes'
+  | 'physical'
+  | 'physicalRes'
   | 'normal'
   | 'charged'
   | 'plunge'
@@ -103,7 +105,7 @@ export type OffField = {
   };
 };
 
-export type Talents = {
+export type TalentRecord = {
   normal: {
     name: string;
     hits: Hit[];
@@ -123,5 +125,5 @@ export type Talents = {
 
 /**🚀🚀🚀 This is the exported type */
 export type TalentRecords = {
-  [P: string]: Talents;
+  [P: string]: TalentRecord;
 };
