@@ -40,7 +40,7 @@
   }
 
   // handle Modal
-  let showModal = true;
+  let showModal = false;
   function toggleModal() {
     showModal = !showModal;
   }
