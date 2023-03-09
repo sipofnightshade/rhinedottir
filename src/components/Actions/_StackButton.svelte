@@ -21,13 +21,10 @@
     if (stacks === 0) {
       // If stacks reset, remove all the stats from the action store
       data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
-      console.log('Stacks', stacks);
-      console.log('Store', $action);
     } else {
       const { scaling, coef } = data.values[stacks - 1];
-      action.addStat(scaling, coef); // Add the stat corresponding to the current number of stacks to the action store
-      console.log('Stacks', stacks);
-      console.log('Store', $action);
+      // Add the stat corresponding to the current number of stacks to the action store
+      action.addStat(scaling, coef);
     }
   }
 
@@ -38,6 +35,11 @@
   // function closeModal() {
   //   showModal = false;
   // }
+
+  /**
+   * @Important
+   * - If using modals, use increment buttons and not an input
+   */
 </script>
 
 <button on:click={handleToggle} class="relative shadow-red-300">
