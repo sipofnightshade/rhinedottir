@@ -169,22 +169,22 @@ export const Talents: TalentRecords = {
         actionType: 'toggle',
         values: [{ scaling: 'anemoRes', coef: -0.2 }]
       },
-      // {
-      //   name: 'Intertwined Winds - Elemental Absorption',
-      //   url: 'UI_Talent_S_PlayerWind_04',
-      //   description:
-      //     'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      //   level: 1,
-      //   constellation: 6,
-      //   target: 'enemy',
-      //   actionType: 'multiSelect',
-      //   values: [
-      //     { scaling: 'pyroRes', coef: -0.2 },
-      //     { scaling: 'hydroRes', coef: -0.2 },
-      //     { scaling: 'electroRes', coef: -0.2 },
-      //     { scaling: 'cryoRes', coef: -0.2 }
-      //   ]
-      // },
+      {
+        name: 'Intertwined Winds - Elemental Absorption',
+        url: 'UI_Talent_S_PlayerWind_04',
+        description:
+          'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
+        level: 1,
+        constellation: 6,
+        target: 'enemy',
+        actionType: 'multiSelect',
+        values: [
+          { scaling: 'pyroRes', coef: -0.2 },
+          { scaling: 'hydroRes', coef: -0.2 },
+          { scaling: 'electroRes', coef: -0.2 },
+          { scaling: 'cryoRes', coef: -0.2 }
+        ]
+      },
       {
         name: 'Testing',
         url: 'UI_Talent_S_PlayerWind_04',
