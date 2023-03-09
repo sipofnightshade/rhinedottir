@@ -45,7 +45,7 @@
 <button on:click={toggleModal} class="relative">
   <ActionButton {element} isActive={selected != undefined} />
   {#if selected != undefined}
-    <div class="absolute bottom-0 right-0 z-20 flex ">
+    <div class="absolute bottom-0 right-0 z-10 flex ">
       <div class="rounded-full bg-slate-800 p-1">
         <img
           class="w-4"

@@ -25,7 +25,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   on:click|self|stopPropagation
-  class="fixed top-0 left-0 flex h-full w-full items-center justify-center bg-slate-900/40"
+  class="fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-slate-900/40"
 >
   <div class={classes}>
     <div

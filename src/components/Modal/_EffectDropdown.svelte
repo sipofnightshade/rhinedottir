@@ -14,7 +14,7 @@
 
   {#if passive}
     <div
-      class="absolute top-9 right-0 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
+      class="absolute top-9 right-0 z-10 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, error nostrum ipsa
       explicabo incidunt, inventore quod voluptatum esse molestias dolorum delectus eos
