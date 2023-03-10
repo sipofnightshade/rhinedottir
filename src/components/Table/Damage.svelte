@@ -6,10 +6,13 @@
   import { stats } from '$lib/stores/statsStore';
   import { character } from '$lib/stores/characterStore';
 
+  import { talents } from '$lib/stores/talentStore';
+
   const charName = 'traveleranemo';
   const infusion = undefined;
 
   $: talentRows = Talents[charName];
+  $: console.log('Talent', $talents);
 </script>
 
 <div class="">
