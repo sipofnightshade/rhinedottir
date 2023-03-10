@@ -6,11 +6,11 @@ export const getCalculatedStat = (
 ) => {
   switch (stat) {
     case 'hp%':
-      return base.hp * (value / 100);
+      return base.hp * value;
     case 'atk%':
-      return base.atk * (value / 100);
+      return base.atk * value;
     case 'def%':
-      return base.def * (value / 100);
+      return base.def * value;
     case 'hp':
     case 'atk':
     case 'physical':
