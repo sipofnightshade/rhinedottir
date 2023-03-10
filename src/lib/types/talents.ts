@@ -75,7 +75,17 @@ export type ALL_STATS =
   | 'skill'
   | 'burst'
   | 'normalATKSpd'
-  | 'chargedATKSpd';
+  | 'chargedATKSpd'
+  | 'normalSpecialMultiplier'
+  | 'skillSpecialMultiplier'
+  | 'burstSpecialMultiplier'
+  | 'normalFlatDMG'
+  | 'skillFlatDMG'
+  | 'burstFlatDMG'
+  | 'normalDefIgnore'
+  | 'skillDefIgnore'
+  | 'burstDefIgnore'
+  | 'defReduce';
 
 export type Action = {
   name: string;

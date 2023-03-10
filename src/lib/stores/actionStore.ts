@@ -33,7 +33,17 @@ const initialState = {
   skill: 0,
   burst: 0,
   normalATKSpd: 0,
-  chargedATKSpd: 0
+  chargedATKSpd: 0,
+  normalSpecialMultiplier: 0,
+  skillSpecialMultiplier: 0,
+  burstSpecialMultiplier: 0,
+  normalFlatDMG: 0,
+  skillFlatDMG: 0,
+  burstFlatDMG: 0,
+  normalDefIgnore: 0,
+  skillDefIgnore: 0,
+  burstDefIgnore: 0,
+  defReduce: 0
 };
 
 function createAction() {
