@@ -1,6 +1,4 @@
 <script>
-  import BottomBar from '../components/BottomMenu/BottomBar.svelte';
-  import ActionBar from '../components/Actions/ActionBar.svelte';
   import MobileContainer from '../components/Container/MobileContainer.svelte';
 </script>
 
