@@ -24,7 +24,7 @@ function createTalents() {
     //     ? `traveler${$character.selected.vision}`
     //     : $character.selected.name;
     const cName = 'traveleranemo';
-    const eLvl = 100;
+    const eLvl = 87;
 
     // enemy stats TODO - needs to get values from $stats
     const baseRes = 0.1;
@@ -72,7 +72,7 @@ function createTalents() {
 
     // ✅ Skill Rows
     const skillRows = Talents[cName].skill.hits.map((hit) => {
-      const values = TalentValues[cName].combat1;
+      const values = TalentValues[cName].combat2;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
 
@@ -110,7 +110,7 @@ function createTalents() {
 
     // ✅ Burst Rows
     const burstRows = Talents[cName].burst.hits.map((hit) => {
-      const values = TalentValues[cName].combat1;
+      const values = TalentValues[cName].combat3;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
 
