@@ -91,7 +91,7 @@ function createTalents() {
       const FinalDMG = hit.damage.reduce((total, damage) => {
         const BaseDMG =
           $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.atk];
+          values[damage.param as keyof typeof values][$character.skill];
 
         const calculatedDMG = calcDamageNoReaction(
           BaseDMG,
@@ -129,7 +129,7 @@ function createTalents() {
       const FinalDMG = hit.damage.reduce((total, damage) => {
         const BaseDMG =
           $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.atk];
+          values[damage.param as keyof typeof values][$character.burst];
 
         const calculatedDMG = calcDamageNoReaction(
           BaseDMG,
