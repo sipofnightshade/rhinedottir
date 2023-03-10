@@ -31,28 +31,28 @@ function createStats() {
         let characterStat = {};
         const weaponStat = {
           stat: $weapon.selected.specialized,
-          value: $weapon.stats?.specialized ?? 0
+          value: $weapon.stats?.specialized
         };
 
         switch ($character.selected.specialized) {
           case 'critdmg':
             characterStat = {
               stat: 'critdmg',
-              value: $character.stats?.specialized ?? 0.5
+              value: $character.stats?.specialized && $character.stats?.specialized - 0.5
             };
             break;
 
           case 'critrate':
             characterStat = {
               stat: 'critrate',
-              value: $character.stats?.specialized ?? 0.05
+              value: $character.stats?.specialized && $character.stats?.specialized - 0.05
             };
             break;
 
           default:
             characterStat = {
               stat: $character.selected.specialized,
-              value: $character.stats?.specialized ?? 0
+              value: $character.stats?.specialized
             };
             break;
         }
