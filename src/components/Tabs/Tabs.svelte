@@ -1,15 +1,12 @@
 <script lang="ts">
   export let items: any = [];
   export let activeTabValue = 1;
-  export let height: string;
   export let buttonGrid = 'grid-cols-3';
 
   const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
 </script>
 
-<ul
-  class="my-2 grid list-none justify-between rounded-full bg-slate-700 p-1 {buttonGrid}"
->
+<ul class="grid list-none justify-between rounded-full bg-slate-700 p-1 {buttonGrid}">
   {#each items as item}
     <li
       class="flex items-center justify-center rounded-full"
@@ -22,7 +19,7 @@
     </li>
   {/each}
 </ul>
-<section class="w-full overflow-y-auto {height}">
+<section class="w-full flex-1 overflow-y-auto">
   {#each items as item (item.value)}
     {#if activeTabValue == item.value}
       <div class="bg-slate-800">

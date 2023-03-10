@@ -1,7 +1,7 @@
 <script>
   import BottomBar from '../components/BottomMenu/BottomBar.svelte';
   import ActionBar from '../components/Actions/ActionBar.svelte';
-  import MobileTabContainer from '../components/Tabs/MobileTabContainer.svelte';
+  import MobileContainer from '../components/Container/MobileContainer.svelte';
 </script>
 
 <svelte:head>
@@ -9,11 +9,7 @@
   <meta name="description" content="Genshin Impact Calculator" />
 </svelte:head>
 
-<div class="flex h-screen flex-col px-4">
-  <MobileTabContainer />
-  <ActionBar />
-  <BottomBar />
-</div>
+<MobileContainer />
 
 <style lang="postcss">
   :global(body) {
