@@ -9,10 +9,7 @@
   import { talents } from '$lib/stores/talentStore';
 
   const charName = 'traveleranemo';
-  const infusion = undefined;
-
-  $: talentRows = Talents[charName];
-  $: console.log('Talent', $talents);
+  const infusion = 'physical';
 </script>
 
 <div class="">
@@ -27,47 +24,26 @@
   </div>
 
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={talentRows.normal.name} />
+    <Cell align="start" col="col-span-full" value={$talents.normalName} />
   </div>
 
-  {#each talentRows.normal.hits as hit}
-    <TalentRow
-      type={'combat1'}
-      data={hit}
-      stats={$stats}
-      charLvl={$character.lvl}
-      talentLvl={$character.atk}
-      el={infusion ?? 'physical'}
-    />
+  {#each $talents.normalRows as data}
+    <TalentRow {data} el={data.elemental || infusion} />
   {/each}
 
-  <div class="my-1 grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={talentRows.skill.name} />
+  <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+    <Cell align="start" col="col-span-full" value={$talents.skillName} />
   </div>
 
-  {#each talentRows.skill.hits as hit}
-    <TalentRow
-      type={'combat2'}
-      data={hit}
-      stats={$stats}
-      charLvl={$character.lvl}
-      talentLvl={$character.skill}
-      el={$character.selected.vision}
-    />
+  {#each $talents.skillRows as data}
+    <TalentRow {data} el={data.elemental || $character.selected.vision} />
   {/each}
-
-  <div class="my-1 grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={talentRows.burst.name} />
+  <!---------- B U R S T ---------->
+  <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+    <Cell align="start" col="col-span-full" value={$talents.burstName} />
   </div>
 
-  {#each talentRows.burst.hits as hit}
-    <TalentRow
-      type={'combat3'}
-      data={hit}
-      stats={$stats}
-      charLvl={$character.lvl}
-      talentLvl={$character.burst}
-      el={$character.selected.vision}
-    />
+  {#each $talents.burstRows as data}
+    <TalentRow {data} el={data.elemental || $character.selected.vision} />
   {/each}
 </div>
