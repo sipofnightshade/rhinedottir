@@ -25,7 +25,13 @@ function createStats() {
           ];
         })
         .flat(2)
-        .filter((item) => item.stat !== '' && item.value !== 0);
+        .filter((item) => item.stat !== '' && item.value !== 0)
+        .map((item) => {
+          if (item.stat === 'em') {
+            return;
+          }
+          return { ...item, value: item.value / 100 };
+        });
 
       const combinedStats = () => {
         let characterStat = {};
