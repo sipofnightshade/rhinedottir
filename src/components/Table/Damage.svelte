@@ -2,17 +2,14 @@
   import TalentRow from '../TableRow/TalentRow.svelte';
   import Cell from '../TableRow/Cell.svelte';
 
-  import { Talents } from '$lib/data/Talents';
-  import { stats } from '$lib/stores/statsStore';
+  // stores
   import { character } from '$lib/stores/characterStore';
-
   import { talents } from '$lib/stores/talentStore';
 
-  const charName = 'traveleranemo';
   const infusion = 'physical';
 </script>
 
-<div class="">
+<div>
   <div
     class="mb-1.5 grid grid-cols-24 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
   >
