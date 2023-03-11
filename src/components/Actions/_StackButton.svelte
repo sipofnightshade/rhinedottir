@@ -40,13 +40,25 @@
    * @Important
    * - If using modals, use increment buttons and not an input
    */
+
+  const textColors = {
+    anemo: 'text-anemo',
+    cryo: 'text-cryo',
+    dendro: 'text-dendro',
+    electro: 'text-electro',
+    hydro: 'text-hydro',
+    geo: 'text-geo',
+    pyro: 'text-pyro'
+  };
 </script>
 
 <button on:click={handleToggle} class="relative shadow-red-300">
   <ActionButton {element} isActive={stacks > 0} />
   {#if stacks > 0}
     <p
-      class="stacks absolute top-0 right-0 z-10 text-lg font-bold text-anemo shadow-red-400"
+      class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[
+        element
+      ]} shadow-red-400"
     >
       x{stacks}
     </p>
