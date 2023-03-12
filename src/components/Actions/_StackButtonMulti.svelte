@@ -30,8 +30,6 @@
 
   const splitValues = splitValuesByStackAmount(data.values, stackAmount);
 
-  console.log(splitValues);
-
   function handleToggle() {
     if (stacks === splitValues.length) {
       stacks = 0; // Reset the stacks if max is reached
