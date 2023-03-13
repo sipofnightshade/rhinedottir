@@ -14,7 +14,7 @@
 </script>
 
 <section
-  class="my-4 flex w-full space-x-1 self-end  overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
+  class="my-4 grid w-full grid-flow-col gap-1 self-end overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
 >
   {#each Talents[charName].actions as data}
     {#if data.actionType === 'toggle'}
