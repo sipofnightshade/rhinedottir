@@ -14,6 +14,7 @@
   type SELECTED = { [key in ALL_STATS]?: boolean };
 
   let selectedStats: SELECTED = {};
+  let isActive = false;
 
   onMount(() => {
     data.values.forEach(({ scaling }) => {
@@ -35,13 +36,16 @@
   function toggleModal() {
     showModal = !showModal;
   }
-  console.log(selectedStats);
 
-  // $: console.log('Selected', selectedStats);
+  $: {
+    // check if at least one value in toggle is true
+    const toggleValues = Object.values(selectedStats) as Array<boolean>;
+    isActive = toggleValues.some((value) => value === true);
+  }
 </script>
 
 <button on:click={toggleModal} class="relative">
-  <ActionButton {element} isActive={true} />
+  <ActionButton {element} {isActive} />
   <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
     {#each data.values as value}
       <div
