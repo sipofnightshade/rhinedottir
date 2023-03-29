@@ -72,6 +72,16 @@ module.exports = {
     /** Special height formula i found that works perfectly */
     minHeight: {
       fullscreen: 'calc(100vh - 20px)'
+    },
+    container: {
+      center: true,
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1280px'
+      }
     }
   },
   plugins: [require('@tailwindcss/forms')]
