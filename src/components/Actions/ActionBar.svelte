@@ -9,12 +9,15 @@
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
 
+  export let margin = true;
+
   // import { onMount } from 'svelte';
   const charName = 'traveleranemo';
 </script>
 
 <section
-  class="my-4 grid w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
+  class="grid w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
+  class:my-4={margin}
 >
   {#each Talents[charName].actions as data}
     {#if data.actionType === 'toggle'}
