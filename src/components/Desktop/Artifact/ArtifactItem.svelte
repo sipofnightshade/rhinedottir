@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="flex h-full max-h-40 w-full flex-col items-center rounded-lg bg-slate-700 p-2 text-slate-200 lg:p-3"
+  class="flex h-full max-h-40 w-full flex-col items-center justify-center rounded-lg bg-slate-700 px-2 text-slate-200 xl:px-3"
 >
   <button class="mb-1 h-9 w-9 xl:h-12 xl:w-12">
     <Thumbnail img="/images/weapon/rust.webp" alt="rust" />
