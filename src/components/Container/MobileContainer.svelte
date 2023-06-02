@@ -13,7 +13,7 @@
   ];
 </script>
 
-<section class="flex h-screen w-screen flex-col space-y-3 p-3 ">
+<section class="flex h-screen w-screen flex-col space-y-3 p-3 md:hidden">
   <Tabs {items} />
   <ActionBar />
   <BottomBar />

@@ -15,7 +15,7 @@
   ];
 </script>
 
-<main class="h-screen p-4">
+<main class="hidden h-screen p-4 md:block">
   <div class="container mx-auto flex h-full flex-col space-y-4">
     <NavBar />
     <div
