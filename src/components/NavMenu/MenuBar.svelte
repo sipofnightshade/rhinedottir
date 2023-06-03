@@ -25,12 +25,12 @@
 
   let currentMenuItem: MenuItem | undefined = undefined;
 
-  function handleMenu(event: any) {
-    if (event.detail === currentMenuItem) {
+  function handleMenu(item: any) {
+    if (item === currentMenuItem) {
       // Clicked the same button again to close menu
       currentMenuItem = undefined;
     } else {
-      currentMenuItem = event.detail;
+      currentMenuItem = item;
     }
   }
 
@@ -58,19 +58,46 @@
 </script>
 
 <div class="relative" use:clickOutside={closeMenu}>
-  <nav class="flex justify-between rounded-xl border border-slate-600 p-1">
+  <!-- Top Menu -->
+  <nav
+    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-4 md:flex"
+  >
+    <p>Rhinedottir</p>
+    <div class="flex items-center space-x-6">
+      <button on:click={() => handleMenu(menuItems[0])}>Updates</button>
+      <button on:click={() => handleMenu(menuItems[1])}>Builds</button>
+      <button on:click={() => handleMenu(menuItems[3])}>Artifacts</button>
+      <button on:click={() => handleMenu(menuItems[4])}>Settings</button>
+    </div>
+  </nav>
+  <!-- Bottom Menu -->
+  <nav class="flex justify-between rounded-xl border border-slate-600 p-1 md:hidden">
     {#each menuItems as item (item.id)}
-      <Button
+      <!-- <Button
         on:menuHandler={handleMenu}
         url={item.img}
         selected={currentMenuItem?.id === item.id}
         {item}
-      />
+      /> -->
+      <button
+        on:click={() => handleMenu(item)}
+        class="flex h-12 w-12 items-center justify-center rounded-lg"
+        class:bg-anemo={currentMenuItem?.id === item.id}
+      >
+        <img class="h-8 w-8" src="/images/ui/{item.img}" alt="Menu UI Icon:{item.img}" />
+      </button>
     {/each}
   </nav>
   {#if currentMenuItem}
     <div
-      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col  overflow-auto rounded-lg bg-slate-700 p-2"
+      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700  p-2 md:hidden"
+    >
+      <svelte:component this={currentMenuItem.component} />
+    </div>
+
+    <!-- CREATE ONE SPECIFICALLY FOR DESKTOP -->
+    <div
+      class="absolute right-0 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex  lg:w-1/2 "
     >
       <svelte:component this={currentMenuItem.component} />
     </div>

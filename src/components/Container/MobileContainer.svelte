@@ -1,6 +1,6 @@
 <script lang="ts">
   import ActionBar from '../Actions/ActionBar.svelte';
-  import BottomBar from '../BottomMenu/BottomBar.svelte';
+  import MenuBar from '../NavMenu/MenuBar.svelte';
   import Combo from '../Table/Combo.svelte';
   import Damage from '../Table/Damage.svelte';
   import Stats from '../Table/Stats.svelte';
@@ -16,5 +16,5 @@
 <section class="flex h-screen w-screen flex-col space-y-3 p-3 md:hidden">
   <Tabs {items} />
   <ActionBar />
-  <BottomBar />
+  <MenuBar />
 </section>
