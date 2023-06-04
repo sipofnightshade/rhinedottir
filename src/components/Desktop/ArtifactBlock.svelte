@@ -8,14 +8,9 @@
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
 
   import { artifact } from '$lib/stores/artifactStore';
+  import type { ArtifactModalButtons } from '$lib/types/artifacts';
 
-  type ModalButtons = {
-    id: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
-    img: string;
-    component: any;
-  }[];
-
-  const menuModals: ModalButtons = [
+  const menuModals: ArtifactModalButtons = [
     {
       id: 'flower',
       img: '/images/ui/UI_BtnIcon_RelicType1.png',
@@ -59,7 +54,6 @@
     modalTitle = undefined;
     showModal = false;
   }
-  console.log($artifact.circlet);
 </script>
 
 <section class="grid max-h-[120px] w-full grid-cols-5 gap-2 lg:max-h-[144px] xl:max-h-40">
@@ -89,7 +83,7 @@
         >
           {#if $artifact[modal.id].mainStat.stat}
             <img
-              class="w-4 md:w-5 lg:w-6"
+              class="w-4 md:w-5"
               src="/images/elements/{$artifact[modal.id].mainStat.stat}.svg"
               alt=""
             />
@@ -101,7 +95,7 @@
           >
         </li>
         {#each $artifact[modal.id].substats as substat}
-          <li class="flex h-full items-center justify-between px-2">
+          <li class="flex h-full items-center justify-between px-1">
             {#if substat.stat}
               <img
                 class="w-4 md:w-5 lg:w-6"

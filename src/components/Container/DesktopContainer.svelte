@@ -15,7 +15,7 @@
   ];
 </script>
 
-<main class="hidden h-screen p-4 md:block">
+<main class="hidden h-screen py-2 md:block">
   <div class="container relative mx-auto flex h-full flex-col space-y-4">
     <MenuBar />
     <div

@@ -17,11 +17,13 @@
   // store imports
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
+  import { artifact } from '$lib/stores/artifactStore';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+  import type { ArtifactModalButtons } from '$lib/types/artifacts';
 
   // initialise modal state and content
 
-  const menuModals = [
+  const partyModals = [
     {
       id: 'Party 1',
       img: '/images/ui/UI_BtnIcon_Team.png',
@@ -36,29 +38,32 @@
       id: 'Party 3',
       img: '/images/ui/UI_BtnIcon_Team.png',
       component: Party3
-    },
+    }
+  ];
+
+  const artifactModals: ArtifactModalButtons = [
     {
-      id: 'Flower',
+      id: 'flower',
       img: '/images/ui/UI_BtnIcon_RelicType1.png',
       component: Flower
     },
     {
-      id: 'Feather',
+      id: 'feather',
       img: '/images/ui/UI_BtnIcon_RelicType2.png',
       component: Feather
     },
     {
-      id: 'Sands',
+      id: 'sands',
       img: '/images/ui/UI_BtnIcon_RelicType3.png',
       component: Sands
     },
     {
-      id: 'Goblet',
+      id: 'goblet',
       img: '/images/ui/UI_BtnIcon_RelicType4.png',
       component: Goblet
     },
     {
-      id: 'Circlet',
+      id: 'circlet',
       img: '/images/ui/UI_BtnIcon_RelicType5.png',
       component: Circlet
     }
@@ -102,13 +107,32 @@
       alt={$weapon.selected.fullName}
     />
   </button>
-  {#each menuModals as modal (modal.id)}
+
+  <!-- Party buttons -->
+  {#each partyModals as modal (modal.id)}
     <button
       class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
       on:click={() => toggleModal(modal.component, modal.id)}
     >
       <img src={modal.img} alt="{modal.id} image" />
       <!-- <Thumbnail/> -->
+    </button>
+  {/each}
+
+  <!-- Artifact buttons -->
+  {#each artifactModals as modal (modal.id)}
+    <button
+      class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 p-2 hover:border-2 hover:border-slate-300"
+      on:click={() => toggleModal(modal.component, modal.id)}
+    >
+      {#if $artifact[modal.id].selected.name === 'none'}
+        <img src={modal.img} alt="{modal.id} image" />
+      {:else}
+        <Thumbnail
+          img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
+          alt={$artifact[modal.id].selected.fullName}
+        />
+      {/if}
     </button>
   {/each}
 </div>
