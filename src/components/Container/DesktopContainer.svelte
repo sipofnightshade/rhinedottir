@@ -1,7 +1,7 @@
 <script lang="ts">
   import ActionBar from '../Actions/ActionBar.svelte';
   import MenuBar from '../NavMenu/MenuBar.svelte';
-  import ArtifactBlock from '../Desktop/Artifact/ArtifactBlock.svelte';
+  import ArtifactBlock from '../Desktop/ArtifactBlock.svelte';
   import CharacterBlock from '../Desktop/CharacterBlock.svelte';
   import Footer from '../Footer/Footer.svelte';
   import Combo from '../Table/Combo.svelte';

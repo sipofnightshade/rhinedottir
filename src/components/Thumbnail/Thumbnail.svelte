@@ -3,9 +3,14 @@
   export let img: string;
   export let alt: string;
   //   export let rating: 5 | 4 | 3 | 1;
+  export let hasBG: boolean = true;
+  export let classes: string = '';
 </script>
 
-<div class="relative aspect-square overflow-hidden rounded-xl bg-slate-800">
+<div
+  class="relative aspect-square overflow-hidden rounded-xl {classes}"
+  class:bg-slate-800={hasBG}
+>
   <img src={img} alt="{alt} thumbnail" />
   {#if vision}
     <div
