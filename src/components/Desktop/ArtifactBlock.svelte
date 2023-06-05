@@ -76,7 +76,7 @@
       </div>
 
       <ul
-        class="absolute top-0 left-0 z-20 flex h-full w-full flex-col justify-between p-2"
+        class="absolute top-0 left-0 z-10 flex h-full w-full flex-col justify-between p-2"
       >
         <li
           class="flex h-full items-center justify-between rounded-md bg-slate-800 py-1 px-1 lg:px-2"
