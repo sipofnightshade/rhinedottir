@@ -9,6 +9,7 @@
 
   import { artifact } from '$lib/stores/artifactStore';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
+  import StatImage from './StatImage.svelte';
 
   const menuModals: ArtifactModalButtons = [
     {
@@ -54,6 +55,8 @@
     modalTitle = undefined;
     showModal = false;
   }
+
+  $: console.log($artifact.sands.substats);
 </script>
 
 <section class="grid max-h-[120px] w-full grid-cols-5 gap-2 lg:max-h-[144px] xl:max-h-40">
@@ -81,30 +84,15 @@
         <li
           class="flex h-full items-center justify-between rounded-md bg-slate-800 py-1 px-1 lg:px-2"
         >
-          {#if $artifact[modal.id].mainStat.stat}
-            <img
-              class="w-4 md:w-5"
-              src="/images/elements/{$artifact[modal.id].mainStat.stat}.svg"
-              alt=""
-            />
-          {:else}
-            <span>-</span>
-          {/if}
+          <StatImage stat={$artifact[modal.id].mainStat.stat} />
+
           <span class=" text-xs lg:text-sm xl:text-base"
             >{$artifact[modal.id].mainStat.value}</span
           >
         </li>
         {#each $artifact[modal.id].substats as substat}
           <li class="flex h-full items-center justify-between px-1">
-            {#if substat.stat}
-              <img
-                class="w-4 md:w-5 lg:w-6"
-                src="/images/elements/{substat.stat}.svg"
-                alt=""
-              />
-            {:else}
-              <span>-</span>
-            {/if}
+            <StatImage stat={substat.stat} />
             <span class=" text-xs lg:text-sm xl:text-base">{substat.value}</span>
           </li>
         {/each}
