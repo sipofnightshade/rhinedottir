@@ -55,8 +55,6 @@
     modalTitle = undefined;
     showModal = false;
   }
-
-  $: console.log($artifact.sands.substats);
 </script>
 
 <section class="grid max-h-[120px] w-full grid-cols-5 gap-2 lg:max-h-[144px] xl:max-h-40">
