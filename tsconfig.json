@@ -10,7 +10,8 @@
     "sourceMap": true,
     "strict": true,
     "outDir": "build",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "ignoreDeprecations": "5.0"
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //
