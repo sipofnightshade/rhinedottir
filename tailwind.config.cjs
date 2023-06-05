@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         pyro: '#ef7938',
         hydro: '#4cc2f1',
-        electro: '#b382cd',
+        electro: '#B06AD7',
         cryo: '#9fd6e3',
         dendro: '#a5c83b',
         anemo: '#39cac1',
