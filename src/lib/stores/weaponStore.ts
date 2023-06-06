@@ -26,7 +26,11 @@ const initialState: CurrentWeapon = {
     fullName: 'Prototype Rancour',
     rating: 4,
     type: 'sword',
-    specialized: 'physical'
+    specialized: 'physical',
+    effectname: 'Smashed Stone',
+    effect:
+      'On hit, Normal or Charged Attacks increase ATK and DEF by {0} for 6s. Max 4 stacks. This effect can only occur once every 0.3s.',
+    ref: [['4%'], ['5%'], ['6%'], ['7%'], ['8%']]
   },
   lvl: 13,
   refinement: 4,

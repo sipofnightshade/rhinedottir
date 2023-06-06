@@ -17,6 +17,9 @@ export type SelectedWeapon = {
   rating: 5 | 4 | 3;
   type: WeaponCategory;
   specialized: WeaponSpecialized;
+  effectname: string;
+  effect: string;
+  ref: [] | string[] | string[][];
 };
 
 export type SelectedArtifact = {

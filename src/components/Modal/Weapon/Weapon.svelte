@@ -90,16 +90,12 @@
       on:click|stopPropagation={() => (passive = !passive)}
       class="relative col-span-3 w-full rounded-md bg-slate-800 py-2 px-3"
     >
-      <p class="text-left text-base">Debut</p>
+      <p class="text-left text-base">{$weapon.selected.effectname}</p>
       {#if passive}
         <div
           class="absolute top-9 right-0 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, error nostrum
-          ipsa explicabo incidunt, inventore quod voluptatum esse molestias dolorum
-          delectus eos culpa vitae. Sequi perspiciatis repellendus voluptates nobis
-          numquam, dolor mollitia, quaerat aperiam error dolores fuga consequuntur velit
-          expedita!
+          {$weapon.selected.effect}
         </div>
       {/if}
     </button>
