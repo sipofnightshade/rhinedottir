@@ -4,6 +4,7 @@ node_modules
 /coverage
 /.svelte-kit
 /package
+/GenshinDBUtils/weapons
 .env
 .env.*
 !.env.example
