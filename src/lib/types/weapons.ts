@@ -138,4 +138,9 @@ export type WeaponNames =
   | 'tulaytullahsremembrance'
   | 'twinnephrite'
   | 'wanderingevenstar'
-  | 'wineandsong';
+  | 'wineandsong'
+  | 'mailedflower'
+  | 'lightoffoliarincision'
+  | 'jadefallssplendor'
+  | 'ibispiercer'
+  | 'beaconofthereedsea';
