@@ -1,4 +1,14 @@
-export const WeaponData = {
+import type { SelectedWeapon } from '$lib/types/global';
+
+type Data = {
+  claymore: SelectedWeapon[];
+  sword: SelectedWeapon[];
+  bow: SelectedWeapon[];
+  catalyst: SelectedWeapon[];
+  polearm: SelectedWeapon[];
+};
+
+export const WeaponData: Data = {
   claymore: [
     {
       name: 'akuoumaru',
@@ -9,6 +19,15 @@ export const WeaponData = {
       effectname: 'Watatsumi Wavewalker',
       effect:
         "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {0}. A maximum of {1} increased Elemental Burst DMG can be achieved this way.",
+      actions: [
+        {
+          stat: 'burst',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.0012, 0.0015, 0.0018, 0.0021, 0.0024],
+          limit: [0.4, 0.5, 0.6, 0.7, 0.8]
+        }
+      ],
       ref: [
         ['0.12%', '40%'],
         ['0.15%', '50%'],
@@ -26,6 +45,26 @@ export const WeaponData = {
       effectname: 'Desert Watch',
       effect:
         "After the character's Elemental Skill hits an opponent, their ATK will be increased by {0} for 8s. After the character takes DMG, their ATK will be increased by {1} for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by {2}.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'toggle',
+          coef: [0.2, 0.25, 0.3, 0.35, 0.4]
+        },
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'toggle',
+          coef: [0.2, 0.25, 0.3, 0.35, 0.4]
+        },
+        {
+          stat: 'hp',
+          target: 'hp',
+          actionType: 'notShielded',
+          coef: [0.32, 0.4, 0.48, 0.56, 0.64]
+        }
+      ],
       ref: [
         ['20%', '20%', '32%'],
         ['25%', '25%', '40%'],
@@ -43,6 +82,20 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an enemy, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'stack',
+          coef: [0.12, 0.15, 0.18, 0.21, 0.24]
+          /**
+           * @IMPORTANT
+           * Can either make the stacks work like [0.12,0.24,0.36]
+           * where I use the stack number -1 as an index or have the
+           * values repeated and add them together as time go by
+           */
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -53,6 +106,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Bane of Fire and Thunder',
       effect: 'Increases DMG against opponents affected by Pyro or Electro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -64,6 +125,14 @@ export const WeaponData = {
       effectname: 'Blunt Conclusion',
       effect:
         'After using an Elemental Skill, on hit, Normal and Charged Attacks deal additional DMG equal to {0} of ATK in a small AoE. Effect lasts 15s. DMG can only occur once every 3s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['60%'], ['75%'], ['90%'], ['105%'], ['120%']]
     },
     {
@@ -75,6 +144,14 @@ export const WeaponData = {
       effectname: 'Windfall',
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '12s'],
         ['70%', '10.5s'],
@@ -92,6 +169,14 @@ export const WeaponData = {
       effectname: 'Unbending',
       effect:
         'When HP falls below {0}, increases Charged Attack DMG by {1} and Charged Attacks become harder to interrupt.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['70%', '30%'],
         ['75%', '35%'],
@@ -109,6 +194,14 @@ export const WeaponData = {
       effectname: 'Forest Sanctuary',
       effect:
         "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {0} Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['60'], ['75'], ['90'], ['105'], ['120']]
     },
     {
@@ -120,12 +213,20 @@ export const WeaponData = {
       effectname: 'Samurai Conduct',
       effect:
         'Increases Elemental Skill DMG by {0}. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {1} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
-        ['6%', 3],
+        ['6%', '3'],
         ['7.5%', '3.5'],
-        ['9%', 4],
+        ['9%', '4'],
         ['10.5%', '4.5'],
-        ['12%', 5]
+        ['12%', '5']
       ]
     },
     {
@@ -137,6 +238,14 @@ export const WeaponData = {
       effectname: 'Lithic Axiom: Unity',
       effect:
         'For every character in the party who hails from Liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['7%', '3%'],
         ['8%', '4%'],
@@ -154,6 +263,14 @@ export const WeaponData = {
       effectname: 'Oceanic Victory',
       effect:
         'Increases Elemental Burst DMG by {0}. When Elemental Burst hits opponents, there is a 100% chance of summoning a huge onrush of tuna that deals {1} ATK as AoE DMG. This effect can occur once every 15s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '100%'],
         ['15%', '125%'],
@@ -171,6 +288,14 @@ export const WeaponData = {
       effectname: 'Whispers of Wind and Flower',
       effect:
         "Within 8s after the character's Elemental Skill hits an opponent or the character triggers an Elemental Reaction, their ATK and Elemental Mastery will be increased by {0} and {1} respectively.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '48'],
         ['15%', '60'],
@@ -188,6 +313,14 @@ export const WeaponData = {
       effectname: 'Desert Pavilion',
       effect:
         'The following effect will trigger every 10s: The equipping character will gain {0} of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -199,6 +332,14 @@ export const WeaponData = {
       effectname: 'Crush',
       effect:
         'On hit, Normal or Charged Attacks have a 50% chance to deal an additional {0} ATK DMG to opponents within a small AoE. Can only occur once every 15s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['240%'], ['300%'], ['360%'], ['420%'], ['480%']]
     },
     {
@@ -209,6 +350,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Bane of Storm and Tide',
       effect: 'Increases DMG against opponents affected by Hydro or Electro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
     },
     {
@@ -220,6 +369,14 @@ export const WeaponData = {
       effectname: 'Gokadaiou Otogibanashi',
       effect:
         'DEF is increased by {0}. Normal and Charged Attack DMG is increased by {1} of DEF.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['28%', '40%'],
         ['35%', '50%'],
@@ -237,6 +394,14 @@ export const WeaponData = {
       effectname: 'Focus',
       effect:
         'Upon damaging an opponent, increases CRIT Rate by {0}. Max 5 stacks. A CRIT Hit removes all stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -248,6 +413,14 @@ export const WeaponData = {
       effectname: 'Composed',
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['40%', '30s'],
         ['50%', '26s'],
@@ -265,6 +438,14 @@ export const WeaponData = {
       effectname: 'Wavesplitter',
       effect:
         'Every 4s a character is on the field, they will deal {0} more DMG and take {1} more DMG. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be reduced by 1 stack when the character takes DMG.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['6%', '3%'],
         ['7%', '2.7%'],
@@ -282,6 +463,14 @@ export const WeaponData = {
       effectname: 'Courage',
       effect:
         'On hit, Normal or Charged Attacks increase ATK by {0} for 6s. Max 4 stacks. Can occur once every 0.5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['6%'], ['7%'], ['8%'], ['9%'], ['10%']]
     },
     {
@@ -293,6 +482,14 @@ export const WeaponData = {
       effectname: 'Sky-ripping Dragon Spine',
       effect:
         'Increases all DMG by {0}. After using an Elemental Burst, a vacuum blade that does {1} of ATK as DMG to opponents along its path will be created when Normal or Charged Attacks hit. Lasts for 20s or 8 vacuum blades.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['8%', '80%'],
         ['10%', '100%'],
@@ -310,6 +507,14 @@ export const WeaponData = {
       effectname: 'Frost Burial',
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '80%', '200%'],
         ['70%', '95%', '240%'],
@@ -327,6 +532,14 @@ export const WeaponData = {
       effectname: "Rebel's Banner-Hymn",
       effect:
         'A part of the "Millennial Movement" that wanders amidst the winds. Increases ATK by {0}, and when Normal or Charged Attacks hit opponents, the character gains a Sigil of Whispers. This effect can be triggered once every 0.3s. When you possess 4 Sigils of Whispers, all of them will be consumed and all nearby party members will obtain the "Millennial Movement: Banner-Hymn" effect for 12s. "Millennial Movement: Banner-Hymn" increases Normal ATK SPD by {1} and increases ATK by {2}. Once this effect is triggered, you will not gain Sigils of Whispers for 20s. Of the many effects of the "Millennial Movement," buffs of the same type will not stack.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '12%', '20%'],
         ['20%', '15%', '25%'],
@@ -344,6 +557,14 @@ export const WeaponData = {
       effectname: 'Rebellious Guardian',
       effect:
         'Taking DMG generates a shield which absorbs DMG up to {0} of Max HP. This shield lasts for 10s or until broken, and can only be triggered once every {1}. While protected by a shield, the character gains {2} increased DMG.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '45s', '12%'],
         ['23%', '45s', '15%'],
@@ -361,6 +582,14 @@ export const WeaponData = {
       effectname: 'Golden Majesty',
       effect:
         'Increases Shield Strength by {0}. Scoring hits on opponents increases ATK by {1} for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '4%'],
         ['25%', '5%'],
@@ -378,6 +607,14 @@ export const WeaponData = {
       effectname: 'Infusion Blade',
       effect:
         'On hit, Normal or Charged Attacks increase ATK and DEF by {0} for 6s. Max 4 stacks. This effect can only occur once every 0.5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['6%'], ['7.5%'], ['9%'], ['10.5%'], ['12%']]
     },
     {
@@ -388,6 +625,14 @@ export const WeaponData = {
       specialized: 'def%',
       effectname: 'Cull the Weak',
       effect: 'Defeating an opponent restores {0} HP.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -399,6 +644,14 @@ export const WeaponData = {
       effectname: 'Wolfish Tracker',
       effect:
         "Increases ATK by {0}. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by {1} for 12s. Can only occur once every 30s.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '40%'],
         ['25%', '50%'],
@@ -418,6 +671,14 @@ export const WeaponData = {
       effectname: 'Oppidan Ambush',
       effect:
         'While the character equipped with this weapon is in the party but not on the field, their DMG increases by {0} every second up to a max of {1}. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by {2} per second until it reaches 0%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['2%', '20%', '4%'],
         ['2.5%', '25%', '5%'],
@@ -435,6 +696,14 @@ export const WeaponData = {
       effectname: 'Strong-Willed',
       effect:
         'Increases Normal and Charged Attack DMG by {0}. After a Normal or Charged Attack is fired, DMG dealt increases by a further {1} every 0.1s the arrow is in the air for up to 5 times.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '8%'],
         ['15%', '10%'],
@@ -452,6 +721,14 @@ export const WeaponData = {
       effectname: 'The Cleansing Form',
       effect:
         'HP is increased by {0}. When there are opponents nearby, the DMG dealt by the wielder of this weapon is increased by {1}. This will take effect whether the character is on-field or not.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '20%'],
         ['20%', '25%'],
@@ -469,6 +746,14 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an enemy, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -480,6 +765,14 @@ export const WeaponData = {
       effectname: 'Infusion Arrow',
       effect:
         'Normal Attack and Charged Attack hits increase ATK by {0} and Normal ATK SPD by {1} for 6s. Max 4 stacks. Can only occur once every 0.3s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['4%', '1.2%'],
         ['5%', '1.5%'],
@@ -497,6 +790,14 @@ export const WeaponData = {
       effectname: 'The Parting Refrain',
       effect:
         'A part of the "Millennial Movement" that wanders amidst the winds. Increases Elemental Mastery by {0}. When the Elemental Skills or Elemental Bursts of the character wielding this weapon hit opponents, that character gains a Sigil of Remembrance. This effect can be triggered once every 0.2s and can be triggered even if said character is not on the field. When you possess 4 Sigils of Remembrance, all of them will be consumed and all nearby party members will obtain the "Millennial Movement: Farewell Song" effect for 12s. "Millennial Movement: Farewell Song" increases Elemental Mastery by {1} and increases ATK by {2}. Once this effect is triggered, you will not gain Sigils of Remembrance for 20s. Of the many effects of the "Millennial Movement," buffs of the same type will not stack.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60', '100', '20%'],
         ['75', '125', '25%'],
@@ -514,6 +815,14 @@ export const WeaponData = {
       effectname: 'Net Snapper',
       effect:
         'Triggers the Flowrider effect after using an Elemental Skill, dealing {0} ATK as AoE DMG upon hitting an opponent with an attack. Flowrider will be removed after 15s or after causing 3 instances of AoE DMG. Only 1 instance of AoE DMG can be caused every 2s in this way. Flowrider can be triggered once every 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['80%'], ['100%'], ['120%'], ['140%'], ['160%']]
     },
     {
@@ -525,6 +834,14 @@ export const WeaponData = {
       effectname: 'Radiance of the Deeps',
       effect:
         'Has three states, Evengleam, Afterglow, and Dawnblaze, which increase DMG dealt by {0} respectively. When attacks hit opponents, this weapon will switch to the next state. This weapon can change states once every 7s. The character equipping this weapon can still trigger the state switch while not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['6%/10%/14%'],
         ['7.5%/12.5%/17.5%'],
@@ -542,6 +859,14 @@ export const WeaponData = {
       effectname: 'Windfall',
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '12s'],
         ['70%', '10.5s'],
@@ -559,6 +884,14 @@ export const WeaponData = {
       effectname: 'Full Draw',
       effect:
         "Increases Normal Attack DMG by {0} and Charged Attack DMG by {1}. When the equipping character's Energy reaches 100%, this effect is increased by 100%.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '12%'],
         ['20%', '15%'],
@@ -576,6 +909,14 @@ export const WeaponData = {
       effectname: 'At the End of the Beast-Paths',
       effect:
         'Gain {0} All Elemental DMG Bonus. Obtain the Tireless Hunt effect after hitting an opponent with a Charged Attack. This effect increases Charged Attack DMG by {1} of Elemental Mastery. This effect will be removed after 12 Charged Attacks or 10s. Only 1 instance of Tireless Hunt can be gained every 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '160%'],
         ['15%', '200%'],
@@ -593,6 +934,14 @@ export const WeaponData = {
       effectname: "Secret Wisdom's Favor",
       effect:
         "The character's Elemental Mastery will increase by {0} within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can be triggered once every 0.5s.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['40'], ['50'], ['60'], ['70'], ['80']]
     },
     {
@@ -604,6 +953,14 @@ export const WeaponData = {
       effectname: "Labyrinth Lord's Instruction",
       effect:
         'Obtain the Teachings of the Forest effect when unleashing Elemental Skills and Bursts, increasing Elemental Mastery by {0} for 12s. This effect will be removed when switching characters. When the Teachings of the Forest effect ends or is removed, it will deal {1} of ATK as DMG to 1 nearby opponent. The Teachings of the Forest effect can be triggered once every 20s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60', '100%'],
         ['80', '120%'],
@@ -621,6 +978,14 @@ export const WeaponData = {
       effectname: "Archer's Message",
       effect:
         'Charged Attack hits on weak points deal an additional {0} ATK DMG as CRIT DMG. Can only occur once every 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
     },
     {
@@ -632,6 +997,14 @@ export const WeaponData = {
       effectname: 'Evernight Duet',
       effect:
         'Normal Attack hits on opponents increase Elemental Skill DMG by {0} for 5s. Elemental Skill hits on opponents increase Normal Attack DMG by {1} for 5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '20%'],
         ['25%', '25%'],
@@ -649,6 +1022,14 @@ export const WeaponData = {
       effectname: 'Watatsumi Wavewalker',
       effect:
         "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {0}. A maximum of {1} increased Elemental Burst DMG can be achieved this way.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['0.12%', '40%'],
         ['0.15%', '50%'],
@@ -666,6 +1047,14 @@ export const WeaponData = {
       effectname: "Daylight's Augury",
       effect:
         'Elemental Skill and Elemental Burst DMG increased by {0}. After a Normal Attack, Charged Attack, Elemental Skill or Elemental Burst hits an opponent, 1 stack of Ashen Nightstar will be gained for 12s. When 1/2/3/4 stacks of Ashen Nightstar are present, ATK is increased by {1}. The stack of Ashen Nightstar created by the Normal Attack, Charged Attack, Elemental Skill or Elemental Burst will be counted independently of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '10/20/30/48%'],
         ['15%', '12.5/25/37.5/60%'],
@@ -683,6 +1072,14 @@ export const WeaponData = {
       effectname: 'Strong Strike',
       effect:
         'Effective only on the following platform: \n"PlayStation Network"\nDealing Cryo DMG to opponents increases this character\'s Normal and Charged Attack DMG by 10% for 6s. This effect can have a maximum of 2 stacks. Additionally, when Aloy equips Predator, ATK is increased by 66.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [[], [], [], [], []]
     },
     {
@@ -694,6 +1091,14 @@ export const WeaponData = {
       effectname: 'Unreturning',
       effect:
         'Charged Attack hits on weak points increase Movement SPD by 10% and ATK by {0} for 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['36%'], ['45%'], ['54%'], ['63%'], ['72%']]
     },
     {
@@ -704,6 +1109,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Bane of Flame and Water',
       effect: 'Increases DMG against opponents affected by Hydro or Pyro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -714,6 +1127,14 @@ export const WeaponData = {
       specialized: 'hp%',
       effectname: 'Cull the Weak',
       effect: 'Defeating an opponent restores {0} HP.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -725,6 +1146,14 @@ export const WeaponData = {
       effectname: 'Focus',
       effect:
         'Upon damaging an opponent, increases CRIT Rate by {0}. Max 5 stacks. A CRIT Hit removes all stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -736,6 +1165,14 @@ export const WeaponData = {
       effectname: 'Rapid Firing',
       effect:
         'Increases Normal Attack DMG by {0} but decreases Charged Attack DMG by 10%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
     },
     {
@@ -747,6 +1184,14 @@ export const WeaponData = {
       effectname: 'Composed',
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['40%', '30s'],
         ['50%', '26s'],
@@ -763,6 +1208,14 @@ export const WeaponData = {
       specialized: 'critdmg',
       effectname: 'Precise',
       effect: 'Increases DMG against weak spots by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -774,6 +1227,14 @@ export const WeaponData = {
       effectname: 'Echoing Ballad',
       effect:
         'Increases CRIT DMG by {0}. Hits have a {1} chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every {2}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '60%', '4s'],
         ['25%', '70%', '3.5s'],
@@ -791,6 +1252,14 @@ export const WeaponData = {
       effectname: 'Slingshot',
       effect:
         'If a Normal or Charged Attack hits a target within 0.3s of being fired, increases DMG by {0}. Otherwise, decreases DMG by 10%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['36%'], ['42%'], ['48%'], ['54%'], ['60%']]
     },
     {
@@ -801,6 +1270,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Arrowless Song',
       effect: 'Increases Elemental Skill and Elemental Burst DMG by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -812,6 +1289,14 @@ export const WeaponData = {
       effectname: 'Verdant Wind',
       effect:
         'Upon hit, Normal and Charged Attacks have a 50% chance to generate a Cyclone, which will continuously attract surrounding opponents, dealing {0} of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['40%', '14s'],
         ['50%', '13s'],
@@ -829,6 +1314,14 @@ export const WeaponData = {
       effectname: 'Rule by Thunder',
       effect:
         "Increases ATK by {0} and grants the might of the Thunder Emblem. At stack levels 1/2/3, the Thunder Emblem increases Normal Attack DMG by {1}. The character will obtain 1 stack of Thunder Emblem in each of the following scenarios: Normal Attack deals DMG (stack lasts 5s), casting Elemental Skill (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '12/24/40%'],
         ['25%', '15/30/50%'],
@@ -846,6 +1339,14 @@ export const WeaponData = {
       effectname: 'Windblume Wish',
       effect:
         'After using an Elemental Skill, receive a boon from the ancient wish of the Windblume, increasing ATK by {0} for 6s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
     }
   ],
@@ -859,6 +1360,14 @@ export const WeaponData = {
       effectname: 'Iwakura Succession',
       effect:
         'After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates {0} Energy for each seed consumed.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['6'], ['7.5'], ['9'], ['10.5'], ['12']]
     },
     {
@@ -870,6 +1379,14 @@ export const WeaponData = {
       effectname: "Falcon's Defiance",
       effect:
         'ATK is increased by {0}. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of resistance aloft, regenerating HP equal to {1} of ATK and dealing {2} of ATK as DMG to surrounding opponents. This effect can only occur once every 15s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '100%', '200%'],
         ['25%', '115%', '230%'],
@@ -887,6 +1404,14 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an opponent, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -898,6 +1423,14 @@ export const WeaponData = {
       effectname: 'Spotless Heart',
       effect:
         'Elemental Skill DMG is increased by {0} of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
     },
     {
@@ -908,6 +1441,14 @@ export const WeaponData = {
       specialized: 'atk%',
       effectname: 'Bane of Water and Ice',
       effect: 'Increases DMG against opponents affected by Hydro or Cryo by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -919,6 +1460,14 @@ export const WeaponData = {
       effectname: 'Overloaded',
       effect:
         'Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, or Electro-infused Swirl reaction, ATK is increased by {0} for 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
     },
     {
@@ -930,6 +1479,14 @@ export const WeaponData = {
       effectname: 'Windfall',
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '12s'],
         ['70%', '10.5s'],
@@ -947,6 +1504,14 @@ export const WeaponData = {
       effectname: 'Undying Admiration',
       effect:
         'Increases Elemental Skill DMG by {0} and Elemental Skill CRIT Rate by {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '6%'],
         ['20%', '7.5%'],
@@ -964,6 +1529,14 @@ export const WeaponData = {
       effectname: 'Gash',
       effect:
         'On hit, has a 50% chance to deal {0} ATK DMG to a single target. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['240%', '15s'],
         ['280%', '14s'],
@@ -981,6 +1554,14 @@ export const WeaponData = {
       effectname: 'Revolutionary Chorale',
       effect:
         'A part of the "Millennial Movement" that wanders amidst the winds. Increases DMG by {0}. When the character wielding this weapon triggers Elemental Reactions, they gain a Sigil of Rebellion. This effect can be triggered once every 0.5s and can be triggered even if said character is not on the field. When you possess 2 Sigils of Rebellion, all of them will be consumed and all nearby party members will obtain "Millennial Movement: Song of Resistance" for 12s. "Millennial Movement: Song of Resistance" increases Normal, Charged and Plunging Attack DMG by {1} and increases ATK by {2}. Once this effect is triggered, you will not gain Sigils of Rebellion for 20s. Of the many effects of the "Millennial Movement," buffs of the same type will not stack.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['10%', '16%', '20%'],
         ['12.5%', '20%', '25%'],
@@ -998,6 +1579,14 @@ export const WeaponData = {
       effectname: 'Honed Flow',
       effect:
         'Obtain {0} All Elemental DMG Bonus. When other nearby party members use Elemental Skills, the character equipping this weapon will gain 1 Wavespike stack. Max 2 stacks. This effect can be triggered once every 0.3s. When the character equipping this weapon uses an Elemental Skill, all stacks of Wavespike will be consumed to gain Rippling Upheaval: each stack of Wavespike consumed will increase Normal Attack DMG by {1} for 8s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '20%'],
         ['15%', '25%'],
@@ -1014,6 +1603,14 @@ export const WeaponData = {
       specialized: 'critdmg',
       effectname: 'Vigorous',
       effect: 'When HP is above 90%, increases CRIT Rate by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['14%'], ['17.5%'], ['21%'], ['24.5%'], ['28%']]
     },
     {
@@ -1025,6 +1622,14 @@ export const WeaponData = {
       effectname: 'Infusion Stinger',
       effect:
         'Dealing Elemental DMG increases all DMG by {0} for 6s. Max 2 stacks. Can occur once every 1s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['6%'], ['7.5%'], ['9%'], ['10.5%'], ['12%']]
     },
     {
@@ -1036,6 +1641,14 @@ export const WeaponData = {
       effectname: 'Isshin Art Clarity',
       effect:
         'When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [[], [], [], [], []]
     },
     {
@@ -1047,6 +1660,14 @@ export const WeaponData = {
       effectname: 'Sunken Song of the Sands',
       effect:
         "HP increased by {0}. When an Elemental Skill hits opponents, you gain the Grand Hymn effect for 20s. This effect increases the equipping character's Elemental Mastery by {1} of their Max HP. This effect can trigger once every 0.3s. Max 3 stacks. When this effect gains 3 stacks, or when the third stack's duration is refreshed, the Elemental Mastery of all nearby party members will be increased by {2} of the equipping character's max HP for 20s.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '0.12%', '0.2%'],
         ['25%', '0.15%', '0.25%'],
@@ -1064,6 +1685,14 @@ export const WeaponData = {
       effectname: 'Whitemoon Bristle',
       effect:
         'CRIT Rate is increased by {0}. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by {1} of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['4%', '120%'],
         ['5%', '150%'],
@@ -1080,6 +1709,14 @@ export const WeaponData = {
       specialized: 'atk%',
       effectname: 'Bane of Fire and Thunder',
       effect: 'Increases DMG against opponents affected by Pyro or Electro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
     },
     {
@@ -1091,6 +1728,14 @@ export const WeaponData = {
       effectname: "Mistsplitter's Edge",
       effect:
         "Gain a {0} Elemental DMG Bonus for all elements and receive the might of the Mistsplitter's Emblem. At stack levels 1/2/3, the Mistsplitter's Emblem provides a {1} Elemental DMG Bonus for the character's Elemental Type. The character will obtain 1 stack of the Mistsplitter's Emblem in each of the following scenarios: Normal Attack deals Elemental DMG (stack lasts 5s), casting Elemental Burst (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '8/16/28%'],
         ['15%', '10/20/35%'],
@@ -1108,6 +1753,14 @@ export const WeaponData = {
       effectname: "Protector's Virtue",
       effect:
         "HP increased by {0}. Additionally, provides an ATK Bonus based on {1} of the wielder's Max HP.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '1.2%'],
         ['25%', '1.5%'],
@@ -1125,6 +1778,14 @@ export const WeaponData = {
       effectname: 'Smashed Stone',
       effect:
         'On hit, Normal or Charged Attacks increase ATK and DEF by {0} for 6s. Max 4 stacks. This effect can only occur once every 0.3s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['4%'], ['5%'], ['6%'], ['7%'], ['8%']]
     },
     {
@@ -1136,6 +1797,14 @@ export const WeaponData = {
       effectname: 'Focus',
       effect:
         'Upon damaging an opponent, increases CRIT Rate by {0}. Max 5 stacks. A CRIT Hit removes all stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1147,6 +1816,14 @@ export const WeaponData = {
       effectname: 'Composed',
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['40%', '30s'],
         ['50%', '26s'],
@@ -1164,6 +1841,14 @@ export const WeaponData = {
       effectname: 'Forest Sanctuary',
       effect:
         "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {0} Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['60'], ['75'], ['90'], ['105'], ['120']]
     },
     {
@@ -1175,6 +1860,14 @@ export const WeaponData = {
       effectname: 'Determination',
       effect:
         'Using an Elemental Burst grants a {0} increase in ATK and Movement SPD for 15s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -1186,6 +1879,14 @@ export const WeaponData = {
       effectname: 'Sky-Piercing Fang',
       effect:
         'CRIT Rate increased by {0}. Gains Skypiercing Might upon using an Elemental Burst: Increases Movement SPD by {1}, increases ATK SPD by {2}, and Normal and Charged hits deal additional DMG equal to {3} of atk%. Skypiercing Might lasts for 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['4%', '10%', '10%', '20%'],
         ['5%', '10%', '10%', '25%'],
@@ -1203,6 +1904,14 @@ export const WeaponData = {
       effectname: 'Golden Majesty',
       effect:
         'Increases Shield Strength by {0}. Scoring hits on opponents increases ATK by {1} for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '4%'],
         ['25%', '5%'],
@@ -1220,6 +1929,14 @@ export const WeaponData = {
       effectname: 'Descension',
       effect:
         'Effective only on the following platform: \n"PlayStation Network"\nHitting opponents with Normal and Charged Attacks grants a {0} chance to deal {1} ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by {2}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['50%', '200%', '66'], [], [], [], []]
     },
     {
@@ -1231,6 +1948,14 @@ export const WeaponData = {
       effectname: 'Itinerant Hero',
       effect:
         'Increases DMG dealt by the character equipping this weapon by {0}. Taking DMG disables this effect for 5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -1242,6 +1967,14 @@ export const WeaponData = {
       effectname: 'Justice',
       effect:
         'Increases DMG dealt by Normal and Charged Attacks by {0}. Additionally, regenerates {1} of ATK as HP when Normal and Charged Attacks score a CRIT Hit. This effect can occur once every 5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '60%'],
         ['25%', '70%'],
@@ -1259,6 +1992,14 @@ export const WeaponData = {
       effectname: 'Chord',
       effect:
         'Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals {0} ATK DMG to surrounding opponents. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
     },
     {
@@ -1270,6 +2011,14 @@ export const WeaponData = {
       effectname: 'Kaidan: Rainfall Earthbinder',
       effect:
         "After an attack hits opponents, it will inflict an instance of Cursed Parasol upon one of them for 10s. This effect can be triggered once every 15s. If this opponent is defeated during Cursed Parasol's duration, Cursed Parasol's CD will be refreshed immediately. The character wielding this weapon will deal {0} more DMG to the opponent affected by Cursed Parasol.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
     },
     {
@@ -1280,6 +2029,14 @@ export const WeaponData = {
       specialized: 'def%',
       effectname: 'Journey',
       effect: 'Each Elemental Orb or Particle collected restores {0} HP.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
     },
     {
@@ -1291,6 +2048,14 @@ export const WeaponData = {
       effectname: "Jinni's Whisper",
       effect:
         'The following effect will trigger every 10s: The equipping character will gain {0} Energy Recharge for each point of Elemental Mastery they possess for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['0.036%'], ['0.045%'], ['0.054%'], ['0.063%'], ['0.072%']]
     }
   ],
@@ -1304,6 +2069,14 @@ export const WeaponData = {
       effectname: "A Thousand Nights' Dawnsong",
       effect:
         "Party members other than the equipping character will provide the equipping character with buffs based on whether their Elemental Type is the same as the latter or not. If their Elemental Types are the same, increase Elemental Mastery by {0}. If not, increase the equipping character's DMG Bonus from their Elemental Type by {1}. The aforementioned effects can have 3 stacks. Additionally, all nearby party members other than the equipping character will have their Elemental Mastery increased by {2}. Multiple such effects from multiple such weapons can stack.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['32', '10%', '40'],
         ['40', '14%', '42'],
@@ -1321,6 +2094,14 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an enemy, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -1332,6 +2113,14 @@ export const WeaponData = {
       effectname: 'Dodoventure!',
       effect:
         'Normal Attack hits on opponents increase Charged Attack DMG by {0} for 6s. Charged Attack hits on opponents increase ATK by {1} for 6s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '8%'],
         ['20%', '10%'],
@@ -1349,6 +2138,14 @@ export const WeaponData = {
       effectname: 'Rapids',
       effect:
         'Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, or a Hydro-infused Swirl reaction, increases ATK by {0} for 12s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
     },
     {
@@ -1360,6 +2157,14 @@ export const WeaponData = {
       effectname: 'Byakuya Kougetsu',
       effect:
         'Healing Bonus increased by {0}, Normal Attack DMG is increased by {1} of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['10%', '1%'],
         ['12.5%', '1.5%'],
@@ -1377,6 +2182,14 @@ export const WeaponData = {
       effectname: 'Echo',
       effect:
         'Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing {0} ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['240%', '12s'],
         ['270%', '11s'],
@@ -1394,6 +2207,14 @@ export const WeaponData = {
       effectname: 'Windfall',
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '12s'],
         ['70%', '10.5s'],
@@ -1411,6 +2232,14 @@ export const WeaponData = {
       effectname: 'Frost Burial',
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '80%', '200%'],
         ['70%', '95%', '240%'],
@@ -1428,6 +2257,14 @@ export const WeaponData = {
       effectname: 'Full Circle',
       effect:
         'Obtain the "Wax and Wane" effect after an Elemental Reaction is triggered, gaining {0} Elemental Mastery while losing 5% atk%. For every 0.3s, 1 stack of Wax and Wane can be gained. Max 5 stacks. For every 6s that go by without an Elemental Reaction being triggered, 1 stack will be lost. This effect can be triggered even when the character is off-field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24'], ['27'], ['30'], ['33'], ['36']]
     },
     {
@@ -1439,6 +2276,14 @@ export const WeaponData = {
       effectname: 'Sakura Saiguu',
       effect:
         'After the character equipped with this weapon triggers an Electro elemental reaction, nearby party members of an Elemental Type involved in the elemental reaction receive a {0} Elemental DMG Bonus for their element, lasting 6s. Elemental Bonuses gained in this way cannot be stacked.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['10%'], ['12.5%'], ['15%'], ['17.5%'], ['20%']]
     },
     {
@@ -1450,9 +2295,17 @@ export const WeaponData = {
       effectname: 'Primordial Jade Regalia',
       effect:
         'For 3s after using an Elemental Burst or creating a shield, the equipping character can gain the Primordial Jade Regalia effect: Restore {0} Energy every 2.5s, and gain {1} Elemental DMG Bonus for their corresponding Elemental Type for every 1,000 Max HP they possess, up to {2}. Primordial Jade Regalia will still take effect even if the equipping character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['4.5', '0.3%', '12%'],
-        [5, '0.5%', '20%'],
+        ['5', '0.5%', '20%'],
         ['5.5', '0.7%', '28%'],
         ['6', '0.9%', '36%'],
         ['6.5', '1.1%', '44%']
@@ -1467,6 +2320,14 @@ export const WeaponData = {
       effectname: 'Kagura Dance of the Sacred Sakura',
       effect:
         'Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by {0} for 16s. Max 3 stacks. This character will gain {1} All Elemental DMG Bonus when they possess 3 stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '12%'],
         ['15%', '15%'],
@@ -1484,6 +2345,14 @@ export const WeaponData = {
       effectname: 'Boundless Blessing',
       effect:
         'Increases Movement SPD by 10%. When in battle, gain a {0} Elemental DMG Bonus every 4s. Max 4 stacks. Lasts until the character falls or leaves combat.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1494,6 +2363,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Bane of Storm and Tide',
       effect: 'Increases DMG against opponents affected by Hydro or Electro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -1505,6 +2382,14 @@ export const WeaponData = {
       effectname: 'Infusion Scroll',
       effect:
         'Triggering an Elemental reaction grants a {0} Elemental DMG Bonus for 10s. Max 2 stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1516,6 +2401,14 @@ export const WeaponData = {
       effectname: 'Golden Majesty',
       effect:
         'Increases Shield Strength by {0}. Scoring hits on opponents increases ATK by {1} for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '4%'],
         ['25%', '5%'],
@@ -1532,6 +2425,14 @@ export const WeaponData = {
       specialized: 'atk%',
       effectname: 'People of the Faltering Light',
       effect: 'Increases Energy Recharge by {0} for 10s after using an Elemental Skill.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -1542,6 +2443,14 @@ export const WeaponData = {
       specialized: 'energy',
       effectname: 'Energy Shower',
       effect: 'Each Elemental Orb or Particle collected restores {0} HP.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
     },
     {
@@ -1553,10 +2462,18 @@ export const WeaponData = {
       effectname: 'Gilding',
       effect:
         'Using an Elemental Burst regenerates {0} Energy every 2s for 6s. All party members will regenerate {1} HP every 2s for this duration.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
-        [4, '4%'],
+        ['4', '4%'],
         ['4.5', '4.5%'],
-        [5, '5%'],
+        ['5', '5%'],
         ['5.5', '5.5%'],
         ['6', '6%']
       ]
@@ -1570,6 +2487,14 @@ export const WeaponData = {
       effectname: 'Focus',
       effect:
         'Upon damaging an opponent, increases CRIT Rate by {0}. Max 5 stacks. A CRIT Hit removes all stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1581,6 +2506,14 @@ export const WeaponData = {
       effectname: 'Composed',
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['40%', '30s'],
         ['50%', '26s'],
@@ -1598,6 +2531,14 @@ export const WeaponData = {
       effectname: 'Wandering Clouds',
       effect:
         'Increases Elemental DMG Bonus by {0}. Normal Attack hits have a 50% chance to earn the favor of the clouds, which actively seek out nearby opponents to attack for 15s, dealing {1} ATK DMG. Can only occur once every 30s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '160%'],
         ['15%', '200%'],
@@ -1615,6 +2556,14 @@ export const WeaponData = {
       effectname: 'Solar Shine',
       effect:
         'Normal Attack hits increase Elemental Skill and Elemental Burst DMG by {0} for 6s. Likewise, Elemental Skill or Elemental Burst hits increase Normal Attack DMG by {1} for 6s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '20%'],
         ['25%', '25%'],
@@ -1632,6 +2581,14 @@ export const WeaponData = {
       effectname: 'Debut',
       effect:
         'When the character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s. Recitative: ATK is increased by {0}. Aria: Increases all Elemental DMG by {1}. Interlude: Elemental Mastery is increased by {2}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '48%', '240'],
         ['75%', '60%', '300'],
@@ -1649,6 +2606,14 @@ export const WeaponData = {
       effectname: 'Heritage',
       effect:
         'When switching characters, the new character taking the field has their ATK increased by {0} for 10s. This effect can only occur once every 20s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -1660,6 +2625,14 @@ export const WeaponData = {
       effectname: 'Bygone Azure Teardrop',
       effect:
         'Normal Attack SPD is increased by {0}. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by {1} every second for 14s. After hitting an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by {2}. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is {3}. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['10%', '4.8%', '9.6%', '48%'],
         ['12.5%', '6%', '12%', '60%'],
@@ -1676,6 +2649,14 @@ export const WeaponData = {
       specialized: 'critrate',
       effectname: 'Guerilla Tactics',
       effect: 'Defeating an opponent increases Movement SPD and ATK by {0} for 15s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['14%'], ['16%'], ['18%'], ['20%']]
     },
     {
@@ -1687,6 +2668,14 @@ export const WeaponData = {
       effectname: 'Wildling Nightstar',
       effect:
         'The following effect will trigger every 10s: The equipping character will gain {0} of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
@@ -1698,6 +2687,14 @@ export const WeaponData = {
       effectname: 'Ever-Changing',
       effect:
         'Hitting an opponent with a Normal Attack decreases the Stamina consumption of Sprint or Alternate Sprint by {0} for 5s. Additionally, using a Sprint or Alternate Sprint ability increases ATK by {1} for 5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['14%', '20%'],
         ['16%', '25%'],
@@ -1717,6 +2714,14 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an enemy, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -1727,6 +2732,14 @@ export const WeaponData = {
       specialized: 'hp%',
       effectname: 'Bane of the Soft',
       effect: 'Increases DMG against slimes by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
     },
     {
@@ -1738,6 +2751,14 @@ export const WeaponData = {
       effectname: 'Extinguishing Precept',
       effect:
         "Gain {0} All Elemental DMG Bonus. Obtain Consummation for 20s after using an Elemental Skill, causing ATK to increase by {1} per second. This ATK increase has a maximum of 6 stacks. When the character equipped with this weapon is not on the field, Consummation's ATK increase is doubled.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '3.2%'],
         ['15%', '4%'],
@@ -1755,6 +2776,14 @@ export const WeaponData = {
       effectname: 'Infusion Needle',
       effect:
         'After picking up an Elemental Orb/Particle, Normal and Charged Attacks deal additional DMG equal to {0} of ATK for 5s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
     },
     {
@@ -1766,6 +2795,14 @@ export const WeaponData = {
       effectname: 'Gladiator',
       effect:
         'If there are at least 2 opponents nearby, ATK is increased by {0} and DEF is increased by {1}. If there are fewer than 2 opponents nearby, ATK is increased by {2}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '16%', '24%'],
         ['20%', '20%', '30%'],
@@ -1782,6 +2819,14 @@ export const WeaponData = {
       specialized: 'em',
       effectname: 'Bane of Flame and Water',
       effect: 'Increases DMG against opponents affected by Hydro or Pyro by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
     },
     {
@@ -1793,6 +2838,14 @@ export const WeaponData = {
       effectname: 'Frost Burial',
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '80%', '200%'],
         ['70%', '95%', '240%'],
@@ -1810,6 +2863,14 @@ export const WeaponData = {
       effectname: 'Timeless Dream: Eternal Stove',
       effect:
         'ATK increased by {0} of Energy Recharge over the base 100%. You can gain a maximum bonus of {1} atk%. Gain {2} Energy Recharge for 12s after using an Elemental Burst.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['28%', '80%', '30%'],
         ['35%', '90%', '35%'],
@@ -1827,6 +2888,14 @@ export const WeaponData = {
       effectname: 'Windfall',
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['60%', '12s'],
         ['70%', '10.5s'],
@@ -1844,6 +2913,14 @@ export const WeaponData = {
       effectname: 'Heavy',
       effect:
         'Normal Attacks deal an additional {0} ATK as DMG. This effect can only occur once every 10s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['160%'], ['200%'], ['240%'], ['280%'], ['320%']]
     },
     {
@@ -1855,12 +2932,20 @@ export const WeaponData = {
       effectname: 'Samurai Conduct',
       effect:
         'Increases Elemental Skill DMG by {0}. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {1} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
-        ['6%', 3],
+        ['6%', '3'],
         ['7.5%', '3.5'],
-        ['9%', 4],
+        ['9%', '4'],
         ['10.5%', '4.5'],
-        ['12%', 5]
+        ['12%', '5']
       ]
     },
     {
@@ -1872,6 +2957,14 @@ export const WeaponData = {
       effectname: 'Lithic Axiom: Unity',
       effect:
         'For every character in the party who hails from Liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['7%', '3%'],
         ['8%', '4%'],
@@ -1889,6 +2982,14 @@ export const WeaponData = {
       effectname: 'The Wind Unattained',
       effect:
         'Within 10s after an Elemental Reaction is triggered, ATK is increased by {0} and Elemental Mastery is increased by {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['12%', '48'],
         ['15%', '60'],
@@ -1906,6 +3007,14 @@ export const WeaponData = {
       effectname: 'Stillwood Moonshadow',
       effect:
         'After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {0} ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
     },
     {
@@ -1917,6 +3026,14 @@ export const WeaponData = {
       effectname: 'Eagle Spear of Justice',
       effect:
         'On hit, increases ATK by {0} for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['3.2%', '12%'],
         ['3.9%', '15%'],
@@ -1934,6 +3051,14 @@ export const WeaponData = {
       effectname: 'Magic Affinity',
       effect:
         'After using an Elemental Skill, increases Normal and Charged Attack DMG by {0} for 12s. Max 2 stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1945,6 +3070,14 @@ export const WeaponData = {
       effectname: 'Focus',
       effect:
         'Upon damaging an opponent, increases CRIT Rate by {0}. Max 5 stacks. A CRIT Hit removes all stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
@@ -1956,6 +3089,14 @@ export const WeaponData = {
       effectname: 'Black Wing',
       effect:
         'Increases CRIT Rate by {0} and increases Normal ATK SPD by {1}. Additionally, Normal and Charged Attacks hits on opponents have a {2} chance to trigger a vacuum blade that deals {3} of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['8%', '12%', '50%', '40%'],
         ['10%', '12%', '50%', '55%'],
@@ -1973,6 +3114,14 @@ export const WeaponData = {
       effectname: 'Reckless Cinnabar',
       effect:
         "HP increased by {0}. Additionally, provides an ATK Bonus based on {1} of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK Bonus is increased by an additional {2} of Max HP.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '0.8%', '1%'],
         ['25%', '1%', '1.2%'],
@@ -1990,6 +3139,14 @@ export const WeaponData = {
       effectname: "Heat Haze at Horizon's End",
       effect:
         'The equipping character gains {0} of their Elemental Mastery as bonus atk%. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain {1} of their Elemental Mastery as bonus atk%. Max 3 stacks.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['52%', '28%'],
         ['65%', '35%'],
@@ -2007,6 +3164,14 @@ export const WeaponData = {
       effectname: 'Shanty',
       effect:
         'Increases Elemental Burst DMG by {0} and Elemental Burst CRIT Rate by {1}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['16%', '6%'],
         ['20%', '7.5%'],
@@ -2024,6 +3189,14 @@ export const WeaponData = {
       effectname: 'Golden Majesty',
       effect:
         'Increases Shield Strength by {0}. Scoring hits on opponents increases ATK by {1} for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['20%', '4%'],
         ['25%', '5%'],
@@ -2041,6 +3214,14 @@ export const WeaponData = {
       effectname: 'Watatsumi Wavewalker',
       effect:
         "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {0}. A maximum of {1} increased Elemental Burst DMG can be achieved this way.",
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [
         ['0.12%', '40%'],
         ['0.15%', '50%'],
@@ -2057,6 +3238,14 @@ export const WeaponData = {
       specialized: 'critrate',
       effectname: 'Sharp',
       effect: 'Increases Normal Attack DMG by {0}.',
+      actions: [
+        {
+          stat: 'atk',
+          target: 'atk',
+          actionType: 'passive',
+          coef: [0.2, 0.2, 0.2, 0.2, 0.2]
+        }
+      ],
       ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     }
   ]

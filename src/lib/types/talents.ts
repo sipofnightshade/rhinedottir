@@ -85,7 +85,9 @@ export type ALL_STATS =
   | 'normalDefIgnore'
   | 'skillDefIgnore'
   | 'burstDefIgnore'
-  | 'defReduce';
+  | 'defReduce'
+  | 'partyEnergy'
+  | 'partyEM';
 
 export type Action = {
   name: string;
