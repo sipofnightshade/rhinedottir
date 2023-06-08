@@ -194,12 +194,7 @@ export const Talents: TalentRecords = {
         constellation: 6,
         target: 'enemy',
         actionType: 'stack',
-        values: [
-          { scaling: 'anemo', coef: 1.5 },
-          { scaling: 'anemo', coef: 0.5 },
-          { scaling: 'anemo', coef: 0.5 },
-          { scaling: 'anemo', coef: 0.5 }
-        ]
+        values: [{ scaling: 'anemo', coef: [1.5, 0.5, 0.5, 0.5] }]
       },
       {
         name: 'Testing2',

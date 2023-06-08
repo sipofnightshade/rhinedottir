@@ -12,19 +12,23 @@
   let stacks = 0;
 
   function handleToggle() {
-    if (stacks === data.values.length) {
+    if (stacks === (data.values[0].coef as number[]).length) {
       stacks = 0; // Reset the stacks if max is reached
     } else {
       stacks++; // Increment the stacks
     }
 
     if (stacks === 0) {
-      // If stacks reset, remove all the stats from the action store
-      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
+      console.log('stacks reset');
+      data.values.forEach((value) => {
+        (value.coef as number[]).forEach((stat) =>
+          action.removeStat(value.scaling, stat)
+        );
+      });
     } else {
-      const { scaling, coef } = data.values[stacks - 1];
-      // Add the stat corresponding to the current number of stacks to the action store
-      action.addStat(scaling, coef);
+      data.values.forEach((value) => {
+        action.addStat(value.scaling, (value.coef as number[])[stacks - 1]);
+      });
     }
   }
 
