@@ -12,10 +12,10 @@
   function handleToggle() {
     isActive = !isActive;
     if (isActive) {
-      data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef));
+      data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef as number));
       return;
     } else {
-      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
+      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef as number));
       return;
     }
   }

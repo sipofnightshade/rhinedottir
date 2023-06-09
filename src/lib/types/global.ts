@@ -21,20 +21,35 @@ export type SelectedWeapon = {
   effectname: string;
   effect: string;
   ref: [] | string[] | string[][];
-  actions: {
-    stat: ALL_STATS;
-    target: ALL_STATS;
-    actionType:
-      | 'stack'
-      | 'toggle'
-      | 'select'
-      | 'multiSelect'
-      | 'passive'
-      | 'shielded'
-      | 'notShielded';
-    limit?: number[];
-    coef: number[];
-  }[];
+  target?: 'self' | 'enemy' | 'party' | 'all';
+  actionType?: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
+  actionValues?: [
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    }
+  ];
 };
 
 export type SelectedArtifact = {

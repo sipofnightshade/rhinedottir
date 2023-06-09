@@ -3,7 +3,7 @@
   import type { Action } from '$lib/types/talents';
 
   // props
-  export let element: Visions = 'anemo';
+  export let element: Visions | 'weapon' = 'anemo';
   export let isActive = true;
 
   const backgrounds = {
@@ -13,7 +13,8 @@
     electro: 'bg-electro',
     hydro: 'bg-hydro',
     geo: 'bg-geo',
-    pyro: 'bg-pyro'
+    pyro: 'bg-pyro',
+    weapon: 'bg-slate-300'
   };
 
   const gradients = {
@@ -23,7 +24,8 @@
     electro: 'bg-gradient-to-b from-electro to-electroDark',
     hydro: 'bg-gradient-to-b from-hydro to-hydroDark',
     geo: 'bg-gradient-to-b from-geo to-geoDark',
-    pyro: 'bg-gradient-to-b from-pyro to-pyroDark'
+    pyro: 'bg-gradient-to-b from-pyro to-pyroDark',
+    weapon: 'bg-gradient-to-b from-slate-300 to-slate-500'
   };
 
   const outlines = {
@@ -33,7 +35,8 @@
     electro: 'outline-electro',
     hydro: 'outline-hydro',
     geo: 'outline-geo',
-    pyro: 'outline-pyro'
+    pyro: 'outline-pyro',
+    weapon: 'outline-slate-300'
   };
 </script>
 
