@@ -65,9 +65,9 @@
     buttonType="Select"
     details={data.description}
   >
-    <ul class="flex space-x-1" class:bg-red-700={false}>
+    <ul class="flex h-full items-center" class:bg-red-700={false}>
       <li
-        class="flex h-10 w-10 items-center justify-center rounded-full"
+        class="flex h-full w-full items-center justify-center  bg-slate-600"
         class:bg-slate-600={selected === undefined}
       >
         <input
@@ -78,13 +78,13 @@
           value={undefined}
           class="hidden"
         />
-        <label for="empty"
+        <label for="empty" class="flex h-full w-full items-center justify-center"
           ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
         </label>
       </li>
       {#each data.values as item}
         <li
-          class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-600"
+          class="flex h-full w-full items-center justify-center  bg-slate-600"
           class:bg-slate-600={selected === item}
         >
           <input
@@ -95,7 +95,7 @@
             value={item}
             class="hidden"
           />
-          <label for={item.scaling}
+          <label for={item.scaling} class="flex h-full w-full items-center justify-center"
             ><img
               class="w-6"
               src="/images/elements/{stripStat(item.scaling)}.svg"
