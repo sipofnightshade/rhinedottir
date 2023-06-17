@@ -26,9 +26,9 @@
       <div class="flex flex-col overflow-hidden">
         <Tabs {items} buttonGrid="grid-cols-2 mb-2" />
       </div>
-      <div class="flex flex-col overflow-hidden">
+      <div class="flex flex-col space-y-2 overflow-hidden">
         <ActionBar margin={false} />
-        <div class="flex flex-1 flex-col overflow-y-auto">
+        <div class="scrollbar flex flex-1 flex-col overflow-y-auto">
           <Combo />
         </div>
       </div>

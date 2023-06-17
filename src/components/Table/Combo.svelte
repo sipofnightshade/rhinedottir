@@ -2,7 +2,7 @@
   import ComboRow from '../TableRow/ComboRow.svelte';
 </script>
 
-<div class="flex flex-col py-1">
+<div class="flex flex-col">
   <ComboRow />
   <ComboRow />
   <ComboRow />
