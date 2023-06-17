@@ -28,9 +28,9 @@
       </p>
     </div>
     <div
-      class="flex h-16 w-full items-center justify-between border-t border-slate-500 p-4"
+      class="grid h-12 w-full grid-flow-col items-center gap-x-4 border-t border-slate-500"
     >
-      <h4>{buttonType}</h4>
+      <h4 class="px-4 py-2">{buttonType}:</h4>
       <slot />
     </div>
   </div>

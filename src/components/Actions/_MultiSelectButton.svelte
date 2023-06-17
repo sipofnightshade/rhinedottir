@@ -1,12 +1,15 @@
 <script lang="ts">
   import type { Action } from '$lib/types/talents';
   import type { Visions } from '$lib/types/global';
-  import ActionButton from './ActionButton.svelte';
-  import ActionModal from '../ActionModal/ActionModal.svelte';
   import type { ALL_STATS } from '$lib/types/talents';
+
   import { action } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
   import { onMount } from 'svelte';
+
+  // component imports
+  import ActionButton from './ActionButton.svelte';
+  import ActionModal from '../ActionModal/ActionModal.svelte';
 
   export let element: Visions;
   export let data: Action;
@@ -22,12 +25,12 @@
     });
   });
 
-  function handleClick(stat: { scaling: ALL_STATS; coef: number }) {
+  function handleClick(stat: { scaling: ALL_STATS; coef: number | number[] }) {
     selectedStats[stat.scaling] = !selectedStats[stat.scaling];
     if (selectedStats[stat.scaling] === true) {
-      action.addStat(stat.scaling, stat.coef);
+      action.addStat(stat.scaling, stat.coef as number);
     } else {
-      action.removeStat(stat.scaling, stat.coef);
+      action.removeStat(stat.scaling, stat.coef as number);
     }
   }
 
@@ -68,9 +71,9 @@
     modalTitle={data.name}
     actionType="Elemental Burst"
     buttonType="Multi-Select"
-    details={'hi'}
+    details={'Placeholder text here.'}
   >
-    <ul class="flex space-x-1" class:bg-red-700={false}>
+    <div class="flex h-full items-center">
       <!-- <li class="h-10 w-10">
         <button
           on:click={clearState}
@@ -80,20 +83,18 @@
         </button>
       </li> -->
       {#each data.values as value}
-        <li>
-          <button
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-600"
-            class:bg-slate-600={selectedStats[value.scaling] === true}
-            on:click={() => handleClick(value)}
-          >
-            <img
-              class="w-6"
-              src="/images/elements/{stripStat(value.scaling)}.svg"
-              alt={stripStat(value.scaling)}
-            />
-          </button>
-        </li>
+        <button
+          class="flex h-full w-full items-center justify-center bg-slate-600"
+          class:bg-slate-600={selectedStats[value.scaling] === true}
+          on:click={() => handleClick(value)}
+        >
+          <img
+            class="w-6"
+            src="/images/elements/{stripStat(value.scaling)}.svg"
+            alt={stripStat(value.scaling)}
+          />
+        </button>
       {/each}
-    </ul>
+    </div>
   </ActionModal>
 {/if}
