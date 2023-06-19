@@ -1,4 +1,14 @@
-export const WeaponData = {
+import type { SelectedWeapon } from '$lib/types/global';
+
+type Data = {
+  claymore: SelectedWeapon[];
+  sword: SelectedWeapon[];
+  bow: SelectedWeapon[];
+  catalyst: SelectedWeapon[];
+  polearm: SelectedWeapon[];
+};
+
+export const WeaponData: Data = {
   claymore: [
     {
       name: 'akuoumaru',
@@ -9,6 +19,8 @@ export const WeaponData = {
       effectname: 'Watatsumi Wavewalker',
       effect:
         "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {0}. A maximum of {1} increased Elemental Burst DMG can be achieved this way.",
+
+      actionType: 'passive',
       ref: [
         ['0.12%', '40%'],
         ['0.15%', '50%'],
@@ -26,6 +38,7 @@ export const WeaponData = {
       effectname: 'Desert Watch',
       effect:
         "After the character's Elemental Skill hits an opponent, their ATK will be increased by {0} for 8s. After the character takes DMG, their ATK will be increased by {1} for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by {2}.",
+
       ref: [
         ['20%', '20%', '32%'],
         ['25%', '25%', '40%'],
@@ -43,6 +56,7 @@ export const WeaponData = {
       effectname: 'Press the Advantage',
       effect:
         'After defeating an enemy, ATK is increased by {0} for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.',
+
       ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
     },
     {
@@ -121,11 +135,11 @@ export const WeaponData = {
       effect:
         'Increases Elemental Skill DMG by {0}. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {1} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.',
       ref: [
-        ['6%', 3],
+        ['6%', '3'],
         ['7.5%', '3.5'],
-        ['9%', 4],
+        ['9%', '4'],
         ['10.5%', '4.5'],
-        ['12%', 5]
+        ['12%', '5']
       ]
     },
     {
@@ -1452,7 +1466,7 @@ export const WeaponData = {
         'For 3s after using an Elemental Burst or creating a shield, the equipping character can gain the Primordial Jade Regalia effect: Restore {0} Energy every 2.5s, and gain {1} Elemental DMG Bonus for their corresponding Elemental Type for every 1,000 Max HP they possess, up to {2}. Primordial Jade Regalia will still take effect even if the equipping character is not on the field.',
       ref: [
         ['4.5', '0.3%', '12%'],
-        [5, '0.5%', '20%'],
+        ['5', '0.5%', '20%'],
         ['5.5', '0.7%', '28%'],
         ['6', '0.9%', '36%'],
         ['6.5', '1.1%', '44%']
@@ -1554,9 +1568,9 @@ export const WeaponData = {
       effect:
         'Using an Elemental Burst regenerates {0} Energy every 2s for 6s. All party members will regenerate {1} HP every 2s for this duration.',
       ref: [
-        [4, '4%'],
+        ['4', '4%'],
         ['4.5', '4.5%'],
-        [5, '5%'],
+        ['5', '5%'],
         ['5.5', '5.5%'],
         ['6', '6%']
       ]
@@ -1856,11 +1870,11 @@ export const WeaponData = {
       effect:
         'Increases Elemental Skill DMG by {0}. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {1} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.',
       ref: [
-        ['6%', 3],
+        ['6%', '3'],
         ['7.5%', '3.5'],
-        ['9%', 4],
+        ['9%', '4'],
         ['10.5%', '4.5'],
-        ['12%', 5]
+        ['12%', '5']
       ]
     },
     {

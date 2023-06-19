@@ -13,21 +13,21 @@
   function handleToggle() {
     isActive = !isActive;
     if (isActive) {
-      data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef));
+      data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef as number));
       return;
     } else {
-      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
+      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef as number));
       return;
     }
   }
 
   onMount(() => {
-    data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef));
+    data.values.forEach((stat) => action.addStat(stat.scaling, stat.coef as number));
 
     // this return might be problematic if the state is reset when character changes
     // because then this might run after and substract values that were not added
     return () =>
-      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef));
+      data.values.forEach((stat) => action.removeStat(stat.scaling, stat.coef as number));
   });
 </script>
 

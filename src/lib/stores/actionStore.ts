@@ -43,7 +43,9 @@ const initialState = {
   normalDefIgnore: 0,
   skillDefIgnore: 0,
   burstDefIgnore: 0,
-  defReduce: 0
+  defReduce: 0,
+  partyEnergy: 0,
+  partyEM: 0
 };
 
 function createAction() {

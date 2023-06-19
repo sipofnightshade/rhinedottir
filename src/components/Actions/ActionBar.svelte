@@ -11,8 +11,18 @@
 
   export let margin = true;
 
+  const buttons = {
+    toggle: ToggleButton,
+    passive: PassiveButton,
+    stack: StackButton,
+    select: SelectButton,
+    multiSelect: MultiSelectButton,
+    input: MultiSelectButton
+  };
+
   // import { onMount } from 'svelte';
   const charName = 'traveleranemo';
+  const weaponName = 'polarstar';
 </script>
 
 <section
@@ -20,7 +30,7 @@
   class:my-4={margin}
 >
   {#each Talents[charName].actions as data}
-    {#if data.actionType === 'toggle'}
+    <!-- {#if data.actionType === 'toggle'}
       <ToggleButton {data} element={$character.selected.vision} />
     {:else if data.actionType === 'stack'}
       <StackButton {data} element={$character.selected.vision} />
@@ -30,6 +40,11 @@
       <SelectButton {data} element={$character.selected.vision} />
     {:else if data.actionType === 'multiSelect'}
       <MultiSelectButton {data} element={$character.selected.vision} />
-    {/if}
+    {/if} -->
+    <svelte:component
+      this={buttons[data.actionType]}
+      {data}
+      element={$character.selected.vision}
+    />
   {/each}
 </section>

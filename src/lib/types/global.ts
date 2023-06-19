@@ -1,6 +1,7 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
 import type { ArtifactNames } from './artifacts';
+import type { ALL_STATS } from './talents';
 
 export type SelectedCharacter = {
   name: CharacterNames;
@@ -20,6 +21,35 @@ export type SelectedWeapon = {
   effectname: string;
   effect: string;
   ref: [] | string[] | string[][];
+  target?: 'self' | 'enemy' | 'party' | 'all';
+  actionType?: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
+  actionValues?: [
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    },
+    {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      threshold?: number;
+    }
+  ];
 };
 
 export type SelectedArtifact = {

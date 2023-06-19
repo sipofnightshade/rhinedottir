@@ -85,7 +85,9 @@ export type ALL_STATS =
   | 'normalDefIgnore'
   | 'skillDefIgnore'
   | 'burstDefIgnore'
-  | 'defReduce';
+  | 'defReduce'
+  | 'partyEnergy'
+  | 'partyEM';
 
 export type Action = {
   name: string;
@@ -93,12 +95,12 @@ export type Action = {
   description: string;
   level: number;
   constellation: number;
-  target: 'self' | 'enemy' | 'party' | 'all'; // re-evaluate this
-  damageBonus?: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
+  target?: 'self' | 'enemy' | 'party' | 'all'; // re-evaluate this
   actionType: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
   values: {
     scaling: ALL_STATS;
-    coef: number;
+    coef: number | number[];
+    source?: ALL_STATS; // for scalings that use another stat
     threshold?: number; // for skills like nahida burst EM
   }[];
 };
