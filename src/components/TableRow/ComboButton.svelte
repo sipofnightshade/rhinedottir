@@ -36,7 +36,8 @@
 </button>
 
 <!-- NEW BUTTON -->
-<button
+
+<!-- <button
   class="relative mr-2 flex h-16 w-10 items-center justify-center rounded-lg bg-slate-700 "
   ><div
     class="top absolute top-0 z-10 flex h-full w-full justify-center rounded-lg bg-slate-500"
@@ -49,8 +50,7 @@
     alt="element"
   />
   <div class="z-[11]  font-bold text-white">N1</div>
-</button>
-
+</button> -->
 <style lang="postcss">
   .top {
     clip-path: polygon(0 0, 100% 0%, 100% 35%, 0 65%);
