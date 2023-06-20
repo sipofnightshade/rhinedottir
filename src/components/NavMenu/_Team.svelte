@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Modal from '../Modal/Modal.svelte';
   import { DefaultWeapons } from '$lib/data/DefaultWeapons';
   import type { WeaponNames } from '$lib/types/weapons';
   // modal pages
@@ -20,8 +19,11 @@
   import { artifact } from '$lib/stores/artifactStore';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
+  import Modal from '../Modal/Modal.svelte';
 
   // initialise modal state and content
+
+  let dialog: HTMLDialogElement;
 
   const partyModals = [
     {
@@ -69,28 +71,21 @@
     }
   ];
 
-  let showModal = false;
   let modalContent: any = undefined;
   let modalTitle: string | undefined = undefined;
 
   // pass in component as parameter and toggle modal state
   function toggleModal(component: any, title: string) {
+    dialog.showModal();
     modalContent = component;
     modalTitle = title;
-    showModal = !showModal;
-  }
-
-  function closeModal() {
-    modalContent = undefined;
-    modalTitle = undefined;
-    showModal = false;
   }
 </script>
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
   <button
     class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
-    on:click={() => toggleModal(Character, 'Character')}
+    on:click={() => toggleModal(Character, 'Character New')}
   >
     <Thumbnail
       img="/images/character/{$character.selected.name}.webp"
@@ -136,7 +131,7 @@
     </button>
   {/each}
 </div>
-{#if showModal}
+<!-- {#if showModal}
   <Modal
     on:click={closeModal}
     on:escapeClick={closeModal}
@@ -144,4 +139,8 @@
     {modalContent}
     classes="h-screen w-screen xs:w-[452px] xs:h-[90vh] mx-auto rounded-xl flex flex-col items-center bg-slate-700 relative"
   />
-{/if}
+{/if} -->
+
+<Modal bind:dialog title={modalTitle}>
+  <svelte:component this={modalContent} />
+</Modal>

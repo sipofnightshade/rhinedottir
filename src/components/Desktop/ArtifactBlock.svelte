@@ -39,7 +39,7 @@
     }
   ];
 
-  let showModal = false;
+  let dialog: HTMLDialogElement;
   let modalContent: any = undefined;
   let modalTitle: string | undefined = undefined;
 
@@ -47,13 +47,7 @@
   function toggleModal(component: any, title: string) {
     modalContent = component;
     modalTitle = title;
-    showModal = !showModal;
-  }
-
-  function closeModal() {
-    modalContent = undefined;
-    modalTitle = undefined;
-    showModal = false;
+    dialog.showModal();
   }
 </script>
 
@@ -98,12 +92,6 @@
     </button>
   {/each}
 </section>
-{#if showModal}
-  <Modal
-    on:click={closeModal}
-    on:escapeClick={closeModal}
-    {modalTitle}
-    {modalContent}
-    classes="h-screen w-screen xs:w-[452px] xs:h-[90vh] mx-auto rounded-xl flex flex-col items-center bg-slate-700 relative"
-  />
-{/if}
+<Modal bind:dialog title={modalTitle}>
+  <svelte:component this={modalContent} />
+</Modal>
