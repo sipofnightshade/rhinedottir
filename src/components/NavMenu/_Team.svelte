@@ -47,27 +47,32 @@
     {
       id: 'flower',
       img: '/images/ui/UI_BtnIcon_RelicType1.png',
-      component: Flower
+      component: Flower,
+      title: 'Flower of Life'
     },
     {
       id: 'feather',
       img: '/images/ui/UI_BtnIcon_RelicType2.png',
-      component: Feather
+      component: Feather,
+      title: 'Plume of Death'
     },
     {
       id: 'sands',
       img: '/images/ui/UI_BtnIcon_RelicType3.png',
-      component: Sands
+      component: Sands,
+      title: "Sands of Eon"
     },
     {
       id: 'goblet',
       img: '/images/ui/UI_BtnIcon_RelicType4.png',
-      component: Goblet
+      component: Goblet,
+      title: 'Goblet of Eonothem'
     },
     {
       id: 'circlet',
       img: '/images/ui/UI_BtnIcon_RelicType5.png',
-      component: Circlet
+      component: Circlet,
+      title: 'Circlet of Logos'
     }
   ];
 
@@ -118,10 +123,10 @@
   {#each artifactModals as modal (modal.id)}
     <button
       class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 p-2 hover:border-2 hover:border-slate-300"
-      on:click={() => toggleModal(modal.component, modal.id)}
+      on:click={() => toggleModal(modal.component, modal.title)}
     >
       {#if $artifact[modal.id].selected.name === 'none'}
-        <img src={modal.img} alt="{modal.id} image" />
+        <img src={modal.img} alt="{modal.title} image" />
       {:else}
         <Thumbnail
           img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"

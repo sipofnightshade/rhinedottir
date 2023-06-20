@@ -15,27 +15,32 @@
     {
       id: 'flower',
       img: '/images/ui/UI_BtnIcon_RelicType1.png',
-      component: Flower
+      component: Flower,
+      title: 'Flower of Life'
     },
     {
       id: 'feather',
       img: '/images/ui/UI_BtnIcon_RelicType2.png',
-      component: Feather
+      component: Feather,
+      title: 'Plume of Death'
     },
     {
       id: 'sands',
       img: '/images/ui/UI_BtnIcon_RelicType3.png',
-      component: Sands
+      component: Sands,
+      title: 'Sands of Eon'
     },
     {
       id: 'goblet',
       img: '/images/ui/UI_BtnIcon_RelicType4.png',
-      component: Goblet
+      component: Goblet,
+      title: 'Goblet of Eonothem'
     },
     {
       id: 'circlet',
       img: '/images/ui/UI_BtnIcon_RelicType5.png',
-      component: Circlet
+      component: Circlet,
+      title: 'Circlet of Logos'
     }
   ];
 
@@ -55,7 +60,7 @@
   {#each menuModals as modal (modal.id)}
     <button
       class="relative h-full w-full rounded-lg bg-slate-700 p-2"
-      on:click={() => toggleModal(modal.component, modal.id)}
+      on:click={() => toggleModal(modal.component, modal.title)}
     >
       <div class="mx-auto flex items-center lg:w-2/3">
         {#if $artifact[modal.id].selected.name === 'none'}
@@ -69,7 +74,6 @@
           />
         {/if}
       </div>
-
       <ul
         class="absolute top-0 left-0 z-10 flex h-full w-full flex-col justify-between p-2"
       >

@@ -39,4 +39,5 @@ export type ArtifactModalButtons = {
   id: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
   img: string;
   component: any;
+  title: string;
 }[];
