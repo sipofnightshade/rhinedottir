@@ -7,7 +7,7 @@
 <dialog
   bind:this={dialog}
   on:click|self={() => dialog.close()}
-  class="h-full items-start rounded-xl border-b border-slate-500 bg-slate-700 p-1 text-slate-200 backdrop:bg-slate-900/75 backdrop:backdrop-blur-sm xs-300:p-2 xs:h-[90vh] xs:w-[452px] xs:rounded-2xl xs:p-4"
+  class="h-full items-start rounded-xl border-b border-slate-500 bg-slate-700 p-1 text-slate-200 backdrop:bg-black/75 xs-300:p-2 xs:h-[90vh] xs:w-[452px] xs:rounded-2xl xs:p-4"
 >
   <div class="flex h-full flex-col items-center rounded-xl bg-slate-700 ">
     <div class="flex w-full justify-between border-b border-slate-500 p-2 xs:p-4">
