@@ -3,12 +3,10 @@
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
   import { action } from '$lib/stores/actionStore';
-  import ActionModal from '../ActionModal/ActionModal.svelte';
 
   export let element: Visions;
   export let data: Action;
 
-  // let showModal = true;
   let stacks = 0;
 
   function handleToggle() {
@@ -31,14 +29,6 @@
       });
     }
   }
-
-  // function toggleModal() {
-  //   showModal = !showModal;
-  // }
-
-  // function closeModal() {
-  //   showModal = false;
-  // }
 
   /**
    * @Important
@@ -69,26 +59,6 @@
   {/if}
 </button>
 
-<!-- {#if showModal}
-  <ActionModal
-    on:click={closeModal}
-    on:escapeClick={closeModal}
-    modalTitle={data.name}
-    actionType="Elemental Burst"
-    buttonType="Stacks"
-    details={data.description}
-  >
-    <div class="flex items-center space-x-2">
-      <input
-        type="number"
-        max={data.values.length}
-        min={0}
-        class="h-8 w-24 rounded bg-slate-600 text-right"
-      />
-      <p class="text-slate-400">/ {data.values.length}</p>
-    </div>
-  </ActionModal>
-{/if} -->
 <style lang="postcss">
   .stacks {
     text-shadow: -1px -1px 2px #334155, 1px -1px 2px #334155, -1px 1px 1px #334155,
