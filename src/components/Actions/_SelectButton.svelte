@@ -1,11 +1,12 @@
 <script lang="ts">
   import type { Action } from '$lib/types/talents';
   import type { Visions } from '$lib/types/global';
-  import ActionButton from './ActionButton.svelte';
-  import ActionModal from '../ActionModal/ActionModal.svelte';
   import type { ALL_STATS } from '$lib/types/talents';
   import { action } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
+
+  import ShortModal from '../Modal/ShortModal.svelte';
+  import ActionButton from './ActionButton.svelte';
 
   export let element: Visions;
   export let data: Action;
@@ -35,10 +36,10 @@
     onSelect(selected);
   }
 
-  // handle Modal
-  let showModal = false;
+  let dialog: HTMLDialogElement;
+
   function toggleModal() {
-    showModal = !showModal;
+    dialog.showModal();
   }
 </script>
 
@@ -56,7 +57,7 @@
     </div>
   {/if}
 </button>
-{#if showModal}
+<!-- {#if showModal}
   <ActionModal
     on:click={toggleModal}
     on:escapeClick={toggleModal}
@@ -106,4 +107,52 @@
       {/each}
     </ul>
   </ActionModal>
-{/if}
+{/if} -->
+<ShortModal
+  bind:dialog
+  modalTitle={data.name}
+  actionType="Elemental Burst"
+  buttonType="Select"
+  details={data.description}
+>
+  <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
+    <div
+      class="relative flex h-full w-full items-center  justify-center bg-slate-600"
+      class:bg-slate-600={selected === undefined}
+    >
+      <input
+        type="radio"
+        bind:group={selected}
+        name="radio"
+        id="empty"
+        value={undefined}
+        class="opacity-0"
+      />
+      <span class="absolute flex h-full w-full items-center justify-center"
+        ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
+      </span>
+    </div>
+    {#each data.values as item}
+      <div
+        class="relative flex h-full w-full items-center  justify-center bg-slate-600"
+        class:bg-slate-600={selected === item}
+      >
+        <input
+          type="radio"
+          bind:group={selected}
+          name="radio"
+          id={item.scaling}
+          value={item}
+          class="opacity-0"
+        />
+        <span class="absolute flex h-full w-full items-center justify-center"
+          ><img
+            class="w-6"
+            src="/images/elements/{stripStat(item.scaling)}.svg"
+            alt={item.scaling}
+          />
+        </span>
+      </div>
+    {/each}
+  </form>
+</ShortModal>

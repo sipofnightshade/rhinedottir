@@ -9,7 +9,7 @@
 
   // component imports
   import ActionButton from './ActionButton.svelte';
-  import ActionModal from '../ActionModal/ActionModal.svelte';
+  import ShortModal from '../Modal/ShortModal.svelte';
 
   export let element: Visions;
   export let data: Action;
@@ -35,9 +35,10 @@
   }
 
   // handle Modal
-  let showModal = false;
+  let dialog: HTMLDialogElement;
+
   function toggleModal() {
-    showModal = !showModal;
+    dialog.showModal();
   }
 
   $: {
@@ -64,17 +65,15 @@
     {/each}
   </div>
 </button>
-{#if showModal}
-  <ActionModal
-    on:click={toggleModal}
-    on:escapeClick={toggleModal}
-    modalTitle={data.name}
-    actionType="Elemental Burst"
-    buttonType="Multi-Select"
-    details={'Placeholder text here.'}
-  >
-    <div class="flex h-full items-center">
-      <!-- <li class="h-10 w-10">
+<ShortModal
+  bind:dialog
+  modalTitle={data.name}
+  actionType="Elemental Burst"
+  buttonType="Select"
+  details={data.description}
+>
+  <div class="flex h-full items-center">
+    <!-- <li class="h-10 w-10">
         <button
           on:click={clearState}
           class="flex h-full w-full items-center justify-center rounded-full "
@@ -82,19 +81,18 @@
           <img class="w-3.5" src="/images/ui/close.svg" alt={'close'} />
         </button>
       </li> -->
-      {#each data.values as value}
-        <button
-          class="flex h-full w-full items-center justify-center bg-slate-600"
-          class:bg-slate-600={selectedStats[value.scaling] === true}
-          on:click={() => handleClick(value)}
-        >
-          <img
-            class="w-6"
-            src="/images/elements/{stripStat(value.scaling)}.svg"
-            alt={stripStat(value.scaling)}
-          />
-        </button>
-      {/each}
-    </div>
-  </ActionModal>
-{/if}
+    {#each data.values as value}
+      <button
+        class="flex h-full w-full items-center justify-center bg-slate-600"
+        class:bg-slate-600={selectedStats[value.scaling] === true}
+        on:click={() => handleClick(value)}
+      >
+        <img
+          class="w-6"
+          src="/images/elements/{stripStat(value.scaling)}.svg"
+          alt={stripStat(value.scaling)}
+        />
+      </button>
+    {/each}
+  </div>
+</ShortModal>
