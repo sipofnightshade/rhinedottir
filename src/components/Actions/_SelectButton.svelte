@@ -126,11 +126,13 @@
         name="radio"
         id="empty"
         value={undefined}
-        class="opacity-0"
+        class="hidden"
       />
-      <span class="absolute flex h-full w-full items-center justify-center"
+      <label
+        for="empty"
+        class="flex h-full w-full cursor-pointer items-center justify-center"
         ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
-      </span>
+      </label>
     </div>
     {#each data.values as item}
       <div
@@ -143,15 +145,17 @@
           name="radio"
           id={item.scaling}
           value={item}
-          class="opacity-0"
+          class="hidden"
         />
-        <span class="absolute flex h-full w-full items-center justify-center"
+        <label
+          for={item.scaling}
+          class="flex h-full w-full cursor-pointer items-center justify-center"
           ><img
             class="w-6"
             src="/images/elements/{stripStat(item.scaling)}.svg"
             alt={item.scaling}
           />
-        </span>
+        </label>
       </div>
     {/each}
   </form>
