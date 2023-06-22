@@ -8,7 +8,7 @@
 <dialog
   bind:this={dialog}
   on:click|self={() => dialog.close()}
-  class="items-start rounded-xl border-b border-slate-500 bg-slate-700 p-1 text-slate-200 backdrop:bg-black/75 xs-300:p-2 xs:w-96 xs:rounded-2xl xs:p-4"
+  class="items-start rounded-xl border-b border-slate-500 bg-slate-800 p-1 text-slate-200 backdrop:bg-black/75 xs-300:p-2 xs:w-96 xs:rounded-2xl xs:p-4"
 >
   <div class="flex w-full items-start justify-between px-4 py-3">
     <h2 class="text-base font-bold text-slate-100">{modalTitle}</h2>
@@ -24,9 +24,7 @@
       </svg>
     </button>
   </div>
-  <div
-    class="grid h-12 w-full grid-flow-col items-center gap-x-4 border-t border-slate-500"
-  >
+  <div class="w-full border-t border-slate-500 p-1 xs-300:p-2 xs:p-4">
     <slot />
   </div>
 </dialog>
