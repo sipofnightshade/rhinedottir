@@ -2,9 +2,6 @@
   export let dialog: HTMLDialogElement;
 
   export let modalTitle: string;
-  export let actionType: string;
-  export let buttonType: string;
-  export let details: string;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -14,10 +11,7 @@
   class="items-start rounded-xl border-b border-slate-500 bg-slate-700 p-1 text-slate-200 backdrop:bg-black/75 xs-300:p-2 xs:w-96 xs:rounded-2xl xs:p-4"
 >
   <div class="flex w-full items-start justify-between px-4 py-3">
-    <div class="text-slate-100">
-      <h2 class="text-base font-bold">{modalTitle}</h2>
-      <h3 class="mt-1 text-sm text-anemo">{actionType} Lv. 10</h3>
-    </div>
+    <h2 class="text-base font-bold text-slate-100">{modalTitle}</h2>
     <button on:click={() => dialog.close()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -30,15 +24,9 @@
       </svg>
     </button>
   </div>
-  <div class="h-full overflow-hidden px-4 pb-4">
-    <p class="text-base">
-      {details}
-    </p>
-  </div>
   <div
     class="grid h-12 w-full grid-flow-col items-center gap-x-4 border-t border-slate-500"
   >
-    <h4 class="px-4 py-2">{buttonType}:</h4>
     <slot />
   </div>
 </dialog>
