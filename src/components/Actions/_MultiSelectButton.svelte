@@ -9,7 +9,7 @@
 
   // component imports
   import ActionButton from './ActionButton.svelte';
-  import ShortModal from '../Modal/ShortModal.svelte';
+  import ActionModal from '../Modal/ActionModal.svelte';
 
   export let element: Visions;
   export let data: Action;
@@ -65,7 +65,7 @@
     {/each}
   </div>
 </button>
-<ShortModal
+<ActionModal
   bind:dialog
   modalTitle={data.name}
   actionType="Elemental Burst"
@@ -95,4 +95,4 @@
       </button>
     {/each}
   </div>
-</ShortModal>
+</ActionModal>

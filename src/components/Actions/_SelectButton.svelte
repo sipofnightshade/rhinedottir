@@ -5,7 +5,7 @@
   import { action } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
 
-  import ShortModal from '../Modal/ShortModal.svelte';
+  import ActionModal from '../Modal/ActionModal.svelte';
   import ActionButton from './ActionButton.svelte';
 
   export let element: Visions;
@@ -108,7 +108,7 @@
     </ul>
   </ActionModal>
 {/if} -->
-<ShortModal
+<ActionModal
   bind:dialog
   modalTitle={data.name}
   actionType="Elemental Burst"
@@ -155,4 +155,4 @@
       </div>
     {/each}
   </form>
-</ShortModal>
+</ActionModal>
