@@ -1,6 +1,6 @@
 <script lang="ts">
+  import ComboModal from '../Modal/Combo/ComboModal.svelte';
   import ShortModal from '../Modal/ShortModal.svelte';
-  import ComboModal from '../Modal/Combo/Combo.svelte';
 
   let dialog: HTMLDialogElement;
 
