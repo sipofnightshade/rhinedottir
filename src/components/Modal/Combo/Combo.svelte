@@ -1,42 +1,40 @@
 <script lang="ts">
   import Button from './Button.svelte';
-
-  import traveleranemo from '$lib/data/characters/traveleranemo';
+  import { character } from '$lib/stores/characterStore';
 </script>
 
 <!-- @component
-- Replace `traveleranemo` with the selected character
 - Add Transformative reactions row
  -->
 
 <div>
   <!-- Normal -->
   <section class="mb-1 grid grid-flow-col gap-1">
-    {#each traveleranemo.normal as talent}
+    {#each $character.selected.normal as talent}
       <Button value={talent.tag} />
     {/each}
   </section>
   <!-- Charged -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each traveleranemo.charged as talent}
+    {#each $character.selected.charged as talent}
       <Button value={talent.tag} />
     {/each}
   </section>
   <!-- Plunge -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each traveleranemo.plunge as talent}
+    {#each $character.selected.plunge as talent}
       <Button value={talent.tag} />
     {/each}
   </section>
   <!-- Skill -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each traveleranemo.skill as talent}
+    {#each $character.selected.skill as talent}
       <Button value={talent.tag} />
     {/each}
   </section>
   <!-- Burst -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each traveleranemo.burst as talent}
+    {#each $character.selected.burst as talent}
       <Button value={talent.tag} />
     {/each}
   </section>
