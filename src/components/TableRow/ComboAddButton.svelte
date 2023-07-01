@@ -1,17 +1,10 @@
-<script lang="ts">
-  import ShortModal from '../Modal/ShortModal.svelte';
-  import ComboModal from '../Modal/Combo/Combo.svelte';
-
-  let dialog: HTMLDialogElement;
-
-  function toggleModal() {
-    dialog.showModal();
-  }
-</script>
+<!-- @component
+- This forwards the event to open the combo buttons modal
+ -->
 
 <button
   class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700"
-  on:click={toggleModal}
+  on:click
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +17,3 @@
     />
   </svg>
 </button>
-
-<ShortModal bind:dialog modalTitle="Talents">
-  <ComboModal />
-</ShortModal>

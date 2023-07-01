@@ -1,13 +1,12 @@
 <script lang="ts">
-  // export let tag:string;
-  // export let img:string;
+  export let talent: any;
   let reaction = true;
 </script>
 
 <button
   class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700 "
 >
-  <span>N1</span>
+  <span>{talent.tag}</span>
   <div class=" flex h-6 w-full justify-center">
     <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
     {#if reaction === true}
