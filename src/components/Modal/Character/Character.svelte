@@ -4,12 +4,12 @@
   import StarGroup from '../../Stars/StarGroup.svelte';
   import Filters from '../../Filters/Filters.svelte';
   import Picker from '../../Picker/Picker.svelte';
-  import { CharacterData } from '$lib/data/Characters';
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
   import { DefaultWeapons } from '$lib/data/DefaultWeapons';
   import { labels } from '$lib/data/Levels';
   import type { SelectedWeapon } from '$lib/types/global';
+  import { characterData } from '$lib/data/characters/index';
 
   // filter data
   const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
@@ -18,7 +18,7 @@
   let profileH;
   let contentH;
   let filter = '';
-  let filteredData = CharacterData;
+  let filteredData = characterData;
 
   // methods
   function handleIncrement(event: any) {
@@ -47,8 +47,8 @@
 
   // reactive expressions
   $: filteredData = filter
-    ? CharacterData.filter((item) => item.vision === filter)
-    : CharacterData;
+    ? characterData.filter((item) => item.vision === filter)
+    : characterData;
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>

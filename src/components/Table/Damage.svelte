@@ -21,7 +21,11 @@
   </div>
 
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={$talents.normalName} />
+    <Cell
+      align="start"
+      col="col-span-full"
+      value={$character.selected.talentNames.normal}
+    />
   </div>
 
   {#each $talents.normalRows as data}
@@ -29,7 +33,11 @@
   {/each}
 
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={$talents.skillName} />
+    <Cell
+      align="start"
+      col="col-span-full"
+      value={$character.selected.talentNames.skill}
+    />
   </div>
 
   {#each $talents.skillRows as data}
@@ -37,7 +45,11 @@
   {/each}
   <!---------- B U R S T ---------->
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell align="start" col="col-span-full" value={$talents.burstName} />
+    <Cell
+      align="start"
+      col="col-span-full"
+      value={$character.selected.talentNames.burst}
+    />
   </div>
 
   {#each $talents.burstRows as data}

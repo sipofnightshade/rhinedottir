@@ -3,9 +3,6 @@ import { derived } from 'svelte/store';
 import { character } from './characterStore';
 import { stats } from './statsStore';
 
-// talent data
-import { Talents } from '$lib/data/Talents';
-
 // types
 import TalentValues from '$lib/data/TalentValues.json';
 
@@ -32,7 +29,7 @@ function createTalents() {
     const DMGReduction = 0;
 
     // ✅ Normal Rows
-    const normalRows = Talents[cName].normal.hits.map((hit) => {
+    const normalRows = $character.selected.normal.map((hit) => {
       const values = TalentValues[cName].combat1;
       const debuffRes = $stats[infusion + 'Res'];
 
@@ -71,7 +68,7 @@ function createTalents() {
     });
 
     // ✅ Skill Rows
-    const skillRows = Talents[cName].skill.hits.map((hit) => {
+    const skillRows = $character.selected.skill.map((hit) => {
       const values = TalentValues[cName].combat2;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
@@ -109,7 +106,7 @@ function createTalents() {
     });
 
     // ✅ Burst Rows
-    const burstRows = Talents[cName].burst.hits.map((hit) => {
+    const burstRows = $character.selected.burst.map((hit) => {
       const values = TalentValues[cName].combat3;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
@@ -150,9 +147,9 @@ function createTalents() {
       normalRows,
       skillRows,
       burstRows,
-      normalName: Talents[cName].normal.name,
-      skillName: Talents[cName].skill.name,
-      burstName: Talents[cName].burst.name
+      normalName: $character.selected.normal,
+      skillName: $character.selected.skill,
+      burstName: $character.selected.burst
     };
   });
 }

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Talents } from '$lib/data/Talents';
   import { character } from '$lib/stores/characterStore';
 
   // import components
@@ -29,7 +28,7 @@
   class="grid w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
   class:my-4={margin}
 >
-  {#each Talents[charName].actions as data}
+  {#each $character.selected.actions as data}
     <!-- {#if data.actionType === 'toggle'}
       <ToggleButton {data} element={$character.selected.vision} />
     {:else if data.actionType === 'stack'}

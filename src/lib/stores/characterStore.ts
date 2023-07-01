@@ -1,12 +1,13 @@
 import { writable } from 'svelte/store';
 import GenshinStats from '$lib/helpers/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
-import type { SelectedCharacter } from '$lib/types/global';
+import type { CharacterRecord } from '$lib/types/global';
+import traveleranemo from '$lib/data/characters/traveleranemo';
 
 type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
 type CurrentCharacter = {
-  selected: SelectedCharacter;
+  selected: CharacterRecord;
   stats:
     | {
         level: string | undefined;
@@ -26,14 +27,7 @@ type CurrentCharacter = {
 };
 
 const initialState: CurrentCharacter = {
-  selected: {
-    name: 'aether',
-    fullName: 'Aether',
-    rating: 5,
-    vision: 'anemo',
-    weapon: 'sword',
-    specialized: 'atk%'
-  },
+  selected: traveleranemo,
   lvl: 13,
   constellation: 0,
   atk: 9,
@@ -47,7 +41,7 @@ function createCharacter() {
 
   return {
     subscribe,
-    setChar: (selected: SelectedCharacter) =>
+    setChar: (selected: CharacterRecord) =>
       update((state) => {
         state.selected = selected;
         state.lvl = 13;
