@@ -1,6 +1,6 @@
 export type Hit = {
   name: string;
-  tag?: string;
+  tag?: string; // Empty string for hit fields that are showOnly
   damageBonus: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
   // normal default = physical, skill & burst default is character element
   elemental?:
@@ -14,7 +14,6 @@ export type Hit = {
     | 'physical';
   multiHit?: number; // for some skills with repeated hits of same damage (up to my judgement)
   quadratic?: boolean;
-  showOnly?: boolean; // special multiplier
   damage: {
     scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';
     param:
@@ -119,6 +118,14 @@ export type OffField = {
 
 export type TalentRecord = {
   normal: {
+    name: string;
+    hits: Hit[];
+  };
+  charged: {
+    name: string;
+    hits: Hit[];
+  };
+  plunge: {
     name: string;
     hits: Hit[];
   };

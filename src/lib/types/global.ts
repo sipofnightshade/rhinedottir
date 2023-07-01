@@ -1,16 +1,9 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
 import type { ArtifactNames } from './artifacts';
-import type { ALL_STATS } from './talents';
+import type { ALL_STATS, Action, Hit, OffField } from './talents';
 
-export type SelectedCharacter = {
-  name: CharacterNames;
-  fullName: string;
-  rating: 4 | 5;
-  weapon: WeaponCategory;
-  vision: Visions;
-  specialized: CharacterSpecialized;
-};
+export type SelectedCharacter = CharacterRecord;
 
 export type SelectedWeapon = {
   name: WeaponNames;
@@ -88,7 +81,8 @@ export type CharacterSpecialized =
   | 'geo'
   | 'hydro'
   | 'pyro'
-  | 'physical';
+  | 'physical'
+  | 'healing';
 
 export type WeaponSpecialized =
   | 'atk%'
@@ -120,3 +114,25 @@ export type ArtifactStats =
   | 'hydro'
   | 'pyro'
   | 'healing';
+
+export type CharacterRecord = {
+  name: CharacterNames;
+  fullName: string;
+  rating: 4 | 5;
+  weapon: WeaponCategory;
+  vision: Visions;
+  specialized: CharacterSpecialized;
+  burstCost: number;
+  talentNames: {
+    normal: string;
+    skill: string;
+    burst: string;
+  };
+  normal: Hit[];
+  charged: Hit[];
+  plunge: Hit[];
+  skill: Hit[];
+  burst: Hit[];
+  actions: Action[];
+  offField?: OffField[];
+};
