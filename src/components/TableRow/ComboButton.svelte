@@ -1,12 +1,14 @@
 <script lang="ts">
-  export let talent: any;
+  import type { Hit } from '$lib/types/talents';
+
+  export let hit: Hit;
   let reaction = true;
 </script>
 
 <button
   class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700 "
 >
-  <span>{talent.tag}</span>
+  <span>{hit.tag}</span>
   <div class=" flex h-6 w-full justify-center">
     <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
     {#if reaction === true}
@@ -51,7 +53,7 @@
   <div class="z-[11]  font-bold text-white">N1</div>
 </button> -->
 <style lang="postcss">
-  .top {
+  /* .top {
     clip-path: polygon(0 0, 100% 0%, 100% 35%, 0 65%);
-  }
+  } */
 </style>

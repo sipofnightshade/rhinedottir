@@ -4,8 +4,14 @@
   import ComboModal from '../Modal/Combo/ComboModal.svelte';
   import ShortModal from '../Modal/ShortModal.svelte';
 
-  export let title: string;
-  export let talents: any;
+  import { setCombo, getCombo } from '$lib/context/comboContext';
+  import type { Combo } from '$lib/types/talents';
+
+  export let row: Combo;
+
+  setCombo(row);
+
+  const comboRow = getCombo();
 
   let dialog: HTMLDialogElement;
 
@@ -15,10 +21,10 @@
 </script>
 
 <section class="my-2 border-b border-slate-700 pb-2">
-  <h3 class="mb-2">{title}</h3>
+  <h3 class="mb-2">{$comboRow.title}</h3>
   <div class="flex items-center">
-    {#each talents as talent}
-      <ComboButton {talent} />
+    {#each $comboRow.hits as hit}
+      <ComboButton {hit} />
     {/each}
     <ComboAddButton on:click={toggleModal} />
   </div>

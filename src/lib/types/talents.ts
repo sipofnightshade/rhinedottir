@@ -146,3 +146,8 @@ export type TalentRecord = {
 export type TalentRecords = {
   [P: string]: TalentRecord;
 };
+
+export type Combo = {
+  title: string;
+  hits: Hit[];
+};

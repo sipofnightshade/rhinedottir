@@ -1,18 +1,18 @@
 <script lang="ts">
   import ComboRow from '../TableRow/ComboRow.svelte';
-  import type { Hit } from '$lib/types/talents';
+  import type { Combo } from '$lib/types/talents';
 
-  let comboRows: { title: string; hits: Hit[] }[] = [];
+  let aetherCombos: Combo[] = [];
 
   function addComboRow() {
-    comboRows = [...comboRows, { title: '', hits: [] }];
+    aetherCombos = [...aetherCombos, { title: 'New Combo', hits: [] }];
   }
 </script>
 
 <div class="flex flex-col">
-  {#if comboRows.length > 0}
-    {#each comboRows as row}
-      <ComboRow title={row.title} talents={row.hits} />
+  {#if aetherCombos.length > 0}
+    {#each aetherCombos as row}
+      <ComboRow {row} />
     {/each}
   {/if}
   <button
