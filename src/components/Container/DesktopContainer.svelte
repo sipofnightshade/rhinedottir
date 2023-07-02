@@ -19,11 +19,11 @@
   <div class="container relative mx-auto flex h-full flex-col space-y-4">
     <MenuBar />
     <div
-      class="min-h-0 grid flex-1 grid-cols-[310px_442px] gap-4 overflow-hidden lg:grid-cols-[380px_612px] lg:gap-8 xl:grid-cols-[412px_832px]"
+      class="min-h-0 grid grid-cols-[310px_442px] gap-4 overflow-hidden lg:grid-cols-[380px_612px] lg:gap-8 xl:grid-cols-[412px_832px]"
     >
       <CharacterBlock />
       <ArtifactBlock />
-      <div class="flex flex-col overflow-hidden">
+      <div class="flex h-full flex-col overflow-hidden">
         <Tabs {items} buttonGrid="grid-cols-2 mb-2" />
       </div>
       <div class="flex flex-col space-y-2 overflow-hidden">

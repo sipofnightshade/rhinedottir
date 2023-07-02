@@ -56,10 +56,10 @@
       alt={$character.selected.fullName}
     />
   </button>
-  <div class="grid grid-cols-3 gap-2 xl:gap-4">
+  <div class="flex flex-col gap-2  xl:gap-4">
     <!-- Weapon Button -->
     <button
-      class="col-span-3 flex h-full w-full items-end rounded-2xl bg-slate-700 p-1 text-sm lg:text-base"
+      class="col-span-3 flex h-fit w-full items-end rounded-2xl bg-slate-700 p-1 text-sm lg:text-base"
       on:click={() => toggleModal(Weapon, 'Weapon')}
     >
       <div class="h-12 w-12 lg:h-[60px] lg:w-[60px] xl:h-16 xl:w-16">
