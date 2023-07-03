@@ -8,13 +8,14 @@
 
   function pushButtonToRow(talent: Hit) {
     $comboRow.hits = [...$comboRow.hits, talent];
-    console.log('Combos', $comboRow);
   }
 </script>
 
-<!-- @component
+<!-- @component - * - * - * - * - * - * - * - * - * - 
 - Add Transformative reactions row
- -->
+- Add element information to each button type. This
+would have to be infusion for Normal/Charged Attacks.
+-->
 
 <div>
   <!-- Normal -->
