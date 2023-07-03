@@ -22,10 +22,17 @@
 <!-- @component - * - * - * - * - * - * - * - * - * - 
 - Calculate all combo data here including reactions 
 etc.
+- Add edit icon and more styles to show that the Title
+is editable on shover and click etc
 -->
 
 <section class="my-2 border-b border-slate-700 pb-2">
-  <h3 class="mb-2 w-fit">{row.title}</h3>
+  <h3
+    class="mb-2 w-fit min-w-[120px] underline-offset-2 hover:underline"
+    contenteditable="true"
+    bind:innerHTML={row.title}
+  />
+
   <div class="flex items-center">
     {#each $comboRow.hits as hit}
       <ComboButton {hit} />
