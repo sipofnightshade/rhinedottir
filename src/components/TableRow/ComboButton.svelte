@@ -5,6 +5,11 @@
   let reaction = true;
 </script>
 
+<!-- @component - * - * - * - * - * - * - * - * - * - 
+- Cycle between appropriate reactions using the origin
+element and elements present in party
+-->
+
 <button
   class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700 "
 >

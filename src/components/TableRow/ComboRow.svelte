@@ -9,19 +9,23 @@
 
   export let row: Combo;
 
-  setCombo(row);
-
-  const comboRow = getCombo();
-
   let dialog: HTMLDialogElement;
+
+  setCombo(row);
+  const comboRow = getCombo();
 
   function toggleModal() {
     dialog.showModal();
   }
 </script>
 
+<!-- @component - * - * - * - * - * - * - * - * - * - 
+- Calculate all combo data here including reactions 
+etc.
+-->
+
 <section class="my-2 border-b border-slate-700 pb-2">
-  <h3 class="mb-2">{$comboRow.title}</h3>
+  <h3 class="mb-2 w-fit">{row.title}</h3>
   <div class="flex items-center">
     {#each $comboRow.hits as hit}
       <ComboButton {hit} />

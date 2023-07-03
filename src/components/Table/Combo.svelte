@@ -20,6 +20,7 @@
 
   function addComboRow() {
     combos.rows = [...combos.rows, { title: 'New Combo', hits: [] }];
+    console.log(`${$character.selected.fullName}:`, combos);
   }
 </script>
 
