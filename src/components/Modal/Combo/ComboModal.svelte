@@ -3,10 +3,11 @@
   import { character } from '$lib/stores/characterStore';
   import { getCombo } from '$lib/context/comboContext';
   import type { Hit } from '$lib/types/talents';
+  import { talents } from '$lib/stores/talentStore';
 
   const comboRow = getCombo();
 
-  function pushButtonToRow(talent: Hit) {
+  function pushButtonToRow(talent: any) {
     $comboRow.hits = [...$comboRow.hits, talent];
   }
 </script>
@@ -20,31 +21,31 @@ would have to be infusion for Normal/Charged Attacks.
 <div>
   <!-- Normal -->
   <section class="mb-1 grid grid-flow-col gap-1">
-    {#each $character.selected.normal as talent}
+    {#each $talents.normalRows as talent}
       <Button value={talent.tag} on:click={() => pushButtonToRow(talent)} />
     {/each}
   </section>
   <!-- Charged -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $character.selected.charged as talent}
+    {#each $talents.chargedRows as talent}
       <Button value={talent.tag} on:click={() => pushButtonToRow(talent)} />
     {/each}
   </section>
   <!-- Plunge -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $character.selected.plunge as talent}
+    {#each $talents.plungeRows as talent}
       <Button value={talent.tag} on:click={() => pushButtonToRow(talent)} />
     {/each}
   </section>
   <!-- Skill -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $character.selected.skill as talent}
+    {#each $talents.skillRows as talent}
       <Button value={talent.tag} on:click={() => pushButtonToRow(talent)} />
     {/each}
   </section>
   <!-- Burst -->
   <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $character.selected.burst as talent}
+    {#each $talents.burstRows as talent}
       <Button value={talent.tag} on:click={() => pushButtonToRow(talent)} />
     {/each}
   </section>
