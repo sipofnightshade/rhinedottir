@@ -16,12 +16,12 @@ const infusion = 'physical';
 
 function createTalents() {
   return derived([character, stats], ([$character, $stats]) => {
-    // const cName =
+    // const characterName =
     //   $character.selected.name === "aether"
     //     ? `traveler${$character.selected.vision}`
     //     : $character.selected.name;
-    const cName = 'traveleranemo';
-    const eLvl = 87;
+    const characterName = 'traveleranemo';
+    const enemyLvl = 87;
 
     // enemy stats TODO - needs to get values from $stats
     const baseRes = 0.1;
@@ -30,7 +30,7 @@ function createTalents() {
 
     // ✅ Normal Rows
     const normalRows = $character.selected.normal.map((hit) => {
-      const values = TalentValues[cName].combat1;
+      const values = TalentValues[characterName].combat1;
       const debuffRes = $stats[infusion + 'Res'];
 
       const SpecialMultiplier = 1 + $stats.normalSpecialMultiplier;
@@ -41,7 +41,7 @@ function createTalents() {
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
-        eLvl,
+        enemyLvl,
         $stats.defReduce,
         $stats.normalDefIgnore
       );
@@ -69,7 +69,7 @@ function createTalents() {
 
     // ✅ Charged Rows
     const chargedRows = $character.selected.charged.map((hit) => {
-      const values = TalentValues[cName].combat1;
+      const values = TalentValues[characterName].combat1;
       const debuffRes = $stats[infusion + 'Res'];
 
       const SpecialMultiplier = 1 + $stats.chargedSpecialMultiplier;
@@ -80,7 +80,7 @@ function createTalents() {
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
-        eLvl,
+        enemyLvl,
         $stats.defReduce,
         $stats.chargedDefIgnore
       );
@@ -108,7 +108,7 @@ function createTalents() {
 
     // ✅ Plunge Rows
     const plungeRows = $character.selected.plunge.map((hit) => {
-      const values = TalentValues[cName].combat1;
+      const values = TalentValues[characterName].combat1;
       const debuffRes = $stats[infusion + 'Res'];
 
       const SpecialMultiplier = 1 + $stats.plungeSpecialMultiplier;
@@ -119,7 +119,7 @@ function createTalents() {
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
-        eLvl,
+        enemyLvl,
         $stats.defReduce,
         $stats.plungeDefIgnore
       );
@@ -147,7 +147,7 @@ function createTalents() {
 
     // ✅ Skill Rows
     const skillRows = $character.selected.skill.map((hit) => {
-      const values = TalentValues[cName].combat2;
+      const values = TalentValues[characterName].combat2;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
 
@@ -157,7 +157,7 @@ function createTalents() {
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
-        eLvl,
+        enemyLvl,
         $stats.defReduce,
         $stats.skillDefIgnore
       );
@@ -185,7 +185,7 @@ function createTalents() {
 
     // ✅ Burst Rows
     const burstRows = $character.selected.burst.map((hit) => {
-      const values = TalentValues[cName].combat3;
+      const values = TalentValues[characterName].combat3;
       // uses character vison to index the appropriate element
       const debuffRes = $stats[$character.selected.vision + 'Res'];
 
@@ -195,7 +195,7 @@ function createTalents() {
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
-        eLvl,
+        enemyLvl,
         $stats.defReduce,
         $stats.burstDefIgnore
       );
