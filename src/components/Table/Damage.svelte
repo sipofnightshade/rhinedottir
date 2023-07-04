@@ -28,7 +28,20 @@
     />
   </div>
 
+  <!-- Normal -->
   {#each $talents.normalRows as data}
+    <TalentRow {data} el={data.elemental || infusion} />
+  {/each}
+
+  <!-- Charged -->
+  <div class="h-[1px] w-full bg-slate-600" />
+  {#each $talents.chargedRows as data}
+    <TalentRow {data} el={data.elemental || infusion} />
+  {/each}
+
+  <!-- Plunge -->
+  <div class="h-[1px] w-full bg-slate-600" />
+  {#each $talents.plungeRows as data}
     <TalentRow {data} el={data.elemental || infusion} />
   {/each}
 

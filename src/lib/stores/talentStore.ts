@@ -67,6 +67,84 @@ function createTalents() {
       return { ...hit, damage: FinalDMG };
     });
 
+    // ✅ Charged Rows
+    const chargedRows = $character.selected.charged.map((hit) => {
+      const values = TalentValues[cName].combat1;
+      const debuffRes = $stats[infusion + 'Res'];
+
+      const SpecialMultiplier = 1 + $stats.chargedSpecialMultiplier;
+
+      const DMGBonus =
+        (hit.elemental ? $stats[hit.elemental] : $stats[infusion]) +
+        $stats[hit.damageBonus];
+
+      const DEFMultiplier = calcDEFMultiplier(
+        $character.lvl,
+        eLvl,
+        $stats.defReduce,
+        $stats.chargedDefIgnore
+      );
+      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
+
+      const FinalDMG = hit.damage.reduce((total, damage) => {
+        const BaseDMG =
+          $stats[damage.scaling] *
+          values[damage.param as keyof typeof values][$character.atk];
+
+        const calculatedDMG = calcDamageNoReaction(
+          BaseDMG,
+          SpecialMultiplier,
+          $stats.chargedFlatDMG,
+          DMGBonus,
+          DMGReduction,
+          DEFMultiplier,
+          RESMultiplier
+        );
+        return total + calculatedDMG;
+      }, 0);
+
+      return { ...hit, damage: FinalDMG };
+    });
+
+    // ✅ Plunge Rows
+    const plungeRows = $character.selected.plunge.map((hit) => {
+      const values = TalentValues[cName].combat1;
+      const debuffRes = $stats[infusion + 'Res'];
+
+      const SpecialMultiplier = 1 + $stats.plungeSpecialMultiplier;
+
+      const DMGBonus =
+        (hit.elemental ? $stats[hit.elemental] : $stats[infusion]) +
+        $stats[hit.damageBonus];
+
+      const DEFMultiplier = calcDEFMultiplier(
+        $character.lvl,
+        eLvl,
+        $stats.defReduce,
+        $stats.plungeDefIgnore
+      );
+      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
+
+      const FinalDMG = hit.damage.reduce((total, damage) => {
+        const BaseDMG =
+          $stats[damage.scaling] *
+          values[damage.param as keyof typeof values][$character.atk];
+
+        const calculatedDMG = calcDamageNoReaction(
+          BaseDMG,
+          SpecialMultiplier,
+          $stats.plungeFlatDMG,
+          DMGBonus,
+          DMGReduction,
+          DEFMultiplier,
+          RESMultiplier
+        );
+        return total + calculatedDMG;
+      }, 0);
+
+      return { ...hit, damage: FinalDMG };
+    });
+
     // ✅ Skill Rows
     const skillRows = $character.selected.skill.map((hit) => {
       const values = TalentValues[cName].combat2;
@@ -145,11 +223,10 @@ function createTalents() {
 
     return {
       normalRows,
+      chargedRows,
+      plungeRows,
       skillRows,
-      burstRows,
-      normalName: $character.selected.normal,
-      skillName: $character.selected.skill,
-      burstName: $character.selected.burst
+      burstRows
     };
   });
 }
