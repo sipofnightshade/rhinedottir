@@ -1,11 +1,11 @@
 <script lang="ts">
   import ComboRow from '../TableRow/ComboRow.svelte';
-  import type { Combo } from '$lib/types/talents';
+  import type { ComboRowType } from '$lib/types/talents';
   import { character } from '$lib/stores/characterStore';
 
   type CharacterCombos = {
     id: string;
-    rows: Combo[];
+    rows: ComboRowType[];
   };
 
   let combos: CharacterCombos;
