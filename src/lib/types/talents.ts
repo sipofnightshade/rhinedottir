@@ -147,7 +147,7 @@ export type TalentRecords = {
   [P: string]: TalentRecord;
 };
 
-export type Combo = {
+export type ComboRowType = {
   title: string;
   hits: Hit[];
 };
