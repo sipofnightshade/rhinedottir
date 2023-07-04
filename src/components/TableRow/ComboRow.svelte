@@ -5,23 +5,27 @@
   import ShortModal from '../Modal/ShortModal.svelte';
 
   import { setCombo, getCombo } from '$lib/context/comboContext';
-  import type { Combo } from '$lib/types/talents';
+  import type { ComboRowType } from '$lib/types/talents';
 
-  export let row: Combo;
+  export let row: ComboRowType;
 
   let dialog: HTMLDialogElement;
 
   setCombo(row);
   const comboRow = getCombo();
 
+  function calculateComboData(row: ComboRowType) {
+    return row.hits.reduce((totalDamage: any, { damage }) => totalDamage + damage, 0);
+  }
+
   function toggleModal() {
     dialog.showModal();
   }
+
+  $: damage = Math.round(calculateComboData($comboRow)).toLocaleString();
 </script>
 
 <!-- @component - * - * - * - * - * - * - * - * - * - 
-- Calculate all combo data here including reactions 
-etc.
 - Add edit icon and more styles to show that the Title
 is editable on shover and click etc
 -->
@@ -40,9 +44,9 @@ is editable on shover and click etc
     <ComboAddButton on:click={toggleModal} />
   </div>
   <div class="flex justify-between">
-    <div class="mt-2 flex">
+    <div class="mt-2 flex gap-1">
       <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
-      <span>246,192</span>
+      <span>{damage || '-'}</span>
     </div>
   </div>
 </section>
