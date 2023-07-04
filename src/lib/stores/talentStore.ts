@@ -10,52 +10,63 @@ import TalentValues from '$lib/data/TalentValues.json';
 import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
 import { calcRESMultiplier } from '$lib/calculators/calcRESMultiplier';
 import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
+import type { Hit } from '$lib/types/talents';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
 
 function createTalents() {
   return derived([character, stats], ([$character, $stats]) => {
-    // const characterName =
-    //   $character.selected.name === "aether"
-    //     ? `traveler${$character.selected.vision}`
-    //     : $character.selected.name;
-    const characterName = 'traveleranemo';
-    const enemyLvl = 87;
+    // create traveler name indexes
+    const characterName =
+      $character.selected.name === 'aether'
+        ? `traveler${$character.selected.vision}`
+        : $character.selected.name;
 
-    // enemy stats TODO - needs to get values from $stats
+    // enemy stats
+    // TODO - need to get values from $stats
+    const enemyLvl = 87;
     const baseRes = 0.1;
     const bonusRes = 0;
     const DMGReduction = 0;
 
-    // ✅ Normal Rows
-    const normalRows = $character.selected.normal.map((hit) => {
-      const values = TalentValues[characterName].combat1;
-      const debuffRes = $stats[infusion + 'Res'];
+    function calculateFinalDMG(
+      hit: Hit,
+      values: any,
+      element: any,
+      specX: any,
+      defIgnore: any,
+      talentLvl: 'atk' | 'skill' | 'burst',
+      flatDmg: any
+    ) {
+      const debuffRes = $stats[element + 'Res'];
 
-      const SpecialMultiplier = 1 + $stats.normalSpecialMultiplier;
+      const SpecialMultiplier = 1 + $stats[specX];
 
+      // this should be able to handle physical as well
       const DMGBonus =
-        (hit.elemental ? $stats[hit.elemental] : $stats[infusion]) +
+        (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
         $stats[hit.damageBonus];
 
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
         enemyLvl,
         $stats.defReduce,
-        $stats.normalDefIgnore
+        $stats[defIgnore]
       );
+
       const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
 
       const FinalDMG = hit.damage.reduce((total, damage) => {
         const BaseDMG =
           $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.atk];
+          values[damage.param as keyof typeof values][$character[talentLvl]];
+        // console.log('values test fucntion', values[damage.param][$character[talent]]);
 
         const calculatedDMG = calcDamageNoReaction(
           BaseDMG,
           SpecialMultiplier,
-          $stats.normalFlatDMG,
+          $stats[flatDmg],
           DMGBonus,
           DMGReduction,
           DEFMultiplier,
@@ -65,161 +76,81 @@ function createTalents() {
       }, 0);
 
       return { ...hit, damage: FinalDMG };
+    }
+
+    // ✅ Normal Rows
+    const normalRows = $character.selected.normal.map((hit) => {
+      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      return calculateFinalDMG(
+        hit,
+        values,
+        infusion,
+        'normalSpecialMultiplier',
+        'normalDefIgnore',
+        'atk',
+        'normalFlatDMG'
+      );
     });
 
     // ✅ Charged Rows
     const chargedRows = $character.selected.charged.map((hit) => {
-      const values = TalentValues[characterName].combat1;
-      const debuffRes = $stats[infusion + 'Res'];
-
-      const SpecialMultiplier = 1 + $stats.chargedSpecialMultiplier;
-
-      const DMGBonus =
-        (hit.elemental ? $stats[hit.elemental] : $stats[infusion]) +
-        $stats[hit.damageBonus];
-
-      const DEFMultiplier = calcDEFMultiplier(
-        $character.lvl,
-        enemyLvl,
-        $stats.defReduce,
-        $stats.chargedDefIgnore
+      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      return calculateFinalDMG(
+        hit,
+        values,
+        infusion,
+        'chargedSpecialMultiplier',
+        'chargedDefIgnore',
+        'atk',
+        'chargedFlatDMG'
       );
-      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
-
-      const FinalDMG = hit.damage.reduce((total, damage) => {
-        const BaseDMG =
-          $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.atk];
-
-        const calculatedDMG = calcDamageNoReaction(
-          BaseDMG,
-          SpecialMultiplier,
-          $stats.chargedFlatDMG,
-          DMGBonus,
-          DMGReduction,
-          DEFMultiplier,
-          RESMultiplier
-        );
-        return total + calculatedDMG;
-      }, 0);
-
-      return { ...hit, damage: FinalDMG };
     });
 
     // ✅ Plunge Rows
     const plungeRows = $character.selected.plunge.map((hit) => {
-      const values = TalentValues[characterName].combat1;
-      const debuffRes = $stats[infusion + 'Res'];
-
-      const SpecialMultiplier = 1 + $stats.plungeSpecialMultiplier;
-
-      const DMGBonus =
-        (hit.elemental ? $stats[hit.elemental] : $stats[infusion]) +
-        $stats[hit.damageBonus];
-
-      const DEFMultiplier = calcDEFMultiplier(
-        $character.lvl,
-        enemyLvl,
-        $stats.defReduce,
-        $stats.plungeDefIgnore
+      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      return calculateFinalDMG(
+        hit,
+        values,
+        infusion,
+        'plungeSpecialMultiplier',
+        'plungeDefIgnore',
+        'atk',
+        'plungeFlatDMG'
       );
-      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
-
-      const FinalDMG = hit.damage.reduce((total, damage) => {
-        const BaseDMG =
-          $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.atk];
-
-        const calculatedDMG = calcDamageNoReaction(
-          BaseDMG,
-          SpecialMultiplier,
-          $stats.plungeFlatDMG,
-          DMGBonus,
-          DMGReduction,
-          DEFMultiplier,
-          RESMultiplier
-        );
-        return total + calculatedDMG;
-      }, 0);
-
-      return { ...hit, damage: FinalDMG };
     });
 
     // ✅ Skill Rows
     const skillRows = $character.selected.skill.map((hit) => {
-      const values = TalentValues[characterName].combat2;
-      // uses character vison to index the appropriate element
-      const debuffRes = $stats[$character.selected.vision + 'Res'];
-
-      const SpecialMultiplier = 1 + $stats.skillSpecialMultiplier;
-
-      const DMGBonus = $stats[$character.selected.vision] + $stats[hit.damageBonus];
-
-      const DEFMultiplier = calcDEFMultiplier(
-        $character.lvl,
-        enemyLvl,
-        $stats.defReduce,
-        $stats.skillDefIgnore
+      const values = TalentValues[characterName as keyof typeof TalentValues].combat2;
+      return calculateFinalDMG(
+        hit,
+        values,
+        infusion,
+        'skillSpecialMultiplier',
+        'skillDefIgnore',
+        'skill',
+        'skillFlatDMG'
       );
-      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
-
-      const FinalDMG = hit.damage.reduce((total, damage) => {
-        const BaseDMG =
-          $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.skill];
-
-        const calculatedDMG = calcDamageNoReaction(
-          BaseDMG,
-          SpecialMultiplier,
-          $stats.skillFlatDMG,
-          DMGBonus,
-          DMGReduction,
-          DEFMultiplier,
-          RESMultiplier
-        );
-        return total + calculatedDMG;
-      }, 0);
-
-      return { ...hit, damage: FinalDMG };
     });
 
     // ✅ Burst Rows
     const burstRows = $character.selected.burst.map((hit) => {
-      const values = TalentValues[characterName].combat3;
-      // uses character vison to index the appropriate element
-      const debuffRes = $stats[$character.selected.vision + 'Res'];
-
-      const SpecialMultiplier = 1 + $stats.burstSpecialMultiplier;
-
-      const DMGBonus = $stats[$character.selected.vision] + $stats[hit.damageBonus];
-
-      const DEFMultiplier = calcDEFMultiplier(
-        $character.lvl,
-        enemyLvl,
-        $stats.defReduce,
-        $stats.burstDefIgnore
+      const values = TalentValues[characterName as keyof typeof TalentValues].combat3;
+      return calculateFinalDMG(
+        hit,
+        values,
+        infusion,
+        'burstSpecialMultiplier',
+        'burstDefIgnore',
+        'burst',
+        'burstFlatDMG'
       );
-      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
-
-      const FinalDMG = hit.damage.reduce((total, damage) => {
-        const BaseDMG =
-          $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character.burst];
-
-        const calculatedDMG = calcDamageNoReaction(
-          BaseDMG,
-          SpecialMultiplier,
-          $stats.burstFlatDMG,
-          DMGBonus,
-          DMGReduction,
-          DEFMultiplier,
-          RESMultiplier
-        );
-        return total + calculatedDMG;
-      }, 0);
-
-      return { ...hit, damage: FinalDMG };
     });
+
+    // ✅ Party 1 Rows
+    // ✅ Party 2 Rows
+    // ✅ Party 3 Rows
 
     return {
       normalRows,
