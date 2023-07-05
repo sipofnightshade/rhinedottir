@@ -75,16 +75,17 @@ function createTalents() {
         return total + calculatedDMG;
       }, 0);
 
-      return { ...hit, damage: FinalDMG };
+      return { ...hit, elemental: element, damage: FinalDMG };
     }
 
     // ✅ Normal Rows
     const normalRows = $character.selected.normal.map((hit) => {
       const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
         values,
-        infusion,
+        element,
         'normalSpecialMultiplier',
         'normalDefIgnore',
         'atk',
@@ -95,10 +96,11 @@ function createTalents() {
     // ✅ Charged Rows
     const chargedRows = $character.selected.charged.map((hit) => {
       const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
         values,
-        infusion,
+        element,
         'chargedSpecialMultiplier',
         'chargedDefIgnore',
         'atk',
@@ -109,10 +111,11 @@ function createTalents() {
     // ✅ Plunge Rows
     const plungeRows = $character.selected.plunge.map((hit) => {
       const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
         values,
-        infusion,
+        element,
         'plungeSpecialMultiplier',
         'plungeDefIgnore',
         'atk',
@@ -123,10 +126,11 @@ function createTalents() {
     // ✅ Skill Rows
     const skillRows = $character.selected.skill.map((hit) => {
       const values = TalentValues[characterName as keyof typeof TalentValues].combat2;
+      const element = hit.elemental ? hit.elemental : $character.selected.vision;
       return calculateFinalDMG(
         hit,
         values,
-        infusion,
+        element,
         'skillSpecialMultiplier',
         'skillDefIgnore',
         'skill',
@@ -137,10 +141,11 @@ function createTalents() {
     // ✅ Burst Rows
     const burstRows = $character.selected.burst.map((hit) => {
       const values = TalentValues[characterName as keyof typeof TalentValues].combat3;
+      const element = hit.elemental ? hit.elemental : $character.selected.vision;
       return calculateFinalDMG(
         hit,
         values,
-        infusion,
+        element,
         'burstSpecialMultiplier',
         'burstDefIgnore',
         'burst',
