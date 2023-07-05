@@ -1,9 +1,8 @@
 <script lang="ts">
-  import type { Hit } from '$lib/types/talents';
-  import type { DamageType } from '$lib/types/global';
   import Cell from './Cell.svelte';
 
-  export let el: DamageType;
+  import StatImage from '../Desktop/StatImage.svelte';
+
   export let data: any;
 </script>
 
@@ -11,7 +10,7 @@
   <Cell align="start" col="col-span-2" value={data.tag || '-'} />
   <Cell align="start" col="col-span-10 text-slate-400" value={data.name} />
   <Cell align="center" col="col-span-2">
-    <img class="h-6 w-6" src="/images/elements/{el}.svg" alt={el} />
+    <StatImage stat={data.elemental} />
   </Cell>
   <Cell align="end" col="col-span-4 text-slate-400" value={data.damage.toFixed(0)} />
   <Cell align="end" col="col-span-6" value={(data.damage * 1.5).toFixed(0)} />

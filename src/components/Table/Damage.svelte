@@ -30,19 +30,19 @@
 
   <!-- Normal -->
   {#each $talents.normalRows as data}
-    <TalentRow {data} el={data.elemental || infusion} />
+    <TalentRow {data} />
   {/each}
 
   <!-- Charged -->
   <div class="h-[1px] w-full bg-slate-600" />
   {#each $talents.chargedRows as data}
-    <TalentRow {data} el={data.elemental || infusion} />
+    <TalentRow {data} />
   {/each}
 
   <!-- Plunge -->
   <div class="h-[1px] w-full bg-slate-600" />
   {#each $talents.plungeRows as data}
-    <TalentRow {data} el={data.elemental || infusion} />
+    <TalentRow {data} />
   {/each}
 
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
@@ -54,7 +54,7 @@
   </div>
 
   {#each $talents.skillRows as data}
-    <TalentRow {data} el={data.elemental || $character.selected.vision} />
+    <TalentRow {data} />
   {/each}
   <!---------- B U R S T ---------->
   <div class=" grid grid-cols-24 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
@@ -66,6 +66,6 @@
   </div>
 
   {#each $talents.burstRows as data}
-    <TalentRow {data} el={data.elemental || $character.selected.vision} />
+    <TalentRow {data} />
   {/each}
 </div>
