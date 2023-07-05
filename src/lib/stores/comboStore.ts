@@ -13,6 +13,7 @@ function createComboRow() {
 
   return {
     subscribe,
+    set,
     addRow: () =>
       update((state) => {
         const newRow: ComboRow = {
