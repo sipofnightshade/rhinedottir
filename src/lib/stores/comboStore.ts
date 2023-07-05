@@ -13,21 +13,33 @@ function createComboRow() {
 
   return {
     subscribe,
-    addRow: (selected: any) =>
+    addRow: () =>
       update((state) => {
-        return state;
+        const newRow: ComboRow = {
+          title: 'New Row',
+          hits: []
+        };
+        return [...state, newRow];
       }),
-    removeRow: (selected: any) =>
+    removeRow: (rowIndex: number) =>
       update((state) => {
-        return state;
+        const newState = [...state];
+        newState.splice(rowIndex, 1);
+        return newState;
+        // state.splice(rowIndex, 1);
+        // return state;
       }),
-    addHit: (rowIndex: number, hit: Hit) =>
+    addRowButton: (rowIndex: number, hit: Hit) =>
       update((state) => {
-        return state;
+        const newState = [...state];
+        newState[rowIndex].hits.push(hit);
+        return newState;
       }),
-    removeHit: (rowIndex: number, hitIndex: number) =>
+    removeRowButton: (rowIndex: number, hitIndex: number) =>
       update((state) => {
-        return state;
+        const newState = [...state];
+        newState[rowIndex].hits.splice(hitIndex, 1);
+        return newState;
       }),
     reset: () => set(initialState)
   };
