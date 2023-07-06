@@ -13,6 +13,7 @@ export const getCalculatedStat = (
       return base.def * value;
     case 'hp':
     case 'atk':
+    case 'def':
     case 'physical':
     case 'anemo':
     case 'cryo':
