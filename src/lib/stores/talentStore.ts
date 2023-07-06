@@ -5,12 +5,14 @@ import { stats } from './statsStore';
 
 // types
 import TalentValues from '$lib/data/TalentValues.json';
+import type { Hit } from '$lib/types/talents';
 
 // calculators & helpers
 import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
 import { calcRESMultiplier } from '$lib/calculators/calcRESMultiplier';
 import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
-import type { Hit } from '$lib/types/talents';
+import { calcCatalyzeBonus } from '$lib/calculators/calcCatalyzeBonus';
+import type { DamageType } from '$lib/types/global';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -33,35 +35,48 @@ function createTalents() {
     function calculateFinalDMG(
       hit: Hit,
       values: any,
-      element: any,
+      element: DamageType,
       specX: any,
       defIgnore: any,
       talentLvl: 'atk' | 'skill' | 'burst',
       flatDmg: any
     ) {
       const debuffRes = $stats[element + 'Res'];
-
       const SpecialMultiplier = 1 + $stats[specX];
-
-      // this should be able to handle physical as well
-      const DMGBonus =
-        (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
-        $stats[hit.damageBonus];
-
       const DEFMultiplier = calcDEFMultiplier(
         $character.lvl,
         enemyLvl,
         $stats.defReduce,
         $stats[defIgnore]
       );
-
       const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
+      const DMGBonus =
+        (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
+        $stats[hit.damageBonus];
+
+      // 💥 check if catalyze & calculate the bonus flatDMG
+      // ❗❗❗❗❗❗❗ This should be taken out of the function so it doesnt run for every hit
+      const catalyze = {
+        electro: 'aggravate',
+        dendro: 'spread'
+      };
+      const catalyzeFlatDMG =
+        element === 'dendro' || element === 'electro'
+          ? $stats[flatDmg] +
+            calcCatalyzeBonus(
+              element,
+              $stats.em,
+              $character.lvl,
+              $stats[catalyze[element]]
+            )
+          : 0;
+
+      // 💥 check if amplifying
 
       const FinalDMG = hit.damage.reduce((total, damage) => {
         const BaseDMG =
           $stats[damage.scaling] *
           values[damage.param as keyof typeof values][$character[talentLvl]];
-        // console.log('values test fucntion', values[damage.param][$character[talent]]);
 
         const calculatedDMG = calcDamageNoReaction(
           BaseDMG,
