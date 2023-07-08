@@ -17,18 +17,25 @@ function createStats() {
 
       const flatStats = Object.values($artifacts)
         .map((artifact) => {
-          return [
-            artifact.mainStat,
-            artifact.substats.map((item: { stat: string; value: number }) => {
-              return item;
-            })
-          ];
+          const mainStat = artifact.mainStat || {}; // Set default value for mainStat
+          const substats = artifact.substats || []; // Set default value for substats
+
+          const filteredSubstats = substats.filter(
+            (item: { stat: string; value: number }) => item.stat && item.value !== 0
+          ); // Filter substats with non-empty stat and non-zero value
+
+          return [mainStat, ...filteredSubstats];
         })
-        .flat(2)
-        .filter((item) => item.stat !== '' && item.value !== 0)
+        .flat(1)
+        .filter((item) => item && item.stat && item.value !== 0) // Filter out items with undefined or empty stat and non-zero value
         .map((item) => {
-          if (item.stat === 'em') {
-            return;
+          if (
+            item.stat === 'em' ||
+            item.stat === 'atk' ||
+            item.stat === 'def' ||
+            item.stat === 'hp'
+          ) {
+            return item;
           }
           return { ...item, value: item.value / 100 };
         });
