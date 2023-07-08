@@ -122,6 +122,7 @@ function createArtifact() {
 
   return {
     subscribe,
+    set,
     setArtifact: (relic: ArtifactType, selected: SelectedArtifact) =>
       update((state) => {
         state[relic].selected = selected;

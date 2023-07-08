@@ -68,11 +68,10 @@
   </div>
   <input
     class="col-span-1 appearance-none rounded-md border border-slate-800 bg-slate-800 py-1 px-1 text-right focus:border-slate-400 focus:ring-slate-300"
-    bind:value={statValue}
-    on:blur={setInputValue}
-    placeholder="0"
+    bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
     type="number"
+    disabled={!$artifact[type].substats[id].stat}
   />
 </div>
 
