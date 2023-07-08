@@ -51,7 +51,11 @@ const initialState = {
   burstDefIgnore: 0,
   defReduce: 0,
   partyEnergy: 0,
-  partyEM: 0
+  partyEM: 0,
+  aggravate: 0, // reaction bonus
+  spread: 0, // reaction bonus
+  melt: 0, // reaction bonus
+  vaporize: 0 // reaction bonus
 };
 
 function createAction() {
