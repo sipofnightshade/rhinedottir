@@ -6,13 +6,13 @@ import { stats } from './statsStore';
 // types
 import TalentValues from '$lib/data/TalentValues.json';
 import type { Hit } from '$lib/types/talents';
+import type { DamageType } from '$lib/types/global';
 
 // calculators & helpers
 import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
 import { calcRESMultiplier } from '$lib/calculators/calcRESMultiplier';
 import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
 import { calcCatalyzeBonus } from '$lib/calculators/calcCatalyzeBonus';
-import type { DamageType } from '$lib/types/global';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -36,10 +36,10 @@ function createTalents() {
       hit: Hit,
       values: any,
       element: DamageType,
-      specX: any,
-      defIgnore: any,
+      specX: string,
+      defIgnore: string,
       talentLvl: 'atk' | 'skill' | 'burst',
-      flatDmg: any
+      flatDmg: string
     ) {
       const debuffRes = $stats[element + 'Res'];
       const SpecialMultiplier = 1 + $stats[specX];
