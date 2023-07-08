@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { Hit } from '$lib/types/talents';
+  import StatImage from '../Desktop/StatImage.svelte';
 
   export let hit: Hit;
-  let reaction = true;
+  let reaction = false;
+  function handleClick() {
+    reaction = !reaction;
+  }
 </script>
 
 <!-- @component - * - * - * - * - * - * - * - * - * - 
@@ -12,10 +16,13 @@ element and elements present in party
 
 <button
   class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700 "
+  on:click={handleClick}
 >
   <span>{hit.tag}</span>
   <div class=" flex h-6 w-full justify-center">
-    <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
+    {#if hit.elemental}
+      <StatImage stat={hit.elemental} />
+    {/if}
     {#if reaction === true}
       <img
         class="relative -ml-[14px] h-6 w-6 self-center"

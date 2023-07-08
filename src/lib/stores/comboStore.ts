@@ -1,9 +1,19 @@
 import { writable } from 'svelte/store';
 import type { Hit } from '$lib/types/talents';
 
+export type TalentRowID =
+  | 'normalRows'
+  | 'chargedRows'
+  | 'plungeRows'
+  | 'skillRows'
+  | 'burstRows';
+
 type ComboRow = {
   title: string;
-  hits: Hit[];
+  hits: {
+    talent: TalentRowID;
+    btnIndex: number;
+  }[];
 };
 
 const initialState: ComboRow[] = [];
@@ -24,17 +34,13 @@ function createComboRow() {
       }),
     removeRow: (rowIndex: number) =>
       update((state) => {
-        const newState = [...state];
-        newState.splice(rowIndex, 1);
-        return newState;
-        // state.splice(rowIndex, 1);
-        // return state;
+        state.splice(rowIndex, 1);
+        return state;
       }),
-    addRowButton: (rowIndex: number, hit: Hit) =>
+    addRowButton: (rowIndex: number, talent: TalentRowID, btnIndex: number) =>
       update((state) => {
-        const newState = [...state];
-        newState[rowIndex].hits.push(hit);
-        return newState;
+        state[rowIndex].hits.push({ talent, btnIndex });
+        return state;
       }),
     removeRowButton: (rowIndex: number, hitIndex: number) =>
       update((state) => {
