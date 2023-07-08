@@ -26,11 +26,8 @@ function createComboRow() {
     set,
     addRow: () =>
       update((state) => {
-        const newRow: ComboRow = {
-          title: 'New Row',
-          hits: []
-        };
-        return [...state, newRow];
+        state.push({ title: 'New Row', hits: [] });
+        return state;
       }),
     removeRow: (rowIndex: number) =>
       update((state) => {
@@ -44,9 +41,8 @@ function createComboRow() {
       }),
     removeRowButton: (rowIndex: number, hitIndex: number) =>
       update((state) => {
-        const newState = [...state];
-        newState[rowIndex].hits.splice(hitIndex, 1);
-        return newState;
+        state[rowIndex].hits.splice(hitIndex, 1);
+        return state;
       }),
     reset: () => set(initialState)
   };
