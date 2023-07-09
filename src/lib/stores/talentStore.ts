@@ -13,6 +13,8 @@ import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
 import { calcRESMultiplier } from '$lib/calculators/calcRESMultiplier';
 import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
 import { calcCatalyzeBonus } from '$lib/calculators/calcCatalyzeBonus';
+import { calcTransforming } from '$lib/calculators/calcTransforming';
+import { calcAmplifying } from '$lib/calculators/calcAmplifyingMultiplier';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -20,15 +22,15 @@ const infusion = 'physical';
 function createTalents() {
   return derived([character, stats], ([$character, $stats]) => {
     // create traveler name indexes
-    const characterName =
+    const cName =
       $character.selected.name === 'aether'
         ? `traveler${$character.selected.vision}`
         : $character.selected.name;
+    const cLvl = $character.lvl;
 
     // enemy stats
-    // TODO - need to get values from $stats
     const enemyLvl = 87;
-    const baseRes = 0.1;
+    const enemyRes = 0.1;
     const bonusRes = 0;
     const DMGReduction = 0;
 
@@ -41,21 +43,23 @@ function createTalents() {
       talentLvl: 'atk' | 'skill' | 'burst',
       flatDmg: string
     ) {
+      // setup ICD
+      const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
+
       const debuffRes = $stats[element + 'Res'];
       const SpecialMultiplier = 1 + $stats[specX];
       const DEFMultiplier = calcDEFMultiplier(
-        $character.lvl,
+        cLvl,
         enemyLvl,
         $stats.defReduce,
         $stats[defIgnore]
       );
-      const RESMultiplier = calcRESMultiplier(baseRes, bonusRes, debuffRes);
+      const RESMultiplier = calcRESMultiplier(enemyRes, bonusRes, debuffRes);
       const DMGBonus =
         (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
         $stats[hit.damageBonus];
 
-      // 💥 check if catalyze & calculate the bonus flatDMG
-      // ❗❗❗❗❗❗❗ This should be taken out of the function so it doesnt run for every hit
+      // get the catalyze bonus damage
       const catalyze = {
         electro: 'aggravate',
         dendro: 'spread'
@@ -63,80 +67,148 @@ function createTalents() {
       const catalyzeFlatDMG =
         element === 'dendro' || element === 'electro'
           ? $stats[flatDmg] +
-            calcCatalyzeBonus(
-              element,
-              $stats.em,
-              $character.lvl,
-              $stats[catalyze[element]]
-            )
+            calcCatalyzeBonus(element, $stats.em, cLvl, $stats[catalyze[element]])
           : 0;
 
-      // 💥 check if amplifying
+      const FinalDMG = hit.damage.reduce(
+        (total: any, damage, i) => {
+          const hitDMG =
+            $stats[damage.scaling] *
+            values[damage.param as keyof typeof values][$character[talentLvl]];
 
-      const FinalDMG = hit.damage.reduce((total: any, damage) => {
-        const BaseDMG =
-          $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character[talentLvl]];
+          // the base damage with NO REACTIONS
+          const result = calcDamageNoReaction(
+            hitDMG,
+            SpecialMultiplier,
+            $stats[flatDmg],
+            DMGBonus,
+            DMGReduction,
+            DEFMultiplier,
+            RESMultiplier,
+            $stats.critrate,
+            $stats.critdmg
+          );
+          total.base += result;
 
-        const calculatedDMG = calcDamageNoReaction(
-          BaseDMG,
-          SpecialMultiplier,
-          $stats[flatDmg],
-          DMGBonus,
-          DMGReduction,
-          DEFMultiplier,
-          RESMultiplier
-        );
+          const catalyzeResult = calcDamageNoReaction(
+            hitDMG,
+            SpecialMultiplier,
+            $stats[flatDmg] + catalyzeFlatDMG,
+            DMGBonus,
+            DMGReduction,
+            DEFMultiplier,
+            RESMultiplier,
+            $stats.critrate,
+            $stats.critdmg
+          );
 
-        // the base damage with NO REACTIONS
-        // total.base += calculatedDMG;
+          /**
+           * @here Conditionally add reactions to total
+           */
+          if (element === 'electro') {
+            // initialize reaction values to 0 if undefined
+            total.aggravate = total.aggravate || 0;
+            total.superconduct = total.superconduct || 0;
+            total.electrocharged = total.electrocharged || 0;
 
-        // if (element === 'dendro') {
-        //   total.spread += 0; // do another calculatedDMG() and add bonus to flatDMG
-        // }
+            // if damage instance is --ON cooldown, add reactions
+            if (i % ICD === 0) {
+              total.aggravate += catalyzeResult;
+              total.superconduct +=
+                calcTransforming('superconduct', $stats.em, cLvl, $stats.superconduct) +
+                result;
+              total.electrocharged +=
+                calcTransforming(
+                  'electrocharged',
+                  $stats.em,
+                  cLvl,
+                  $stats.electrocharged
+                ) + result;
+            } else {
+              // if damage instance is --OFF cooldown, add base damage
+              total.aggravate += result;
+              total.superconduct += result;
+              total.electrocharged += result;
+            }
+          }
 
-        // if (element === 'electro') {
-        //   total.aggravate += 0; // do another calculatedDMG() and add bonus to flatDMG
-        // }
+          if (element === 'dendro') {
+            total.spread = total.spread || 0;
 
-        // if (element === 'pyro') {
-        //   total.vaporize += 0; // calcAmplifying(1.5,$stats.em,$stats.vaporize) * calculatedDMG | ✅ calcAmplifying(coef,em,rxnBonus)
-        //   total.melt += 0; // calcAmplifying(2,$stats.em,$stats.melt) * calculatedDMG
-        // }
+            if (i % ICD === 0) {
+              total.spread += catalyzeResult;
+            } else {
+              total.spread += result;
+            }
+          }
 
-        // if (element === 'cryo') {
-        //   total.melt += 0; // calcAmplifying(1.5,$stats.em,$stats.melt) * calculatedDMG
-        // }
+          if (element === 'pyro') {
+            total.vaporize = total.vaporize || 0;
+            total.melt = total.melt || 0;
+            total.overloaded = total.overloaded || 0;
 
-        // if (element === 'hydro') {
-        //   total.vaporize += 0; // calcAmplifying(2,$stats.em,$stats.vaporize) * calculatedDMG
-        // }
+            if (i % ICD === 0) {
+              total.vaporize += result * calcAmplifying(1.5, $stats.em, $stats.vaporize);
+              total.melt += result * calcAmplifying(2, $stats.em, $stats.melt);
+              total.overloaded +=
+                calcTransforming('overloaded', $stats.em, cLvl, $stats.overloaded) +
+                result;
+            } else {
+              total.vaporize += result;
+              total.melt += result;
+              total.overloaded += result;
+            }
+          }
 
-        // // 💥💥💥 This will help understand with structuring the results.
-        // function calculateTotalDamage(hits, icd) {
-        //   return hits.reduce(
-        //     (result, hit, index) => {
-        //       const isCrit = index % (icd + 1) === 0; // Check if it's a crit hit based on ICD
-        //       const damage = isCrit ? hit * 2 : hit; // Apply crit damage multiplier if it's a crit hit
+          if (element === 'hydro') {
+            total.vaporize = total.vaporize || 0;
+            total.electrocharged = total.electrocharged || 0;
+            if (i % ICD === 0) {
+              total.vaporize += result * calcAmplifying(2, $stats.em, $stats.vaporize);
+              total.electrocharged +=
+                calcTransforming(
+                  'electrocharged',
+                  $stats.em,
+                  cLvl,
+                  $stats.electrocharged
+                ) + result;
+            } else {
+              total.vaporize += result;
+              total.electrocharged += result;
+            }
+          }
 
-        //       result.totalDamage += damage;
-        //       result.totalDamageNoCrits += hit;
+          if (element === 'cryo') {
+            total.melt = total.melt || 0;
+            total.superconduct = total.superconduct || 0;
 
-        //       return result;
-        //     },
-        //     { totalDamage: 0, totalDamageNoCrits: 0 }
-        //   );
-        // }
+            if (i % ICD === 0) {
+              total.melt += result * calcAmplifying(1.5, $stats.em, $stats.melt);
+              total.superconduct +=
+                calcTransforming('superconduct', $stats.em, cLvl, $stats.superconduct) +
+                result;
+            } else {
+              total.melt += result;
+              total.superconduct += result;
+            }
+          }
+          return total;
+        },
+        { base: 0 }
+      );
 
-        return total + calculatedDMG;
-      }, 0);
+      console.log({ ...FinalDMG });
 
-      return { ...hit, elemental: element, damage: FinalDMG };
+      // const x = Object.keys(FinalDMG).map(val=>{
+      //   return null
+      // })
+
+      return { ...hit, elemental: element, damage: FinalDMG.base };
     }
 
     // ✅ Normal Rows
     const normalRows = $character.selected.normal.map((hit) => {
-      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
       const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
@@ -151,7 +223,7 @@ function createTalents() {
 
     // ✅ Charged Rows
     const chargedRows = $character.selected.charged.map((hit) => {
-      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
       const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
@@ -166,7 +238,7 @@ function createTalents() {
 
     // ✅ Plunge Rows
     const plungeRows = $character.selected.plunge.map((hit) => {
-      const values = TalentValues[characterName as keyof typeof TalentValues].combat1;
+      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
       const element = hit.elemental ? hit.elemental : infusion;
       return calculateFinalDMG(
         hit,
@@ -181,7 +253,7 @@ function createTalents() {
 
     // ✅ Skill Rows
     const skillRows = $character.selected.skill.map((hit) => {
-      const values = TalentValues[characterName as keyof typeof TalentValues].combat2;
+      const values = TalentValues[cName as keyof typeof TalentValues].combat2;
       const element = hit.elemental ? hit.elemental : $character.selected.vision;
       return calculateFinalDMG(
         hit,
@@ -196,7 +268,7 @@ function createTalents() {
 
     // ✅ Burst Rows
     const burstRows = $character.selected.burst.map((hit) => {
-      const values = TalentValues[characterName as keyof typeof TalentValues].combat3;
+      const values = TalentValues[cName as keyof typeof TalentValues].combat3;
       const element = hit.elemental ? hit.elemental : $character.selected.vision;
       return calculateFinalDMG(
         hit,
