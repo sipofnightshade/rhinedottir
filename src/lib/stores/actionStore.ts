@@ -52,10 +52,21 @@ const initialState = {
   defReduce: 0,
   partyEnergy: 0,
   partyEM: 0,
-  aggravate: 0, // reaction bonus
-  spread: 0, // reaction bonus
-  melt: 0, // reaction bonus
-  vaporize: 0 // reaction bonus
+  // reaction bonuses
+  aggravate: 0,
+  spread: 0,
+  melt: 0,
+  vaporize: 0,
+  burning: 0,
+  superconduct: 0,
+  swirl: 0,
+  electrocharged: 0,
+  shattered: 0,
+  overloaded: 0,
+  bloom: 0,
+  burgeon: 0,
+  hyperbloom: 0,
+  crystallize: 0
 };
 
 function createAction() {
