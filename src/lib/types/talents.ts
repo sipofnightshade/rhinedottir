@@ -14,6 +14,7 @@ export type Hit = {
     | 'physical';
   multiHit?: number; // for some skills with repeated hits of same damage (up to my judgement)
   quadratic?: boolean;
+  icd?: number;
   damage: {
     scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';
     param:
@@ -37,8 +38,6 @@ export type Hit = {
       | 'param18'
       | 'param19'
       | 'param20';
-
-    icd?: number;
   }[];
 };
 

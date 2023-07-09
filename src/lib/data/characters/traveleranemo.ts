@@ -78,19 +78,19 @@ const charName: CharacterRecord = {
       name: 'Plunge DMG',
       tag: 'PD',
       damageBonus: 'plunge',
-      damage: [{ scaling: 'atk', param: 'param9', icd: 0 }]
+      damage: [{ scaling: 'atk', param: 'param9' }]
     },
     {
       name: 'Low Plunge',
       tag: 'PL',
       damageBonus: 'plunge',
-      damage: [{ scaling: 'atk', param: 'param10', icd: 0 }]
+      damage: [{ scaling: 'atk', param: 'param10' }]
     },
     {
       name: 'High Plunge',
       tag: 'PH',
       damageBonus: 'plunge',
-      damage: [{ scaling: 'atk', param: 'param11', icd: 0 }]
+      damage: [{ scaling: 'atk', param: 'param11' }]
     }
   ],
   skill: [
@@ -98,14 +98,14 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
-      damage: [{ scaling: 'atk', param: 'param3', icd: 0 }]
+      damage: [{ scaling: 'atk', param: 'param3' }]
     },
     {
       name: 'Hold DMG - Total',
       tag: 'EH',
       damageBonus: 'skill',
       damage: [
-        { scaling: 'atk', param: 'param4', icd: 0 },
+        { scaling: 'atk', param: 'param4' },
         { scaling: 'atk', param: 'param1' },
         { scaling: 'atk', param: 'param1' },
         { scaling: 'atk', param: 'param1' },
