@@ -1,17 +1,3 @@
-/**
- * @deprecated
- * Use `calcTransforming` instead
- */
-
-interface Params {
-  em: number;
-  lvl: number;
-  reactionBonus?:
-    | {
-        [key: string]: number;
-      }
-    | undefined;
-}
 const baseTransformative = {
   burning: [
     4.29, 20.15, 20.15, 51.85, 51.85, 80.9, 80.9, 123.22, 123.22, 191.41, 191.41, 269.36,
@@ -25,7 +11,7 @@ const baseTransformative = {
     10.3, 48.35, 48.35, 124.43, 124.43, 194.16, 194.16, 295.73, 295.73, 459.38, 459.38,
     646.47, 646.47, 868.11
   ],
-  electroCharged: [
+  electrocharged: [
     20.6, 96.7, 96.7, 248.9, 248.9, 388.3, 388.3, 591.5, 591.5, 918.8, 918.8, 1292.6,
     1292.6, 1736.2
   ],
@@ -54,50 +40,42 @@ const baseTransformative = {
   ]
 };
 
-const reactions = [
-  'burning',
-  'superconduct',
-  'swirl',
-  'electroCharged',
-  'shattered',
-  'overloaded',
-  'bloom',
-  'burgeon',
-  'hyperbloom',
-  'crystallize'
-];
+type TransformReactions =
+  | 'burning'
+  | 'superconduct'
+  | 'swirl'
+  | 'electrocharged'
+  | 'shattered'
+  | 'overloaded'
+  | 'bloom'
+  | 'burgeon'
+  | 'hyperbloom'
+  | 'crystallize';
 
-export function calcTransformative({ em, lvl, reactionBonus }: Params) {
+export function calcTransforming(
+  reaction: TransformReactions,
+  em: number,
+  lvl: number,
+  reactionBonus: number
+) {
   const EMBonusTransformative = 16 * (em / (em + 2000));
   const EMBonusCrystallize = 4.44 * (em / (em + 1400));
-  const reactionsDamage = reactions.map((reaction) => {
-    let bonusValue = 0;
-    let reactionDamage;
-    if (reactionBonus && reactionBonus[reaction]) {
-      bonusValue = reactionBonus[reaction];
-      console.log(reactionBonus);
-    } else {
-      bonusValue = 0;
-    }
-    if (reaction === 'crystallize') {
-      reactionDamage =
-        baseTransformative[reaction][lvl] * (1 + EMBonusCrystallize + bonusValue);
-    } else {
-      reactionDamage =
-        baseTransformative[reaction][lvl] * (1 + EMBonusTransformative + bonusValue);
-    }
 
-    return { [reaction]: reactionDamage };
-  });
-  return reactionsDamage;
+  let reactionDamage: number;
+
+  if (reaction === 'crystallize') {
+    reactionDamage =
+      baseTransformative[reaction][lvl] * (1 + EMBonusCrystallize + reactionBonus);
+  } else {
+    reactionDamage =
+      baseTransformative[reaction][lvl] * (1 + EMBonusTransformative + reactionBonus);
+  }
+
+  return reactionDamage;
 }
 
 /**
  * @EXAMPLE
- * console.log(calcTransformative(656, 13, { hyperbloom: 0.4 }));
- * ▶ [ { hyperbloom: 20906.9 },...]
- * console.log(calcTransformative(656, 13, { hyperbloom: 0.4,burgeon:0.4 }));
- * ▶ [ { hyperbloom: 20906.9 }, { burgeon: 20906.9 },...]
- * console.log(calcTransformative(656, 13));
- * ▶ [ { hyperbloom: 19344.3 }, { burgeon: 19344.3 },...]
+ * console.log(calcTransforming('hyperbloom', 656, 13, 0.4));
+ * ▶ 20906.9
  */
