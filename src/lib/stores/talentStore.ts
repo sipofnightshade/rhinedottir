@@ -73,7 +73,7 @@ function createTalents() {
 
       // 💥 check if amplifying
 
-      const FinalDMG = hit.damage.reduce((total, damage) => {
+      const FinalDMG = hit.damage.reduce((total: any, damage) => {
         const BaseDMG =
           $stats[damage.scaling] *
           values[damage.param as keyof typeof values][$character[talentLvl]];
@@ -87,6 +87,47 @@ function createTalents() {
           DEFMultiplier,
           RESMultiplier
         );
+
+        // the base damage with NO REACTIONS
+        // total.base += calculatedDMG;
+
+        // if (element === 'dendro') {
+        //   total.spread += 0; // do another calculatedDMG() and add bonus to flatDMG
+        // }
+
+        // if (element === 'electro') {
+        //   total.aggravate += 0; // do another calculatedDMG() and add bonus to flatDMG
+        // }
+
+        // if (element === 'pyro') {
+        //   total.vaporize += 0; // calcAmplifying(1.5,$stats.em,$stats.vaporize) * calculatedDMG | ✅ calcAmplifying(coef,em,rxnBonus)
+        //   total.melt += 0; // calcAmplifying(2,$stats.em,$stats.melt) * calculatedDMG
+        // }
+
+        // if (element === 'cryo') {
+        //   total.melt += 0; // calcAmplifying(1.5,$stats.em,$stats.melt) * calculatedDMG
+        // }
+
+        // if (element === 'hydro') {
+        //   total.vaporize += 0; // calcAmplifying(2,$stats.em,$stats.vaporize) * calculatedDMG
+        // }
+
+        // // 💥💥💥 This will help understand with structuring the results.
+        // function calculateTotalDamage(hits, icd) {
+        //   return hits.reduce(
+        //     (result, hit, index) => {
+        //       const isCrit = index % (icd + 1) === 0; // Check if it's a crit hit based on ICD
+        //       const damage = isCrit ? hit * 2 : hit; // Apply crit damage multiplier if it's a crit hit
+
+        //       result.totalDamage += damage;
+        //       result.totalDamageNoCrits += hit;
+
+        //       return result;
+        //     },
+        //     { totalDamage: 0, totalDamageNoCrits: 0 }
+        //   );
+        // }
+
         return total + calculatedDMG;
       }, 0);
 
