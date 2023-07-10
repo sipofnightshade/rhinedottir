@@ -148,6 +148,19 @@ function createTalents() {
             }
           }
 
+          // 📢 Remove this if adding swirl Button
+          if (element === 'anemo') {
+            total.swirl = total.swirl || 0;
+
+            if (i % ICD === 0) {
+              total.swirl +=
+                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, enemyRes) +
+                result;
+            } else {
+              total.swirl += result;
+            }
+          }
+
           if (element === 'pyro') {
             total.vaporize = total.vaporize || 0;
             total.melt = total.melt || 0;
