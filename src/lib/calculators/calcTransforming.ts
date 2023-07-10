@@ -56,7 +56,8 @@ export function calcTransforming(
   reaction: TransformReactions,
   em: number,
   lvl: number,
-  reactionBonus: number
+  reactionBonus: number,
+  enemyRes: number
 ) {
   const EMBonusTransformative = 16 * (em / (em + 2000));
   const EMBonusCrystallize = 4.44 * (em / (em + 1400));
@@ -71,7 +72,7 @@ export function calcTransforming(
       baseTransformative[reaction][lvl] * (1 + EMBonusTransformative + reactionBonus);
   }
 
-  return reactionDamage;
+  return reactionDamage * (1 - enemyRes);
 }
 
 /**

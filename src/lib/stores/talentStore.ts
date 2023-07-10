@@ -115,14 +115,20 @@ function createTalents() {
             if (i % ICD === 0) {
               total.aggravate += catalyzeResult;
               total.superconduct +=
-                calcTransforming('superconduct', $stats.em, cLvl, $stats.superconduct) +
-                result;
+                calcTransforming(
+                  'superconduct',
+                  $stats.em,
+                  cLvl,
+                  $stats.superconduct,
+                  enemyRes
+                ) + result;
               total.electrocharged +=
                 calcTransforming(
                   'electrocharged',
                   $stats.em,
                   cLvl,
-                  $stats.electrocharged
+                  $stats.electrocharged,
+                  enemyRes
                 ) + result;
             } else {
               // if damage instance is --OFF cooldown, add base damage
@@ -151,8 +157,13 @@ function createTalents() {
               total.vaporize += result * calcAmplifying(1.5, $stats.em, $stats.vaporize);
               total.melt += result * calcAmplifying(2, $stats.em, $stats.melt);
               total.overloaded +=
-                calcTransforming('overloaded', $stats.em, cLvl, $stats.overloaded) +
-                result;
+                calcTransforming(
+                  'overloaded',
+                  $stats.em,
+                  cLvl,
+                  $stats.overloaded,
+                  enemyRes
+                ) + result;
             } else {
               total.vaporize += result;
               total.melt += result;
@@ -170,8 +181,11 @@ function createTalents() {
                   'electrocharged',
                   $stats.em,
                   cLvl,
-                  $stats.electrocharged
-                ) + result;
+                  $stats.electrocharged,
+                  enemyRes
+                ) *
+                  enemyRes +
+                result;
             } else {
               total.vaporize += result;
               total.electrocharged += result;
@@ -185,8 +199,13 @@ function createTalents() {
             if (i % ICD === 0) {
               total.melt += result * calcAmplifying(1.5, $stats.em, $stats.melt);
               total.superconduct +=
-                calcTransforming('superconduct', $stats.em, cLvl, $stats.superconduct) +
-                result;
+                calcTransforming(
+                  'superconduct',
+                  $stats.em,
+                  cLvl,
+                  $stats.superconduct,
+                  enemyRes
+                ) + result;
             } else {
               total.melt += result;
               total.superconduct += result;
@@ -197,13 +216,12 @@ function createTalents() {
         { base: 0 }
       );
 
-      console.log({ ...FinalDMG });
-
-      // const x = Object.keys(FinalDMG).map(val=>{
-      //   return null
-      // })
-
-      return { ...hit, elemental: element, damage: FinalDMG.base };
+      return {
+        ...hit,
+        elemental: element,
+        damage: FinalDMG.base,
+        newDamage: { ...FinalDMG }
+      };
     }
 
     // ✅ Normal Rows
