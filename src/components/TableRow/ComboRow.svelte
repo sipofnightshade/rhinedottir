@@ -4,11 +4,11 @@
   import ComboModal from '../Modal/Combo/ComboModal.svelte';
   import ShortModal from '../Modal/ShortModal.svelte';
 
-  import { combos } from '$lib/stores/comboStore';
+  import { combos, type ButtonDamage } from '$lib/stores/comboStore';
   import { talents } from '$lib/stores/talentStore';
+  import Combo from '../Table/Combo.svelte';
 
   export let index: number;
-
   let dialog: HTMLDialogElement;
 
   /**
@@ -19,7 +19,7 @@
    */
   function calculateComboDamage(
     talents: Record<string, any[]>,
-    combo: { hits: { talent: string; btnIndex: number }[] }
+    combo: { hits: { talent: string; btnIndex: number; btnDmg: ButtonDamage }[] }
   ) {
     let totalDamage = 0;
     const talentObjects: any[] = [];
@@ -27,8 +27,13 @@
     for (const hit of combo.hits) {
       const talentRow = talents[hit.talent];
       const button = talentRow[hit.btnIndex];
+      // add button location data
+      button.btnIndex = hit.btnIndex;
+      button.talent = hit.talent;
+      button.dmgTypes = Object.keys(button.newDamage);
+
       talentObjects.push(button);
-      totalDamage += button.damage;
+      totalDamage += button.newDamage[hit.btnDmg];
     }
 
     return {
@@ -37,6 +42,7 @@
     };
   }
 
+  // handle modal
   function toggleModal() {
     dialog.showModal();
   }
@@ -47,13 +53,6 @@
 <!-- @component - * - * - * - * - * - * - * - * - * - 
 - Add edit icon and more styles to show that the Title
 is editable on shover and click etc
-
-- ❗❗ Will probably need to calculate combo row `damage` 
-in a new derived store as `ICD` restrictions will behave
-differently in table than when put together in a 
-`comboRow`. 
-- 💥 Due to ICD complexity, comboRow might have to 
-ignore ICD except for multihit skills.
 -->
 
 <section class="my-2 border-b border-slate-700 pb-2">
@@ -64,14 +63,18 @@ ignore ICD except for multihit skills.
   />
 
   <div class="flex items-center">
-    {#each result.talentObjects as hit}
-      <ComboButton {hit} />
+    {#each result.talentObjects as btn, i}
+      <ComboButton {btn} rowIndex={index} btnIndex={i} />
     {/each}
     <ComboAddButton on:click={toggleModal} />
   </div>
   <div class="flex justify-between">
     <div class="mt-2 flex gap-1">
-      <img class="h-5 w-5 self-center" src="/images/elements/anemo.svg" alt="element" />
+      <img
+        class="h-5 w-5 self-center"
+        src="/images/elements/physical.svg"
+        alt="element"
+      />
       <span>{Math.round(result.totalDamage).toLocaleString() || '-'}</span>
     </div>
   </div>

@@ -1,39 +1,40 @@
 <script lang="ts">
-  import type { Hit } from '$lib/types/talents';
+  import { combos } from '$lib/stores/comboStore';
   import StatImage from '../Desktop/StatImage.svelte';
 
-  export let hit: Hit;
-  let reaction = false;
-  function handleClick() {
-    reaction = !reaction;
+  export let btn: any;
+  export let rowIndex: number;
+  export let btnIndex: number;
+
+  let dmgTypes = btn.dmgTypes;
+  let currentIndex = 0;
+  let currentDmgType = dmgTypes[currentIndex];
+
+  function switchDamage() {
+    currentIndex = (currentIndex + 1) % dmgTypes.length;
+    currentDmgType = dmgTypes[currentIndex];
+    combos.changeBtnReaction(rowIndex, btnIndex, currentDmgType);
   }
+
+  $: console.log(currentDmgType);
 </script>
 
-<!-- @component - * - * - * - * - * - * - * - * - * - 
-- Cycle between appropriate reactions using the origin
-element and elements present in party
--->
-
 <button
-  class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700 "
-  on:click={handleClick}
+  class="mr-2 flex h-16 w-10 flex-col items-center justify-center rounded-lg bg-slate-700"
+  on:click={switchDamage}
 >
-  <span>{hit.tag}</span>
-  <div class=" flex h-6 w-full justify-center">
-    {#if hit.elemental}
-      <StatImage stat={hit.elemental} />
+  <span>{btn.tag}</span>
+  <div class="flex h-6 w-full justify-center">
+    {#if btn.elemental}
+      <StatImage stat={btn.elemental} />
     {/if}
-    {#if reaction === true}
+    {#if currentDmgType !== 'base'}
       <img
         class="relative -ml-[14px] h-6 w-6 self-center"
         src="/images/elements/separator.svg"
         alt="element"
       />
-      <img
-        class="-ml-[14px] h-5 w-5 self-center"
-        src="/images/elements/hydro.svg"
-        alt="element"
-      />
+
       <!-- <img
         class="relative top-1 z-10 -m-[13px]  h-6 w-6 self-center"
         src="/images/elements/separator.svg"
@@ -44,6 +45,34 @@ element and elements present in party
         src="/images/elements/hydro.svg"
         alt="element"
       /> -->
+    {/if}
+    {#if currentDmgType === 'electrocharged'}
+      <img
+        class="-ml-[14px] h-5 w-5 self-center"
+        src="/images/elements/hydro.svg"
+        alt="element"
+      />
+    {/if}
+    {#if currentDmgType === 'aggravate'}
+      <img
+        class="-ml-[14px] h-5 w-5 self-center"
+        src="/images/elements/dendro.svg"
+        alt="element"
+      />
+    {/if}
+    {#if currentDmgType === 'superconduct'}
+      <img
+        class="-ml-[14px] h-5 w-5 self-center"
+        src="/images/elements/cryo.svg"
+        alt="element"
+      />
+    {/if}
+    {#if currentDmgType === 'overloaded'}
+      <img
+        class="-ml-[14px] h-5 w-5 self-center"
+        src="/images/elements/pyro.svg"
+        alt="element"
+      />
     {/if}
   </div>
 </button>
