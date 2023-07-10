@@ -30,49 +30,22 @@
     {/if}
     {#if currentDmgType !== 'base'}
       <img
-        class="relative -ml-[14px] h-6 w-6 self-center"
+        class="relative top-1 -m-[13px] h-6 w-6 self-center"
         src="/images/elements/separator.svg"
-        alt="element"
+        alt="Separator"
       />
-
-      <!-- <img
-        class="relative top-1 z-10 -m-[13px]  h-6 w-6 self-center"
-        src="/images/elements/separator.svg"
-        alt="element"
-      />
-      <img
-        class="relative top-1.5 h-5 w-5 self-center"
-        src="/images/elements/hydro.svg"
-        alt="element"
-      /> -->
     {/if}
     {#if currentDmgType === 'electrocharged'}
-      <img
-        class="-ml-[14px] h-5 w-5 self-center"
-        src="/images/elements/hydro.svg"
-        alt="element"
-      />
+      <StatImage stat="hydro" />
     {/if}
     {#if currentDmgType === 'aggravate'}
-      <img
-        class="-ml-[14px] h-5 w-5 self-center"
-        src="/images/elements/dendro.svg"
-        alt="element"
-      />
+      <StatImage stat="dendro" />
     {/if}
     {#if currentDmgType === 'superconduct'}
-      <img
-        class="-ml-[14px] h-5 w-5 self-center"
-        src="/images/elements/cryo.svg"
-        alt="element"
-      />
+      <StatImage stat="cryo" />
     {/if}
     {#if currentDmgType === 'overloaded'}
-      <img
-        class="-ml-[14px] h-5 w-5 self-center"
-        src="/images/elements/pyro.svg"
-        alt="element"
-      />
+      <StatImage stat="pyro" />
     {/if}
   </div>
 </button>
