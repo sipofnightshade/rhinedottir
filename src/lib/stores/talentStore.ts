@@ -219,8 +219,7 @@ function createTalents() {
       return {
         ...hit,
         elemental: element,
-        damage: FinalDMG.base,
-        newDamage: { ...FinalDMG }
+        damage: { ...FinalDMG }
       };
     }
 

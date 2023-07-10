@@ -30,10 +30,10 @@
       // add button location data
       button.btnIndex = hit.btnIndex;
       button.talent = hit.talent;
-      button.dmgTypes = Object.keys(button.newDamage);
+      button.dmgTypes = Object.keys(button.damage);
 
       talentObjects.push(button);
-      totalDamage += button.newDamage[hit.btnDmg];
+      totalDamage += button.damage[hit.btnDmg];
     }
 
     return {

@@ -12,6 +12,6 @@
   <Cell align="center" col="col-span-2">
     <StatImage stat={data.elemental} />
   </Cell>
-  <Cell align="end" col="col-span-4 text-slate-400" value={data.damage.toFixed(0)} />
-  <Cell align="end" col="col-span-6" value={(data.damage * 1.5).toFixed(0)} />
+  <Cell align="end" col="col-span-4 text-slate-400" value={data.damage.base.toFixed(0)} />
+  <Cell align="end" col="col-span-6" value={(data.damage.base * 1.5).toFixed(0)} />
 </div>
