@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import type { Hit } from '$lib/types/talents';
 
 export type TalentRowID =
   | 'normalRows'
@@ -8,11 +7,23 @@ export type TalentRowID =
   | 'skillRows'
   | 'burstRows';
 
+export type ButtonDamage =
+  | 'base'
+  | 'superconduct'
+  | 'swirl'
+  | 'electrocharged'
+  | 'overloaded'
+  | 'melt'
+  | 'vaporize'
+  | 'aggravate'
+  | 'spread';
+
 type ComboRow = {
   title: string;
   hits: {
     talent: TalentRowID;
     btnIndex: number;
+    btnDmg: ButtonDamage;
   }[];
 };
 
@@ -36,12 +47,17 @@ function createComboRow() {
       }),
     addRowButton: (rowIndex: number, talent: TalentRowID, btnIndex: number) =>
       update((state) => {
-        state[rowIndex].hits.push({ talent, btnIndex });
+        state[rowIndex].hits.push({ talent, btnIndex, btnDmg: 'base' });
         return state;
       }),
     removeRowButton: (rowIndex: number, hitIndex: number) =>
       update((state) => {
         state[rowIndex].hits.splice(hitIndex, 1);
+        return state;
+      }),
+    changeBtnReaction: (rowIndex: number, rowBtnIndex: number, dmg: ButtonDamage) =>
+      update((state) => {
+        state[rowIndex].hits[rowBtnIndex].btnDmg = dmg;
         return state;
       }),
     reset: () => set(initialState)
