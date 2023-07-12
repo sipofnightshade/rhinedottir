@@ -75,9 +75,13 @@ export type ALL_STATS =
   | 'normalATKSpd'
   | 'chargedATKSpd'
   | 'normalSpecialMultiplier'
+  | 'chargedSpecialMultiplier'
+  | 'plungeSpecialMultiplier'
   | 'skillSpecialMultiplier'
   | 'burstSpecialMultiplier'
   | 'normalFlatDMG'
+  | 'chargedFlatDMG'
+  | 'plungeFlatDMG'
   | 'skillFlatDMG'
   | 'burstFlatDMG'
   | 'normalDefIgnore'
@@ -85,7 +89,21 @@ export type ALL_STATS =
   | 'burstDefIgnore'
   | 'defReduce'
   | 'partyEnergy'
-  | 'partyEM';
+  | 'partyEM'
+  | 'aggravate'
+  | 'spread'
+  | 'melt'
+  | 'vaporize'
+  | 'burning'
+  | 'superconduct'
+  | 'swirl'
+  | 'electrocharged'
+  | 'shattered'
+  | 'overloaded'
+  | 'bloom'
+  | 'burgeon'
+  | 'hyperbloom'
+  | 'crystallize';
 
 export type Action = {
   name: string;
@@ -93,7 +111,12 @@ export type Action = {
   description: string;
   level: number;
   constellation: number;
-  target?: 'self' | 'enemy' | 'party' | 'all'; // re-evaluate this
+  target?: 'self' | 'enemy' | 'party' | 'all';
+  /**
+   * @description - target
+   * This should be used to determine whether or not a characters' actions are
+   * added to the action bar WHEN they are added as a party member
+   */
   actionType: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
   values: {
     scaling: ALL_STATS;
