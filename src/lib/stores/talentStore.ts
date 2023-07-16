@@ -15,12 +15,13 @@ import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
 import { calcCatalyzeBonus } from '$lib/calculators/calcCatalyzeBonus';
 import { calcTransforming } from '$lib/calculators/calcTransforming';
 import { calcAmplifying } from '$lib/calculators/calcAmplifyingMultiplier';
+import { enemy } from './enemyStore';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
 
 function createTalents() {
-  return derived([character, stats], ([$character, $stats]) => {
+  return derived([character, stats, enemy], ([$character, $stats, $enemy]) => {
     // create traveler name indexes
     const cName =
       $character.selected.name === 'aether'
@@ -41,9 +42,7 @@ function createTalents() {
      */
 
     // enemy stats
-    const enemyLvl = 87;
-    const enemyRes = 0.1;
-    const bonusRes = 0;
+    const eLvl = $enemy.lvl;
     const DMGReduction = 0;
 
     function calculateFinalDMG(
@@ -58,15 +57,16 @@ function createTalents() {
       // setup ICD
       const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
 
-      const debuffRes = $stats[element + 'Res'];
+      // get enemy resistance multiplier
+      const RESMultiplier = $enemy[element];
       const SpecialMultiplier = 1 + $stats[specX];
       const DEFMultiplier = calcDEFMultiplier(
         cLvl,
-        enemyLvl,
+        eLvl,
         $stats.defReduce,
         $stats[defIgnore]
       );
-      const RESMultiplier = calcRESMultiplier(enemyRes, bonusRes, debuffRes);
+      // ❗❗❗ may have to extract this. This would also remove the need for an enemy store.
       const DMGBonus =
         (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
         $stats[hit.damageBonus];
@@ -133,7 +133,7 @@ function createTalents() {
                   $stats.em,
                   cLvl,
                   $stats.superconduct,
-                  enemyRes
+                  $enemy.cryo
                 ) + result;
               total.electrocharged +=
                 calcTransforming(
@@ -141,7 +141,7 @@ function createTalents() {
                   $stats.em,
                   cLvl,
                   $stats.electrocharged,
-                  enemyRes
+                  $enemy.electro
                 ) + result;
             } else {
               // if damage instance is --OFF cooldown, add base damage
@@ -161,13 +161,28 @@ function createTalents() {
             }
           }
 
-          // 📢 Remove this if adding swirl Button
           if (element === 'anemo') {
-            total.swirl = total.swirl || 0;
+            // total.swirl = total.swirl || 0;
+            total.pyroSwirl = total.pyroSwirl || 0;
+            total.cryoSwirl = total.cryoSwirl || 0;
+            total.electroSwirl = total.electroSwirl || 0;
+            total.hydroSwirl = total.hydroSwirl || 0;
 
             if (i % ICD === 0) {
-              total.swirl +=
-                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, enemyRes) +
+              // total.swirl +=
+              //   calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.anemo) +
+              //   result;
+              total.pyroSwirl +=
+                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.pyro) +
+                result;
+              total.cryoSwirl +=
+                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.cryo) +
+                result;
+              total.electroSwirl +=
+                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.electro) +
+                result;
+              total.hydroSwirl +=
+                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.hydro) +
                 result;
             } else {
               total.swirl += result;
@@ -188,7 +203,7 @@ function createTalents() {
                   $stats.em,
                   cLvl,
                   $stats.overloaded,
-                  enemyRes
+                  $enemy.cryo
                 ) + result;
             } else {
               total.vaporize += result;
@@ -208,9 +223,9 @@ function createTalents() {
                   $stats.em,
                   cLvl,
                   $stats.electrocharged,
-                  enemyRes
+                  $enemy.cryo
                 ) *
-                  enemyRes +
+                  $enemy.cryo +
                 result;
             } else {
               total.vaporize += result;
@@ -230,7 +245,7 @@ function createTalents() {
                   $stats.em,
                   cLvl,
                   $stats.superconduct,
-                  enemyRes
+                  $enemy.cryo
                 ) + result;
             } else {
               total.melt += result;
