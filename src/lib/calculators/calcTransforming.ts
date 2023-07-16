@@ -57,7 +57,13 @@ export function calcTransforming(
   em: number,
   lvl: number,
   reactionBonus: number,
-  enemyRes: number
+  enemyResMultiplier: number
+  /**
+   * @important
+   * - Ensure that the correct enemy elemental resistance is passed
+   * for each reaction. For example, @pyroRes should be passed for
+   * overloaded and @electroRes for electrocharge etc.
+   */
 ) {
   const EMBonusTransformative = 16 * (em / (em + 2000));
   const EMBonusCrystallize = 4.44 * (em / (em + 1400));
@@ -72,7 +78,7 @@ export function calcTransforming(
       baseTransformative[reaction][lvl] * (1 + EMBonusTransformative + reactionBonus);
   }
 
-  return reactionDamage * (1 - enemyRes);
+  return reactionDamage * enemyResMultiplier;
 }
 
 /**
