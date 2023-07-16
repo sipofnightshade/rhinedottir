@@ -1,11 +1,14 @@
 <script lang="ts">
-  import type { Action } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/talents';
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
-  import { action } from '$lib/stores/actionStore';
+  import { action, type ActionId } from '$lib/stores/actionStore';
 
   export let element: Visions;
   export let data: Action;
+  export let id: ActionId;
+
+  $: target = data.target && 'self';
 
   let stacks = 0;
 
@@ -20,12 +23,17 @@
       console.log('stacks reset');
       data.values.forEach((value) => {
         (value.coef as number[]).forEach((stat) =>
-          action.removeStat(value.scaling, stat)
+          action.removeStat(id, target as Target, value.scaling, stat)
         );
       });
     } else {
       data.values.forEach((value) => {
-        action.addStat(value.scaling, (value.coef as number[])[stacks - 1]);
+        action.addStat(
+          id,
+          target as Target,
+          value.scaling,
+          (value.coef as number[])[stacks - 1]
+        );
       });
     }
   }

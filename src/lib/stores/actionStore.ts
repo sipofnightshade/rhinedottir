@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
-import type { ALL_STATS } from '$lib/types/talents';
+import type { ALL_STATS, Target } from '$lib/types/talents';
 
-const initialState = {
+const allStats = {
   atk: 0,
   def: 0,
   hp: 0,
@@ -18,6 +18,7 @@ const initialState = {
   geo: 0,
   hydro: 0,
   pyro: 0,
+  physical: 0,
   anemoRes: 0,
   cryoRes: 0,
   dendroRes: 0,
@@ -25,7 +26,6 @@ const initialState = {
   geoRes: 0,
   hydroRes: 0,
   pyroRes: 0,
-  physical: 0,
   physicalRes: 0,
   normal: 0,
   charged: 0,
@@ -69,19 +69,69 @@ const initialState = {
   crystallize: 0
 };
 
+const initialState = {
+  main: allStats,
+  party1: allStats,
+  party2: allStats,
+  party3: allStats,
+  enemy: allStats
+};
+
+export type ActionId = keyof typeof initialState;
+
 function createAction() {
   const { subscribe, set, update } = writable(initialState);
 
   return {
     subscribe,
-    addStat: (scaling: ALL_STATS, coef: number) =>
+    addStat: (id: ActionId, target: Target, scaling: ALL_STATS, coef: number) =>
       update((state) => {
-        state[scaling] += coef;
+        switch (target) {
+          case 'self':
+            state[id][scaling] += coef;
+            break;
+          case 'party':
+            state.main[scaling] += coef;
+            state.party1[scaling] += coef;
+            state.party2[scaling] += coef;
+            state.party3[scaling] += coef;
+            break;
+          case 'enemy':
+            state.enemy[scaling] += coef;
+            break;
+          case 'all':
+            state.main[scaling] += coef;
+            state.party1[scaling] += coef;
+            state.party2[scaling] += coef;
+            state.party3[scaling] += coef;
+            state.enemy[scaling] += coef;
+            break;
+        }
         return state;
       }),
-    removeStat: (scaling: ALL_STATS, coef: number) =>
+    removeStat: (id: ActionId, target: Target, scaling: ALL_STATS, coef: number) =>
       update((state) => {
-        state[scaling] -= coef;
+        switch (target) {
+          case 'self':
+            state[id][scaling] -= coef;
+            break;
+          case 'party':
+            state.main[scaling] -= coef;
+            state.party1[scaling] -= coef;
+            state.party2[scaling] -= coef;
+            state.party3[scaling] -= coef;
+            break;
+          case 'enemy':
+            state.enemy[scaling] -= coef;
+            break;
+          case 'all':
+            state.main[scaling] -= coef;
+            state.party1[scaling] -= coef;
+            state.party2[scaling] -= coef;
+            state.party3[scaling] -= coef;
+            state.enemy[scaling] -= coef;
+            break;
+        }
         return state;
       }),
     reset: () => set(initialState)

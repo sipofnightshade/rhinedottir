@@ -44,6 +44,7 @@
       this={buttons[data.actionType]}
       {data}
       element={$character.selected.vision}
+      id="main"
     />
   {/each}
 </section>

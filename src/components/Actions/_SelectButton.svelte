@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Action } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/talents';
   import type { Visions } from '$lib/types/global';
   import type { ALL_STATS } from '$lib/types/talents';
-  import { action } from '$lib/stores/actionStore';
+  import { action, type ActionId } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
 
   import ActionModal from '../Modal/ActionModal.svelte';
@@ -10,22 +10,25 @@
 
   export let element: Visions;
   export let data: Action;
+  export let id: ActionId;
+
+  $: target = data.target && 'self';
 
   let selected: { scaling: ALL_STATS; coef: number } | undefined;
   let prevSelected: { scaling: ALL_STATS; coef: number } | undefined;
 
   function onSelect(selected: { scaling: ALL_STATS; coef: number } | undefined) {
     if (selected !== undefined) {
-      action.addStat(selected.scaling, selected.coef);
+      action.addStat(id, target as Target, selected.scaling, selected.coef);
       //   console.log(`ADD -> ${selected.scaling}`);
       if (prevSelected) {
-        action.removeStat(prevSelected.scaling, prevSelected.coef);
+        action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
         // console.log(`MINUS -> ${prevSelected.scaling}`);
       }
     } else {
       if (prevSelected !== undefined) {
         // console.log(`MINUS -> ${prevSelected.scaling}`);
-        action.removeStat(prevSelected.scaling, prevSelected.coef);
+        action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
       }
     }
 
@@ -46,7 +49,7 @@
 <button on:click={toggleModal} class="relative">
   <ActionButton {element} isActive={selected != undefined} />
   {#if selected != undefined}
-    <div class="absolute bottom-0 right-0 z-10 flex ">
+    <div class="absolute bottom-0 right-0 z-10 flex">
       <div class="rounded-full bg-slate-800 p-1">
         <img
           class="w-4"
@@ -117,7 +120,7 @@
 >
   <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
     <div
-      class="relative flex h-full w-full items-center  justify-center bg-slate-600"
+      class="relative flex h-full w-full items-center justify-center bg-slate-600"
       class:bg-slate-600={selected === undefined}
     >
       <input
@@ -136,7 +139,7 @@
     </div>
     {#each data.values as item}
       <div
-        class="relative flex h-full w-full items-center  justify-center bg-slate-600"
+        class="relative flex h-full w-full items-center justify-center bg-slate-600"
         class:bg-slate-600={selected === item}
       >
         <input

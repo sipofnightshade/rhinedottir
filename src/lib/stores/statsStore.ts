@@ -88,8 +88,31 @@ function createStats() {
             [stat]: acc[stat] + getCalculatedStat(BASE, stat, value)
           };
         },
-        { ...$action }
+        { ...$action.main }
       );
+
+      /**
+       * @todo
+       * 1. Fix up those functions/import them
+       * 2. Total up enemy stats, main stats and party stats then
+       *    return those as separate properties.
+       * eg;
+       * 
+       * const selected = {
+        ...totalStats,
+        baseATK: BASE.atk,
+        baseHP: BASE.hp,
+        baseDEF: BASE.def,
+        hp: BASE.hp + totalStats.hp,
+        atk: BASE.atk + totalStats.atk,
+        def: BASE.def + totalStats.def,
+        critrate: 0.05 + totalStats.critrate,
+        critdmg: 0.5 + totalStats.critdmg,
+        energy: 1 + totalStats.energy
+        }
+
+        return {selected, p1, p2, p3, enemy}
+       */
 
       return {
         ...totalStats,

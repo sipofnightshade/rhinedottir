@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { Action } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/talents';
   import type { Visions } from '$lib/types/global';
   import type { ALL_STATS } from '$lib/types/talents';
 
-  import { action } from '$lib/stores/actionStore';
+  import { action, type ActionId } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
   import { onMount } from 'svelte';
 
@@ -13,6 +13,9 @@
 
   export let element: Visions;
   export let data: Action;
+  export let id: ActionId;
+
+  $: target = data.target && 'self';
 
   type SELECTED = { [key in ALL_STATS]?: boolean };
 
@@ -28,9 +31,9 @@
   function handleClick(stat: { scaling: ALL_STATS; coef: number | number[] }) {
     selectedStats[stat.scaling] = !selectedStats[stat.scaling];
     if (selectedStats[stat.scaling] === true) {
-      action.addStat(stat.scaling, stat.coef as number);
+      action.addStat(id, target as Target, stat.scaling, stat.coef as number);
     } else {
-      action.removeStat(stat.scaling, stat.coef as number);
+      action.removeStat(id, target as Target, stat.scaling, stat.coef as number);
     }
   }
 
