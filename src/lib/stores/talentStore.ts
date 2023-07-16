@@ -28,6 +28,18 @@ function createTalents() {
         : $character.selected.name;
     const cLvl = $character.lvl;
 
+    /** ❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗
+     * @todo
+     * - Have separate stats for party. @ADD those stats to each
+     * character's indifividual stats.
+     *
+     * - 🚀 Figure out a way to add stats to specific individual
+     * hits.
+     *
+     * - Add all enemey resistances and apply them correctly,
+     * especially to reaction damage.
+     */
+
     // enemy stats
     const enemyLvl = 87;
     const enemyRes = 0.1;
@@ -72,11 +84,12 @@ function createTalents() {
 
       const FinalDMG = hit.damage.reduce(
         (total: any, damage, i) => {
-          const hitDMG =
-            $stats[damage.scaling] *
-            values[damage.param as keyof typeof values][$character[talentLvl]];
+          const hitDMG = damage.coef
+            ? $stats[damage.scaling] * damage.coef
+            : $stats[damage.scaling] *
+              values[damage.param as keyof typeof values][$character[talentLvl]];
 
-          // the base damage with NO REACTIONS
+          // the damage with NO REACTIONS
           const result = calcDamageNoReaction(
             hitDMG,
             SpecialMultiplier,
@@ -311,7 +324,25 @@ function createTalents() {
       );
     });
 
-    // ✅ Party 1 Rows
+    /**
+     * @todo replace with `party1.offField.map...` if party 1 exists
+     * @considerations Off field talents should have a combat string
+     * value or a damage value to deal with like Fischl @A4
+     */
+    // const p1Field = $character.selected.skill.map((hit) => {
+    //   const values = TalentValues[cName as keyof typeof TalentValues].combat2;
+    //   const element = hit.elemental ? hit.elemental : $character.selected.vision;
+    //   return calculateFinalDMG(
+    //     hit,
+    //     values,
+    //     element,
+    //     'skillSpecialMultiplier',
+    //     'skillDefIgnore',
+    //     'skill',
+    //     'skillFlatDMG'
+    //   );
+    // });
+
     // ✅ Party 2 Rows
     // ✅ Party 3 Rows
 

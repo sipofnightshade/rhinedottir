@@ -38,6 +38,7 @@ export type Hit = {
       | 'param18'
       | 'param19'
       | 'param20';
+    coef?: number;
   }[];
 };
 
@@ -105,13 +106,15 @@ export type ALL_STATS =
   | 'hyperbloom'
   | 'crystallize';
 
+export type Target = 'self' | 'enemy' | 'party' | 'all';
+
 export type Action = {
   name: string;
   url: string;
   description: string;
   level: number;
   constellation: number;
-  target?: 'self' | 'enemy' | 'party' | 'all';
+  target?: Target;
   /**
    * @description - target
    * This should be used to determine whether or not a characters' actions are

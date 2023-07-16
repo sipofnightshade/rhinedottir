@@ -49,7 +49,7 @@ const charName: CharacterRecord = {
       tag: 'A1',
       damageBonus: 'normal',
       elemental: 'anemo',
-      damage: [{ scaling: 'atk', param: 'param8' }]
+      damage: [{ scaling: 'atk', param: 'param1', coef: 0.6 }]
     }
   ],
   charged: [
