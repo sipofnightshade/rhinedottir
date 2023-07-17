@@ -5,7 +5,7 @@ import type { SelectedWeapon } from '$lib/types/global';
 
 type Adjustable = 'lvl' | 'refinement';
 
-type CurrentWeapon = {
+export type CurrentWeapon = {
   selected: SelectedWeapon;
   stats:
     | {

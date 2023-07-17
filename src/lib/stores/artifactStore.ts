@@ -11,7 +11,7 @@ type Artifact = {
   substats: { stat: ArtifactStats; value: number }[];
 };
 
-interface ArtifactState {
+export interface ArtifactState {
   flower: Artifact;
   feather: Artifact;
   sands: Artifact;

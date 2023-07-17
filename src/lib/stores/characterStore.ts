@@ -6,7 +6,7 @@ import traveleranemo from '$lib/data/characters/traveleranemo';
 
 type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
-type CurrentCharacter = {
+export type CurrentCharacter = {
   selected: CharacterRecord;
   stats:
     | {
