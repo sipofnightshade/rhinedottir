@@ -106,6 +106,11 @@ export type ALL_STATS =
   | 'hyperbloom'
   | 'crystallize';
 
+export type StatObject = {
+  stat: ALL_STATS;
+  value: number;
+}[];
+
 export type Target = 'self' | 'enemy' | 'party' | 'all';
 
 export type Action = {
