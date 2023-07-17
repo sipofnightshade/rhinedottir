@@ -23,9 +23,6 @@ function createStats() {
       const combinedStats = getCombinedStats($weapon, $character, flatStats);
       const totalStats = getTotalStats(BASE, combinedStats as StatObject, $action.main);
 
-      console.log('combinedStats', combinedStats);
-      console.log(JSON.stringify(totalStats) === JSON.stringify(totalStats));
-
       /**
        * @todo
        * 2. Total up main stats and party stats then
