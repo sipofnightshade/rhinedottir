@@ -8,6 +8,7 @@
   import Updates from './_Updates.svelte';
 
   import { clickOutside } from '$lib/helpers/clickOutside';
+  import SaveLoadout from '../Buttons/SaveLoadout.svelte';
 
   interface MenuItem {
     id: string;
@@ -60,13 +61,14 @@
 <div class="relative" use:clickOutside={closeMenu}>
   <!-- Top Menu -->
   <nav
-    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-4 md:flex"
+    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-3 md:flex"
   >
+    <SaveLoadout />
     <p>Rhinedottir</p>
     <div class="flex items-center space-x-6">
-      <button on:click={() => handleMenu(menuItems[0])}>Updates</button>
-      <button on:click={() => handleMenu(menuItems[1])}>Builds</button>
-      <button on:click={() => handleMenu(menuItems[3])}>Artifacts</button>
+      <!-- <button on:click={() => handleMenu(menuItems[0])}>Updates</button> -->
+      <!-- <button on:click={() => handleMenu(menuItems[1])}>Builds</button> -->
+      <!-- <button on:click={() => handleMenu(menuItems[3])}>Artifacts</button> -->
       <button on:click={() => handleMenu(menuItems[4])}>Settings</button>
     </div>
   </nav>
@@ -90,14 +92,14 @@
   </nav>
   {#if currentMenuItem}
     <div
-      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700  p-2 md:hidden"
+      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:hidden"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
 
     <!-- CREATE ONE SPECIFICALLY FOR DESKTOP -->
     <div
-      class="absolute right-0 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex  lg:w-1/2 "
+      class="absolute right-0 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex lg:w-1/2"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
