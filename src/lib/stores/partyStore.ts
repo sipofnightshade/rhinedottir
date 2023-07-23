@@ -1,23 +1,22 @@
 import { writable } from 'svelte/store';
 
-type PartyCharacter = {
+type CharacterBuild = {
   character: any;
   artifacts: any;
+  weapon: any;
 };
 
 type Party = {
-  //
+  one: CharacterBuild | undefined;
+  two: CharacterBuild | undefined;
+  three: CharacterBuild | undefined;
 };
 
-/**
- * @todo
- *  📢 When saving a character, save it with only its base stats.
- * So a new stat merging function should be ran basically or
- * return a value from stats that don't include @nonPASSIVE actions.
- * i.e: This would be the weapon and artifact stats alone
- */
-
-const initialState: PartyCharacter[] | undefined[] = [];
+const initialState: Party = {
+  one: undefined,
+  two: undefined,
+  three: undefined
+};
 
 function createParty() {
   const { subscribe, set, update } = writable(initialState);
@@ -25,15 +24,17 @@ function createParty() {
   return {
     subscribe,
     set,
-    //💥
-    setPartyMember: (index: number) =>
+    setPartyMember: (
+      id: 'one' | 'two' | 'three',
+      character: CharacterBuild // Fix the type here
+    ) =>
       update((state) => {
-        // mutate/modify state
+        state[id] = character;
         return state;
       }),
-    removePartyMember: (index: number) =>
+    removePartyMember: (id: 'one' | 'two' | 'three') =>
       update((state) => {
-        // mutate/modify state
+        state[id] = undefined;
         return state;
       }),
 
