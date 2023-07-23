@@ -4,9 +4,6 @@
   // modal pages
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
-  import Party1 from '../Modal/Party/Party1.svelte';
-  import Party2 from '../Modal/Party/Party2.svelte';
-  import Party3 from '../Modal/Party/Party3.svelte';
   import Flower from '../Modal/Artifact/Flower.svelte';
   import Feather from '../Modal/Artifact/Feather.svelte';
   import Sands from '../Modal/Artifact/Sands.svelte';
@@ -20,26 +17,36 @@
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
   import Modal from '../Modal/Modal.svelte';
+  import One from '../Modal/Party/One.svelte';
+  import Two from '../Modal/Party/Two.svelte';
+  import Three from '../Modal/Party/Three.svelte';
+  import { party } from '$lib/stores/partyStore';
 
   // initialise modal state and content
 
   let dialog: HTMLDialogElement;
 
-  const partyModals = [
+  type PartyModal = {
+    id: 'one' | 'two' | 'three';
+    img: string;
+    component: any;
+  };
+
+  const partyModals: PartyModal[] = [
     {
-      id: 'Party 1',
+      id: 'one',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party1
+      component: One
     },
     {
-      id: 'Party 2',
+      id: 'two',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party2
+      component: Two
     },
     {
-      id: 'Party 3',
+      id: 'three',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party3
+      component: Three
     }
   ];
 
@@ -60,7 +67,7 @@
       id: 'sands',
       img: '/images/ui/UI_BtnIcon_RelicType3.png',
       component: Sands,
-      title: "Sands of Eon"
+      title: 'Sands of Eon'
     },
     {
       id: 'goblet',
@@ -89,8 +96,8 @@
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
   <button
-    class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
-    on:click={() => toggleModal(Character, 'Character New')}
+    class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
       img="/images/character/{$character.selected.name}.webp"
@@ -99,7 +106,7 @@
     />
   </button>
   <button
-    class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
     on:click={() => toggleModal(Weapon, 'Weapon')}
   >
     <Thumbnail
@@ -111,11 +118,19 @@
   <!-- Party buttons -->
   {#each partyModals as modal (modal.id)}
     <button
-      class=" flex aspect-square items-center justify-center rounded-md border-2  border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
-      on:click={() => toggleModal(modal.component, modal.id)}
+      class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+      on:click={() => toggleModal(modal.component, 'Select a Teammate')}
     >
-      <img src={modal.img} alt="{modal.id} image" />
-      <!-- <Thumbnail/> -->
+      {#if $party[modal.id]}
+        {@const character = $party[modal.id]?.character.selected}
+        <Thumbnail
+          img="/images/character/{character.name}.webp"
+          vision={character.vision}
+          alt={character.name}
+        />
+      {:else}
+        <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
+      {/if}
     </button>
   {/each}
 
@@ -136,15 +151,6 @@
     </button>
   {/each}
 </div>
-<!-- {#if showModal}
-  <Modal
-    on:click={closeModal}
-    on:escapeClick={closeModal}
-    {modalTitle}
-    {modalContent}
-    classes="h-screen w-screen xs:w-[452px] xs:h-[90vh] mx-auto rounded-xl flex flex-col items-center bg-slate-700 relative"
-  />
-{/if} -->
 
 <Modal bind:dialog title={modalTitle}>
   <svelte:component this={modalContent} />

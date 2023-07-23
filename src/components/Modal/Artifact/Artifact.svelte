@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
-  import LevelGroup from './_LevelGroup.svelte';
-  import Picker from '../Picker/Picker.svelte';
-  import SubstatGroup from './Artifact/_SubstatGroup.svelte';
-  import StarSelector from '../Stars/StarSelector.svelte';
-  import MainStat from './Artifact/_MainStat.svelte';
+  import Thumbnail from '../../Thumbnail/Thumbnail.svelte';
+  import LevelGroup from '../_LevelGroup.svelte';
+  import Picker from '../../Picker/Picker.svelte';
+  import SubstatGroup from './_SubstatGroup.svelte';
+  import StarSelector from '../../Stars/StarSelector.svelte';
+  import MainStat from './_MainStat.svelte';
   import { artifact } from '$lib/stores/artifactStore';
 
   import { ArtifactData } from '$lib/data/Artifacts';

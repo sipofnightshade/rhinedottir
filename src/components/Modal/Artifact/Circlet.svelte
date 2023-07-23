@@ -1,5 +1,5 @@
 <script>
-  import Artifact from '../_Artifact.svelte';
+  import Artifact from './Artifact.svelte';
 </script>
 
 <Artifact type="circlet" />

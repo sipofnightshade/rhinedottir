@@ -3,29 +3,36 @@
   import Modal from '../Modal/Modal.svelte';
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
-  import Party1 from '../Modal/Party/Party1.svelte';
-  import Party2 from '../Modal/Party/Party2.svelte';
-  import Party3 from '../Modal/Party/Party3.svelte';
+  import One from '../Modal/Party/One.svelte';
+  import Two from '../Modal/Party/Two.svelte';
+  import Three from '../Modal/Party/Three.svelte';
 
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
   import { statValueFormatter } from '$lib/helpers/statFormatter';
+  import { party } from '$lib/stores/partyStore';
 
-  const menuModals = [
+  type PartyModal = {
+    id: 'one' | 'two' | 'three';
+    img: string;
+    component: any;
+  };
+
+  const menuModals: PartyModal[] = [
     {
-      id: 'Party 1',
+      id: 'one',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party1
+      component: One
     },
     {
-      id: 'Party 2',
+      id: 'two',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party2
+      component: Two
     },
     {
-      id: 'Party 3',
+      id: 'three',
       img: '/images/ui/UI_BtnIcon_Team.png',
-      component: Party3
+      component: Three
     }
   ];
 
@@ -56,7 +63,7 @@
       alt={$character.selected.fullName}
     />
   </button>
-  <div class="flex flex-col gap-2  xl:gap-4">
+  <div class="flex flex-col gap-2 xl:gap-4">
     <!-- Weapon Button -->
     <button
       class="col-span-3 flex h-fit w-full items-end rounded-2xl bg-slate-700 p-1 text-sm lg:text-base"
@@ -89,11 +96,19 @@
     <div class="grid grid-flow-col gap-2 lg:gap-3">
       {#each menuModals as modal (modal.id)}
         <button
-          class="flex h-14 w-14 items-center justify-center rounded-md  bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
-          on:click={() => toggleModal(modal.component, modal.id)}
+          class="flex h-14 w-14 items-center justify-center rounded-md bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
+          on:click={() => toggleModal(modal.component, 'Select a Teammate')}
         >
-          <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
-          <!-- <Thumbnail img="/images/weapon/rust.webp" alt="rust" /> -->
+          {#if $party[modal.id]}
+            {@const character = $party[modal.id]?.character.selected}
+            <Thumbnail
+              img="/images/character/{character.name}.webp"
+              vision={character.vision}
+              alt={character.name}
+            />
+          {:else}
+            <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
+          {/if}
         </button>
       {/each}
     </div>
