@@ -174,7 +174,10 @@ export function calcFinalDMG(
               $enemy.hydro
             ) + result;
         } else {
-          total.swirl += result;
+          total.pyroSwirl += result;
+          total.cryoSwirl += result;
+          total.electroSwirl += result;
+          total.hydroSwirl += result;
         }
       }
 
