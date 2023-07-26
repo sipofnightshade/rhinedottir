@@ -16,8 +16,11 @@ function createEnemy() {
     const hydro = calcRESMultiplier(0.1, 0, enemy.hydroRes);
     const pyro = calcRESMultiplier(0.1, 0, enemy.pyroRes);
 
+    const dmgReduction = enemy.dmgReduction;
+
     return {
       lvl: enemyLvl,
+      dmgReduction,
       physical,
       anemo,
       geo,

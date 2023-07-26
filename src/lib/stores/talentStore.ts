@@ -2,373 +2,176 @@ import { derived } from 'svelte/store';
 //  stores
 import { character } from './characterStore';
 import { stats } from './statsStore';
-
+import { enemy } from './enemyStore';
+import { party } from './partyStore';
 // types
 import TalentValues from '$lib/data/TalentValues.json';
-import type { Hit } from '$lib/types/talents';
-import type { DamageType } from '$lib/types/global';
 
 // calculators & helpers
-import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
-import { calcRESMultiplier } from '$lib/calculators/calcRESMultiplier';
-import { calcDamageNoReaction } from '$lib/calculators/calcDamageNoReaction';
-import { calcCatalyzeBonus } from '$lib/calculators/calcCatalyzeBonus';
-import { calcTransforming } from '$lib/calculators/calcTransforming';
-import { calcAmplifying } from '$lib/calculators/calcAmplifyingMultiplier';
-import { enemy } from './enemyStore';
+import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
 
 function createTalents() {
-  return derived([character, stats, enemy], ([$character, $stats, $enemy]) => {
-    // create traveler name indexes
-    const cName =
-      $character.selected.name === 'aether'
-        ? `traveler${$character.selected.vision}`
-        : $character.selected.name;
-    const cLvl = $character.lvl;
+  return derived(
+    [character, stats, enemy, party],
+    ([$character, $stats, $enemy, $party]) => {
+      // create traveler name indexes
+      const cName =
+        $character.selected.name === 'aether'
+          ? `traveler${$character.selected.vision}`
+          : $character.selected.name;
 
-    /** ❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗
-     * @todo
-     * - Have separate stats for party. @ADD those stats to each
-     * character's indifividual stats.
-     *
-     * - 🚀 Figure out a way to add stats to specific individual
-     * hits.
-     *
-     * - Add all enemey resistances and apply them correctly,
-     * especially to reaction damage.
-     */
+      /**
+       * @todo
+       * - 🚀 Figure out a way to add stats to specific individual
+       * hits.
+       * - 💡 May have to have an option to create the stat on the fly
+       * and have an optional field on the talent which allows a custom
+       * stat to be added as a string.
+       */
 
-    // enemy stats
-    const eLvl = $enemy.lvl;
-    const DMGReduction = 0;
-
-    function calculateFinalDMG(
-      hit: Hit,
-      values: any,
-      element: DamageType,
-      specX: string,
-      defIgnore: string,
-      talentLvl: 'atk' | 'skill' | 'burst',
-      flatDmg: string
-    ) {
-      // setup ICD
-      const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
-
-      // get enemy resistance multiplier
-      const RESMultiplier = $enemy[element];
-      const SpecialMultiplier = 1 + $stats[specX];
-      const DEFMultiplier = calcDEFMultiplier(
-        cLvl,
-        eLvl,
-        $stats.defReduce,
-        $stats[defIgnore]
-      );
-      // ❗❗❗ may have to extract this. This would also remove the need for an enemy store.
-      const DMGBonus =
-        (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
-        $stats[hit.damageBonus];
-
-      // get the catalyze bonus damage
-      const catalyze = {
-        electro: 'aggravate',
-        dendro: 'spread'
-      };
-      const catalyzeFlatDMG =
-        element === 'dendro' || element === 'electro'
-          ? $stats[flatDmg] +
-            calcCatalyzeBonus(element, $stats.em, cLvl, $stats[catalyze[element]])
-          : 0;
-
-      const FinalDMG = hit.damage.reduce(
-        (total: any, damage, i) => {
-          const hitDMG = damage.coef
-            ? $stats[damage.scaling] * damage.coef
-            : $stats[damage.scaling] *
-              values[damage.param as keyof typeof values][$character[talentLvl]];
-
-          // the damage with NO REACTIONS
-          const result = calcDamageNoReaction(
-            hitDMG,
-            SpecialMultiplier,
-            $stats[flatDmg],
-            DMGBonus,
-            DMGReduction,
-            DEFMultiplier,
-            RESMultiplier,
-            $stats.critrate,
-            $stats.critdmg
-          );
-          total.base += result;
-
-          const catalyzeResult = calcDamageNoReaction(
-            hitDMG,
-            SpecialMultiplier,
-            $stats[flatDmg] + catalyzeFlatDMG,
-            DMGBonus,
-            DMGReduction,
-            DEFMultiplier,
-            RESMultiplier,
-            $stats.critrate,
-            $stats.critdmg
-          );
-
-          /**
-           * @here Conditionally add reactions to total
-           */
-          if (element === 'electro') {
-            // initialize reaction values to 0 if undefined
-            total.aggravate = total.aggravate || 0;
-            total.superconduct = total.superconduct || 0;
-            total.electrocharged = total.electrocharged || 0;
-
-            // if damage instance is --ON cooldown, add reactions
-            if (i % ICD === 0) {
-              total.aggravate += catalyzeResult;
-              total.superconduct +=
-                calcTransforming(
-                  'superconduct',
-                  $stats.em,
-                  cLvl,
-                  $stats.superconduct,
-                  $enemy.cryo
-                ) + result;
-              total.electrocharged +=
-                calcTransforming(
-                  'electrocharged',
-                  $stats.em,
-                  cLvl,
-                  $stats.electrocharged,
-                  $enemy.electro
-                ) + result;
-            } else {
-              // if damage instance is --OFF cooldown, add base damage
-              total.aggravate += result;
-              total.superconduct += result;
-              total.electrocharged += result;
-            }
-          }
-
-          if (element === 'dendro') {
-            total.spread = total.spread || 0;
-
-            if (i % ICD === 0) {
-              total.spread += catalyzeResult;
-            } else {
-              total.spread += result;
-            }
-          }
-
-          if (element === 'anemo') {
-            // total.swirl = total.swirl || 0;
-            total.pyroSwirl = total.pyroSwirl || 0;
-            total.cryoSwirl = total.cryoSwirl || 0;
-            total.electroSwirl = total.electroSwirl || 0;
-            total.hydroSwirl = total.hydroSwirl || 0;
-
-            if (i % ICD === 0) {
-              // total.swirl +=
-              //   calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.anemo) +
-              //   result;
-              total.pyroSwirl +=
-                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.pyro) +
-                result;
-              total.cryoSwirl +=
-                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.cryo) +
-                result;
-              total.electroSwirl +=
-                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.electro) +
-                result;
-              total.hydroSwirl +=
-                calcTransforming('swirl', $stats.em, cLvl, $stats.swirl, $enemy.hydro) +
-                result;
-            } else {
-              total.swirl += result;
-            }
-          }
-
-          if (element === 'pyro') {
-            total.vaporize = total.vaporize || 0;
-            total.melt = total.melt || 0;
-            total.overloaded = total.overloaded || 0;
-
-            if (i % ICD === 0) {
-              total.vaporize += result * calcAmplifying(1.5, $stats.em, $stats.vaporize);
-              total.melt += result * calcAmplifying(2, $stats.em, $stats.melt);
-              total.overloaded +=
-                calcTransforming(
-                  'overloaded',
-                  $stats.em,
-                  cLvl,
-                  $stats.overloaded,
-                  $enemy.cryo
-                ) + result;
-            } else {
-              total.vaporize += result;
-              total.melt += result;
-              total.overloaded += result;
-            }
-          }
-
-          if (element === 'hydro') {
-            total.vaporize = total.vaporize || 0;
-            total.electrocharged = total.electrocharged || 0;
-            if (i % ICD === 0) {
-              total.vaporize += result * calcAmplifying(2, $stats.em, $stats.vaporize);
-              total.electrocharged +=
-                calcTransforming(
-                  'electrocharged',
-                  $stats.em,
-                  cLvl,
-                  $stats.electrocharged,
-                  $enemy.cryo
-                ) *
-                  $enemy.cryo +
-                result;
-            } else {
-              total.vaporize += result;
-              total.electrocharged += result;
-            }
-          }
-
-          if (element === 'cryo') {
-            total.melt = total.melt || 0;
-            total.superconduct = total.superconduct || 0;
-
-            if (i % ICD === 0) {
-              total.melt += result * calcAmplifying(1.5, $stats.em, $stats.melt);
-              total.superconduct +=
-                calcTransforming(
-                  'superconduct',
-                  $stats.em,
-                  cLvl,
-                  $stats.superconduct,
-                  $enemy.cryo
-                ) + result;
-            } else {
-              total.melt += result;
-              total.superconduct += result;
-            }
-          }
-          return total;
+      const additionalStats = {
+        normal: {
+          specialMultiplier: 'normalSpecialMultiplier',
+          defIgnore: 'normalDefIgnore',
+          talentLvlId: 'atk',
+          flatDMG: 'normalFlatDMG'
         },
-        { base: 0 }
-      );
+        charged: {
+          specialMultiplier: 'chargedSpecialMultiplier',
+          defIgnore: 'chargedDefIgnore',
+          talentLvlId: 'atk',
+          flatDMG: 'chargedFlatDMG'
+        },
+        plunge: {
+          specialMultiplier: 'plungeSpecialMultiplier',
+          defIgnore: 'plungeDefIgnore',
+          talentLvlId: 'atk',
+          flatDMG: 'plungeFlatDMG'
+        },
+        skill: {
+          specialMultiplier: 'skillSpecialMultiplier',
+          defIgnore: 'skillDefIgnore',
+          talentLvlId: 'skill',
+          flatDMG: 'skillFlatDMG'
+        },
+        burst: {
+          specialMultiplier: 'burstSpecialMultiplier',
+          defIgnore: 'burstDefIgnore',
+          talentLvlId: 'burst',
+          flatDMG: 'burstFlatDMG'
+        }
+      };
 
+      // ✅ Normal Rows
+      const normalRows = $character.selected.normal.map((hit) => {
+        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
+        const element = hit.elemental ? hit.elemental : infusion;
+        return calcFinalDMG(
+          hit,
+          values,
+          element,
+          $character,
+          $stats,
+          $enemy,
+          additionalStats.normal
+        );
+      });
+
+      // ✅ Charged Rows
+      const chargedRows = $character.selected.charged.map((hit) => {
+        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
+        const element = hit.elemental ? hit.elemental : infusion;
+        return calcFinalDMG(
+          hit,
+          values,
+          element,
+          $character,
+          $stats,
+          $enemy,
+          additionalStats.charged
+        );
+      });
+
+      // ✅ Plunge Rows
+      const plungeRows = $character.selected.plunge.map((hit) => {
+        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
+        const element = hit.elemental ? hit.elemental : infusion;
+        return calcFinalDMG(
+          hit,
+          values,
+          element,
+          $character,
+          $stats,
+          $enemy,
+          additionalStats.plunge
+        );
+      });
+
+      // ✅ Skill Rows
+      const skillRows = $character.selected.skill.map((hit) => {
+        const values = TalentValues[cName as keyof typeof TalentValues].combat2;
+        const element = hit.elemental ? hit.elemental : $character.selected.vision;
+        return calcFinalDMG(
+          hit,
+          values,
+          element,
+          $character,
+          $stats,
+          $enemy,
+          additionalStats.skill
+        );
+      });
+
+      // ✅ Burst Rows
+      const burstRows = $character.selected.burst.map((hit) => {
+        const values = TalentValues[cName as keyof typeof TalentValues].combat3;
+        const element = hit.elemental ? hit.elemental : $character.selected.vision;
+        return calcFinalDMG(
+          hit,
+          values,
+          element,
+          $character,
+          $stats,
+          $enemy,
+          additionalStats.burst
+        );
+      });
+
+      /**
+       * @todo replace with `party1.offField.map...` if party 1 exists
+       * @considerations Off field talents should have a combat string
+       * value or a damage value to deal with like Fischl @A4
+       */
+      // const p1Field = $character.selected.skill.map((hit) => {
+      //   const values = TalentValues[cName as keyof typeof TalentValues].combat2;
+      //   const element = hit.elemental ? hit.elemental : $character.selected.vision;
+      //   return calculateFinalDMG(
+      //     hit,
+      //     values,
+      //     element,
+      //     'skillSpecialMultiplier',
+      //     'skillDefIgnore',
+      //     'skill',
+      //     'skillFlatDMG'
+      //   );
+      // });
+
+      // ✅ Party 2 Rows
+      // ✅ Party 3 Rows
+
+      console.log(normalRows);
       return {
-        ...hit,
-        elemental: element,
-        damage: { ...FinalDMG }
+        normalRows,
+        chargedRows,
+        plungeRows,
+        skillRows,
+        burstRows
       };
     }
-
-    // ✅ Normal Rows
-    const normalRows = $character.selected.normal.map((hit) => {
-      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-      const element = hit.elemental ? hit.elemental : infusion;
-      return calculateFinalDMG(
-        hit,
-        values,
-        element,
-        'normalSpecialMultiplier',
-        'normalDefIgnore',
-        'atk',
-        'normalFlatDMG'
-      );
-    });
-
-    // ✅ Charged Rows
-    const chargedRows = $character.selected.charged.map((hit) => {
-      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-      const element = hit.elemental ? hit.elemental : infusion;
-      return calculateFinalDMG(
-        hit,
-        values,
-        element,
-        'chargedSpecialMultiplier',
-        'chargedDefIgnore',
-        'atk',
-        'chargedFlatDMG'
-      );
-    });
-
-    // ✅ Plunge Rows
-    const plungeRows = $character.selected.plunge.map((hit) => {
-      const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-      const element = hit.elemental ? hit.elemental : infusion;
-      return calculateFinalDMG(
-        hit,
-        values,
-        element,
-        'plungeSpecialMultiplier',
-        'plungeDefIgnore',
-        'atk',
-        'plungeFlatDMG'
-      );
-    });
-
-    // ✅ Skill Rows
-    const skillRows = $character.selected.skill.map((hit) => {
-      const values = TalentValues[cName as keyof typeof TalentValues].combat2;
-      const element = hit.elemental ? hit.elemental : $character.selected.vision;
-      return calculateFinalDMG(
-        hit,
-        values,
-        element,
-        'skillSpecialMultiplier',
-        'skillDefIgnore',
-        'skill',
-        'skillFlatDMG'
-      );
-    });
-
-    // ✅ Burst Rows
-    const burstRows = $character.selected.burst.map((hit) => {
-      const values = TalentValues[cName as keyof typeof TalentValues].combat3;
-      const element = hit.elemental ? hit.elemental : $character.selected.vision;
-      return calculateFinalDMG(
-        hit,
-        values,
-        element,
-        'burstSpecialMultiplier',
-        'burstDefIgnore',
-        'burst',
-        'burstFlatDMG'
-      );
-    });
-
-    /**
-     * @todo replace with `party1.offField.map...` if party 1 exists
-     * @considerations Off field talents should have a combat string
-     * value or a damage value to deal with like Fischl @A4
-     */
-    // const p1Field = $character.selected.skill.map((hit) => {
-    //   const values = TalentValues[cName as keyof typeof TalentValues].combat2;
-    //   const element = hit.elemental ? hit.elemental : $character.selected.vision;
-    //   return calculateFinalDMG(
-    //     hit,
-    //     values,
-    //     element,
-    //     'skillSpecialMultiplier',
-    //     'skillDefIgnore',
-    //     'skill',
-    //     'skillFlatDMG'
-    //   );
-    // });
-
-    // ✅ Party 2 Rows
-    // ✅ Party 3 Rows
-
-    return {
-      normalRows,
-      chargedRows,
-      plungeRows,
-      skillRows,
-      burstRows
-    };
-  });
+  );
 }
 
 export const talents = createTalents();
