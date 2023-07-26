@@ -74,7 +74,7 @@ function createTalents() {
           values,
           element,
           $character,
-          $stats,
+          $stats.main,
           $enemy,
           additionalStats.normal
         );
@@ -89,7 +89,7 @@ function createTalents() {
           values,
           element,
           $character,
-          $stats,
+          $stats.main,
           $enemy,
           additionalStats.charged
         );
@@ -104,7 +104,7 @@ function createTalents() {
           values,
           element,
           $character,
-          $stats,
+          $stats.main,
           $enemy,
           additionalStats.plunge
         );
@@ -119,7 +119,7 @@ function createTalents() {
           values,
           element,
           $character,
-          $stats,
+          $stats.main,
           $enemy,
           additionalStats.skill
         );
@@ -134,7 +134,7 @@ function createTalents() {
           values,
           element,
           $character,
-          $stats,
+          $stats.main,
           $enemy,
           additionalStats.burst
         );
@@ -162,7 +162,6 @@ function createTalents() {
       // ✅ Party 2 Rows
       // ✅ Party 3 Rows
 
-      console.log(normalRows);
       return {
         normalRows,
         chargedRows,
