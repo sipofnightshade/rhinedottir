@@ -16,47 +16,32 @@ would have to be infusion for Normal/Charged Attacks.
 <div>
   <!-- Normal -->
   <section class="mb-1 grid grid-flow-col gap-1">
-    {#each $talents.normalRows as talent, btnIndex}
-      <Button
-        value={talent.tag}
-        on:click={() => combos.addRowButton(index, 'normalRows', btnIndex)}
-      />
+    {#each $talents.normalRows as talent}
+      <Button value={talent.tag} on:click={() => combos.addRowButton(index, talent)} />
     {/each}
   </section>
   <!-- Charged -->
-  <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $talents.chargedRows as talent, btnIndex}
-      <Button
-        value={talent.tag}
-        on:click={() => combos.addRowButton(index, 'chargedRows', btnIndex)}
-      />
+  <section class="mb-1 grid grid-flow-col gap-1">
+    {#each $talents.chargedRows as talent}
+      <Button value={talent.tag} on:click={() => combos.addRowButton(index, talent)} />
     {/each}
   </section>
   <!-- Plunge -->
-  <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $talents.plungeRows as talent, btnIndex}
-      <Button
-        value={talent.tag}
-        on:click={() => combos.addRowButton(index, 'plungeRows', btnIndex)}
-      />
+  <section class="mb-1 grid grid-flow-col gap-1">
+    {#each $talents.plungeRows as talent}
+      <Button value={talent.tag} on:click={() => combos.addRowButton(index, talent)} />
     {/each}
   </section>
   <!-- Skill -->
-  <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $talents.skillRows as talent, btnIndex}
-      <Button
-        value={talent.tag}
-        on:click={() => combos.addRowButton(index, 'skillRows', btnIndex)}
-      />
+  <section class="mb-1 grid grid-flow-col gap-1">
+    {#each $talents.skillRows as talent}
+      <Button value={talent.tag} on:click={() => combos.addRowButton(index, talent)} />
     {/each}
   </section>
   <!-- Burst -->
-  <section class="mb-1 grid  grid-flow-col gap-1">
-    {#each $talents.burstRows as talent, btnIndex}
-      <Button
-        value={talent.tag}
-        on:click={() => combos.addRowButton(index, 'burstRows', btnIndex)}
-      />
+  <section class="mb-1 grid grid-flow-col gap-1">
+    {#each $talents.burstRows as talent}
+      <Button value={talent.tag} on:click={() => combos.addRowButton(index, talent)} />
     {/each}
   </section>
 </div>

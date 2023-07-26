@@ -5,9 +5,11 @@
 </script>
 
 <div class="flex flex-col">
-  {#each $combos as row, index}
-    <ComboRow {index} />
-  {/each}
+  {#if $combos}
+    {#each $combos as row, index}
+      <ComboRow {index} {row} />
+    {/each}
+  {/if}
   <button
     class="my-4 flex h-16 items-center justify-center rounded-lg border-2 border-dashed border-slate-400 opacity-60 transition-opacity hover:opacity-100"
     on:click={() => combos.addRow()}

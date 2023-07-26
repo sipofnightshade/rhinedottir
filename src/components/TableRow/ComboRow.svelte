@@ -4,11 +4,11 @@
   import ComboModal from '../Modal/Combo/ComboModal.svelte';
   import ShortModal from '../Modal/ShortModal.svelte';
 
-  import { combos, type ButtonDamage } from '$lib/stores/comboStore';
-  import { talents } from '$lib/stores/talentStore';
-  import Combo from '../Table/Combo.svelte';
+  // stores
+  import { combos } from '$lib/stores/comboStore';
 
   export let index: number;
+  export let row: any; // ❗❗❗ types for combostore Row
   let dialog: HTMLDialogElement;
 
   /**
@@ -17,37 +17,13 @@
    * @param combo - Combo object specifying the hits to calculate damage for.
    * @returns An object containing the total damage and the talent objects involved.
    */
-  function calculateComboDamage(
-    talents: Record<string, any[]>,
-    combo: { hits: { talent: string; btnIndex: number; btnDmg: ButtonDamage }[] }
-  ) {
-    let totalDamage = 0;
-    const talentObjects: any[] = [];
-
-    for (const hit of combo.hits) {
-      const talentRow = talents[hit.talent];
-      const button = talentRow[hit.btnIndex];
-      // add button location data
-      button.btnIndex = hit.btnIndex;
-      button.talent = hit.talent;
-      button.dmgTypes = Object.keys(button.damage);
-
-      talentObjects.push(button);
-      totalDamage += button.damage[hit.btnDmg];
-    }
-
-    return {
-      totalDamage,
-      talentObjects
-    };
-  }
 
   // handle modal
   function toggleModal() {
     dialog.showModal();
   }
 
-  $: result = calculateComboDamage($talents, $combos[index]);
+  // console.log($combos);
 </script>
 
 <!-- @component - * - * - * - * - * - * - * - * - * - 
@@ -59,11 +35,11 @@ is editable on shover and click etc
   <h3
     class="mb-2 w-fit min-w-[120px] underline-offset-2 hover:underline"
     contenteditable="true"
-    bind:textContent={$combos[index].title}
+    bind:textContent={row.title}
   />
 
   <div class="flex items-center">
-    {#each result.talentObjects as btn, i}
+    {#each row.hits as btn, i}
       <ComboButton {btn} rowIndex={index} btnIndex={i} />
     {/each}
     <ComboAddButton on:click={toggleModal} />
@@ -75,7 +51,7 @@ is editable on shover and click etc
         src="/images/elements/physical.svg"
         alt="element"
       />
-      <span>{Math.round(result.totalDamage).toLocaleString() || '-'}</span>
+      <span>{Math.round(row.totalDamage).toLocaleString() || '-'}</span>
     </div>
   </div>
 </section>

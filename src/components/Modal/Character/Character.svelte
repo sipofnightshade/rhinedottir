@@ -1,15 +1,24 @@
 <script lang="ts">
+  // components
   import Thumbnail from '../../Thumbnail/Thumbnail.svelte';
   import LevelGroup from '../_LevelGroup.svelte';
   import StarGroup from '../../Stars/StarGroup.svelte';
   import Filters from '../../Filters/Filters.svelte';
   import Picker from '../../Picker/Picker.svelte';
+
+  // stores
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
+  import { combos } from '$lib/stores/comboStore';
+
+  // data
   import { DefaultWeapons } from '$lib/data/DefaultWeapons';
-  import { labels } from '$lib/data/Levels';
-  import type { SelectedWeapon } from '$lib/types/global';
   import { characterData } from '$lib/data/characters/index';
+  import { labels } from '$lib/data/Levels';
+
+  // types
+  import type { SelectedWeapon } from '$lib/types/global';
+  import type { SelectedCharacter } from '$lib/types/global';
 
   // filter data
   const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
@@ -19,6 +28,9 @@
   let contentH;
   let filter = '';
   let filteredData = characterData;
+
+  let currentCharacter: SelectedCharacter;
+  let previousCharacter: SelectedCharacter;
 
   // methods
   function handleIncrement(event: any) {
@@ -31,10 +43,19 @@
 
   function handleCharacterSelect(event: any) {
     character.setChar(event.detail.selected);
+    currentCharacter = $character.selected;
 
     if ($character.selected.weapon !== $weapon.selected.type) {
       weapon.setWeapon(DefaultWeapons[$character.selected.weapon] as SelectedWeapon);
     }
+
+    // Reset combos if the character has changed
+    if (currentCharacter !== previousCharacter) {
+      combos.reset();
+    }
+
+    // Update the previousCharacter with the currentCharacter for the next comparison
+    previousCharacter = currentCharacter;
   }
 
   function handleFilters(event: any) {

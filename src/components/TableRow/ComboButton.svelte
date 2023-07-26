@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { combos } from '$lib/stores/comboStore';
+  import { combos, type ButtonDamage, type Damage } from '$lib/stores/comboStore';
   import StatImage from '../Desktop/StatImage.svelte';
 
-  export let btn: any;
+  export let btn: Damage;
   export let rowIndex: number;
   export let btnIndex: number;
 
-  let dmgTypes = btn.dmgTypes;
+  let dmgTypes = Object.keys(btn.damage);
   let currentIndex = 0;
   let currentDmgType = dmgTypes[currentIndex];
 
   function switchDamage() {
+    console.log('currentDmgType', currentDmgType);
     currentIndex = (currentIndex + 1) % dmgTypes.length;
     currentDmgType = dmgTypes[currentIndex];
-    combos.changeBtnReaction(rowIndex, btnIndex, currentDmgType);
+    combos.changeBtnReaction(rowIndex, btnIndex, currentDmgType as ButtonDamage);
+    console.log(currentDmgType);
   }
-
-  $: console.log(currentDmgType);
 </script>
 
 <button

@@ -1,3 +1,4 @@
+import type { Hit } from '$lib/types/talents';
 import { writable } from 'svelte/store';
 
 export type TalentRowID =
@@ -18,13 +19,15 @@ export type ButtonDamage =
   | 'aggravate'
   | 'spread';
 
+export type Damage = Hit & {
+  damage: Record<ButtonDamage, number>;
+  dmgId?: ButtonDamage;
+};
+
 type ComboRow = {
   title: string;
-  hits: {
-    talent: TalentRowID;
-    btnIndex: number;
-    btnDmg: ButtonDamage;
-  }[];
+  hits: Damage[];
+  totalDamage: number;
 };
 
 const initialState: ComboRow[] = [];
@@ -37,7 +40,7 @@ function createComboRow() {
     set,
     addRow: () =>
       update((state) => {
-        state.push({ title: 'New Row', hits: [] });
+        state.push({ title: 'New Row', hits: [], totalDamage: 0 });
         return state;
       }),
     removeRow: (rowIndex: number) =>
@@ -45,22 +48,32 @@ function createComboRow() {
         state.splice(rowIndex, 1);
         return state;
       }),
-    addRowButton: (rowIndex: number, talent: TalentRowID, btnIndex: number) =>
+    addRowButton: (rowIndex: number, talent: Damage) =>
       update((state) => {
-        state[rowIndex].hits.push({ talent, btnIndex, btnDmg: 'base' });
+        state[rowIndex].hits.push({ ...talent, dmgId: 'base' });
+        state[rowIndex].totalDamage += talent.damage.base;
         return state;
       }),
-    removeRowButton: (rowIndex: number, hitIndex: number) =>
+    removeRowButton: (rowIndex: number, hitIndex: number, dmgId: ButtonDamage) =>
       update((state) => {
-        state[rowIndex].hits.splice(hitIndex, 1);
+        // save removed hit value (it's an array so [0] is used to index it immediately)
+        const removedHit = state[rowIndex].hits.splice(hitIndex, 1)[0];
+        state[rowIndex].totalDamage -= removedHit.damage[dmgId];
         return state;
       }),
-    changeBtnReaction: (rowIndex: number, rowBtnIndex: number, dmg: ButtonDamage) =>
+    changeBtnReaction: (rowIndex: number, rowBtnIndex: number, dmgId: ButtonDamage) =>
       update((state) => {
-        state[rowIndex].hits[rowBtnIndex].btnDmg = dmg;
+        state[rowIndex].hits[rowBtnIndex].dmgId = dmgId;
+        state[rowIndex].totalDamage = state[rowIndex].hits.reduce(
+          (acc, { damage, dmgId }) => {
+            const id = dmgId ? dmgId : 'base';
+            return acc + damage[id];
+          },
+          0
+        );
         return state;
       }),
-    reset: () => set(initialState)
+    reset: () => set([])
   };
 }
 
