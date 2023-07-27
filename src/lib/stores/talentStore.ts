@@ -11,6 +11,8 @@ import TalentValues from '$lib/data/TalentValues.json';
 import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
 import type { Hit } from '$lib/types/talents';
 import { getCharacterName } from '$lib/helpers/getCharacterName';
+import { getTalentRows } from '$lib/helpers/getTalentRows';
+import type { DamageType } from '$lib/types/global';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -142,98 +144,59 @@ function createTalents() {
       // ✅ Other Rows
       // Rows for passives and constellation damage
 
-      // -------------------------------- PARTY --------------------------------
-      // 🛠 data used to create a loop for party data
+      // -------------------------------- 🛠 MAIN 🛠 --------------------------------
+      const vision = $character.selected.vision;
+      const mainDmgType =
+        $character.selected.weapon === 'catalyst' || $character.selected.weapon === 'bow'
+          ? vision
+          : infusion;
+      const mainRows = {
+        normal: getTalentRows(
+          $character,
+          $stats.main,
+          $enemy,
+          'normal',
+          infusion as 'physical'
+        ),
+        charged: getTalentRows($character, $stats.main, $enemy, 'charged', mainDmgType),
+        plunge: getTalentRows(
+          $character,
+          $stats.main,
+          $enemy,
+          'plunge',
+          infusion as 'physical'
+        ),
+        skill: getTalentRows($character, $stats.main, $enemy, 'skill', vision),
+        burst: getTalentRows($character, $stats.main, $enemy, 'burst', vision)
+      };
+      // console.log('burst', JSON.stringify(burstRows) === JSON.stringify(mainRows.burst)); // true
 
-      interface PartyMember {
-        name: string;
-        skill: number[];
-        burst: number[];
-      }
+      // -------------------------------- 🛠 PARTY 🛠 --------------------------------
 
-      interface PartyData {
-        [key: string]: PartyMember;
-      }
+      const p1rows: any = {};
+      const p2rows: any = {};
+      const p3rows: any = {};
 
-      function calculateDamage(
-        character: any,
-        stats: any,
-        enemy: any,
-        additionalStats: any
-      ): PartyMember {
-        const pName = getCharacterName(character.selected);
-
-        const skill = character.selected.skill.map((hit: Hit) => {
-          const values = TalentValues[pName as keyof typeof TalentValues].combat2;
-          const element = hit.elemental ? hit.elemental : character.selected.vision;
-          return calcFinalDMG(
-            hit,
-            values,
-            element,
-            character,
-            stats,
-            enemy,
-            additionalStats.skill
-          );
-        });
-
-        const burst = character.selected.burst.map((hit: Hit) => {
-          const values = TalentValues[pName as keyof typeof TalentValues].combat3;
-          const element = hit.elemental ? hit.elemental : character.selected.vision;
-          return calcFinalDMG(
-            hit,
-            values,
-            element,
-            character,
-            stats,
-            enemy,
-            additionalStats.burst
-          );
-        });
-
-        return { name: pName, skill, burst };
-      }
-
-      const partyData: PartyData = {};
-
-      if ($party.one) {
+      if ($party.one && $stats.p1) {
         const character = $party.one.character;
-        partyData['p1'] = calculateDamage(character, $stats.p1, $enemy, additionalStats);
+        const vision = character.selected.vision;
+        p1rows['skill'] = getTalentRows(character, $stats.p1, $enemy, 'skill', vision);
+        p1rows['burst'] = getTalentRows(character, $stats.p1, $enemy, 'burst', vision);
       }
 
-      if ($party.two) {
+      if ($party.two && $stats.p2) {
         const character = $party.two.character;
-        partyData['p2'] = calculateDamage(character, $stats.p2, $enemy, additionalStats);
+        const vision = character.selected.vision;
+        p2rows['skill'] = getTalentRows(character, $stats.p2, $enemy, 'skill', vision);
+        p2rows['burst'] = getTalentRows(character, $stats.p2, $enemy, 'burst', vision);
       }
 
-      if ($party.three) {
+      if ($party.three && $stats.p3) {
         const character = $party.three.character;
-        partyData['p3'] = calculateDamage(character, $stats.p3, $enemy, additionalStats);
+        const vision = character.selected.vision;
+        p3rows['skill'] = getTalentRows(character, $stats.p3, $enemy, 'skill', vision);
+        p3rows['burst'] = getTalentRows(character, $stats.p3, $enemy, 'burst', vision);
       }
-
-      console.log('p1', partyData.p1);
-      console.log('p2', partyData.p2);
-      console.log('p3', partyData.p3);
-
-      // const partyData: { type: 'skill' | 'burst'; values: 'combat2' | 'combat3' }[] = [
-      //   { type: 'skill', values: 'combat2' },
-      //   { type: 'burst', values: 'combat3' }
-      // ];
-      // p1Rows = partyData.map((row) => {
-      //   character.selected[row.type].map((hit: Hit) => {
-      //     const values = TalentValues[pName as keyof typeof TalentValues][row.values];
-      //     const element = hit.elemental ? hit.elemental : character.selected.vision;
-      //     return calcFinalDMG(
-      //       hit,
-      //       values,
-      //       element,
-      //       character,
-      //       $stats.p1,
-      //       $enemy,
-      //       additionalStats[row.type as keyof typeof additionalStats]
-      //     );
-      //   });
-      // });
 
       return {
         normalRows,
