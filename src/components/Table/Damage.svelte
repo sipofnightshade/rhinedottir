@@ -5,6 +5,7 @@
   // stores
   import { character } from '$lib/stores/characterStore';
   import { talents } from '$lib/stores/talentStore';
+  import { party } from '$lib/stores/partyStore';
 </script>
 
 <div>
@@ -26,19 +27,19 @@
   </div>
 
   <!-- Normal -->
-  {#each $talents.normalRows as data}
+  {#each $talents.main.normal as data}
     <TalentRow {data} />
   {/each}
 
   <!-- Charged -->
   <div class="h-[1px] w-full bg-slate-600" />
-  {#each $talents.chargedRows as data}
+  {#each $talents.main.charged as data}
     <TalentRow {data} />
   {/each}
 
   <!-- Plunge -->
   <div class="h-[1px] w-full bg-slate-600" />
-  {#each $talents.plungeRows as data}
+  {#each $talents.main.plunge as data}
     <TalentRow {data} />
   {/each}
 
@@ -50,7 +51,7 @@
     />
   </div>
 
-  {#each $talents.skillRows as data}
+  {#each $talents.main.skill as data}
     <TalentRow {data} />
   {/each}
   <!---------- B U R S T ---------->
@@ -62,7 +63,49 @@
     />
   </div>
 
-  {#each $talents.burstRows as data}
+  {#each $talents.main.burst as data}
     <TalentRow {data} />
   {/each}
+
+  <!---------- Party 1 ---------->
+  {#if $party.one}
+    {@const character = $party.one.character}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
+    </div>
+    {#each $talents.one.skill as data}
+      <TalentRow {data} />
+    {/each}
+    {#each $talents.one.burst as data}
+      <TalentRow {data} />
+    {/each}
+  {/if}
+
+  <!---------- Party 2 ---------->
+  {#if $party.two}
+    {@const character = $party.two.character}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
+    </div>
+    {#each $talents.two.skill as data}
+      <TalentRow {data} />
+    {/each}
+    {#each $talents.two.burst as data}
+      <TalentRow {data} />
+    {/each}
+  {/if}
+
+  <!---------- Party 3 ---------->
+  {#if $party.three}
+    {@const character = $party.three.character}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
+    </div>
+    {#each $talents.three.skill as data}
+      <TalentRow {data} />
+    {/each}
+    {#each $talents.three.burst as data}
+      <TalentRow {data} />
+    {/each}
+  {/if}
 </div>

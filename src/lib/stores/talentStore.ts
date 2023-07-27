@@ -4,15 +4,9 @@ import { character } from './characterStore';
 import { stats } from './statsStore';
 import { enemy } from './enemyStore';
 import { party } from './partyStore';
-// types
-import TalentValues from '$lib/data/TalentValues.json';
 
-// calculators & helpers
-import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
-import type { Hit } from '$lib/types/talents';
-import { getCharacterName } from '$lib/helpers/getCharacterName';
+// helpers
 import { getTalentRows } from '$lib/helpers/getTalentRows';
-import type { DamageType } from '$lib/types/global';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -21,9 +15,6 @@ function createTalents() {
   return derived(
     [character, stats, enemy, party],
     ([$character, $stats, $enemy, $party]) => {
-      // create traveler name indexes
-      const cName = getCharacterName($character.selected);
-
       /**
        * @todo
        * - 🚀 Figure out a way to add stats to specific individual
@@ -33,124 +24,14 @@ function createTalents() {
        * stat to be added as a string.
        */
 
-      const additionalStats = {
-        normal: {
-          specialMultiplier: 'normalSpecialMultiplier',
-          defIgnore: 'normalDefIgnore',
-          talentLvlId: 'atk',
-          flatDMG: 'normalFlatDMG'
-        },
-        charged: {
-          specialMultiplier: 'chargedSpecialMultiplier',
-          defIgnore: 'chargedDefIgnore',
-          talentLvlId: 'atk',
-          flatDMG: 'chargedFlatDMG'
-        },
-        plunge: {
-          specialMultiplier: 'plungeSpecialMultiplier',
-          defIgnore: 'plungeDefIgnore',
-          talentLvlId: 'atk',
-          flatDMG: 'plungeFlatDMG'
-        },
-        skill: {
-          specialMultiplier: 'skillSpecialMultiplier',
-          defIgnore: 'skillDefIgnore',
-          talentLvlId: 'skill',
-          flatDMG: 'skillFlatDMG'
-        },
-        burst: {
-          specialMultiplier: 'burstSpecialMultiplier',
-          defIgnore: 'burstDefIgnore',
-          talentLvlId: 'burst',
-          flatDMG: 'burstFlatDMG'
-        }
-      };
-
-      // Normal Rows
-      const normalRows = $character.selected.normal.map((hit) => {
-        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-        const element = hit.elemental ? hit.elemental : infusion;
-        return calcFinalDMG(
-          hit,
-          values,
-          element,
-          $character,
-          $stats.main,
-          $enemy,
-          additionalStats.normal
-        );
-      });
-
-      // Charged Rows
-      const chargedRows = $character.selected.charged.map((hit) => {
-        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-        const element = hit.elemental ? hit.elemental : infusion;
-        return calcFinalDMG(
-          hit,
-          values,
-          element,
-          $character,
-          $stats.main,
-          $enemy,
-          additionalStats.charged
-        );
-      });
-
-      // Plunge Rows
-      const plungeRows = $character.selected.plunge.map((hit) => {
-        const values = TalentValues[cName as keyof typeof TalentValues].combat1;
-        const element = hit.elemental ? hit.elemental : infusion;
-        return calcFinalDMG(
-          hit,
-          values,
-          element,
-          $character,
-          $stats.main,
-          $enemy,
-          additionalStats.plunge
-        );
-      });
-
-      // Skill Rows
-      const skillRows = $character.selected.skill.map((hit) => {
-        const values = TalentValues[cName as keyof typeof TalentValues].combat2;
-        const element = hit.elemental ? hit.elemental : $character.selected.vision;
-        return calcFinalDMG(
-          hit,
-          values,
-          element,
-          $character,
-          $stats.main,
-          $enemy,
-          additionalStats.skill
-        );
-      });
-
-      // Burst Rows
-      const burstRows = $character.selected.burst.map((hit) => {
-        const values = TalentValues[cName as keyof typeof TalentValues].combat3;
-        const element = hit.elemental ? hit.elemental : $character.selected.vision;
-        return calcFinalDMG(
-          hit,
-          values,
-          element,
-          $character,
-          $stats.main,
-          $enemy,
-          additionalStats.burst
-        );
-      });
-
-      // ✅ Other Rows
-      // Rows for passives and constellation damage
-
       // -------------------------------- 🛠 MAIN 🛠 --------------------------------
       const vision = $character.selected.vision;
       const mainDmgType =
         $character.selected.weapon === 'catalyst' || $character.selected.weapon === 'bow'
           ? vision
           : infusion;
-      const mainRows = {
+
+      const main = {
         normal: getTalentRows(
           $character,
           $stats.main,
@@ -169,42 +50,34 @@ function createTalents() {
         skill: getTalentRows($character, $stats.main, $enemy, 'skill', vision),
         burst: getTalentRows($character, $stats.main, $enemy, 'burst', vision)
       };
-      // console.log('burst', JSON.stringify(burstRows) === JSON.stringify(mainRows.burst)); // true
 
       // -------------------------------- 🛠 PARTY 🛠 --------------------------------
-
-      const p1rows: any = {};
-      const p2rows: any = {};
-      const p3rows: any = {};
+      const one: any = {}; // create a type for talent rows
+      const two: any = {};
+      const three: any = {};
 
       if ($party.one && $stats.p1) {
         const character = $party.one.character;
         const vision = character.selected.vision;
-        p1rows['skill'] = getTalentRows(character, $stats.p1, $enemy, 'skill', vision);
-        p1rows['burst'] = getTalentRows(character, $stats.p1, $enemy, 'burst', vision);
+        one['skill'] = getTalentRows(character, $stats.p1, $enemy, 'skill', vision);
+        one['burst'] = getTalentRows(character, $stats.p1, $enemy, 'burst', vision);
       }
 
       if ($party.two && $stats.p2) {
         const character = $party.two.character;
         const vision = character.selected.vision;
-        p2rows['skill'] = getTalentRows(character, $stats.p2, $enemy, 'skill', vision);
-        p2rows['burst'] = getTalentRows(character, $stats.p2, $enemy, 'burst', vision);
+        two['skill'] = getTalentRows(character, $stats.p2, $enemy, 'skill', vision);
+        two['burst'] = getTalentRows(character, $stats.p2, $enemy, 'burst', vision);
       }
 
       if ($party.three && $stats.p3) {
         const character = $party.three.character;
         const vision = character.selected.vision;
-        p3rows['skill'] = getTalentRows(character, $stats.p3, $enemy, 'skill', vision);
-        p3rows['burst'] = getTalentRows(character, $stats.p3, $enemy, 'burst', vision);
+        three['skill'] = getTalentRows(character, $stats.p3, $enemy, 'skill', vision);
+        three['burst'] = getTalentRows(character, $stats.p3, $enemy, 'burst', vision);
       }
 
-      return {
-        normalRows,
-        chargedRows,
-        plungeRows,
-        skillRows,
-        burstRows
-      };
+      return { main, one, two, three };
     }
   );
 }
