@@ -13,8 +13,6 @@
   function toggleLoadoutButton(loadout: any) {
     party.setPartyMember(id, loadout);
   }
-
-  $: console.log(id, $party);
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
