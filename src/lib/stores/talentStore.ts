@@ -61,6 +61,7 @@ function createTalents() {
         const vision = character.selected.vision;
         one['skill'] = getTalentRows(character, $stats.p1, $enemy, 'skill', vision);
         one['burst'] = getTalentRows(character, $stats.p1, $enemy, 'burst', vision);
+        one['name'] = character.selected.fullName;
       }
 
       if ($party.two && $stats.p2) {
@@ -68,6 +69,7 @@ function createTalents() {
         const vision = character.selected.vision;
         two['skill'] = getTalentRows(character, $stats.p2, $enemy, 'skill', vision);
         two['burst'] = getTalentRows(character, $stats.p2, $enemy, 'burst', vision);
+        two['name'] = character.selected.fullName;
       }
 
       if ($party.three && $stats.p3) {
@@ -75,6 +77,7 @@ function createTalents() {
         const vision = character.selected.vision;
         three['skill'] = getTalentRows(character, $stats.p3, $enemy, 'skill', vision);
         three['burst'] = getTalentRows(character, $stats.p3, $enemy, 'burst', vision);
+        three['name'] = character.selected.fullName;
       }
 
       return { main, one, two, three };
