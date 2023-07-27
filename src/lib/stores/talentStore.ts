@@ -9,6 +9,8 @@ import TalentValues from '$lib/data/TalentValues.json';
 
 // calculators & helpers
 import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
+import type { Hit } from '$lib/types/talents';
+import { getCharacterName } from '$lib/helpers/getCharacterName';
 
 // default infusion should be physical. replace this with infusion store
 const infusion = 'physical';
@@ -18,10 +20,7 @@ function createTalents() {
     [character, stats, enemy, party],
     ([$character, $stats, $enemy, $party]) => {
       // create traveler name indexes
-      const cName =
-        $character.selected.name === 'aether'
-          ? `traveler${$character.selected.vision}`
-          : $character.selected.name;
+      const cName = getCharacterName($character.selected);
 
       /**
        * @todo
@@ -65,7 +64,7 @@ function createTalents() {
         }
       };
 
-      // ✅ Normal Rows
+      // Normal Rows
       const normalRows = $character.selected.normal.map((hit) => {
         const values = TalentValues[cName as keyof typeof TalentValues].combat1;
         const element = hit.elemental ? hit.elemental : infusion;
@@ -80,7 +79,7 @@ function createTalents() {
         );
       });
 
-      // ✅ Charged Rows
+      // Charged Rows
       const chargedRows = $character.selected.charged.map((hit) => {
         const values = TalentValues[cName as keyof typeof TalentValues].combat1;
         const element = hit.elemental ? hit.elemental : infusion;
@@ -95,7 +94,7 @@ function createTalents() {
         );
       });
 
-      // ✅ Plunge Rows
+      // Plunge Rows
       const plungeRows = $character.selected.plunge.map((hit) => {
         const values = TalentValues[cName as keyof typeof TalentValues].combat1;
         const element = hit.elemental ? hit.elemental : infusion;
@@ -110,7 +109,7 @@ function createTalents() {
         );
       });
 
-      // ✅ Skill Rows
+      // Skill Rows
       const skillRows = $character.selected.skill.map((hit) => {
         const values = TalentValues[cName as keyof typeof TalentValues].combat2;
         const element = hit.elemental ? hit.elemental : $character.selected.vision;
@@ -125,7 +124,7 @@ function createTalents() {
         );
       });
 
-      // ✅ Burst Rows
+      // Burst Rows
       const burstRows = $character.selected.burst.map((hit) => {
         const values = TalentValues[cName as keyof typeof TalentValues].combat3;
         const element = hit.elemental ? hit.elemental : $character.selected.vision;
@@ -140,27 +139,101 @@ function createTalents() {
         );
       });
 
-      /**
-       * @todo replace with `party1.offField.map...` if party 1 exists
-       * @considerations Off field talents should have a combat string
-       * value or a damage value to deal with like Fischl @A4
-       */
-      // const p1Field = $character.selected.skill.map((hit) => {
-      //   const values = TalentValues[cName as keyof typeof TalentValues].combat2;
-      //   const element = hit.elemental ? hit.elemental : $character.selected.vision;
-      //   return calculateFinalDMG(
-      //     hit,
-      //     values,
-      //     element,
-      //     'skillSpecialMultiplier',
-      //     'skillDefIgnore',
-      //     'skill',
-      //     'skillFlatDMG'
-      //   );
-      // });
+      // ✅ Other Rows
+      // Rows for passives and constellation damage
 
-      // ✅ Party 2 Rows
-      // ✅ Party 3 Rows
+      // -------------------------------- PARTY --------------------------------
+      // 🛠 data used to create a loop for party data
+
+      interface PartyMember {
+        name: string;
+        skill: number[];
+        burst: number[];
+      }
+
+      interface PartyData {
+        [key: string]: PartyMember;
+      }
+
+      function calculateDamage(
+        character: any,
+        stats: any,
+        enemy: any,
+        additionalStats: any
+      ): PartyMember {
+        const pName = getCharacterName(character.selected);
+
+        const skill = character.selected.skill.map((hit: Hit) => {
+          const values = TalentValues[pName as keyof typeof TalentValues].combat2;
+          const element = hit.elemental ? hit.elemental : character.selected.vision;
+          return calcFinalDMG(
+            hit,
+            values,
+            element,
+            character,
+            stats,
+            enemy,
+            additionalStats.skill
+          );
+        });
+
+        const burst = character.selected.burst.map((hit: Hit) => {
+          const values = TalentValues[pName as keyof typeof TalentValues].combat3;
+          const element = hit.elemental ? hit.elemental : character.selected.vision;
+          return calcFinalDMG(
+            hit,
+            values,
+            element,
+            character,
+            stats,
+            enemy,
+            additionalStats.burst
+          );
+        });
+
+        return { name: pName, skill, burst };
+      }
+
+      const partyData: PartyData = {};
+
+      if ($party.one) {
+        const character = $party.one.character;
+        partyData['p1'] = calculateDamage(character, $stats.p1, $enemy, additionalStats);
+      }
+
+      if ($party.two) {
+        const character = $party.two.character;
+        partyData['p2'] = calculateDamage(character, $stats.p2, $enemy, additionalStats);
+      }
+
+      if ($party.three) {
+        const character = $party.three.character;
+        partyData['p3'] = calculateDamage(character, $stats.p3, $enemy, additionalStats);
+      }
+
+      console.log('p1', partyData.p1);
+      console.log('p2', partyData.p2);
+      console.log('p3', partyData.p3);
+
+      // const partyData: { type: 'skill' | 'burst'; values: 'combat2' | 'combat3' }[] = [
+      //   { type: 'skill', values: 'combat2' },
+      //   { type: 'burst', values: 'combat3' }
+      // ];
+      // p1Rows = partyData.map((row) => {
+      //   character.selected[row.type].map((hit: Hit) => {
+      //     const values = TalentValues[pName as keyof typeof TalentValues][row.values];
+      //     const element = hit.elemental ? hit.elemental : character.selected.vision;
+      //     return calcFinalDMG(
+      //       hit,
+      //       values,
+      //       element,
+      //       character,
+      //       $stats.p1,
+      //       $enemy,
+      //       additionalStats[row.type as keyof typeof additionalStats]
+      //     );
+      //   });
+      // });
 
       return {
         normalRows,
