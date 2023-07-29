@@ -1,3 +1,6 @@
+import type { ALL_STATS } from '$lib/types/talents';
+import type { WeaponCategory } from './global';
+
 export type ArtifactNames =
   | 'none'
   | 'gladiators'
@@ -24,6 +27,10 @@ export type ArtifactNames =
   | 'echoesofanoffering'
   | 'deepwoodmemories'
   | 'gildeddreams'
+  | 'desertpavilionchronicle'
+  | 'flowerofparadiselost'
+  | 'nymphsdream'
+  | 'vourukashasglow'
   | 'sojourner'
   | 'tinymiracle'
   | 'berserker'
@@ -41,3 +48,32 @@ export type ArtifactModalButtons = {
   component: any;
   title: string;
 }[];
+
+export type Artifact = {
+  name: ArtifactNames;
+  fullName: string;
+  rating: [] | [4] | [4, 5];
+  twoPiece: {
+    scaling: ALL_STATS;
+    coef: number;
+  };
+  fourPiece: {
+    description: string;
+    weapons?: WeaponCategory[];
+    target: 'self' | 'party' | 'enemy';
+    unique?: boolean;
+    actionType:
+      | 'stack'
+      | 'toggle'
+      | 'select'
+      | 'multiSelect'
+      | 'input'
+      | 'passive'
+      | 'visionMatch';
+    values: {
+      scaling: ALL_STATS;
+      coef: number | number[];
+      source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+    }[];
+  }[];
+};

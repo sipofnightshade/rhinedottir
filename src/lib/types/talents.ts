@@ -85,6 +85,11 @@ export type ALL_STATS =
   | 'plungeFlatDMG'
   | 'skillFlatDMG'
   | 'burstFlatDMG'
+  | 'normalCritRate'
+  | 'chargedCritRate'
+  | 'plungeCritRate'
+  | 'skillCritRate'
+  | 'burstCritRate'
   | 'normalDefIgnore'
   | 'skillDefIgnore'
   | 'burstDefIgnore'
@@ -104,7 +109,8 @@ export type ALL_STATS =
   | 'bloom'
   | 'burgeon'
   | 'hyperbloom'
-  | 'crystallize';
+  | 'crystallize'
+  | 'shieldStrength';
 
 export type StatObject = {
   stat: ALL_STATS;
@@ -118,7 +124,7 @@ export type Action = {
   url: string;
   description: string;
   level: number;
-  constellation: number;
+  constellation?: number;
   target?: Target;
   /**
    * @description - target

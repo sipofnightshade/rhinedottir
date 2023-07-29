@@ -7,7 +7,7 @@ const charName: CharacterRecord = {
   weapon: 'sword',
   vision: 'geo',
   specialized: 'geo',
-  burstCost: 80,
+  burstCost: 40,
   talentNames: {
     normal: 'normalName',
     skill: 'skillName',

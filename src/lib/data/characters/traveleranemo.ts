@@ -7,7 +7,7 @@ const charName: CharacterRecord = {
   weapon: 'sword',
   vision: 'anemo',
   specialized: 'atk%',
-  burstCost: 80,
+  burstCost: 60,
   talentNames: {
     normal: 'Foreign Ironwind',
     skill: 'Palm Vortex',

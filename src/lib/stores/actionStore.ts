@@ -44,6 +44,11 @@ const allStats = {
   plungeFlatDMG: 0,
   skillFlatDMG: 0,
   burstFlatDMG: 0,
+  normalCritRate: 0,
+  chargedCritRate: 0,
+  plungeCritRate: 0,
+  skillCritRate: 0,
+  burstCritRate: 0,
   normalDefIgnore: 0,
   chargedDefIgnore: 0,
   plungeDefIgnore: 0,
@@ -67,14 +72,15 @@ const allStats = {
   bloom: 0,
   burgeon: 0,
   hyperbloom: 0,
-  crystallize: 0
+  crystallize: 0,
+  shieldStrength: 0
 };
 
 const initialState = {
   main: allStats,
-  party1: allStats,
-  party2: allStats,
-  party3: allStats,
+  one: allStats,
+  two: allStats,
+  three: allStats,
   enemy: allStats
 };
 
@@ -93,18 +99,18 @@ function createAction() {
             break;
           case 'party':
             state.main[scaling] += coef;
-            state.party1[scaling] += coef;
-            state.party2[scaling] += coef;
-            state.party3[scaling] += coef;
+            state.one[scaling] += coef;
+            state.two[scaling] += coef;
+            state.three[scaling] += coef;
             break;
           case 'enemy':
             state.enemy[scaling] += coef;
             break;
           case 'all':
             state.main[scaling] += coef;
-            state.party1[scaling] += coef;
-            state.party2[scaling] += coef;
-            state.party3[scaling] += coef;
+            state.one[scaling] += coef;
+            state.two[scaling] += coef;
+            state.three[scaling] += coef;
             state.enemy[scaling] += coef;
             break;
         }
@@ -118,18 +124,18 @@ function createAction() {
             break;
           case 'party':
             state.main[scaling] -= coef;
-            state.party1[scaling] -= coef;
-            state.party2[scaling] -= coef;
-            state.party3[scaling] -= coef;
+            state.one[scaling] -= coef;
+            state.two[scaling] -= coef;
+            state.three[scaling] -= coef;
             break;
           case 'enemy':
             state.enemy[scaling] -= coef;
             break;
           case 'all':
             state.main[scaling] -= coef;
-            state.party1[scaling] -= coef;
-            state.party2[scaling] -= coef;
-            state.party3[scaling] -= coef;
+            state.one[scaling] -= coef;
+            state.two[scaling] -= coef;
+            state.three[scaling] -= coef;
             state.enemy[scaling] -= coef;
             break;
         }
