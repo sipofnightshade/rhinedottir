@@ -1,6 +1,20 @@
 import { ArtifactData } from '$lib/data/Artifacts';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { Action } from '$lib/types/artifacts';
+import type { ALL_STATS } from '$lib/types/talents';
+
+interface ResultObject {
+  passives: Array<{
+    scaling: ALL_STATS;
+    coef: number | number[];
+    source?: [ALL_STATS, number, number];
+  }>;
+  active: Array<{
+    scaling: ALL_STATS;
+    coef: number | number[];
+    source?: [ALL_STATS, number, number];
+  }>;
+}
 
 export function getArtifactSetBonuses(artifactStore: ArtifactState) {
   const artifactNames = Object.values(artifactStore).map(
@@ -29,5 +43,18 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
     }
   }
 
-  return setBonuses;
+  // separate & combine all similar bonuses
+  const separatedBonuses = setBonuses.reduce<ResultObject>(
+    (result, bonus) => {
+      if (bonus.actionType) {
+        result.active.push(...bonus.values);
+      } else {
+        result.passives.push(...bonus.values);
+      }
+      return result;
+    },
+    { passives: [], active: [] }
+  );
+
+  return separatedBonuses;
 }
