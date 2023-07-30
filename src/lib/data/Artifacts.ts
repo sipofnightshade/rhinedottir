@@ -1,16 +1,15 @@
 import type { Artifact } from '$lib/types/artifacts';
 
+// change into object
 export const ArtifactData: Artifact[] = [
   {
     name: 'none',
     fullName: 'None',
     rating: [],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description: 'description',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'normal', coef: 0.35 }]
       }
     ]
@@ -19,14 +18,12 @@ export const ArtifactData: Artifact[] = [
     name: 'gladiators',
     fullName: "Gladiator's Finale",
     rating: [4, 5],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35.',
-        target: 'self',
         weapons: ['sword', 'polearm', 'claymore'],
-        actionType: 'passive',
         values: [{ scaling: 'normal', coef: 0.35 }]
       }
     ]
@@ -35,14 +32,12 @@ export const ArtifactData: Artifact[] = [
     name: 'wanderers',
     fullName: "Wanderer's Troupe",
     rating: [4, 5],
-    twoPiece: { scaling: 'em', coef: 80 },
+    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
     fourPiece: [
       {
         description:
           'Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.',
-        target: 'self',
         weapons: ['catalyst', 'bow'],
-        actionType: 'passive',
         values: [{ scaling: 'charged', coef: 0.35 }]
       }
     ]
@@ -51,7 +46,7 @@ export const ArtifactData: Artifact[] = [
     name: 'noblesseoblige',
     fullName: 'Noblesse Oblige',
     rating: [4, 5],
-    twoPiece: { scaling: 'burst', coef: 0.2 },
+    twoPiece: [{ values: [{ scaling: 'burst', coef: 0.2 }] }],
     fourPiece: [
       {
         description:
@@ -67,12 +62,11 @@ export const ArtifactData: Artifact[] = [
     name: 'bloodstained',
     fullName: 'Bloodstained Chivalry',
     rating: [4, 5],
-    twoPiece: { scaling: 'physical', coef: 0.25 },
+    twoPiece: [{ values: [{ scaling: 'physical', coef: 0.25 }] }],
     fourPiece: [
       {
         description:
           'After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s.',
-        target: 'self',
         actionType: 'toggle',
         values: [{ scaling: 'charged', coef: 0.5 }]
       }
@@ -82,7 +76,7 @@ export const ArtifactData: Artifact[] = [
     name: 'maidenbeloved',
     fullName: 'Maiden Beloved',
     rating: [4, 5],
-    twoPiece: { scaling: 'healing', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'healing', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
@@ -97,12 +91,10 @@ export const ArtifactData: Artifact[] = [
     name: 'viridescent',
     fullName: 'Viridescent Venerer',
     rating: [4, 5],
-    twoPiece: { scaling: 'anemo', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
     fourPiece: [
       {
         description: 'Increases Swirl DMG by 60%. ',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'swirl', coef: 0.6 }]
       },
       {
@@ -124,7 +116,7 @@ export const ArtifactData: Artifact[] = [
     name: 'archaicpetra',
     fullName: 'Archaic Petra',
     rating: [4, 5],
-    twoPiece: { scaling: 'geo', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'geo', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
@@ -145,12 +137,11 @@ export const ArtifactData: Artifact[] = [
     name: 'retracingbolide',
     fullName: 'Retracing Bolide',
     rating: [4, 5],
-    twoPiece: { scaling: 'shieldStrength', coef: 0.35 },
+    twoPiece: [{ values: [{ scaling: 'shieldStrength', coef: 0.35 }] }],
     fourPiece: [
       {
         description:
           'While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.',
-        target: 'self',
         actionType: 'toggle',
         values: [
           { scaling: 'normal', coef: 0.4 },
@@ -163,12 +154,10 @@ export const ArtifactData: Artifact[] = [
     name: 'thundersoother',
     fullName: 'Thundersoother',
     rating: [4, 5],
-    twoPiece: { scaling: 'electroRes', coef: 0.4 },
+    twoPiece: [{ values: [{ scaling: 'electroRes', coef: 0.4 }] }],
     fourPiece: [
       {
         description: 'Increases DMG against opponents affected by Electro by 35%.',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'electro', coef: 0.35 }]
       }
     ]
@@ -177,13 +166,11 @@ export const ArtifactData: Artifact[] = [
     name: 'thunderingfury',
     fullName: 'Thundering Fury',
     rating: [4, 5],
-    twoPiece: { scaling: 'electro', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'electro', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.',
-        target: 'self',
-        actionType: 'passive',
         values: [
           { scaling: 'overloaded', coef: 0.4 },
           { scaling: 'electrocharged', coef: 0.4 },
@@ -198,12 +185,10 @@ export const ArtifactData: Artifact[] = [
     name: 'lavawalker',
     fullName: 'Lavawalker',
     rating: [4, 5],
-    twoPiece: { scaling: 'pyroRes', coef: 0.4 },
+    twoPiece: [{ values: [{ scaling: 'pyroRes', coef: 0.4 }] }],
     fourPiece: [
       {
         description: 'Increases DMG against opponents affected by Pyro by 35%.',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'pyro', coef: 0.35 }]
       }
     ]
@@ -212,13 +197,11 @@ export const ArtifactData: Artifact[] = [
     name: 'crimsonwitch',
     fullName: 'Crimson Witch of Flames',
     rating: [4, 5],
-    twoPiece: { scaling: 'pyro', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'pyro', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.',
-        target: 'self',
-        actionType: 'passive',
         values: [
           { scaling: 'overloaded', coef: 0.4 },
           { scaling: 'burning', coef: 0.4 },
@@ -230,7 +213,6 @@ export const ArtifactData: Artifact[] = [
       {
         description:
           'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.',
-        target: 'self',
         actionType: 'stack',
         values: [{ scaling: 'pyro', coef: [0.075, 0.075, 0.075] }]
       }
@@ -240,12 +222,11 @@ export const ArtifactData: Artifact[] = [
     name: 'blizzardstrayer',
     fullName: 'Blizzard Strayer',
     rating: [4, 5],
-    twoPiece: { scaling: 'cryo', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'cryo', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.',
-        target: 'self',
         actionType: 'stack',
         values: [{ scaling: 'critrate', coef: [0.2, 0.2] }]
       }
@@ -255,12 +236,11 @@ export const ArtifactData: Artifact[] = [
     name: 'heartofdepth',
     fullName: 'Heart of Depth',
     rating: [4, 5],
-    twoPiece: { scaling: 'hydro', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.',
-        target: 'self',
         actionType: 'toggle',
         values: [
           { scaling: 'normal', coef: 0.3 },
@@ -273,7 +253,7 @@ export const ArtifactData: Artifact[] = [
     name: 'tenacityofmillelith',
     fullName: 'Tenacity of the Millelith',
     rating: [4, 5],
-    twoPiece: { scaling: 'hp', coef: 0.2 },
+    twoPiece: [{ values: [{ scaling: 'hp', coef: 0.2 }] }],
     fourPiece: [
       {
         description:
@@ -291,12 +271,11 @@ export const ArtifactData: Artifact[] = [
     name: 'paleflame',
     fullName: 'Pale Flame',
     rating: [4, 5],
-    twoPiece: { scaling: 'physical', coef: 0.25 },
+    twoPiece: [{ values: [{ scaling: 'physical', coef: 0.25 }] }],
     fourPiece: [
       {
         description:
           'When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.',
-        target: 'self',
         actionType: 'stack',
         values: [
           { scaling: 'atk', coef: [0.09, 0.09] },
@@ -309,12 +288,11 @@ export const ArtifactData: Artifact[] = [
     name: 'shimenawa',
     fullName: "Shimenawa's Reminiscence",
     rating: [4, 5],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.',
-        target: 'self',
         actionType: 'toggle',
         values: [
           { scaling: 'normal', coef: 0.5 },
@@ -328,13 +306,11 @@ export const ArtifactData: Artifact[] = [
     name: 'emblemofseveredfate',
     fullName: 'Emblem of Severed Fate',
     rating: [4, 5],
-    twoPiece: { scaling: 'energy', coef: 0.2 },
+    twoPiece: [{ values: [{ scaling: 'energy', coef: 0.2 }] }],
     fourPiece: [
       {
         description:
           'Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.',
-        target: 'self',
-        actionType: 'passive',
         values: [
           {
             scaling: 'burst',
@@ -349,12 +325,11 @@ export const ArtifactData: Artifact[] = [
     name: 'huskofopulentdreams',
     fullName: 'Husk of Opulent Dreams',
     rating: [4, 5],
-    twoPiece: { scaling: 'def', coef: 0.3 },
+    twoPiece: [{ values: [{ scaling: 'def', coef: 0.3 }] }],
     fourPiece: [
       {
         description:
           'A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions: When on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.',
-        target: 'self',
         actionType: 'stack',
         values: [
           { scaling: 'def', coef: [0.06, 0.06, 0.06, 0.06] },
@@ -367,13 +342,11 @@ export const ArtifactData: Artifact[] = [
     name: 'oceanhued',
     fullName: 'Ocean-Hued Clam',
     rating: [4, 5],
-    twoPiece: { scaling: 'healing', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'healing', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'atk', coef: 0 }]
       }
     ]
@@ -382,12 +355,11 @@ export const ArtifactData: Artifact[] = [
     name: 'vermillionhereafter',
     fullName: 'Vermillion Hereafter',
     rating: [4, 5],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the characters HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.',
-        target: 'self',
         actionType: 'stack',
         values: [{ scaling: 'atk', coef: [0.08, 0.1, 0.1, 0.1, 0.1] }]
       }
@@ -397,13 +369,11 @@ export const ArtifactData: Artifact[] = [
     name: 'echoesofanoffering',
     fullName: 'Echoes of an Offering',
     rating: [4, 5],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK. This effect will be dispelled 0.05s after a Normal Attack deals DMG. If a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%. This trigger can occur once every 0.2s.',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'normal', coef: 0.432 }] // may need revision
       }
     ]
@@ -412,7 +382,7 @@ export const ArtifactData: Artifact[] = [
     name: 'deepwoodmemories',
     fullName: 'Deepwood Memories',
     rating: [4, 5],
-    twoPiece: { scaling: 'dendro', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'dendro', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
@@ -427,12 +397,11 @@ export const ArtifactData: Artifact[] = [
     name: 'gildeddreams',
     fullName: 'Gilded Dreams',
     rating: [4, 5],
-    twoPiece: { scaling: 'em', coef: 80 },
+    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
     fourPiece: [
       {
         description:
           'Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.',
-        target: 'self',
         actionType: 'visionMatch',
         values: [
           { scaling: 'atk', coef: [0.14, 0.14, 0.14] }, // same element is first
@@ -445,12 +414,11 @@ export const ArtifactData: Artifact[] = [
     name: 'desertpavilionchronicle',
     fullName: 'Desert Pavilion Chronicle',
     rating: [4, 5],
-    twoPiece: { scaling: 'anemo', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'When Charged Attacks hit opponents, the equipping characters Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.',
-        target: 'self',
         actionType: 'toggle',
         values: [
           { scaling: 'normalATKSpd', coef: 0.1 },
@@ -465,13 +433,11 @@ export const ArtifactData: Artifact[] = [
     name: 'flowerofparadiselost',
     fullName: 'Flower of Paradise Lost',
     rating: [4, 5],
-    twoPiece: { scaling: 'em', coef: 80 },
+    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
     fourPiece: [
       {
         description:
           "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%.",
-        target: 'self',
-        actionType: 'passive',
         values: [
           { scaling: 'bloom', coef: 0.4 },
           { scaling: 'hyperbloom', coef: 0.4 },
@@ -481,7 +447,6 @@ export const ArtifactData: Artifact[] = [
       {
         description:
           'After the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.',
-        target: 'self',
         actionType: 'stack',
         values: [
           { scaling: 'bloom', coef: [0.1, 0.1, 0.1, 0.1] },
@@ -495,12 +460,11 @@ export const ArtifactData: Artifact[] = [
     name: 'nymphsdream',
     fullName: "Nymph's Dream",
     rating: [4, 5],
-    twoPiece: { scaling: 'hydro', coef: 0.15 },
+    twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
     fourPiece: [
       {
         description:
           'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents. 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15% Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.',
-        target: 'self',
         actionType: 'stack',
         values: [
           { scaling: 'atk', coef: [0.07, 0.16, 0.25] },
@@ -513,12 +477,10 @@ export const ArtifactData: Artifact[] = [
     name: 'vourukashasglow',
     fullName: "Vourukasha's Glow",
     rating: [4, 5],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description: 'Elemental Skill and Elemental Burst DMG will be increased by 10%.',
-        target: 'self',
-        actionType: 'passive',
         values: [
           { scaling: 'skill', coef: 0.1 },
           { scaling: 'burst', coef: 0.1 }
@@ -527,7 +489,6 @@ export const ArtifactData: Artifact[] = [
       {
         description:
           'After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.',
-        target: 'self',
         actionType: 'stack',
         values: [
           { scaling: 'skill', coef: [0.08, 0.08, 0.08, 0.08, 0.08] },
@@ -540,39 +501,44 @@ export const ArtifactData: Artifact[] = [
     name: 'sojourner',
     fullName: 'Resolution of Sojourner',
     rating: [4],
-    twoPiece: { scaling: 'atk', coef: 0.18 },
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
     fourPiece: [
       {
         description: 'Increases Charged Attack CRIT Rate by 30%.',
-        target: 'self',
-        actionType: 'passive',
         values: [{ scaling: 'chargedCritRate', coef: 0.3 }]
       }
     ]
   },
-  // {
-  //   name: 'tinymiracle',
-  //   fullName: 'Tiny Miracle',
-  //   rating: [4],
-  //   twoPiece: { scaling: 'hp', coef: 0 },
-  //   fourPiece: [
-  //     {
-  //       description: 'Incoming Elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s. NOT IMPLEMENTED!',
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'hp', coef: 0 }]
-  //     }
-  //   ]
-  // },
+  {
+    name: 'tinymiracle',
+    fullName: 'Tiny Miracle',
+    rating: [4],
+    twoPiece: [{ values: [{ scaling: 'hp', coef: 0.1 }] }],
+    fourPiece: [
+      {
+        description:
+          'Incoming Elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s.',
+        actionType: 'select',
+        values: [
+          { scaling: 'anemo', coef: 0.3 },
+          { scaling: 'cryo', coef: 0.3 },
+          { scaling: 'dendro', coef: 0.3 },
+          { scaling: 'electro', coef: 0.3 },
+          { scaling: 'hydro', coef: 0.3 },
+          { scaling: 'geo', coef: 0.3 },
+          { scaling: 'pyro', coef: 0.3 }
+        ]
+      }
+    ]
+  },
   {
     name: 'berserker',
     fullName: 'Berserker',
     rating: [4],
-    twoPiece: { scaling: 'critrate', coef: 0.12 },
+    twoPiece: [{ values: [{ scaling: 'critrate', coef: 0.12 }] }],
     fourPiece: [
       {
         description: 'When HP is below 70%, CRIT Rate increases by an additional 24%',
-        target: 'self',
         actionType: 'toggle',
         values: [{ scaling: 'critrate', coef: 0.24 }]
       }
@@ -582,7 +548,7 @@ export const ArtifactData: Artifact[] = [
     name: 'instructor',
     fullName: 'Instructor',
     rating: [4],
-    twoPiece: { scaling: 'em', coef: 80 },
+    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
     fourPiece: [
       {
         description:
@@ -597,85 +563,89 @@ export const ArtifactData: Artifact[] = [
     name: 'theexile',
     fullName: 'The Exile',
     rating: [4],
-    twoPiece: { scaling: 'energy', coef: 0.2 },
+    twoPiece: [{ values: [{ scaling: 'energy', coef: 0.2 }] }],
     fourPiece: [
       {
         description:
           'Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every 2s for 6s. This effect cannot stack. NOT IMPLEMENTED!',
-        target: 'self',
-        actionType: 'passive',
+        values: [{ scaling: 'energy', coef: 0 }]
+      }
+    ]
+  },
+  {
+    name: 'defenderswill',
+    fullName: "Defender's Will",
+    rating: [4],
+    twoPiece: [{ values: [{ scaling: 'def', coef: 0.3 }] }],
+    fourPiece: [
+      {
+        description:
+          "For each different element present in your own party, the wearer's Elemental RES to that corresponding element is increased by 30%. NOT IMPLEMENTED!",
+        values: [{ scaling: 'def', coef: 0 }]
+      }
+    ]
+  },
+  {
+    name: 'braveheart',
+    fullName: 'Brave Heart',
+    rating: [4],
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    fourPiece: [
+      {
+        description:
+          'Increases DMG by 30% against opponents with more than 50% HP. NOT IMPLEMENTED!',
+        values: [{ scaling: 'atk', coef: 0 }]
+      }
+    ]
+  },
+  {
+    name: 'martialartist',
+    fullName: 'Martial Artist',
+    rating: [4],
+    twoPiece: [
+      {
+        values: [
+          { scaling: 'normal', coef: 0.15 },
+          { scaling: 'charged', coef: 0.15 }
+        ]
+      }
+    ],
+    fourPiece: [
+      {
+        description:
+          'Defeating an opponent has 100% chance to remove Elemental Skill CD. Can only occur once every 15s.',
+        actionType: 'toggle',
+        values: [
+          { scaling: 'normal', coef: 0.25 },
+          { scaling: 'charged', coef: 0.25 }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'gambler',
+    fullName: 'Gambler',
+    rating: [4],
+    twoPiece: [{ values: [{ scaling: 'skill', coef: 0.2 }] }],
+    fourPiece: [
+      {
+        description:
+          'Defeating an opponent has 100% chance to remove Elemental Skill CD. Can only occur once every 15s. NOT IMPLEMENTED!',
+        values: [{ scaling: 'atk', coef: 0 }]
+      }
+    ]
+  },
+  {
+    name: 'scholar',
+    fullName: 'Scholar',
+    rating: [4],
+    twoPiece: [{ values: [{ scaling: 'energy', coef: 0.2 }] }],
+    fourPiece: [
+      {
+        description:
+          'Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s.',
         values: [{ scaling: 'energy', coef: 0 }]
       }
     ]
   }
-  // {
-  //   name: 'defenderswill',
-  //   fullName: "Defender's Will",
-  //   rating: [4],
-  //   twoPiece: { scaling: 'def', coef: 0.30 },
-  //   fourPiece: [
-  //     {
-  //       description: "For each different element present in your own party, the wearer's Elemental RES to that corresponding element is increased by 30%. NOT IMPLEMENTED!",
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'def', coef: 0 }]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'braveheart',
-  //   fullName: 'Brave Heart',
-  //   rating: [4],
-  //   twoPiece: { scaling: 'atk', coef: 0.18 },
-  //   fourPiece: [
-  //     {
-  //       description: 'NOT IMPLEMENTED!',
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'atk', coef: 0 }]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'martialartist',
-  //   fullName: 'Martial Artist',
-  //   rating: [4],
-  //   twoPiece: { scaling: 'atk', coef: 0.18 },
-  //   fourPiece: [
-  //     {
-  //       description: 'description',
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'normal', coef: 0.35 }]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'gambler',
-  //   fullName: 'Gambler',
-  //   rating: [4],
-  //   twoPiece: { scaling: 'atk', coef: 0.18 },
-  //   fourPiece: [
-  //     {
-  //       description: 'description',
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'normal', coef: 0.35 }]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'scholar',
-  //   fullName: 'Scholar',
-  //   rating: [4],
-  //   twoPiece: { scaling: 'atk', coef: 0.18 },
-  //   fourPiece: [
-  //     {
-  //       description: 'description',
-  //       target: 'self',
-  //       actionType: 'passive',
-  //       values: [{ scaling: 'normal', coef: 0.35 }]
-  //     }
-  //   ]
-  // }
 ];

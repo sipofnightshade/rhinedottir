@@ -49,31 +49,30 @@ export type ArtifactModalButtons = {
   title: string;
 }[];
 
+export type Action = {
+  description?: string;
+  weapons?: WeaponCategory[];
+  target?: 'self' | 'party' | 'enemy';
+  unique?: boolean;
+  actionType?:
+    | 'stack'
+    | 'toggle'
+    | 'select'
+    | 'multiSelect'
+    | 'input'
+    | 'passive'
+    | 'visionMatch';
+  values: {
+    scaling: ALL_STATS;
+    coef: number | number[];
+    source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+  }[];
+};
+
 export type Artifact = {
   name: ArtifactNames;
   fullName: string;
   rating: [] | [4] | [4, 5];
-  twoPiece: {
-    scaling: ALL_STATS;
-    coef: number;
-  };
-  fourPiece: {
-    description: string;
-    weapons?: WeaponCategory[];
-    target: 'self' | 'party' | 'enemy';
-    unique?: boolean;
-    actionType:
-      | 'stack'
-      | 'toggle'
-      | 'select'
-      | 'multiSelect'
-      | 'input'
-      | 'passive'
-      | 'visionMatch';
-    values: {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
-    }[];
-  }[];
+  twoPiece: Action[];
+  fourPiece: Action[];
 };
