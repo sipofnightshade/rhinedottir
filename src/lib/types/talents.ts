@@ -1,3 +1,5 @@
+import type { Action } from './actions';
+
 export type Hit = {
   name: string;
   tag?: string; // Empty string for hit fields that are showOnly
@@ -46,6 +48,9 @@ export type ALL_STATS =
   | 'atk'
   | 'def'
   | 'hp'
+  | 'atk%'
+  | 'def%'
+  | 'hp%'
   | 'em'
   | 'critrate'
   | 'critdmg'
@@ -116,29 +121,6 @@ export type StatObject = {
   stat: ALL_STATS;
   value: number;
 }[];
-
-export type Target = 'self' | 'enemy' | 'party' | 'all';
-
-export type Action = {
-  name: string;
-  url: string;
-  description: string;
-  level: number;
-  constellation?: number;
-  target?: Target;
-  /**
-   * @description - target
-   * This should be used to determine whether or not a characters' actions are
-   * added to the action bar WHEN they are added as a party member
-   */
-  actionType: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
-  values: {
-    scaling: ALL_STATS;
-    coef: number | number[];
-    source?: ALL_STATS; // for scalings that use another stat
-    threshold?: number; // for skills like nahida burst EM
-  }[];
-};
 
 export type OffField = {
   name: string;

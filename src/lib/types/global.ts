@@ -1,7 +1,8 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
 import type { ArtifactNames } from './artifacts';
-import type { ALL_STATS, Action, Hit, OffField } from './talents';
+import type { Action } from './actions';
+import type { ALL_STATS, Hit, OffField } from './talents';
 
 export type SelectedCharacter = CharacterRecord;
 
@@ -45,12 +46,6 @@ export type SelectedWeapon = {
   ];
 };
 
-export type SelectedArtifact = {
-  name: ArtifactNames;
-  fullName: string;
-  rating: number[];
-};
-
 export type Visions = 'anemo' | 'cryo' | 'dendro' | 'electro' | 'geo' | 'hydro' | 'pyro';
 export type DamageType =
   | 'anemo'
@@ -61,8 +56,6 @@ export type DamageType =
   | 'hydro'
   | 'pyro'
   | 'physical';
-
-export type ArtifactType = 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
 
 export type WeaponCategory = 'sword' | 'catalyst' | 'polearm' | 'claymore' | 'bow';
 
@@ -93,27 +86,6 @@ export type WeaponSpecialized =
   | 'critdmg'
   | 'physical'
   | 'energy';
-
-export type ArtifactStats =
-  | ''
-  | 'hp'
-  | 'atk'
-  | 'hp%'
-  | 'atk%'
-  | 'def%'
-  | 'em'
-  | 'energy'
-  | 'critrate'
-  | 'critdmg'
-  | 'physical'
-  | 'anemo'
-  | 'cryo'
-  | 'dendro'
-  | 'electro'
-  | 'geo'
-  | 'hydro'
-  | 'pyro'
-  | 'healing';
 
 export type CharacterRecord = {
   name: CharacterNames;

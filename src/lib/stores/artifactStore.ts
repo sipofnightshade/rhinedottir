@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 // import { labels } from '$lib/data/Levels';
 import { getArtifactStat } from '$lib/helpers/getArtifactStat';
-import type { SelectedArtifact, ArtifactType, ArtifactStats } from '$lib/types/global';
+import type { SelectedArtifact, ArtifactType, ArtifactStats } from '$lib/types/artifacts';
 
 type Artifact = {
   selected: SelectedArtifact;
@@ -24,7 +24,14 @@ const initialState: ArtifactState = {
     selected: {
       name: 'none',
       fullName: 'None',
-      rating: []
+      rating: [],
+      twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
+      fourPiece: [
+        {
+          description: 'No artifact selected',
+          values: [{ scaling: 'normal', coef: 0 }]
+        }
+      ]
     },
     lvl: 0,
     isFiveStar: false,
@@ -43,7 +50,14 @@ const initialState: ArtifactState = {
     selected: {
       name: 'none',
       fullName: 'None',
-      rating: []
+      rating: [],
+      twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
+      fourPiece: [
+        {
+          description: 'No artifact selected',
+          values: [{ scaling: 'normal', coef: 0 }]
+        }
+      ]
     },
     lvl: 0,
     isFiveStar: false,
@@ -62,7 +76,14 @@ const initialState: ArtifactState = {
     selected: {
       name: 'none',
       fullName: 'None',
-      rating: []
+      rating: [],
+      twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
+      fourPiece: [
+        {
+          description: 'No artifact selected',
+          values: [{ scaling: 'normal', coef: 0 }]
+        }
+      ]
     },
     lvl: 0,
     isFiveStar: false,
@@ -81,7 +102,14 @@ const initialState: ArtifactState = {
     selected: {
       name: 'none',
       fullName: 'None',
-      rating: []
+      rating: [],
+      twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
+      fourPiece: [
+        {
+          description: 'No artifact selected',
+          values: [{ scaling: 'normal', coef: 0 }]
+        }
+      ]
     },
     lvl: 0,
     isFiveStar: false,
@@ -100,7 +128,14 @@ const initialState: ArtifactState = {
     selected: {
       name: 'none',
       fullName: 'None',
-      rating: []
+      rating: [],
+      twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
+      fourPiece: [
+        {
+          description: 'No artifact selected',
+          values: [{ scaling: 'normal', coef: 0 }]
+        }
+      ]
     },
     lvl: 0,
     isFiveStar: false,

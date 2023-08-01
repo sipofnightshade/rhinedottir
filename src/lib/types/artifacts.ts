@@ -1,4 +1,5 @@
 import type { ALL_STATS } from '$lib/types/talents';
+import type { SvelteComponent } from 'svelte';
 import type { WeaponCategory } from './global';
 
 export type ArtifactNames =
@@ -42,12 +43,35 @@ export type ArtifactNames =
   | 'gambler'
   | 'scholar';
 
+export type ArtifactType = 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
+
 export type ArtifactModalButtons = {
-  id: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
+  id: ArtifactType;
   img: string;
-  component: any;
+  component: SvelteComponent;
   title: string;
 }[];
+
+export type ArtifactStats =
+  | ''
+  | 'hp'
+  | 'atk'
+  | 'hp%'
+  | 'atk%'
+  | 'def%'
+  | 'em'
+  | 'energy'
+  | 'critrate'
+  | 'critdmg'
+  | 'physical'
+  | 'anemo'
+  | 'cryo'
+  | 'dendro'
+  | 'electro'
+  | 'geo'
+  | 'hydro'
+  | 'pyro'
+  | 'healing';
 
 export type Action = {
   description?: string;
@@ -72,7 +96,15 @@ export type Action = {
 export type Artifact = {
   name: ArtifactNames;
   fullName: string;
-  rating: [] | [4] | [4, 5];
+  rating: number[];
+  twoPiece: Action[];
+  fourPiece: Action[];
+};
+
+export type SelectedArtifact = {
+  name: ArtifactNames;
+  fullName: string;
+  rating: number[];
   twoPiece: Action[];
   fourPiece: Action[];
 };
