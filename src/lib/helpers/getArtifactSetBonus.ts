@@ -9,11 +9,7 @@ interface ResultObject {
     coef: number | number[];
     source?: [ALL_STATS, number, number];
   }>;
-  active: Array<{
-    scaling: ALL_STATS;
-    coef: number | number[];
-    source?: [ALL_STATS, number, number];
-  }>;
+  actives: Action | object;
 }
 
 export function getArtifactSetBonuses(artifactStore: ArtifactState) {
@@ -47,14 +43,21 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
   const separatedBonuses = setBonuses.reduce<ResultObject>(
     (result, bonus) => {
       if (bonus.actionType) {
-        result.active.push(...bonus.values);
+        result.actives = bonus;
+        result.actives = {
+          name: 'Gladiators Finale',
+          url: 'UI_Talent_S_PlayerWind_04',
+          lvl: 1,
+          constellation: 0,
+          ...bonus
+        };
       } else {
         result.passives.push(...bonus.values);
       }
       return result;
     },
-    { passives: [], active: [] }
+    { passives: [], actives: {} }
   );
 
-  return separatedBonuses;
+  return { ...separatedBonuses, artifactSetCount };
 }

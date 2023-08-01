@@ -1,10 +1,14 @@
 import { writable } from 'svelte/store';
-import type { ALL_STATS, Target } from '$lib/types/talents';
+import type { ALL_STATS } from '$lib/types/talents';
+import type { Target } from '$lib/types/actions';
 
 const allStats = {
   atk: 0,
   def: 0,
   hp: 0,
+  'atk%': 0,
+  'def%': 0,
+  'hp%': 0,
   em: 0,
   critrate: 0,
   critdmg: 0,

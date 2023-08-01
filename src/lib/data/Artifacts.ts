@@ -6,11 +6,11 @@ export const ArtifactData: Artifact[] = [
     name: 'none',
     fullName: 'None',
     rating: [],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
     fourPiece: [
       {
-        description: 'description',
-        values: [{ scaling: 'normal', coef: 0.35 }]
+        description: 'No artifact selected',
+        values: [{ scaling: 'normal', coef: 0 }]
       }
     ]
   },
@@ -18,7 +18,7 @@ export const ArtifactData: Artifact[] = [
     name: 'gladiators',
     fullName: "Gladiator's Finale",
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
@@ -54,7 +54,7 @@ export const ArtifactData: Artifact[] = [
         target: 'party',
         unique: true,
         actionType: 'toggle',
-        values: [{ scaling: 'atk', coef: 0.2 }]
+        values: [{ scaling: 'atk%', coef: 0.2 }]
       }
     ]
   },
@@ -253,7 +253,7 @@ export const ArtifactData: Artifact[] = [
     name: 'tenacityofmillelith',
     fullName: 'Tenacity of the Millelith',
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'hp', coef: 0.2 }] }],
+    twoPiece: [{ values: [{ scaling: 'hp%', coef: 0.2 }] }],
     fourPiece: [
       {
         description:
@@ -261,7 +261,7 @@ export const ArtifactData: Artifact[] = [
         target: 'party',
         actionType: 'toggle',
         values: [
-          { scaling: 'atk', coef: 0.2 },
+          { scaling: 'atk%', coef: 0.2 },
           { scaling: 'shieldStrength', coef: 0.3 }
         ]
       }
@@ -278,7 +278,7 @@ export const ArtifactData: Artifact[] = [
           'When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.',
         actionType: 'stack',
         values: [
-          { scaling: 'atk', coef: [0.09, 0.09] },
+          { scaling: 'atk%', coef: [0.09, 0.09] },
           { scaling: 'physical', coef: [0, 0.25] }
         ]
       }
@@ -288,7 +288,7 @@ export const ArtifactData: Artifact[] = [
     name: 'shimenawa',
     fullName: "Shimenawa's Reminiscence",
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
@@ -325,14 +325,14 @@ export const ArtifactData: Artifact[] = [
     name: 'huskofopulentdreams',
     fullName: 'Husk of Opulent Dreams',
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'def', coef: 0.3 }] }],
+    twoPiece: [{ values: [{ scaling: 'def%', coef: 0.3 }] }],
     fourPiece: [
       {
         description:
           'A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions: When on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.',
         actionType: 'stack',
         values: [
-          { scaling: 'def', coef: [0.06, 0.06, 0.06, 0.06] },
+          { scaling: 'def%', coef: [0.06, 0.06, 0.06, 0.06] },
           { scaling: 'geo', coef: [0.06, 0.06, 0.06, 0.06] }
         ]
       }
@@ -347,7 +347,7 @@ export const ArtifactData: Artifact[] = [
       {
         description:
           'When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.',
-        values: [{ scaling: 'atk', coef: 0 }]
+        values: [{ scaling: 'atk%', coef: 0 }]
       }
     ]
   },
@@ -355,13 +355,13 @@ export const ArtifactData: Artifact[] = [
     name: 'vermillionhereafter',
     fullName: 'Vermillion Hereafter',
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the characters HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.',
         actionType: 'stack',
-        values: [{ scaling: 'atk', coef: [0.08, 0.1, 0.1, 0.1, 0.1] }]
+        values: [{ scaling: 'atk%', coef: [0.08, 0.1, 0.1, 0.1, 0.1] }]
       }
     ]
   },
@@ -369,7 +369,7 @@ export const ArtifactData: Artifact[] = [
     name: 'echoesofanoffering',
     fullName: 'Echoes of an Offering',
     rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
@@ -404,104 +404,104 @@ export const ArtifactData: Artifact[] = [
           'Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.',
         actionType: 'visionMatch',
         values: [
-          { scaling: 'atk', coef: [0.14, 0.14, 0.14] }, // same element is first
+          { scaling: 'atk%', coef: [0.14, 0.14, 0.14] }, // same element is first
           { scaling: 'em', coef: [50, 50, 50] } // different element is second
         ]
       }
     ]
   },
-  {
-    name: 'desertpavilionchronicle',
-    fullName: 'Desert Pavilion Chronicle',
-    rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
-    fourPiece: [
-      {
-        description:
-          'When Charged Attacks hit opponents, the equipping characters Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.',
-        actionType: 'toggle',
-        values: [
-          { scaling: 'normalATKSpd', coef: 0.1 },
-          { scaling: 'normal', coef: 0.4 },
-          { scaling: 'charged', coef: 0.4 },
-          { scaling: 'plunge', coef: 0.4 }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'flowerofparadiselost',
-    fullName: 'Flower of Paradise Lost',
-    rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
-    fourPiece: [
-      {
-        description:
-          "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%.",
-        values: [
-          { scaling: 'bloom', coef: 0.4 },
-          { scaling: 'hyperbloom', coef: 0.4 },
-          { scaling: 'burgeon', coef: 0.4 }
-        ]
-      },
-      {
-        description:
-          'After the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.',
-        actionType: 'stack',
-        values: [
-          { scaling: 'bloom', coef: [0.1, 0.1, 0.1, 0.1] },
-          { scaling: 'hyperbloom', coef: [0.1, 0.1, 0.1, 0.1] },
-          { scaling: 'burgeon', coef: [0.1, 0.1, 0.1, 0.1] }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'nymphsdream',
-    fullName: "Nymph's Dream",
-    rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
-    fourPiece: [
-      {
-        description:
-          'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents. 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15% Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.',
-        actionType: 'stack',
-        values: [
-          { scaling: 'atk', coef: [0.07, 0.16, 0.25] },
-          { scaling: 'hydro', coef: [0.04, 0.09, 0.15] }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'vourukashasglow',
-    fullName: "Vourukasha's Glow",
-    rating: [4, 5],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
-    fourPiece: [
-      {
-        description: 'Elemental Skill and Elemental Burst DMG will be increased by 10%.',
-        values: [
-          { scaling: 'skill', coef: 0.1 },
-          { scaling: 'burst', coef: 0.1 }
-        ]
-      },
-      {
-        description:
-          'After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.',
-        actionType: 'stack',
-        values: [
-          { scaling: 'skill', coef: [0.08, 0.08, 0.08, 0.08, 0.08] },
-          { scaling: 'burst', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }
-        ]
-      }
-    ]
-  },
+  // {
+  //   name: 'desertpavilionchronicle',
+  //   fullName: 'Desert Pavilion Chronicle',
+  //   rating: [4, 5],
+  //   twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
+  //   fourPiece: [
+  //     {
+  //       description:
+  //         'When Charged Attacks hit opponents, the equipping characters Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.',
+  //       actionType: 'toggle',
+  //       values: [
+  //         { scaling: 'normalATKSpd', coef: 0.1 },
+  //         { scaling: 'normal', coef: 0.4 },
+  //         { scaling: 'charged', coef: 0.4 },
+  //         { scaling: 'plunge', coef: 0.4 }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   name: 'flowerofparadiselost',
+  //   fullName: 'Flower of Paradise Lost',
+  //   rating: [4, 5],
+  //   twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
+  //   fourPiece: [
+  //     {
+  //       description:
+  //         "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%.",
+  //       values: [
+  //         { scaling: 'bloom', coef: 0.4 },
+  //         { scaling: 'hyperbloom', coef: 0.4 },
+  //         { scaling: 'burgeon', coef: 0.4 }
+  //       ]
+  //     },
+  //     {
+  //       description:
+  //         'After the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.',
+  //       actionType: 'stack',
+  //       values: [
+  //         { scaling: 'bloom', coef: [0.1, 0.1, 0.1, 0.1] },
+  //         { scaling: 'hyperbloom', coef: [0.1, 0.1, 0.1, 0.1] },
+  //         { scaling: 'burgeon', coef: [0.1, 0.1, 0.1, 0.1] }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   name: 'nymphsdream',
+  //   fullName: "Nymph's Dream",
+  //   rating: [4, 5],
+  //   twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
+  //   fourPiece: [
+  //     {
+  //       description:
+  //         'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents. 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15% Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.',
+  //       actionType: 'stack',
+  //       values: [
+  //         { scaling: 'atk%', coef: [0.07, 0.16, 0.25] },
+  //         { scaling: 'hydro', coef: [0.04, 0.09, 0.15] }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   name: 'vourukashasglow',
+  //   fullName: "Vourukasha's Glow",
+  //   rating: [4, 5],
+  //   twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
+  //   fourPiece: [
+  //     {
+  //       description: 'Elemental Skill and Elemental Burst DMG will be increased by 10%.',
+  //       values: [
+  //         { scaling: 'skill', coef: 0.1 },
+  //         { scaling: 'burst', coef: 0.1 }
+  //       ]
+  //     },
+  //     {
+  //       description:
+  //         'After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.',
+  //       actionType: 'stack',
+  //       values: [
+  //         { scaling: 'skill', coef: [0.08, 0.08, 0.08, 0.08, 0.08] },
+  //         { scaling: 'burst', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }
+  //       ]
+  //     }
+  //   ]
+  // },
   {
     name: 'sojourner',
     fullName: 'Resolution of Sojourner',
     rating: [4],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description: 'Increases Charged Attack CRIT Rate by 30%.',
@@ -513,7 +513,7 @@ export const ArtifactData: Artifact[] = [
     name: 'tinymiracle',
     fullName: 'Tiny Miracle',
     rating: [4],
-    twoPiece: [{ values: [{ scaling: 'hp', coef: 0.1 }] }],
+    twoPiece: [{ values: [{ scaling: 'hp', coef: 1000 }] }],
     fourPiece: [
       {
         description:
@@ -576,7 +576,7 @@ export const ArtifactData: Artifact[] = [
     name: 'defenderswill',
     fullName: "Defender's Will",
     rating: [4],
-    twoPiece: [{ values: [{ scaling: 'def', coef: 0.3 }] }],
+    twoPiece: [{ values: [{ scaling: 'def%', coef: 0.3 }] }],
     fourPiece: [
       {
         description:
@@ -589,12 +589,12 @@ export const ArtifactData: Artifact[] = [
     name: 'braveheart',
     fullName: 'Brave Heart',
     rating: [4],
-    twoPiece: [{ values: [{ scaling: 'atk', coef: 0.18 }] }],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
     fourPiece: [
       {
         description:
           'Increases DMG by 30% against opponents with more than 50% HP. NOT IMPLEMENTED!',
-        values: [{ scaling: 'atk', coef: 0 }]
+        values: [{ scaling: 'atk%', coef: 0 }]
       }
     ]
   },
@@ -631,7 +631,7 @@ export const ArtifactData: Artifact[] = [
       {
         description:
           'Defeating an opponent has 100% chance to remove Elemental Skill CD. Can only occur once every 15s. NOT IMPLEMENTED!',
-        values: [{ scaling: 'atk', coef: 0 }]
+        values: [{ scaling: 'atk%', coef: 0 }]
       }
     ]
   },
