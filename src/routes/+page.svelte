@@ -1,6 +1,5 @@
 <script lang="ts">
-  import MobileContainer from '../components/Container/MobileContainer.svelte';
-  import DesktopContainer from '../components/Container/DesktopContainer.svelte';
+  import CombinedContainer from '../components/Container/CombinedContainer.svelte';
 </script>
 
 <svelte:head>
@@ -8,8 +7,9 @@
   <meta name="description" content="Genshin Impact Calculator" />
 </svelte:head>
 
-<DesktopContainer />
-<MobileContainer />
+<!-- <DesktopContainer />
+<MobileContainer /> -->
+<CombinedContainer />
 
 <style lang="postcss">
   :global(html) {
