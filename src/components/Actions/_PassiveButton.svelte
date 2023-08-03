@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
   import { action, type ActionId } from '$lib/stores/actionStore';
@@ -9,7 +9,7 @@
   export let data: Action;
   export let id: ActionId;
 
-  $: target = data.target && 'self';
+  $: target = data.target ?? 'self';
 
   let isActive = true;
 

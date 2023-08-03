@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import type { ALL_STATS } from '$lib/types/talents';
 
@@ -15,7 +15,7 @@
   export let data: Action;
   export let id: ActionId;
 
-  $: target = data.target && 'self';
+  $: target = data.target ?? 'self';
 
   type SELECTED = { [key in ALL_STATS]?: boolean };
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import type { ActionId } from '$lib/stores/actionStore';
 
@@ -10,16 +10,16 @@
   export let data: Action;
   export let id: ActionId;
 
-  $: target = data.target && 'self';
+  const target = data.target ?? 'self';
 
   let isActive = false;
 
   function handleToggle() {
     isActive = !isActive;
     if (isActive) {
-      data.values.forEach((stat) =>
-        action.addStat(id, target as Target, stat.scaling, stat.coef as number)
-      );
+      data.values.forEach((stat) => {
+        action.addStat(id, target as Target, stat.scaling, stat.coef as number);
+      });
       return;
     } else {
       data.values.forEach((stat) =>

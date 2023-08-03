@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import type { ALL_STATS } from '$lib/types/talents';
   import { action, type ActionId } from '$lib/stores/actionStore';
@@ -12,7 +12,7 @@
   export let data: Action;
   export let id: ActionId;
 
-  $: target = data.target && 'self';
+  $: target = data.target ?? 'self';
 
   let selected: { scaling: ALL_STATS; coef: number } | undefined;
   let prevSelected: { scaling: ALL_STATS; coef: number } | undefined;
@@ -116,7 +116,7 @@
   modalTitle={data.name}
   actionType="Elemental Burst"
   buttonType="Select"
-  details={data.description}
+  details={data.description || ''}
 >
   <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
     <div

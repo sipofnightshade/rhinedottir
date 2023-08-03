@@ -8,7 +8,7 @@
   export let data: Action;
   export let id: ActionId;
 
-  $: target = data.target && 'self';
+  $: target = data.target ?? 'self';
 
   let stacks = 0;
 
