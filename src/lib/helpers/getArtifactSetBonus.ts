@@ -1,6 +1,6 @@
 import { ArtifactData } from '$lib/data/Artifacts';
 import type { ArtifactState } from '$lib/stores/artifactStore';
-import type { Action } from '$lib/types/artifacts';
+import type { Action, ArtifactNames } from '$lib/types/artifacts';
 import type { ALL_STATS } from '$lib/types/talents';
 
 interface ResultObject {
@@ -25,6 +25,7 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
   }, {});
 
   const setBonuses: Action[] = [];
+  let activeDetails: { name: ArtifactNames; fullName: string };
 
   for (const name in artifactSetCount) {
     const artifactData = ArtifactData.find((data) => data.name === name);
@@ -36,6 +37,8 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
 
     if (artifactSetCount[name] >= 4 && artifactData.fourPiece) {
       setBonuses.push(...artifactData.fourPiece);
+      // add the data in the above `push` one time
+      activeDetails = { name: artifactData.name, fullName: artifactData.fullName };
     }
   }
 
@@ -43,11 +46,9 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
   const separatedBonuses = setBonuses.reduce<ResultObject>(
     (result, bonus) => {
       if (bonus.actionType) {
-        // result.active = bonus;
         result.active = {
-          name: 'Gladiators Finale',
-          url: 'UI_Talent_S_PlayerWind_04',
-          // target:'self',
+          name: activeDetails.fullName,
+          url: activeDetails.name,
           lvl: 1,
           constellation: 0,
           ...bonus
@@ -60,5 +61,5 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
     { passives: [], active: {} }
   );
 
-  return { ...separatedBonuses, artifactSetCount };
+  return { ...separatedBonuses };
 }
