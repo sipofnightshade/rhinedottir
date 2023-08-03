@@ -5,7 +5,6 @@
   export let type: Visions | 'weapon' | 'artifact' = 'anemo';
   export let url: string;
   export let isActive = true;
-  console.log(url);
 
   const backgrounds = {
     anemo: 'bg-anemo',

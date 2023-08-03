@@ -1,6 +1,7 @@
 import { ArtifactData } from '$lib/data/Artifacts';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { Action, ArtifactNames } from '$lib/types/artifacts';
+import type { WeaponCategory } from '$lib/types/global';
 import type { ALL_STATS } from '$lib/types/talents';
 
 interface ResultObject {
@@ -12,7 +13,10 @@ interface ResultObject {
   active: Action | object;
 }
 
-export function getArtifactSetBonuses(artifactStore: ArtifactState) {
+export function getArtifactSetBonuses(
+  artifactStore: ArtifactState,
+  weapon: WeaponCategory
+) {
   const artifactNames = Object.values(artifactStore).map(
     (artifact) => artifact.selected.name
   );
@@ -36,9 +40,16 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
     }
 
     if (artifactSetCount[name] >= 4 && artifactData.fourPiece) {
-      setBonuses.push(...artifactData.fourPiece);
-      // add the data in the above `push` one time
-      activeDetails = { name: artifactData.name, fullName: artifactData.fullName };
+      // checks to see if character weapon matches setBonus requirements
+      const validFourPieceBonuses = artifactData.fourPiece.filter(
+        (bonus) => !bonus.weapons || bonus.weapons.includes(weapon)
+      );
+
+      if (validFourPieceBonuses.length > 0) {
+        setBonuses.push(...validFourPieceBonuses);
+        // add the data in the above `push` one time
+        activeDetails = { name: artifactData.name, fullName: artifactData.fullName };
+      }
     }
   }
 

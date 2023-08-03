@@ -48,7 +48,7 @@
   {/each}
   <!-- main weapon actions -->
   <!-- main artifact actions -->
-  <ArtifactButton id="main" setData={$artifact} />
+  <ArtifactButton id="main" setData={$artifact} char={$character.selected} />
 
   <!-- Party 1 -->
   {#if $party.one}

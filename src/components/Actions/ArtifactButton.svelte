@@ -12,10 +12,12 @@
   import { action } from '$lib/stores/actionStore';
   import type { ALL_STATS } from '$lib/types/talents';
   import type { Action } from '$lib/types/actions';
+  import type { SelectedCharacter, WeaponCategory } from '$lib/types/global';
 
   // props
   export let setData: ArtifactState;
   export let id: 'main' | 'one' | 'two' | 'three';
+  export let char: SelectedCharacter;
 
   type Stats = { scaling: ALL_STATS; coef: number | number[] };
 
@@ -44,8 +46,8 @@
     }
   }
 
-  function setBonuses(data: ArtifactState) {
-    const artifactSetBonuses = getArtifactSetBonuses(data);
+  function setBonuses(data: ArtifactState, weapon: WeaponCategory) {
+    const artifactSetBonuses = getArtifactSetBonuses(data, weapon);
     const newPassives = artifactSetBonuses.passives;
     if (JSON.stringify(newPassives) !== JSON.stringify(prevPassives)) {
       updateBonuses(prevPassives, false);
@@ -54,10 +56,9 @@
       prevPassives = newPassives;
     }
     currentActive = artifactSetBonuses.active as Action;
-    console.log('currentActive', currentActive);
   }
 
-  $: setBonuses(setData);
+  $: setBonuses(setData, char.weapon);
 </script>
 
 {#if currentActive?.actionType}
