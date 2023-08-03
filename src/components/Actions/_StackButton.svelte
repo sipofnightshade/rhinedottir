@@ -5,7 +5,7 @@
   import { action, type ActionId } from '$lib/stores/actionStore';
   import { onDestroy } from 'svelte';
 
-  export let type: Visions | 'other';
+  export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
 
@@ -63,12 +63,13 @@
     hydro: 'text-hydro',
     geo: 'text-geo',
     pyro: 'text-pyro',
-    other: 'text-slate-300'
+    weapon: 'text-slate-300',
+    artifact: 'text-slate-300'
   };
 </script>
 
 <button on:click={handleToggle} class="relative shadow-red-300">
-  <ActionButton {type} isActive={stacks > 0} />
+  <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
     <p
       class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[

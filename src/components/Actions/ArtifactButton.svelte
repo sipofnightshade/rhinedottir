@@ -64,7 +64,7 @@
   <svelte:component
     this={buttons[currentActive.actionType]}
     data={currentActive}
-    type="other"
+    type="artifact"
     {id}
   />
 {/if}

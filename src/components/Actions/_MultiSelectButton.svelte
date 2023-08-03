@@ -11,7 +11,7 @@
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
 
-  export let type: Visions | 'other';
+  export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
 
@@ -63,7 +63,7 @@
 </script>
 
 <button on:click={toggleModal} class="relative">
-  <ActionButton {type} {isActive} />
+  <ActionButton {type} {isActive} url={data.url} />
   <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
     {#each data.values as value}
       <div

@@ -11,7 +11,7 @@
   import { onDestroy } from 'svelte';
 
   // props
-  export let type: Visions | 'other';
+  export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
 
@@ -51,5 +51,5 @@
 </script>
 
 <button on:click={handleToggle}>
-  <ActionButton {type} {isActive} />
+  <ActionButton {type} {isActive} url={data.url} />
 </button>
