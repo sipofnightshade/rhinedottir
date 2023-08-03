@@ -85,11 +85,9 @@
         <div
           class="absolute top-9 right-0 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, error nostrum
-          ipsa explicabo incidunt, inventore quod voluptatum esse molestias dolorum
-          delectus eos culpa vitae. Sequi perspiciatis repellendus voluptates nobis
-          numquam, dolor mollitia, quaerat aperiam error dolores fuga consequuntur velit
-          expedita!
+          {#each $artifact[type].selected.fourPiece as action}
+            <p>{action.description || ''}</p>
+          {/each}
         </div>
       {/if}
     </button>
