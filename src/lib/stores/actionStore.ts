@@ -81,11 +81,11 @@ const allStats = {
 };
 
 const initialState = {
-  main: allStats,
-  one: allStats,
-  two: allStats,
-  three: allStats,
-  enemy: allStats
+  main: { ...allStats },
+  one: { ...allStats },
+  two: { ...allStats },
+  three: { ...allStats },
+  enemy: { ...allStats }
 };
 
 export type ActionId = keyof typeof initialState;
