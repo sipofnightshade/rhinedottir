@@ -5,7 +5,7 @@
   import { action, type ActionId } from '$lib/stores/actionStore';
   import { onMount } from 'svelte';
 
-  export let element: Visions;
+  export let type: Visions | 'other';
   export let data: Action;
   export let id: ActionId;
 
@@ -43,5 +43,5 @@
 </script>
 
 <button data-testid="passive-action-button">
-  <ActionButton {element} {isActive} />
+  <ActionButton {type} {isActive} />
 </button>

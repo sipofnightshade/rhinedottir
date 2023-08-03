@@ -5,22 +5,24 @@
 
   import { action, type ActionId } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   // component imports
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
 
-  export let element: Visions;
+  export let type: Visions | 'other';
   export let data: Action;
   export let id: ActionId;
 
   $: target = data.target ?? 'self';
 
   type SELECTED = { [key in ALL_STATS]?: boolean };
+  type STAT = { scaling: ALL_STATS; coef: number | number[] };
 
   let selectedStats: SELECTED = {};
   let isActive = false;
+  let addedStats: STAT[] = [];
 
   onMount(() => {
     data.values.forEach(({ scaling }) => {
@@ -28,14 +30,25 @@
     });
   });
 
-  function handleClick(stat: { scaling: ALL_STATS; coef: number | number[] }) {
+  function handleClick(stat: STAT) {
     selectedStats[stat.scaling] = !selectedStats[stat.scaling];
     if (selectedStats[stat.scaling] === true) {
       action.addStat(id, target as Target, stat.scaling, stat.coef as number);
+      addedStats.push(stat);
     } else {
       action.removeStat(id, target as Target, stat.scaling, stat.coef as number);
+      addedStats = addedStats.filter((s) => s.scaling !== stat.scaling);
     }
   }
+
+  // remove any added stats if
+  onDestroy(() => {
+    addedStats.forEach((stat: STAT) => {
+      action.removeStat(id, target as Target, stat.scaling, stat.coef as number);
+    });
+  });
+
+  $: console.log('selectedStats', selectedStats);
 
   // handle Modal
   let dialog: HTMLDialogElement;
@@ -52,7 +65,7 @@
 </script>
 
 <button on:click={toggleModal} class="relative">
-  <ActionButton {element} {isActive} />
+  <ActionButton {type} {isActive} />
   <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
     {#each data.values as value}
       <div
@@ -73,7 +86,7 @@
   modalTitle={data.name}
   actionType="Elemental Burst"
   buttonType="Select"
-  details={data.description}
+  details={data.description ?? ''}
 >
   <div class="flex h-full items-center">
     <!-- <li class="h-10 w-10">

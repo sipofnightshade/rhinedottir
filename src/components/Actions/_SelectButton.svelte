@@ -7,33 +7,40 @@
 
   import ActionModal from '../Modal/ActionModal.svelte';
   import ActionButton from './ActionButton.svelte';
+  import { onDestroy } from 'svelte';
 
-  export let element: Visions;
+  export let type: Visions | 'other';
   export let data: Action;
   export let id: ActionId;
 
+  type Stat = { scaling: ALL_STATS; coef: number };
+
   $: target = data.target ?? 'self';
 
-  let selected: { scaling: ALL_STATS; coef: number } | undefined;
-  let prevSelected: { scaling: ALL_STATS; coef: number } | undefined;
+  let selected: Stat | undefined;
+  let prevSelected: Stat | undefined;
 
-  function onSelect(selected: { scaling: ALL_STATS; coef: number } | undefined) {
+  function onSelect(selected: Stat | undefined) {
     if (selected !== undefined) {
       action.addStat(id, target as Target, selected.scaling, selected.coef);
-      //   console.log(`ADD -> ${selected.scaling}`);
       if (prevSelected) {
         action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
-        // console.log(`MINUS -> ${prevSelected.scaling}`);
       }
     } else {
       if (prevSelected !== undefined) {
-        // console.log(`MINUS -> ${prevSelected.scaling}`);
         action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
       }
     }
 
     prevSelected = selected;
   }
+
+  // remove any added stats if
+  onDestroy(() => {
+    if (selected) {
+      action.removeStat(id, target as Target, selected.scaling, selected.coef as number);
+    }
+  });
 
   $: {
     onSelect(selected);
@@ -47,7 +54,7 @@
 </script>
 
 <button on:click={toggleModal} class="relative">
-  <ActionButton {element} isActive={selected != undefined} />
+  <ActionButton {type} isActive={selected != undefined} />
   {#if selected != undefined}
     <div class="absolute bottom-0 right-0 z-10 flex">
       <div class="rounded-full bg-slate-800 p-1">

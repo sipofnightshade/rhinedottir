@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/talents';
+  import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
   import { action, type ActionId } from '$lib/stores/actionStore';
+  import { onDestroy } from 'svelte';
 
-  export let element: Visions;
+  export let type: Visions | 'other';
   export let data: Action;
   export let id: ActionId;
 
@@ -20,7 +21,6 @@
     }
 
     if (stacks === 0) {
-      console.log('stacks reset');
       data.values.forEach((value) => {
         (value.coef as number[]).forEach((stat) =>
           action.removeStat(id, target as Target, value.scaling, stat)
@@ -38,6 +38,18 @@
     }
   }
 
+  onDestroy(() => {
+    if (stacks > 0) {
+      data.values.forEach((value) => {
+        (value.coef as number[])
+          .slice(0, stacks)
+          .forEach((stat) =>
+            action.removeStat(id, target as Target, value.scaling, stat)
+          );
+      });
+    }
+  });
+
   /**
    * @Important
    * - If using modals, use increment buttons and not an input
@@ -50,16 +62,17 @@
     electro: 'text-electro',
     hydro: 'text-hydro',
     geo: 'text-geo',
-    pyro: 'text-pyro'
+    pyro: 'text-pyro',
+    other: 'text-slate-300'
   };
 </script>
 
 <button on:click={handleToggle} class="relative shadow-red-300">
-  <ActionButton {element} isActive={stacks > 0} />
+  <ActionButton {type} isActive={stacks > 0} />
   {#if stacks > 0}
     <p
       class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[
-        element
+        type
       ]} shadow-red-400"
     >
       x{stacks}
