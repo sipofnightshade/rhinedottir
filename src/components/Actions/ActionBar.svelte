@@ -1,5 +1,7 @@
 <script lang="ts">
+  // stores
   import { character } from '$lib/stores/characterStore';
+  import { party } from '$lib/stores/partyStore';
 
   // import components
   import ToggleButton from './_ToggleButton.svelte';
@@ -7,6 +9,8 @@
   import StackButton from './_StackButton.svelte';
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
+  import ArtifactButton from './ArtifactButton.svelte';
+  import { artifact } from '$lib/stores/artifactStore';
 
   export let margin = true;
 
@@ -20,8 +24,13 @@
   };
 
   // import { onMount } from 'svelte';
-  const charName = 'traveleranemo';
-  const weaponName = 'polarstar';
+  // const charName = 'traveleranemo';
+  // const weaponName = 'polarstar';
+
+  /**
+   * @todo
+   * -
+   */
 </script>
 
 <section
@@ -29,17 +38,6 @@
   class:my-4={margin}
 >
   {#each $character.selected.actions as data}
-    <!-- {#if data.actionType === 'toggle'}
-      <ToggleButton {data} element={$character.selected.vision} />
-    {:else if data.actionType === 'stack'}
-      <StackButton {data} element={$character.selected.vision} />
-    {:else if data.actionType === 'passive'}
-      <PassiveButton {data} element={$character.selected.vision} />
-    {:else if data.actionType === 'select'}
-      <SelectButton {data} element={$character.selected.vision} />
-    {:else if data.actionType === 'multiSelect'}
-      <MultiSelectButton {data} element={$character.selected.vision} />
-    {/if} -->
     <svelte:component
       this={buttons[data.actionType]}
       {data}
@@ -47,4 +45,19 @@
       id="main"
     />
   {/each}
+  <!-- main weapon actions -->
+  <!-- main artifact actions -->
+  <ArtifactButton id="main" setData={$artifact} />
+
+  <!-- Party 1 -->
+  {#if $party.one}
+    {#each $party.one.character.selected.actions as data}
+      <svelte:component
+        this={buttons[data.actionType]}
+        {data}
+        element={$party.one.character.selected.vision}
+        id="one"
+      />
+    {/each}
+  {/if}
 </section>

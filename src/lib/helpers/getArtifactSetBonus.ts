@@ -9,7 +9,7 @@ interface ResultObject {
     coef: number | number[];
     source?: [ALL_STATS, number, number];
   }>;
-  actives: Action | object;
+  active: Action | object;
 }
 
 export function getArtifactSetBonuses(artifactStore: ArtifactState) {
@@ -43,10 +43,11 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
   const separatedBonuses = setBonuses.reduce<ResultObject>(
     (result, bonus) => {
       if (bonus.actionType) {
-        result.actives = bonus;
-        result.actives = {
+        // result.active = bonus;
+        result.active = {
           name: 'Gladiators Finale',
           url: 'UI_Talent_S_PlayerWind_04',
+          // target:'self',
           lvl: 1,
           constellation: 0,
           ...bonus
@@ -56,7 +57,7 @@ export function getArtifactSetBonuses(artifactStore: ArtifactState) {
       }
       return result;
     },
-    { passives: [], actives: {} }
+    { passives: [], active: {} }
   );
 
   return { ...separatedBonuses, artifactSetCount };

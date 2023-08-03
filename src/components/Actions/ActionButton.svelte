@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { Visions } from '$lib/types/global';
-  import type { Action } from '$lib/types/talents';
 
   // props
-  export let element: Visions | 'weapon' = 'anemo';
+  export let element: Visions | 'other' = 'anemo';
   export let isActive = true;
 
   const backgrounds = {
@@ -14,7 +13,7 @@
     hydro: 'bg-hydro',
     geo: 'bg-geo',
     pyro: 'bg-pyro',
-    weapon: 'bg-slate-300'
+    other: 'bg-slate-300'
   };
 
   const gradients = {
@@ -25,7 +24,7 @@
     hydro: 'bg-gradient-to-b from-hydro to-hydroDark',
     geo: 'bg-gradient-to-b from-geo to-geoDark',
     pyro: 'bg-gradient-to-b from-pyro to-pyroDark',
-    weapon: 'bg-gradient-to-b from-slate-300 to-slate-500'
+    other: 'bg-gradient-to-b from-slate-300 to-slate-500'
   };
 
   const outlines = {
@@ -36,7 +35,7 @@
     hydro: 'outline-hydro',
     geo: 'outline-geo',
     pyro: 'outline-pyro',
-    weapon: 'outline-slate-300'
+    other: 'outline-slate-300'
   };
 </script>
 
@@ -57,7 +56,7 @@
     ]} outline outline-1 {outlines[element]}"
   />
   <img
-    class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200 "
+    class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
     src="/images/talents/UI_Talent_S_Xiao_02.png"
     alt="Skill Button Xiao"
   />
