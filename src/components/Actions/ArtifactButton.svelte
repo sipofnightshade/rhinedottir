@@ -11,7 +11,7 @@
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';
   import type { ALL_STATS } from '$lib/types/talents';
-  import type { Action } from '$lib/types/artifacts';
+  import type { Action } from '$lib/types/actions';
 
   // props
   export let setData: ArtifactState;
@@ -25,11 +25,12 @@
     stack: StackButton,
     select: SelectButton,
     multiSelect: MultiSelectButton,
-    input: MultiSelectButton
+    input: MultiSelectButton,
+    visionMatch: ToggleButton
   };
 
   let prevPassives: Stats[] = [];
-  let currentActive: Action | object;
+  let currentActive: Action;
 
   // Function to add or remove passive stats from the store
   function updateBonuses(bonuses: Stats[], isAdding: boolean) {
@@ -52,17 +53,18 @@
       // Update prevPassives with the latest value
       prevPassives = newPassives;
     }
-    currentActive = artifactSetBonuses.active;
+    currentActive = artifactSetBonuses.active as Action;
+    console.log('currentActive', currentActive);
   }
 
   $: setBonuses(setData);
 </script>
 
-{#if currentActive !== undefined}
+{#if currentActive?.actionType}
   <svelte:component
     this={buttons[currentActive.actionType]}
     data={currentActive}
-    element="artifact"
+    type="other"
     {id}
   />
 {/if}
