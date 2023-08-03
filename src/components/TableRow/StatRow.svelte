@@ -10,13 +10,13 @@
     base === 0
       ? '0'
       : isPcnt
-      ? total.toFixed(1) + '%'
+      ? base.toFixed(0) + '%' // Multiply by 100 and remove decimals
       : numFormat.format(+base.toFixed(0));
   $: displayTotal =
     total === 0
       ? '0'
       : isPcnt
-      ? total.toFixed(1) + '%'
+      ? (total * 100).toFixed(0) + '%' // Multiply by 100 and remove decimals
       : numFormat.format(+total.toFixed(0));
 </script>
 

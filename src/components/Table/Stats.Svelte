@@ -3,7 +3,7 @@
   import Cell from '../TableRow/Cell.svelte';
   import { stats } from '$lib/stores/statsStore';
 
-  const x = $stats.main;
+  $: x = $stats.main;
 </script>
 
 <div class="">
@@ -20,23 +20,31 @@
   <StatRow label="Elemental Mastery" total={x.em} isPcnt={false} />
   <StatRow label="CRIT Rate" total={x.critrate} base={5} isPcnt={true} />
   <StatRow label="CRIT DMG" total={x.critdmg} base={50} isPcnt={true} />
-  <StatRow label="Anemo DMG Bonus" total={x.anemo} isPcnt={true} />
-  <StatRow label="Anemo Res" total={x.anemoRes} isPcnt={true} />
-  <StatRow label="Cryo DMG Bonus" total={x.cryo} isPcnt={true} />
-  <StatRow label="Cryo Res" total={x.cryoRes} isPcnt={true} />
-  <StatRow label="Dendro DMG Bonus" total={x.dendro} isPcnt={true} />
-  <StatRow label="Dendro Res" total={x.dendroRes} isPcnt={true} />
-  <StatRow label="Electro DMG Bonus" total={x.electro} isPcnt={true} />
-  <StatRow label="Electro Res" total={x.electroRes} isPcnt={true} />
-  <StatRow label="Geo DMG Bonus" total={x.geo} isPcnt={true} />
-  <StatRow label="Geo Res" total={x.geoRes} isPcnt={true} />
-  <StatRow label="Hydro DMG Bonus" total={x.hydro} isPcnt={true} />
-  <StatRow label="Hydro Res" total={x.hydroRes} isPcnt={true} />
-  <StatRow label="Pyro DMG Bonus" total={x.pyro} isPcnt={true} />
-  <StatRow label="Pyro Res" total={x.pyroRes} isPcnt={true} />
-  <StatRow label="Physical DMG Bonus" total={x.physical} isPcnt={true} />
-  <StatRow label="Physical Res" total={x.physicalRes} isPcnt={true} />
   <StatRow label="Energy Recharge" total={x.energy} base={100} isPcnt={true} />
+  <!-- Add separator here -->
+  <StatRow label="Anemo Bonus" total={x.anemo} isPcnt={true} />
+  <StatRow label="Anemo Res" total={x.anemoRes} isPcnt={true} />
+  <StatRow label="Cryo Bonus" total={x.cryo} isPcnt={true} />
+  <StatRow label="Cryo Res" total={x.cryoRes} isPcnt={true} />
+  <StatRow label="Dendro Bonus" total={x.dendro} isPcnt={true} />
+  <StatRow label="Dendro Res" total={x.dendroRes} isPcnt={true} />
+  <StatRow label="Electro Bonus" total={x.electro} isPcnt={true} />
+  <StatRow label="Electro Res" total={x.electroRes} isPcnt={true} />
+  <StatRow label="Geo Bonus" total={x.geo} isPcnt={true} />
+  <StatRow label="Geo Res" total={x.geoRes} isPcnt={true} />
+  <StatRow label="Hydro Bonus" total={x.hydro} isPcnt={true} />
+  <StatRow label="Hydro Res" total={x.hydroRes} isPcnt={true} />
+  <StatRow label="Pyro Bonus" total={x.pyro} isPcnt={true} />
+  <StatRow label="Pyro Res" total={x.pyroRes} isPcnt={true} />
+  <StatRow label="Physical Bonus" total={x.physical} isPcnt={true} />
+  <StatRow label="Physical Res" total={x.physicalRes} isPcnt={true} />
+  <!-- Add separator here -->
+  <StatRow label="Normal Attack Bonus" total={x.normal} isPcnt={true} />
+  <StatRow label="Charged Attack Bonus" total={x.charged} isPcnt={true} />
+  <StatRow label="Plunge Attack Bonus" total={x.plunge} isPcnt={true} />
+  <StatRow label="Elemental Skill Bonus" total={x.skill} isPcnt={true} />
+  <StatRow label="Elemental Burst Bonus" total={x.burst} isPcnt={true} />
+  <!-- Add separator here -->
   <StatRow label="ATK SPD" base={0} total={0} isPcnt={true} />
   <StatRow label="Move SPD" base={0} total={0} isPcnt={true} />
   <StatRow label="Healing Bonus" base={0} total={0} isPcnt={true} />
