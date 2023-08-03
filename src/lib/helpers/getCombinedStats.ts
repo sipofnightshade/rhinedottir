@@ -9,7 +9,7 @@
 
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { CurrentWeapon } from '$lib/stores/weaponStore';
-import type { ArtifactStats } from '$lib/types/global';
+import type { ArtifactStats } from '$lib/types/artifacts';
 
 interface Stats {
   stat: ArtifactStats;
