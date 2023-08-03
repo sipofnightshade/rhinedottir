@@ -48,8 +48,6 @@
     });
   });
 
-  $: console.log('selectedStats', selectedStats);
-
   // handle Modal
   let dialog: HTMLDialogElement;
 
