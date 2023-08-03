@@ -167,7 +167,7 @@ const charName: CharacterRecord = {
       constellation: 6,
       target: 'enemy',
       actionType: 'toggle',
-      values: [{ scaling: 'anemoRes', coef: -0.2 }]
+      values: [{ scaling: 'anemoRes', coef: 0.2 }]
     },
     {
       name: 'Intertwined Winds - Elemental Absorption',
@@ -179,10 +179,10 @@ const charName: CharacterRecord = {
       target: 'enemy',
       actionType: 'multiSelect',
       values: [
-        { scaling: 'pyroRes', coef: -0.2 },
-        { scaling: 'hydroRes', coef: -0.2 },
-        { scaling: 'electroRes', coef: -0.2 },
-        { scaling: 'cryoRes', coef: -0.2 }
+        { scaling: 'pyroRes', coef: 0.2 },
+        { scaling: 'hydroRes', coef: 0.2 },
+        { scaling: 'electroRes', coef: 0.2 },
+        { scaling: 'cryoRes', coef: 0.2 }
       ]
     },
     {
@@ -194,7 +194,7 @@ const charName: CharacterRecord = {
       constellation: 6,
       target: 'enemy',
       actionType: 'stack',
-      values: [{ scaling: 'anemo', coef: [1.5, 0.5, 0.5, 0.5] }]
+      values: [{ scaling: 'anemo', coef: [0.15, 0.05, 0.05, 0.05] }]
     },
     {
       name: 'Testing2',
@@ -206,10 +206,10 @@ const charName: CharacterRecord = {
       target: 'enemy',
       actionType: 'select',
       values: [
-        { scaling: 'electro', coef: 1.5 },
-        { scaling: 'pyro', coef: 0.5 },
-        { scaling: 'hydro', coef: 1.5 },
-        { scaling: 'cryo', coef: 0.5 }
+        { scaling: 'electro', coef: 0.15 },
+        { scaling: 'pyro', coef: 0.05 },
+        { scaling: 'hydro', coef: 0.15 },
+        { scaling: 'cryo', coef: 0.05 }
       ]
     }
   ],
