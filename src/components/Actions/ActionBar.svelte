@@ -21,6 +21,7 @@
     select: SelectButton,
     multiSelect: MultiSelectButton,
     input: MultiSelectButton
+    // visionMatch: VisionMatchButton
   };
 
   // import { onMount } from 'svelte';
@@ -41,7 +42,7 @@
     <svelte:component
       this={buttons[data.actionType]}
       {data}
-      element={$character.selected.vision}
+      type={$character.selected.vision}
       id="main"
     />
   {/each}
@@ -55,7 +56,7 @@
       <svelte:component
         this={buttons[data.actionType]}
         {data}
-        element={$party.one.character.selected.vision}
+        type={$party.one.character.selected.vision}
         id="one"
       />
     {/each}
