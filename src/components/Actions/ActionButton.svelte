@@ -2,7 +2,7 @@
   import type { Visions } from '$lib/types/global';
 
   // props
-  export let element: Visions | 'other' = 'anemo';
+  export let type: Visions | 'other' = 'anemo';
   export let isActive = true;
 
   const backgrounds = {
@@ -46,14 +46,14 @@
   class:opacity-50={!isActive}
 >
   <div
-    class="absolute h-12 w-12 rounded-full {backgrounds[element]} opacity-0 blur-md"
+    class="absolute h-12 w-12 rounded-full {backgrounds[type]} opacity-0 blur-md"
     class:opacity-50={isActive}
   />
-  <div class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[element]}" />
+  <div class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[type]}" />
   <div
     class="absolute h-[52px] w-[52px] rounded-full {gradients[
-      element
-    ]} outline outline-1 {outlines[element]}"
+      type
+    ]} outline outline-1 {outlines[type]}"
   />
   <img
     class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
