@@ -26,8 +26,8 @@
     hydro: 'bg-gradient-to-b from-hydro to-hydroDark',
     geo: 'bg-gradient-to-b from-geo to-geoDark',
     pyro: 'bg-gradient-to-b from-pyro to-pyroDark',
-    weapon: 'bg-gradient-to-b from-slate-300 to-slate-500',
-    artifact: 'bg-gradient-to-b from-slate-300 to-slate-500'
+    weapon: 'bg-gradient-to-b from-slate-400 to-slate-500',
+    artifact: 'bg-gradient-to-b from-slate-400 to-slate-500'
   };
 
   const outlines = {
@@ -53,10 +53,7 @@
     class="absolute h-12 w-12 rounded-full {backgrounds[type]} opacity-0 blur-md"
     class:opacity-50={isActive}
   />
-  <div
-    class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[type]}"
-    class:hidden={type === 'weapon' || type === 'artifact'}
-  />
+  <div class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[type]}" />
   <div
     class="absolute h-[52px] w-[52px] rounded-full {gradients[
       type
