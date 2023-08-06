@@ -1,7 +1,8 @@
 <script lang="ts">
-  // stores
+  // stores & context
   import { character } from '$lib/stores/characterStore';
   import { party } from '$lib/stores/partyStore';
+  import { artifact } from '$lib/stores/artifactStore';
 
   // import components
   import ToggleButton from './_ToggleButton.svelte';
@@ -10,7 +11,6 @@
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import ArtifactButton from './ArtifactButton.svelte';
-  import { artifact } from '$lib/stores/artifactStore';
 
   export let margin = true;
 
@@ -23,15 +23,6 @@
     input: MultiSelectButton
     // visionMatch: VisionMatchButton
   };
-
-  // import { onMount } from 'svelte';
-  // const charName = 'traveleranemo';
-  // const weaponName = 'polarstar';
-
-  /**
-   * @todo
-   * -
-   */
 </script>
 
 <section
@@ -60,5 +51,27 @@
         id="one"
       />
     {/each}
+    <ArtifactButton
+      id="one"
+      setData={$party.one.artifacts}
+      char={$party.one.character.selected}
+    />
+  {/if}
+
+  <!-- Party 2 -->
+  {#if $party.two}
+    {#each $party.two.character.selected.actions as data}
+      <svelte:component
+        this={buttons[data.actionType]}
+        {data}
+        type={$party.two.character.selected.vision}
+        id="two"
+      />
+    {/each}
+    <ArtifactButton
+      id="two"
+      setData={$party.two.artifacts}
+      char={$party.two.character.selected}
+    />
   {/if}
 </section>

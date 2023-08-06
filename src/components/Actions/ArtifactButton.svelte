@@ -6,13 +6,17 @@
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
 
-  // misc
-  import type { ArtifactState } from '$lib/stores/artifactStore';
+  // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';
+
+  // types
+  import type { ArtifactState } from '$lib/stores/artifactStore';
   import type { ALL_STATS } from '$lib/types/talents';
   import type { Action } from '$lib/types/actions';
   import type { SelectedCharacter, WeaponCategory } from '$lib/types/global';
+  import { activeSets } from '$lib/stores/activeSetsStore';
+  import type { ArtifactNames } from '$lib/types/artifacts';
 
   // props
   export let setData: ArtifactState;
@@ -47,7 +51,7 @@
   }
 
   function setBonuses(data: ArtifactState, weapon: WeaponCategory) {
-    const artifactSetBonuses = getArtifactSetBonuses(data, weapon);
+    const artifactSetBonuses = getArtifactSetBonuses(data, weapon, $activeSets.artifacts);
     const newPassives = artifactSetBonuses.passives;
     if (JSON.stringify(newPassives) !== JSON.stringify(prevPassives)) {
       updateBonuses(prevPassives, false);
@@ -56,6 +60,7 @@
       prevPassives = newPassives;
     }
     currentActive = artifactSetBonuses.active as Action;
+    activeSets.setActiveSet('artifacts', id, currentActive.url as ArtifactNames);
   }
 
   $: setBonuses(setData, char.weapon);

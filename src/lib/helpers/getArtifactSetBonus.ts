@@ -1,4 +1,5 @@
 import { ArtifactData } from '$lib/data/Artifacts';
+import type { ActiveSets } from '$lib/stores/activeSetsStore';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { Action, ArtifactNames } from '$lib/types/artifacts';
 import type { WeaponCategory } from '$lib/types/global';
@@ -15,7 +16,8 @@ interface ResultObject {
 
 export function getArtifactSetBonuses(
   artifactStore: ArtifactState,
-  weapon: WeaponCategory
+  weapon: WeaponCategory,
+  allActiveSets: ActiveSets
 ) {
   const artifactNames = Object.values(artifactStore).map(
     (artifact) => artifact.selected.name
@@ -39,7 +41,21 @@ export function getArtifactSetBonuses(
       setBonuses.push(...artifactData.twoPiece);
     }
 
-    if (artifactSetCount[name] >= 4 && artifactData.fourPiece) {
+    const unique =
+      Object.values(allActiveSets).includes(artifactData.name) &&
+      artifactData.fourPiece[0].unique;
+
+    /**
+     * @todo
+     * - Example: If main and party one have Noblesse Oblige sets,
+     * only main's set will show. However, when removing main's set
+     * or changing it, the party one Noblesse set active does not
+     * appear.
+     * - 💡 This makes me to believe that the party sets are not
+     * updated the properly.
+     */
+
+    if (artifactSetCount[name] >= 4 && artifactData.fourPiece && !unique) {
       // checks to see if character weapon matches setBonus requirements
       const validFourPieceBonuses = artifactData.fourPiece.filter(
         (bonus) => !bonus.weapons || bonus.weapons.includes(weapon)
