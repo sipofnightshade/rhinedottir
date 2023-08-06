@@ -74,4 +74,21 @@
       char={$party.two.character.selected}
     />
   {/if}
+
+  <!-- Party 3 -->
+  {#if $party.three}
+    {#each $party.three.character.selected.actions as data}
+      <svelte:component
+        this={buttons[data.actionType]}
+        {data}
+        type={$party.three.character.selected.vision}
+        id="three"
+      />
+    {/each}
+    <ArtifactButton
+      id="three"
+      setData={$party.three.artifacts}
+      char={$party.three.character.selected}
+    />
+  {/if}
 </section>
