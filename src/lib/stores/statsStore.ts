@@ -17,7 +17,7 @@ function createStats() {
 
       // create the team special stats, like team energy, burst costs
       // 💡
-      let partyBurst = $character.selected.burstCost;
+      let partyBurstCost = $character.selected.burstCost;
 
       let p1, p2, p3;
       if ($party?.one) {
@@ -28,7 +28,7 @@ function createStats() {
           $action.one
         );
 
-        partyBurst += $party.one.character.selected.burstCost;
+        partyBurstCost += $party.one.character.selected.burstCost;
       }
       if ($party?.two) {
         p2 = getFinalStats(
@@ -37,7 +37,7 @@ function createStats() {
           $party.two.artifacts,
           $action.two
         );
-        partyBurst += $party.two.character.selected.burstCost;
+        partyBurstCost += $party.two.character.selected.burstCost;
       }
       if ($party?.three) {
         p3 = getFinalStats(
@@ -46,7 +46,7 @@ function createStats() {
           $party.three.artifacts,
           $action.three
         );
-        partyBurst += $party.three.character.selected.burstCost;
+        partyBurstCost += $party.three.character.selected.burstCost;
       }
 
       // get max EM
@@ -54,15 +54,12 @@ function createStats() {
       // console.log(partyMaxEM);
       // console.log(partyBurst);
 
-      // calculate number of visions, it would look like the following:
-      // dendroCharacters: undefined
-      // pyroCharacters: 2
-      // geoCharacters: 4
-      // 💡 put the logic for this in a special action button. that button will check through elements
-      // etc. maybe even return a `misc` property from this with an array of elements inside etc.
-
-      // testing
-      return { main, p1, p2, p3 };
+      return {
+        main: { ...main, partyBurstCost, partyMaxEM },
+        p1: { ...p1, partyBurstCost, partyMaxEM },
+        p2: { ...p2, partyBurstCost, partyMaxEM },
+        p3: { ...p3, partyBurstCost, partyMaxEM }
+      };
     }
   );
 }

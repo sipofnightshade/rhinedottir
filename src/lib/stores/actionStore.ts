@@ -60,8 +60,9 @@ const allStats = {
   burstDefIgnore: 0,
   defReduce: 0,
   dmgReduction: 0, // https://genshin-impact.fandom.com/wiki/DMG_Reduction
-  partyEnergy: 0,
-  partyEM: 0,
+  // party stats
+  partyBurstCost: 0,
+  partyMaxEM: 0,
   // reaction bonuses
   aggravate: 0,
   spread: 0,

@@ -1,8 +1,7 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
-import type { ArtifactNames } from './artifacts';
-import type { Action } from './actions';
-import type { ALL_STATS, Hit, OffField } from './talents';
+import type { Action, ActionValues } from './actions';
+import type { Hit, OffField } from './talents';
 
 export type SelectedCharacter = CharacterRecord;
 
@@ -15,33 +14,12 @@ export type SelectedWeapon = {
   effectname: string;
   effect: string;
   ref: [] | string[] | string[][];
-  target?: 'self' | 'enemy' | 'party' | 'all';
-  actionType?: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
-  actionValues?: [
+  action: [
     {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      threshold?: number;
-    },
-    {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      threshold?: number;
-    },
-    {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      threshold?: number;
-    },
-    {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      threshold?: number;
-    },
-    {
-      scaling: ALL_STATS;
-      coef: number | number[];
-      threshold?: number;
+      actionType?: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
+      target?: 'self' | 'enemy' | 'party' | 'all';
+      unique?: boolean;
+      values: [ActionValues, ActionValues, ActionValues, ActionValues, ActionValues];
     }
   ];
 };

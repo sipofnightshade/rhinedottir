@@ -11,6 +11,12 @@ export type ActionType =
   | 'passive'
   | 'visionMatch';
 
+export type ActionValues = {
+  scaling: ALL_STATS;
+  coef: number | number[];
+  source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+}[];
+
 export type Action = {
   name: string;
   url: string;
@@ -21,9 +27,5 @@ export type Action = {
   target?: Target;
   unique?: boolean;
   actionType?: ActionType;
-  values: {
-    scaling: ALL_STATS;
-    coef: number | number[];
-    source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
-  }[];
+  values: ActionValues;
 };

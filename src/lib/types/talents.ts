@@ -99,8 +99,8 @@ export type ALL_STATS =
   | 'skillDefIgnore'
   | 'burstDefIgnore'
   | 'defReduce'
-  | 'partyEnergy'
-  | 'partyEM'
+  | 'partyBurstCost' // sum of party burst costs
+  | 'partyMaxEM' // highest EM of party member
   | 'aggravate'
   | 'spread'
   | 'melt'
