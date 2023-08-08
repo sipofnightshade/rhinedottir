@@ -143,6 +143,7 @@ export const ArtifactData: Artifact[] = [
         description:
           'While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.',
         actionType: 'toggle',
+        shielded: true,
         values: [
           { scaling: 'normal', coef: 0.4 },
           { scaling: 'charged', coef: 0.4 }
