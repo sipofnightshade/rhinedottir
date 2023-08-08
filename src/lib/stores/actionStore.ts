@@ -31,6 +31,7 @@ const allStats = {
   hydroRes: 0,
   pyroRes: 0,
   physicalRes: 0,
+  dmgIncrease: 0,
   normal: 0,
   charged: 0,
   plunge: 0,

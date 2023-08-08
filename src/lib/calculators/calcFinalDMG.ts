@@ -29,7 +29,9 @@ export function calcFinalDMG(
   );
   // ❗❗❗ may have to extract this. This would also remove the need for an enemy store.
   const DMGBonus =
-    (hit.elemental ? $stats[hit.elemental] : $stats[element]) + $stats[hit.damageBonus];
+    (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
+    $stats[hit.damageBonus] +
+    $stats.dmgIncrease; // Mona, Serpents' Spine, bane mods etc
 
   // get the catalyze bonus damage
   const catalyze = {

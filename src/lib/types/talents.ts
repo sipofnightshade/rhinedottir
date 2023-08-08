@@ -73,6 +73,7 @@ export type ALL_STATS =
   | 'pyroRes'
   | 'physical'
   | 'physicalRes'
+  | 'dmgIncrease'
   | 'normal'
   | 'charged'
   | 'plunge'

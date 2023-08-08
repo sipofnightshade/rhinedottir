@@ -16,12 +16,11 @@ function createStats() {
       const main = getFinalStats($character, $weapon, $artifacts, $action.main);
 
       // create the team special stats, like team energy, burst costs
-      // 💡
       let partyBurstCost = $character.selected.burstCost;
 
-      let p1, p2, p3;
+      let p1Stats, p2Stats, p3Stats;
       if ($party?.one) {
-        p1 = getFinalStats(
+        p1Stats = getFinalStats(
           $party.one.character,
           $party.one.weapon,
           $party.one.artifacts,
@@ -31,7 +30,7 @@ function createStats() {
         partyBurstCost += $party.one.character.selected.burstCost;
       }
       if ($party?.two) {
-        p2 = getFinalStats(
+        p2Stats = getFinalStats(
           $party.two.character,
           $party.two.weapon,
           $party.two.artifacts,
@@ -40,7 +39,7 @@ function createStats() {
         partyBurstCost += $party.two.character.selected.burstCost;
       }
       if ($party?.three) {
-        p3 = getFinalStats(
+        p3Stats = getFinalStats(
           $party.three.character,
           $party.three.weapon,
           $party.three.artifacts,
@@ -50,15 +49,18 @@ function createStats() {
       }
 
       // get max EM
-      const partyMaxEM = Math.max(main.em ?? 0, p1?.em ?? 0, p2?.em ?? 0, p3?.em ?? 0);
-      // console.log(partyMaxEM);
-      // console.log(partyBurst);
+      const partyMaxEM = Math.max(
+        main.em ?? 0,
+        p1Stats?.em ?? 0,
+        p2Stats?.em ?? 0,
+        p3Stats?.em ?? 0
+      );
 
       return {
         main: { ...main, partyBurstCost, partyMaxEM },
-        p1: { ...p1, partyBurstCost, partyMaxEM },
-        p2: { ...p2, partyBurstCost, partyMaxEM },
-        p3: { ...p3, partyBurstCost, partyMaxEM }
+        p1: p1Stats ? { ...p1Stats, partyBurstCost, partyMaxEM } : undefined,
+        p2: p2Stats ? { ...p2Stats, partyBurstCost, partyMaxEM } : undefined,
+        p3: p3Stats ? { ...p3Stats, partyBurstCost, partyMaxEM } : undefined
       };
     }
   );

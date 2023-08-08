@@ -78,6 +78,7 @@ export type Action = {
   weapons?: WeaponCategory[];
   target?: 'self' | 'party' | 'enemy';
   unique?: boolean;
+  shielded?: boolean;
   actionType?:
     | 'stack'
     | 'toggle'

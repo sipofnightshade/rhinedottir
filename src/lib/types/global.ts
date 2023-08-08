@@ -14,14 +14,23 @@ export type SelectedWeapon = {
   effectname: string;
   effect: string;
   ref: [] | string[] | string[][];
-  action: [
-    {
-      actionType?: 'stack' | 'toggle' | 'select' | 'multiSelect' | 'input' | 'passive';
-      target?: 'self' | 'enemy' | 'party' | 'all';
-      unique?: boolean;
-      values: [ActionValues, ActionValues, ActionValues, ActionValues, ActionValues];
-    }
-  ];
+  action?: {
+    actionType?:
+      | 'stack'
+      | 'toggle'
+      | 'select'
+      | 'multiSelect'
+      | 'input'
+      | 'passive'
+      | 'region';
+    target?: 'self' | 'enemy' | 'party' | 'all';
+    shielded?: boolean;
+    regions?: [
+      'Liyue' | 'Sumeru' | 'Mondstat' | 'Inazuma' | 'Fontaine' | 'Natlan' | 'Snezhnaya'
+    ];
+    unique?: boolean;
+    values: [ActionValues, ActionValues, ActionValues, ActionValues, ActionValues];
+  }[];
 };
 
 export type Visions = 'anemo' | 'cryo' | 'dendro' | 'electro' | 'geo' | 'hydro' | 'pyro';

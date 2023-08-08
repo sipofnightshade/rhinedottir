@@ -51,13 +51,24 @@ export const WeaponData: Data = {
       effectname: 'Desert Watch',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk%', coef: [0.2, 0.2] }],
+            [{ scaling: 'atk%', coef: [0.25, 0.25] }],
+            [{ scaling: 'atk%', coef: [0.3, 0.3] }],
+            [{ scaling: 'atk%', coef: [0.35, 0.35] }],
+            [{ scaling: 'atk%', coef: [0.4, 0.4] }]
+          ]
+        },
+        {
+          actionType: 'passive',
+          shielded: true,
+          values: [
+            [{ scaling: 'hp%', coef: 0.32 }],
+            [{ scaling: 'hp%', coef: 0.4 }],
+            [{ scaling: 'hp%', coef: 0.48 }],
+            [{ scaling: 'hp%', coef: 0.56 }],
+            [{ scaling: 'hp%', coef: 0.64 }]
           ]
         }
       ],
@@ -81,13 +92,13 @@ export const WeaponData: Data = {
       effectname: 'Press the Advantage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk%', coef: [0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15] }],
+            [{ scaling: 'atk%', coef: [0.18, 0.18, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.21, 0.21, 0.21] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.24, 0.24] }]
           ]
         }
       ],
@@ -107,11 +118,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'pyro', coef: 0.12 },
+              { scaling: 'electro', coef: 0.12 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.15 },
+              { scaling: 'electro', coef: 0.15 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.18 },
+              { scaling: 'electro', coef: 0.18 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.21 },
+              { scaling: 'electro', coef: 0.21 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.24 },
+              { scaling: 'electro', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -125,18 +151,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'atk%',
       effectname: 'Blunt Conclusion',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect:
         'After using an Elemental Skill, on hit, Normal and Charged Attacks deal additional DMG equal to {0} of ATK in a small AoE. Effect lasts 15s. DMG can only occur once every 3s.',
       ref: [['60%'], ['75%'], ['90%'], ['105%'], ['120%']]
@@ -148,18 +162,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'energy',
       effectname: 'Windfall',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
       ref: [
@@ -179,13 +181,13 @@ export const WeaponData: Data = {
       effectname: 'Unbending',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'charged', coef: 0.3 }],
+            [{ scaling: 'charged', coef: 0.35 }],
+            [{ scaling: 'charged', coef: 0.4 }],
+            [{ scaling: 'charged', coef: 0.45 }],
+            [{ scaling: 'charged', coef: 0.5 }]
           ]
         }
       ],
@@ -208,13 +210,13 @@ export const WeaponData: Data = {
       effectname: 'Forest Sanctuary',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'em', coef: 60 }],
+            [{ scaling: 'em', coef: 75 }],
+            [{ scaling: 'em', coef: 90 }],
+            [{ scaling: 'em', coef: 105 }],
+            [{ scaling: 'em', coef: 120 }]
           ]
         }
       ],
@@ -233,11 +235,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'skill', coef: 0.06 }],
+            [{ scaling: 'skill', coef: 0.075 }],
+            [{ scaling: 'skill', coef: 0.09 }],
+            [{ scaling: 'skill', coef: 0.105 }],
+            [{ scaling: 'skill', coef: 0.12 }]
           ]
         }
       ],
@@ -260,13 +262,29 @@ export const WeaponData: Data = {
       effectname: 'Lithic Axiom: Unity',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'region',
+          regions: ['Liyue'],
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'atk%', coef: 0.07 },
+              { scaling: 'critrate', coef: 0.03 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.08 },
+              { scaling: 'critrate', coef: 0.04 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.09 },
+              { scaling: 'critrate', coef: 0.05 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.1 },
+              { scaling: 'critrate', coef: 0.06 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.11 },
+              { scaling: 'critrate', coef: 0.07 }
+            ]
           ]
         }
       ],
@@ -291,11 +309,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'burst', coef: 0.12 }],
+            [{ scaling: 'burst', coef: 0.15 }],
+            [{ scaling: 'burst', coef: 0.18 }],
+            [{ scaling: 'burst', coef: 0.21 }],
+            [{ scaling: 'burst', coef: 0.24 }]
           ]
         }
       ],
@@ -318,13 +336,28 @@ export const WeaponData: Data = {
       effectname: 'Whispers of Wind and Flower',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'atk%', coef: 0.12 },
+              { scaling: 'em', coef: 48 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.15 },
+              { scaling: 'em', coef: 60 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.18 },
+              { scaling: 'em', coef: 72 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.21 },
+              { scaling: 'em', coef: 84 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.24 },
+              { scaling: 'em', coef: 96 }
+            ]
           ]
         }
       ],
@@ -348,12 +381,25 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          // flat bonus atk = 0.24 * EM
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0.24, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.3, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.36, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.42, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.48, source: ['em', 0] }]
+          ]
+        },
+        {
+          actionType: 'passive',
+          // flat bonus atk = 0.072 * EM
+          target: 'party',
+          values: [
+            [{ scaling: 'atk', coef: 0.072, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.09, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.108, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.126, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.144, source: ['em', 0] }]
           ]
         }
       ],
@@ -368,18 +414,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'atk%',
       effectname: 'Crush',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect:
         'On hit, Normal or Charged Attacks have a 50% chance to deal an additional {0} ATK DMG to opponents within a small AoE. Can only occur once every 15s.',
       ref: [['240%'], ['300%'], ['360%'], ['420%'], ['480%']]
@@ -395,11 +429,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'hydro', coef: 0.2 },
+              { scaling: 'electro', coef: 0.2 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.24 },
+              { scaling: 'electro', coef: 0.24 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.28 },
+              { scaling: 'electro', coef: 0.28 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.32 },
+              { scaling: 'electro', coef: 0.32 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.36 },
+              { scaling: 'electro', coef: 0.36 }
+            ]
           ]
         }
       ],
@@ -417,11 +466,32 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'def%', coef: 0.28 },
+              // normalFlatDMG = 0.4 * $stats.def
+              { scaling: 'normalFlatDMG', coef: 0.4, source: ['def', 0] },
+              { scaling: 'chargedFlatDMG', coef: 0.4, source: ['def', 0] }
+            ],
+            [
+              { scaling: 'def%', coef: 0.35 },
+              { scaling: 'normalFlatDMG', coef: 0.5, source: ['def', 0] },
+              { scaling: 'chargedFlatDMG', coef: 0.5, source: ['def', 0] }
+            ],
+            [
+              { scaling: 'def%', coef: 0.42 },
+              { scaling: 'normalFlatDMG', coef: 0.6, source: ['def', 0] },
+              { scaling: 'chargedFlatDMG', coef: 0.6, source: ['def', 0] }
+            ],
+            [
+              { scaling: 'def%', coef: 0.49 },
+              { scaling: 'normalFlatDMG', coef: 0.7, source: ['def', 0] },
+              { scaling: 'chargedFlatDMG', coef: 0.7, source: ['def', 0] }
+            ],
+            [
+              { scaling: 'def%', coef: 0.56 },
+              { scaling: 'normalFlatDMG', coef: 0.8, source: ['def', 0] },
+              { scaling: 'chargedFlatDMG', coef: 0.8, source: ['def', 0] }
+            ]
           ]
         }
       ],
@@ -444,13 +514,13 @@ export const WeaponData: Data = {
       effectname: 'Focus',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'critrate', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'critrate', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'critrate', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'critrate', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -465,18 +535,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'energy',
       effectname: 'Composed',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
       ref: [
@@ -496,13 +554,14 @@ export const WeaponData: Data = {
       effectname: 'Wavesplitter',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            // damage should be increased enemy damage
+            [{ scaling: 'dmgIncrease', coef: [0.06, 0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'dmgIncrease', coef: [0.07, 0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'dmgIncrease', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'dmgIncrease', coef: [0.09, 0.09, 0.09, 0.09, 0.09] }],
+            [{ scaling: 'dmgIncrease', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }]
           ]
         }
       ],
@@ -525,13 +584,13 @@ export const WeaponData: Data = {
       effectname: 'Courage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'atk%', coef: [0.09, 0.09, 0.09, 0.09] }],
+            [{ scaling: 'atk%', coef: [0.1, 0.1, 0.1, 0.1] }]
           ]
         }
       ],
@@ -550,11 +609,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'dmgIncrease', coef: 0.08 }],
+            [{ scaling: 'dmgIncrease', coef: 0.1 }],
+            [{ scaling: 'dmgIncrease', coef: 0.12 }],
+            [{ scaling: 'dmgIncrease', coef: 0.14 }],
+            [{ scaling: 'dmgIncrease', coef: 0.16 }]
           ]
         }
       ],
@@ -575,18 +634,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'physical',
       effectname: 'Frost Burial',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
       ref: [
@@ -608,11 +655,37 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk%', coef: 0.16 }],
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.24 }],
+            [{ scaling: 'atk%', coef: 0.28 }],
+            [{ scaling: 'atk%', coef: 0.32 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          target: 'party',
+          values: [
+            [
+              { scaling: 'atk%', coef: 0.2 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.25 },
+              { scaling: 'normalATKSpd', coef: 0.15 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.3 },
+              { scaling: 'normalATKSpd', coef: 0.18 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.35 },
+              { scaling: 'normalATKSpd', coef: 0.21 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.4 },
+              { scaling: 'normalATKSpd', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -636,12 +709,13 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          shielded: true,
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'dmgIncrease', coef: 0.12 }],
+            [{ scaling: 'dmgIncrease', coef: 0.15 }],
+            [{ scaling: 'dmgIncrease', coef: 0.18 }],
+            [{ scaling: 'dmgIncrease', coef: 0.21 }],
+            [{ scaling: 'dmgIncrease', coef: 0.24 }]
           ]
         }
       ],
@@ -666,11 +740,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'shieldStrength', coef: 0.2 }],
+            [{ scaling: 'shieldStrength', coef: 0.25 }],
+            [{ scaling: 'shieldStrength', coef: 0.3 }],
+            [{ scaling: 'shieldStrength', coef: 0.35 }],
+            [{ scaling: 'shieldStrength', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04, 0.04] }],
+            [{ scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05, 0.05] }],
+            [{ scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }]
           ]
         }
       ],
@@ -693,13 +777,28 @@ export const WeaponData: Data = {
       effectname: 'Infusion Blade',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06] },
+              { scaling: 'def%', coef: [0.06, 0.06, 0.06, 0.06] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.075, 0.075, 0.075, 0.075] },
+              { scaling: 'def%', coef: [0.075, 0.075, 0.075, 0.075] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.09, 0.09, 0.09, 0.09] },
+              { scaling: 'def%', coef: [0.09, 0.09, 0.09, 0.09] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.105, 0.105, 0.105, 0.105] },
+              { scaling: 'def%', coef: [0.105, 0.105, 0.105, 0.105] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.12, 0.12, 0.12, 0.12] },
+              { scaling: 'def%', coef: [0.12, 0.12, 0.12, 0.12] }
+            ]
           ]
         }
       ],
@@ -714,18 +813,6 @@ export const WeaponData: Data = {
       type: 'claymore',
       specialized: 'def%',
       effectname: 'Cull the Weak',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
-          ]
-        }
-      ],
       effect: 'Defeating an opponent restores {0} HP.',
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
@@ -740,11 +827,22 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          target: 'party',
+          values: [
+            [{ scaling: 'atk%', coef: 0.4 }],
+            [{ scaling: 'atk%', coef: 0.5 }],
+            [{ scaling: 'atk%', coef: 0.6 }],
+            [{ scaling: 'atk%', coef: 0.7 }],
+            [{ scaling: 'atk%', coef: 0.8 }]
           ]
         }
       ],
@@ -771,11 +869,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -800,11 +898,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -829,11 +927,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -858,11 +956,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -881,11 +979,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -910,11 +1008,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -939,11 +1037,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -962,11 +1060,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -991,11 +1089,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }]
           ]
         }
       ],
@@ -1020,11 +1118,51 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'normal', coef: 0.16 },
+              { scaling: 'charged', coef: 0.12 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.2 },
+              { scaling: 'charged', coef: 0.15 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.24 },
+              { scaling: 'charged', coef: 0.18 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.28 },
+              { scaling: 'charged', coef: 0.21 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.32 },
+              { scaling: 'charged', coef: 0.24 }
+            ]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [
+              { scaling: 'normal', coef: 0.16 },
+              { scaling: 'charged', coef: 0.12 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.2 },
+              { scaling: 'charged', coef: 0.15 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.24 },
+              { scaling: 'charged', coef: 0.18 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.28 },
+              { scaling: 'charged', coef: 0.21 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.32 },
+              { scaling: 'charged', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -1049,11 +1187,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1078,11 +1216,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1101,11 +1239,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1130,11 +1268,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1153,11 +1291,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1182,11 +1320,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1211,11 +1349,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1240,11 +1378,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1263,11 +1401,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1286,11 +1424,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1308,11 +1446,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1328,13 +1466,13 @@ export const WeaponData: Data = {
       effectname: 'Focus',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'critrate', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'critrate', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'critrate', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'critrate', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -1353,11 +1491,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1376,11 +1514,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1405,11 +1543,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1427,11 +1565,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1456,11 +1594,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1479,11 +1617,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1501,11 +1639,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1530,11 +1668,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1559,11 +1697,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1584,11 +1722,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1607,11 +1745,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1636,11 +1774,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1659,11 +1797,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1682,11 +1820,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1704,11 +1842,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1727,11 +1865,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }]
           ]
         }
       ],
@@ -1756,11 +1894,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1785,11 +1923,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1814,11 +1952,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1843,11 +1981,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1872,11 +2010,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1894,11 +2032,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1917,11 +2055,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1940,11 +2078,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1969,11 +2107,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -1998,11 +2136,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2020,11 +2158,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2049,11 +2187,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2078,11 +2216,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2099,13 +2237,13 @@ export const WeaponData: Data = {
       effectname: 'Focus',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'critrate', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'critrate', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'critrate', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'critrate', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -2124,11 +2262,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2153,11 +2291,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2176,11 +2314,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2199,11 +2337,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2228,11 +2366,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'shieldStrength', coef: 0.2 }],
+            [{ scaling: 'shieldStrength', coef: 0.25 }],
+            [{ scaling: 'shieldStrength', coef: 0.3 }],
+            [{ scaling: 'shieldStrength', coef: 0.35 }],
+            [{ scaling: 'shieldStrength', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04, 0.04] }],
+            [{ scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05, 0.05] }],
+            [{ scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }]
           ]
         }
       ],
@@ -2257,11 +2405,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2280,11 +2428,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2303,11 +2451,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2332,11 +2480,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2355,11 +2503,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2378,11 +2526,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2400,11 +2548,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2425,11 +2573,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2454,11 +2602,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2477,11 +2625,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2506,11 +2654,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2529,11 +2677,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2558,11 +2706,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2587,11 +2735,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }]
           ]
         }
       ],
@@ -2616,11 +2764,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2645,11 +2793,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2668,11 +2816,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2691,11 +2839,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2720,11 +2868,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2749,11 +2897,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2772,11 +2920,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2794,11 +2942,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2817,11 +2965,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'shieldStrength', coef: 0.2 }],
+            [{ scaling: 'shieldStrength', coef: 0.25 }],
+            [{ scaling: 'shieldStrength', coef: 0.3 }],
+            [{ scaling: 'shieldStrength', coef: 0.35 }],
+            [{ scaling: 'shieldStrength', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04, 0.04] }],
+            [{ scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05, 0.05] }],
+            [{ scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }]
           ]
         }
       ],
@@ -2846,11 +3004,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2868,11 +3026,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2890,11 +3048,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2917,13 +3075,13 @@ export const WeaponData: Data = {
       effectname: 'Focus',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'critrate', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'critrate', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'critrate', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'critrate', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -2942,11 +3100,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -2971,11 +3129,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3000,11 +3158,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3029,11 +3187,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3058,11 +3216,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3081,11 +3239,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3110,11 +3268,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3132,11 +3290,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3155,11 +3313,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3186,11 +3344,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3209,11 +3367,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3231,11 +3389,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3260,11 +3418,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3283,11 +3441,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3312,11 +3470,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3334,11 +3492,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3363,11 +3521,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3392,11 +3550,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }],
+            [{ scaling: 'energy', coef: 0 }]
           ]
         }
       ],
@@ -3421,11 +3579,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3444,11 +3602,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'skill', coef: 0.06 }],
+            [{ scaling: 'skill', coef: 0.075 }],
+            [{ scaling: 'skill', coef: 0.09 }],
+            [{ scaling: 'skill', coef: 0.105 }],
+            [{ scaling: 'skill', coef: 0.12 }]
           ]
         }
       ],
@@ -3471,13 +3629,29 @@ export const WeaponData: Data = {
       effectname: 'Lithic Axiom: Unity',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'region',
+          regions: ['Liyue'],
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [
+              { scaling: 'atk%', coef: 0.07 },
+              { scaling: 'critrate', coef: 0.03 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.08 },
+              { scaling: 'critrate', coef: 0.04 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.09 },
+              { scaling: 'critrate', coef: 0.05 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.1 },
+              { scaling: 'critrate', coef: 0.06 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.11 },
+              { scaling: 'critrate', coef: 0.07 }
+            ]
           ]
         }
       ],
@@ -3502,11 +3676,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3531,11 +3705,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3554,11 +3728,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3583,11 +3757,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3604,13 +3778,13 @@ export const WeaponData: Data = {
       effectname: 'Focus',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'critrate', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'critrate', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'critrate', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'critrate', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -3629,11 +3803,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3658,11 +3832,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3687,11 +3861,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3716,11 +3890,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3745,11 +3919,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'shieldStrength', coef: 0.2 }],
+            [{ scaling: 'shieldStrength', coef: 0.25 }],
+            [{ scaling: 'shieldStrength', coef: 0.3 }],
+            [{ scaling: 'shieldStrength', coef: 0.35 }],
+            [{ scaling: 'shieldStrength', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04, 0.04] }],
+            [{ scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05, 0.05] }],
+            [{ scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06, 0.06] }],
+            [{ scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07, 0.07] }],
+            [{ scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }]
           ]
         }
       ],
@@ -3774,11 +3958,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],
@@ -3803,11 +3987,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }],
-            [{ scaling: 'atk', coef: 0.2 }]
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }],
+            [{ scaling: 'atk', coef: 0 }]
           ]
         }
       ],

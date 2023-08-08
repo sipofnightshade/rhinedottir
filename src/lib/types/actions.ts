@@ -14,7 +14,7 @@ export type ActionType =
 export type ActionValues = {
   scaling: ALL_STATS;
   coef: number | number[];
-  source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+  source?: [ALL_STATS, number] | [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
 }[];
 
 export type Action = {
@@ -25,6 +25,7 @@ export type Action = {
   level?: number;
   constellation?: number;
   target?: Target;
+  shielded?: boolean;
   unique?: boolean;
   actionType?: ActionType;
   values: ActionValues;
