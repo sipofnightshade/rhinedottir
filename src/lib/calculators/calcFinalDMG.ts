@@ -31,7 +31,9 @@ export function calcFinalDMG(
   const DMGBonus =
     (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
     $stats[hit.damageBonus] +
-    $stats.dmgIncrease; // Mona, Serpents' Spine, bane mods etc
+    $stats.dmgIncrease + // Mona, Serpents' Spine, bane mods etc
+    (hit.elemental === 'physical' ? 0 : $stats.dmgIncreaseElemental); // Hunter's path effect
+  // if hit is not physical, then add allElemental dmg bonus
 
   // get the catalyze bonus damage
   const catalyze = {
@@ -60,7 +62,7 @@ export function calcFinalDMG(
         $enemy.dmgReduction,
         DEFMultiplier,
         RESMultiplier,
-        $stats.critrate,
+        $stats.critrate + $stats[addStats.critRate],
         $stats.critdmg
       );
       total.base += result;
@@ -73,7 +75,7 @@ export function calcFinalDMG(
         $enemy.dmgReduction,
         DEFMultiplier,
         RESMultiplier,
-        $stats.critrate,
+        $stats.critrate + $stats[addStats.critRate],
         $stats.critdmg
       );
 

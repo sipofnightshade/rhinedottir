@@ -52,35 +52,40 @@ function getAdditionalStats(type: TalentType) {
         specialMultiplier: 'normalSpecialMultiplier',
         defIgnore: 'normalDefIgnore',
         talentLvlId: 'atk',
-        flatDMG: 'normalFlatDMG'
+        flatDMG: 'normalFlatDMG',
+        critRate: 'normalCritRate'
       };
     case 'charged':
       return {
         specialMultiplier: 'chargedSpecialMultiplier',
         defIgnore: 'chargedDefIgnore',
         talentLvlId: 'atk',
-        flatDMG: 'chargedFlatDMG'
+        flatDMG: 'chargedFlatDMG',
+        critRate: 'chargedCritRate'
       };
     case 'plunge':
       return {
         specialMultiplier: 'plungeSpecialMultiplier',
         defIgnore: 'plungeDefIgnore',
         talentLvlId: 'atk',
-        flatDMG: 'plungeFlatDMG'
+        flatDMG: 'plungeFlatDMG',
+        critRate: 'plungeCritRate'
       };
     case 'skill':
       return {
         specialMultiplier: 'skillSpecialMultiplier',
         defIgnore: 'skillDefIgnore',
         talentLvlId: 'skill',
-        flatDMG: 'skillFlatDMG'
+        flatDMG: 'skillFlatDMG',
+        critRate: 'skillCritRate'
       };
     case 'burst':
       return {
         specialMultiplier: 'burstSpecialMultiplier',
         defIgnore: 'burstDefIgnore',
         talentLvlId: 'burst',
-        flatDMG: 'burstFlatDMG'
+        flatDMG: 'burstFlatDMG',
+        critRate: 'burstCritRate'
       };
   }
 }
