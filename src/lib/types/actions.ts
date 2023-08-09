@@ -15,6 +15,7 @@ export type ActionValues = {
   scaling: ALL_STATS;
   coef: number | number[];
   source?: [ALL_STATS, number] | [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+  forEvery?: number;
 }[];
 
 export type Action = {

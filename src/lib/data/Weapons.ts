@@ -2469,11 +2469,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk%', coef: 0.012, source: ['hp', 0] }],
-            [{ scaling: 'atk%', coef: 0.015, source: ['hp', 0] }],
-            [{ scaling: 'atk%', coef: 0.018, source: ['hp', 0] }],
-            [{ scaling: 'atk%', coef: 0.021, source: ['hp', 0] }],
-            [{ scaling: 'atk%', coef: 0.024, source: ['hp', 0] }]
+            [{ scaling: 'atk', coef: 0.012, source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: 0.015, source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: 0.018, source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: 0.021, source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: 0.024, source: ['hp', 0] }]
           ]
         }
       ],
@@ -2846,13 +2846,40 @@ export const WeaponData: Data = {
       effectname: "A Thousand Nights' Dawnsong",
       action: [
         {
-          actionType: 'passive',
+          actionType: 'visionMatch',
+          unique: true,
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'em', coef: [32, 32, 32] },
+              { scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1, 0.1] }
+            ],
+            [
+              { scaling: 'em', coef: [40, 40, 40] },
+              { scaling: 'dmgIncreaseElemental', coef: [0.14, 0.14, 0.14] }
+            ],
+            [
+              { scaling: 'em', coef: [48, 48, 48] },
+              { scaling: 'dmgIncreaseElemental', coef: [0.18, 0.18, 0.18] }
+            ],
+            [
+              { scaling: 'em', coef: [56, 56, 56] },
+              { scaling: 'dmgIncreaseElemental', coef: [0.22, 0.22, 0.22] }
+            ],
+            [
+              { scaling: 'em', coef: [64, 64, 64] },
+              { scaling: 'dmgIncreaseElemental', coef: [0.26, 0.26, 0.26] }
+            ]
+          ]
+        },
+        {
+          actionType: 'passive',
+          target: 'nearby',
+          values: [
+            [{ scaling: 'em', coef: 40 }],
+            [{ scaling: 'em', coef: 42 }],
+            [{ scaling: 'em', coef: 44 }],
+            [{ scaling: 'em', coef: 46 }],
+            [{ scaling: 'em', coef: 48 }]
           ]
         }
       ],
@@ -2898,13 +2925,28 @@ export const WeaponData: Data = {
       effectname: 'Dodoventure!',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'charged', coef: 0.16 },
+              { scaling: 'normal', coef: 0.08 }
+            ],
+            [
+              { scaling: 'charged', coef: 0.2 },
+              { scaling: 'normal', coef: 0.1 }
+            ],
+            [
+              { scaling: 'charged', coef: 0.24 },
+              { scaling: 'normal', coef: 0.12 }
+            ],
+            [
+              { scaling: 'charged', coef: 0.28 },
+              { scaling: 'normal', coef: 0.14 }
+            ],
+            [
+              { scaling: 'charged', coef: 0.32 },
+              { scaling: 'normal', coef: 0.16 }
+            ]
           ]
         }
       ],
@@ -2927,13 +2969,13 @@ export const WeaponData: Data = {
       effectname: 'Rapids',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
           ]
         }
       ],
@@ -2952,11 +2994,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'healing', coef: 0.1 },
+              { scaling: 'normal', coef: 0.01, source: ['hp', 0] }
+            ],
+            [
+              { scaling: 'healing', coef: 0.125 },
+              { scaling: 'normal', coef: 0.015, source: ['hp', 0] }
+            ],
+            [
+              { scaling: 'healing', coef: 0.15 },
+              { scaling: 'normal', coef: 0.02, source: ['hp', 0] }
+            ],
+            [
+              { scaling: 'healing', coef: 0.175 },
+              { scaling: 'normal', coef: 0.025, source: ['hp', 0] }
+            ],
+            [
+              { scaling: 'healing', coef: 0.2 },
+              { scaling: 'normal', coef: 0.03, source: ['hp', 0] }
+            ]
           ]
         }
       ],
@@ -2977,18 +3034,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'atk%',
       effectname: 'Echo',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing {0} ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every {1}.',
       ref: [
@@ -3006,18 +3051,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'energy',
       effectname: 'Windfall',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
       ref: [
@@ -3035,18 +3068,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'atk%',
       effectname: 'Frost Burial',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
       ref: [
@@ -3066,13 +3087,28 @@ export const WeaponData: Data = {
       effectname: 'Full Circle',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'em', coef: 24 },
+              { scaling: 'atk%', coef: -0.05 }
+            ],
+            [
+              { scaling: 'em', coef: 27 },
+              { scaling: 'atk%', coef: -0.05 }
+            ],
+            [
+              { scaling: 'em', coef: 30 },
+              { scaling: 'atk%', coef: -0.05 }
+            ],
+            [
+              { scaling: 'em', coef: 33 },
+              { scaling: 'atk%', coef: -0.05 }
+            ],
+            [
+              { scaling: 'em', coef: 36 },
+              { scaling: 'atk%', coef: -0.05 }
+            ]
           ]
         }
       ],
@@ -3089,13 +3125,15 @@ export const WeaponData: Data = {
       effectname: 'Sakura Saiguu',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
+          target: 'nearby',
+          unique: true,
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.1 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.125 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.175 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.2 }]
           ]
         }
       ],
@@ -3112,13 +3150,48 @@ export const WeaponData: Data = {
       effectname: 'Primordial Jade Regalia',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.03,
+                source: ['hp', 0, 0.12],
+                forEvery: 1000
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.05,
+                source: ['hp', 0, 0.2],
+                forEvery: 1000
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.07,
+                source: ['hp', 0, 0.28],
+                forEvery: 1000
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.09,
+                source: ['hp', 0, 0.36],
+                forEvery: 1000
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.11,
+                source: ['hp', 0, 0.44],
+                forEvery: 1000
+              }
+            ]
           ]
         }
       ],
@@ -3141,13 +3214,28 @@ export const WeaponData: Data = {
       effectname: 'Kagura Dance of the Sacred Sakura',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: [0.12, 0.12, 0.12] },
+              { scaling: 'dmgIncreaseElemental', coef: [0, 0, 0.12] }
+            ],
+            [
+              { scaling: 'skill', coef: [0.15, 0.15, 0.15] },
+              { scaling: 'dmgIncreaseElemental', coef: [0, 0, 0.15] }
+            ],
+            [
+              { scaling: 'skill', coef: [0.18, 0.18, 0.18] },
+              { scaling: 'dmgIncreaseElemental', coef: [0, 0, 0.18] }
+            ],
+            [
+              { scaling: 'skill', coef: [0.21, 0.21, 0.21] },
+              { scaling: 'dmgIncreaseElemental', coef: [0, 0, 0.21] }
+            ],
+            [
+              { scaling: 'skill', coef: [0.24, 0.24, 0.24] },
+              { scaling: 'dmgIncreaseElemental', coef: [0, 0, 0.24] }
+            ]
           ]
         }
       ],
@@ -3172,11 +3260,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'moveSpd', coef: 0.1 }],
+            [{ scaling: 'moveSpd', coef: 0.1 }],
+            [{ scaling: 'moveSpd', coef: 0.1 }],
+            [{ scaling: 'moveSpd', coef: 0.1 }],
+            [{ scaling: 'moveSpd', coef: 0.1 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -3195,11 +3293,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'hydro', coef: 0.12 },
+              { scaling: 'electro', coef: 0.12 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.15 },
+              { scaling: 'electro', coef: 0.15 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.18 },
+              { scaling: 'electro', coef: 0.18 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.21 },
+              { scaling: 'electro', coef: 0.21 }
+            ],
+            [
+              { scaling: 'hydro', coef: 0.24 },
+              { scaling: 'electro', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -3215,13 +3328,13 @@ export const WeaponData: Data = {
       effectname: 'Infusion Scroll',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.08, 0.08] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.12, 0.12] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.14, 0.14] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.16, 0.16] }]
           ]
         }
       ],
@@ -3279,11 +3392,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'energy', coef: 0.24 }],
+            [{ scaling: 'energy', coef: 0.3 }],
+            [{ scaling: 'energy', coef: 0.36 }],
+            [{ scaling: 'energy', coef: 0.42 }],
+            [{ scaling: 'energy', coef: 0.48 }]
           ]
         }
       ],
@@ -3297,18 +3410,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'energy',
       effectname: 'Energy Shower',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect: 'Each Elemental Orb or Particle collected restores {0} HP.',
       ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
     },
@@ -3319,18 +3420,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'hp%',
       effectname: 'Gilding',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Using an Elemental Burst regenerates {0} Energy every 2s for 6s. All party members will regenerate {1} HP every 2s for this duration.',
       ref: [
@@ -3371,18 +3460,6 @@ export const WeaponData: Data = {
       type: 'catalyst',
       specialized: 'em',
       effectname: 'Composed',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
       ref: [
@@ -3404,11 +3481,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.18 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.21 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.24 }]
           ]
         }
       ],
@@ -3431,13 +3508,33 @@ export const WeaponData: Data = {
       effectname: 'Solar Shine',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: 0.2 },
+              { scaling: 'burst', coef: 0.2 },
+              { scaling: 'normal', coef: 0.2 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.25 },
+              { scaling: 'burst', coef: 0.25 },
+              { scaling: 'normal', coef: 0.25 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.3 },
+              { scaling: 'burst', coef: 0.3 },
+              { scaling: 'normal', coef: 0.3 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.35 },
+              { scaling: 'burst', coef: 0.35 },
+              { scaling: 'normal', coef: 0.35 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.4 },
+              { scaling: 'burst', coef: 0.4 },
+              { scaling: 'normal', coef: 0.4 }
+            ]
           ]
         }
       ],
@@ -3460,13 +3557,33 @@ export const WeaponData: Data = {
       effectname: 'Debut',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'select',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'atk%', coef: 0.6 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.48 },
+              { scaling: 'em', coef: 240 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.75 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.6 },
+              { scaling: 'em', coef: 300 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.9 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.72 },
+              { scaling: 'em', coef: 360 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.105 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.84 },
+              { scaling: 'em', coef: 420 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.12 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.96 },
+              { scaling: 'em', coef: 480 }
+            ]
           ]
         }
       ],
@@ -3514,16 +3631,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'normalATKSpd', coef: 0.1 }],
+            [{ scaling: 'normalATKSpd', coef: 0.125 }],
+            [{ scaling: 'normalATKSpd', coef: 0.15 }],
+            [{ scaling: 'normalATKSpd', coef: 0.175 }],
+            [{ scaling: 'normalATKSpd', coef: 0.2 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'normal', coef: [0.096, 0.096, 0.096, 0.096, 0.096] }],
+            [{ scaling: 'normal', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'normal', coef: [0.144, 0.144, 0.144, 0.144, 0.144] }],
+            [{ scaling: 'normal', coef: [0.168, 0.168, 0.168, 0.168, 0.168] }],
+            [{ scaling: 'normal', coef: [0.192, 0.192, 0.192, 0.192, 0.192] }]
           ]
         }
       ],
       effect:
-        'Normal Attack SPD is increased by {0}. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by {1} every second for 14s. After hitting an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by {2}. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is {3}. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs.',
+        'Normal Attack SPD is increased by {0}. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by {1} every second for 14s. After hitting an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by {2}. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is {3}. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs. \nMODIFIED: Each stack increases Normal Attack DMG by {2}',
       ref: [
         ['10%', '4.8%', '9.6%', '48%'],
         ['12.5%', '6%', '12%', '60%'],
@@ -3541,13 +3668,28 @@ export const WeaponData: Data = {
       effectname: 'Guerilla Tactics',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'atk%', coef: 0.12 },
+              { scaling: 'moveSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.14 },
+              { scaling: 'moveSpd', coef: 0.14 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.16 },
+              { scaling: 'moveSpd', coef: 0.16 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.18 },
+              { scaling: 'moveSpd', coef: 0.18 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.2 },
+              { scaling: 'moveSpd', coef: 0.2 }
+            ]
           ]
         }
       ],
@@ -3599,13 +3741,13 @@ export const WeaponData: Data = {
       effectname: 'Ever-Changing',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
           ]
         }
       ],
@@ -3653,17 +3795,18 @@ export const WeaponData: Data = {
       effectname: 'Bane of the Soft',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.4 }],
+            [{ scaling: 'dmgIncrease', coef: 0.5 }],
+            [{ scaling: 'dmgIncrease', coef: 0.6 }],
+            [{ scaling: 'dmgIncrease', coef: 0.7 }],
+            [{ scaling: 'dmgIncrease', coef: 0.8 }]
           ]
         }
       ],
-      effect: 'Increases DMG against slimes by {0}.',
+      effect:
+        'Increases DMG against slimes by {0}. \n MODIFIED: Makes the assumption that the enemy is a slime.',
       ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
     },
     {
@@ -3677,11 +3820,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.18 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.21 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.24 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.032, 0.032, 0.032, 0.032, 0.032, 0.032] }],
+            [{ scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04, 0.04, 0.04] }],
+            [{ scaling: 'atk%', coef: [0.048, 0.048, 0.048, 0.048, 0.048, 0.048] }],
+            [{ scaling: 'atk%', coef: [0.056, 0.056, 0.056, 0.056, 0.056, 0.056] }],
+            [{ scaling: 'atk%', coef: [0.064, 0.064, 0.064, 0.064, 0.064, 0.064] }]
           ]
         }
       ],
@@ -3704,13 +3857,13 @@ export const WeaponData: Data = {
       effectname: 'Infusion Needle',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk', coef: 0.2 }],
+            [{ scaling: 'atk', coef: 0.25 }],
+            [{ scaling: 'atk', coef: 0.3 }],
+            [{ scaling: 'atk', coef: 0.35 }],
+            [{ scaling: 'atk', coef: 0.4 }]
           ]
         }
       ],
@@ -3729,16 +3882,16 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.24 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.36 }],
+            [{ scaling: 'atk%', coef: 0.42 }],
+            [{ scaling: 'atk%', coef: 0.48 }]
           ]
         }
       ],
       effect:
-        'If there are at least 2 opponents nearby, ATK is increased by {0} and DEF is increased by {1}. If there are fewer than 2 opponents nearby, ATK is increased by {2}.',
+        'If there are at least 2 opponents nearby, ATK is increased by {0} and DEF is increased by {1}. If there are fewer than 2 opponents nearby, ATK is increased by {2}. \nMODIFIED: Only second buff available',
       ref: [
         ['16%', '16%', '24%'],
         ['20%', '20%', '30%'],
@@ -3758,11 +3911,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'pyro', coef: 0.2 },
+              { scaling: 'hydro', coef: 0.2 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.24 },
+              { scaling: 'hydro', coef: 0.24 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.28 },
+              { scaling: 'hydro', coef: 0.28 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.32 },
+              { scaling: 'hydro', coef: 0.32 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.36 },
+              { scaling: 'hydro', coef: 0.36 }
+            ]
           ]
         }
       ],
@@ -3776,18 +3944,6 @@ export const WeaponData: Data = {
       type: 'polearm',
       specialized: 'physical',
       effectname: 'Frost Burial',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Hitting an opponent with Normal and Charged Attacks has a {0} chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to {1} of atk%. Opponents affected by Cryo are instead dealt DMG equal to {2} of atk%. Can only occur once every 10s.',
       ref: [
@@ -3809,11 +3965,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.28, source: ['energy', 1, 0.8] }],
+            [{ scaling: 'atk%', coef: 0.35, source: ['energy', 1, 0.9] }],
+            [{ scaling: 'atk%', coef: 0.42, source: ['energy', 1, 1.0] }],
+            [{ scaling: 'atk%', coef: 0.49, source: ['energy', 1, 1.1] }],
+            [{ scaling: 'atk%', coef: 0.56, source: ['energy', 1, 1.2] }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'energy', coef: 0.3 }],
+            [{ scaling: 'energy', coef: 0.35 }],
+            [{ scaling: 'energy', coef: 0.4 }],
+            [{ scaling: 'energy', coef: 0.45 }],
+            [{ scaling: 'energy', coef: 0.5 }]
           ]
         }
       ],
@@ -3834,18 +4000,6 @@ export const WeaponData: Data = {
       type: 'polearm',
       specialized: 'energy',
       effectname: 'Windfall',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
       ref: [
@@ -3863,18 +4017,6 @@ export const WeaponData: Data = {
       type: 'polearm',
       specialized: 'atk%',
       effectname: 'Heavy',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Normal Attacks deal an additional {0} ATK as DMG. This effect can only occur once every 10s.',
       ref: [['160%'], ['200%'], ['240%'], ['280%'], ['320%']]
@@ -3962,13 +4104,28 @@ export const WeaponData: Data = {
       effectname: 'The Wind Unattained',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'atk%', coef: 0.12 },
+              { scaling: 'em', coef: 48 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.15 },
+              { scaling: 'em', coef: 60 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.18 },
+              { scaling: 'em', coef: 72 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.21 },
+              { scaling: 'em', coef: 84 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.24 },
+              { scaling: 'em', coef: 96 }
+            ]
           ]
         }
       ],
@@ -3991,13 +4148,13 @@ export const WeaponData: Data = {
       effectname: 'Stillwood Moonshadow',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.16 }],
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.24 }],
+            [{ scaling: 'atk%', coef: 0.28 }],
+            [{ scaling: 'atk%', coef: 0.32 }]
           ]
         }
       ],
@@ -4016,11 +4173,38 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              {
+                scaling: 'atk%',
+                coef: [0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032]
+              },
+              { scaling: 'dmgIncrease', coef: [0, 0, 0, 0, 0, 0, 0.12] }
+            ],
+            [
+              {
+                scaling: 'atk%',
+                coef: [0.039, 0.039, 0.039, 0.039, 0.039, 0.039, 0.039]
+              },
+              { scaling: 'dmgIncrease', coef: [0, 0, 0, 0, 0, 0, 0.15] }
+            ],
+            [
+              {
+                scaling: 'atk%',
+                coef: [0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046]
+              },
+              { scaling: 'dmgIncrease', coef: [0, 0, 0, 0, 0, 0, 0.18] }
+            ],
+            [
+              {
+                scaling: 'atk%',
+                coef: [0.053, 0.053, 0.053, 0.053, 0.053, 0.053, 0.053]
+              },
+              { scaling: 'dmgIncrease', coef: [0, 0, 0, 0, 0, 0, 0.21] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06] },
+              { scaling: 'dmgIncrease', coef: [0, 0, 0, 0, 0, 0, 0.24] }
+            ]
           ]
         }
       ],
@@ -4043,13 +4227,28 @@ export const WeaponData: Data = {
       effectname: 'Magic Affinity',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'normal', coef: [0.08, 0.08] },
+              { scaling: 'charged', coef: [0.08, 0.08] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.12, 0.12] },
+              { scaling: 'charged', coef: [0.12, 0.12] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.14, 0.14] },
+              { scaling: 'charged', coef: [0.14, 0.14] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.16, 0.16] },
+              { scaling: 'charged', coef: [0.16, 0.16] }
+            ]
           ]
         }
       ],
@@ -4091,22 +4290,37 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'critrate', coef: 0.08 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'critrate', coef: 0.1 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'critrate', coef: 0.12 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'critrate', coef: 0.14 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ],
+            [
+              { scaling: 'critrate', coef: 0.16 },
+              { scaling: 'normalATKSpd', coef: 0.12 }
+            ]
           ]
         }
       ],
       effect:
-        'Increases CRIT Rate by {0} and increases Normal ATK SPD by {1}. Additionally, Normal and Charged Attacks hits on opponents have a {2} chance to trigger a vacuum blade that deals {3} of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.',
+        'Increases CRIT Rate by {0} and increases Normal ATK SPD by 12%. Additionally, Normal and Charged Attacks hits on opponents have a 50% chance to trigger a vacuum blade that deals {1} of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.',
       ref: [
-        ['8%', '12%', '50%', '40%'],
-        ['10%', '12%', '50%', '55%'],
-        ['12%', '12%', '50%', '70%'],
-        ['14%', '12%', '50%', '85%'],
-        ['16%', '12%', '50%', '100%']
+        ['8%', '40%'],
+        ['10%', '55%'],
+        ['12%', '70%'],
+        ['14%', '85%'],
+        ['16%', '100%']
       ]
     },
     {
@@ -4120,11 +4334,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'hp%', coef: 0.2 }],
+            [{ scaling: 'hp%', coef: 0.25 }],
+            [{ scaling: 'hp%', coef: 0.3 }],
+            [{ scaling: 'hp%', coef: 0.35 }],
+            [{ scaling: 'hp%', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk', coef: [0.008, 0.01], source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: [0.01, 0.012], source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: [0.012, 0.014], source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: [0.014, 0.016], source: ['hp', 0] }],
+            [{ scaling: 'atk', coef: [0.016, 0.018], source: ['hp', 0] }]
           ]
         }
       ],
@@ -4149,16 +4373,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk', coef: 0.52, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.65, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.78, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.91, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 1.04, source: ['em', 0] }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk', coef: [0.28, 0.28, 0.28], source: ['em', 0] }],
+            [{ scaling: 'atk', coef: [0.35, 0.35, 0.35], source: ['em', 0] }],
+            [{ scaling: 'atk', coef: [0.42, 0.42, 0.42], source: ['em', 0] }],
+            [{ scaling: 'atk', coef: [0.49, 0.49, 0.49], source: ['em', 0] }],
+            [{ scaling: 'atk', coef: [0.56, 0.56, 0.56], source: ['em', 0] }]
           ]
         }
       ],
       effect:
-        'The equipping character gains {0} of their Elemental Mastery as bonus atk%. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain {1} of their Elemental Mastery as bonus atk%. Max 3 stacks.',
+        'The equipping character gains {0} of their Elemental Mastery as bonus ATK. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain {1} of their Elemental Mastery as bonus ATK. Max 3 stacks.',
       ref: [
         ['52%', '28%'],
         ['65%', '35%'],
@@ -4178,11 +4412,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'burst', coef: 0.16 },
+              { scaling: 'burstCritRate', coef: 0.06 }
+            ],
+            [
+              { scaling: 'burst', coef: 0.2 },
+              { scaling: 'burstCritRate', coef: 0.075 }
+            ],
+            [
+              { scaling: 'burst', coef: 0.24 },
+              { scaling: 'burstCritRate', coef: 0.09 }
+            ],
+            [
+              { scaling: 'burst', coef: 0.28 },
+              { scaling: 'burstCritRate', coef: 0.105 }
+            ],
+            [
+              { scaling: 'burst', coef: 0.32 },
+              { scaling: 'burstCritRate', coef: 0.12 }
+            ]
           ]
         }
       ],
@@ -4275,11 +4524,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'normal', coef: 0.24 }],
+            [{ scaling: 'normal', coef: 0.3 }],
+            [{ scaling: 'normal', coef: 0.36 }],
+            [{ scaling: 'normal', coef: 0.42 }],
+            [{ scaling: 'normal', coef: 0.48 }]
           ]
         }
       ],

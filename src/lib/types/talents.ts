@@ -82,6 +82,7 @@ export type ALL_STATS =
   | 'burst'
   | 'normalATKSpd'
   | 'chargedATKSpd'
+  | 'moveSpd'
   | 'normalSpecialMultiplier'
   | 'chargedSpecialMultiplier'
   | 'plungeSpecialMultiplier'

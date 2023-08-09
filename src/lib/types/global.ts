@@ -22,6 +22,7 @@ export type SelectedWeapon = {
       | 'multiSelect'
       | 'input'
       | 'passive'
+      | 'visionMatch'
       | 'region';
     target?: Target;
     shielded?: boolean;

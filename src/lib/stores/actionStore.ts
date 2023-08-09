@@ -40,6 +40,7 @@ const allStats = {
   burst: 0,
   normalATKSpd: 0,
   chargedATKSpd: 0,
+  moveSpd: 0,
   normalSpecialMultiplier: 0,
   chargedSpecialMultiplier: 0,
   plungeSpecialMultiplier: 0,
