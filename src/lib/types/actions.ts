@@ -1,7 +1,7 @@
 import type { WeaponCategory } from './global';
 import type { ALL_STATS } from './talents';
 
-export type Target = 'self' | 'enemy' | 'party' | 'all';
+export type Target = 'self' | 'enemy' | 'party' | 'nearby';
 export type ActionType =
   | 'stack'
   | 'toggle'

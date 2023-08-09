@@ -1,6 +1,6 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
-import type { Action, ActionValues } from './actions';
+import type { Action, ActionValues, Target } from './actions';
 import type { Hit, OffField } from './talents';
 
 export type SelectedCharacter = CharacterRecord;
@@ -23,7 +23,7 @@ export type SelectedWeapon = {
       | 'input'
       | 'passive'
       | 'region';
-    target?: 'self' | 'enemy' | 'party' | 'all';
+    target?: Target;
     shielded?: boolean;
     regions?: [
       'Liyue' | 'Sumeru' | 'Mondstat' | 'Inazuma' | 'Fontaine' | 'Natlan' | 'Snezhnaya'

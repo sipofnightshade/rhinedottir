@@ -32,6 +32,7 @@ const allStats = {
   pyroRes: 0,
   physicalRes: 0,
   dmgIncrease: 0,
+  dmgIncreaseElemental: 0,
   normal: 0,
   charged: 0,
   plunge: 0,
@@ -112,12 +113,10 @@ function createAction() {
           case 'enemy':
             state.enemy[scaling] += coef;
             break;
-          case 'all':
-            state.main[scaling] += coef;
+          case 'nearby':
             state.one[scaling] += coef;
             state.two[scaling] += coef;
             state.three[scaling] += coef;
-            state.enemy[scaling] += coef;
             break;
         }
         return state;
@@ -137,12 +136,10 @@ function createAction() {
           case 'enemy':
             state.enemy[scaling] -= coef;
             break;
-          case 'all':
-            state.main[scaling] -= coef;
+          case 'nearby':
             state.one[scaling] -= coef;
             state.two[scaling] -= coef;
             state.three[scaling] -= coef;
-            state.enemy[scaling] -= coef;
             break;
         }
         return state;

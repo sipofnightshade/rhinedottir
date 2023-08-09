@@ -393,7 +393,7 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           // flat bonus atk = 0.072 * EM
-          target: 'party',
+          target: 'nearby',
           values: [
             [{ scaling: 'atk', coef: 0.072, source: ['em', 0] }],
             [{ scaling: 'atk', coef: 0.09, source: ['em', 0] }],
@@ -867,13 +867,42 @@ export const WeaponData: Data = {
       effectname: 'Oppidan Ambush',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              {
+                scaling: 'dmgIncrease',
+                coef: [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncrease',
+                coef: [
+                  0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025
+                ]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncrease',
+                coef: [0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncrease',
+                coef: [
+                  0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035
+                ]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncrease',
+                coef: [0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04]
+              }
+            ]
           ]
         }
       ],
@@ -898,11 +927,36 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'normal', coef: 0.12 },
+              { scaling: 'charged', coef: 0.12 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.15 },
+              { scaling: 'charged', coef: 0.15 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.18 },
+              { scaling: 'charged', coef: 0.18 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.21 },
+              { scaling: 'charged', coef: 0.21 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.24 },
+              { scaling: 'charged', coef: 0.24 }
+            ]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+            [{ scaling: 'atk', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+            [{ scaling: 'atk', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+            [{ scaling: 'atk', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
           ]
         }
       ],
@@ -927,11 +981,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'hp%', coef: 0.16 }],
+            [{ scaling: 'hp%', coef: 0.2 }],
+            [{ scaling: 'hp%', coef: 0.24 }],
+            [{ scaling: 'hp%', coef: 0.28 }],
+            [{ scaling: 'hp%', coef: 0.32 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'dmgIncrease', coef: 0.2 }],
+            [{ scaling: 'dmgIncrease', coef: 0.25 }],
+            [{ scaling: 'dmgIncrease', coef: 0.3 }],
+            [{ scaling: 'dmgIncrease', coef: 0.35 }],
+            [{ scaling: 'dmgIncrease', coef: 0.4 }]
           ]
         }
       ],
@@ -954,13 +1018,13 @@ export const WeaponData: Data = {
       effectname: 'Press the Advantage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: [0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15] }],
+            [{ scaling: 'atk%', coef: [0.18, 0.18, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.21, 0.21, 0.21] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.24, 0.24] }]
           ]
         }
       ],
@@ -977,13 +1041,28 @@ export const WeaponData: Data = {
       effectname: 'Infusion Arrow',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04] },
+              { scaling: 'normalATKSpd', coef: [0.012, 0.012, 0.012, 0.012] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05] },
+              { scaling: 'normalATKSpd', coef: [0.015, 0.015, 0.015, 0.015] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06] },
+              { scaling: 'normalATKSpd', coef: [0.018, 0.018, 0.018, 0.018] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07] },
+              { scaling: 'normalATKSpd', coef: [0.021, 0.021, 0.021, 0.021] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08] },
+              { scaling: 'normalATKSpd', coef: [0.024, 0.024, 0.024, 0.024] }
+            ]
           ]
         }
       ],
@@ -1008,11 +1087,37 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'em', coef: 60 }],
+            [{ scaling: 'em', coef: 75 }],
+            [{ scaling: 'em', coef: 90 }],
+            [{ scaling: 'em', coef: 105 }],
+            [{ scaling: 'em', coef: 120 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          target: 'party',
+          values: [
+            [
+              { scaling: 'atk%', coef: 0.2 },
+              { scaling: 'em', coef: 100 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.25 },
+              { scaling: 'em', coef: 125 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.3 },
+              { scaling: 'em', coef: 150 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.35 },
+              { scaling: 'em', coef: 175 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.4 },
+              { scaling: 'em', coef: 200 }
+            ]
           ]
         }
       ],
@@ -1033,18 +1138,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'energy',
       effectname: 'Net Snapper',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Triggers the Flowrider effect after using an Elemental Skill, dealing {0} ATK as AoE DMG upon hitting an opponent with an attack. Flowrider will be removed after 15s or after causing 3 instances of AoE DMG. Only 1 instance of AoE DMG can be caused every 2s in this way. Flowrider can be triggered once every 12s.',
       ref: [['80%'], ['100%'], ['120%'], ['140%'], ['160%']]
@@ -1060,11 +1153,31 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'dmgIncrease', coef: 0.06 },
+              { scaling: 'dmgIncrease', coef: 0.1 },
+              { scaling: 'dmgIncrease', coef: 0.14 }
+            ],
+            [
+              { scaling: 'dmgIncrease', coef: 0.075 },
+              { scaling: 'dmgIncrease', coef: 0.125 },
+              { scaling: 'dmgIncrease', coef: 0.175 }
+            ],
+            [
+              { scaling: 'dmgIncrease', coef: 0.09 },
+              { scaling: 'dmgIncrease', coef: 0.15 },
+              { scaling: 'dmgIncrease', coef: 0.21 }
+            ],
+            [
+              { scaling: 'dmgIncrease', coef: 0.105 },
+              { scaling: 'dmgIncrease', coef: 0.175 },
+              { scaling: 'dmgIncrease', coef: 0.245 }
+            ],
+            [
+              { scaling: 'dmgIncrease', coef: 0.12 },
+              { scaling: 'dmgIncrease', coef: 0.2 },
+              { scaling: 'dmgIncrease', coef: 0.28 }
+            ]
           ]
         }
       ],
@@ -1085,18 +1198,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'energy',
       effectname: 'Windfall',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
       ref: [
@@ -1187,11 +1288,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.18 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.21 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.24 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'chargedFlatDMG', coef: 1.6, source: ['em', 0] }],
+            [{ scaling: 'chargedFlatDMG', coef: 2, source: ['em', 0] }],
+            [{ scaling: 'chargedFlatDMG', coef: 2.4, source: ['em', 0] }],
+            [{ scaling: 'chargedFlatDMG', coef: 2.8, source: ['em', 0] }],
+            [{ scaling: 'chargedFlatDMG', coef: 3.2, source: ['em', 0] }]
           ]
         }
       ],
@@ -1214,13 +1325,13 @@ export const WeaponData: Data = {
       effectname: "Secret Wisdom's Favor",
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'em', coef: [40, 40] }],
+            [{ scaling: 'em', coef: [50, 50] }],
+            [{ scaling: 'em', coef: [60, 60] }],
+            [{ scaling: 'em', coef: [70, 70] }],
+            [{ scaling: 'em', coef: [80, 80] }]
           ]
         }
       ],
@@ -1237,13 +1348,13 @@ export const WeaponData: Data = {
       effectname: "Labyrinth Lord's Instruction",
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'em', coef: 60 }],
+            [{ scaling: 'em', coef: 80 }],
+            [{ scaling: 'em', coef: 100 }],
+            [{ scaling: 'em', coef: 120 }],
+            [{ scaling: 'em', coef: 140 }]
           ]
         }
       ],
@@ -1264,18 +1375,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'critdmg',
       effectname: "Archer's Message",
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Charged Attack hits on weak points deal an additional {0} ATK DMG as CRIT DMG. Can only occur once every 10s.',
       ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
@@ -1289,13 +1388,28 @@ export const WeaponData: Data = {
       effectname: 'Evernight Duet',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: 0.2 },
+              { scaling: 'normal', coef: 0.2 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.25 },
+              { scaling: 'normal', coef: 0.25 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.3 },
+              { scaling: 'normal', coef: 0.3 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.35 },
+              { scaling: 'normal', coef: 0.35 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.4 },
+              { scaling: 'normal', coef: 0.4 }
+            ]
           ]
         }
       ],
@@ -1320,11 +1434,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 0.4] }],
+            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 0.5] }],
+            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 0.6] }],
+            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 0.7] }],
+            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 0.8] }]
           ]
         }
       ],
@@ -1349,11 +1463,36 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: 0.12 },
+              { scaling: 'burst', coef: 0.12 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.15 },
+              { scaling: 'burst', coef: 0.15 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.18 },
+              { scaling: 'burst', coef: 0.18 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.21 },
+              { scaling: 'burst', coef: 0.21 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.24 },
+              { scaling: 'burst', coef: 0.24 }
+            ]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'atk%', coef: [0.1, 0.1, 0.1, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.125, 0.125, 0.125, 0.225] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15, 0.27] }],
+            [{ scaling: 'atk%', coef: [0.175, 0.175, 0.175, 0.315] }],
+            [{ scaling: 'atk%', coef: [0.2, 0.2, 0.2, 0.36] }]
           ]
         }
       ],
@@ -1376,13 +1515,28 @@ export const WeaponData: Data = {
       effectname: 'Strong Strike',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ],
+            [
+              { scaling: 'normal', coef: [0.1, 0.1] },
+              { scaling: 'charged', coef: [0.1, 0.1] }
+            ]
           ]
         }
       ],
@@ -1399,13 +1553,13 @@ export const WeaponData: Data = {
       effectname: 'Unreturning',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.36 }],
+            [{ scaling: 'atk%', coef: 0.45 }],
+            [{ scaling: 'atk%', coef: 0.54 }],
+            [{ scaling: 'atk%', coef: 0.63 }],
+            [{ scaling: 'atk%', coef: 0.72 }]
           ]
         }
       ],
@@ -1424,11 +1578,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'pyro', coef: 0.12 },
+              { scaling: 'hydro', coef: 0.12 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.15 },
+              { scaling: 'hydro', coef: 0.15 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.18 },
+              { scaling: 'hydro', coef: 0.18 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.21 },
+              { scaling: 'hydro', coef: 0.21 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.24 },
+              { scaling: 'hydro', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -1442,18 +1611,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'hp%',
       effectname: 'Cull the Weak',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect: 'Defeating an opponent restores {0} HP.',
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
@@ -1491,11 +1648,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'normal', coef: 0.4 },
+              { scaling: 'charged', coef: -0.1 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.5 },
+              { scaling: 'charged', coef: -0.1 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.6 },
+              { scaling: 'charged', coef: -0.1 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.7 },
+              { scaling: 'charged', coef: -0.1 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.8 },
+              { scaling: 'charged', coef: -0.1 }
+            ]
           ]
         }
       ],
@@ -1510,18 +1682,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'energy',
       effectname: 'Composed',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
       ref: [
@@ -1541,13 +1701,13 @@ export const WeaponData: Data = {
       effectname: 'Precise',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.24 }],
+            [{ scaling: 'dmgIncrease', coef: 0.3 }],
+            [{ scaling: 'dmgIncrease', coef: 0.36 }],
+            [{ scaling: 'dmgIncrease', coef: 0.42 }],
+            [{ scaling: 'dmgIncrease', coef: 0.48 }]
           ]
         }
       ],
@@ -1565,11 +1725,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'critdmg', coef: 0.2 }],
+            [{ scaling: 'critdmg', coef: 0.25 }],
+            [{ scaling: 'critdmg', coef: 0.3 }],
+            [{ scaling: 'critdmg', coef: 0.35 }],
+            [{ scaling: 'critdmg', coef: 0.4 }]
           ]
         }
       ],
@@ -1592,13 +1752,13 @@ export const WeaponData: Data = {
       effectname: 'Slingshot',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.36 }],
+            [{ scaling: 'dmgIncrease', coef: 0.42 }],
+            [{ scaling: 'dmgIncrease', coef: 0.48 }],
+            [{ scaling: 'dmgIncrease', coef: 0.54 }],
+            [{ scaling: 'dmgIncrease', coef: 0.6 }]
           ]
         }
       ],
@@ -1617,11 +1777,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: 0.24 },
+              { scaling: 'burst', coef: 0.24 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.3 },
+              { scaling: 'burst', coef: 0.3 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.36 },
+              { scaling: 'burst', coef: 0.36 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.42 },
+              { scaling: 'burst', coef: 0.42 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.48 },
+              { scaling: 'burst', coef: 0.48 }
+            ]
           ]
         }
       ],
@@ -1635,18 +1810,6 @@ export const WeaponData: Data = {
       type: 'bow',
       specialized: 'critrate',
       effectname: 'Verdant Wind',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Upon hit, Normal and Charged Attacks have a 50% chance to generate a Cyclone, which will continuously attract surrounding opponents, dealing {0} of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every {1}.',
       ref: [
@@ -1668,11 +1831,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'normal', coef: [0.12, 0.24, 0.4] }],
+            [{ scaling: 'normal', coef: [0.15, 0.3, 0.5] }],
+            [{ scaling: 'normal', coef: [0.18, 0.36, 0.6] }],
+            [{ scaling: 'normal', coef: [0.21, 0.42, 0.7] }],
+            [{ scaling: 'normal', coef: [0.24, 0.48, 0.8] }]
           ]
         }
       ],
@@ -1695,13 +1868,13 @@ export const WeaponData: Data = {
       effectname: 'Windblume Wish',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.16 }],
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.24 }],
+            [{ scaling: 'atk%', coef: 0.28 }],
+            [{ scaling: 'atk%', coef: 0.32 }]
           ]
         }
       ],
@@ -1718,18 +1891,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'atk%',
       effectname: 'Iwakura Succession',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates {0} Energy for each seed consumed.',
       ref: [['6'], ['7.5'], ['9'], ['10.5'], ['12']]
@@ -1745,11 +1906,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
           ]
         }
       ],
@@ -1772,13 +1933,13 @@ export const WeaponData: Data = {
       effectname: 'Press the Advantage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: [0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15] }],
+            [{ scaling: 'atk%', coef: [0.18, 0.18, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.21, 0.21, 0.21] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.24, 0.24] }]
           ]
         }
       ],
@@ -1797,11 +1958,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'skillFlatDMG', coef: 0.4, source: ['def', 0] }],
+            [{ scaling: 'skillFlatDMG', coef: 0.5, source: ['def', 0] }],
+            [{ scaling: 'skillFlatDMG', coef: 0.6, source: ['def', 0] }],
+            [{ scaling: 'skillFlatDMG', coef: 0.7, source: ['def', 0] }],
+            [{ scaling: 'skillFlatDMG', coef: 0.8, source: ['def', 0] }]
           ]
         }
       ],
@@ -1820,11 +1981,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'cryo', coef: 0.12 },
+              { scaling: 'hydro', coef: 0.12 }
+            ],
+            [
+              { scaling: 'cryo', coef: 0.15 },
+              { scaling: 'hydro', coef: 0.15 }
+            ],
+            [
+              { scaling: 'cryo', coef: 0.18 },
+              { scaling: 'hydro', coef: 0.18 }
+            ],
+            [
+              { scaling: 'cryo', coef: 0.21 },
+              { scaling: 'hydro', coef: 0.21 }
+            ],
+            [
+              { scaling: 'cryo', coef: 0.24 },
+              { scaling: 'hydro', coef: 0.24 }
+            ]
           ]
         }
       ],
@@ -1840,13 +2016,13 @@ export const WeaponData: Data = {
       effectname: 'Overloaded',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.2 }],
+            [{ scaling: 'atk%', coef: 0.25 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.35 }],
+            [{ scaling: 'atk%', coef: 0.4 }]
           ]
         }
       ],
@@ -1861,18 +2037,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'energy',
       effectname: 'Windfall',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }],
-            [{ scaling: 'energy', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'CRIT Hits have a {0} chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {1}.',
       ref: [
@@ -1894,11 +2058,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'skill', coef: 0.16 },
+              { scaling: 'skillCritRate', coef: 0.06 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.2 },
+              { scaling: 'skillCritRate', coef: 0.075 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.24 },
+              { scaling: 'skillCritRate', coef: 0.09 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.28 },
+              { scaling: 'skillCritRate', coef: 0.105 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.32 },
+              { scaling: 'skillCritRate', coef: 0.12 }
+            ]
           ]
         }
       ],
@@ -1919,18 +2098,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'atk%',
       effectname: 'Gash',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'On hit, has a 50% chance to deal {0} ATK DMG to a single target. Can only occur once every {1}.',
       ref: [
@@ -1952,11 +2119,47 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.1 }],
+            [{ scaling: 'dmgIncrease', coef: 0.125 }],
+            [{ scaling: 'dmgIncrease', coef: 0.15 }],
+            [{ scaling: 'dmgIncrease', coef: 0.175 }],
+            [{ scaling: 'dmgIncrease', coef: 0.2 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          target: 'party',
+          values: [
+            [
+              { scaling: 'normal', coef: 0.16 },
+              { scaling: 'charged', coef: 0.16 },
+              { scaling: 'plunge', coef: 0.16 },
+              { scaling: 'atk%', coef: 0.2 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.2 },
+              { scaling: 'charged', coef: 0.2 },
+              { scaling: 'plunge', coef: 0.2 },
+              { scaling: 'atk%', coef: 0.25 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.24 },
+              { scaling: 'charged', coef: 0.24 },
+              { scaling: 'plunge', coef: 0.24 },
+              { scaling: 'atk%', coef: 0.3 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.28 },
+              { scaling: 'charged', coef: 0.28 },
+              { scaling: 'plunge', coef: 0.28 },
+              { scaling: 'atk%', coef: 0.35 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.32 },
+              { scaling: 'charged', coef: 0.32 },
+              { scaling: 'plunge', coef: 0.32 },
+              { scaling: 'atk%', coef: 0.4 }
+            ]
           ]
         }
       ],
@@ -1981,11 +2184,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.18 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.21 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.24 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'normal', coef: 0.2 }],
+            [{ scaling: 'normal', coef: 0.25 }],
+            [{ scaling: 'normal', coef: 0.3 }],
+            [{ scaling: 'normal', coef: 0.35 }],
+            [{ scaling: 'normal', coef: 0.4 }]
           ]
         }
       ],
@@ -2008,13 +2221,13 @@ export const WeaponData: Data = {
       effectname: 'Vigorous',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'critrate', coef: 0.14 }],
+            [{ scaling: 'critrate', coef: 0.175 }],
+            [{ scaling: 'critrate', coef: 0.21 }],
+            [{ scaling: 'critrate', coef: 0.245 }],
+            [{ scaling: 'critrate', coef: 0.28 }]
           ]
         }
       ],
@@ -2030,13 +2243,13 @@ export const WeaponData: Data = {
       effectname: 'Infusion Stinger',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: [0.06, 0.06] }],
+            [{ scaling: 'dmgIncrease', coef: [0.075, 0.075] }],
+            [{ scaling: 'dmgIncrease', coef: [0.09, 0.09] }],
+            [{ scaling: 'dmgIncrease', coef: [0.105, 0.105] }],
+            [{ scaling: 'dmgIncrease', coef: [0.12, 0.12] }]
           ]
         }
       ],
@@ -2051,18 +2264,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'atk%',
       effectname: 'Isshin Art Clarity',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s.',
       ref: [[], [], [], [], []]
@@ -2078,11 +2279,32 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'hp%', coef: 0.2 }],
+            [{ scaling: 'hp%', coef: 0.25 }],
+            [{ scaling: 'hp%', coef: 0.3 }],
+            [{ scaling: 'hp%', coef: 0.35 }],
+            [{ scaling: 'hp%', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'em', coef: [0.0012, 0.0012, 0.0012], source: ['hp', 0] }],
+            [{ scaling: 'em', coef: [0.0015, 0.0015, 0.0015], source: ['hp', 0] }],
+            [{ scaling: 'em', coef: [0.0018, 0.0018, 0.0018], source: ['hp', 0] }],
+            [{ scaling: 'em', coef: [0.0021, 0.0021, 0.0021], source: ['hp', 0] }],
+            [{ scaling: 'em', coef: [0.0024, 0.0024, 0.0024], source: ['hp', 0] }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          target: 'nearby',
+          values: [
+            [{ scaling: 'em', coef: 0.002, source: ['hp', 0] }],
+            [{ scaling: 'em', coef: 0.0025, source: ['hp', 0] }],
+            [{ scaling: 'em', coef: 0.003, source: ['hp', 0] }],
+            [{ scaling: 'em', coef: 0.0035, source: ['hp', 0] }],
+            [{ scaling: 'em', coef: 0.004, source: ['hp', 0] }]
           ]
         }
       ],
@@ -2107,11 +2329,36 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'critrate', coef: 0.04 }],
+            [{ scaling: 'critrate', coef: 0.05 }],
+            [{ scaling: 'critrate', coef: 0.06 }],
+            [{ scaling: 'critrate', coef: 0.07 }],
+            [{ scaling: 'critrate', coef: 0.08 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [
+              { scaling: 'normalFlatDMG', coef: 1.2, source: ['em', 0] },
+              { scaling: 'skillFlatDMG', coef: 1.2, source: ['em', 0] }
+            ],
+            [
+              { scaling: 'normalFlatDMG', coef: 1.5, source: ['em', 0] },
+              { scaling: 'skillFlatDMG', coef: 1.5, source: ['em', 0] }
+            ],
+            [
+              { scaling: 'normalFlatDMG', coef: 1.8, source: ['em', 0] },
+              { scaling: 'skillFlatDMG', coef: 1.8, source: ['em', 0] }
+            ],
+            [
+              { scaling: 'normalFlatDMG', coef: 2.1, source: ['em', 0] },
+              { scaling: 'skillFlatDMG', coef: 2.1, source: ['em', 0] }
+            ],
+            [
+              { scaling: 'normalFlatDMG', coef: 2.4, source: ['em', 0] },
+              { scaling: 'skillFlatDMG', coef: 2.4, source: ['em', 0] }
+            ]
           ]
         }
       ],
@@ -2136,11 +2383,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'pyro', coef: 0.2 },
+              { scaling: 'electro', coef: 0.2 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.24 },
+              { scaling: 'electro', coef: 0.24 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.28 },
+              { scaling: 'electro', coef: 0.28 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.32 },
+              { scaling: 'electro', coef: 0.32 }
+            ],
+            [
+              { scaling: 'pyro', coef: 0.36 },
+              { scaling: 'electro', coef: 0.36 }
+            ]
           ]
         }
       ],
@@ -2158,11 +2420,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.15 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.18 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.21 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.24 }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.08, 0.08, 0.12] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1, 0.15] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.12, 0.12, 0.18] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.14, 0.14, 0.21] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0.16, 0.16, 0.24] }]
           ]
         }
       ],
@@ -2187,11 +2459,21 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'hp%', coef: 0.2 }],
+            [{ scaling: 'hp%', coef: 0.25 }],
+            [{ scaling: 'hp%', coef: 0.3 }],
+            [{ scaling: 'hp%', coef: 0.35 }],
+            [{ scaling: 'hp%', coef: 0.4 }]
+          ]
+        },
+        {
+          actionType: 'passive',
+          values: [
+            [{ scaling: 'atk%', coef: 0.012, source: ['hp', 0] }],
+            [{ scaling: 'atk%', coef: 0.015, source: ['hp', 0] }],
+            [{ scaling: 'atk%', coef: 0.018, source: ['hp', 0] }],
+            [{ scaling: 'atk%', coef: 0.021, source: ['hp', 0] }],
+            [{ scaling: 'atk%', coef: 0.024, source: ['hp', 0] }]
           ]
         }
       ],
@@ -2214,13 +2496,28 @@ export const WeaponData: Data = {
       effectname: 'Smashed Stone',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04] },
+              { scaling: 'def%', coef: [0.04, 0.04, 0.04, 0.04] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05] },
+              { scaling: 'def%', coef: [0.05, 0.05, 0.05, 0.05] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06] },
+              { scaling: 'def%', coef: [0.06, 0.06, 0.06, 0.06] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07] },
+              { scaling: 'def%', coef: [0.07, 0.07, 0.07, 0.07] }
+            ],
+            [
+              { scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08] },
+              { scaling: 'def%', coef: [0.08, 0.08, 0.08, 0.08] }
+            ]
           ]
         }
       ],
@@ -2258,18 +2555,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'energy',
       effectname: 'Composed',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'After damaging an opponent with an Elemental Skill, the skill has a {0} chance to end its own CD. Can only occur once every {1}.',
       ref: [
@@ -2289,13 +2574,13 @@ export const WeaponData: Data = {
       effectname: 'Forest Sanctuary',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'em', coef: 60 }],
+            [{ scaling: 'em', coef: 75 }],
+            [{ scaling: 'em', coef: 90 }],
+            [{ scaling: 'em', coef: 105 }],
+            [{ scaling: 'em', coef: 120 }]
           ]
         }
       ],
@@ -2312,13 +2597,13 @@ export const WeaponData: Data = {
       effectname: 'Determination',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: 0.12 }],
+            [{ scaling: 'atk%', coef: 0.15 }],
+            [{ scaling: 'atk%', coef: 0.18 }],
+            [{ scaling: 'atk%', coef: 0.21 }],
+            [{ scaling: 'atk%', coef: 0.24 }]
           ]
         }
       ],
@@ -2337,11 +2622,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'critrate', coef: 0.04 }],
+            [{ scaling: 'critrate', coef: 0.05 }],
+            [{ scaling: 'critrate', coef: 0.06 }],
+            [{ scaling: 'critrate', coef: 0.07 }],
+            [{ scaling: 'critrate', coef: 0.08 }]
           ]
         }
       ],
@@ -2401,18 +2686,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'atk%',
       effectname: 'Descension',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Effective only on the following platform: \n"PlayStation Network"\nHitting opponents with Normal and Charged Attacks grants a {0} chance to deal {1} ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by {2}.',
       ref: [['50%', '200%', '66'], [], [], [], []]
@@ -2426,13 +2699,13 @@ export const WeaponData: Data = {
       effectname: 'Itinerant Hero',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.12 }],
+            [{ scaling: 'dmgIncrease', coef: 0.15 }],
+            [{ scaling: 'dmgIncrease', coef: 0.18 }],
+            [{ scaling: 'dmgIncrease', coef: 0.21 }],
+            [{ scaling: 'dmgIncrease', coef: 0.24 }]
           ]
         }
       ],
@@ -2451,11 +2724,26 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [
+              { scaling: 'normal', coef: 0.2 },
+              { scaling: 'charged', coef: 0.2 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.25 },
+              { scaling: 'charged', coef: 0.25 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.3 },
+              { scaling: 'charged', coef: 0.3 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.35 },
+              { scaling: 'charged', coef: 0.35 }
+            ],
+            [
+              { scaling: 'normal', coef: 0.4 },
+              { scaling: 'charged', coef: 0.4 }
+            ]
           ]
         }
       ],
@@ -2476,18 +2764,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'atk%',
       effectname: 'Chord',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect:
         'Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals {0} ATK DMG to surrounding opponents. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.',
       ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
@@ -2501,13 +2777,13 @@ export const WeaponData: Data = {
       effectname: 'Kaidan: Rainfall Earthbinder',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'dmgIncrease', coef: 0.16 }],
+            [{ scaling: 'dmgIncrease', coef: 0.2 }],
+            [{ scaling: 'dmgIncrease', coef: 0.24 }],
+            [{ scaling: 'dmgIncrease', coef: 0.28 }],
+            [{ scaling: 'dmgIncrease', coef: 0.32 }]
           ]
         }
       ],
@@ -2522,18 +2798,6 @@ export const WeaponData: Data = {
       type: 'sword',
       specialized: 'def%',
       effectname: 'Journey',
-      action: [
-        {
-          actionType: 'passive',
-          values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
-          ]
-        }
-      ],
       effect: 'Each Elemental Orb or Particle collected restores {0} HP.',
       ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
     },
@@ -2548,11 +2812,22 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk', coef: 0.00036, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.00045, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.00054, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.00063, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.00072, source: ['em', 0] }]
+          ]
+        },
+        {
+          actionType: 'passive',
+          target: 'nearby',
+          values: [
+            [{ scaling: 'atk', coef: 0.000108, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.000135, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.000162, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.000189, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.000216, source: ['em', 0] }]
           ]
         }
       ],
@@ -2600,13 +2875,13 @@ export const WeaponData: Data = {
       effectname: 'Press the Advantage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: [0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15] }],
+            [{ scaling: 'atk%', coef: [0.18, 0.18, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.21, 0.21, 0.21] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.24, 0.24] }]
           ]
         }
       ],
@@ -3289,12 +3564,25 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          // flat bonus atk = 0.24 * EM
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk', coef: 0.24, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.3, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.36, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.42, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.48, source: ['em', 0] }]
+          ]
+        },
+        {
+          actionType: 'passive',
+          // flat bonus atk = 0.072 * EM
+          target: 'nearby',
+          values: [
+            [{ scaling: 'atk', coef: 0.072, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.09, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.108, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.126, source: ['em', 0] }],
+            [{ scaling: 'atk', coef: 0.144, source: ['em', 0] }]
           ]
         }
       ],
@@ -3342,13 +3630,13 @@ export const WeaponData: Data = {
       effectname: 'Press the Advantage',
       action: [
         {
-          actionType: 'passive',
+          actionType: 'stack',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'atk%', coef: [0.12, 0.12, 0.12] }],
+            [{ scaling: 'atk%', coef: [0.15, 0.15, 0.15] }],
+            [{ scaling: 'atk%', coef: [0.18, 0.18, 0.18] }],
+            [{ scaling: 'atk%', coef: [0.21, 0.21, 0.21] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.24, 0.24] }]
           ]
         }
       ],
@@ -3958,11 +4246,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }],
-            [{ scaling: 'atk', coef: 0 }]
+            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 0.4] }],
+            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 0.5] }],
+            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 0.6] }],
+            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 0.7] }],
+            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 0.8] }]
           ]
         }
       ],

@@ -74,6 +74,7 @@ export type ALL_STATS =
   | 'physical'
   | 'physicalRes'
   | 'dmgIncrease'
+  | 'dmgIncreaseElemental'
   | 'normal'
   | 'charged'
   | 'plunge'
