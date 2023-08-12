@@ -79,6 +79,8 @@ export type CharacterRecord = {
   name: CharacterNames;
   fullName: string;
   rating: 4 | 5;
+  c3: 'skill' | 'burst';
+  c5: 'skill' | 'burst';
   weapon: WeaponCategory;
   vision: Visions;
   specialized: CharacterSpecialized;
