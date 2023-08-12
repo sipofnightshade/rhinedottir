@@ -4,6 +4,7 @@ import { calcAmplifying } from './calcAmplifyingMultiplier';
 import { calcCatalyzeBonus } from './calcCatalyzeBonus';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
 import { calcDamageNoReaction } from './calcDamageNoReaction';
+import { multiScalingDMG, singleScalingDMG } from './calcHitDamage';
 import { calcTransforming } from './calcTransforming';
 
 export function calcFinalDMG(
@@ -17,7 +18,7 @@ export function calcFinalDMG(
 ) {
   // setup ICD
   const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
-
+  console.log(hit);
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
   const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier];
@@ -46,12 +47,17 @@ export function calcFinalDMG(
         calcCatalyzeBonus(element, $stats.em, $character.lvl, $stats[catalyze[element]])
       : 0;
 
+  const talentLvl = $character[addStats.talentLvlId];
+
   const FinalDMG = hit.damage.reduce(
     (total: any, damage, i) => {
-      const hitDMG = damage.coef
-        ? $stats[damage.scaling] * damage.coef
-        : $stats[damage.scaling] *
-          values[damage.param as keyof typeof values][$character[addStats.talentLvlId]];
+      // const hitDMG = damage.coef
+      //   ? $stats[damage.scaling] * damage.coef
+      //   : $stats[damage.scaling] * values[damage.param as keyof typeof values][talentLvl];
+
+      const hitDMG = Array.isArray(damage)
+        ? multiScalingDMG(damage, $stats, values, talentLvl)
+        : singleScalingDMG(damage, $stats, values, talentLvl);
 
       // the damage with NO REACTIONS
       const result = calcDamageNoReaction(
