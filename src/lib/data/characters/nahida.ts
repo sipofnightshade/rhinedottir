@@ -8,6 +8,8 @@ const charName: CharacterRecord = {
   "weapon": "catalyst",
   "vision": "dendro",
   "specialized": "em",
+  "c3": "skill",
+  "c5": "burst",
   "burstCost": 80,
   "talentNames": {
     "normal": "normalName",
@@ -92,8 +94,7 @@ const charName: CharacterRecord = {
       "damage": [
         {
           "scaling": "atk",
-          "param": "param9",
-          "icd": 0
+          "param": "param9"
         }
       ]
     },
@@ -104,8 +105,7 @@ const charName: CharacterRecord = {
       "damage": [
         {
           "scaling": "atk",
-          "param": "param10",
-          "icd": 0
+          "param": "param10"
         }
       ]
     },
@@ -116,8 +116,7 @@ const charName: CharacterRecord = {
       "damage": [
         {
           "scaling": "atk",
-          "param": "param11",
-          "icd": 0
+          "param": "param11"
         }
       ]
     }
@@ -130,8 +129,7 @@ const charName: CharacterRecord = {
       "damage": [
         {
           "scaling": "atk",
-          "param": "param3",
-          "icd": 0
+          "param": "param3"
         }
       ]
     }

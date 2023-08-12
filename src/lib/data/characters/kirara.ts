@@ -2,12 +2,12 @@
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "xiao",
-  "fullName": "Xiao",
-  "rating": 5,
-  "weapon": "polearm",
-  "vision": "anemo",
-  "specialized": "critrate",
+  "name": "kirara",
+  "fullName": "Kirara",
+  "rating": 4,
+  "weapon": "sword",
+  "vision": "dendro",
+  "specialized": "hp%",
   "c3": "skill",
   "c5": "burst",
   "burstCost": 80,

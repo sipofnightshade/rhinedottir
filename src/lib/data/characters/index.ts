@@ -1,20 +1,22 @@
 //characters/index.ts
-
 import { default as traveleranemo } from './traveleranemo';
 import { default as travelergeo } from './travelergeo';
 import { default as travelerelectro } from './travelerelectro';
 import { default as travelerdendro } from './travelerdendro';
 import { default as albedo } from './albedo';
+import { default as alhaitham } from './alhaitham';
 import { default as aloy } from './aloy';
 import { default as amber } from './amber';
 import { default as aratakiitto } from './aratakiitto';
 import { default as barbara } from './barbara';
+import { default as baizhu } from './baizhu';
 import { default as beidou } from './beidou';
 import { default as bennett } from './bennett';
 import { default as candace } from './candace';
 import { default as chongyun } from './chongyun';
 import { default as collei } from './collei';
 import { default as cyno } from './cyno';
+import { default as dehya } from './dehya';
 import { default as diluc } from './diluc';
 import { default as diona } from './diona';
 import { default as dori } from './dori';
@@ -29,12 +31,15 @@ import { default as kaedeharakazuha } from './kaedeharakazuha';
 import { default as kaeya } from './kaeya';
 import { default as kamisatoayaka } from './kamisatoayaka';
 import { default as kamisatoayato } from './kamisatoayato';
+import { default as kaveh } from './kaveh';
 import { default as keqing } from './keqing';
+import { default as kirara } from './kirara';
 import { default as klee } from './klee';
 import { default as kujousara } from './kujousara';
 import { default as kukishinobu } from './kukishinobu';
 import { default as layla } from './layla';
 import { default as lisa } from './lisa';
+import { default as mika } from './mika';
 import { default as mona } from './mona';
 import { default as nahida } from './nahida';
 import { default as nilou } from './nilou';
@@ -59,6 +64,7 @@ import { default as xiao } from './xiao';
 import { default as xingqiu } from './xingqiu';
 import { default as xinyan } from './xinyan';
 import { default as yaemiko } from './yaemiko';
+import { default as yaoyao } from './yaoyao';
 import { default as yanfei } from './yanfei';
 import { default as yelan } from './yelan';
 import { default as yoimiya } from './yoimiya';
@@ -71,16 +77,19 @@ export const characterData = [
   travelerelectro,
   travelerdendro,
   albedo,
+  alhaitham,
   aloy,
   amber,
   aratakiitto,
   barbara,
+  baizhu,
   beidou,
   bennett,
   candace,
   chongyun,
   collei,
   cyno,
+  dehya,
   diluc,
   diona,
   dori,
@@ -95,12 +104,15 @@ export const characterData = [
   kaeya,
   kamisatoayaka,
   kamisatoayato,
+  kaveh,
   keqing,
+  kirara,
   klee,
   kujousara,
   kukishinobu,
   layla,
   lisa,
+  mika,
   mona,
   nahida,
   nilou,
@@ -125,6 +137,7 @@ export const characterData = [
   xingqiu,
   xinyan,
   yaemiko,
+  yaoyao,
   yanfei,
   yelan,
   yoimiya,
