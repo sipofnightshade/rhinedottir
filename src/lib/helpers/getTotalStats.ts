@@ -1,4 +1,5 @@
-import type { ALL_STATS, StatObject } from '$lib/types/talents';
+import type { All_Stats } from '$lib/stores/actionStore';
+import type { StatObject } from '$lib/types/talents';
 
 /**
  * Calculate the total stats.
@@ -8,14 +9,14 @@ import type { ALL_STATS, StatObject } from '$lib/types/talents';
  * @param action - The action stats.
  * @returns The total stats.
  */
-type ActionStats = Record<ALL_STATS, number>;
+type ActionStats = Record<All_Stats, number>;
 
 export function getTotalStats(combinedStats: StatObject, action: ActionStats) {
   const res = combinedStats.reduce(
     (acc, { stat, value }) => {
       return {
         ...acc,
-        [stat as ALL_STATS]: acc[stat as ALL_STATS] + value
+        [stat as All_Stats]: acc[stat as All_Stats] + value
       };
     },
     { ...action }

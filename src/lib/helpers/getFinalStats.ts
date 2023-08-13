@@ -1,15 +1,16 @@
 // types
+import type { All_Stats } from '$lib/stores/actionStore';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { CurrentWeapon } from '$lib/stores/weaponStore';
-import type { ALL_STATS, StatObject } from '$lib/types/talents';
+import type { StatObject } from '$lib/types/talents';
 
 // helper functions
 import { getCombinedStats } from './getCombinedStats';
 import { getFlatStats } from './getFlatStats';
 import { getTotalStats } from './getTotalStats';
 
-type Actions = Record<ALL_STATS, number>;
+type Actions = Record<All_Stats, number>;
 
 export function getFinalStats(
   character: CurrentCharacter,

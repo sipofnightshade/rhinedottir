@@ -1,5 +1,5 @@
+import type { All_Stats } from '$lib/stores/actionStore';
 import type { WeaponCategory } from './global';
-import type { ALL_STATS } from './talents';
 
 export type Target = 'self' | 'enemy' | 'party' | 'nearby';
 export type ActionType =
@@ -12,9 +12,9 @@ export type ActionType =
   | 'visionMatch';
 
 export type ActionValues = {
-  scaling: ALL_STATS;
+  scaling: All_Stats;
   coef: number | number[];
-  source?: [ALL_STATS, number] | [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+  source?: [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
   forEvery?: number;
 }[];
 

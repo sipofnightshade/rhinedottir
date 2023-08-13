@@ -18,7 +18,6 @@ export function calcFinalDMG(
 ) {
   // setup ICD
   const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
-  console.log(hit);
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
   const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier];

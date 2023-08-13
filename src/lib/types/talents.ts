@@ -1,3 +1,4 @@
+import type { All_Stats } from '$lib/stores/actionStore';
 import type { Action } from './actions';
 
 export type Hit = {
@@ -44,84 +45,8 @@ export type Hit = {
   }[];
 };
 
-export type ALL_STATS =
-  | 'atk'
-  | 'def'
-  | 'hp'
-  | 'atk%'
-  | 'def%'
-  | 'hp%'
-  | 'em'
-  | 'critrate'
-  | 'critdmg'
-  | 'energy'
-  | 'healing'
-  | 'healingIncoming'
-  | 'anemo'
-  | 'cryo'
-  | 'dendro'
-  | 'electro'
-  | 'geo'
-  | 'hydro'
-  | 'pyro'
-  | 'anemoRes'
-  | 'cryoRes'
-  | 'dendroRes'
-  | 'electroRes'
-  | 'geoRes'
-  | 'hydroRes'
-  | 'pyroRes'
-  | 'physical'
-  | 'physicalRes'
-  | 'dmgIncrease'
-  | 'dmgIncreaseElemental'
-  | 'normal'
-  | 'charged'
-  | 'plunge'
-  | 'skill'
-  | 'burst'
-  | 'normalATKSpd'
-  | 'chargedATKSpd'
-  | 'moveSpd'
-  | 'normalSpecialMultiplier'
-  | 'chargedSpecialMultiplier'
-  | 'plungeSpecialMultiplier'
-  | 'skillSpecialMultiplier'
-  | 'burstSpecialMultiplier'
-  | 'normalFlatDMG'
-  | 'chargedFlatDMG'
-  | 'plungeFlatDMG'
-  | 'skillFlatDMG'
-  | 'burstFlatDMG'
-  | 'normalCritRate'
-  | 'chargedCritRate'
-  | 'plungeCritRate'
-  | 'skillCritRate'
-  | 'burstCritRate'
-  | 'normalDefIgnore'
-  | 'skillDefIgnore'
-  | 'burstDefIgnore'
-  | 'defReduce'
-  | 'partyBurstCost' // sum of party burst costs
-  | 'partyMaxEM' // highest EM of party member
-  | 'aggravate'
-  | 'spread'
-  | 'melt'
-  | 'vaporize'
-  | 'burning'
-  | 'superconduct'
-  | 'swirl'
-  | 'electrocharged'
-  | 'shattered'
-  | 'overloaded'
-  | 'bloom'
-  | 'burgeon'
-  | 'hyperbloom'
-  | 'crystallize'
-  | 'shieldStrength';
-
 export type StatObject = {
-  stat: ALL_STATS;
+  stat: All_Stats;
   value: number;
 }[];
 
