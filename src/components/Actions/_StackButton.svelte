@@ -2,51 +2,52 @@
   import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
-  import { action, type ActionId } from '$lib/stores/actionStore';
+  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
   import { onDestroy } from 'svelte';
+  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
+  export let stats: Record<All_Stats, number>;
 
   $: target = data.target ?? 'self';
 
   let stacks = 0;
+  let stackCoefs: number[] = [];
 
-  function handleToggle() {
+  function addStacks() {
+    data.values.forEach((value, i) => {
+      const { scaling, coef, source } = value;
+      const result = calcCoeficient((coef as number[])[stacks - 1], stats, source);
+
+      if (!stackCoefs[i]) stackCoefs[i] = 0;
+      stackCoefs[i] += result;
+
+      action.addStat(id, target as Target, scaling, result);
+    });
+  }
+
+  function removeStacks() {
+    data.values.forEach((value, i) => {
+      action.removeStat(id, target as Target, value.scaling, stackCoefs[i]);
+      stackCoefs[i] = 0;
+    });
+  }
+
+  function handleStacking() {
     if (stacks === (data.values[0].coef as number[]).length) {
       stacks = 0; // Reset the stacks if max is reached
+      removeStacks();
     } else {
       stacks++; // Increment the stacks
-    }
-
-    if (stacks === 0) {
-      data.values.forEach((value) => {
-        (value.coef as number[]).forEach((stat) =>
-          action.removeStat(id, target as Target, value.scaling, stat)
-        );
-      });
-    } else {
-      data.values.forEach((value) => {
-        action.addStat(
-          id,
-          target as Target,
-          value.scaling,
-          (value.coef as number[])[stacks - 1]
-        );
-      });
+      addStacks();
     }
   }
 
   onDestroy(() => {
     if (stacks > 0) {
-      data.values.forEach((value) => {
-        (value.coef as number[])
-          .slice(0, stacks)
-          .forEach((stat) =>
-            action.removeStat(id, target as Target, value.scaling, stat)
-          );
-      });
+      removeStacks();
     }
   });
 
@@ -68,7 +69,7 @@
   };
 </script>
 
-<button on:click={handleToggle} class="relative shadow-red-300">
+<button on:click={handleStacking} class="relative shadow-red-300">
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
     <p
