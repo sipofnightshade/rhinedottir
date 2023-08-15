@@ -285,7 +285,7 @@ const charName: CharacterRecord = {
         'Active party members within the Solar Isotoma field who are protected by a shield created by Crystallize have their DMG increased by 17%.',
       constellation: 6,
       target: 'active',
-      actionType: 'passive',
+      actionType: 'toggle',
       values: [
         {
           scaling: 'dmgIncrease',
