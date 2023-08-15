@@ -1,171 +1,299 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "albedo",
-  "fullName": "Albedo",
-  "rating": 5,
-  "weapon": "sword",
-  "vision": "geo",
-  "specialized": "geo",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'albedo',
+  fullName: 'Albedo',
+  region: 'mondstat',
+  rating: 5,
+  weapon: 'sword',
+  vision: 'geo',
+  specialized: 'geo',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 40,
+  talentNames: {
+    normal: 'Favonius Bladework - Weiss',
+    skill: 'Abiogenesis: Solar Isotoma',
+    burst: 'Rite of Progeniture: Tectonic Tide'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param1"
+          scaling: 'atk',
+          param: 'param1'
         }
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param2"
+          scaling: 'atk',
+          param: 'param2'
         }
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param3"
+          scaling: 'atk',
+          param: 'param3'
         }
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param4"
+          scaling: 'atk',
+          param: 'param4'
         }
       ]
     },
     {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
+      name: '5 - Hit DMG',
+      tag: 'N5',
+      damageBonus: 'normal',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param5"
+          scaling: 'atk',
+          param: 'param5'
         }
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param6"
+          scaling: 'atk',
+          param: 'param6'
+        },
+        {
+          scaling: 'atk',
+          param: 'param7'
         }
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param9"
+          scaling: 'atk',
+          param: 'param9'
         }
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param10"
+          scaling: 'atk',
+          param: 'param10'
         }
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param11"
+          scaling: 'atk',
+          param: 'param11'
         }
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Skill DMG',
+      tag: 'ES',
+      damageBonus: 'skill',
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param3"
+          scaling: 'atk',
+          param: 'param1'
         }
       ]
-    }
-  ],
-  "burst": [
+    },
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Transient Blossom DMG',
+      tag: 'EC',
+      damageBonus: 'skill',
+      hasOwnBonusDMG: true,
+      damage: [
         {
-          "scaling": "atk",
-          "param": "param1"
+          scaling: 'def',
+          param: 'param2'
         }
       ]
     }
   ],
-  "actions": [
+  burst: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Burst DMG',
+      tag: 'Q1',
+      multiHit: 9,
+      damageBonus: 'burst',
+      hasOwnBonusFlatDMG: true,
+      damage: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'atk',
+          param: 'param1'
+        }
+      ]
+    },
+    {
+      name: 'Fatal Blossom DMG - Total',
+      tag: 'Q2',
+      multiHit: 9,
+      damageBonus: 'burst',
+      hasOwnBonusFlatDMG: true,
+      damage: [
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        },
+        {
+          scaling: 'atk',
+          param: 'param2'
+        }
+      ]
+    },
+    {
+      name: 'Fatal Blossom DMG ',
+      multiHit: 9,
+      damageBonus: 'burst',
+      hasOwnBonusFlatDMG: true,
+      damage: [
+        {
+          scaling: 'atk',
+          param: 'param2'
         }
       ]
     }
   ],
-  "offField": []
+  actions: [
+    {
+      name: 'Calcite Might',
+      url: 'UI_Talent_S_Albedo_05',
+      description:
+        'Transient Blossoms generated by Abiogenesis: Solar Isotoma deal 25% more DMG to opponents whose HP is below 50%.',
+      level: 2,
+      constellation: 0,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'cBonusDMG',
+          coef: 0.25
+        }
+      ]
+    },
+    {
+      name: 'Homuncular Nature',
+      url: 'UI_Talent_S_Albedo_06',
+      description:
+        'Using Rite of Progeniture: Tectonic Tide increases the Elemental Mastery of nearby party members by 125 for 10s.',
+      level: 8,
+      constellation: 0,
+      target: 'nearby',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'em',
+          coef: 125
+        }
+      ]
+    },
+    {
+      name: 'Opening of Phanerozoic',
+      url: 'UI_Talent_S_Albedo_02',
+      description:
+        "Transient Blossoms generated by Abiogenesis: Solar Isotoma grant Albedo Fatal Reckoning for 30s: \nUnleashing Rite of Progeniture: Tectonic Tide consumes all stacks of Fatal Reckoning. Each stack of Fatal Reckoning consumed increases the DMG dealt by Fatal Blossoms and Rite of Progeniture: Tectonic Tide's burst DMG by 30% of Albedo's DEF. \nThis effect stacks up to 4 times.",
+      constellation: 2,
+      target: 'self',
+      actionType: 'stack',
+      values: [
+        {
+          scaling: 'cBonusFlatDMG',
+          coef: [0.3, 0.3, 0.3, 0.3],
+          source: ['def', 0]
+        }
+      ]
+    },
+    {
+      name: 'Descent of Divinity',
+      url: 'UI_Talent_S_Albedo_03',
+      description:
+        'Active party members within the Solar Isotoma field have their Plunging Attack DMG increased by 30%.',
+      constellation: 4,
+      target: 'active',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'plunge',
+          coef: 0.3
+        }
+      ]
+    },
+    {
+      name: 'Dust of Purification',
+      url: 'UI_Talent_S_Albedo_04',
+      description:
+        'Active party members within the Solar Isotoma field who are protected by a shield created by Crystallize have their DMG increased by 17%.',
+      constellation: 6,
+      target: 'active',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'dmgIncrease',
+          coef: 0.17
+        }
+      ]
+    }
+  ]
 };
 
 export default charName;
