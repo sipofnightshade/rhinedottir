@@ -21,12 +21,12 @@ export type ActionType =
 
 export type CoefSource = [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
 
-export type ActionValues = {
+export type ActionValue = {
   scaling: All_Stats;
   coef: number | number[];
   source?: CoefSource;
   forEvery?: number;
-}[];
+};
 
 export type Action = {
   name: string;
@@ -39,5 +39,5 @@ export type Action = {
   shielded?: boolean;
   unique?: boolean;
   actionType?: ActionType;
-  values: ActionValues;
+  values: ActionValue[];
 };
