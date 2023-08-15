@@ -6,7 +6,7 @@ export type Hit = {
   tag?: string; // Empty string for hit fields that are showOnly
   damageBonus: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
   // normal default = physical, skill & burst default is character element
-  elemental?:
+  hasOwnDMGType?:
     | 'anemo'
     | 'cryo'
     | 'dendro'
@@ -17,6 +17,10 @@ export type Hit = {
     | 'physical';
   multiHit?: number; // for some skills with repeated hits of same damage (up to my judgement)
   quadratic?: boolean;
+  hasOwnBonusDMG?: boolean; // These are for custom stats
+  hasOwnBonusFlatDMG?: boolean; // These are for custom stats
+  hasOwnCritRate?: boolean; // These are for custom stats
+  hasOwnCritDMG?: boolean; // These are for custom stats
   icd?: number;
   damage: {
     scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';

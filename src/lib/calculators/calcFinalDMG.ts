@@ -3,6 +3,7 @@ import type { Hit } from '$lib/types/talents';
 import { calcAmplifying } from './calcAmplifyingMultiplier';
 import { calcCatalyzeBonus } from './calcCatalyzeBonus';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
+import { calcDMGBonus } from './calcDMGBonus';
 import { calcDamageNoReaction } from './calcDamageNoReaction';
 import { multiScalingDMG, singleScalingDMG } from './calcHitDamage';
 import { calcTransforming } from './calcTransforming';
@@ -16,8 +17,7 @@ export function calcFinalDMG(
   $enemy: any,
   addStats: any
 ) {
-  // setup ICD
-  const ICD = hit.icd ?? 3; // returns 0 if ICD is 0, but returns 3 if icd is undefined
+  const ICD = hit.icd ?? 3; // sets default ICD of 3 if no icd on the hit
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
   const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier];
@@ -27,13 +27,18 @@ export function calcFinalDMG(
     $stats.defReduce,
     $stats[addStats.defIgnore]
   );
-  // ❗❗❗ may have to extract this. This would also remove the need for an enemy store.
-  const DMGBonus =
-    (hit.elemental ? $stats[hit.elemental] : $stats[element]) +
-    $stats[hit.damageBonus] +
-    $stats.dmgIncrease + // Mona, Serpents' Spine, bane mods etc
-    (hit.elemental === 'physical' ? 0 : $stats.dmgIncreaseElemental); // Hunter's path effect
-  // if hit is not physical, then add allElemental dmg bonus
+
+  // calculate total damage bonuses
+  const DMGBonus = calcDMGBonus(hit, $stats, element);
+
+  // calculate total crit stats
+  const critRate = hit.hasOwnCritRate
+    ? $stats.cCritRate + $stats.critrate + $stats[addStats.critRate]
+    : +$stats.critrate + $stats[addStats.critRate];
+  const critDMG = hit.hasOwnCritDMG ? $stats.cCritDMG + $stats.critdmg : $stats.critdmg;
+
+  // get the talent specific flatDMG if it has one
+  const ownBonusFlatDMG = hit.hasOwnBonusFlatDMG ? $stats.cBonusFlatDMG : 0;
 
   // get the catalyze bonus damage
   const catalyze = {
@@ -42,8 +47,7 @@ export function calcFinalDMG(
   };
   const catalyzeFlatDMG =
     element === 'dendro' || element === 'electro'
-      ? $stats[addStats.flatDMG] +
-        calcCatalyzeBonus(element, $stats.em, $character.lvl, $stats[catalyze[element]])
+      ? calcCatalyzeBonus(element, $stats.em, $character.lvl, $stats[catalyze[element]])
       : 0;
 
   const talentLvl = $character[addStats.talentLvlId];
@@ -62,26 +66,26 @@ export function calcFinalDMG(
       const result = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG],
+        $stats[addStats.flatDMG] + ownBonusFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,
         RESMultiplier,
-        $stats.critrate + $stats[addStats.critRate],
-        $stats.critdmg
+        critRate,
+        critDMG
       );
       total.base += result;
 
       const catalyzeResult = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG] + catalyzeFlatDMG,
+        $stats[addStats.flatDMG] + catalyzeFlatDMG + ownBonusFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,
         RESMultiplier,
-        $stats.critrate + $stats[addStats.critRate],
-        $stats.critdmg
+        critRate,
+        critDMG
       );
 
       /**

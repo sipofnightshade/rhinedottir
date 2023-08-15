@@ -1,7 +1,15 @@
 import type { All_Stats } from '$lib/stores/actionStore';
 import type { WeaponCategory } from './global';
 
-export type Target = 'self' | 'enemy' | 'party' | 'nearby';
+export type Regions =
+  | 'liyue'
+  | 'sumeru'
+  | 'mondstat'
+  | 'inazuma'
+  | 'fontaine'
+  | 'natlan'
+  | 'snezhnaya';
+export type Target = 'self' | 'enemy' | 'party' | 'nearby' | 'active';
 export type ActionType =
   | 'stack'
   | 'toggle'
@@ -11,10 +19,12 @@ export type ActionType =
   | 'passive'
   | 'visionMatch';
 
+export type CoefSource = [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
+
 export type ActionValues = {
   scaling: All_Stats;
   coef: number | number[];
-  source?: [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
+  source?: CoefSource;
   forEvery?: number;
 }[];
 
@@ -23,7 +33,7 @@ export type Action = {
   url: string;
   description?: string;
   weapons?: WeaponCategory[];
-  level?: number;
+  level?: 2 | 8;
   constellation?: number;
   target?: Target;
   shielded?: boolean;

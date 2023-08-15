@@ -1,6 +1,6 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
-import type { Action, ActionValues, Target } from './actions';
+import type { Action, ActionValues, Regions, Target } from './actions';
 import type { Hit, OffField } from './talents';
 
 export type SelectedCharacter = CharacterRecord;
@@ -26,9 +26,7 @@ export type SelectedWeapon = {
       | 'region';
     target?: Target;
     shielded?: boolean;
-    regions?: [
-      'Liyue' | 'Sumeru' | 'Mondstat' | 'Inazuma' | 'Fontaine' | 'Natlan' | 'Snezhnaya'
-    ];
+    regions?: Regions[];
     unique?: boolean;
     values: [ActionValues, ActionValues, ActionValues, ActionValues, ActionValues];
   }[];
@@ -78,6 +76,7 @@ export type WeaponSpecialized =
 export type CharacterRecord = {
   name: CharacterNames;
   fullName: string;
+  region: Regions;
   rating: 4 | 5;
   c3: 'skill' | 'burst';
   c5: 'skill' | 'burst';
