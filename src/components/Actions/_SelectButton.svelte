@@ -7,7 +7,8 @@
   import ActionModal from '../Modal/ActionModal.svelte';
   import ActionButton from './ActionButton.svelte';
   import { onDestroy } from 'svelte';
-  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
+  import { enemy } from '$lib/stores/enemyStore';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
@@ -21,29 +22,39 @@
   let selected: Stat | undefined;
   let prevSelected: Stat | undefined;
 
+  // Store calculated coefficient value when adding a stat
+  let addedStats: { [key: string]: number } = {};
+
   function addStats(selected: Stat) {
     const { scaling, coef, source } = selected;
-    const result = calcCoeficient(coef as number, stats, source);
+    const result = calcCoefficient(coef as number, stats, source);
     action.addStat(id, target as Target, scaling, result);
+
+    // Store the calculated coefficient value
+    addedStats[scaling] = result;
 
     if (prevSelected) {
       removeStats(prevSelected);
     }
   }
 
-  function removeStats(prevSelected: Stat) {
-    const { scaling, coef, source } = prevSelected;
-    const result = calcCoeficient(coef as number, stats, source);
-    action.removeStat(id, target as Target, scaling, result);
+  function removeStats(stat: Stat) {
+    const { scaling } = stat;
+
+    if (scaling in addedStats) {
+      const coef = addedStats[scaling];
+      action.removeStat(id, target as Target, scaling, coef);
+      delete addedStats[scaling];
+    }
   }
 
   function onSelect(selected: Stat | undefined) {
+    if (prevSelected) {
+      removeStats(prevSelected);
+    }
+
     if (selected !== undefined) {
       addStats(selected);
-    } else {
-      if (prevSelected !== undefined) {
-        removeStats(prevSelected);
-      }
     }
 
     prevSelected = selected;
@@ -59,6 +70,8 @@
   $: {
     onSelect(selected);
   }
+
+  $: console.log($enemy);
 
   let dialog: HTMLDialogElement;
 
