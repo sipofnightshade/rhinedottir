@@ -3,6 +3,7 @@
   import { character } from '$lib/stores/characterStore';
   import { party } from '$lib/stores/partyStore';
   import { artifact } from '$lib/stores/artifactStore';
+  import { stats } from '$lib/stores/statsStore';
 
   // import components
   import ToggleButton from './_ToggleButton.svelte';
@@ -35,6 +36,7 @@
       {data}
       type={$character.selected.vision}
       id="main"
+      stats={$stats.main}
     />
   {/each}
   <!-- main weapon actions -->
@@ -49,6 +51,7 @@
         {data}
         type={$party.one.character.selected.vision}
         id="one"
+        stats={$stats.p1}
       />
     {/each}
     <ArtifactButton
@@ -66,6 +69,7 @@
         {data}
         type={$party.two.character.selected.vision}
         id="two"
+        stats={$stats.p2}
       />
     {/each}
     <ArtifactButton
@@ -83,6 +87,7 @@
         {data}
         type={$party.three.character.selected.vision}
         id="three"
+        stats={$stats.p3}
       />
     {/each}
     <ArtifactButton
