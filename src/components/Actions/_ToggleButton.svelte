@@ -9,7 +9,7 @@
   import ActionButton from './ActionButton.svelte';
   import { action } from '$lib/stores/actionStore';
   import { onDestroy } from 'svelte';
-  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
@@ -25,7 +25,7 @@
   function addStats() {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
-      const result = calcCoeficient(coef as number, stats, source);
+      const result = calcCoefficient(coef as number, stats, source);
 
       if (!addedStats[i]) addedStats[i] = 0;
       addedStats[i] += result;

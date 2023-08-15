@@ -4,7 +4,7 @@
   import ActionButton from './ActionButton.svelte';
   import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
   import { onMount } from 'svelte';
-  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
@@ -18,7 +18,7 @@
   onMount(() => {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
-      const result = calcCoeficient(coef as number, stats, source);
+      const result = calcCoefficient(coef as number, stats, source);
 
       if (!addedStats[i]) addedStats[i] = 0;
       addedStats[i] += result;
