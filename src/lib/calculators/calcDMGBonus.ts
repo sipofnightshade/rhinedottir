@@ -19,7 +19,7 @@ export function calcDMGBonus(hit: Hit, $stats: any, element: DamageType): number
   }
 
   // custom talent bonus dmg logic, ie: Alhaithm Passive etc.
-  if (hit.cBonusDMG) {
+  if (hit.hasOwnBonusDMG) {
     dmgBonus += $stats.cBonusDMG;
   }
 
