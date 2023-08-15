@@ -29,6 +29,9 @@ function createAction() {
           case 'self':
             state[id][scaling] += coef;
             break;
+          case 'active':
+            state.main[scaling] += coef;
+            break;
           case 'party':
             state.main[scaling] += coef;
             state.one[scaling] += coef;
@@ -52,6 +55,9 @@ function createAction() {
         switch (target) {
           case 'self':
             state[id][scaling] -= coef;
+            break;
+          case 'active':
+            state.main[scaling] -= coef;
             break;
           case 'party':
             state.main[scaling] -= coef;
