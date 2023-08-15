@@ -2,46 +2,42 @@
   import type { Action, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
   import ActionButton from './ActionButton.svelte';
-  import { action, type ActionId } from '$lib/stores/actionStore';
+  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
   import { onMount } from 'svelte';
+  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
+  export let stats: Record<All_Stats, number>;
 
   $: target = data.target ?? 'self';
 
-  let isActive = true;
-
-  function handleToggle() {
-    isActive = !isActive;
-    if (isActive) {
-      data.values.forEach((stat) =>
-        action.addStat(id, target as Target, stat.scaling, stat.coef as number)
-      );
-      return;
-    } else {
-      data.values.forEach((stat) =>
-        action.removeStat(id, target as Target, stat.scaling, stat.coef as number)
-      );
-      return;
-    }
-  }
+  let addedStats: number[] = [];
 
   onMount(() => {
-    data.values.forEach((stat) =>
-      action.addStat(id, target as Target, stat.scaling, stat.coef as number)
-    );
+    data.values.forEach((value, i) => {
+      const { scaling, coef, source } = value;
+      const result = calcCoeficient(coef as number, stats, source);
+
+      if (!addedStats[i]) addedStats[i] = 0;
+      addedStats[i] += result;
+      action.addStat(id, target as Target, scaling, result);
+    });
 
     // this return might be problematic if the state is reset when character changes
     // because then this might run after and substract values that were not added
-    return () =>
-      data.values.forEach((stat) =>
-        action.removeStat(id, target as Target, stat.scaling, stat.coef as number)
-      );
+    return () => {
+      if (addedStats.length > 0) {
+        data.values.forEach((value, i) => {
+          action.removeStat(id, target as Target, value.scaling, addedStats[i]);
+          addedStats[i] = 0;
+        });
+      }
+    };
   });
 </script>
 
 <button data-testid="passive-action-button">
-  <ActionButton {type} {isActive} url={data.url} />
+  <ActionButton {type} url={data.url} isActive />
 </button>
