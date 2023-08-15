@@ -1,7 +1,7 @@
 import type { All_Stats } from '$lib/stores/actionStore';
 import type { CoefSource } from '$lib/types/actions';
 
-export function calcCoeficient(
+export function calcCoefficient(
   coef: number,
   $stats: Record<All_Stats, number>,
   source?: CoefSource
