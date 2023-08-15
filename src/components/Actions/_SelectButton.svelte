@@ -1,34 +1,48 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/actions';
+  import type { Action, CoefSource, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import type { ALL_STATS } from '$lib/types/talents';
-  import { action, type ActionId } from '$lib/stores/actionStore';
+  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
 
   import ActionModal from '../Modal/ActionModal.svelte';
   import ActionButton from './ActionButton.svelte';
   import { onDestroy } from 'svelte';
+  import { calcCoeficient } from '$lib/calculators/calcCoefficient';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
+  export let stats: Record<All_Stats, number>;
 
-  type Stat = { scaling: ALL_STATS; coef: number };
+  type Stat = { scaling: All_Stats; coef: number; source: CoefSource };
 
   $: target = data.target ?? 'self';
 
   let selected: Stat | undefined;
   let prevSelected: Stat | undefined;
 
+  function addStats(selected: Stat) {
+    const { scaling, coef, source } = selected;
+    const result = calcCoeficient(coef as number, stats, source);
+    action.addStat(id, target as Target, scaling, result);
+
+    if (prevSelected) {
+      removeStats(prevSelected);
+    }
+  }
+
+  function removeStats(prevSelected: Stat) {
+    const { scaling, coef, source } = prevSelected;
+    const result = calcCoeficient(coef as number, stats, source);
+    action.removeStat(id, target as Target, scaling, result);
+  }
+
   function onSelect(selected: Stat | undefined) {
     if (selected !== undefined) {
-      action.addStat(id, target as Target, selected.scaling, selected.coef);
-      if (prevSelected) {
-        action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
-      }
+      addStats(selected);
     } else {
       if (prevSelected !== undefined) {
-        action.removeStat(id, target as Target, prevSelected.scaling, prevSelected.coef);
+        removeStats(prevSelected);
       }
     }
 
@@ -38,7 +52,7 @@
   // remove any added stats if
   onDestroy(() => {
     if (selected) {
-      action.removeStat(id, target as Target, selected.scaling, selected.coef as number);
+      removeStats(selected);
     }
   });
 
