@@ -39,9 +39,10 @@ function createAction() {
             state.enemy[scaling] += coef;
             break;
           case 'nearby':
-            state.one[scaling] += coef;
-            state.two[scaling] += coef;
-            state.three[scaling] += coef;
+            if (id !== 'main') state.main[scaling] += coef;
+            if (id !== 'one') state.one[scaling] += coef;
+            if (id !== 'two') state.two[scaling] += coef;
+            if (id !== 'three') state.three[scaling] += coef;
             break;
         }
         return state;
@@ -62,9 +63,10 @@ function createAction() {
             state.enemy[scaling] -= coef;
             break;
           case 'nearby':
-            state.one[scaling] -= coef;
-            state.two[scaling] -= coef;
-            state.three[scaling] -= coef;
+            if (id !== 'main') state.main[scaling] += coef;
+            if (id !== 'one') state.one[scaling] += coef;
+            if (id !== 'two') state.two[scaling] += coef;
+            if (id !== 'three') state.three[scaling] += coef;
             break;
         }
         return state;
