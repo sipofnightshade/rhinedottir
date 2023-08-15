@@ -1,28 +1,30 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/actions';
+  // types & misc
+  import type { Action, ActionValue, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import type { ALL_STATS } from '$lib/types/talents';
-
-  import { action, type ActionId } from '$lib/stores/actionStore';
+  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
   import { onDestroy, onMount } from 'svelte';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
 
   // component imports
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
 
+  // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionId;
+  export let stats: Record<All_Stats, number>;
 
   $: target = data.target ?? 'self';
 
-  type SELECTED = { [key in ALL_STATS]?: boolean };
-  type STAT = { scaling: ALL_STATS; coef: number | number[] };
+  type SELECTED = { [key in All_Stats]?: boolean };
+  type Stat = { scaling: All_Stats; coef: number };
 
   let selectedStats: SELECTED = {};
   let isActive = false;
-  let addedStats: STAT[] = [];
+  let addedStats: Stat[] = [];
 
   onMount(() => {
     data.values.forEach(({ scaling }) => {
@@ -30,22 +32,39 @@
     });
   });
 
-  function handleClick(stat: STAT) {
-    selectedStats[stat.scaling] = !selectedStats[stat.scaling];
-    if (selectedStats[stat.scaling] === true) {
-      action.addStat(id, target as Target, stat.scaling, stat.coef as number);
-      addedStats.push(stat);
-    } else {
-      action.removeStat(id, target as Target, stat.scaling, stat.coef as number);
-      addedStats = addedStats.filter((s) => s.scaling !== stat.scaling);
+  function addStats(stat: ActionValue) {
+    const { scaling, coef, source } = stat;
+    const result = calcCoefficient(coef as number, stats, source);
+
+    action.addStat(id, target as Target, scaling, result);
+    addedStats.push({ scaling, coef: result });
+  }
+
+  function removeStats(stat: ActionValue) {
+    const foundIndex = addedStats.findIndex((x) => x.scaling === stat.scaling);
+    if (foundIndex !== -1) {
+      const { scaling, coef } = addedStats[foundIndex];
+      action.removeStat(id, target as Target, scaling, coef);
+      addedStats.splice(foundIndex, 1);
     }
   }
 
-  // remove any added stats if
+  function handleClick(stat: ActionValue) {
+    selectedStats[stat.scaling] = !selectedStats[stat.scaling];
+    if (selectedStats[stat.scaling] === true) {
+      addStats(stat);
+    } else {
+      removeStats(stat);
+    }
+  }
+
+  // remove any added stats if they exist
   onDestroy(() => {
-    addedStats.forEach((stat: STAT) => {
-      action.removeStat(id, target as Target, stat.scaling, stat.coef as number);
-    });
+    if (addedStats.length > 0) {
+      addedStats.forEach((stat: Stat) => {
+        action.removeStat(id, target as Target, stat.scaling, stat.coef);
+      });
+    }
   });
 
   // handle Modal
