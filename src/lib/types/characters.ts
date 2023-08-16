@@ -66,7 +66,7 @@ export type CharacterNames =
   | 'yunjin'
   | 'kaveh'
   | 'kirara'
-  // | 'lyney'
-  // | 'lynette'
-  // | 'freminet'
+  | 'lyney'
+  | 'lynette'
+  | 'freminet'
   | 'zhongli';

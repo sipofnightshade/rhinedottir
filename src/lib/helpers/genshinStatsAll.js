@@ -4138,6 +4138,186 @@ var _ = {
           specialized: 0.2879999876022339
         }
       ]
+    },
+    lynette: {
+      base: {
+        hp: 1039.4417724609375,
+        attack: 19.410720825195312,
+        defense: 59.68567657470703,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S4',
+        attack: 'GROW_CURVE_ATTACK_S4',
+        defense: 'GROW_CURVE_HP_S4'
+      },
+      specialized: 'FIGHT_PROP_WIND_ADD_HURT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 776.5161743164062,
+          attack: 14.501141548156738,
+          defense: 44.58824920654297,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1328.2513427734375,
+          attack: 24.804584503173828,
+          defense: 76.26937866210938,
+          specialized: 0.05999999865889549
+        },
+        {
+          maxlevel: 60,
+          hp: 2063.8984375,
+          attack: 38.54250717163086,
+          defense: 118.51087188720703,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 70,
+          hp: 2615.633544921875,
+          attack: 48.845951080322266,
+          defense: 150.19200134277344,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 80,
+          hp: 3167.36865234375,
+          attack: 59.14939498901367,
+          defense: 181.8731231689453,
+          specialized: 0.18000000715255737
+        },
+        {
+          maxlevel: 90,
+          hp: 3719.10400390625,
+          attack: 69.45283508300781,
+          defense: 213.5542449951172,
+          specialized: 0.23999999463558197
+        }
+      ]
+    },
+    lyney: {
+      base: {
+        hp: 857.9879760742188,
+        attack: 24.76460075378418,
+        defense: 41.88100051879883,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S5',
+        attack: 'GROW_CURVE_ATTACK_S5',
+        defense: 'GROW_CURVE_HP_S5'
+      },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 735.6471557617188,
+          attack: 21.231853485107422,
+          defense: 35.90999984741211,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1258.34375,
+          attack: 36.31764602661133,
+          defense: 61.42499923706055,
+          specialized: 0.04800000041723251
+        },
+        {
+          maxlevel: 60,
+          hp: 1955.2725830078125,
+          attack: 56.43203353881836,
+          defense: 95.44499969482422,
+          specialized: 0.09600000083446503
+        },
+        {
+          maxlevel: 70,
+          hp: 2477.96923828125,
+          attack: 71.517822265625,
+          defense: 120.95999908447266,
+          specialized: 0.09600000083446503
+        },
+        {
+          maxlevel: 80,
+          hp: 3000.666015625,
+          attack: 86.6036148071289,
+          defense: 146.47500610351562,
+          specialized: 0.14399999380111694
+        },
+        {
+          maxlevel: 90,
+          hp: 3523.362548828125,
+          attack: 101.68940734863281,
+          defense: 171.99000549316406,
+          specialized: 0.19200000166893005
+        }
+      ]
+    },
+    freminet: {
+      base: {
+        hp: 1012.0880126953125,
+        attack: 21.369600296020508,
+        defense: 59.39955139160156,
+        critrate: 0.05000000074505806,
+        critdmg: 0.5
+      },
+      curve: {
+        hp: 'GROW_CURVE_HP_S4',
+        attack: 'GROW_CURVE_ATTACK_S4',
+        defense: 'GROW_CURVE_HP_S4'
+      },
+      specialized: 'FIGHT_PROP_ATTACK_PERCENT',
+      promotion: [
+        { maxlevel: 20, hp: 0, attack: 0, defense: 0, specialized: 0 },
+        {
+          maxlevel: 40,
+          hp: 756.08154296875,
+          attack: 15.964559555053711,
+          defense: 44.3745002746582,
+          specialized: 0
+        },
+        {
+          maxlevel: 50,
+          hp: 1293.29736328125,
+          attack: 27.30780029296875,
+          defense: 75.90374755859375,
+          specialized: 0.05999999865889549
+        },
+        {
+          maxlevel: 60,
+          hp: 2009.585205078125,
+          attack: 42.43212127685547,
+          defense: 117.9427490234375,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 70,
+          hp: 2546.801025390625,
+          attack: 53.775360107421875,
+          defense: 149.4720001220703,
+          specialized: 0.11999999731779099
+        },
+        {
+          maxlevel: 80,
+          hp: 3084.016845703125,
+          attack: 65.11859893798828,
+          defense: 181.00125122070312,
+          specialized: 0.18000000715255737
+        },
+        {
+          maxlevel: 90,
+          hp: 3621.232666015625,
+          attack: 76.46183776855469,
+          defense: 212.53050231933594,
+          specialized: 0.23999999463558197
+        }
+      ]
     }
   },
   e = {
@@ -5143,6 +5323,48 @@ var a = {
         { maxlevel: 90, attack: 155.60000610351562 }
       ]
     },
+    wolffang: {
+      base: { attack: 42.4010009765625, specialized: 0.05999999865889549 },
+      curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    finaleofthedeep: {
+      base: { attack: 43.734901428222656, specialized: 0.05999999865889549 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_ATTACK_PERCENT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    fleuvecendreferryman: {
+      base: { attack: 42.4010009765625, specialized: 0.10000000149011612 },
+      curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CHARGE_EFFICIENCY',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
     aquilafavonia: {
       base: { attack: 47.5369987487793, specialized: 0.09000000357627869 },
       curve: { attack: 'GROW_CURVE_ATTACK_302', specialized: 'GROW_CURVE_CRITICAL_301' },
@@ -5599,6 +5821,34 @@ var a = {
         { maxlevel: 90, attack: 155.60000610351562 }
       ]
     },
+    talkingstick: {
+      base: { attack: 43.734901428222656, specialized: 0.03999999910593033 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    tidalshadow: {
+      base: { attack: 42.4010009765625, specialized: 0.09000000357627869 },
+      curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_ATTACK_PERCENT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
     skywardpride: {
       base: { attack: 47.5369987487793, specialized: 0.07999999821186066 },
       curve: { attack: 'GROW_CURVE_ATTACK_302', specialized: 'GROW_CURVE_CRITICAL_301' },
@@ -5933,6 +6183,34 @@ var a = {
       base: { attack: 42.4010009765625, specialized: 0.09000000357627869 },
       curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
       specialized: 'FIGHT_PROP_ATTACK_PERCENT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    balladofthefjords: {
+      base: { attack: 42.4010009765625, specialized: 0.05999999865889549 },
+      curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    rightfulreward: {
+      base: { attack: 43.734901428222656, specialized: 0.05999999865889549 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_HP_PERCENT',
       promotion: [
         { maxlevel: 20, attack: 0 },
         { maxlevel: 40, attack: 25.899999618530273 },
@@ -6347,6 +6625,34 @@ var a = {
       base: { attack: 42.4010009765625, specialized: 0.10000000149011612 },
       curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
       specialized: 'FIGHT_PROP_CHARGE_EFFICIENCY',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    sacrificialjade: {
+      base: { attack: 41.067100524902344, specialized: 0.07999999821186066 },
+      curve: { attack: 'GROW_CURVE_ATTACK_204', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    flowingpurity: {
+      base: { attack: 43.734901428222656, specialized: 0.05999999865889549 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_ATTACK_PERCENT',
       promotion: [
         { maxlevel: 20, attack: 0 },
         { maxlevel: 40, attack: 25.899999618530273 },
@@ -6827,6 +7133,34 @@ var a = {
         { maxlevel: 90, attack: 155.60000610351562 }
       ]
     },
+    scionoftheblazingsun: {
+      base: { attack: 43.734901428222656, specialized: 0.03999999910593033 },
+      curve: { attack: 'GROW_CURVE_ATTACK_202', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
+    songofstillness: {
+      base: { attack: 42.4010009765625, specialized: 0.09000000357627869 },
+      curve: { attack: 'GROW_CURVE_ATTACK_201', specialized: 'GROW_CURVE_CRITICAL_201' },
+      specialized: 'FIGHT_PROP_ATTACK_PERCENT',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 25.899999618530273 },
+        { maxlevel: 50, attack: 51.900001525878906 },
+        { maxlevel: 60, attack: 77.80000305175781 },
+        { maxlevel: 70, attack: 103.69999694824219 },
+        { maxlevel: 80, attack: 129.6999969482422 },
+        { maxlevel: 90, attack: 155.60000610351562 }
+      ]
+    },
     skywardharp: {
       base: { attack: 47.5369987487793, specialized: 0.04800000041723251 },
       curve: { attack: 'GROW_CURVE_ATTACK_302', specialized: 'GROW_CURVE_CRITICAL_301' },
@@ -6915,6 +7249,20 @@ var a = {
       base: { attack: 44.33580017089844, specialized: 0.09600000083446503 },
       curve: { attack: 'GROW_CURVE_ATTACK_304', specialized: 'GROW_CURVE_CRITICAL_301' },
       specialized: 'FIGHT_PROP_CRITICAL',
+      promotion: [
+        { maxlevel: 20, attack: 0 },
+        { maxlevel: 40, attack: 31.100000381469727 },
+        { maxlevel: 50, attack: 62.20000076293945 },
+        { maxlevel: 60, attack: 93.4000015258789 },
+        { maxlevel: 70, attack: 124.5 },
+        { maxlevel: 80, attack: 155.60000610351562 },
+        { maxlevel: 90, attack: 186.6999969482422 }
+      ]
+    },
+    thefirstgreatmagic: {
+      base: { attack: 45.9364013671875, specialized: 0.14399999380111694 },
+      curve: { attack: 'GROW_CURVE_ATTACK_301', specialized: 'GROW_CURVE_CRITICAL_301' },
+      specialized: 'FIGHT_PROP_CRITICAL_HURT',
       promotion: [
         { maxlevel: 20, attack: 0 },
         { maxlevel: 40, attack: 31.100000381469727 },
@@ -8932,14 +9280,14 @@ var C = {
   calcStatsForCharacter: function (a, R) {
     const C = _[a];
     if (void 0 === C) return;
-    const T = C.promotion[C.promotion.length - 1].maxlevel;
-    let [t, A] = (function (_) {
+    const t = C.promotion[C.promotion.length - 1].maxlevel;
+    let [T, A] = (function (_) {
       const e = /([0-9]+)(\+?)/.exec(_);
       return null !== e ? [e[1], e[2]] : [void 0, void 0];
     })(R);
-    if (void 0 === t) return;
-    if (((t = parseInt(t, 10)), isNaN(t))) return;
-    if (t > T || t < 1) return;
+    if (void 0 === T) return;
+    if (((T = parseInt(T, 10)), isNaN(T))) return;
+    if (T > t || T < 1) return;
     const [l, c] = (function (_, e, a) {
       for (let R = _.length - 2; R >= 0; R--) {
         if (e > _[R].maxlevel) return [R + 1, _[R + 1]];
@@ -8949,13 +9297,13 @@ var C = {
             : [R, _[R]];
       }
       return [0, _[0]];
-    })(C.promotion, t, A);
+    })(C.promotion, T, A);
     let E = {
-      level: t,
+      level: T,
       ascension: l,
-      hp: C.base.hp * e[t][C.curve.hp] + c.hp,
-      attack: C.base.attack * e[t][C.curve.attack] + c.attack,
-      defense: C.base.defense * e[t][C.curve.defense] + c.defense,
+      hp: C.base.hp * e[T][C.curve.hp] + c.hp,
+      attack: C.base.attack * e[T][C.curve.attack] + c.attack,
+      defense: C.base.defense * e[T][C.curve.defense] + c.defense,
       specialized: c.specialized,
       substat: C.specialized
     };
@@ -8970,14 +9318,14 @@ var C = {
   calcStatsForWeapon: function (_, e) {
     const C = a[_];
     if (void 0 === C) return;
-    const T = C.promotion[C.promotion.length - 1].maxlevel;
-    let [t, A] = (function (_) {
+    const t = C.promotion[C.promotion.length - 1].maxlevel;
+    let [T, A] = (function (_) {
       let e = /([0-9]+)(\+?)/.exec(_);
       return null !== e ? [e[1], e[2]] : [void 0, void 0];
     })(e);
-    if (void 0 === t) return;
-    if (((t = parseInt(t, 10)), isNaN(t))) return;
-    if (t > T || t < 1) return;
+    if (void 0 === T) return;
+    if (((T = parseInt(T, 10)), isNaN(T))) return;
+    if (T > t || T < 1) return;
     const [l, c] = (function (_, e, a) {
       for (let R = _.length - 2; R >= 0; R--) {
         if (e > _[R].maxlevel) return [R + 1, _[R + 1]];
@@ -8987,12 +9335,12 @@ var C = {
             : [R, _[R]];
       }
       return [0, _[0]];
-    })(C.promotion, t, A);
+    })(C.promotion, T, A);
     return {
-      level: t,
+      level: T,
       ascension: l,
-      attack: C.base.attack * R[t][C.curve.attack] + c.attack,
-      specialized: C.base.specialized * R[t][C.curve.specialized],
+      attack: C.base.attack * R[T][C.curve.attack] + c.attack,
+      specialized: C.base.specialized * R[T][C.curve.specialized],
       substat: C.specialized
     };
   }
