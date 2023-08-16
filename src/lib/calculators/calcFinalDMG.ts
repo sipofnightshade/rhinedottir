@@ -1,5 +1,8 @@
+// types
 import type { DamageType } from '$lib/types/global';
 import type { Hit, HitDMG } from '$lib/types/talents';
+
+// calculators
 import { calcAmplifying } from './calcAmplifyingMultiplier';
 import { calcCatalyzeBonus } from './calcCatalyzeBonus';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
@@ -10,7 +13,7 @@ import { calcTransforming } from './calcTransforming';
 
 export function calcFinalDMG(
   hit: Hit,
-  values: any,
+  values: { [x: string]: number[] },
   element: DamageType,
   $character: any,
   $stats: any,
@@ -54,10 +57,6 @@ export function calcFinalDMG(
 
   const FinalDMG = hit.damage.reduce(
     (total: any, damage: HitDMG, i: number) => {
-      // const hitDMG = damage.coef
-      //   ? $stats[damage.scaling] * damage.coef
-      //   : $stats[damage.scaling] * values[damage.param as keyof typeof values][talentLvl];
-
       const hitDMG = calcHitDamage(damage, $stats, values, talentLvl);
 
       // the damage with NO REACTIONS
