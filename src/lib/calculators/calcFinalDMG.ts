@@ -1,11 +1,11 @@
 import type { DamageType } from '$lib/types/global';
-import type { Hit } from '$lib/types/talents';
+import type { Hit, HitDMG } from '$lib/types/talents';
 import { calcAmplifying } from './calcAmplifyingMultiplier';
 import { calcCatalyzeBonus } from './calcCatalyzeBonus';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
 import { calcDMGBonus } from './calcDMGBonus';
 import { calcDamageNoReaction } from './calcDamageNoReaction';
-import { multiScalingDMG, singleScalingDMG } from './calcHitDamage';
+import { calcHitDamage } from './calcHitDamage';
 import { calcTransforming } from './calcTransforming';
 
 export function calcFinalDMG(
@@ -53,14 +53,12 @@ export function calcFinalDMG(
   const talentLvl = $character[addStats.talentLvlId];
 
   const FinalDMG = hit.damage.reduce(
-    (total: any, damage, i) => {
+    (total: any, damage: HitDMG, i: number) => {
       // const hitDMG = damage.coef
       //   ? $stats[damage.scaling] * damage.coef
       //   : $stats[damage.scaling] * values[damage.param as keyof typeof values][talentLvl];
 
-      const hitDMG = Array.isArray(damage)
-        ? multiScalingDMG(damage, $stats, values, talentLvl)
-        : singleScalingDMG(damage, $stats, values, talentLvl);
+      const hitDMG = calcHitDamage(damage, $stats, values, talentLvl);
 
       // the damage with NO REACTIONS
       const result = calcDamageNoReaction(

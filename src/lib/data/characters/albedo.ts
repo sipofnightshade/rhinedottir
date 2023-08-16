@@ -12,7 +12,7 @@ const charName: CharacterRecord = {
   c5: 'burst',
   burstCost: 40,
   talentNames: {
-    normal: 'Favonius Bladework - Weiss',
+    normal: 'Normal Attack: Favonius Bladework - Weiss',
     skill: 'Abiogenesis: Solar Isotoma',
     burst: 'Rite of Progeniture: Tectonic Tide'
   },
@@ -22,10 +22,12 @@ const charName: CharacterRecord = {
       tag: 'N1',
       damageBonus: 'normal',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param1'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
       ]
     },
     {
@@ -33,10 +35,12 @@ const charName: CharacterRecord = {
       tag: 'N2',
       damageBonus: 'normal',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param2'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
       ]
     },
     {
@@ -44,10 +48,12 @@ const charName: CharacterRecord = {
       tag: 'N3',
       damageBonus: 'normal',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param3'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
       ]
     },
     {
@@ -55,10 +61,12 @@ const charName: CharacterRecord = {
       tag: 'N4',
       damageBonus: 'normal',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param4'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ]
       ]
     },
     {
@@ -66,10 +74,12 @@ const charName: CharacterRecord = {
       tag: 'N5',
       damageBonus: 'normal',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param5'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param5'
+          }
+        ]
       ]
     }
   ],
@@ -79,14 +89,18 @@ const charName: CharacterRecord = {
       tag: 'CA',
       damageBonus: 'charged',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param6'
-        },
-        {
-          scaling: 'atk',
-          param: 'param7'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param7'
+          }
+        ]
       ]
     }
   ],
@@ -96,10 +110,12 @@ const charName: CharacterRecord = {
       tag: 'PD',
       damageBonus: 'plunge',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param9'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param9'
+          }
+        ]
       ]
     },
     {
@@ -107,10 +123,12 @@ const charName: CharacterRecord = {
       tag: 'PL',
       damageBonus: 'plunge',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param10'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param10'
+          }
+        ]
       ]
     },
     {
@@ -118,10 +136,12 @@ const charName: CharacterRecord = {
       tag: 'PH',
       damageBonus: 'plunge',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param11'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param11'
+          }
+        ]
       ]
     }
   ],
@@ -131,10 +151,12 @@ const charName: CharacterRecord = {
       tag: 'ES',
       damageBonus: 'skill',
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param1'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
       ]
     },
     {
@@ -143,10 +165,12 @@ const charName: CharacterRecord = {
       damageBonus: 'skill',
       hasOwnBonusDMG: true,
       damage: [
-        {
-          scaling: 'def',
-          param: 'param2'
-        }
+        [
+          {
+            scaling: 'def',
+            param: 'param2'
+          }
+        ]
       ]
     }
   ],
@@ -158,10 +182,12 @@ const charName: CharacterRecord = {
       damageBonus: 'burst',
       hasOwnBonusFlatDMG: true,
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param1'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
       ]
     },
     {
@@ -171,34 +197,48 @@ const charName: CharacterRecord = {
       damageBonus: 'burst',
       hasOwnBonusFlatDMG: true,
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        },
-        {
-          scaling: 'atk',
-          param: 'param2'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
       ]
     },
     {
@@ -207,10 +247,12 @@ const charName: CharacterRecord = {
       damageBonus: 'burst',
       hasOwnBonusFlatDMG: true,
       damage: [
-        {
-          scaling: 'atk',
-          param: 'param2'
-        }
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
       ]
     }
   ],

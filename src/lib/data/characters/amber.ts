@@ -6,6 +6,7 @@ const charName: CharacterRecord = {
   "fullName": "Amber",
   "rating": 4,
   "weapon": "bow",
+  "region": "mondstat",
   "vision": "pyro",
   "specialized": "atk%",
   "c3": "skill",
@@ -22,10 +23,12 @@ const charName: CharacterRecord = {
       "tag": "N1",
       "damageBonus": "normal",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param1"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param1"
+          }
+        ]
       ]
     },
     {
@@ -33,10 +36,12 @@ const charName: CharacterRecord = {
       "tag": "N2",
       "damageBonus": "normal",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param2"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param2"
+          }
+        ]
       ]
     },
     {
@@ -44,10 +49,12 @@ const charName: CharacterRecord = {
       "tag": "N3",
       "damageBonus": "normal",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param3"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param3"
+          }
+        ]
       ]
     },
     {
@@ -55,10 +62,12 @@ const charName: CharacterRecord = {
       "tag": "N4",
       "damageBonus": "normal",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param4"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param4"
+          }
+        ]
       ]
     },
     {
@@ -66,10 +75,12 @@ const charName: CharacterRecord = {
       "tag": "N5",
       "damageBonus": "normal",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param5"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param5"
+          }
+        ]
       ]
     }
   ],
@@ -79,10 +90,12 @@ const charName: CharacterRecord = {
       "tag": "CA",
       "damageBonus": "charged",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param6"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param6"
+          }
+        ]
       ]
     }
   ],
@@ -92,10 +105,12 @@ const charName: CharacterRecord = {
       "tag": "PD",
       "damageBonus": "plunge",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param9"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param9"
+          }
+        ]
       ]
     },
     {
@@ -103,10 +118,12 @@ const charName: CharacterRecord = {
       "tag": "PL",
       "damageBonus": "plunge",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param10"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param10"
+          }
+        ]
       ]
     },
     {
@@ -114,10 +131,12 @@ const charName: CharacterRecord = {
       "tag": "PH",
       "damageBonus": "plunge",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param11"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param11"
+          }
+        ]
       ]
     }
   ],
@@ -127,10 +146,12 @@ const charName: CharacterRecord = {
       "tag": "EP",
       "damageBonus": "skill",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param3"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param3"
+          }
+        ]
       ]
     }
   ],
@@ -141,10 +162,12 @@ const charName: CharacterRecord = {
       "multiHit": 9,
       "damageBonus": "burst",
       "damage": [
-        {
-          "scaling": "atk",
-          "param": "param1"
-        }
+        [
+          {
+            "scaling": "atk",
+            "param": "param1"
+          }
+        ]
       ]
     }
   ],

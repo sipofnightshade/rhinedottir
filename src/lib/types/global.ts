@@ -1,6 +1,6 @@
 import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
-import type { Action, ActionValues, Regions, Target } from './actions';
+import type { Action, ActionValue, Regions, Target } from './actions';
 import type { Hit, OffField } from './talents';
 
 export type SelectedCharacter = CharacterRecord;
@@ -28,7 +28,7 @@ export type SelectedWeapon = {
     shielded?: boolean;
     regions?: Regions[];
     unique?: boolean;
-    values: [ActionValues, ActionValues, ActionValues, ActionValues, ActionValues];
+    values: [ActionValue[], ActionValue[], ActionValue[], ActionValue[], ActionValue[]];
   }[];
 };
 

@@ -1,6 +1,34 @@
 import type { All_Stats } from '$lib/stores/actionStore';
 import type { Action } from './actions';
 
+type DamageValueID =
+  | 'param1'
+  | 'param2'
+  | 'param3'
+  | 'param4'
+  | 'param5'
+  | 'param6'
+  | 'param7'
+  | 'param8'
+  | 'param9'
+  | 'param10'
+  | 'param11'
+  | 'param12'
+  | 'param13'
+  | 'param14'
+  | 'param15'
+  | 'param16'
+  | 'param17'
+  | 'param18'
+  | 'param19'
+  | 'param20';
+
+export type HitDMG = {
+  scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';
+  param: DamageValueID;
+  coef?: number;
+}[];
+
 export type Hit = {
   name: string;
   tag?: string; // Empty string for hit fields that are showOnly
@@ -22,31 +50,7 @@ export type Hit = {
   hasOwnCritRate?: boolean; // These are for custom stats
   hasOwnCritDMG?: boolean; // These are for custom stats
   icd?: number;
-  damage: {
-    scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';
-    param:
-      | 'param1'
-      | 'param2'
-      | 'param3'
-      | 'param4'
-      | 'param5'
-      | 'param6'
-      | 'param7'
-      | 'param8'
-      | 'param9'
-      | 'param10'
-      | 'param11'
-      | 'param12'
-      | 'param13'
-      | 'param14'
-      | 'param15'
-      | 'param16'
-      | 'param17'
-      | 'param18'
-      | 'param19'
-      | 'param20';
-    coef?: number;
-  }[];
+  damage: HitDMG[];
 };
 
 export type StatObject = {
