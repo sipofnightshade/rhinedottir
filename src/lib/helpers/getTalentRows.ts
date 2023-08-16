@@ -1,5 +1,5 @@
 // types
-import type { ALL_STATS, Hit } from '$lib/types/talents';
+import type { Hit } from '$lib/types/talents';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { DamageType } from '$lib/types/global';
 import type { Enemy } from '$lib/types/enemy';
@@ -10,12 +10,13 @@ import { getCharacterName } from './getCharacterName';
 
 // data
 import TalentValues from '$lib/data/TalentValues.json';
+import type { All_Stats } from '$lib/stores/actionStore';
 
 type TalentType = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst';
 
 export function getTalentRows(
   character: CurrentCharacter,
-  stats: Record<ALL_STATS, number>,
+  stats: Record<All_Stats, number>,
   enemy: Enemy,
   type: TalentType,
   dmgType: DamageType
@@ -26,7 +27,7 @@ export function getTalentRows(
   const additionalStats = getAdditionalStats(type);
 
   const rows = character.selected[type].map((hit: Hit) => {
-    const element = hit.elemental ? hit.elemental : dmgType;
+    const element = hit.hasOwnDMGType ? hit.hasOwnDMGType : dmgType;
     //
     return calcFinalDMG(hit, values, element, character, stats, enemy, additionalStats);
   });
