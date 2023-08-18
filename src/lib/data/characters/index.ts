@@ -2,7 +2,7 @@ import { default as traveleranemo } from './traveleranemo';
 import { default as travelergeo } from './travelergeo';
 import { default as travelerelectro } from './travelerelectro';
 import { default as travelerdendro } from './travelerdendro';
-import { default as travelerhydro } from './travelerdendro';
+import { default as travelerhydro } from './travelerhydro';
 import { default as albedo } from './albedo';
 import { default as alhaitham } from './alhaitham';
 import { default as aloy } from './aloy';

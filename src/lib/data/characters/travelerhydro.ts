@@ -6,7 +6,7 @@ const charName: CharacterRecord = {
   rating: 5,
   weapon: 'sword',
   region: 'mondstat',
-  vision: 'geo',
+  vision: 'hydro',
   c3: 'skill',
   c5: 'burst',
   specialized: 'atk%',
