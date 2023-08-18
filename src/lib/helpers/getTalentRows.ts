@@ -11,6 +11,7 @@ import { getCharacterName } from './getCharacterName';
 // data
 import TalentValues from '$lib/data/TalentValues.json';
 import type { All_Stats } from '$lib/stores/actionStore';
+import { getCombatValue } from './getCombatValue';
 
 type TalentType = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst';
 
@@ -33,17 +34,6 @@ export function getTalentRows(
   });
 
   return rows;
-}
-
-function getCombatValue(type: TalentType) {
-  switch (type) {
-    case 'skill':
-      return 'combat2';
-    case 'burst':
-      return 'combat3';
-    default:
-      return 'combat1';
-  }
 }
 
 function getAdditionalStats(type: TalentType) {
