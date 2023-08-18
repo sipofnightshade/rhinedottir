@@ -1,3 +1,7 @@
+import type TalentValues from '$lib/data/TalentValues.json';
+
+export type CharacterSpecificNames = keyof typeof TalentValues;
+
 export type CharacterNames =
   | 'aether'
   | 'albedo'

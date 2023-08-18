@@ -37,6 +37,7 @@
       type={$character.selected.vision}
       id="main"
       stats={$stats.main}
+      character={$character}
     />
   {/each}
   <!-- main weapon actions -->
@@ -52,6 +53,7 @@
         type={$party.one.character.selected.vision}
         id="one"
         stats={$stats.p1}
+        character={$party.one.character}
       />
     {/each}
     <ArtifactButton
@@ -70,6 +72,7 @@
         type={$party.two.character.selected.vision}
         id="two"
         stats={$stats.p2}
+        character={$party.two.character}
       />
     {/each}
     <ArtifactButton
@@ -88,6 +91,7 @@
         type={$party.three.character.selected.vision}
         id="three"
         stats={$stats.p3}
+        character={$party.three.character}
       />
     {/each}
     <ArtifactButton

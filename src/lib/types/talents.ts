@@ -1,7 +1,7 @@
 import type { All_Stats } from '$lib/stores/actionStore';
 import type { Action } from './actions';
 
-type DamageValueID =
+export type DamageValueID =
   | 'param1'
   | 'param2'
   | 'param3'
@@ -24,7 +24,7 @@ type DamageValueID =
   | 'param20';
 
 export type HitDMG = {
-  scaling: 'atk' | 'def' | 'hp' | 'em' | 'energy' | 'healing';
+  scaling: All_Stats;
   param: DamageValueID;
   coef?: number;
 }[];
