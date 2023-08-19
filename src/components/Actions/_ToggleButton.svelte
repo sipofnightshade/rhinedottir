@@ -1,27 +1,27 @@
 <script lang="ts">
   // types
-  import type { Action, Target } from '$lib/types/actions';
+  import type { Action, ActionBtnID, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import type { ActionId } from '$lib/stores/actionStore';
   import type { All_Stats } from '$lib/stores/actionStore';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
+
+  // components
+  import ActionButton from './ActionButton.svelte';
 
   // other
-  import ActionButton from './ActionButton.svelte';
   import { action } from '$lib/stores/actionStore';
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
-  import type { DamageValueID } from '$lib/types/talents';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
-  import type { CurrentCharacter } from '$lib/stores/characterStore';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
-  import type { CharacterSpecificNames } from '$lib/types/characters';
+  import { stats } from '$lib/stores/statsStore';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
-  export let id: ActionId;
-  export let stats: Record<All_Stats, number>;
+  export let id: ActionBtnID;
   export let character: CurrentCharacter;
 
   const target = data.target ?? 'self';
@@ -44,8 +44,11 @@
               talentLvl
             )
           : coef;
-      console.log('talentValue:', talentValue);
-      const result = calcCoefficient(talentValue, stats, source);
+      const result = calcCoefficient(
+        talentValue,
+        $stats[id] as Record<All_Stats, number>,
+        source
+      );
 
       if (!addedStats[i]) addedStats[i] = 0;
       addedStats[i] += result;

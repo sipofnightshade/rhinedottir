@@ -8,22 +8,23 @@
 
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
-  import { action } from '$lib/stores/actionStore';
+  import { action, type All_Stats } from '$lib/stores/actionStore';
 
   // types
   import type { ArtifactState } from '$lib/stores/artifactStore';
-  import type { ALL_STATS } from '$lib/types/talents';
   import type { Action } from '$lib/types/actions';
-  import type { SelectedCharacter, WeaponCategory } from '$lib/types/global';
+  import type { WeaponCategory } from '$lib/types/global';
   import { activeSets } from '$lib/stores/activeSetsStore';
   import type { ArtifactNames } from '$lib/types/artifacts';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
 
   // props
   export let setData: ArtifactState;
   export let id: 'main' | 'one' | 'two' | 'three';
-  export let char: SelectedCharacter;
 
-  type Stats = { scaling: ALL_STATS; coef: number | number[] };
+  export let character: CurrentCharacter;
+
+  type Stats = { scaling: All_Stats; coef: number | number[] };
 
   const buttons = {
     toggle: ToggleButton,
@@ -63,7 +64,7 @@
     activeSets.setActiveSet('artifacts', id, currentActive.url as ArtifactNames);
   }
 
-  $: setBonuses(setData, char.weapon);
+  $: setBonuses(setData, character.selected.weapon);
 </script>
 
 {#if currentActive?.actionType}
@@ -72,5 +73,6 @@
     data={currentActive}
     type="artifact"
     {id}
+    {character}
   />
 {/if}

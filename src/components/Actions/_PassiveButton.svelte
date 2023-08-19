@@ -1,24 +1,53 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/actions';
+  // types
+  import type { Action, ActionBtnID, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import ActionButton from './ActionButton.svelte';
-  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
-  import { onMount } from 'svelte';
-  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
+  import type { All_Stats } from '$lib/stores/actionStore';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
 
+  // components
+  import ActionButton from './ActionButton.svelte';
+
+  // other
+  import { action } from '$lib/stores/actionStore';
+  import { onDestroy, onMount } from 'svelte';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
+  import { getCharacterName } from '$lib/helpers/getCharacterName';
+  import { getCombatValue } from '$lib/helpers/getCombatValue';
+  import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
+  import { stats } from '$lib/stores/statsStore';
+
+  // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
-  export let id: ActionId;
-  export let stats: Record<All_Stats, number>;
+  export let id: ActionBtnID;
+  export let character: CurrentCharacter;
 
-  $: target = data.target ?? 'self';
+  const target = data.target ?? 'self';
+  const cName = getCharacterName(character.selected);
+  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
   let addedStats: number[] = [];
 
   onMount(() => {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
-      const result = calcCoefficient(coef as number, stats, source);
+      const talentValue =
+        talentLvl && combatValue
+          ? getCoefficientFromValues(
+              combatValue,
+              cName as CharacterSpecificNames,
+              coef,
+              talentLvl
+            )
+          : coef;
+      const result = calcCoefficient(
+        talentValue,
+        $stats[id] as Record<All_Stats, number>,
+        source
+      );
 
       if (!addedStats[i]) addedStats[i] = 0;
       addedStats[i] += result;

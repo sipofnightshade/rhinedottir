@@ -1,23 +1,36 @@
 <script lang="ts">
-  import type { Action, CoefSource, Target } from '$lib/types/actions';
+  // types & misc
+  import type { Action, ActionBtnID, CoefSource, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
+
+  // external functions & stores
+  import { action, type All_Stats } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
-
-  import ActionModal from '../Modal/ActionModal.svelte';
-  import ActionButton from './ActionButton.svelte';
-  import { onDestroy } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
-  import { enemy } from '$lib/stores/enemyStore';
+  import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
+  import { getCharacterName } from '$lib/helpers/getCharacterName';
+  import { getCombatValue } from '$lib/helpers/getCombatValue';
+  import { stats } from '$lib/stores/statsStore';
 
+  // component
+  import ActionButton from './ActionButton.svelte';
+  import ActionModal from '../Modal/ActionModal.svelte';
+
+  // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
-  export let id: ActionId;
-  export let stats: Record<All_Stats, number>;
+  export let id: ActionBtnID;
+  export let character: CurrentCharacter;
 
   type Stat = { scaling: All_Stats; coef: number; source: CoefSource };
 
-  $: target = data.target ?? 'self';
+  const target = data.target ?? 'self';
+  const cName = getCharacterName(character.selected);
+  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
   let selected: Stat | undefined;
   let prevSelected: Stat | undefined;
@@ -27,9 +40,22 @@
 
   function addStats(selected: Stat) {
     const { scaling, coef, source } = selected;
-    const result = calcCoefficient(coef as number, stats, source);
-    action.addStat(id, target as Target, scaling, result);
+    const talentValue =
+      talentLvl && combatValue
+        ? getCoefficientFromValues(
+            combatValue,
+            cName as CharacterSpecificNames,
+            coef,
+            talentLvl
+          )
+        : coef;
+    const result = calcCoefficient(
+      talentValue,
+      $stats[id] as Record<All_Stats, number>,
+      source
+    );
 
+    action.addStat(id, target as Target, scaling, result);
     // Store the calculated coefficient value
     addedStats[scaling] = result;
 
@@ -71,7 +97,7 @@
     onSelect(selected);
   }
 
-  $: console.log($enemy);
+  $: console.log('Current AddedStats -', addedStats);
 
   let dialog: HTMLDialogElement;
 

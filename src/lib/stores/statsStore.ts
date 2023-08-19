@@ -58,9 +58,9 @@ function createStats() {
 
       return {
         main: { ...main, partyBurstCost, partyMaxEM },
-        p1: p1Stats ? { ...p1Stats, partyBurstCost, partyMaxEM } : undefined,
-        p2: p2Stats ? { ...p2Stats, partyBurstCost, partyMaxEM } : undefined,
-        p3: p3Stats ? { ...p3Stats, partyBurstCost, partyMaxEM } : undefined
+        one: p1Stats ? { ...p1Stats, partyBurstCost, partyMaxEM } : undefined,
+        two: p2Stats ? { ...p2Stats, partyBurstCost, partyMaxEM } : undefined,
+        three: p3Stats ? { ...p3Stats, partyBurstCost, partyMaxEM } : undefined
       };
     }
   );

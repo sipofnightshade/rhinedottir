@@ -1,23 +1,34 @@
 <script lang="ts">
   // types & misc
-  import type { Action, ActionValue, Target } from '$lib/types/actions';
+  import type { Action, ActionBtnID, ActionValue, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
+
+  // external functions & stores
+  import { action, type All_Stats } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
   import { onDestroy, onMount } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
+  import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
+  import { getCharacterName } from '$lib/helpers/getCharacterName';
+  import { getCombatValue } from '$lib/helpers/getCombatValue';
+  import { stats } from '$lib/stores/statsStore';
 
-  // component imports
+  // component
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
-  export let id: ActionId;
-  export let stats: Record<All_Stats, number>;
+  export let id: ActionBtnID;
+  export let character: CurrentCharacter;
 
-  $: target = data.target ?? 'self';
+  const target = data.target ?? 'self';
+  const cName = getCharacterName(character.selected);
+  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
   type SELECTED = { [key in All_Stats]?: boolean };
   type Stat = { scaling: All_Stats; coef: number };
@@ -34,7 +45,20 @@
 
   function addStats(stat: ActionValue) {
     const { scaling, coef, source } = stat;
-    const result = calcCoefficient(coef as number, stats, source);
+    const talentValue =
+      talentLvl && combatValue
+        ? getCoefficientFromValues(
+            combatValue,
+            cName as CharacterSpecificNames,
+            coef,
+            talentLvl
+          )
+        : coef;
+    const result = calcCoefficient(
+      talentValue,
+      $stats[id] as Record<All_Stats, number>,
+      source
+    );
 
     action.addStat(id, target as Target, scaling, result);
     addedStats.push({ scaling, coef: result });

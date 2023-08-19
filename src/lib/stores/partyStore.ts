@@ -1,9 +1,12 @@
 import { writable } from 'svelte/store';
+import type { CurrentCharacter } from './characterStore';
+import type { ArtifactState } from './artifactStore';
+import type { CurrentWeapon } from './weaponStore';
 
 type CharacterBuild = {
-  character: any;
-  artifacts: any;
-  weapon: any;
+  character: CurrentCharacter;
+  artifacts: ArtifactState;
+  weapon: CurrentWeapon;
 };
 
 type Party = {

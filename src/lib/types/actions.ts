@@ -18,8 +18,10 @@ export type ActionType =
   | 'select'
   | 'multiSelect'
   | 'input'
-  | 'passive'
-  | 'visionMatch';
+  | 'passive';
+// | 'visionMatch';
+
+export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 
 export type CoefSource = [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
 
@@ -42,6 +44,6 @@ export type Action = {
   target?: Target;
   shielded?: boolean;
   unique?: boolean;
-  actionType?: ActionType;
+  actionType: ActionType;
   values: ActionValue[];
 };

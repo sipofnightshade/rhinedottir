@@ -1,6 +1,6 @@
-import type { ALL_STATS } from '$lib/types/talents';
 import type { SvelteComponent } from 'svelte';
 import type { WeaponCategory } from './global';
+import type { All_Stats } from '$lib/stores/actionStore';
 
 export type ArtifactNames =
   | 'none'
@@ -88,9 +88,9 @@ export type Action = {
     | 'passive'
     | 'visionMatch';
   values: {
-    scaling: ALL_STATS;
+    scaling: All_Stats;
     coef: number | number[];
-    source?: [ALL_STATS, number, number]; // [ the source stat, minimum, maximum]
+    source?: [All_Stats, number, number]; // [ the source stat, minimum, maximum]
   }[];
 };
 

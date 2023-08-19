@@ -3,7 +3,6 @@
   import { character } from '$lib/stores/characterStore';
   import { party } from '$lib/stores/partyStore';
   import { artifact } from '$lib/stores/artifactStore';
-  import { stats } from '$lib/stores/statsStore';
 
   // import components
   import ToggleButton from './_ToggleButton.svelte';
@@ -36,13 +35,12 @@
       {data}
       type={$character.selected.vision}
       id="main"
-      stats={$stats.main}
       character={$character}
     />
   {/each}
   <!-- main weapon actions -->
   <!-- main artifact actions -->
-  <ArtifactButton id="main" setData={$artifact} char={$character.selected} />
+  <ArtifactButton id="main" setData={$artifact} character={$character} />
 
   <!-- Party 1 -->
   {#if $party.one}
@@ -52,17 +50,15 @@
         {data}
         type={$party.one.character.selected.vision}
         id="one"
-        stats={$stats.p1}
         character={$party.one.character}
       />
     {/each}
     <ArtifactButton
       id="one"
       setData={$party.one.artifacts}
-      char={$party.one.character.selected}
+      character={$party.one.character}
     />
   {/if}
-
   <!-- Party 2 -->
   {#if $party.two}
     {#each $party.two.character.selected.actions as data}
@@ -71,14 +67,13 @@
         {data}
         type={$party.two.character.selected.vision}
         id="two"
-        stats={$stats.p2}
         character={$party.two.character}
       />
     {/each}
     <ArtifactButton
       id="two"
       setData={$party.two.artifacts}
-      char={$party.two.character.selected}
+      character={$party.two.character}
     />
   {/if}
 
@@ -90,14 +85,13 @@
         {data}
         type={$party.three.character.selected.vision}
         id="three"
-        stats={$stats.p3}
         character={$party.three.character}
       />
     {/each}
     <ArtifactButton
       id="three"
       setData={$party.three.artifacts}
-      char={$party.three.character.selected}
+      character={$party.three.character}
     />
   {/if}
 </section>

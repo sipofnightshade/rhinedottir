@@ -1,17 +1,33 @@
 <script lang="ts">
-  import type { Action, Target } from '$lib/types/actions';
+  // types
+  import type { Action, ActionBtnID, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import ActionButton from './ActionButton.svelte';
-  import { action, type ActionId, type All_Stats } from '$lib/stores/actionStore';
+  import type { CurrentCharacter } from '$lib/stores/characterStore';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
+
+  // helpers & calculator
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
+  import { getCharacterName } from '$lib/helpers/getCharacterName';
+  import { getCombatValue } from '$lib/helpers/getCombatValue';
+  import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
+
+  // stores &
+  import { action, type All_Stats } from '$lib/stores/actionStore';
+  import { stats } from '$lib/stores/statsStore';
+
+  // components
+  import ActionButton from './ActionButton.svelte';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
-  export let id: ActionId;
-  export let stats: Record<All_Stats, number>;
+  export let id: ActionBtnID;
+  export let character: CurrentCharacter;
 
   $: target = data.target ?? 'self';
+  const cName = getCharacterName(character.selected);
+  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
   let stacks = 0;
   let stackCoefs: number[] = [];
@@ -19,7 +35,23 @@
   function addStacks() {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
-      const result = calcCoefficient((coef as number[])[stacks - 1], stats, source);
+      const talentValue =
+        talentLvl && combatValue
+          ? getCoefficientFromValues(
+              combatValue,
+              cName as CharacterSpecificNames,
+              (coef as number[])[stacks - 1],
+              talentLvl
+            )
+          : (coef as number[])[stacks - 1];
+      const result = calcCoefficient(
+        talentValue,
+        $stats[id] as Record<All_Stats, number>,
+        source
+      );
+
+      console.log('talentValue', talentValue);
+      console.log('result', result);
 
       if (!stackCoefs[i]) stackCoefs[i] = 0;
       stackCoefs[i] += result;

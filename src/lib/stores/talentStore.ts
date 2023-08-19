@@ -56,27 +56,27 @@ function createTalents() {
       const two: any = {};
       const three: any = {};
 
-      if ($party.one && $stats.p1) {
+      if ($party.one && $stats.one) {
         const character = $party.one.character;
         const vision = character.selected.vision;
-        one['skill'] = getTalentRows(character, $stats.p1, $enemy, 'skill', vision);
-        one['burst'] = getTalentRows(character, $stats.p1, $enemy, 'burst', vision);
+        one['skill'] = getTalentRows(character, $stats.one, $enemy, 'skill', vision);
+        one['burst'] = getTalentRows(character, $stats.one, $enemy, 'burst', vision);
         one['name'] = character.selected.fullName;
       }
 
-      if ($party.two && $stats.p2) {
+      if ($party.two && $stats.two) {
         const character = $party.two.character;
         const vision = character.selected.vision;
-        two['skill'] = getTalentRows(character, $stats.p2, $enemy, 'skill', vision);
-        two['burst'] = getTalentRows(character, $stats.p2, $enemy, 'burst', vision);
+        two['skill'] = getTalentRows(character, $stats.two, $enemy, 'skill', vision);
+        two['burst'] = getTalentRows(character, $stats.two, $enemy, 'burst', vision);
         two['name'] = character.selected.fullName;
       }
 
-      if ($party.three && $stats.p3) {
+      if ($party.three && $stats.three) {
         const character = $party.three.character;
         const vision = character.selected.vision;
-        three['skill'] = getTalentRows(character, $stats.p3, $enemy, 'skill', vision);
-        three['burst'] = getTalentRows(character, $stats.p3, $enemy, 'burst', vision);
+        three['skill'] = getTalentRows(character, $stats.three, $enemy, 'skill', vision);
+        three['burst'] = getTalentRows(character, $stats.three, $enemy, 'burst', vision);
         three['name'] = character.selected.fullName;
       }
 
