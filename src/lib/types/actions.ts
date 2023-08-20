@@ -11,7 +11,15 @@ export type Regions =
   | 'natlan'
   | 'snezhnaya'
   | 'other';
-export type Target = 'self' | 'enemy' | 'party' | 'nearby' | 'active';
+export type Target =
+  | 'self'
+  | 'enemy'
+  | 'party'
+  | 'nearby'
+  | 'halfnearby'
+  | 'thirdnearby'
+  | 'active';
+
 export type ActionType =
   | 'stack'
   | 'toggle'

@@ -12,6 +12,8 @@ const initialState = {
   enemy: { ...allStats }
 };
 
+const idList = ['main', 'one', 'two', 'three'];
+
 export type ActionId = keyof typeof initialState;
 
 function createAction() {
@@ -21,10 +23,6 @@ function createAction() {
     subscribe,
     addStat: (id: ActionId, target: Target, scaling: All_Stats, coef: number) =>
       update((state) => {
-        // if (!state[id][scaling]) {
-        //   state[id][scaling] = 0;
-        // }
-
         switch (target) {
           case 'self':
             state[id][scaling] += coef;
@@ -42,10 +40,29 @@ function createAction() {
             state.enemy[scaling] += coef;
             break;
           case 'nearby':
-            if (id !== 'main') state.main[scaling] += coef;
-            if (id !== 'one') state.one[scaling] += coef;
-            if (id !== 'two') state.two[scaling] += coef;
-            if (id !== 'three') state.three[scaling] += coef;
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] += coef;
+              }
+            }
+            break;
+          case 'halfnearby':
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] += coef / 2;
+              } else {
+                state[id][scaling] += coef;
+              }
+            }
+            break;
+          case 'thirdnearby':
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] += coef / 3;
+              } else {
+                state[id][scaling] += coef;
+              }
+            }
             break;
         }
         return state;
@@ -69,10 +86,29 @@ function createAction() {
             state.enemy[scaling] -= coef;
             break;
           case 'nearby':
-            if (id !== 'main') state.main[scaling] += coef;
-            if (id !== 'one') state.one[scaling] += coef;
-            if (id !== 'two') state.two[scaling] += coef;
-            if (id !== 'three') state.three[scaling] += coef;
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] -= coef;
+              }
+            }
+            break;
+          case 'halfnearby':
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] -= coef / 2;
+              } else {
+                state[id][scaling] -= coef;
+              }
+            }
+            break;
+          case 'thirdnearby':
+            for (const nearbyId of idList) {
+              if (id !== nearbyId) {
+                state[nearbyId as keyof typeof initialState][scaling] -= coef / 3;
+              } else {
+                state[id][scaling] -= coef;
+              }
+            }
             break;
         }
         return state;
