@@ -104,7 +104,7 @@ function createAction() {
           case 'thirdnearby':
             for (const nearbyId of idList) {
               if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] -= coef / 3;
+                state[nearbyId as keyof typeof initialState][scaling] -= coef * 0.3; // not the full 33.33%
               } else {
                 state[id][scaling] -= coef;
               }
