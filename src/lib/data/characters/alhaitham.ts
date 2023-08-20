@@ -160,6 +160,7 @@ const charName: CharacterRecord = {
       tag: 'E1',
       damageBonus: 'skill',
       hasOwnBonusDMG: true,
+      icd: 2,
       damage: [
         [
           {
@@ -178,6 +179,7 @@ const charName: CharacterRecord = {
       tag: 'E2',
       damageBonus: 'skill',
       hasOwnBonusDMG: true,
+      icd: 2,
       damage: [
         [
           {
@@ -206,6 +208,7 @@ const charName: CharacterRecord = {
       tag: 'E3',
       damageBonus: 'skill',
       hasOwnBonusDMG: true,
+      icd: 2,
       damage: [
         [
           {
