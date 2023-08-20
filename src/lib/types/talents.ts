@@ -51,6 +51,7 @@ export type Hit = {
   hasOwnCritDMG?: boolean; // These are for custom stats
   icd?: number;
   damage: HitDMG[];
+  constellation?: 1 | 2 | 4 | 6;
 };
 
 export type StatObject = {
