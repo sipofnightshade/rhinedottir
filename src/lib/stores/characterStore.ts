@@ -3,6 +3,7 @@ import GenshinStats from '$lib/helpers/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
 import type { CharacterRecord } from '$lib/types/global';
 import traveleranemo from '$lib/data/characters/traveleranemo';
+import { allStats, type All_Stats } from '$lib/data/Stats';
 
 type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
@@ -19,11 +20,13 @@ export type CurrentCharacter = {
         substat: string;
       }
     | undefined;
+  additionalStats: Record<All_Stats, number>;
   lvl: number;
   constellation: number;
   atk: number;
   skill: number;
   burst: number;
+  // could put combos here as well
 };
 
 const initialState: CurrentCharacter = {
@@ -33,7 +36,8 @@ const initialState: CurrentCharacter = {
   atk: 9,
   skill: 9,
   burst: 9,
-  stats: GenshinStats.calcStatsForCharacter('aether', labels.lvlValues[13])
+  stats: GenshinStats.calcStatsForCharacter('aether', labels.lvlValues[13]),
+  additionalStats: { ...allStats }
 };
 
 function createCharacter() {
@@ -50,6 +54,10 @@ function createCharacter() {
           state.selected.name,
           labels.lvlValues[state.lvl]
         );
+        state.additionalStats = { ...allStats };
+        state.atk = 9;
+        state.skill = 9;
+        state.burst = 9;
         return state;
       }),
     increment: (key: Adjustable) =>

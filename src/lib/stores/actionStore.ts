@@ -1,15 +1,35 @@
 import { writable } from 'svelte/store';
-import { allStats } from '$lib/data/Stats';
 import type { Target } from '$lib/types/actions';
+import type { All_Stats } from '$lib/data/Stats';
 
-export type All_Stats = keyof typeof allStats;
+type StatProperty = {
+  [key: string]: number;
+};
 
-const initialState = {
-  main: { ...allStats },
-  one: { ...allStats },
-  two: { ...allStats },
-  three: { ...allStats },
-  enemy: { ...allStats }
+interface State {
+  main: StatProperty;
+  one: StatProperty;
+  two: StatProperty;
+  three: StatProperty;
+  enemy: StatProperty;
+}
+
+const initialState: State = {
+  main: {},
+  one: {},
+  two: {},
+  three: {},
+  enemy: {
+    anemoRes: 0,
+    cryoRes: 0,
+    dendroRes: 0,
+    electroRes: 0,
+    geoRes: 0,
+    hydroRes: 0,
+    pyroRes: 0,
+    physicalRes: 0,
+    dmgReduction: 0
+  }
 };
 
 const idList = ['main', 'one', 'two', 'three'];
@@ -23,44 +43,51 @@ function createAction() {
     subscribe,
     addStat: (id: ActionId, target: Target, scaling: All_Stats, coef: number) =>
       update((state) => {
+        // console.log(target, ' | ', scaling, coef);
+
+        const addStatValue = (id: ActionId, scaling: All_Stats, value: number) => {
+          if (!state[id][scaling]) state[id][scaling] = 0;
+          state[id][scaling] += value;
+        };
+
         switch (target) {
           case 'self':
-            state[id][scaling] += coef;
+            addStatValue(id, scaling, coef);
             break;
           case 'active':
-            state.main[scaling] += coef;
+            addStatValue('main', scaling, coef);
             break;
           case 'party':
-            state.main[scaling] += coef;
-            state.one[scaling] += coef;
-            state.two[scaling] += coef;
-            state.three[scaling] += coef;
+            addStatValue('main', scaling, coef);
+            addStatValue('one', scaling, coef);
+            addStatValue('two', scaling, coef);
+            addStatValue('three', scaling, coef);
             break;
           case 'enemy':
-            state.enemy[scaling] += coef;
+            addStatValue('enemy', scaling, coef);
             break;
           case 'nearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] += coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                addStatValue(nearbyId as keyof typeof initialState, scaling, coef);
               }
             }
             break;
           case 'halfnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] += coef / 2;
-              } else {
-                state[id][scaling] += coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                addStatValue(nearbyId as keyof typeof initialState, scaling, coef / 2);
+              } else if (id === nearbyId) {
+                addStatValue(id, scaling, coef);
               }
             }
             break;
           case 'thirdnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] += coef / 3;
-              } else {
-                state[id][scaling] += coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                addStatValue(nearbyId as keyof typeof initialState, scaling, coef * 0.3);
+              } else if (id === nearbyId) {
+                addStatValue(id, scaling, coef);
               }
             }
             break;
@@ -69,51 +96,66 @@ function createAction() {
       }),
     removeStat: (id: ActionId, target: Target, scaling: All_Stats, coef: number) =>
       update((state) => {
+        const removeStatValue = (id: ActionId, scaling: All_Stats, value: number) => {
+          if (state[id][scaling]) {
+            state[id][scaling] -= value;
+          }
+        };
+
         switch (target) {
           case 'self':
-            state[id][scaling] -= coef;
+            removeStatValue(id, scaling, coef);
             break;
           case 'active':
-            state.main[scaling] -= coef;
+            removeStatValue('main', scaling, coef);
             break;
           case 'party':
-            state.main[scaling] -= coef;
-            state.one[scaling] -= coef;
-            state.two[scaling] -= coef;
-            state.three[scaling] -= coef;
+            removeStatValue('main', scaling, coef);
+            removeStatValue('one', scaling, coef);
+            removeStatValue('two', scaling, coef);
+            removeStatValue('three', scaling, coef);
             break;
           case 'enemy':
-            state.enemy[scaling] -= coef;
+            removeStatValue('enemy', scaling, coef);
             break;
           case 'nearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] -= coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                removeStatValue(nearbyId as keyof typeof initialState, scaling, coef);
               }
             }
             break;
           case 'halfnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] -= coef / 2;
-              } else {
-                state[id][scaling] -= coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                removeStatValue(nearbyId as keyof typeof initialState, scaling, coef / 2);
+              } else if (id === nearbyId) {
+                removeStatValue(id, scaling, coef);
               }
             }
             break;
           case 'thirdnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId) {
-                state[nearbyId as keyof typeof initialState][scaling] -= coef * 0.3; // not the full 33.33%
-              } else {
-                state[id][scaling] -= coef;
+              if (id !== nearbyId && nearbyId !== 'enemy') {
+                removeStatValue(
+                  nearbyId as keyof typeof initialState,
+                  scaling,
+                  coef * 0.3
+                );
+              } else if (id === nearbyId) {
+                removeStatValue(id, scaling, coef);
               }
             }
             break;
         }
         return state;
       }),
-    reset: () => set(initialState)
+    reset: (id: ActionId) =>
+      update((state) => {
+        state[id] = {};
+        return state;
+      }),
+    resetAll: () => set({ ...initialState })
   };
 }
 
