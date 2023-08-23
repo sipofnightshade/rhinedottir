@@ -10,22 +10,20 @@ export function calcCoefficient(
     return coef;
   }
 
+  if (Number.isNaN(coef)) {
+    throw new Error(`Incorrent coef value was passed - coef: ${coef}`);
+  }
+
   const [statType, threshold, max] = source;
-  console.log('statType', statType);
-  console.log('threshold', threshold);
-  console.log('max', max);
 
   if ($stats && statType in $stats) {
     const statValue = $stats[statType];
 
     if (statValue >= threshold) {
-      console.log('statValue', statValue);
       const multipliedValue = coef * (statValue - threshold);
       if (max !== undefined && multipliedValue > max) {
-        console.log('value has exceeded max:', max);
         return max;
       }
-      console.log('multiplied value', multipliedValue);
       return multipliedValue;
     }
   }

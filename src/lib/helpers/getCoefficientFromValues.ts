@@ -8,6 +8,10 @@ export function getCoefficientFromValues(
   paramID: any,
   lvl: number
 ) {
+  if (Number.isFinite(paramID)) {
+    return paramID;
+  }
+
   const coef = TalentValues[cname][combatValue][paramID][lvl];
   console.log('getCoefficientFromValues:', coef);
   return coef;

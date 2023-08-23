@@ -15,7 +15,6 @@ function createStats() {
     ([$character, $weapon, $artifacts, $action, $party]) => {
       const main = getFinalStats($character, $weapon, $artifacts, $action.main);
 
-      // create the team special stats, like team energy, burst costs
       let partyBurstCost = $character.selected.burstCost;
 
       let p1Stats, p2Stats, p3Stats;

@@ -79,6 +79,8 @@ export const weaponStatLabels = {
   physical: 'Physical DMG Bonus'
 };
 
+export type All_Stats = keyof typeof allStats;
+
 export const allStats = {
   atk: 0,
   def: 0,
