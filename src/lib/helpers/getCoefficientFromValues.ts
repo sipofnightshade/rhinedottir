@@ -13,6 +13,5 @@ export function getCoefficientFromValues(
   }
 
   const coef = TalentValues[cname][combatValue][paramID][lvl];
-  console.log('getCoefficientFromValues:', coef);
   return coef;
 }

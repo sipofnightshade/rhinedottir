@@ -1,4 +1,4 @@
-import type { All_Stats } from '$lib/stores/actionStore';
+import type { All_Stats } from '$lib/data/Stats';
 import type { CoefSource } from '$lib/types/actions';
 
 export function calcCoefficient(
