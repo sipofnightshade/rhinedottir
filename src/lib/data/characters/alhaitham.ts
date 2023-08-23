@@ -643,7 +643,7 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Mysteries Laid Bare',
+      name: 'Structuration',
       url: 'UI_Talent_S_Alhatham_06',
       description:
         'Alhaitham gains the following effects: 2 seconds after Particular Field: Fetters of Phenomena is unleashed, he will generate 3 Chisel-Light Mirrors regardless of the number of mirrors consumed. If Alhaitham generates Chisel-Light Mirrors when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by 10% and 70% respectively for 6s. If this effect is triggered again during its initial duration, the duration remaining will be increased by 6s.',
