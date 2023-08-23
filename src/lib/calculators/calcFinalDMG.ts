@@ -38,7 +38,10 @@ export function calcFinalDMG(
   const critRate = hit.hasOwnCritRate
     ? $stats.cCritRate + $stats.critrate + $stats[addStats.critRate]
     : +$stats.critrate + $stats[addStats.critRate];
-  const critDMG = hit.hasOwnCritDMG ? $stats.cCritDMG + $stats.critdmg : $stats.critdmg;
+
+  const critDMG = hit.hasOwnCritDMG
+    ? $stats.cCritDMG + $stats.critdmg + $stats[addStats.critDMG]
+    : $stats.critdmg + $stats[addStats.critDMG];
 
   // get the talent specific flatDMG if it has one
   const ownBonusFlatDMG = hit.hasOwnBonusFlatDMG ? $stats.cBonusFlatDMG : 0;

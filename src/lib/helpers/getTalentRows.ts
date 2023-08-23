@@ -3,6 +3,7 @@ import type { Hit } from '$lib/types/talents';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { DamageType } from '$lib/types/global';
 import type { Enemy } from '$lib/types/enemy';
+import type { All_Stats } from '$lib/data/Stats';
 
 // helpers & calculators
 import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
@@ -10,7 +11,6 @@ import { getCharacterName } from './getCharacterName';
 
 // data
 import TalentValues from '$lib/data/TalentValues.json';
-import type { All_Stats } from '$lib/stores/actionStore';
 import { getCombatValue } from './getCombatValue';
 
 type TalentType = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst';
@@ -44,7 +44,8 @@ function getAdditionalStats(type: TalentType) {
         defIgnore: 'normalDefIgnore',
         talentLvlId: 'atk',
         flatDMG: 'normalFlatDMG',
-        critRate: 'normalCritRate'
+        critRate: 'normalCritRate',
+        critDMG: 'normalCritDMG'
       };
     case 'charged':
       return {
@@ -52,7 +53,8 @@ function getAdditionalStats(type: TalentType) {
         defIgnore: 'chargedDefIgnore',
         talentLvlId: 'atk',
         flatDMG: 'chargedFlatDMG',
-        critRate: 'chargedCritRate'
+        critRate: 'chargedCritRate',
+        critDMG: 'chargedCritDMG'
       };
     case 'plunge':
       return {
@@ -60,7 +62,8 @@ function getAdditionalStats(type: TalentType) {
         defIgnore: 'plungeDefIgnore',
         talentLvlId: 'atk',
         flatDMG: 'plungeFlatDMG',
-        critRate: 'plungeCritRate'
+        critRate: 'plungeCritRate',
+        critDMG: 'plungeCritDMG'
       };
     case 'skill':
       return {
@@ -68,7 +71,8 @@ function getAdditionalStats(type: TalentType) {
         defIgnore: 'skillDefIgnore',
         talentLvlId: 'skill',
         flatDMG: 'skillFlatDMG',
-        critRate: 'skillCritRate'
+        critRate: 'skillCritRate',
+        critDMG: 'skillCritDMG'
       };
     case 'burst':
       return {
@@ -76,7 +80,8 @@ function getAdditionalStats(type: TalentType) {
         defIgnore: 'burstDefIgnore',
         talentLvlId: 'burst',
         flatDMG: 'burstFlatDMG',
-        critRate: 'burstCritRate'
+        critRate: 'burstCritRate',
+        critDMG: 'burstCritDMG'
       };
   }
 }

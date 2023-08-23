@@ -1,4 +1,4 @@
-import type { All_Stats } from '$lib/stores/actionStore';
+import type { All_Stats } from '$lib/data/Stats';
 import type { Visions, WeaponCategory } from './global';
 import type { DamageValueID } from './talents';
 
