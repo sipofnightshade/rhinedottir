@@ -2,7 +2,6 @@
   // types
   import type { Action, ActionBtnID, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import type { All_Stats } from '$lib/stores/actionStore';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
 
@@ -12,11 +11,12 @@
   // other
   import { action } from '$lib/stores/actionStore';
   import { onDestroy } from 'svelte';
-  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
+  import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
   import { stats } from '$lib/stores/statsStore';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
@@ -26,15 +26,17 @@
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
-  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
-  let isActive = false;
-  let addedStats: number[] = [];
+  let previousTalentLvl: number | null = null;
+  $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+
+  let isActive: boolean = false;
+  let addedStats: { scaling: All_Stats; coef: number }[] = [];
 
   function addStats() {
-    data.values.forEach((value, i) => {
-      const { scaling, coef, source } = value; // 🛠 destructure target & param as well
+    data.values.forEach((value) => {
+      const { scaling, coef, source } = value;
       const talentValue =
         talentLvl && combatValue
           ? getCoefficientFromValues(
@@ -50,17 +52,15 @@
         source
       );
 
-      if (!addedStats[i]) addedStats[i] = 0;
-      addedStats[i] += result;
+      addedStats.push({ scaling, coef: result });
       action.addStat(id, target as Target, scaling, result);
     });
-    // add stats to temporary variable for unmounting purposes
   }
 
   function removeStats() {
-    data.values.forEach((value, i) => {
-      action.removeStat(id, target as Target, value.scaling, addedStats[i]);
-      addedStats[i] = 0;
+    addedStats.forEach((stat, i) => {
+      action.removeStat(id, target as Target, stat.scaling, stat.coef);
+      addedStats = [];
     });
   }
 
@@ -74,10 +74,25 @@
     }
   }
 
+  // ▶ if button has a talentLvl, and it changes while the button is Active,
+  // reset the current values that were added.
+  // ▶ if $stats[id] change then also run this reactivity statement
+  $: {
+    if (talentLvl !== previousTalentLvl || $stats[id]) {
+      if (isActive) {
+        removeStats();
+        addStats();
+      }
+      previousTalentLvl = talentLvl;
+    }
+  }
+
   onDestroy(() => {
-    if (addedStats.length > 0) {
+    if (isActive) {
       removeStats();
     }
+    isActive = false;
+    addedStats = [];
   });
 </script>
 
