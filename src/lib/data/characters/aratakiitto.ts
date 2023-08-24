@@ -179,6 +179,7 @@ const charName: CharacterRecord = {
       target: 'self',
       infusion: 'geo',
       hasLevels: 'burst',
+      sourceStats: ['def'],
       actionType: 'toggle',
       values: [
         {

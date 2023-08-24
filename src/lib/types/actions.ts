@@ -53,5 +53,6 @@ export type Action = {
   shielded?: boolean;
   unique?: boolean;
   actionType: ActionType;
+  sourceStats?: All_Stats[];
   values: ActionValue[];
 };

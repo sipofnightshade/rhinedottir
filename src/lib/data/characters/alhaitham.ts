@@ -589,6 +589,7 @@ const charName: CharacterRecord = {
       constellation: 0,
       target: 'self',
       actionType: 'toggle',
+      sourceStats: ['em'],
       values: [
         {
           scaling: 'cBonusDMG',

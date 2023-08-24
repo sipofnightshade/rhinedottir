@@ -297,6 +297,7 @@ const charName: CharacterRecord = {
       constellation: 2,
       target: 'self',
       actionType: 'stack',
+      sourceStats: ['def'],
       values: [
         {
           scaling: 'cBonusFlatDMG',
