@@ -30,7 +30,7 @@
     <div class="container relative mx-auto flex h-full flex-col space-y-4">
       <MenuBar />
       <div
-        class="min-h-0 grid grid-cols-[310px_442px] gap-4 overflow-hidden lg:grid-cols-[380px_612px] lg:gap-8 xl:grid-cols-[412px_832px]"
+        class="min-h-0 grid h-full grid-cols-[310px_442px] content-start gap-4 overflow-hidden lg:grid-cols-[380px_612px] lg:gap-8 xl:grid-cols-[412px_832px]"
       >
         <CharacterBlock />
         <ArtifactBlock />
