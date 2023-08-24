@@ -4,36 +4,39 @@
   import type { Visions } from '$lib/types/global';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // components
   import ActionButton from './ActionButton.svelte';
 
   // other
   import { action } from '$lib/stores/actionStore';
+  // import { stats } from '$lib/stores/statsStore';
   import { onDestroy } from 'svelte';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
-  import { stats } from '$lib/stores/statsStore';
-  import type { All_Stats } from '$lib/data/Stats';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
+  export let stats: Record<All_Stats, number>;
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
+  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
 
-  let updateNeeded = false;
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
   let isActive: boolean = false;
   let addedStats: { scaling: All_Stats; coef: number }[] = [];
+
+  let previousStatValues: any = {};
 
   function addStats() {
     data.values.forEach((value) => {
@@ -49,7 +52,7 @@
           : coef;
       const result = calcCoefficient(
         talentValue,
-        $stats[id] as Record<All_Stats, number>,
+        stats as Record<All_Stats, number>,
         source
       );
 
@@ -75,16 +78,28 @@
     }
   }
 
+  function isAnyStatChanged() {
+    // Compare previous and current stat values
+    if (!sourceStats) return false;
+    for (const stat of sourceStats) {
+      if (previousStatValues[stat] !== stats[stat]) {
+        return true; // Return true if any tracked stat has changed
+      }
+    }
+    return false;
+  }
+
   // ▶ if button has a talentLvl, and it changes while the button is Active,
   // reset the current values that were added.
-  // ▶ if $stats[id] change then also run this reactivity statement
+  // ▶ if stats change then also run this reactivity statement
   $: {
-    if (talentLvl !== previousTalentLvl) {
+    if (talentLvl !== previousTalentLvl || isAnyStatChanged()) {
       if (isActive) {
         removeStats();
         addStats();
       }
       previousTalentLvl = talentLvl;
+      previousStatValues = { ...stats }; // Create a copy of the current stats
     }
   }
 
