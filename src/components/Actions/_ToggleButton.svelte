@@ -28,6 +28,7 @@
   const cName = getCharacterName(character.selected);
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
+  let updateNeeded = false;
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
@@ -58,7 +59,7 @@
   }
 
   function removeStats() {
-    addedStats.forEach((stat, i) => {
+    addedStats.forEach((stat) => {
       action.removeStat(id, target as Target, stat.scaling, stat.coef);
       addedStats = [];
     });
@@ -78,7 +79,7 @@
   // reset the current values that were added.
   // ▶ if $stats[id] change then also run this reactivity statement
   $: {
-    if (talentLvl !== previousTalentLvl || $stats[id]) {
+    if (talentLvl !== previousTalentLvl) {
       if (isActive) {
         removeStats();
         addStats();
