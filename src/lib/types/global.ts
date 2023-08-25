@@ -2,6 +2,7 @@ import type { CharacterNames } from './characters';
 import type { WeaponNames } from './weapons';
 import type { Action, ActionValue, Regions, Target } from './actions';
 import type { Hit, OffField } from './talents';
+import type { All_Stats } from '$lib/data/Stats';
 
 export type SelectedCharacter = CharacterRecord;
 
@@ -27,6 +28,7 @@ export type SelectedWeapon = {
     target?: Target;
     shielded?: boolean;
     regions?: Regions[];
+    sourceStats?: All_Stats[];
     unique?: boolean;
     values: [ActionValue[], ActionValue[], ActionValue[], ActionValue[], ActionValue[]];
   }[];

@@ -20,6 +20,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['partyBurstCost'],
           values: [
             // So, 0.0012 * partyBurstCost.
             // minimum partyBurstCost is 0
@@ -382,6 +383,7 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           // flat bonus atk = 0.24 * EM
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'atk', coef: 0.24, source: ['em', 0] }],
             [{ scaling: 'atk', coef: 0.3, source: ['em', 0] }],
@@ -392,6 +394,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'passive',
+          sourceStats: ['em'],
           // flat bonus atk = 0.072 * EM
           target: 'nearby',
           values: [
@@ -465,6 +468,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['def'],
           values: [
             [
               { scaling: 'def%', coef: 0.28 },
@@ -1297,6 +1301,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'toggle',
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'chargedFlatDMG', coef: 1.6, source: ['em', 0] }],
             [{ scaling: 'chargedFlatDMG', coef: 2, source: ['em', 0] }],
@@ -1433,6 +1438,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['partyBurstCost'],
           values: [
             [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 333] }],
             [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 333] }],
@@ -1957,6 +1963,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['def'],
           values: [
             [{ scaling: 'skillFlatDMG', coef: 0.4, source: ['def', 0] }],
             [{ scaling: 'skillFlatDMG', coef: 0.5, source: ['def', 0] }],
@@ -2288,6 +2295,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'stack',
+          sourceStats: ['hp'],
           values: [
             [{ scaling: 'em', coef: [0.0012, 0.0012, 0.0012], source: ['hp', 0] }],
             [{ scaling: 'em', coef: [0.0015, 0.0015, 0.0015], source: ['hp', 0] }],
@@ -2298,6 +2306,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'toggle',
+          sourceStats: ['hp'],
           target: 'nearby',
           values: [
             [{ scaling: 'em', coef: 0.002, source: ['hp', 0] }],
@@ -2338,6 +2347,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'toggle',
+          sourceStats: ['em'],
           values: [
             [
               { scaling: 'normalFlatDMG', coef: 1.2, source: ['em', 0] },
@@ -2468,6 +2478,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'passive',
+          sourceStats: ['hp'],
           values: [
             [{ scaling: 'atk', coef: 0.012, source: ['hp', 0] }],
             [{ scaling: 'atk', coef: 0.015, source: ['hp', 0] }],
@@ -2811,6 +2822,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'atk', coef: 0.00036, source: ['em', 0] }],
             [{ scaling: 'atk', coef: 0.00045, source: ['em', 0] }],
@@ -2821,6 +2833,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'passive',
+          sourceStats: ['em'],
           target: 'nearby',
           values: [
             [{ scaling: 'atk', coef: 0.000108, source: ['em', 0] }],
@@ -2993,6 +3006,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['hp'],
           values: [
             [
               { scaling: 'healing', coef: 0.1 },
@@ -3151,6 +3165,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'toggle',
+          sourceStats: ['hp'],
           values: [
             [
               {
@@ -3702,6 +3717,7 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           // flat bonus atk = 0.24 * EM
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'atk', coef: 0.24, source: ['em', 0] }],
             [{ scaling: 'atk', coef: 0.3, source: ['em', 0] }],
@@ -3713,6 +3729,7 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           // flat bonus atk = 0.072 * EM
+          sourceStats: ['em'],
           target: 'nearby',
           values: [
             [{ scaling: 'atk', coef: 0.072, source: ['em', 0] }],
@@ -3959,6 +3976,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['energy'],
           values: [
             [{ scaling: 'atk%', coef: 0.28, source: ['energy', 1, 2.8571] }],
             [{ scaling: 'atk%', coef: 0.35, source: ['energy', 1, 2.5714] }],
@@ -4338,6 +4356,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'stack',
+          sourceStats: ['hp'],
           values: [
             [{ scaling: 'atk', coef: [0.008, 0.01], source: ['hp', 0] }],
             [{ scaling: 'atk', coef: [0.01, 0.012], source: ['hp', 0] }],
@@ -4367,6 +4386,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'atk', coef: 0.52, source: ['em', 0] }],
             [{ scaling: 'atk', coef: 0.65, source: ['em', 0] }],
@@ -4377,6 +4397,7 @@ export const WeaponData: Data = {
         },
         {
           actionType: 'stack',
+          sourceStats: ['em'],
           values: [
             [{ scaling: 'atk', coef: [0.28, 0.28, 0.28], source: ['em', 0] }],
             [{ scaling: 'atk', coef: [0.35, 0.35, 0.35], source: ['em', 0] }],
@@ -4489,6 +4510,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'passive',
+          sourceStats: ['partyBurstCost'],
           values: [
             [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 333] }],
             [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 333] }],
