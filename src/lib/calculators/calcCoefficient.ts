@@ -4,7 +4,7 @@ import type { CoefSource } from '$lib/types/actions';
 export function calcCoefficient(
   coef: number,
   $stats: Record<All_Stats, number>,
-  source?: CoefSource
+  source: CoefSource | undefined
 ): number {
   if (source === undefined) {
     return coef;
@@ -14,17 +14,22 @@ export function calcCoefficient(
     throw new Error(`Incorrent coef value was passed - coef: ${coef}`);
   }
 
-  const [statType, threshold, max] = source;
+  const [statType, threshold, max, forEvery] = source;
 
   if ($stats && statType in $stats) {
     const statValue = $stats[statType];
+    const cappedStatValue = max ? Math.min(statValue, max) : statValue;
 
-    if (statValue >= threshold) {
-      const multipliedValue = coef * (statValue - threshold);
-      if (max !== undefined && multipliedValue > max) {
-        return max;
+    if (cappedStatValue >= threshold) {
+      let calculatedValue;
+
+      if (forEvery !== undefined && forEvery !== 0) {
+        calculatedValue = (cappedStatValue / forEvery) * coef;
+      } else {
+        calculatedValue = cappedStatValue * coef;
       }
-      return multipliedValue;
+
+      return calculatedValue;
     }
   }
 

@@ -24,11 +24,11 @@ export const WeaponData: Data = {
             // So, 0.0012 * partyBurstCost.
             // minimum partyBurstCost is 0
             // maximum burst increase is 0.4%
-            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 0.4] }],
-            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 0.5] }],
-            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 0.6] }],
-            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 0.7] }],
-            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 0.8] }]
+            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 333] }]
           ]
         }
       ],
@@ -263,7 +263,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'region',
-          regions: ['Liyue'],
+          regions: ['liyue'],
           values: [
             [
               { scaling: 'atk%', coef: 0.07 },
@@ -289,7 +289,7 @@ export const WeaponData: Data = {
         }
       ],
       effect:
-        'For every character in the party who hails from Liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
+        'For every character in the party who hails from liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
       ref: [
         ['7%', '3%'],
         ['8%', '4%'],
@@ -1434,11 +1434,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 0.4] }],
-            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 0.5] }],
-            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 0.6] }],
-            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 0.7] }],
-            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 0.8] }]
+            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 333] }]
           ]
         }
       ],
@@ -3156,40 +3156,35 @@ export const WeaponData: Data = {
               {
                 scaling: 'dmgIncreaseElemental',
                 coef: 0.03,
-                source: ['hp', 0, 0.12],
-                forEvery: 1000
+                source: ['hp', 0, 40000, 1000]
               }
             ],
             [
               {
                 scaling: 'dmgIncreaseElemental',
                 coef: 0.05,
-                source: ['hp', 0, 0.2],
-                forEvery: 1000
+                source: ['hp', 0, 40000, 1000]
               }
             ],
             [
               {
                 scaling: 'dmgIncreaseElemental',
                 coef: 0.07,
-                source: ['hp', 0, 0.28],
-                forEvery: 1000
+                source: ['hp', 0, 40000, 1000]
               }
             ],
             [
               {
                 scaling: 'dmgIncreaseElemental',
                 coef: 0.09,
-                source: ['hp', 0, 0.36],
-                forEvery: 1000
+                source: ['hp', 0, 40000, 1000]
               }
             ],
             [
               {
                 scaling: 'dmgIncreaseElemental',
                 coef: 0.11,
-                source: ['hp', 0, 0.44],
-                forEvery: 1000
+                source: ['hp', 0, 40000, 1000]
               }
             ]
           ]
@@ -3965,11 +3960,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'atk%', coef: 0.28, source: ['energy', 1, 0.8] }],
-            [{ scaling: 'atk%', coef: 0.35, source: ['energy', 1, 0.9] }],
-            [{ scaling: 'atk%', coef: 0.42, source: ['energy', 1, 1.0] }],
-            [{ scaling: 'atk%', coef: 0.49, source: ['energy', 1, 1.1] }],
-            [{ scaling: 'atk%', coef: 0.56, source: ['energy', 1, 1.2] }]
+            [{ scaling: 'atk%', coef: 0.28, source: ['energy', 1, 2.8571] }],
+            [{ scaling: 'atk%', coef: 0.35, source: ['energy', 1, 2.5714] }],
+            [{ scaling: 'atk%', coef: 0.42, source: ['energy', 1, 2.3809] }],
+            [{ scaling: 'atk%', coef: 0.49, source: ['energy', 1, 2.2448] }],
+            [{ scaling: 'atk%', coef: 0.56, source: ['energy', 1, 2.1428] }]
           ]
         },
         {
@@ -4060,7 +4055,7 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'region',
-          regions: ['Liyue'],
+          regions: ['liyue'],
           values: [
             [
               { scaling: 'atk%', coef: 0.07 },
@@ -4086,7 +4081,7 @@ export const WeaponData: Data = {
         }
       ],
       effect:
-        'For every character in the party who hails from Liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
+        'For every character in the party who hails from liyue, the character who equips this weapon gains a {0} ATK increase and a {1} CRIT Rate increase. This effect stacks up to 4 times.',
       ref: [
         ['7%', '3%'],
         ['8%', '4%'],
@@ -4495,11 +4490,11 @@ export const WeaponData: Data = {
         {
           actionType: 'passive',
           values: [
-            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 0.4] }],
-            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 0.5] }],
-            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 0.6] }],
-            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 0.7] }],
-            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 0.8] }]
+            [{ scaling: 'burst', coef: 0.0012, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0015, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0018, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0021, source: ['partyBurstCost', 0, 333] }],
+            [{ scaling: 'burst', coef: 0.0024, source: ['partyBurstCost', 0, 333] }]
           ]
         }
       ],

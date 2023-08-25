@@ -31,7 +31,10 @@ export type ActionType =
 
 export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 
-export type CoefSource = [All_Stats, number] | [All_Stats, number, number]; // [ the source stat, minimum, maximum]
+export type CoefSource =
+  | [All_Stats, number] // [ source stat, minimum]
+  | [All_Stats, number, number] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
+  | [All_Stats, number, number, number]; // [ source stat, minimum, maximum, forEvery]
 
 export type ActionValue = {
   scaling: All_Stats;
