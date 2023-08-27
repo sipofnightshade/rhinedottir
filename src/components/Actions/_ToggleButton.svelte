@@ -30,13 +30,12 @@
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
   const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
 
+  let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
   let isActive: boolean = false;
   let addedStats: { scaling: All_Stats; coef: number }[] = [];
-
-  let previousStatValues: any = {};
 
   function addStats() {
     data.values.forEach((value) => {
@@ -50,12 +49,7 @@
               talentLvl
             )
           : coef;
-      const result = calcCoefficient(
-        talentValue,
-        stats as Record<All_Stats, number>,
-        source
-      );
-
+      const result = calcCoefficient(talentValue, stats, source);
       addedStats.push({ scaling, coef: result });
       action.addStat(id, target as Target, scaling, result);
     });
