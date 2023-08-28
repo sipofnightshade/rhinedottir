@@ -1,4 +1,4 @@
-import type { All_Stats } from '$lib/stores/actionStore';
+import type { All_Stats } from '$lib/data/Stats';
 import type { HitDMG } from '$lib/types/talents';
 
 type Stats = Record<All_Stats, number>;
