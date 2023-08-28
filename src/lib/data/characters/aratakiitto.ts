@@ -234,7 +234,7 @@ const charName: CharacterRecord = {
       actionType: 'passive',
       values: [
         {
-          scaling: 'cBonusFlatDMG',
+          scaling: 'ownBonusFlatDMG',
           coef: 0.35,
           source: ['def', 0]
         }

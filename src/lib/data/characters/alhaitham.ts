@@ -592,7 +592,7 @@ const charName: CharacterRecord = {
       sourceStats: ['em'],
       values: [
         {
-          scaling: 'cBonusDMG',
+          scaling: 'ownBonusDMG',
           coef: 0.001,
           source: ['em', 0, 1.0]
         }

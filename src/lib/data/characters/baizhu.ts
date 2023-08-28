@@ -315,7 +315,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'cBonusFlatDMG',
+          scaling: 'ownBonusFlatDMG',
           coef: 0.08,
           source: ['hp', 0]
         }

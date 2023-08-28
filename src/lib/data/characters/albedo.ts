@@ -268,7 +268,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'cBonusDMG',
+          scaling: 'ownBonusDMG',
           coef: 0.25
         }
       ]
@@ -300,7 +300,7 @@ const charName: CharacterRecord = {
       sourceStats: ['def'],
       values: [
         {
-          scaling: 'cBonusFlatDMG',
+          scaling: 'ownBonusFlatDMG',
           coef: [0.3, 0.3, 0.3, 0.3],
           source: ['def', 0]
         }
