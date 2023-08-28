@@ -4,16 +4,16 @@
   import type { Visions } from '$lib/types/global';
   import type { CharacterSpecificNames } from '$lib/types/characters';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // external functions & stores
-  import { action, type All_Stats } from '$lib/stores/actionStore';
+  import { action } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
-  import { onDestroy, onMount } from 'svelte';
+  import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
-  import { stats } from '$lib/stores/statsStore';
 
   // component
   import ActionButton from './ActionButton.svelte';
@@ -24,19 +24,22 @@
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
+  export let stats: Record<All_Stats, number>;
 
   type Stat = { scaling: All_Stats; coef: number; source: CoefSource };
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
-  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
+  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
 
+  let previousStatValues: any = {};
   let selected: Stat | undefined;
-  let prevSelected: Stat | undefined;
-
-  // Store calculated coefficient value when adding a stat
   let addedStats: { [key: string]: number } = {};
+  let prevSelected: Stat | undefined;
+  let previousTalentLvl: number | null = null;
+
+  $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
   function addStats(selected: Stat) {
     const { scaling, coef, source } = selected;
@@ -49,16 +52,10 @@
             talentLvl
           )
         : coef;
-    const result = calcCoefficient(
-      talentValue,
-      $stats[id] as Record<All_Stats, number>,
-      source
-    );
+    const result = calcCoefficient(talentValue, stats, source);
 
     action.addStat(id, target as Target, scaling, result);
-    // Store the calculated coefficient value
     addedStats[scaling] = result;
-
     if (prevSelected) {
       removeStats(prevSelected);
     }
@@ -66,7 +63,6 @@
 
   function removeStats(stat: Stat) {
     const { scaling } = stat;
-
     if (scaling in addedStats) {
       const coef = addedStats[scaling];
       action.removeStat(id, target as Target, scaling, coef);
@@ -78,12 +74,32 @@
     if (prevSelected) {
       removeStats(prevSelected);
     }
-
     if (selected !== undefined) {
       addStats(selected);
     }
-
     prevSelected = selected;
+  }
+
+  function isAnyStatChanged() {
+    // Compare previous and current stat values
+    if (!sourceStats) return false;
+    for (const stat of sourceStats) {
+      if (previousStatValues[stat] !== stats[stat]) {
+        return true; // Return true if any tracked stat has changed
+      }
+    }
+    return false;
+  }
+
+  $: {
+    if (talentLvl !== previousTalentLvl || isAnyStatChanged()) {
+      if (selected) {
+        removeStats(selected);
+        addStats(selected);
+      }
+      previousTalentLvl = talentLvl;
+      previousStatValues = { ...stats }; // Create a copy of the current stats
+    }
   }
 
   // remove any added stats if
@@ -91,13 +107,13 @@
     if (selected) {
       removeStats(selected);
     }
+    selected = undefined;
+    prevSelected = undefined;
   });
 
   $: {
     onSelect(selected);
   }
-
-  $: console.log('Current AddedStats -', addedStats);
 
   let dialog: HTMLDialogElement;
 
