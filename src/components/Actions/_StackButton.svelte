@@ -4,8 +4,9 @@
   import type { Visions } from '$lib/types/global';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
+  import type { All_Stats } from '$lib/data/Stats';
 
-  // helpers & calculator
+  // helpers & calculators
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
@@ -13,8 +14,7 @@
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
 
   // stores &
-  import { action, type All_Stats } from '$lib/stores/actionStore';
-  import { stats } from '$lib/stores/statsStore';
+  import { action } from '$lib/stores/actionStore';
 
   // components
   import ActionButton from './ActionButton.svelte';
@@ -23,18 +23,24 @@
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
+  export let stats: Record<All_Stats, number>;
 
-  $: target = data.target ?? 'self';
+  const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
-  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
+  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
+
+  let previousStatValues: any = {};
+  let previousTalentLvl: number | null = null;
+  $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
   let stacks = 0;
   let stackCoefs: number[] = [];
 
-  function addStacks() {
+  function addStats() {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
+
       const talentValue =
         talentLvl && combatValue
           ? getCoefficientFromValues(
@@ -44,23 +50,18 @@
               talentLvl
             )
           : (coef as number[])[stacks - 1];
-      const result = calcCoefficient(
-        talentValue,
-        $stats[id] as Record<All_Stats, number>,
-        source
-      );
-
-      console.log('talentValue', talentValue);
-      console.log('result', result);
+      const result = calcCoefficient(talentValue, stats, source);
 
       if (!stackCoefs[i]) stackCoefs[i] = 0;
       stackCoefs[i] += result;
-
       action.addStat(id, target as Target, scaling, result);
     });
   }
 
-  function removeStacks() {
+  // ❗ this does not remove the correct stats when triggered as
+  // it loops through the original values of data instead of
+  // using the stackCoefs
+  function removeStats() {
     data.values.forEach((value, i) => {
       action.removeStat(id, target as Target, value.scaling, stackCoefs[i]);
       stackCoefs[i] = 0;
@@ -70,16 +71,38 @@
   function handleStacking() {
     if (stacks === (data.values[0].coef as number[]).length) {
       stacks = 0; // Reset the stacks if max is reached
-      removeStacks();
+      removeStats();
     } else {
       stacks++; // Increment the stacks
-      addStacks();
+      addStats();
+    }
+  }
+
+  function isAnyStatChanged() {
+    // Compare previous and current stat values
+    if (!sourceStats) return false;
+    for (const stat of sourceStats) {
+      if (previousStatValues[stat] !== stats[stat]) {
+        return true; // Return true if any tracked stat has changed
+      }
+    }
+    return false;
+  }
+
+  $: {
+    if (talentLvl !== previousTalentLvl || (isAnyStatChanged() && stacks > 0)) {
+      removeStats();
+      for (let i = 0; i < stacks; i++) {
+        addStats();
+      }
+      previousTalentLvl = talentLvl;
+      previousStatValues = { ...stats }; // Create a copy of the current stats
     }
   }
 
   onDestroy(() => {
     if (stacks > 0) {
-      removeStacks();
+      removeStats();
     }
   });
 
