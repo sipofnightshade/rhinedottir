@@ -8,7 +8,9 @@ import { calcCatalyzeBonus } from './calcCatalyzeBonus';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
 import { calcDMGBonus } from './calcDMGBonus';
 import { calcDamageNoReaction } from './calcDamageNoReaction';
+import { calcHealing } from './calcHealing';
 import { calcHitDamage } from './calcHitDamage';
+import { calcShield } from './calcShield';
 import { calcTransforming } from './calcTransforming';
 
 export function calcFinalDMG(
@@ -20,6 +22,32 @@ export function calcFinalDMG(
   $enemy: any,
   addStats: any
 ) {
+  const talentLvl = $character[addStats.talentLvlId];
+
+  // if this hit is a heal, then return only the healing values
+  if (hit.isHealing) {
+    const healing = calcHealing(hit.damage[0], $stats, values, talentLvl);
+    return {
+      ...hit,
+      elemental: element,
+      damage: {
+        base: healing
+      }
+    };
+  }
+  // if this hit is a shield, then return only the healing values
+
+  if (hit.isShield) {
+    const shielding = calcShield(hit.damage[0], $stats, values, talentLvl);
+    return {
+      ...hit,
+      elemental: element,
+      damage: {
+        base: shielding
+      }
+    };
+  }
+
   const ICD = hit.icd ?? 3; // sets default ICD of 3 if no icd on the hit
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
@@ -55,8 +83,6 @@ export function calcFinalDMG(
     element === 'dendro' || element === 'electro'
       ? calcCatalyzeBonus(element, $stats.em, $character.lvl, $stats[catalyze[element]])
       : 0;
-
-  const talentLvl = $character[addStats.talentLvlId];
 
   const FinalDMG = hit.damage.reduce(
     (total: any, damage: HitDMG, i: number) => {
@@ -259,6 +285,8 @@ export function calcFinalDMG(
     },
     { base: 0 }
   );
+
+  console.log({ ...FinalDMG });
 
   return {
     ...hit,

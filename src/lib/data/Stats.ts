@@ -169,5 +169,6 @@ export const allStats = {
   burgeon: 0,
   hyperbloom: 0,
   crystallize: 0,
-  shieldStrength: 0
+  shieldStrength: 0,
+  flatValue: 0
 } as const;
