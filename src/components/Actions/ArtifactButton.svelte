@@ -8,7 +8,7 @@
 
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
-  import { action, type All_Stats } from '$lib/stores/actionStore';
+  import { action } from '$lib/stores/actionStore';
 
   // types
   import type { ArtifactState } from '$lib/stores/artifactStore';
@@ -17,11 +17,12 @@
   import { activeSets } from '$lib/stores/activeSetsStore';
   import type { ArtifactNames } from '$lib/types/artifacts';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // props
   export let setData: ArtifactState;
   export let id: 'main' | 'one' | 'two' | 'three';
-
+  export let stats: Record<All_Stats, number>;
   export let character: CurrentCharacter;
 
   type Stats = { scaling: All_Stats; coef: number | number[] };
@@ -74,5 +75,6 @@
     type="artifact"
     {id}
     {character}
+    {stats}
   />
 {/if}
