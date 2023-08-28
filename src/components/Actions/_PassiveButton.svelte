@@ -2,37 +2,41 @@
   // types
   import type { Action, ActionBtnID, Target } from '$lib/types/actions';
   import type { Visions } from '$lib/types/global';
-  import type { All_Stats } from '$lib/stores/actionStore';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // components
   import ActionButton from './ActionButton.svelte';
 
   // other
   import { action } from '$lib/stores/actionStore';
-  import { onDestroy, onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
-  import { stats } from '$lib/stores/statsStore';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
+  export let stats: Record<All_Stats, number>;
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
-  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
+  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
 
-  let addedStats: number[] = [];
+  let previousStatValues: any = {};
+  let previousTalentLvl: number | null = null;
+  $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
-  onMount(() => {
-    data.values.forEach((value, i) => {
+  let addedStats: { scaling: All_Stats; coef: number }[] = [];
+
+  function addStats() {
+    data.values.forEach((value) => {
       const { scaling, coef, source } = value;
       const talentValue =
         talentLvl && combatValue
@@ -43,26 +47,45 @@
               talentLvl
             )
           : coef;
-      const result = calcCoefficient(
-        talentValue,
-        $stats[id] as Record<All_Stats, number>,
-        source
-      );
-
-      if (!addedStats[i]) addedStats[i] = 0;
-      addedStats[i] += result;
+      const result = calcCoefficient(talentValue, stats, source);
+      addedStats.push({ scaling, coef: result });
       action.addStat(id, target as Target, scaling, result);
     });
+  }
 
+  function removeStats() {
+    addedStats.forEach((stat) => {
+      action.removeStat(id, target as Target, stat.scaling, stat.coef);
+      addedStats = [];
+    });
+  }
+
+  function isAnyStatChanged() {
+    // Compare previous and current stat values
+    if (!sourceStats) return false;
+    for (const stat of sourceStats) {
+      if (previousStatValues[stat] !== stats[stat]) {
+        return true; // Return true if any tracked stat has changed
+      }
+    }
+    return false;
+  }
+
+  $: {
+    if (talentLvl !== previousTalentLvl || isAnyStatChanged()) {
+      removeStats();
+      addStats();
+      previousTalentLvl = talentLvl;
+      previousStatValues = { ...stats }; // Create a copy of the current stats
+    }
+  }
+
+  onMount(() => {
+    addStats();
     // this return might be problematic if the state is reset when character changes
     // because then this might run after and substract values that were not added
     return () => {
-      if (addedStats.length > 0) {
-        data.values.forEach((value, i) => {
-          action.removeStat(id, target as Target, value.scaling, addedStats[i]);
-          addedStats[i] = 0;
-        });
-      }
+      removeStats();
     };
   });
 </script>
