@@ -1,194 +1,327 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "bennett",
-  "fullName": "Bennett",
-  "rating": 4,
-  "weapon": "sword",
-  "region": "mondstat",
-  "vision": "pyro",
-  "specialized": "energy",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'bennett',
+  fullName: 'Bennett',
+  rating: 4,
+  weapon: 'sword',
+  region: 'mondstat',
+  vision: 'pyro',
+  specialized: 'energy',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 60,
+  talentNames: {
+    normal: 'Strike of Fortune',
+    skill: 'Passion Overload',
+    burst: 'Fantastic Voyage'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
+      name: '5 - Hit DMG',
+      tag: 'N5',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param7'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param10'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param11'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Press DMG',
+      tag: 'EP',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Charge Level 1 DMG',
+      tag: 'E1',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Charge Level 2 DMG',
+      tag: 'E2',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param5'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Explosion DMG',
+      tag: 'E3',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Unexpected Odyssey',
+      tag: 'X4',
+      damageBonus: 'skill',
+      constellation: 4,
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param6',
+            coef: 1.35
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Burst DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Continuous Regeneration Per Sec',
+      damageBonus: 'burst',
+      isHealing: true,
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Fantastic Voyage',
+      url: 'Skill_E_Bennett_01',
+      description:
+        "If the health of a character within the AoE is higher than 70%, they gain an ATK Bonus that is based on Bennett's Base ATK.",
+      target: 'party',
+      actionType: 'toggle',
+      hasLevels: 'burst',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'baseATK',
+          coef: 'param4'
+        }
+      ]
+    },
+    {
+      name: 'Grand Expectation',
+      url: 'UI_Talent_S_Bennett_01',
+      description:
+        "Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
+      target: 'party',
+      constellation: 1,
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'baseATK',
+          coef: 0.2
+        }
+      ]
+    },
+    {
+      name: 'Impasse Conqueror',
+      url: 'UI_Talent_S_Bennett_02',
+      description:
+        "When Bennett's HP falls below 70%, his Energy Recharge is increased by 30%.",
+      target: 'party',
+      constellation: 2,
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'energy',
+          coef: 0.3
+        }
+      ]
+    },
+    {
+      name: 'Fire Ventures With Me',
+      url: 'UI_Talent_S_Bennett_04',
+      description:
+        "Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a 15% Pyro DMG Bonus and their weapons are infused with Pyro.",
+      target: 'party',
+      constellation: 6,
+      infusion: 'pyro',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'pyro',
+          coef: 0.15
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
