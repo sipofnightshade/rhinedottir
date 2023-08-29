@@ -1,194 +1,274 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "candace",
-  "fullName": "Candace",
-  "rating": 4,
-  "weapon": "polearm",
-  "region": "mondstat",
-  "vision": "hydro",
-  "specialized": "hp%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'candace',
+  fullName: 'Candace',
+  rating: 4,
+  weapon: 'polearm',
+  region: 'sumeru',
+  vision: 'hydro',
+  specialized: 'hp%',
+  c3: 'burst',
+  c5: 'skill',
+  burstCost: 60,
+  talentNames: {
+    normal: 'Gleaming Spear - Guardian Stance',
+    skill: "Sacred Rite: Heron's Sanctum",
+    burst: "Sacred Rite: Wagtail's Tide"
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param6'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param10'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Shield DMG Absorption',
+      damageBonus: 'skill',
+      isShield: true,
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'hp',
+            param: 'param1'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Base DMG',
+      tag: 'EP',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Charged Up DMG',
+      tag: 'EH',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Skill DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'hp',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Wave Impact DMG',
+      tag: 'QC',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param4'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'The Overflow',
+      info: "When characters (excluding Candace herself) affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals AoE Hydro DMG equal to 15% of Candace's Max HP. This effect can trigger once every 2.3s and is considered Elemental Burst DMG.",
+      tag: 'X6',
+      damageBonus: 'burst',
+      constellation: 6,
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param4',
+            coef: 0.15
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Prayer of the Crimson Crown',
+      url: 'Skill_E_Candace_01',
+      description:
+        'Characters deal increased Elemental DMG with their Normal Attacks. Sword, Claymore, and Polearm-wielding characters under this effect will obtain a Hydro Infusion',
+      target: 'active',
+      infusion: 'hydro',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'dmgIncreaseElemental',
+          coef: 0.2
+        }
+      ]
+    },
+    {
+      name: 'Celestial Dome of Sand',
+      url: 'UI_Talent_S_Candace_06',
+      description:
+        "Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal 0.5% increased DMG to opponents for every 1,000 points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.",
+      target: 'active',
+      level: 8,
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'normal',
+          coef: 0.005,
+          source: ['hp', 0, 80000, 1000]
+        }
+      ]
+    },
+    {
+      name: 'Moon-Piercing Brilliance',
+      url: 'UI_Talent_S_Candace_02',
+      description:
+        "When Sacred Rite: Heron's Sanctum hits opponents, Candace's Max HP will be increased by 20% for 15s.",
+      target: 'self',
+      constellation: 2,
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'hp',
+          coef: 0.2
         }
       ]
     }
-  ],
-  "offField": []
+  ]
 };
 
 export default charName;

@@ -36,6 +36,7 @@ export type Hit = {
   // normal default = physical, skill & burst default is character element
   isHealing?: boolean;
   isShield?: boolean;
+  info?: string;
   hasOwnDMGType?:
     | 'anemo'
     | 'cryo'
