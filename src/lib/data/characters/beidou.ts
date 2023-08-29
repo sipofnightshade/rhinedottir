@@ -5,7 +5,7 @@ const charName: CharacterRecord = {
   fullName: 'Beidou',
   rating: 4,
   weapon: 'claymore',
-  region: 'mondstat',
+  region: 'liyue',
   vision: 'electro',
   specialized: 'electro',
   c3: 'skill',

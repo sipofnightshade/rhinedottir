@@ -269,7 +269,7 @@ const charName: CharacterRecord = {
       hasLevels: 'burst',
       values: [
         {
-          scaling: 'baseATK',
+          scaling: 'atk%',
           coef: 'param4'
         }
       ]
@@ -284,7 +284,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'baseATK',
+          scaling: 'atk%',
           coef: 0.2
         }
       ]
