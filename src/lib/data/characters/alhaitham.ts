@@ -159,7 +159,7 @@ const charName: CharacterRecord = {
       name: '1-Mirror Projection Attack DMG',
       tag: 'E1',
       damageBonus: 'skill',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       icd: 2,
       damage: [
         [
@@ -178,7 +178,7 @@ const charName: CharacterRecord = {
       name: '2-Mirror Projection Attack DMG',
       tag: 'E2',
       damageBonus: 'skill',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       icd: 2,
       damage: [
         [
@@ -207,7 +207,7 @@ const charName: CharacterRecord = {
       name: '3-Mirror Projection Attack DMG',
       tag: 'E3',
       damageBonus: 'skill',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       icd: 2,
       damage: [
         [
@@ -248,7 +248,7 @@ const charName: CharacterRecord = {
       name: 'Single-Instance DMG',
       tag: 'Q',
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       damage: [
         [
           {
@@ -267,7 +267,7 @@ const charName: CharacterRecord = {
       tag: 'QB',
       multiHit: 4,
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       damage: [
         [
           {
@@ -316,7 +316,7 @@ const charName: CharacterRecord = {
       tag: 'Q1',
       multiHit: 6,
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       damage: [
         [
           {
@@ -385,7 +385,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       multiHit: 8,
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       damage: [
         [
           {
@@ -474,7 +474,7 @@ const charName: CharacterRecord = {
       tag: 'Q3',
       multiHit: 10,
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'projectionAttacks',
       damage: [
         [
           {
@@ -592,7 +592,7 @@ const charName: CharacterRecord = {
       sourceStats: ['em'],
       values: [
         {
-          scaling: 'ownBonusDMG',
+          scaling: 'projectionAttacks',
           coef: 0.001,
           source: ['em', 0, 1.0]
         }

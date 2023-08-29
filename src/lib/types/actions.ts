@@ -32,10 +32,11 @@ export type ActionType =
 
 export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 
+type CoefStats = All_Stats | 'baseATK' | 'baseDEF' | 'baseHP';
 export type CoefSource =
-  | [All_Stats, number] // [ source stat, minimum]
-  | [All_Stats, number, number] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
-  | [All_Stats, number, number, number]; // [ source stat, minimum, maximum, forEvery]
+  | [CoefStats, number] // [ source stat, minimum]
+  | [CoefStats, number, number] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
+  | [CoefStats, number, number, number]; // [ source stat, minimum, maximum, forEvery]
 
 export type ActionValue = {
   scaling: string;
@@ -57,6 +58,6 @@ export type Action = {
   shielded?: boolean;
   unique?: boolean;
   actionType: ActionType;
-  sourceStats?: All_Stats[];
+  sourceStats?: CoefStats[];
   values: ActionValue[];
 };

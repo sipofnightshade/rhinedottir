@@ -75,7 +75,7 @@ const charName: CharacterRecord = {
       name: 'Arataki Kesagiri Combo Slash DMG',
       tag: 'CA',
       damageBonus: 'charged',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'crimsonOni',
       damage: [
         [
           {
@@ -89,7 +89,7 @@ const charName: CharacterRecord = {
       name: 'Arataki Kesagiri Final Slash DMG',
       tag: 'CA',
       damageBonus: 'charged',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'crimsonOni',
       damage: [
         [
           {
@@ -234,7 +234,7 @@ const charName: CharacterRecord = {
       actionType: 'passive',
       values: [
         {
-          scaling: 'ownBonusFlatDMG',
+          scaling: 'crimsonOni',
           coef: 0.35,
           source: ['def', 0]
         }

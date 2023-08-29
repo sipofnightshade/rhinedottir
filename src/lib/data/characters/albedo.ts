@@ -163,7 +163,7 @@ const charName: CharacterRecord = {
       name: 'Transient Blossom DMG',
       tag: 'EC',
       damageBonus: 'skill',
-      hasOwnBonusDMG: true,
+      hasOwnBonusDMG: 'transientBlossoms',
       damage: [
         [
           {
@@ -180,7 +180,7 @@ const charName: CharacterRecord = {
       tag: 'Q1',
       multiHit: 9,
       damageBonus: 'burst',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
           {
@@ -195,7 +195,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       multiHit: 9,
       damageBonus: 'burst',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
           {
@@ -245,7 +245,7 @@ const charName: CharacterRecord = {
       name: 'Fatal Blossom DMG ',
       multiHit: 9,
       damageBonus: 'burst',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
           {
@@ -268,7 +268,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'ownBonusDMG',
+          scaling: 'transientBlossoms',
           coef: 0.25
         }
       ]
@@ -300,7 +300,7 @@ const charName: CharacterRecord = {
       sourceStats: ['def'],
       values: [
         {
-          scaling: 'ownBonusFlatDMG',
+          scaling: 'phanerozoic',
           coef: [0.3, 0.3, 0.3, 0.3],
           source: ['def', 0]
         }

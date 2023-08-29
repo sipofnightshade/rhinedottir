@@ -184,7 +184,7 @@ const charName: CharacterRecord = {
       name: 'Spiritvein DMG',
       tag: 'Q',
       damageBonus: 'burst',
-      hasOwnBonusFlatDMG: true,
+      hasOwnBonusFlatDMG: 'revivification',
       damage: [
         [
           {
@@ -309,13 +309,13 @@ const charName: CharacterRecord = {
       name: 'Elimination of Malicious Qi',
       url: 'UI_Talent_S_Baizhuer_04',
       description:
-        "For 15s after Holistic Revivification is used, Baizhu will increase all nearby party members' Elemental Mastery by 80.",
+        "Increases the DMG dealt by Holistic Revivification's Spiritveins by 8% of Baizhu's Max HP",
       constellation: 6,
       target: 'nearby',
       actionType: 'toggle',
       values: [
         {
-          scaling: 'ownBonusFlatDMG',
+          scaling: 'revivification',
           coef: 0.08,
           source: ['hp', 0]
         }
