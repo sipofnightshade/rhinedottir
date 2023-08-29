@@ -1,10 +1,9 @@
-import type { All_Stats } from '$lib/data/Stats';
+import type { Index_Stats } from '$lib/data/Stats';
 
-type Stats = Record<All_Stats, number>;
-
-export function getStatsWithActions(totalStats: Stats, action: Partial<Stats>) {
+export function getStatsWithActions(totalStats: Index_Stats, action: Index_Stats) {
   for (const stat in action) {
-    totalStats[stat as All_Stats] += action[stat as All_Stats] || 0;
+    if (!totalStats[stat]) totalStats[stat] = 0;
+    totalStats[stat] += action[stat];
   }
   return totalStats;
 }

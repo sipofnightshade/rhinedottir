@@ -1,11 +1,9 @@
-import type { All_Stats } from '$lib/data/Stats';
+import type { Index_Stats } from '$lib/data/Stats';
 import type { HitDMG } from '$lib/types/talents';
-
-type Stats = Record<All_Stats, number>;
 
 export function calcHitDamage(
   damage: HitDMG,
-  $stats: Stats,
+  $stats: Index_Stats,
   values: { [x: string]: number[] },
   talentLvl: number
 ) {

@@ -38,7 +38,7 @@ export type CoefSource =
   | [All_Stats, number, number, number]; // [ source stat, minimum, maximum, forEvery]
 
 export type ActionValue = {
-  scaling: All_Stats;
+  scaling: string;
   coef: number | number[] | DamageValueID | DamageValueID[];
   source?: CoefSource;
   forEvery?: number;

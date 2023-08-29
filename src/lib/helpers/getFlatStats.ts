@@ -6,7 +6,7 @@
  */
 
 import type { ArtifactState } from '$lib/stores/artifactStore';
-import type { ArtifactStats } from '$lib/types/global';
+import type { ArtifactStats } from '$lib/types/artifacts';
 
 type Substat = {
   stat: ArtifactStats;

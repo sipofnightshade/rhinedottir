@@ -81,6 +81,9 @@ export const weaponStatLabels = {
 
 export type All_Stats = keyof typeof allStats;
 
+export interface Index_Stats {
+  [key: string]: number;
+}
 export const allStats = {
   atk: 0,
   def: 0,

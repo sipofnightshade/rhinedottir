@@ -1,5 +1,5 @@
 // types
-import type { All_Stats } from '$lib/data/Stats';
+import type { Index_Stats } from '$lib/data/Stats';
 import type { DamageType } from '$lib/types/global';
 import type { Hit, HitDMG } from '$lib/types/talents';
 
@@ -19,7 +19,7 @@ export function calcFinalDMG(
   values: { [x: string]: number[] },
   element: DamageType,
   $character: any,
-  $stats: Record<All_Stats, number>,
+  $stats: Index_Stats,
   $enemy: any,
   addStats: any
 ) {
@@ -52,28 +52,32 @@ export function calcFinalDMG(
   const ICD = hit.icd ?? 3; // sets default ICD of 3 if no icd on the hit
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
-  const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier as All_Stats];
+  const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier];
   const DEFMultiplier = calcDEFMultiplier(
     $character.lvl,
     $enemy.lvl,
     $stats.defReduce,
-    $stats[addStats.defIgnore as All_Stats]
+    $stats[addStats.defIgnore]
   );
 
   // calculate total damage bonuses
   const DMGBonus = calcDMGBonus(hit, $stats, element);
 
   // calculate total crit stats
-  const critRate = hit.hasOwnCritRate
-    ? $stats.ownCritRate + $stats.critrate + $stats[addStats.critRate as All_Stats]
-    : +$stats.critrate + $stats[addStats.critRate as All_Stats];
+  const critRate =
+    hit.hasOwnCritRate && $stats[hit.hasOwnCritRate] > 0
+      ? $stats[hit.hasOwnCritRate] + $stats.critrate + $stats[addStats.critRate]
+      : $stats.critrate + $stats[addStats.critRate] || 0;
 
-  const critDMG = hit.hasOwnCritDMG
-    ? $stats.ownCritDMG + $stats.critdmg + $stats[addStats.critDMG as All_Stats]
-    : $stats.critdmg + $stats[addStats.critDMG as All_Stats];
+  const critDMG =
+    hit.hasOwnCritDMG && $stats[hit.hasOwnCritDMG] > 0
+      ? $stats[hit.hasOwnCritDMG] + $stats.critdmg + $stats[addStats.critDMG]
+      : $stats.critdmg + $stats[addStats.critDMG] || 0;
 
   // get the talent specific flatDMG if it has one
-  const ownBonusFlatDMG = hit.hasOwnBonusFlatDMG ? $stats.ownBonusFlatDMG : 0;
+  const ownBonusFlatDMG = hit.hasOwnBonusFlatDMG
+    ? $stats[hit.hasOwnBonusFlatDMG] || 0
+    : 0;
 
   // get the catalyze bonus damage
   const catalyze = {
@@ -82,12 +86,7 @@ export function calcFinalDMG(
   };
   const catalyzeFlatDMG =
     element === 'dendro' || element === 'electro'
-      ? calcCatalyzeBonus(
-          element,
-          $stats.em,
-          $character.lvl,
-          $stats[catalyze[element] as All_Stats]
-        )
+      ? calcCatalyzeBonus(element, $stats.em, $character.lvl, $stats[catalyze[element]])
       : 0;
 
   const FinalDMG = hit.damage.reduce(
@@ -98,7 +97,7 @@ export function calcFinalDMG(
       const result = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG as All_Stats] + ownBonusFlatDMG,
+        $stats[addStats.flatDMG] + ownBonusFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,
@@ -111,7 +110,7 @@ export function calcFinalDMG(
       const catalyzeResult = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG as All_Stats] + catalyzeFlatDMG + ownBonusFlatDMG,
+        $stats[addStats.flatDMG] + catalyzeFlatDMG + ownBonusFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,

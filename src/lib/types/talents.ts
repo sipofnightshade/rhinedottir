@@ -24,7 +24,7 @@ export type DamageValueID =
   | 'param20';
 
 export type HitDMG = {
-  scaling: All_Stats;
+  scaling: string;
   param: DamageValueID;
   coef?: number;
 }[];
@@ -48,10 +48,10 @@ export type Hit = {
     | 'physical';
   multiHit?: number; // for some skills with repeated hits of same damage (up to my judgement)
   quadratic?: boolean;
-  hasOwnBonusDMG?: boolean; // These are for custom stats
-  hasOwnBonusFlatDMG?: boolean; // These are for custom stats
-  hasOwnCritRate?: boolean; // These are for custom stats
-  hasOwnCritDMG?: boolean; // These are for custom stats
+  hasOwnBonusDMG?: string; // These are for custom stats
+  hasOwnBonusFlatDMG?: string; // These are for custom stats
+  hasOwnCritRate?: string; // These are for custom stats
+  hasOwnCritDMG?: string; // These are for custom stats
   icd?: number;
   damage: HitDMG[];
   constellation?: 1 | 2 | 4 | 6;
