@@ -1,7 +1,8 @@
+import type { Index_Stats } from '$lib/data/Stats';
 import type { DamageType } from '$lib/types/global';
 import type { Hit } from '$lib/types/talents';
 
-export function calcDMGBonus(hit: Hit, $stats: any, element: DamageType): number {
+export function calcDMGBonus(hit: Hit, $stats: Index_Stats, element: DamageType): number {
   let dmgBonus = 0;
 
   dmgBonus += $stats[hit.damageBonus];
