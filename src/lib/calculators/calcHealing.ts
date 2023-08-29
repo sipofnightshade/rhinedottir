@@ -8,6 +8,10 @@ export function calcHealing(
   talentLvl: number
 ) {
   const totalHealing = damage.reduce((total, stat) => {
+    if (stat.coef) {
+      return total + stat.coef * $stats[stat.scaling];
+    }
+
     const result =
       stat.scaling === 'flatValue'
         ? values[stat.param][talentLvl]

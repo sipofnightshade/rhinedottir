@@ -8,6 +8,10 @@ export function calcShield(
   talentLvl: number
 ) {
   const totalShield = damage.reduce((total, stat) => {
+    if (stat.coef) {
+      return total + stat.coef * $stats[stat.scaling];
+    }
+
     const result =
       stat.scaling === 'flatValue'
         ? values[stat.param][talentLvl]
