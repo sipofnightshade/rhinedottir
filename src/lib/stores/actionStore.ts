@@ -57,6 +57,9 @@ function createAction() {
           case 'active':
             addStatValue('main', scaling, coef);
             break;
+          case 'notactive':
+            if (id !== 'main') addStatValue(id, scaling, coef);
+            break;
           case 'party':
             addStatValue('main', scaling, coef);
             addStatValue('one', scaling, coef);
@@ -108,6 +111,9 @@ function createAction() {
             break;
           case 'active':
             removeStatValue('main', scaling, coef);
+            break;
+          case 'notactive':
+            if (id !== 'main') removeStatValue(id, scaling, coef);
             break;
           case 'party':
             removeStatValue('main', scaling, coef);

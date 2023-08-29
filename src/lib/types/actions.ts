@@ -18,7 +18,8 @@ export type Target =
   | 'nearby'
   | 'halfnearby'
   | 'thirdnearby'
-  | 'active';
+  | 'active'
+  | 'notactive';
 
 export type ActionType =
   | 'stack'
