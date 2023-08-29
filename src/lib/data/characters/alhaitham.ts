@@ -594,7 +594,7 @@ const charName: CharacterRecord = {
         {
           scaling: 'projectionAttacks',
           coef: 0.001,
-          source: ['em', 0, 1.0]
+          source: ['em', 0, 1000]
         }
       ]
     },
