@@ -267,10 +267,12 @@ const charName: CharacterRecord = {
       target: 'party',
       actionType: 'toggle',
       hasLevels: 'burst',
+      sourceStats: ['baseATK'],
       values: [
         {
-          scaling: 'atk%',
-          coef: 'param4'
+          scaling: 'atk',
+          coef: 'param4',
+          source: ['baseATK', 0]
         }
       ]
     },
@@ -281,11 +283,13 @@ const charName: CharacterRecord = {
         "Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
       target: 'party',
       constellation: 1,
+      sourceStats: ['baseATK'],
       actionType: 'toggle',
       values: [
         {
-          scaling: 'atk%',
-          coef: 0.2
+          scaling: 'atk',
+          coef: 0.2,
+          source: ['baseATK', 0]
         }
       ]
     },
