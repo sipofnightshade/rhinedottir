@@ -46,6 +46,7 @@ export type Hit = {
     | 'hydro'
     | 'pyro'
     | 'physical';
+  stackable?: number;
   multiHit?: number; // for some skills with repeated hits of same damage (up to my judgement)
   quadratic?: boolean;
   hasOwnBonusDMG?: string; // These are for custom stats
