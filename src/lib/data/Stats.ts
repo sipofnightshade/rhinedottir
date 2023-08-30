@@ -143,10 +143,6 @@ export const allStats = {
   plungeCritDMG: 0,
   skillCritDMG: 0,
   burstCritDMG: 0,
-  ownBonusDMG: 0, // These are for custom stats
-  ownBonusFlatDMG: 0, // These are for custom stats
-  ownCritRate: 0, // These are for custom stats
-  ownCritDMG: 0, // These are for custom stats
   normalDefIgnore: 0,
   chargedDefIgnore: 0,
   plungeDefIgnore: 0,
