@@ -12,6 +12,7 @@
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import { action } from '$lib/stores/actionStore';
+  import ArtifactButton from './ArtifactButton.svelte';
 
   export let margin = true;
 
@@ -36,17 +37,21 @@
   class:my-4={margin}
 >
   {#each $character.selected.actions as data (data.name)}
-    {#if data.actionType === 'toggle'}
-      <svelte:component
-        this={buttons[data.actionType]}
-        {data}
-        type={$character.selected.vision}
-        id="main"
-        character={$character}
-        stats={$stats.main}
-      />
-    {/if}
+    <svelte:component
+      this={buttons[data.actionType]}
+      {data}
+      type={$character.selected.vision}
+      id="main"
+      character={$character}
+      stats={$stats.main}
+    />
   {/each}
+  <ArtifactButton
+    setData={$artifact}
+    id="main"
+    character={$character}
+    stats={$stats.main}
+  />
   <!-- main weapon actions -->
   <!-- main artifact actions -->
 </section>
