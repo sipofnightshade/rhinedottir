@@ -135,7 +135,7 @@ const charName: CharacterRecord = {
   skill: [
     {
       name: 'Skill DMG',
-      tag: 'E',
+      tag: 'E1',
       damageBonus: 'skill',
       hasOwnBonusDMG: 'mortuaryRite',
       damage: [
@@ -149,7 +149,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Mortuary Rite DMG',
-      tag: 'EX',
+      tag: 'E2',
       damageBonus: 'skill',
       hasOwnBonusDMG: 'mortuaryRite',
       damage: [
@@ -162,8 +162,7 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Duststalker Bolt',
-      tag: 'A1',
+      name: '1x Duststalker Bolt',
       damageBonus: 'skill',
       hasOwnBonusFlatDMG: 'duststalkerBolt',
       damage: [
@@ -178,7 +177,7 @@ const charName: CharacterRecord = {
     },
     {
       name: '3x Dustalker Bolts',
-      tag: 'AT',
+      tag: 'A1',
       damageBonus: 'skill',
       hasOwnBonusFlatDMG: 'duststalkerBolt',
       damage: [
