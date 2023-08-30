@@ -1,194 +1,263 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "dori",
-  "fullName": "Dori",
-  "rating": 4,
-  "weapon": "claymore",
-  "region": "mondstat",
-  "vision": "electro",
-  "specialized": "hp%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'dori',
+  fullName: 'Dori',
+  rating: 4,
+  weapon: 'claymore',
+  region: 'sumeru',
+  vision: 'electro',
+  specialized: 'hp%',
+  c3: 'burst',
+  c5: 'skill',
+  burstCost: 80,
+  talentNames: {
+    normal: 'Marvelous Sword-Dance (Modified)',
+    skill: 'Spirit-Warding Lamp: Troubleshooter Cannon',
+    burst: "Alcazarzaray's Exactitude"
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack Spinning DMG',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
-          }
-        ]
-      ]
-    }
-  ],
-  "plunge": [
-    {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Charged Attack Final DMG',
+      tag: 'CF',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ]
+      ]
+    }
+  ],
+  plunge: [
+    {
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param10'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param11'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Troubleshooter Shot DMG',
+      tag: 'E1',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'After-Sales Service Round DMG',
+      tag: 'E2',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: '1x After-Sales Service Round DMG',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Sprinkling Weight',
+      damageBonus: 'skill',
+      constellation: 6,
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2',
+            coef: 0.04
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Connector DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Continuous Healing',
+      damageBonus: 'burst',
+      isHealing: true,
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Discretionary Supplement',
+      url: 'UI_Talent_S_Dori_03',
+      description:
+        'The character connected to the **Jinni** will obtain the following buffs based on their current HP and Energy:\n·When their HP is lower than 50%, they gain 50% Incoming Healing Bonus.\n·When their Energy is less than 50%, they gain 30% Energy Recharge.',
+      constellation: 4,
+      target: 'active',
+      actionType: 'multiSelect',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'healingIncoming',
+          coef: 0.5
+        },
+        {
+          scaling: 'energy',
+          coef: 0.3
         }
       ]
+    },
+    {
+      name: 'Sprinkling Weight',
+      url: 'UI_Talent_S_Dori_04',
+      description:
+        "Dori gains the following effects for 3s after using **Spirit-Warding Lamp: Troubleshooter Cannon**:\n·Electro Infusion.\n·When Normal Attacks hit opponents, all nearby party members will heal HP equivalent to 4% of Dori's Max HP. This type of healing can occur once every 0.1s.",
+      level: 2,
+      constellation: 6,
+      infusion: 'electro',
+      target: 'self',
+      actionType: 'passive',
+      values: []
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
