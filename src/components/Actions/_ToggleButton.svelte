@@ -4,7 +4,7 @@
   import type { Visions } from '$lib/types/global';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
-  import type { All_Stats } from '$lib/data/Stats';
+  import type { All_Stats, Index_Stats } from '$lib/data/Stats';
 
   // components
   import ActionButton from './ActionButton.svelte';
@@ -23,19 +23,19 @@
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
-  export let stats: Record<All_Stats, number>;
+  export let stats: Index_Stats;
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
-  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
+  const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
   let isActive: boolean = false;
-  let addedStats: { scaling: All_Stats; coef: number }[] = [];
+  let addedStats: { scaling: string; coef: number }[] = [];
 
   function addStats() {
     data.values.forEach((value) => {

@@ -1,9 +1,9 @@
-import type { All_Stats } from '$lib/data/Stats';
+import type { All_Stats, Index_Stats } from '$lib/data/Stats';
 import type { CoefSource } from '$lib/types/actions';
 
 export function calcCoefficient(
   coef: number,
-  $stats: Record<All_Stats, number>,
+  $stats: Index_Stats,
   source: CoefSource | undefined
 ): number {
   if (source === undefined) {

@@ -6,24 +6,25 @@
   import type { CurrentCharacter } from '$lib/stores/characterStore';
 
   // external functions & stores
-  import { action, type All_Stats } from '$lib/stores/actionStore';
+  import { action } from '$lib/stores/actionStore';
   import { stripStat } from '$lib/helpers/stripStats';
   import { onDestroy, onMount } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
-  import { stats } from '$lib/stores/statsStore';
 
   // component
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
+  import type { All_Stats } from '$lib/data/Stats';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
+  export let stats: Record<All_Stats, number>;
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
@@ -54,11 +55,7 @@
             talentLvl
           )
         : coef;
-    const result = calcCoefficient(
-      talentValue,
-      $stats[id] as Record<All_Stats, number>,
-      source
-    );
+    const result = calcCoefficient(talentValue, stats, source);
 
     action.addStat(id, target as Target, scaling, result);
     addedStats.push({ scaling, coef: result });
@@ -103,6 +100,9 @@
     const toggleValues = Object.values(selectedStats) as Array<boolean>;
     isActive = toggleValues.some((value) => value === true);
   }
+
+  // $: console.log('selectedStats', selectedStats);
+  // $: console.log('addedStats', addedStats);
 </script>
 
 <button on:click={toggleModal} class="relative">

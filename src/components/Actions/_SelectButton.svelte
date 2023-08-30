@@ -4,7 +4,7 @@
   import type { Visions } from '$lib/types/global';
   import type { CharacterSpecificNames } from '$lib/types/characters';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
-  import type { All_Stats } from '$lib/data/Stats';
+  import type { All_Stats, Index_Stats } from '$lib/data/Stats';
 
   // external functions & stores
   import { action } from '$lib/stores/actionStore';
@@ -24,14 +24,14 @@
   export let data: Action;
   export let id: ActionBtnID;
   export let character: CurrentCharacter;
-  export let stats: Record<All_Stats, number>;
+  export let stats: Index_Stats;
 
-  type Stat = { scaling: All_Stats; coef: number; source: CoefSource };
+  type Stat = { scaling: string; coef: number; source: CoefSource };
 
   const target = data.target ?? 'self';
   const cName = getCharacterName(character.selected);
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
-  const sourceStats: All_Stats[] | null = data.sourceStats ?? null;
+  const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
   let selected: Stat | undefined;

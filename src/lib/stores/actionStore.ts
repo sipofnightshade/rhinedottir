@@ -1,6 +1,5 @@
 import { writable } from 'svelte/store';
 import type { Target } from '$lib/types/actions';
-import type { All_Stats } from '$lib/data/Stats';
 
 type StatProperty = {
   [key: string]: number;
@@ -41,11 +40,11 @@ function createAction() {
 
   return {
     subscribe,
-    addStat: (id: ActionId, target: Target, scaling: All_Stats, coef: number) =>
+    addStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        // console.log(target, ' | ', scaling, coef);
+        console.log(target, ' | ', scaling, coef);
 
-        const addStatValue = (id: ActionId, scaling: All_Stats, value: number) => {
+        const addStatValue = (id: ActionId, scaling: string, value: number) => {
           if (!state[id][scaling]) state[id][scaling] = 0;
           state[id][scaling] += value;
         };
@@ -97,9 +96,9 @@ function createAction() {
         }
         return state;
       }),
-    removeStat: (id: ActionId, target: Target, scaling: All_Stats, coef: number) =>
+    removeStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        const removeStatValue = (id: ActionId, scaling: All_Stats, value: number) => {
+        const removeStatValue = (id: ActionId, scaling: string, value: number) => {
           if (state[id][scaling]) {
             state[id][scaling] -= value;
           }
