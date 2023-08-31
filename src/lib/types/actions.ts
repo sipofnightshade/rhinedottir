@@ -36,7 +36,8 @@ type CoefStats = All_Stats | 'baseATK' | 'baseDEF' | 'baseHP';
 export type CoefSource =
   | [CoefStats, number] // [ source stat, minimum]
   | [CoefStats, number, number] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
-  | [CoefStats, number, number, number]; // [ source stat, minimum, maximum, forEvery]
+  | [CoefStats, number, number, number] // [ source stat, minimum, maximum, forEvery]
+  | [CoefStats, number, number, number, string]; // [ source stat, minimum, maximum, forEvery, calculatedMax] eg: 'baseATK*4'
 
 export type ActionValue = {
   scaling: string;
