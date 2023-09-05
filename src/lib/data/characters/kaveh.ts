@@ -8,8 +8,8 @@ const charName: CharacterRecord = {
   region: 'sumeru',
   vision: 'dendro',
   specialized: 'em',
-  c3: 'skill',
-  c5: 'burst',
+  c3: 'burst',
+  c5: 'skill',
   burstCost: 80,
   talentNames: {
     normal: 'Schematic Setup',
@@ -167,21 +167,113 @@ const charName: CharacterRecord = {
           }
         ]
       ]
+    },
+    {
+      name: 'A4 Healing',
+      isHealing: true,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'em',
+            param: 'param1',
+            coef: 3.0
+          }
+        ]
+      ]
+    },
+    {
+      name: "Pairidaeza's Light",
+      constellation: 6,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1',
+            coef: 0.618
+          }
+        ]
+      ]
     }
   ],
   actions: [
     {
-      name: 'Uprising Whirlwind',
-      url: 'UI_Talent_S_PlayerWind_02',
-      description: 'description',
-      level: 2,
+      name: 'Painted Dome',
+      url: 'Skill_E_Kaveh_01',
+      description:
+        "Increases Kaveh's Normal, Charged, and Plunging Attack AoE, and converts his attack DMG to Dendro DMG that cannot be overridden.\n·All Dendro Cores created by all your own party members through Bloom reactions will deal additional DMG when they burst.\n·Increases Kaveh's resistance to interruption.",
+      infusion: 'dendro',
+      target: 'self',
+      actionType: 'passive',
+      hasLevels: 'burst',
+      values: [
+        {
+          scaling: 'bloom',
+          coef: 'param3'
+        }
+      ]
+    },
+    {
+      name: "A Craftsman's Curious Conceptions",
+      url: 'UI_Talent_S_Kaveh_06',
+      description:
+        "During **Painted Dome**, after Kaveh's Normal, Charged, or Plunging Attacks hit opponents, his Elemental Mastery will increase by 25. This effect can be triggered once every 0.1s. Max 4 stacks.\nThis effect will be canceled when Painted Dome's effects end.",
+      level: 8,
+      target: 'self',
+      actionType: 'stack',
+      values: [
+        {
+          scaling: 'em',
+          coef: [25, 25, 25, 25]
+        }
+      ]
+    },
+    {
+      name: 'Sublime Salutations',
+      url: 'UI_Talent_S_Kaveh_01',
+      description:
+        "Within 3s after using **Artistic Ingenuity**, Kaveh's Dendro RES and Incoming Healing Bonus will be increased by 50% and 25% respectively.",
+      constellation: 1,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'healingIncoming',
+          coef: 0.25
+        },
+        {
+          scaling: 'dendroRes',
+          coef: 0.5
+        }
+      ]
+    },
+    {
+      name: 'Grace of Royal Roads',
+      url: 'UI_Talent_S_Kaveh_02',
+      description: "Kaveh's Normal Attack SPD increases by 15% during **Painted Dome**.",
       constellation: 2,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'normalATKSpd',
+          coef: 0.15
+        }
+      ]
+    },
+    {
+      name: 'Feast of Apadana',
+      url: 'UI_Talent_S_Kaveh_03',
+      description:
+        'Dendro Cores created from Bloom reactions Kaveh triggers will deal 60% more DMG when they burst.',
+      constellation: 4,
       target: 'self',
       actionType: 'passive',
       values: [
         {
-          scaling: 'energy',
-          coef: 0
+          scaling: 'bloom',
+          coef: 0.6
         }
       ]
     }
