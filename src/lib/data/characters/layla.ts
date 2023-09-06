@@ -1,194 +1,272 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "layla",
-  "fullName": "Layla",
-  "rating": 4,
-  "weapon": "sword",
-  "region": "mondstat",
-  "vision": "cryo",
-  "specialized": "hp%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'layla',
+  fullName: 'Layla',
+  rating: 4,
+  weapon: 'sword',
+  region: 'sumeru',
+  vision: 'cryo',
+  specialized: 'hp%',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 40,
+  talentNames: {
+    normal: 'Sword of the Radiant Path',
+    skill: 'Nights of Formal Focus',
+    burst: 'Dream of the Star-Stream Shaker'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param7'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Skill DMG',
+      tag: 'E1',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Shooting Star DMG',
+      tag: 'E2',
+      hasOwnBonusFlatDMG: 'shootingStars',
+      hasOwnBonusDMG: 'radiantSoulfire',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Base Shield DMG Absorption',
+      damageBonus: 'skill',
+      isShield: true,
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param3'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Starlight Slug DMG',
+      tag: 'Q',
+      hasOwnBonusDMG: 'radiantSoulfire',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'hp',
+            param: 'param1'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Like Nascent Light',
+      url: 'UI_Talent_S_Layla_05',
+      description:
+        'While the **Curtain of Slumber** is active, the Deep Sleep effect will activate each time the Curtain gains 1 Night Star:\n·The Shield Strength of a character under the effect of the Curtain of Slumber increases by 6%.\n·This effect can have a maximum of 4 stacks and persists until the Curtain of Slumber disappears.',
+      level: 2,
+      target: 'active',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'shieldStrength',
+          coef: [0.06, 0.06, 0.06, 0.06]
+        }
+      ]
+    },
+    {
+      name: 'Sweet Slumber Undisturbed',
+      url: 'UI_Talent_S_Layla_06',
+      description:
+        "The DMG dealt by the Shooting Stars fired by **Nights of Formal Focus** is increased by 1.5% of Layla's Max HP.",
+      level: 8,
+      target: 'self',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'shootingStars',
+          coef: 0.015,
+          source: ['hp', 0]
+        }
+      ]
+    },
+    {
+      name: 'Fortress of Fantasy',
+      url: 'UI_Talent_S_Layla_01',
+      description:
+        'The Shield Absorption of the Curtain of Slumber generated by **Nights of Formal Focus** is increased by 20%.',
+      constellation: 1,
+      target: 'self',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'shieldStrength',
+          coef: 0.2
+        }
+      ]
+    },
+    {
+      name: 'Starry Illumination',
+      url: 'UI_Talent_S_Layla_03',
+      description:
+        "When **Nights of Formal Focus** starts to fire off Shooting Stars, it will grant all nearby party members the Dawn Star effect, causing their Normal and Charged Attack DMG to increase based on 5% of Layla's Max HP.\nDawn Star can last up to 3s and will be removed 0.05s after dealing Normal or Charged Attack DMG.",
+      constellation: 4,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'chargedFlatDMG',
+          coef: 0.05,
+          source: ['hp', 0]
+        },
+        {
+          scaling: 'normalFlatDMG',
+          coef: 0.05,
+          source: ['hp', 0]
+        }
+      ]
+    },
+    {
+      name: 'Radiant Soulfire',
+      url: 'UI_Talent_S_Layla_04',
+      description:
+        'Shooting Stars from **Nights of Formal Focus** deal 40% increased DMG, and Starlight Slugs from **Dream of the Star-Stream Shaker** deal 40% increased DMG.\nAdditionally, the interval between the creation of Night Stars via Nights of Formal Focus is decreased by 20%.',
+      constellation: 6,
+      target: 'self',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'radiantSoulfire',
+          coef: 0.4
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
