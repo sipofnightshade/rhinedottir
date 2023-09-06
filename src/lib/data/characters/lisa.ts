@@ -8,8 +8,8 @@ const charName: CharacterRecord = {
   region: 'mondstat',
   vision: 'electro',
   specialized: 'em',
-  c3: 'skill',
-  c5: 'burst',
+  c3: 'burst',
+  c5: 'skill',
   burstCost: 80,
   talentNames: {
     normal: 'Lightning Touch',
