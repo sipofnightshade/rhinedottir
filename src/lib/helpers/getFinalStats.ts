@@ -1,5 +1,5 @@
 // types
-import type { All_Stats } from '$lib/data/Stats';
+import type { Index_Stats } from '$lib/data/Stats';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { CurrentWeapon } from '$lib/stores/weaponStore';
@@ -11,13 +11,11 @@ import { getFlatStats } from './getFlatStats';
 import { getStatsWithActions } from './getStatsWithActions';
 import { getTotalStats } from './getTotalStats';
 
-type Actions = Record<All_Stats, number>;
-
 export function getFinalStats(
   character: CurrentCharacter,
   weapon: CurrentWeapon,
   artifacts: ArtifactState,
-  action: Partial<Actions>
+  action: Index_Stats
 ) {
   const baseATK = (character.stats?.attack ?? 0) + (weapon.stats?.attack ?? 0);
   const baseHP = character.stats?.hp ?? 0;

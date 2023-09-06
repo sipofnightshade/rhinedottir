@@ -3,7 +3,7 @@ import type { Hit } from '$lib/types/talents';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
 import type { DamageType } from '$lib/types/global';
 import type { Enemy } from '$lib/types/enemy';
-import type { All_Stats } from '$lib/data/Stats';
+import type { Index_Stats } from '$lib/data/Stats';
 
 // helpers & calculators
 import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
@@ -17,7 +17,7 @@ type TalentType = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst';
 
 export function getTalentRows(
   character: CurrentCharacter,
-  stats: Record<All_Stats, number>,
+  stats: Index_Stats,
   enemy: Enemy,
   type: TalentType,
   dmgType: DamageType
