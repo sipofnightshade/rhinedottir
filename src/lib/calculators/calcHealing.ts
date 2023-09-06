@@ -19,7 +19,7 @@ export function calcHealing(
     return total + result;
   }, 0);
 
-  return (
-    (totalHealing + $stats.flatHealing) * (1 + $stats.healing + $stats.healingIncoming)
-  );
+  const flatHealing = $stats.flatHealing ?? 0;
+
+  return (totalHealing + flatHealing) * (1 + $stats.healing + $stats.healingIncoming);
 }
