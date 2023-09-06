@@ -1,194 +1,247 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "kujousara",
-  "fullName": "Kujou Sara",
-  "rating": 4,
-  "weapon": "bow",
-  "region": "mondstat",
-  "vision": "electro",
-  "specialized": "atk%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'kujousara',
+  fullName: 'Kujou Sara',
+  rating: 4,
+  weapon: 'bow',
+  region: 'inazuma',
+  vision: 'electro',
+  specialized: 'atk%',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 80,
+  talentNames: {
+    normal: 'Tengu Bowmanship',
+    skill: 'Tengu Stormcall',
+    burst: 'Subjugation: Koukou Sendou'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
+      name: '5 - Hit DMG',
+      tag: 'N5',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Aimed Shot',
+      tag: 'C1',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
-          }
-        ]
-      ]
-    }
-  ],
-  "plunge": [
-    {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param6'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Fully-Charged Aimed Shot',
+      tag: 'C2',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param7'
+          }
+        ]
+      ]
+    }
+  ],
+  plunge: [
+    {
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param9'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param10'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Tengu Juurai: Ambush DMG',
+      tag: 'E',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Dark Wings',
+      tag: 'X2',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Tengu Juurai: Titanbreaker DMG',
+      tag: 'Q1',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Tengu Juurai: Stormcluster DMG',
+      tag: 'Q2',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Tengu Juurai',
+      url: 'Skill_S_Sara_01',
+      description:
+        "Crowfeathers will trigger Tengu Juurai: Ambush after a short time, dealing Electro DMG and granting the active character within its AoE an ATK Bonus based on Kujou Sara's Base ATK.",
+      target: 'active',
+      actionType: 'toggle',
+      hasLevels: 'skill',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'atk',
+          coef: 'param2',
+          source: ['baseATK', 0]
+        }
+      ]
+    },
+    {
+      name: 'Sin of Pride',
+      url: 'UI_Talent_S_Sara_04',
+      description:
+        'The Electro DMG of characters who have had their ATK increased by Tengu Juurai has its Crit DMG increased by 60%.',
+      constellation: 6,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'electroCritDMG',
+          coef: 0.6
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
