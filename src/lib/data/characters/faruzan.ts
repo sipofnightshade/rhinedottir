@@ -210,7 +210,7 @@ const charName: CharacterRecord = {
           coef: 'param2'
         }
       ]
-    }
+    },
     // {
     //   name: "Lost Wisdom of the Seven Caverns",
     //   url: 'UI_Talent_S_Faruzan_06',
@@ -225,20 +225,21 @@ const charName: CharacterRecord = {
     //     }
     //   ]
     // },
-    // {
-    //   name: 'The Wondrous Path of Truth',
-    //   url: 'Skill_E_Faruzan_01',
-    //   description: "Characters affected by **The Wind's Secret Ways**' Prayerful Wind's Benefit have 40% increased CRIT DMG when they deal Anemo DMG. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every 3s. This CD is shared between all party members.",
-    //   constellation: 6,
-    //   target: 'self',
-    //   actionType: 'passive',
-    //   values: [
-    //     {
-    //       scaling: 'energy',
-    //       coef: 0
-    //     }
-    //   ]
-    // }
+    {
+      name: 'The Wondrous Path of Truth',
+      url: 'UI_Talent_S_Faruzan_04',
+      description:
+        "Characters affected by **The Wind's Secret Ways**' Prayerful Wind's Benefit have 40% increased CRIT DMG when they deal Anemo DMG. When the active character deals DMG while affected by Prayerful Wind's Benefit, they will apply Pressurized Collapse to the opponent damaged. This effect can be triggered once every 3s. This CD is shared between all party members.",
+      constellation: 6,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'anemoCritDMG',
+          coef: 0.4
+        }
+      ]
+    }
   ],
   offField: []
 };
