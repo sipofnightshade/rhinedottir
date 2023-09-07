@@ -27,9 +27,9 @@ export function calcCoefficient(
       let calculatedValue;
 
       if (forEvery !== undefined && forEvery !== 0) {
-        calculatedValue = (cappedStatValue / forEvery) * coef;
+        calculatedValue = ((cappedStatValue - threshold) / forEvery) * coef;
       } else {
-        calculatedValue = cappedStatValue * coef;
+        calculatedValue = (cappedStatValue - threshold) * coef;
       }
 
       if (calculatedMax && calculatedValue > calculatedMax) {
