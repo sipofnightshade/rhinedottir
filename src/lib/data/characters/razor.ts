@@ -1,194 +1,283 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "razor",
-  "fullName": "Razor",
-  "rating": 4,
-  "weapon": "claymore",
-  "region": "mondstat",
-  "vision": "electro",
-  "specialized": "physical",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'razor',
+  fullName: 'Razor',
+  rating: 4,
+  weapon: 'claymore',
+  region: 'mondstat',
+  vision: 'electro',
+  specialized: 'physical',
+  c3: 'burst',
+  c5: 'skill',
+  burstCost: 80,
+  talentNames: {
+    normal: 'Steel Fang',
+    skill: 'Claw and Thunder',
+    burst: 'Lightning Fang'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
+      name: 'Lupus Fulguris',
+      tag: 'X6',
+      damageBonus: 'normal',
+      hasOwnDMGType: 'electro',
+      constellation: 6,
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param1',
+            coef: 1.0
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack Cyclic DMG',
+      tag: 'CC',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
-          }
-        ]
-      ]
-    }
-  ],
-  "plunge": [
-    {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Charged Attack Final DMG',
+      tag: 'CF',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ]
+      ]
+    }
+  ],
+  plunge: [
+    {
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param10'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param11'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Press Skill DMG',
+      tag: 'EP',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Hold Skill DMG',
+      tag: 'EP',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Burst DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'The Wolf Within',
+      url: 'Skill_E_Razor_01',
+      description:
+        "**The Wolf Within**\n·Raises Razor's ATK SPD and Electro RES.\n·Causes Razor to be immune to DMG inflicted by the Electro-Charged status.\n·Disables Razor's Charged Attacks.\n·Increases Razor's resistance to interruption.\n\nThese effects end when Razor leaves the battlefield.",
+      hasLevels: 'burst',
+      target: 'self',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'normalATKSpd',
+          coef: 'param3'
+        },
+        {
+          scaling: 'electroRes',
+          coef: 0.8
+        }
+      ]
+    },
+    {
+      name: 'Hunger',
+      url: 'UI_Talent_S_PlayerWind_02',
+      description: "When Razor's Energy is below 50%, increases Energy Recharge by 30%.",
+      level: 8,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'energy',
+          coef: 0.3
+        }
+      ]
+    },
+    {
+      name: "Wolf's Instinct",
+      url: 'UI_Talent_S_Razor_01',
+      description:
+        "Picking up an Elemental Orb or Particle increases Razor's DMG by 10% for 8s.",
+      constellation: 1,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'dmgIncrease',
+          coef: 0.1
+        }
+      ]
+    },
+    {
+      name: 'Suppression',
+      url: 'UI_Talent_S_Razor_02',
+      description: 'Increases CRIT Rate against opponents with less than 30% HP by 10%.',
+      constellation: 2,
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'critrate',
+          coef: 0.3
+        }
+      ]
+    },
+    {
+      name: 'Bite',
+      url: 'UI_Talent_S_Razor_03',
+      description:
+        'When casting **Claw and Thunder** (Press), opponents hit will have their DEF decreased by 15% for 7s.',
+      constellation: 4,
+      target: 'enemy',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'def%',
+          coef: 0.15
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
