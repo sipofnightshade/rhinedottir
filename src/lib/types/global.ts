@@ -80,8 +80,8 @@ export type CharacterRecord = {
   fullName: string;
   region: Regions;
   rating: 4 | 5;
-  c3: 'skill' | 'burst' | undefined;
-  c5: 'skill' | 'burst' | undefined;
+  c3: 'skill' | 'burst' | 'atk' | undefined;
+  c5: 'skill' | 'burst' | 'atk' | undefined;
   weapon: WeaponCategory;
   vision: Visions;
   specialized: CharacterSpecialized;

@@ -153,6 +153,7 @@ export const allStats = {
   // party stats
   partyBurstCost: 0,
   partyMaxEM: 0,
+  partyAvgBurstCost: 0,
   // reaction bonuses
   aggravate: 0,
   spread: 0,

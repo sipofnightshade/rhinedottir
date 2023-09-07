@@ -15,7 +15,7 @@ function createStats() {
     ([$character, $weapon, $artifacts, $action, $party]) => {
       const main = getFinalStats($character, $weapon, $artifacts, $action.main);
 
-      let partyBurstCost = $character.selected.burstCost;
+      // let partyBurstCost = $character.selected.burstCost;
 
       let p1Stats, p2Stats, p3Stats;
       if ($party?.one) {
@@ -26,7 +26,7 @@ function createStats() {
           $action.one
         );
 
-        partyBurstCost += $party.one.character.selected.burstCost;
+        // partyBurstCost += $party.one.character.selected.burstCost;
       }
       if ($party?.two) {
         p2Stats = getFinalStats(
@@ -35,7 +35,7 @@ function createStats() {
           $party.two.artifacts,
           $action.two
         );
-        partyBurstCost += $party.two.character.selected.burstCost;
+        // partyBurstCost += $party.two.character.selected.burstCost;
       }
       if ($party?.three) {
         p3Stats = getFinalStats(
@@ -44,7 +44,7 @@ function createStats() {
           $party.three.artifacts,
           $action.three
         );
-        partyBurstCost += $party.three.character.selected.burstCost;
+        // partyBurstCost += $party.three.character.selected.burstCost;
       }
 
       // get max EM
@@ -55,11 +55,41 @@ function createStats() {
         p3Stats?.em ?? 0
       );
 
+      // get avg party burst cost
+      function calculateAverageBurstCost(...burstCosts: number[]) {
+        const filteredBurstCosts = burstCosts.filter((cost) => cost !== 0);
+
+        const totalBurstCosts = filteredBurstCosts.reduce((acc, cost) => acc + cost, 0);
+        const avgBurstCosts =
+          filteredBurstCosts.reduce((acc, cost) => acc + cost, 0) /
+          filteredBurstCosts.length;
+
+        return [totalBurstCosts, avgBurstCosts];
+      }
+
+      const mainBurstCost = $character.selected.burstCost;
+      const p1BurstCost = $party?.one?.character?.selected.burstCost ?? 0;
+      const p2BurstCost = $party?.two?.character?.selected.burstCost ?? 0;
+      const p3BurstCost = $party?.three?.character?.selected.burstCost ?? 0;
+
+      const [partyBurstCost, partyAvgBurstCost] = calculateAverageBurstCost(
+        mainBurstCost,
+        p1BurstCost,
+        p2BurstCost,
+        p3BurstCost
+      );
+
       return {
-        main: { ...main, partyBurstCost, partyMaxEM },
-        one: p1Stats ? { ...p1Stats, partyBurstCost, partyMaxEM } : undefined,
-        two: p2Stats ? { ...p2Stats, partyBurstCost, partyMaxEM } : undefined,
-        three: p3Stats ? { ...p3Stats, partyBurstCost, partyMaxEM } : undefined
+        main: { ...main, partyBurstCost, partyMaxEM, partyAvgBurstCost },
+        one: p1Stats
+          ? { ...p1Stats, partyBurstCost, partyMaxEM, partyAvgBurstCost }
+          : undefined,
+        two: p2Stats
+          ? { ...p2Stats, partyBurstCost, partyMaxEM, partyAvgBurstCost }
+          : undefined,
+        three: p3Stats
+          ? { ...p3Stats, partyBurstCost, partyMaxEM, partyAvgBurstCost }
+          : undefined
       };
     }
   );
