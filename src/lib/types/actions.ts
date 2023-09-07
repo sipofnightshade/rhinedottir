@@ -43,7 +43,7 @@ export type ActionValue = {
   scaling: string;
   coef: number | number[] | DamageValueID | DamageValueID[];
   source?: CoefSource;
-  forEvery?: number;
+  label?: All_Stats;
 };
 
 export type Action = {
@@ -52,6 +52,7 @@ export type Action = {
   description?: string;
   weapons?: WeaponCategory[];
   level?: 2 | 8;
+  maxSelects?: number;
   hasLevels?: 'atk' | 'skill' | 'burst';
   infusion?: Visions;
   constellation?: number;
