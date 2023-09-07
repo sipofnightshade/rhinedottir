@@ -33,6 +33,8 @@
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
 
+  let isInitialized = false; // Add a flag to track component initialization
+
   let addedStats: { scaling: string; coef: number }[] = [];
 
   function addStats() {
@@ -72,7 +74,7 @@
   }
 
   $: {
-    if (talentLvl !== previousTalentLvl || isAnyStatChanged()) {
+    if (isInitialized && (talentLvl !== previousTalentLvl || isAnyStatChanged())) {
       removeStats();
       addStats();
       previousTalentLvl = talentLvl;
@@ -84,6 +86,8 @@
     addStats();
     // this return might be problematic if the state is reset when character changes
     // because then this might run after and substract values that were not added
+    isInitialized = true;
+
     return () => {
       removeStats();
     };
