@@ -1,194 +1,284 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "yaemiko",
-  "fullName": "Yae Miko",
-  "rating": 5,
-  "weapon": "catalyst",
-  "region": "mondstat",
-  "vision": "electro",
-  "specialized": "critrate",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'yaemiko',
+  fullName: 'Yae Miko',
+  rating: 5,
+  weapon: 'catalyst',
+  region: 'inazuma',
+  vision: 'electro',
+  specialized: 'critrate',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 90,
+  talentNames: {
+    normal: 'Spiritfox Sin-Eater',
+    skill: 'Yakan Evocation: Sesshou Sakura',
+    burst: 'Great Secret Art: Tenko Kenshin'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param6'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param7'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Sesshou Sakura DMG: Level 1',
+      tag: 'E1',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Sesshou Sakura DMG: Level 2',
+      tag: 'E2',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Sesshou Sakura DMG: Level 3',
+      tag: 'E3',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Sesshou Sakura DMG: Level 4',
+      tag: 'E4',
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Burst DMG',
+      tag: 'Q1',
+      icd: 0,
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Tenko Thunderbolt DMG x1',
+      tag: 'Q2',
+      icd: 0,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Base + 3x Thunderbolt DMG',
+      tag: 'QT',
+      icd: 0,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Enlightened Blessing',
+      url: 'UI_Talent_S_Yae_06',
+      description:
+        'Every point of Elemental Mastery Yae Miko possesses will increase **Sesshou Sakura** DMG by 0.15%.',
+      level: 8,
+      target: 'self',
+      actionType: 'passive',
+      sourceStats: ['em'],
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'skill',
+          coef: 0.0015,
+          source: ['em', 0]
+        }
+      ]
+    },
+    {
+      name: 'Sakura Channeling',
+      url: 'UI_Talent_S_Yae_03',
+      description:
+        'When **Sesshou Sakura** lightning hits opponents, the Electro DMG Bonus of all nearby party members is increased by 20% for 5s.',
+      constellation: 4,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'electro',
+          coef: 0.2
+        }
+      ]
+    },
+    {
+      name: 'Forbidden Art: Daisesshou',
+      url: 'UI_Talent_S_Yae_04',
+      description:
+        "**The Sesshou Sakura's** attacks will ignore 60% of the opponents' DEF.",
+      constellation: 2,
+      target: 'self',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'skillDefIgnore',
+          coef: 0.6
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
