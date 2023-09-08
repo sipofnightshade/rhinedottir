@@ -1,194 +1,377 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "ningguang",
-  "fullName": "Ningguang",
-  "rating": 4,
-  "weapon": "catalyst",
-  "region": "mondstat",
-  "vision": "geo",
-  "specialized": "geo",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'ningguang',
+  fullName: 'Ningguang',
+  rating: 4,
+  weapon: 'catalyst',
+  region: 'liyue',
+  vision: 'geo',
+  specialized: 'geo',
+  c3: 'burst',
+  c5: 'skill',
+  burstCost: 40,
+  talentNames: {
+    normal: 'Sparkling Scatter',
+    skill: 'Jade Screen',
+    burst: 'Starshatter'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: 'Normal Attack DMG',
+      tag: 'NA',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param2"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param3"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
-          }
-        ]
-      ]
-    }
-  ],
-  "plunge": [
-    {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'DMG per Star Jade',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Charged Attack + 1 Jade',
+      tag: 'C1',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Charged Attack + 3 Jades',
+      tag: 'C3',
+      damageBonus: 'charged',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Charged Attack + 7 Jades',
+      tag: 'C7',
+      damageBonus: 'charged',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  plunge: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param5'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param7'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  skill: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Skill DMG',
+      tag: 'E',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  burst: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'DMG Per Gem',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Burst DMG',
+      tag: 'Q1',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Burst + Jade Screen DMG',
+      tag: 'Q2',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    }
+  ],
+  actions: [
+    {
+      name: 'Strategic Reserve',
+      url: 'UI_Talent_S_Ningguang_06',
+      description:
+        'A character that passes through the **Jade Screen** will gain a 12% Geo DMG Bonus for 10s.',
+      level: 8,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'geo',
+          coef: 0.12
         }
       ]
     }
-  ],
-  "offField": []
+  ]
 };
 
 export default charName;
