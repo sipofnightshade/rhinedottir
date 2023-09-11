@@ -14,6 +14,7 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import ArtifactButton from './ArtifactButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
+  import VisionMatchToggle from './_VisionMatchToggle.svelte';
 
   export let margin = true;
 
@@ -24,7 +25,8 @@
     select: SelectButton,
     multiSelect: MultiSelectButton,
     input: MultiSelectButton,
-    visionMatch: VisionMatchButton
+    visionMatch: VisionMatchButton,
+    visionMatchToggle: VisionMatchToggle
   };
 
   $: if ($character.selected) action.reset('main');

@@ -28,7 +28,8 @@ export type ActionType =
   | 'multiSelect'
   | 'input'
   | 'passive'
-  | 'visionMatch';
+  | 'visionMatch'
+  | 'visionMatchToggle';
 
 export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 
