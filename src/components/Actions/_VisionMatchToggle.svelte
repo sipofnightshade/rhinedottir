@@ -120,6 +120,13 @@
     }
   }
 
+  $: {
+    if (statIndex) {
+      removeStats();
+      addStats();
+    }
+  }
+
   onDestroy(() => {
     if (isActive) {
       removeStats();
