@@ -39,8 +39,8 @@ export function calcCoefficient(
       return calculatedValue;
     }
   }
-
-  return coef;
+  // previously was `return coef`
+  return 0;
 }
 
 function strEval(input: string, stats: Index_Stats) {
