@@ -22,17 +22,17 @@
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionBtnID;
-  export let character: CurrentCharacter;
-  export let stats: Index_Stats;
+  export let currentChar: CurrentCharacter;
+  export let currentStats: Index_Stats;
 
   const target = data.target ?? 'self';
-  const cName = getCharacterName(character.selected);
+  const cName = getCharacterName(currentChar.selected);
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
-  $: talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
   let isActive: boolean = false;
   let addedStats: { scaling: string; coef: number }[] = [];
@@ -49,7 +49,7 @@
               talentLvl
             )
           : coef;
-      const result = calcCoefficient(talentValue, stats, source);
+      const result = calcCoefficient(talentValue, currentStats, source);
       addedStats.push({ scaling, coef: result });
       action.addStat(id, target as Target, scaling, result);
     });
@@ -76,7 +76,7 @@
     // Compare previous and current stat values
     if (!sourceStats) return false;
     for (const stat of sourceStats) {
-      if (previousStatValues[stat] !== stats[stat]) {
+      if (previousStatValues[stat] !== currentStats[stat]) {
         return true; // Return true if any tracked stat has changed
       }
     }
@@ -93,7 +93,7 @@
         addStats();
       }
       previousTalentLvl = talentLvl;
-      previousStatValues = { ...stats }; // Create a copy of the current stats
+      previousStatValues = { ...currentStats }; // Create a copy of the current stats
     }
   }
 

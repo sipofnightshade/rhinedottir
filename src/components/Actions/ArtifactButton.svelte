@@ -17,15 +17,15 @@
   import { activeSets } from '$lib/stores/activeSetsStore';
   import type { ArtifactNames } from '$lib/types/artifacts';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
-  import type { All_Stats } from '$lib/data/Stats';
+  import type { Index_Stats } from '$lib/data/Stats';
 
   // props
   export let setData: ArtifactState;
   export let id: 'main' | 'one' | 'two' | 'three';
-  export let stats: Record<All_Stats, number>;
-  export let character: CurrentCharacter;
+  export let currentStats: Index_Stats;
+  export let currentChar: CurrentCharacter;
 
-  type Stats = { scaling: All_Stats; coef: number | number[] };
+  type Stats = { scaling: string; coef: number | number[] };
 
   const buttons = {
     toggle: ToggleButton,
@@ -65,7 +65,7 @@
     activeSets.setActiveSet('artifacts', id, currentActive.url as ArtifactNames);
   }
 
-  $: setBonuses(setData, character.selected.weapon);
+  $: setBonuses(setData, currentChar.selected.weapon);
 </script>
 
 {#if currentActive?.actionType}
@@ -74,7 +74,7 @@
     data={currentActive}
     type="artifact"
     {id}
-    {character}
-    {stats}
+    {currentChar}
+    {currentStats}
   />
 {/if}

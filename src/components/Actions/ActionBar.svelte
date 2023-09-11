@@ -4,6 +4,7 @@
   import { party } from '$lib/stores/partyStore';
   import { artifact } from '$lib/stores/artifactStore';
   import { stats } from '$lib/stores/statsStore';
+  import { action } from '$lib/stores/actionStore';
 
   // import components
   import ToggleButton from './_ToggleButton.svelte';
@@ -11,8 +12,8 @@
   import StackButton from './_StackButton.svelte';
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
-  import { action } from '$lib/stores/actionStore';
   import ArtifactButton from './ArtifactButton.svelte';
+  import VisionMatchButton from './_VisionMatchButton.svelte';
 
   export let margin = true;
 
@@ -22,8 +23,8 @@
     stack: StackButton,
     select: SelectButton,
     multiSelect: MultiSelectButton,
-    input: MultiSelectButton
-    // visionMatch: VisionMatchButton
+    input: MultiSelectButton,
+    visionMatch: VisionMatchButton
   };
 
   $: if ($character.selected) action.reset('main');
@@ -42,15 +43,15 @@
       {data}
       type={$character.selected.vision}
       id="main"
-      character={$character}
-      stats={$stats.main}
+      currentChar={$character}
+      currentStats={$stats.main}
     />
   {/each}
   <ArtifactButton
     setData={$artifact}
     id="main"
-    character={$character}
-    stats={$stats.main}
+    currentChar={$character}
+    currentStats={$stats.main}
   />
   <!-- main weapon actions -->
   <!-- main artifact actions -->

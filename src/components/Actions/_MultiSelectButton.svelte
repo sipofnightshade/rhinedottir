@@ -17,22 +17,22 @@
   // component
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
-  import type { All_Stats } from '$lib/data/Stats';
+  import type { Index_Stats } from '$lib/data/Stats';
 
   // props
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
   export let id: ActionBtnID;
-  export let character: CurrentCharacter;
-  export let stats: Record<All_Stats, number>;
+  export let currentChar: CurrentCharacter;
+  export let currentStats: Index_Stats;
 
   const target = data.target ?? 'self';
-  const cName = getCharacterName(character.selected);
-  const talentLvl = data.hasLevels ? character[data.hasLevels] : null;
+  const cName = getCharacterName(currentChar.selected);
+  const talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
 
-  type SELECTED = { [key in All_Stats]?: boolean };
-  type Stat = { scaling: All_Stats; coef: number };
+  type SELECTED = { [key in string]?: boolean };
+  type Stat = { scaling: string; coef: number };
 
   let selectedStats: SELECTED = {};
   let isActive = false;
@@ -55,7 +55,7 @@
             talentLvl
           )
         : coef;
-    const result = calcCoefficient(talentValue, stats, source);
+    const result = calcCoefficient(talentValue, currentStats, source);
 
     action.addStat(id, target as Target, scaling, result);
     addedStats.push({ scaling, coef: result });
