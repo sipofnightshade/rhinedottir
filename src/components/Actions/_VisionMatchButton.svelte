@@ -54,7 +54,6 @@
     visionCondition,
     currentChar.selected.vision
   );
-  $: console.log('statIndex', statIndex);
 
   function addStats() {
     data.values.forEach((value) => {
