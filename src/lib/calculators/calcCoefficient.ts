@@ -23,7 +23,7 @@ export function calcCoefficient(
     const statValue = $stats[statType];
     const cappedStatValue = max ? Math.min(statValue, max) : statValue;
 
-    if (cappedStatValue >= threshold) {
+    if (cappedStatValue > threshold) {
       let calculatedValue;
 
       if (forEvery !== undefined && forEvery !== 0) {
@@ -37,10 +37,11 @@ export function calcCoefficient(
       }
 
       return calculatedValue;
+    } else {
+      return 0;
     }
   }
-  // previously was `return coef`
-  return 0;
+  return coef;
 }
 
 function strEval(input: string, stats: Index_Stats) {
