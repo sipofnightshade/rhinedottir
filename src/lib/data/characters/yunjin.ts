@@ -242,36 +242,24 @@ const charName: CharacterRecord = {
         }
       ]
     },
-    // {
-    //   name: 'Breaking Conventions',
-    //   url: 'UI_Talent_S_Yunjin_06',
-    //   description: "The Normal Attack DMG Bonus granted by **Flying Cloud Flag Formation** is further increased by 2.5%/5%/7.5%/11.5% of Yun Jin's DEF when the party contains characters of 1/2/3/4 Elemental Types, respectively.",
-    //   level: 8,
-    //   target: 'active',
-    //   actionType: 'select',
-    //   values: [
-    //     {
-    //       scaling: 'normalFlatDMG',
-    //       coef: 0.025,
-    //       source:['def',0]
-    //     },
-    //     {
-    //       scaling: 'normalFlatDMG',
-    //       coef: 0.05,
-    //       source:['def',0]
-    //     },
-    //     {
-    //       scaling: 'normalFlatDMG',
-    //       coef: 0.075,
-    //       source:['def',0]
-    //     },
-    //     {
-    //       scaling: 'normalFlatDMG',
-    //       coef: 0.115,
-    //       source:['def',0]
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Breaking Conventions',
+      url: 'UI_Talent_S_Yunjin_06',
+      description:
+        "The Normal Attack DMG Bonus granted by **Flying Cloud Flag Formation** is further increased by 2.5%/5%/7.5%/11.5% of Yun Jin's DEF when the party contains characters of 1/2/3/4 Elemental Types, respectively.",
+      level: 8,
+      target: 'active',
+      actionType: 'visionMatchToggle',
+      visionCondition: 'different',
+      sourceStats: ['def'],
+      values: [
+        {
+          scaling: 'normalFlatDMG',
+          coef: [0.025, 0.05, 0.075, 0.115],
+          source: ['def', 0]
+        }
+      ]
+    },
     {
       name: 'Myriad Mise-En-Scène',
       url: 'UI_Talent_S_Yunjin_02',
