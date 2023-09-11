@@ -27,8 +27,8 @@ export type ActionType =
   | 'select'
   | 'multiSelect'
   | 'input'
-  | 'passive';
-// | 'visionMatch';
+  | 'passive'
+  | 'visionMatch';
 
 export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 
@@ -50,6 +50,8 @@ export type Action = {
   name: string;
   url: string;
   description?: string;
+  hasVisionRequirement?: Visions[]; // for actions that require specific visions in party alone
+  visionCondition?: 'same' | 'different';
   weapons?: WeaponCategory[];
   level?: 2 | 8;
   maxSelects?: number;
