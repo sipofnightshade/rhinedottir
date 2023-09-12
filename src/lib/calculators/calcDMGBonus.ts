@@ -5,7 +5,10 @@ import type { Hit } from '$lib/types/talents';
 export function calcDMGBonus(hit: Hit, $stats: Index_Stats, element: DamageType): number {
   let dmgBonus = 0;
 
-  dmgBonus += $stats[hit.damageBonus];
+  if (hit.damageBonus !== 'none') {
+    dmgBonus += $stats[hit.damageBonus];
+  }
+
   dmgBonus += $stats.dmgIncrease; // Mona, Serpents' Spine, bane mods etc
 
   if (hit.hasOwnDMGType) {

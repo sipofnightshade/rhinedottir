@@ -32,7 +32,7 @@ export type HitDMG = {
 export type Hit = {
   name: string;
   tag?: string; // Empty string for hit fields that are showOnly
-  damageBonus: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
+  damageBonus: 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst' | 'none';
   // normal default = physical, skill & burst default is character element
   isHealing?: boolean;
   isShield?: boolean;
