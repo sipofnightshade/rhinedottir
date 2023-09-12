@@ -52,7 +52,9 @@ export function calcFinalDMG(
   const ICD = hit.icd ?? 3; // sets default ICD of 3 if no icd on the hit
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
-  const SpecialMultiplier = 1 + $stats[addStats.specialMultiplier];
+  const SpecialMultiplier = hit.hasOwnSpecialMultiplier
+    ? 1 + $stats[addStats.specialMultiplier] + $stats[hit.hasOwnSpecialMultiplier]
+    : 1 + $stats[addStats.specialMultiplier];
   const DEFMultiplier = calcDEFMultiplier(
     $character.lvl,
     $enemy.lvl,

@@ -53,6 +53,7 @@ export type Hit = {
   hasOwnBonusFlatDMG?: string; // These are for custom stats
   hasOwnCritRate?: string; // These are for custom stats
   hasOwnCritDMG?: string; // These are for custom stats
+  hasOwnSpecialMultiplier?: string; // These are for custom stats
   icd?: number;
   damage: HitDMG[];
   constellation?: 1 | 2 | 4 | 6;
