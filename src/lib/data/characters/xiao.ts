@@ -12,9 +12,9 @@ const charName: CharacterRecord = {
   c5: 'burst',
   burstCost: 70,
   talentNames: {
-    normal: 'normalName',
-    skill: 'skillName',
-    burst: 'burstName'
+    normal: 'Whirlwind Thrust',
+    skill: 'Lemniscatic Wind Cycling',
+    burst: 'Bane of All Evil'
   },
   normal: [
     {
