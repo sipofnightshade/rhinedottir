@@ -52,7 +52,17 @@ export type Action = {
   url: string;
   description?: string;
   hasVisionRequirement?: Visions[]; // for actions that require specific visions in party alone
-  visionCondition?: 'same' | 'different';
+  visionCondition?:
+    | 'same'
+    | 'different'
+    | 'anemo'
+    | 'cryo'
+    | 'dendro'
+    | 'electro'
+    | 'geo'
+    | 'hydro'
+    | 'pyro';
+  hasVisionLabel?: Visions; // adds an element icon centered at the bottom of the action button, eg. Nahida Burst, Wanderer A4
   weapons?: WeaponCategory[];
   level?: 2 | 8;
   maxSelects?: number;
