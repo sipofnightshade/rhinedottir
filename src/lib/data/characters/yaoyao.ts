@@ -1,194 +1,279 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "yaoyao",
-  "fullName": "Yaoyao",
-  "rating": 4,
-  "weapon": "polearm",
-  "region": "mondstat",
-  "vision": "dendro",
-  "specialized": "hp%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'yaoyao',
+  fullName: 'Yaoyao',
+  rating: 4,
+  weapon: 'polearm',
+  region: 'liyue',
+  vision: 'dendro',
+  specialized: 'hp%',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 80,
+  talentNames: {
+    normal: 'normalName',
+    skill: 'skillName',
+    burst: 'burstName'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param6'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param10'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Radish DMG',
+      tag: 'E',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Radish Healing',
+      isHealing: true,
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'MEGA Radish DMG',
+      tag: 'X6',
+      constellation: 6,
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1',
+            coef: 0.75
+          }
+        ]
+      ]
+    },
+    {
+      name: 'MEGA Radish Healing',
+      isHealing: true,
+      constellation: 6,
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2',
+            coef: 0.075
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Burst DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Adeptal Legacy Radish DMG',
+      tag: 'QC',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Adeptal Legacy Radish Healing',
+      isHealing: true,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param3'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: "Adeptus' Tutelage",
+      url: 'UI_Talent_S_Yaoyao_01',
+      description:
+        'When **White Jade Radishes** explode, active characters within their AoE will gain 15% Dendro DMG Bonus for 8s and have 15 Stamina restored to them. This form of Stamina Restoration can only be triggered every 5s.',
+      constellation: 1,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'dendro',
+          coef: 0.15
+        }
+      ]
+    },
+    {
+      name: 'Winsome',
+      url: 'UI_Talent_S_Yaoyao_03',
+      description:
+        "After using **Raphanus Sky Cluster** or **Moonjade Descent**, Yaoyao's Elemental Mastery will be increased based on 0.3% of her Max HP for 8s. The maximum Elemental Mastery she can gain this way is 120.",
+      constellation: 4,
+      target: 'self',
+      sourceStats: ['hp'],
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'em',
+          coef: 0.003,
+          source: ['hp', 0, 40000]
         }
       ]
     }
   ],
-  "offField": []
+  offField: []
 };
 
 export default charName;
