@@ -37,26 +37,6 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: '1X - Hit DMG',
-      tag: 'X1',
-      hasOwnSpecialMultiplier: 'meteor',
-      damageBonus: 'normal',
-      damage: [
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ]
-      ]
-    },
-    {
       name: '2 - Hit DMG',
       tag: 'N2',
       damageBonus: 'normal',
@@ -115,14 +95,88 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: '5 - Hit DMG',
-      tag: 'N5',
+      name: 'Blazing Arrow 1 - Hit DMG',
+      tag: 'X1',
       damageBonus: 'normal',
+      constellation: 6,
+      hasOwnDMGType: 'pyro',
       damage: [
         [
           {
             scaling: 'atk',
-            param: 'param5'
+            param: 'param16'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param16'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Blazing Arrow 2 - Hit DMG',
+      tag: 'X2',
+      damageBonus: 'normal',
+      constellation: 6,
+      hasOwnDMGType: 'pyro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param17'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Blazing Arrow 3 - Hit DMG',
+      tag: 'X3',
+      damageBonus: 'normal',
+      constellation: 6,
+      hasOwnDMGType: 'pyro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param18'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Blazing Arrow 4 - Hit DMG',
+      tag: 'X4',
+      damageBonus: 'normal',
+      constellation: 6,
+      hasOwnDMGType: 'pyro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param19'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param19'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Blazing Arrow 5 - Hit DMG',
+      tag: 'X5',
+      damageBonus: 'normal',
+      constellation: 6,
+      hasOwnDMGType: 'pyro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param20'
           }
         ]
       ]
@@ -337,21 +391,6 @@ const charName: CharacterRecord = {
         {
           scaling: 'pyro',
           coef: 0.25
-        }
-      ]
-    },
-    {
-      name: 'A Procession of Basdasdonfires',
-      url: 'UI_Talent_S_Yoimiya_02',
-      description:
-        "When Yoimiya's Pyro DMG scores a CRIT Hit, Yoimiya will gain a 25% Pyro DMG Bonus for 6s.\nThis effect can be triggered even when Yoimiya is not the active character.",
-      constellation: 6,
-      target: 'self',
-      actionType: 'toggle',
-      values: [
-        {
-          scaling: 'meteor',
-          coef: -0.4
         }
       ]
     }
