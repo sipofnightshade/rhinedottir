@@ -1,194 +1,323 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "xiangling",
-  "fullName": "Xiangling",
-  "rating": 4,
-  "weapon": "polearm",
-  "region": "mondstat",
-  "vision": "pyro",
-  "specialized": "em",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'xiangling',
+  fullName: 'Xiangling',
+  rating: 4,
+  weapon: 'polearm',
+  region: 'liyue',
+  vision: 'pyro',
+  specialized: 'em',
+  c3: 'burst',
+  c5: 'skill',
+  burstCost: 80,
+  talentNames: {
+    normal: 'normalName',
+    skill: 'skillName',
+    burst: 'burstName'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     },
     {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
+      name: '5 - Hit DMG',
+      tag: 'N5',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param5'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Implode',
+      hasOwnDMGType: 'pyro',
+      tag: 'N5',
+      constellation: 2,
+      damageBonus: 'normal',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param5',
+            coef: 0.75
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param6'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param10'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Flame DMG',
+      tag: 'E',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Total Swing DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: '1-Hit Swing DMG',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: '2-Hit Swing DMG',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: '3-Hit Swing DMG',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Pyronado DMG',
+      icd: 0,
+      tag: 'QC',
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: "Beware, It's Super Hot!",
+      url: 'UI_Talent_S_Xiangling_06',
+      description:
+        "When **Guoba Attack**'s effect ends, Guoba leaves a chili pepper on the spot where it disappeared. Picking up a chili pepper increases ATK by 10% for 10s.",
+      level: 8,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'atk%',
+          coef: 0.1
+        }
+      ]
+    },
+    {
+      name: 'Crispy Outside, Tender Inside',
+      url: 'UI_Talent_S_Xiangling_01',
+      description:
+        "Opponents hit by Guoba's attacks have their Pyro RES reduced by 15% for 6s.",
+      constellation: 1,
+      target: 'enemy',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'pyroRes',
+          coef: 0.15
+        }
+      ]
+    },
+    {
+      name: 'Condensed Pyronado',
+      url: 'UI_Talent_S_Xiangling_04',
+      description:
+        'For the duration of **Pyronado**, all party members receive a 15% Pyro DMG Bonus.',
+      constellation: 6,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'pyro',
+          coef: 0.15
         }
       ]
     }
-  ],
-  "offField": []
+  ]
 };
 
 export default charName;
