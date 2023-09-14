@@ -116,7 +116,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Charged Attack Final DMG',
-      tag: 'CA',
+      tag: 'CF',
       damageBonus: 'charged',
       damage: [
         [
@@ -188,7 +188,6 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG - 1 Sword',
       damageBonus: 'burst',
-      hasOwnBonusDMG: true,
       damage: [
         [
           {
@@ -201,7 +200,6 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG - 3 Swords',
       tag: 'Q',
-      hasOwnBonusDMG: true,
       damageBonus: 'burst',
       damage: [
         [
@@ -227,7 +225,6 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG - 4 Swords',
       tag: 'QX',
-      hasOwnBonusDMG: true,
       constellation: 6,
       damageBonus: 'burst',
       damage: [
@@ -301,7 +298,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'ownBonusDMG',
+          scaling: 'burst',
           coef: 0.15
         }
       ]
