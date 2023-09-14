@@ -6,6 +6,8 @@
  * const FinalDamage = calcDamage(...arguments ) * AmplifyingMultiplier;
  */
 
+import { calcCritDamage } from './calcCritDamage';
+
 export function calcDamageNoReaction(
   baseDamage: number,
   specialMultiplier: number,
@@ -25,8 +27,14 @@ export function calcDamageNoReaction(
     defenseMultiplierTarget *
     resistanceMultiplierTarget;
 
-  const critHitDamage = baseDamageWithBonuses * (1 + critDamageMultiplier);
-  const critDamage = baseDamageWithBonuses * (1 - critRate) + critHitDamage * critRate;
+  // const critHitDamage = baseDamageWithBonuses * (1 + critDamageMultiplier);
+  // const critDamage = baseDamageWithBonuses * (1 - critRate) + critHitDamage * critRate;
+
+  const critDamage = calcCritDamage(
+    baseDamageWithBonuses,
+    critRate,
+    critDamageMultiplier
+  );
 
   return critDamage;
 }
