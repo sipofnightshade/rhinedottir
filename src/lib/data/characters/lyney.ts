@@ -274,7 +274,7 @@ const charName: CharacterRecord = {
         'If Lyney consumes HP when firing off a **Prop Arrow**, the Grin-Malkin hat summoned by the arrow will, upon hitting an opponent, restore 3 Energy to Lyney and increase DMG dealt by 80% of his ATK.',
       level: 2,
       target: 'self',
-      sourceStats: ['atk', 'atk%', 'baseATK'],
+      sourceStats: ['atk'],
       actionType: 'toggle',
       values: [
         {
