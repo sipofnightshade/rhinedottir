@@ -1,194 +1,289 @@
-
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
-  "name": "thoma",
-  "fullName": "Thoma",
-  "rating": 4,
-  "weapon": "polearm",
-  "region": "mondstat",
-  "vision": "pyro",
-  "specialized": "atk%",
-  "c3": "skill",
-  "c5": "burst",
-  "burstCost": 80,
-  "talentNames": {
-    "normal": "normalName",
-    "skill": "skillName",
-    "burst": "burstName"
+  name: 'thoma',
+  fullName: 'Thoma',
+  rating: 4,
+  weapon: 'polearm',
+  region: 'inazuma',
+  vision: 'pyro',
+  specialized: 'atk%',
+  c3: 'skill',
+  c5: 'burst',
+  burstCost: 80,
+  talentNames: {
+    normal: 'Swiftshatter Spear',
+    skill: 'Blazing Blessing',
+    burst: 'Crimson Ooyoroi'
   },
-  "normal": [
+  normal: [
     {
-      "name": "1 - Hit DMG",
-      "tag": "N1",
-      "damageBonus": "normal",
-      "damage": [
+      name: '1 - Hit DMG',
+      tag: 'N1',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
           }
         ]
       ]
     },
     {
-      "name": "2 - Hit DMG",
-      "tag": "N2",
-      "damageBonus": "normal",
-      "damage": [
+      name: '2 - Hit DMG',
+      tag: 'N2',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param2"
+            scaling: 'atk',
+            param: 'param2'
           }
         ]
       ]
     },
     {
-      "name": "3 - Hit DMG",
-      "tag": "N3",
-      "damageBonus": "normal",
-      "damage": [
+      name: '3 - Hit DMG',
+      tag: 'N3',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
           }
         ]
       ]
     },
     {
-      "name": "4 - Hit DMG",
-      "tag": "N4",
-      "damageBonus": "normal",
-      "damage": [
+      name: '4 - Hit DMG',
+      tag: 'N4',
+      damageBonus: 'normal',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param4"
-          }
-        ]
-      ]
-    },
-    {
-      "name": "5 - Hit DMG",
-      "tag": "N5",
-      "damageBonus": "normal",
-      "damage": [
-        [
-          {
-            "scaling": "atk",
-            "param": "param5"
+            scaling: 'atk',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "charged": [
+  charged: [
     {
-      "name": "Charged Attack",
-      "tag": "CA",
-      "damageBonus": "charged",
-      "damage": [
+      name: 'Charged Attack',
+      tag: 'CA',
+      damageBonus: 'charged',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param6"
+            scaling: 'atk',
+            param: 'param5'
           }
         ]
       ]
     }
   ],
-  "plunge": [
+  plunge: [
     {
-      "name": "Plunge DMG",
-      "tag": "PD",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Plunge DMG',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param9"
+            scaling: 'atk',
+            param: 'param7'
           }
         ]
       ]
     },
     {
-      "name": "Low Plunge",
-      "tag": "PL",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'Low Plunge',
+      tag: 'PL',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param10"
+            scaling: 'atk',
+            param: 'param8'
           }
         ]
       ]
     },
     {
-      "name": "High Plunge",
-      "tag": "PH",
-      "damageBonus": "plunge",
-      "damage": [
+      name: 'High Plunge',
+      tag: 'PH',
+      damageBonus: 'plunge',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param11"
+            scaling: 'atk',
+            param: 'param9'
           }
         ]
       ]
     }
   ],
-  "skill": [
+  skill: [
     {
-      "name": "Skill DMG",
-      "tag": "EP",
-      "damageBonus": "skill",
-      "damage": [
+      name: 'Skill DMG',
+      tag: 'E',
+      damageBonus: 'skill',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param3"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Shield DMG Absorption',
+      isShield: true,
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param2'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Max Shield DMG Absorption',
+      isShield: true,
+      damageBonus: 'skill',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param5'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param6'
           }
         ]
       ]
     }
   ],
-  "burst": [
+  burst: [
     {
-      "name": "Burst DMG",
-      "tag": "Q1",
-      "multiHit": 9,
-      "damageBonus": "burst",
-      "damage": [
+      name: 'Burst DMG',
+      tag: 'Q',
+      damageBonus: 'burst',
+      damage: [
         [
           {
-            "scaling": "atk",
-            "param": "param1"
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Fiery Collapse DMG',
+      tag: 'QC',
+      damageBonus: 'burst',
+      hasOwnBonusFlatDMG: 'fieryCollapse',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Shield DMG Absorption',
+      isShield: true,
+      damageBonus: 'burst',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param3'
+          },
+          {
+            scaling: 'flatValue',
+            param: 'param4'
           }
         ]
       ]
     }
   ],
-  "actions": [
+  actions: [
     {
-      "name": "Uprising Whirlwind",
-      "url": "UI_Talent_S_PlayerWind_02",
-      "description": "description",
-      "level": 1,
-      "constellation": 2,
-      "target": "self",
-      "actionType": "passive",
-      "values": [
+      name: 'Imbricated Armor',
+      url: 'UI_Talent_S_Tohma_05',
+      description:
+        "When your current active character obtains or refreshes a **Blazing Barrier**, this character's Shield Strength will increase by 5% for 6s.\nThis effect can be triggered once every 0.3s seconds. Max 5 stacks.",
+      level: 2,
+      target: 'party',
+      actionType: 'stack',
+      values: [
         {
-          "scaling": "energy",
-          "coef": 0
+          scaling: 'shieldStrength',
+          coef: [0.05, 0.05, 0.05, 0.05, 0.05]
+        }
+      ]
+    },
+    {
+      name: 'Flaming Assault',
+      url: 'UI_Talent_S_Tohma_06',
+      description:
+        "DMG dealt by **Crimson Ooyoroi**'s Fiery Collapse is increased by 2.2% of Thoma's Max HP.",
+      level: 8,
+      target: 'self',
+      sourceStats: ['hp'],
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'fieryCollapse',
+          coef: 0.022,
+          source: ['hp', 0]
+        }
+      ]
+    },
+    {
+      name: 'Burning Heart',
+      url: 'UI_Talent_S_Tohma_04',
+      description:
+        "When a **Blazing Barrier** is obtained or refreshed, the DMG dealt by all party members' Normal, Charged, and Plunging Attacks is increased by 15% for 6s.",
+      constellation: 6,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'normal',
+          coef: 0.15
+        },
+        {
+          scaling: 'charged',
+          coef: 0.15
+        },
+        {
+          scaling: 'plunge',
+          coef: 0.15
         }
       ]
     }
-  ],
-  "offField": []
+  ]
 };
 
 export default charName;
