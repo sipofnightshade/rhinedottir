@@ -20,6 +20,9 @@ export function calcDamageNoReaction(
   critDamageMultiplier: number
 ) {
   critRate = Math.max(critRate, 0); // Set critRate to 0 if it is less than 0
+  if (specialMultiplier <= 0) {
+    specialMultiplier = 1;
+  }
 
   const baseDamageWithBonuses =
     (baseDamage * specialMultiplier + flatDamageBonus) *

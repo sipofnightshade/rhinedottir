@@ -317,7 +317,7 @@ const charName: CharacterRecord = {
       values: [
         {
           scaling: 'skillSpecialMultiplier',
-          coef: 0.5
+          coef: 1.5
         }
       ]
     }

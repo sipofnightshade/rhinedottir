@@ -53,8 +53,9 @@ export function calcFinalDMG(
   // get enemy resistance multiplier
   const RESMultiplier = $enemy[element];
   const SpecialMultiplier = hit.hasOwnSpecialMultiplier
-    ? 1 + $stats[addStats.specialMultiplier] + $stats[hit.hasOwnSpecialMultiplier]
-    : 1 + $stats[addStats.specialMultiplier];
+    ? $stats[addStats.specialMultiplier] + ($stats[hit.hasOwnSpecialMultiplier] ?? 0)
+    : $stats[addStats.specialMultiplier];
+
   const DEFMultiplier = calcDEFMultiplier(
     $character.lvl,
     $enemy.lvl,

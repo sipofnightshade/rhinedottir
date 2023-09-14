@@ -304,11 +304,11 @@ const charName: CharacterRecord = {
       hasLevels: 'skill',
       values: [
         {
-          scaling: 'normal',
+          scaling: 'normalSpecialMultiplier',
           coef: 'param2'
         },
         {
-          scaling: 'charged',
+          scaling: 'chargedSpecialMultiplier',
           coef: 'param3'
         }
       ]
