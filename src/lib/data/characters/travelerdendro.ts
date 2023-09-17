@@ -12,9 +12,9 @@ const charName: CharacterRecord = {
   specialized: 'atk%',
   burstCost: 60,
   talentNames: {
-    normal: 'Foreign Ironwind',
-    skill: 'Palm Vortex',
-    burst: 'Gust Surge'
+    normal: 'Foreign Fieldcleaver',
+    skill: 'Razorgrass Blade',
+    burst: 'Surgent Manifestation'
   },
   normal: [
     {
