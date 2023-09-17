@@ -70,6 +70,66 @@ const charName: CharacterRecord = {
       ]
     },
     {
+      name: 'Wolf 1 - Hit DMG',
+      tag: 'N1',
+      hasOwnDMGType: 'electro',
+      damageBonus: 'normal',
+      hasOwnSpecialMultiplier: 'lupusBoreas',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Wolf 2 - Hit DMG',
+      tag: 'N2',
+      hasOwnDMGType: 'electro',
+      damageBonus: 'normal',
+      hasOwnSpecialMultiplier: 'lupusBoreas',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Wolf 3 - Hit DMG',
+      tag: 'N3',
+      hasOwnDMGType: 'electro',
+      damageBonus: 'normal',
+      hasOwnSpecialMultiplier: 'lupusBoreas',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Wolf 4 - Hit DMG',
+      tag: 'N4',
+      hasOwnDMGType: 'electro',
+      damageBonus: 'normal',
+      hasOwnSpecialMultiplier: 'lupusBoreas',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param4'
+          }
+        ]
+      ]
+    },
+    {
       name: 'Lupus Fulguris',
       tag: 'X6',
       damageBonus: 'normal',
@@ -199,6 +259,21 @@ const charName: CharacterRecord = {
     }
   ],
   actions: [
+    {
+      name: 'The Wolf Within Co-ordinated Attacks',
+      url: 'Skill_E_Razor_01',
+      description:
+        "The Wolf Within attacks deal damage equal to a percentage of Razor's Normal Attacks.",
+      hasLevels: 'burst',
+      target: 'self',
+      actionType: 'passive',
+      values: [
+        {
+          scaling: 'lupusBoreas',
+          coef: 'param2'
+        }
+      ]
+    },
     {
       name: 'The Wolf Within',
       url: 'Skill_E_Razor_01',
