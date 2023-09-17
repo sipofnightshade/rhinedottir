@@ -5,7 +5,7 @@ const charName: CharacterRecord = {
   fullName: 'Aether',
   rating: 5,
   weapon: 'sword',
-  region: 'mondstat',
+  region: 'other',
   vision: 'dendro',
   c3: 'skill',
   c5: 'burst',
@@ -46,13 +46,6 @@ const charName: CharacterRecord = {
       tag: 'N5',
       damageBonus: 'normal',
       damage: [[{ scaling: 'atk', param: 'param5' }]]
-    },
-    {
-      name: 'Slitting DMG',
-      tag: 'A1',
-      damageBonus: 'normal',
-      hasOwnDMGType: 'anemo',
-      damage: [[{ scaling: 'atk', param: 'param1', coef: 0.6 }]]
     }
   ],
   charged: [
@@ -64,16 +57,6 @@ const charName: CharacterRecord = {
         [{ scaling: 'atk', param: 'param6' }],
         [{ scaling: 'atk', param: 'param7' }]
       ]
-    },
-    {
-      name: '1 - Hit DMG',
-      damageBonus: 'charged',
-      damage: [[{ scaling: 'atk', param: 'param6' }]]
-    },
-    {
-      name: '2 - Hit DMG',
-      damageBonus: 'charged',
-      damage: [[{ scaling: 'atk', param: 'param7' }]]
     }
   ],
   plunge: [
@@ -98,52 +81,21 @@ const charName: CharacterRecord = {
   ],
   skill: [
     {
-      name: 'Press DMG',
-      tag: 'EP',
-      damageBonus: 'skill',
-      damage: [[{ scaling: 'atk', param: 'param3' }]]
-    },
-    {
-      name: 'Hold DMG - Total',
-      tag: 'EH',
-      damageBonus: 'skill',
-      damage: [
-        [{ scaling: 'atk', param: 'param4' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param2' }],
-        [{ scaling: 'atk', param: 'param2' }],
-        [{ scaling: 'atk', param: 'param2' }]
-      ]
-    },
-    {
-      name: 'Max Storm Damage',
-      damageBonus: 'skill',
-      damage: [[{ scaling: 'atk', param: 'param4' }]]
-    },
-    {
-      name: 'Initial Cutting DMG x3',
+      name: 'Skill DMG',
+      tag: 'E',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
-    },
-    {
-      name: 'Max Cutting DMG x3',
-      damageBonus: 'skill',
-      damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
   ],
   burst: [
     {
-      name: 'Tornado DMG',
+      name: 'Lea Lotus Lamp DMG',
       tag: 'Q1',
-      multiHit: 9,
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
-      name: 'Additional Elemental DMG',
-      multiHit: 9,
+      name: 'Explosion DMG',
       tag: 'Q2',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
@@ -151,68 +103,51 @@ const charName: CharacterRecord = {
   ],
   actions: [
     {
-      name: 'Uprising Whirlwind',
-      url: 'UI_Talent_S_PlayerWind_02',
+      name: 'Verdant Overgrowth',
+      url: 'UI_Talent_U_PlayerGrass_01',
       description:
-        'Guiding the path of the wind currents, you summon a forward-moving tornado that pulls objects and opponents towards itself, dealing continuous Anemo DMG.\n\n**Elemental Absorption**\nIf the tornado comes into contact with Hydro/Pyro/Cryo/Electro, it will deal additional elemental DMG of that type.\nElemental Absorption may only occur once per use.',
+        '**Lea Lotus Lamp** will obtain one level of Overflowing Lotuslight every second it is on the field, increasing the Elemental Mastery of active character(s) within its AoE by 6. Overflowing Lotuslight has a maximum of 10 stacks.',
       level: 2,
-      constellation: 2,
+      target: 'active',
+      actionType: 'stack',
+      values: [{ scaling: 'em', coef: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6] }]
+    },
+    {
+      name: 'Verdant Luxury',
+      url: 'UI_Talent_U_PlayerGrass_02',
+      description:
+        'Every point of Elemental Mastery the Traveler possesses increases the DMG dealt by **Razorgrass Blade** by 0.15% and the DMG dealt by **Surgent Manifestation** by 0.1%.',
+      level: 8,
       target: 'self',
+      sourceStats: ['em'],
       actionType: 'passive',
-      values: [{ scaling: 'energy', coef: 0.16 }]
-    },
-    {
-      name: 'Intertwined Winds',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'Targets who take DMG from Gust Surge have their Anemo RES decreased by 20%. If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'toggle',
-      values: [{ scaling: 'anemoRes', coef: 0.2 }]
-    },
-    {
-      name: 'Intertwined Winds - Elemental Absorption',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'multiSelect',
       values: [
-        { scaling: 'pyroRes', coef: 0.2 },
-        { scaling: 'hydroRes', coef: 0.2 },
-        { scaling: 'electroRes', coef: 0.2 },
-        { scaling: 'cryoRes', coef: 0.2 }
+        { scaling: 'skill', coef: 0.0015, source: ['em', 0] },
+        { scaling: 'burst', coef: 0.001, source: ['em', 0] }
       ]
     },
     {
-      name: 'Testing',
-      url: 'UI_Talent_S_PlayerWind_04',
+      name: 'Withering Aggregation - Dendro',
+      url: 'UI_Talent_S_PlayerGrass_06',
       description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
+        'The Dendro DMG Bonus of the character under the effect of Overflowing Lotuslight as created by the **Lea Lotus Lamp** is increased by 12%',
       constellation: 6,
-      target: 'enemy',
-      actionType: 'stack',
-      values: [{ scaling: 'anemo', coef: [0.15, 0.05, 0.05, 0.05] }]
+      target: 'active',
+      actionType: 'toggle',
+      values: [{ scaling: 'dendro', coef: 0.12 }]
     },
     {
-      name: 'Testing2',
-      url: 'UI_Talent_S_PlayerWind_04',
+      name: 'Withering Aggregation - Transfiguration Element',
+      url: 'UI_Talent_S_PlayerGrass_06',
       description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
+        'If the Lamp has experienced a Lotuslight Transfiguration previously, the character will gain 12% DMG Bonus for the corresponding element.',
       constellation: 6,
-      target: 'enemy',
+      target: 'active',
       actionType: 'select',
       values: [
-        { scaling: 'electroRes', coef: 0.15 },
-        { scaling: 'pyroRes', coef: 0.05 },
-        { scaling: 'hydroRes', coef: 0.15 },
-        { scaling: 'cryoRes', coef: 0.05 }
+        { scaling: 'hydro', coef: 0.12 },
+        { scaling: 'electro', coef: 0.12 },
+        { scaling: 'pyro', coef: 0.12 }
       ]
     }
   ]
