@@ -5,10 +5,10 @@ const charName: CharacterRecord = {
   fullName: 'Aether',
   rating: 5,
   weapon: 'sword',
-  region: 'mondstat',
+  region: 'other',
   vision: 'anemo',
-  c3: 'skill',
-  c5: 'burst',
+  c3: 'burst',
+  c5: 'skill',
   specialized: 'atk%',
   burstCost: 60,
   talentNames: {
@@ -79,7 +79,7 @@ const charName: CharacterRecord = {
   plunge: [
     {
       name: 'Plunge DMG',
-      tag: 'PD',
+      tag: 'P',
       damageBonus: 'plunge',
       damage: [[{ scaling: 'atk', param: 'param9' }]]
     },
@@ -137,14 +137,34 @@ const charName: CharacterRecord = {
     {
       name: 'Tornado DMG',
       tag: 'Q1',
-      multiHit: 9,
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
-      name: 'Additional Elemental DMG',
-      multiHit: 9,
+      name: 'Additional DMG - Hydro',
       tag: 'Q2',
+      hasOwnDMGType: 'hydro',
+      damageBonus: 'burst',
+      damage: [[{ scaling: 'atk', param: 'param2' }]]
+    },
+    {
+      name: 'Additional DMG - Pyro',
+      tag: 'Q2',
+      hasOwnDMGType: 'pyro',
+      damageBonus: 'burst',
+      damage: [[{ scaling: 'atk', param: 'param2' }]]
+    },
+    {
+      name: 'Additional DMG - Cryo',
+      tag: 'Q2',
+      hasOwnDMGType: 'cryo',
+      damageBonus: 'burst',
+      damage: [[{ scaling: 'atk', param: 'param2' }]]
+    },
+    {
+      name: 'Additional DMG - Electro',
+      tag: 'Q2',
+      hasOwnDMGType: 'electro',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
@@ -153,20 +173,17 @@ const charName: CharacterRecord = {
     {
       name: 'Uprising Whirlwind',
       url: 'UI_Talent_S_PlayerWind_02',
-      description:
-        'Guiding the path of the wind currents, you summon a forward-moving tornado that pulls objects and opponents towards itself, dealing continuous Anemo DMG.\n\n**Elemental Absorption**\nIf the tornado comes into contact with Hydro/Pyro/Cryo/Electro, it will deal additional elemental DMG of that type.\nElemental Absorption may only occur once per use.',
-      level: 2,
+      description: 'Increases Energy Recharge by 16%.',
       constellation: 2,
       target: 'self',
       actionType: 'passive',
       values: [{ scaling: 'energy', coef: 0.16 }]
     },
     {
-      name: 'Intertwined Winds',
+      name: 'Intertwined Winds - Anemo',
       url: 'UI_Talent_S_PlayerWind_04',
       description:
-        'Targets who take DMG from Gust Surge have their Anemo RES decreased by 20%. If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
+        'Targets who take DMG from **Gust Surge** have their Anemo RES decreased by 20%.',
       constellation: 6,
       target: 'enemy',
       actionType: 'toggle',
@@ -177,42 +194,14 @@ const charName: CharacterRecord = {
       url: 'UI_Talent_S_PlayerWind_04',
       description:
         'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
       constellation: 6,
       target: 'enemy',
       actionType: 'multiSelect',
       values: [
-        { scaling: 'pyroRes', coef: 0.2 },
         { scaling: 'hydroRes', coef: 0.2 },
-        { scaling: 'electroRes', coef: 0.2 },
-        { scaling: 'cryoRes', coef: 0.2 }
-      ]
-    },
-    {
-      name: 'Testing',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'stack',
-      values: [{ scaling: 'anemo', coef: [0.15, 0.05, 0.05, 0.05] }]
-    },
-    {
-      name: 'Testing2',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'select',
-      values: [
-        { scaling: 'electroRes', coef: 0.15 },
-        { scaling: 'pyroRes', coef: 0.05 },
-        { scaling: 'hydroRes', coef: 0.15 },
-        { scaling: 'cryoRes', coef: 0.05 }
+        { scaling: 'pyroRes', coef: 0.2 },
+        { scaling: 'cryoRes', coef: 0.2 },
+        { scaling: 'electroRes', coef: 0.2 }
       ]
     }
   ]
