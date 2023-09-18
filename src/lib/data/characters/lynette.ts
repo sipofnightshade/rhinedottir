@@ -265,20 +265,22 @@ const charName: CharacterRecord = {
     }
   ],
   actions: [
-    // {
-    //   name: 'Sophisticated Synergy',
-    //   url: 'UI_Talent_S_Linette_05',
-    //   description: "Within 10s after using **Magic Trick: Astonishing Shift**, when there are 1/2/3/4 Elemental Types in the party, all party members' ATK will be increased by 8%/12%/16%/20% respectively.",
-    //   level: 2,
-    //   target: 'party',
-    //   actionType: 'passive',
-    //   values: [
-    //     {
-    //       scaling: 'atk%',
-    //       coef: [0.08,0.12,0.16,0.20]
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Sophisticated Synergy',
+      url: 'UI_Talent_S_Linette_05',
+      description:
+        "Within 10s after using **Magic Trick: Astonishing Shift**, when there are 1/2/3/4 Elemental Types in the party, all party members' ATK will be increased by 8%/12%/16%/20% respectively.",
+      level: 2,
+      target: 'party',
+      visionCondition: 'different',
+      actionType: 'visionMatchToggle',
+      values: [
+        {
+          scaling: 'atk%',
+          coef: [0.08, 0.12, 0.16, 0.2]
+        }
+      ]
+    },
     {
       name: 'Props Positively Prepped',
       url: 'UI_Talent_S_Linette_06',
