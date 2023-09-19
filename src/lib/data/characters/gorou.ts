@@ -86,6 +86,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Fully-Charged Aimed Shot',
+      hasOwnDMGType: 'geo',
       tag: 'C1',
       damageBonus: 'charged',
       damage: [

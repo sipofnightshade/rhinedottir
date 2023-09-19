@@ -79,7 +79,7 @@ const charName: CharacterRecord = {
   charged: [
     {
       name: 'Aimed Shot',
-      tag: 'C1',
+      tag: 'CA',
       damageBonus: 'charged',
       damage: [
         [
@@ -93,7 +93,7 @@ const charName: CharacterRecord = {
     {
       name: 'Aimed Shot Charge Level 1',
       hasOwnDMGType: 'pyro',
-      tag: 'C2',
+      tag: 'C1',
       damageBonus: 'charged',
       damage: [
         [
@@ -107,7 +107,7 @@ const charName: CharacterRecord = {
     {
       name: 'Prop Arrow DMG',
       hasOwnDMGType: 'pyro',
-      tag: 'C3',
+      tag: 'C2',
       damageBonus: 'charged',
       damage: [
         [

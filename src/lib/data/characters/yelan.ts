@@ -79,7 +79,7 @@ const charName: CharacterRecord = {
   charged: [
     {
       name: 'Aimed Shot',
-      tag: 'C1',
+      tag: 'CA',
       damageBonus: 'charged',
       damage: [
         [
@@ -92,7 +92,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Fully-Charged Aimed Shot',
-      tag: 'C2',
+      tag: 'C1',
       damageBonus: 'charged',
       hasOwnDMGType: 'hydro',
       damage: [
@@ -107,7 +107,7 @@ const charName: CharacterRecord = {
     {
       name: 'Breakthrough Barb DMG',
       hasOwnDMGType: 'hydro',
-      tag: 'C3',
+      tag: 'C2',
       damageBonus: 'charged',
       damage: [
         [

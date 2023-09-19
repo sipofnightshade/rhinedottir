@@ -199,6 +199,7 @@ const charName: CharacterRecord = {
     {
       name: 'Charge Level 1 Aimed Shot',
       tag: 'C1',
+      hasOwnDMGType: 'pyro',
       damageBonus: 'charged',
       damage: [
         [
@@ -212,6 +213,7 @@ const charName: CharacterRecord = {
     {
       name: 'Kindling Arrow DMG',
       damageBonus: 'charged',
+      hasOwnDMGType: 'pyro',
       damage: [
         [
           {
@@ -224,6 +226,7 @@ const charName: CharacterRecord = {
     {
       name: 'Kindling Arrow x3 DMG',
       tag: 'CX',
+      hasOwnDMGType: 'pyro',
       damageBonus: 'charged',
       damage: [
         [

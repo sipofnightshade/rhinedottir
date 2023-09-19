@@ -87,6 +87,7 @@ const charName: CharacterRecord = {
     {
       name: 'Fully-Charged Aimed Shot',
       tag: 'C1',
+      hasOwnDMGType: 'dendro',
       damageBonus: 'charged',
       damage: [
         [

@@ -79,7 +79,7 @@ const charName: CharacterRecord = {
   charged: [
     {
       name: 'Aimed Shot',
-      tag: 'C1',
+      tag: 'CA',
       hasOwnBonusDMG: 'tanglevine',
       damageBonus: 'charged',
       damage: [
@@ -94,7 +94,7 @@ const charName: CharacterRecord = {
     {
       name: 'Level 1 Aimed Shot',
       hasOwnBonusDMG: 'tanglevine',
-      tag: 'C2',
+      tag: 'C1',
       damageBonus: 'charged',
       hasOwnDMGType: 'dendro',
       damage: [
@@ -110,7 +110,7 @@ const charName: CharacterRecord = {
       name: 'Wreath Arrow Total DMG',
       hasOwnBonusDMG: 'tanglevine',
       hasOwnDMGType: 'dendro',
-      tag: 'C3',
+      tag: 'C2',
       damageBonus: 'charged',
       damage: [
         [

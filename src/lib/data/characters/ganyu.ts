@@ -113,6 +113,7 @@ const charName: CharacterRecord = {
     {
       name: 'Aimed Shot Charge Level 1',
       tag: 'C1',
+      hasOwnDMGType: 'cryo',
       damageBonus: 'charged',
       damage: [
         [
@@ -126,6 +127,7 @@ const charName: CharacterRecord = {
     {
       name: 'Aimed Shot Charge Level 2',
       tag: 'C2',
+      hasOwnDMGType: 'cryo',
       damageBonus: 'charged',
       hasOwnCritRate: 'frostflakeArrow',
       icd: 0,
@@ -146,6 +148,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Frostflake Arrow DMG',
+      hasOwnDMGType: 'cryo',
       damageBonus: 'charged',
       hasOwnCritRate: 'frostflakeArrow',
       damage: [
@@ -159,6 +162,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Frostflake Arrow Bloom DMG',
+      hasOwnDMGType: 'cryo',
       damageBonus: 'charged',
       hasOwnCritRate: 'frostflakeArrow',
       damage: [
