@@ -46,10 +46,10 @@
   <StatRow label="Elemental Skill Bonus" total={x.skill} isPcnt={true} />
   <StatRow label="Elemental Burst Bonus" total={x.burst} isPcnt={true} />
   <!-- Add separator here -->
-  <StatRow label="ATK SPD" base={0} total={0} isPcnt={true} />
-  <StatRow label="Move SPD" base={0} total={0} isPcnt={true} />
-  <StatRow label="Healing Bonus" base={0} total={0} isPcnt={true} />
-  <StatRow label="Incoming Healing" base={0} total={0} isPcnt={true} />
+  <StatRow label="ATK SPD" total={x.normalATKSpd} isPcnt={true} />
+  <StatRow label="Move SPD" total={x.moveSpd} isPcnt={true} />
+  <StatRow label="Healing Bonus" total={x.healing} isPcnt={true} />
+  <StatRow label="Incoming Healing" total={x.healingIncoming} isPcnt={true} />
   <div class="px-0.5 py-1 text-tb">
     <h3 class="text-red-500">ENEMY ------------------</h3>
   </div>
