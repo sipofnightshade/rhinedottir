@@ -1,6 +1,6 @@
 import type { SvelteComponent } from 'svelte';
 import type { WeaponCategory } from './global';
-import type { All_Stats } from '$lib/stores/actionStore';
+import type { All_Stats } from '$lib/data/Stats';
 
 export type ArtifactNames =
   | 'none'
@@ -32,6 +32,8 @@ export type ArtifactNames =
   | 'flowerofparadiselost'
   | 'nymphsdream'
   | 'vourukashasglow'
+  | 'marechausseehunter'
+  | 'goldentroupe'
   | 'sojourner'
   | 'tinymiracle'
   | 'berserker'
@@ -88,7 +90,7 @@ export type Action = {
     | 'passive'
     | 'visionMatch';
   values: {
-    scaling: All_Stats;
+    scaling: string;
     coef: number | number[];
     source?: [All_Stats, number, number]; // [ the source stat, minimum, maximum]
   }[];

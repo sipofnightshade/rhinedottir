@@ -411,93 +411,124 @@ export const ArtifactData: Artifact[] = [
       }
     ]
   },
-  // {
-  //   name: 'desertpavilionchronicle',
-  //   fullName: 'Desert Pavilion Chronicle',
-  //   rating: [4, 5],
-  //   twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
-  //   fourPiece: [
-  //     {
-  //       description:
-  //         'When Charged Attacks hit opponents, the equipping characters Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.',
-  //       actionType: 'toggle',
-  //       values: [
-  //         { scaling: 'normalATKSpd', coef: 0.1 },
-  //         { scaling: 'normal', coef: 0.4 },
-  //         { scaling: 'charged', coef: 0.4 },
-  //         { scaling: 'plunge', coef: 0.4 }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'flowerofparadiselost',
-  //   fullName: 'Flower of Paradise Lost',
-  //   rating: [4, 5],
-  //   twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
-  //   fourPiece: [
-  //     {
-  //       description:
-  //         "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%.",
-  //       values: [
-  //         { scaling: 'bloom', coef: 0.4 },
-  //         { scaling: 'hyperbloom', coef: 0.4 },
-  //         { scaling: 'burgeon', coef: 0.4 }
-  //       ]
-  //     },
-  //     {
-  //       description:
-  //         'After the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.',
-  //       actionType: 'stack',
-  //       values: [
-  //         { scaling: 'bloom', coef: [0.1, 0.1, 0.1, 0.1] },
-  //         { scaling: 'hyperbloom', coef: [0.1, 0.1, 0.1, 0.1] },
-  //         { scaling: 'burgeon', coef: [0.1, 0.1, 0.1, 0.1] }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'nymphsdream',
-  //   fullName: "Nymph's Dream",
-  //   rating: [4, 5],
-  //   twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
-  //   fourPiece: [
-  //     {
-  //       description:
-  //         'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents. 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15% Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.',
-  //       actionType: 'stack',
-  //       values: [
-  //         { scaling: 'atk%', coef: [0.07, 0.16, 0.25] },
-  //         { scaling: 'hydro', coef: [0.04, 0.09, 0.15] }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'vourukashasglow',
-  //   fullName: "Vourukasha's Glow",
-  //   rating: [4, 5],
-  //   twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
-  //   fourPiece: [
-  //     {
-  //       description: 'Elemental Skill and Elemental Burst DMG will be increased by 10%.',
-  //       values: [
-  //         { scaling: 'skill', coef: 0.1 },
-  //         { scaling: 'burst', coef: 0.1 }
-  //       ]
-  //     },
-  //     {
-  //       description:
-  //         'After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.',
-  //       actionType: 'stack',
-  //       values: [
-  //         { scaling: 'skill', coef: [0.08, 0.08, 0.08, 0.08, 0.08] },
-  //         { scaling: 'burst', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }
-  //       ]
-  //     }
-  //   ]
-  // },
+  {
+    name: 'desertpavilionchronicle',
+    fullName: 'Desert Pavilion Chronicle',
+    rating: [4, 5],
+    twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
+    fourPiece: [
+      {
+        description:
+          'When Charged Attacks hit opponents, the equipping characters Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.',
+        actionType: 'toggle',
+        values: [
+          { scaling: 'normalATKSpd', coef: 0.1 },
+          { scaling: 'normal', coef: 0.4 },
+          { scaling: 'charged', coef: 0.4 },
+          { scaling: 'plunge', coef: 0.4 }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'flowerofparadiselost',
+    fullName: 'Flower of Paradise Lost',
+    rating: [4, 5],
+    twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
+    fourPiece: [
+      {
+        description:
+          "The equipping character's Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%.",
+        values: [
+          { scaling: 'bloom', coef: 0.4 },
+          { scaling: 'hyperbloom', coef: 0.4 },
+          { scaling: 'burgeon', coef: 0.4 }
+        ]
+      },
+      {
+        description:
+          'After the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.',
+        actionType: 'stack',
+        values: [
+          { scaling: 'bloom', coef: [0.1, 0.1, 0.1, 0.1] },
+          { scaling: 'hyperbloom', coef: [0.1, 0.1, 0.1, 0.1] },
+          { scaling: 'burgeon', coef: [0.1, 0.1, 0.1, 0.1] }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'nymphsdream',
+    fullName: "Nymph's Dream",
+    rating: [4, 5],
+    twoPiece: [{ values: [{ scaling: 'hydro', coef: 0.15 }] }],
+    fourPiece: [
+      {
+        description:
+          'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents. 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15% Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.',
+        actionType: 'stack',
+        values: [
+          { scaling: 'atk%', coef: [0.07, 0.16, 0.25] },
+          { scaling: 'hydro', coef: [0.04, 0.09, 0.15] }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'vourukashasglow',
+    fullName: "Vourukasha's Glow",
+    rating: [4, 5],
+    twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
+    fourPiece: [
+      {
+        description: 'Elemental Skill and Elemental Burst DMG will be increased by 10%.',
+        values: [
+          { scaling: 'skill', coef: 0.1 },
+          { scaling: 'burst', coef: 0.1 }
+        ]
+      },
+      {
+        description:
+          'After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.',
+        actionType: 'stack',
+        values: [
+          { scaling: 'skill', coef: [0.08, 0.08, 0.08, 0.08, 0.08] },
+          { scaling: 'burst', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'marechausseehunter',
+    fullName: 'Marechaussee Hunter',
+    rating: [4, 5],
+    twoPiece: [
+      { values: [{ scaling: 'normal', coef: 0.15 }] },
+      { values: [{ scaling: 'charged', coef: 0.15 }] }
+    ],
+    fourPiece: [
+      {
+        description:
+          'When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.',
+        actionType: 'stack',
+        values: [{ scaling: 'critrate', coef: [0.12, 0.12, 0.12] }]
+      }
+    ]
+  },
+  {
+    name: 'goldentroupe',
+    fullName: 'Golden Troupe',
+    rating: [4, 5],
+    twoPiece: [{ values: [{ scaling: 'skill', coef: 0.2 }] }],
+    fourPiece: [
+      {
+        description:
+          'Increases Elemental Skill DMG by 25%. Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field',
+        actionType: 'stack',
+        values: [{ scaling: 'skill', coef: [0.25, 0.25] }]
+      }
+    ]
+  },
   {
     name: 'sojourner',
     fullName: 'Resolution of Sojourner',
