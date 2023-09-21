@@ -63,19 +63,19 @@
     <img
       class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="/images/artifact/flower/{url}.webp"
-      alt="Skill Button Xiao"
+      alt={url}
     />
   {:else if type === 'weapon'}
     <img
       class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="/images/weapon/{url}.webp"
-      alt="Skill Button Xiao"
+      alt={url}
     />
   {:else}
     <img
       class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
-      src="/images/talents/UI_Talent_S_Xiao_02.png"
-      alt="Skill Button Xiao"
+      src="/images/talents/{url}.webp"
+      alt={url}
     />
   {/if}
 </div>
