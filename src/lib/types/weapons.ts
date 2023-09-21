@@ -143,4 +143,16 @@ export type WeaponNames =
   | 'lightoffoliarincision'
   | 'jadefallssplendor'
   | 'ibispiercer'
-  | 'beaconofthereedsea';
+  | 'beaconofthereedsea'
+  | 'thefirstgreatmagic'
+  | 'songofstillness'
+  | 'flowingpurity'
+  | 'scionoftheblazingsun'
+  | 'sacrificialjade'
+  | 'rightfulreward'
+  | 'balladofthefjords'
+  | 'tidalshadow'
+  | 'talkingstick'
+  | 'fleuvecendreferryman'
+  | 'wolffang'
+  | 'finaleofthedeep';

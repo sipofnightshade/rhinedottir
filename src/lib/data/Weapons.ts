@@ -62,7 +62,7 @@ export const WeaponData: Data = {
           ]
         },
         {
-          actionType: 'passive',
+          actionType: 'toggle',
           shielded: true,
           values: [
             [{ scaling: 'hp%', coef: 0.32 }],
@@ -704,6 +704,50 @@ export const WeaponData: Data = {
       ]
     },
     {
+      name: 'talkingstick',
+      fullName: 'Talking Stick',
+      rating: 4,
+      type: 'claymore',
+      specialized: 'critrate',
+      effectname: '"The Silver Tongue"',
+      action: [
+        {
+          actionType: 'select',
+          values: [
+            [
+              { scaling: 'atk%', coef: 0.16 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.12 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.2 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.15 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.24 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.18 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.28 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.21 }
+            ],
+            [
+              { scaling: 'atk%', coef: 0.32 },
+              { scaling: 'dmgIncreaseElemental', coef: 0.24 }
+            ]
+          ]
+        }
+      ],
+      effect:
+        'ATK will be increased by {0} for 15s after being affected by Pyro. This effect can be triggered once every 12s. All Elemental DMG Bonus will be increased by {1} for 15s after being affected by Hydro, Cryo, Electro, or Dendro. This effect can be triggered once every 12s.',
+      ref: [
+        ['16%', '12%'],
+        ['20%', '15%'],
+        ['24%', '18%'],
+        ['28%', '21%'],
+        ['32%', '24%']
+      ]
+    },
+    {
       name: 'thebell',
       fullName: 'The Bell',
       rating: 4,
@@ -771,6 +815,29 @@ export const WeaponData: Data = {
         ['35%', '7%'],
         ['40%', '8%']
       ]
+    },
+    {
+      name: 'tidalshadow',
+      fullName: 'Tidal Shadow',
+      rating: 4,
+      type: 'claymore',
+      specialized: 'atk%',
+      effectname: 'White Cruising Wave',
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'atk%', coef: 0.24 }],
+            [{ scaling: 'atk%', coef: 0.3 }],
+            [{ scaling: 'atk%', coef: 0.36 }],
+            [{ scaling: 'atk%', coef: 0.42 }],
+            [{ scaling: 'atk%', coef: 0.48 }]
+          ]
+        }
+      ],
+      effect:
+        'After the wielder is healed, ATK will be increased by {0} for 8s. This can be triggered even when the character is not on the field.',
+      ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
     },
     {
       name: 'whiteblind',
@@ -1773,6 +1840,58 @@ export const WeaponData: Data = {
       ref: [['36%'], ['42%'], ['48%'], ['54%'], ['60%']]
     },
     {
+      name: 'scionoftheblazingsun',
+      fullName: 'Scion of the Blazing Sun',
+      rating: 4,
+      type: 'bow',
+      specialized: 'critrate',
+      effectname: 'The Way of Sunfire',
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'charged', coef: 0.28 }],
+            [{ scaling: 'charged', coef: 0.35 }],
+            [{ scaling: 'charged', coef: 0.42 }],
+            [{ scaling: 'charged', coef: 0.49 }],
+            [{ scaling: 'charged', coef: 0.56 }]
+          ]
+        }
+      ],
+      effect:
+        'After a Charged Attack hits an opponent, a Sunfire Arrow will descend upon the opponent hit, dealing {0} ATK as DMG, and applying the Heartsearer effect to the opponent damaged by said Arrow for 10s. Opponents affected by Heartsearer take {1} more Charged Attack DMG from the wielder. A Sunfire Arrow can be triggered once every 10s.',
+      ref: [
+        ['60%', '28%'],
+        ['75%', '35%'],
+        ['90%', '42%'],
+        ['105%', '49%'],
+        ['120%', '56%']
+      ]
+    },
+    {
+      name: 'songofstillness',
+      fullName: 'Song of Stillness',
+      rating: 4,
+      type: 'bow',
+      specialized: 'atk%',
+      effectname: 'Benthic Pulse',
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'dmgIncrease', coef: 0.16 }],
+            [{ scaling: 'dmgIncrease', coef: 0.2 }],
+            [{ scaling: 'dmgIncrease', coef: 0.24 }],
+            [{ scaling: 'dmgIncrease', coef: 0.28 }],
+            [{ scaling: 'dmgIncrease', coef: 0.32 }]
+          ]
+        }
+      ],
+      effect:
+        'After the wielder is healed, they will deal {0} more DMG for 8s. This can be triggered even when the character is not on the field.',
+      ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
+    },
+    {
       name: 'thestringless',
       fullName: 'The Stringless',
       rating: 4,
@@ -1863,6 +1982,57 @@ export const WeaponData: Data = {
         ['30%', '18/36/60%'],
         ['35%', '21/42/70%'],
         ['40%', '24/48/80%']
+      ]
+    },
+    {
+      name: 'thefirstgreatmagic',
+      fullName: 'The First Great Magic',
+      rating: 5,
+      type: 'bow',
+      specialized: 'critdmg',
+      effectname: 'Parsifal the Great',
+      action: [
+        {
+          actionType: 'passive',
+          values: [
+            [{ scaling: 'charged', coef: 0.16 }],
+            [{ scaling: 'charged', coef: 0.2 }],
+            [{ scaling: 'charged', coef: 0.24 }],
+            [{ scaling: 'charged', coef: 0.28 }],
+            [{ scaling: 'charged', coef: 0.32 }]
+          ]
+        },
+        {
+          actionType: 'visionMatch',
+          visionCondition: 'same',
+          values: [
+            [{ scaling: 'atk%', coef: [0.16, 0.32, 0.48] }],
+            [{ scaling: 'atk%', coef: [0.2, 0.4, 0.6] }],
+            [{ scaling: 'atk%', coef: [0.24, 0.48, 0.72] }],
+            [{ scaling: 'atk%', coef: [0.28, 0.56, 0.84] }],
+            [{ scaling: 'atk%', coef: [0.32, 0.64, 0.96] }]
+          ]
+        },
+        {
+          actionType: 'visionMatch',
+          visionCondition: 'different',
+          values: [
+            [{ scaling: 'moveSpd', coef: [0.04, 0.07, 0.1] }],
+            [{ scaling: 'moveSpd', coef: [0.06, 0.09, 0.12] }],
+            [{ scaling: 'moveSpd', coef: [0.08, 0.11, 0.14] }],
+            [{ scaling: 'moveSpd', coef: [0.1, 0.13, 0.16] }],
+            [{ scaling: 'moveSpd', coef: [0.12, 0.15, 0.18] }]
+          ]
+        }
+      ],
+      effect:
+        'DMG dealt by Charged Attacks increased by {0}. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by {1}. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by {2}.',
+      ref: [
+        ['16%', '16%/32%/48%', '4%/7%/10%'],
+        ['20%', '20%/40%/60%', '6%/9%/12%'],
+        ['24%', '24%/48%/72%', '8%/11%/14%'],
+        ['28%', '28%/56%/84%', '10%/13%/16%'],
+        ['32%', '32%/64%/96%', '12%/15%/18%']
       ]
     },
     {
@@ -2096,6 +2266,84 @@ export const WeaponData: Data = {
         ['24%', '9%'],
         ['28%', '10.5%'],
         ['32%', '12%']
+      ]
+    },
+    {
+      name: 'finaleofthedeep',
+      fullName: 'Finale of the Deep',
+      rating: 4,
+      type: 'sword',
+      specialized: 'atk%',
+      effectname: 'An End Sublime',
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'atk%', coef: 0.12 }],
+            [{ scaling: 'atk%', coef: 0.15 }],
+            [{ scaling: 'atk%', coef: 0.18 }],
+            [{ scaling: 'atk%', coef: 0.21 }],
+            [{ scaling: 'atk%', coef: 0.24 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'atk', coef: 0.006, source: ['hp', 0, 25000] }],
+            [{ scaling: 'atk', coef: 0.0075, source: ['hp', 0, 25000] }],
+            [{ scaling: 'atk', coef: 0.009, source: ['hp', 0, 25000] }],
+            [{ scaling: 'atk', coef: 0.0105, source: ['hp', 0, 25000] }],
+            [{ scaling: 'atk', coef: 0.012, source: ['hp', 0, 25000] }]
+          ]
+        }
+      ],
+      effect:
+        'When using an Elemental Skill, ATK will be increased by {0} for 15s, and a Bond of Life worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, a maximum of {1} ATK will be gained based on {2} of the total amount of the Life Bond cleared, lasting for 15s.',
+      ref: [
+        ['12%', '150', '2.4%'],
+        ['15%', '187.5', '3%'],
+        ['18%', '225', '3.6%'],
+        ['21%', '262.5', '4.2%'],
+        ['24%', '300', '4.8%']
+      ]
+    },
+    {
+      name: 'fleuvecendreferryman',
+      fullName: 'Fleuve Cendre Ferryman',
+      rating: 4,
+      type: 'sword',
+      specialized: 'energy',
+      effectname: 'Ironbone',
+      action: [
+        {
+          actionType: 'passive',
+          values: [
+            [{ scaling: 'skillCritRate', coef: 0.08 }],
+            [{ scaling: 'skillCritRate', coef: 0.1 }],
+            [{ scaling: 'skillCritRate', coef: 0.12 }],
+            [{ scaling: 'skillCritRate', coef: 0.14 }],
+            [{ scaling: 'skillCritRate', coef: 0.16 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'energy', coef: 0.16 }],
+            [{ scaling: 'energy', coef: 0.2 }],
+            [{ scaling: 'energy', coef: 0.24 }],
+            [{ scaling: 'energy', coef: 0.28 }],
+            [{ scaling: 'energy', coef: 0.32 }]
+          ]
+        }
+      ],
+      effect:
+        'Increases Elemental Skill CRIT Rate by {0}. Additionally, increases Energy Recharge by {1} for 5s after using an Elemental Skill.',
+      ref: [
+        ['8%', '16%'],
+        ['10%', '20%'],
+        ['12%', '24%'],
+        ['14%', '28%'],
+        ['16%', '32%']
       ]
     },
     {
@@ -2803,6 +3051,70 @@ export const WeaponData: Data = {
       ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
     },
     {
+      name: 'wolffang',
+      fullName: 'Wolf-Fang',
+      rating: 4,
+      type: 'sword',
+      specialized: 'critrate',
+      effectname: 'Northwind Wolf',
+      action: [
+        {
+          actionType: 'passive',
+          values: [
+            [
+              { scaling: 'skill', coef: 0.16 },
+              { scaling: 'burst', coef: 0.16 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.2 },
+              { scaling: 'burst', coef: 0.2 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.24 },
+              { scaling: 'burst', coef: 0.24 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.28 },
+              { scaling: 'burst', coef: 0.28 }
+            ],
+            [
+              { scaling: 'skill', coef: 0.32 },
+              { scaling: 'burst', coef: 0.32 }
+            ]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'skillCritRate', coef: [0.02, 0.02, 0.02, 0.02] }],
+            [{ scaling: 'skillCritRate', coef: [0.025, 0.025, 0.025, 0.025] }],
+            [{ scaling: 'skillCritRate', coef: [0.03, 0.03, 0.03, 0.03] }],
+            [{ scaling: 'skillCritRate', coef: [0.035, 0.035, 0.035, 0.035] }],
+            [{ scaling: 'skillCritRate', coef: [0.04, 0.04, 0.04, 0.04] }]
+          ]
+        },
+        {
+          actionType: 'stack',
+          values: [
+            [{ scaling: 'burstCritRate', coef: [0.02, 0.02, 0.02, 0.02] }],
+            [{ scaling: 'burstCritRate', coef: [0.025, 0.025, 0.025, 0.025] }],
+            [{ scaling: 'burstCritRate', coef: [0.03, 0.03, 0.03, 0.03] }],
+            [{ scaling: 'burstCritRate', coef: [0.035, 0.035, 0.035, 0.035] }],
+            [{ scaling: 'burstCritRate', coef: [0.04, 0.04, 0.04, 0.04] }]
+          ]
+        }
+      ],
+      effect:
+        'DMG dealt by Elemental Skill and Elemental Burst is increased by {0}. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by {1}. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by {2}. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s.',
+      ref: [
+        ['16%', '2%', '2%'],
+        ['20%', '2.5%', '2.5%'],
+        ['24%', '3%', '3%'],
+        ['28%', '3.5%', '3.5%'],
+        ['32%', '4%', '4%']
+      ]
+    },
+    {
       name: 'travelershandysword',
       fullName: "Traveler's Handy Sword",
       rating: 3,
@@ -2860,28 +3172,24 @@ export const WeaponData: Data = {
       action: [
         {
           actionType: 'visionMatch',
-          unique: true,
+          visionCondition: 'same',
           values: [
-            [
-              { scaling: 'em', coef: [32, 32, 32] },
-              { scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1, 0.1] }
-            ],
-            [
-              { scaling: 'em', coef: [40, 40, 40] },
-              { scaling: 'dmgIncreaseElemental', coef: [0.14, 0.14, 0.14] }
-            ],
-            [
-              { scaling: 'em', coef: [48, 48, 48] },
-              { scaling: 'dmgIncreaseElemental', coef: [0.18, 0.18, 0.18] }
-            ],
-            [
-              { scaling: 'em', coef: [56, 56, 56] },
-              { scaling: 'dmgIncreaseElemental', coef: [0.22, 0.22, 0.22] }
-            ],
-            [
-              { scaling: 'em', coef: [64, 64, 64] },
-              { scaling: 'dmgIncreaseElemental', coef: [0.26, 0.26, 0.26] }
-            ]
+            [{ scaling: 'em', coef: [0, 32, 64, 96] }],
+            [{ scaling: 'em', coef: [0, 40, 80, 120] }],
+            [{ scaling: 'em', coef: [0, 48, 96, 144] }],
+            [{ scaling: 'em', coef: [0, 56, 112, 168] }],
+            [{ scaling: 'em', coef: [0, 64, 128, 192] }]
+          ]
+        },
+        {
+          actionType: 'visionMatch',
+          visionCondition: 'different',
+          values: [
+            [{ scaling: 'dmgIncreaseElemental', coef: [0, 0.1, 0.2, 0.3] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0, 0.14, 0.28, 0.42] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0, 0.18, 0.36, 0.54] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0, 0.22, 0.44, 0.66] }],
+            [{ scaling: 'dmgIncreaseElemental', coef: [0, 0.26, 0.52, 0.78] }]
           ]
         },
         {
@@ -3073,6 +3381,75 @@ export const WeaponData: Data = {
         ['80%', '9s'],
         ['90%', '7.5s'],
         ['100%', '6s']
+      ]
+    },
+    {
+      name: 'flowingpurity',
+      fullName: 'Flowing Purity',
+      rating: 4,
+      type: 'catalyst',
+      specialized: 'atk%',
+      effectname: 'Unfinished Masterpiece',
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.08 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.1 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.12 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.14 }],
+            [{ scaling: 'dmgIncreaseElemental', coef: 0.16 }]
+          ]
+        },
+        {
+          actionType: 'toggle',
+          values: [
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.0000048,
+                source: ['hp', 0, 25000]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.000006,
+                source: ['hp', 0, 25000]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.0000072,
+                source: ['hp', 0, 25000]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.0000084,
+                source: ['hp', 0, 25000]
+              }
+            ],
+            [
+              {
+                scaling: 'dmgIncreaseElemental',
+                coef: 0.0000096,
+                source: ['hp', 0, 25000]
+              }
+            ]
+          ]
+        }
+      ],
+      effect:
+        'When using an Elemental Skill, All Elemental DMG Bonus will be increased by {0} for 15s, and a Bond of Life worth 24% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, every 1,000 HP cleared in the process will provide {1} All Elemental DMG Bonus, up to a maximum of {2}. This effect lasts 15s.',
+      ref: [
+        ['8%', '2%', '12%'],
+        ['10%', '2.5%', '15%'],
+        ['12%', '3%', '18%'],
+        ['14%', '3.5%', '21%'],
+        ['16%', '4%', '24%']
       ]
     },
     {
@@ -3478,6 +3855,50 @@ export const WeaponData: Data = {
         ['60%', '22s'],
         ['70%', '19s'],
         ['80%', '16s']
+      ]
+    },
+    {
+      name: 'sacrificialjade',
+      fullName: 'Sacrificial Jade',
+      rating: 4,
+      type: 'catalyst',
+      specialized: 'critrate',
+      effectname: 'Jade Circulation',
+      effect:
+        'When not on the field for more than 5s, Max HP will be increased by {0} and Elemental Mastery will be increased by {1}. These effects will be canceled after the wielder has been on the field for 10s.',
+      ref: [
+        ['32%', '40'],
+        ['40%', '50'],
+        ['48%', '60'],
+        ['56%', '70'],
+        ['64%', '80']
+      ],
+      action: [
+        {
+          actionType: 'toggle',
+          values: [
+            [
+              { scaling: 'hp%', coef: 0.32 },
+              { scaling: 'em', coef: 40 }
+            ],
+            [
+              { scaling: 'hp%', coef: 0.4 },
+              { scaling: 'em', coef: 50 }
+            ],
+            [
+              { scaling: 'hp%', coef: 0.48 },
+              { scaling: 'em', coef: 60 }
+            ],
+            [
+              { scaling: 'hp%', coef: 0.56 },
+              { scaling: 'em', coef: 70 }
+            ],
+            [
+              { scaling: 'hp%', coef: 0.64 },
+              { scaling: 'em', coef: 80 }
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4270,6 +4691,17 @@ export const WeaponData: Data = {
       ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
     },
     {
+      name: 'rightfulreward',
+      fullName: 'Rightful Reward',
+      rating: 4,
+      type: 'polearm',
+      specialized: 'hp%',
+      effectname: 'Tip of the Spear',
+      effect:
+        'When the wielder is healed, restore {0} Energy. This effect can be triggered once every 10s, and can occur even when the character is not on the field.',
+      ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
+    },
+    {
       name: 'royalspear',
       fullName: 'Royal Spear',
       rating: 4,
@@ -4460,6 +4892,30 @@ export const WeaponData: Data = {
         ['28%', '10.5%'],
         ['32%', '12%']
       ]
+    },
+    {
+      name: 'balladofthefjords',
+      fullName: 'Ballad of the Fjords',
+      rating: 4,
+      type: 'polearm',
+      specialized: 'critrate',
+      effectname: 'Tales of the Tundra',
+      action: [
+        {
+          actionType: 'visionMatch',
+          visionCondition: 'different',
+          values: [
+            [{ scaling: 'em', coef: [0, 0, 120] }],
+            [{ scaling: 'em', coef: [0, 0, 150] }],
+            [{ scaling: 'em', coef: [0, 0, 180] }],
+            [{ scaling: 'em', coef: [0, 0, 210] }],
+            [{ scaling: 'em', coef: [0, 0, 240] }]
+          ]
+        }
+      ],
+      effect:
+        'When there are at least 3 different Elemental Types in your party, Elemental Mastery will be increased by {0}',
+      ref: [['120.'], ['150.'], ['180.'], ['210.'], ['240.']]
     },
     {
       name: 'vortexvanquisher',

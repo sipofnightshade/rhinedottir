@@ -24,7 +24,19 @@ export type SelectedWeapon = {
       | 'input'
       | 'passive'
       | 'visionMatch'
+      | 'visionMatchToggle'
       | 'region';
+    hasVisionRequirement?: Visions[]; // for actions that require specific visions in party alone
+    visionCondition?:
+      | 'same'
+      | 'different'
+      | 'anemo'
+      | 'cryo'
+      | 'dendro'
+      | 'electro'
+      | 'geo'
+      | 'hydro'
+      | 'pyro';
     target?: Target;
     shielded?: boolean;
     regions?: Regions[];
