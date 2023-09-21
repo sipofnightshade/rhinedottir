@@ -1,15 +1,15 @@
 import { ArtifactData } from '$lib/data/Artifacts';
+import type { All_Stats } from '$lib/data/Stats';
 import type { ActiveSets } from '$lib/stores/activeSetsStore';
 import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { Action, ArtifactNames } from '$lib/types/artifacts';
 import type { WeaponCategory } from '$lib/types/global';
-import type { ALL_STATS } from '$lib/types/talents';
 
 interface ResultObject {
   passives: Array<{
-    scaling: ALL_STATS;
+    scaling: string;
     coef: number | number[];
-    source?: [ALL_STATS, number, number];
+    source?: [All_Stats, number, number];
   }>;
   active: Action | object;
 }

@@ -5,6 +5,8 @@
   import StackButton from './_StackButton.svelte';
   import SelectButton from './_SelectButton.svelte';
   import MultiSelectButton from './_MultiSelectButton.svelte';
+  import VisionMatchButton from './_VisionMatchButton.svelte';
+  import VisionMatchToggle from './_VisionMatchToggle.svelte';
 
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
@@ -34,7 +36,8 @@
     select: SelectButton,
     multiSelect: MultiSelectButton,
     input: MultiSelectButton,
-    visionMatch: ToggleButton
+    visionMatch: VisionMatchButton,
+    visionMatchToggle: VisionMatchToggle
   };
 
   let prevPassives: Stats[] = [];
