@@ -57,19 +57,15 @@
         ...action,
         name: selected.fullName,
         url: selected.name,
+        // @ts-ignore
         values: action.values[refinement]
       });
     });
   }
 
-  // onMount(() => {
-  //   setWeaponBonuses(actions, refinement);
-  // });
-
   $: if (selected) {
     actionData = [];
     setWeaponBonuses(actions, refinement);
-    console.log(actionData);
   }
 </script>
 
