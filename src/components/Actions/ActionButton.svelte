@@ -68,7 +68,7 @@
   {:else if type === 'weapon'}
     <img
       class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
-      src="/images/weapons/{url}.webp"
+      src="/images/weapon/{url}.webp"
       alt="Skill Button Xiao"
     />
   {:else}

@@ -28,12 +28,39 @@ const initialState: CurrentWeapon = {
     type: 'sword',
     specialized: 'physical',
     effectname: 'Smashed Stone',
+    action: [
+      {
+        actionType: 'stack',
+        values: [
+          [
+            { scaling: 'atk%', coef: [0.04, 0.04, 0.04, 0.04] },
+            { scaling: 'def%', coef: [0.04, 0.04, 0.04, 0.04] }
+          ],
+          [
+            { scaling: 'atk%', coef: [0.05, 0.05, 0.05, 0.05] },
+            { scaling: 'def%', coef: [0.05, 0.05, 0.05, 0.05] }
+          ],
+          [
+            { scaling: 'atk%', coef: [0.06, 0.06, 0.06, 0.06] },
+            { scaling: 'def%', coef: [0.06, 0.06, 0.06, 0.06] }
+          ],
+          [
+            { scaling: 'atk%', coef: [0.07, 0.07, 0.07, 0.07] },
+            { scaling: 'def%', coef: [0.07, 0.07, 0.07, 0.07] }
+          ],
+          [
+            { scaling: 'atk%', coef: [0.08, 0.08, 0.08, 0.08] },
+            { scaling: 'def%', coef: [0.08, 0.08, 0.08, 0.08] }
+          ]
+        ]
+      }
+    ],
     effect:
       'On hit, Normal or Charged Attacks increase ATK and DEF by {0} for 6s. Max 4 stacks. This effect can only occur once every 0.3s.',
     ref: [['4%'], ['5%'], ['6%'], ['7%'], ['8%']]
   },
   lvl: 13,
-  refinement: 4,
+  refinement: 0,
   stats: GenshinStats.calcStatsForWeapon('prototyperancour', labels.lvlValues[13])
 };
 

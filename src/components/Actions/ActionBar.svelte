@@ -1,6 +1,7 @@
 <script lang="ts">
   // stores & context
   import { character } from '$lib/stores/characterStore';
+  import { weapon } from '$lib/stores/weaponStore';
   import { party } from '$lib/stores/partyStore';
   import { artifact } from '$lib/stores/artifactStore';
   import { stats } from '$lib/stores/statsStore';
@@ -15,6 +16,7 @@
   import ArtifactButton from './ArtifactButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
+  import WeaponButton from './WeaponButton.svelte';
 
   export let margin = true;
 
@@ -51,6 +53,12 @@
   {/each}
   <ArtifactButton
     setData={$artifact}
+    id="main"
+    currentChar={$character}
+    currentStats={$stats.main}
+  />
+  <WeaponButton
+    currentWeapon={$weapon}
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
