@@ -88,6 +88,8 @@ export function calcFinalDMG(
     ? $stats[hit.hasOwnBonusFlatDMG] || 0
     : 0;
 
+  const dmgTypeFlatDMG = $stats[element + 'FlatDMG'] ?? 0;
+
   // get the catalyze bonus damage
   const catalyze = {
     electro: 'aggravate',
@@ -106,7 +108,7 @@ export function calcFinalDMG(
       const result = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG] + ownBonusFlatDMG,
+        $stats[addStats.flatDMG] + ownBonusFlatDMG + dmgTypeFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,
@@ -119,7 +121,7 @@ export function calcFinalDMG(
       const catalyzeResult = calcDamageNoReaction(
         hitDMG,
         SpecialMultiplier,
-        $stats[addStats.flatDMG] + catalyzeFlatDMG + ownBonusFlatDMG,
+        $stats[addStats.flatDMG] + catalyzeFlatDMG + ownBonusFlatDMG + dmgTypeFlatDMG,
         DMGBonus,
         $enemy.dmgReduction,
         DEFMultiplier,
