@@ -212,20 +212,22 @@ const charName: CharacterRecord = {
         }
       ]
     },
-    // {
-    //   name: "Lost Wisdom of the Seven Caverns",
-    //   url: 'UI_Talent_S_Faruzan_06',
-    //   description: "When characters affected by **The Wind's Secret Ways**' Prayerful Wind's Benefit deal Anemo DMG using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on 32% of Faruzan's Base ATK. 1 instance of Hurricane Guard can occur once every 0.8s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.",
-    //   level: 8,
-    //   target: 'self',
-    //   actionType: 'passive',
-    //   values: [
-    //     {
-    //       scaling: 'anemo',
-    //       coef: 0
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Lost Wisdom of the Seven Caverns',
+      url: 'UI_Talent_S_Faruzan_06',
+      description:
+        "When characters affected by **The Wind's Secret Ways**' Prayerful Wind's Benefit deal Anemo DMG using Normal, Charged, Plunging Attacks, Elemental Skills, or Elemental Bursts to opponents, they will gain the Hurricane Guard effect: This DMG will be increased based on 32% of Faruzan's Base ATK. 1 instance of Hurricane Guard can occur once every 0.8s. This DMG Bonus will be cleared after Prayerful Wind's Benefit expires or after the effect is triggered once.",
+      level: 8,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'anemoFlatDMG',
+          coef: 0.32,
+          source: ['baseATK', 0]
+        }
+      ]
+    },
     {
       name: 'The Wondrous Path of Truth',
       url: 'UI_Talent_S_Faruzan_04',
