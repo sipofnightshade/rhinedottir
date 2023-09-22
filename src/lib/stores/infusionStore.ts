@@ -7,12 +7,19 @@ function createInfusion() {
 
   return {
     subscribe,
-    setInfusion: (dmgType: DamageType, target: Target) =>
+    setInfusion: (
+      dmgType: DamageType,
+      target: Target,
+      id: 'main' | 'one' | 'two' | 'three'
+    ) =>
       update((state) => {
         // Keep current infusion if self infused
-        if (target === 'self' && state !== 'physical') return state;
+        if (state !== 'physical') return state;
 
-        state = dmgType;
+        if (target === 'self' && id === 'main') state = dmgType;
+
+        if (target === 'party' && state === 'physical') state = dmgType;
+
         return state;
       }),
     reset: () => set('physical')
