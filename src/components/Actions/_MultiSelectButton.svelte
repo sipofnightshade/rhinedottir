@@ -30,6 +30,7 @@
   const cName = getCharacterName(currentChar.selected);
   const talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
+  $: constellationReq = data.constellation ?? 0;
 
   type SELECTED = { [key in string]?: boolean };
   type Stat = { scaling: string; coef: number };
@@ -105,32 +106,33 @@
   // $: console.log('addedStats', addedStats);
 </script>
 
-<button on:click={toggleModal} class="relative">
-  <ActionButton {type} {isActive} url={data.url} />
-  <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
-    {#each data.values as value}
-      <div
-        class="rounded-full bg-slate-800 p-1"
-        class:hidden={selectedStats[value.scaling] === false}
-      >
-        <img
-          class="w-4"
-          src="/images/elements/{stripStat(value.scaling)}.svg"
-          alt="close"
-        />
-      </div>
-    {/each}
-  </div>
-</button>
-<ActionModal
-  bind:dialog
-  modalTitle={data.name}
-  actionType="Elemental Burst"
-  buttonType="Select"
-  details={data.description ?? ''}
->
-  <div class="flex h-full items-center">
-    <!-- <li class="h-10 w-10">
+{#if constellationReq <= currentChar.constellation}
+  <button on:click={toggleModal} class="relative">
+    <ActionButton {type} {isActive} url={data.url} />
+    <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
+      {#each data.values as value}
+        <div
+          class="rounded-full bg-slate-800 p-1"
+          class:hidden={selectedStats[value.scaling] === false}
+        >
+          <img
+            class="w-4"
+            src="/images/elements/{stripStat(value.scaling)}.svg"
+            alt="close"
+          />
+        </div>
+      {/each}
+    </div>
+  </button>
+  <ActionModal
+    bind:dialog
+    modalTitle={data.name}
+    actionType="Elemental Burst"
+    buttonType="Select"
+    details={data.description ?? ''}
+  >
+    <div class="flex h-full items-center">
+      <!-- <li class="h-10 w-10">
         <button
           on:click={clearState}
           class="flex h-full w-full items-center justify-center rounded-full "
@@ -138,18 +140,19 @@
           <img class="w-3.5" src="/images/ui/close.svg" alt={'close'} />
         </button>
       </li> -->
-    {#each data.values as value}
-      <button
-        class="flex h-full w-full items-center justify-center bg-slate-600"
-        class:bg-slate-600={selectedStats[value.scaling] === true}
-        on:click={() => handleClick(value)}
-      >
-        <img
-          class="w-6"
-          src="/images/elements/{stripStat(value.scaling)}.svg"
-          alt={stripStat(value.scaling)}
-        />
-      </button>
-    {/each}
-  </div>
-</ActionModal>
+      {#each data.values as value}
+        <button
+          class="flex h-full w-full items-center justify-center bg-slate-600"
+          class:bg-slate-600={selectedStats[value.scaling] === true}
+          on:click={() => handleClick(value)}
+        >
+          <img
+            class="w-6"
+            src="/images/elements/{stripStat(value.scaling)}.svg"
+            alt={stripStat(value.scaling)}
+          />
+        </button>
+      {/each}
+    </div>
+  </ActionModal>
+{/if}

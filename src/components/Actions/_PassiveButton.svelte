@@ -32,6 +32,7 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
+  $: constellationReq = data.constellation ?? 0;
 
   let isInitialized = false; // Add a flag to track component initialization
 
@@ -94,6 +95,8 @@
   });
 </script>
 
-<button data-testid="passive-action-button">
-  <ActionButton {type} url={data.url} isActive />
-</button>
+{#if constellationReq <= currentChar.constellation}
+  <button data-testid="passive-action-button">
+    <ActionButton {type} url={data.url} isActive />
+  </button>
+{/if}

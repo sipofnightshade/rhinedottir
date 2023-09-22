@@ -36,6 +36,7 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
+  $: constellationReq = data.constellation ?? 0;
 
   let isActive: boolean = false;
   let addedStats: { scaling: string; coef: number }[] = [];
@@ -136,6 +137,8 @@
   });
 </script>
 
-<button on:click={handleToggle}>
-  <ActionButton {type} {isActive} url={data.url} />
-</button>
+{#if constellationReq <= currentChar.constellation}
+  <button on:click={handleToggle}>
+    <ActionButton {type} {isActive} url={data.url} />
+  </button>
+{/if}

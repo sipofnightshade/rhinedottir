@@ -40,6 +40,7 @@
   let previousTalentLvl: number | null = null;
 
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
+  $: constellationReq = data.constellation ?? 0;
 
   function addStats(selected: Stat) {
     const { scaling, coef, source } = selected;
@@ -122,21 +123,22 @@
   }
 </script>
 
-<button on:click={toggleModal} class="relative">
-  <ActionButton {type} isActive={selected != undefined} url={data.url} />
-  {#if selected != undefined}
-    <div class="absolute bottom-0 right-0 z-10 flex">
-      <div class="rounded-full bg-slate-800 p-1">
-        <img
-          class="w-4"
-          src="/images/elements/{stripStat(selected.scaling)}.svg"
-          alt="close"
-        />
+{#if constellationReq <= currentChar.constellation}
+  <button on:click={toggleModal} class="relative">
+    <ActionButton {type} isActive={selected != undefined} url={data.url} />
+    {#if selected != undefined}
+      <div class="absolute bottom-0 right-0 z-10 flex">
+        <div class="rounded-full bg-slate-800 p-1">
+          <img
+            class="w-4"
+            src="/images/elements/{stripStat(selected.scaling)}.svg"
+            alt="close"
+          />
+        </div>
       </div>
-    </div>
-  {/if}
-</button>
-<!-- {#if showModal}
+    {/if}
+  </button>
+  <!-- {#if showModal}
   <ActionModal
     on:click={toggleModal}
     on:escapeClick={toggleModal}
@@ -187,55 +189,56 @@
     </ul>
   </ActionModal>
 {/if} -->
-<ActionModal
-  bind:dialog
-  modalTitle={data.name}
-  actionType="Elemental Burst"
-  buttonType="Select"
-  details={data.description || ''}
->
-  <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
-    <div
-      class="relative flex h-full w-full items-center justify-center bg-slate-600"
-      class:bg-slate-600={selected === undefined}
-    >
-      <input
-        type="radio"
-        bind:group={selected}
-        name="radio"
-        id="empty"
-        value={undefined}
-        class="hidden"
-      />
-      <label
-        for="empty"
-        class="flex h-full w-full cursor-pointer items-center justify-center"
-        ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
-      </label>
-    </div>
-    {#each data.values as item}
+  <ActionModal
+    bind:dialog
+    modalTitle={data.name}
+    actionType="Elemental Burst"
+    buttonType="Select"
+    details={data.description || ''}
+  >
+    <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
       <div
         class="relative flex h-full w-full items-center justify-center bg-slate-600"
-        class:bg-slate-600={selected === item}
+        class:bg-slate-600={selected === undefined}
       >
         <input
           type="radio"
           bind:group={selected}
           name="radio"
-          id={item.scaling}
-          value={item}
+          id="empty"
+          value={undefined}
           class="hidden"
         />
         <label
-          for={item.scaling}
+          for="empty"
           class="flex h-full w-full cursor-pointer items-center justify-center"
-          ><img
-            class="w-6"
-            src="/images/elements/{stripStat(item.scaling)}.svg"
-            alt={item.scaling}
-          />
+          ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
         </label>
       </div>
-    {/each}
-  </form>
-</ActionModal>
+      {#each data.values as item}
+        <div
+          class="relative flex h-full w-full items-center justify-center bg-slate-600"
+          class:bg-slate-600={selected === item}
+        >
+          <input
+            type="radio"
+            bind:group={selected}
+            name="radio"
+            id={item.scaling}
+            value={item}
+            class="hidden"
+          />
+          <label
+            for={item.scaling}
+            class="flex h-full w-full cursor-pointer items-center justify-center"
+            ><img
+              class="w-6"
+              src="/images/elements/{stripStat(item.scaling)}.svg"
+              alt={item.scaling}
+            />
+          </label>
+        </div>
+      {/each}
+    </form>
+  </ActionModal>
+{/if}
