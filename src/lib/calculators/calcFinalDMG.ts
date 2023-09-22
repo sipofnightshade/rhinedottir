@@ -6,6 +6,7 @@ import type { Hit, HitDMG } from '$lib/types/talents';
 // calculators
 import { calcAmplifying } from './calcAmplifyingMultiplier';
 import { calcCatalyzeBonus } from './calcCatalyzeBonus';
+import { calcCritStat } from './calcCritStat';
 import { calcDEFMultiplier } from './calcDEFMultiplier';
 import { calcDMGBonus } from './calcDMGBonus';
 import { calcDamageNoReaction } from './calcDamageNoReaction';
@@ -67,15 +68,20 @@ export function calcFinalDMG(
   const DMGBonus = calcDMGBonus(hit, $stats, element);
 
   // calculate total crit stats
-  const critRate =
-    hit.hasOwnCritRate && $stats[hit.hasOwnCritRate] > 0
-      ? $stats[hit.hasOwnCritRate] + $stats.critrate + $stats[addStats.critRate]
-      : $stats.critrate + $stats[addStats.critRate] || 0;
-
-  const critDMG =
-    hit.hasOwnCritDMG && $stats[hit.hasOwnCritDMG] > 0
-      ? $stats[hit.hasOwnCritDMG] + $stats.critdmg + $stats[addStats.critDMG]
-      : $stats.critdmg + $stats[addStats.critDMG] || 0;
+  const critRate = calcCritStat(
+    $stats,
+    hit.hasOwnCritRate,
+    'critrate',
+    addStats.critRate,
+    element
+  );
+  const critDMG = calcCritStat(
+    $stats,
+    hit.hasOwnCritDMG,
+    'critdmg',
+    addStats.critDMG,
+    element
+  );
 
   // get the talent specific flatDMG if it has one
   const ownBonusFlatDMG = hit.hasOwnBonusFlatDMG
