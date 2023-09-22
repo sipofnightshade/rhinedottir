@@ -4,17 +4,15 @@ import { character } from './characterStore';
 import { stats } from './statsStore';
 import { enemy } from './enemyStore';
 import { party } from './partyStore';
+import { infusion } from './infusionStore';
 
 // helpers
 import { getTalentRows } from '$lib/helpers/getTalentRows';
 
-// default infusion should be physical. replace this with infusion store
-const infusion = 'physical';
-
 function createTalents() {
   return derived(
-    [character, stats, enemy, party],
-    ([$character, $stats, $enemy, $party]) => {
+    [character, stats, enemy, party, infusion],
+    ([$character, $stats, $enemy, $party, $infusion]) => {
       /**
        * @todo
        * - 🚀 Figure out a way to add stats to specific individual
@@ -26,27 +24,14 @@ function createTalents() {
 
       // -------------------------------- 🛠 MAIN 🛠 --------------------------------
       const vision = $character.selected.vision;
-      const mainDmgType =
-        $character.selected.weapon === 'catalyst' || $character.selected.weapon === 'bow'
-          ? vision
-          : infusion;
+      const mainDmgType = $character.selected.weapon === 'catalyst' ? vision : $infusion;
+
+      // have infusion for normal, charged and plunge attacks
 
       const main = {
-        normal: getTalentRows(
-          $character,
-          $stats.main,
-          $enemy,
-          'normal',
-          infusion as 'physical'
-        ),
+        normal: getTalentRows($character, $stats.main, $enemy, 'normal', mainDmgType),
         charged: getTalentRows($character, $stats.main, $enemy, 'charged', mainDmgType),
-        plunge: getTalentRows(
-          $character,
-          $stats.main,
-          $enemy,
-          'plunge',
-          infusion as 'physical'
-        ),
+        plunge: getTalentRows($character, $stats.main, $enemy, 'plunge', mainDmgType),
         skill: getTalentRows($character, $stats.main, $enemy, 'skill', vision),
         burst: getTalentRows($character, $stats.main, $enemy, 'burst', vision)
       };
