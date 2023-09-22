@@ -18,6 +18,7 @@
 
   // components
   import ActionButton from './ActionButton.svelte';
+  import { infusion } from '$lib/stores/infusionStore';
 
   export let type: Visions | 'weapon' | 'artifact';
   export let data: Action;
@@ -33,6 +34,7 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
+  $: constellationReq = data.constellation ?? 0;
 
   let stacks = 0;
   let stackCoefs: number[] = [];
@@ -100,6 +102,13 @@
     }
   }
 
+  // apply infusion
+  $: if (stacks > 0 && data.infusion) {
+    infusion.setInfusion(data.infusion, target, id);
+  } else if (stacks === 0 && data.infusion) {
+    infusion.reset();
+  }
+
   onDestroy(() => {
     if (stacks > 0) {
       removeStats();
@@ -124,18 +133,20 @@
   };
 </script>
 
-<button on:click={handleStacking} class="relative shadow-red-300">
-  <ActionButton {type} isActive={stacks > 0} url={data.url} />
-  {#if stacks > 0}
-    <p
-      class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[
-        type
-      ]} shadow-red-400"
-    >
-      x{stacks}
-    </p>
-  {/if}
-</button>
+{#if constellationReq <= currentChar.constellation}
+  <button on:click={handleStacking} class="relative shadow-red-300">
+    <ActionButton {type} isActive={stacks > 0} url={data.url} />
+    {#if stacks > 0}
+      <p
+        class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[
+          type
+        ]} shadow-red-400"
+      >
+        x{stacks}
+      </p>
+    {/if}
+  </button>
+{/if}
 
 <style lang="postcss">
   .stacks {

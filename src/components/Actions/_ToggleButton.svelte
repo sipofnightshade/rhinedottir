@@ -4,13 +4,15 @@
   import type { Visions } from '$lib/types/global';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
-  import type { All_Stats, Index_Stats } from '$lib/data/Stats';
+  import type { Index_Stats } from '$lib/data/Stats';
 
   // components
   import ActionButton from './ActionButton.svelte';
 
   // other
   import { action } from '$lib/stores/actionStore';
+  import { infusion } from '$lib/stores/infusionStore';
+
   // import { stats } from '$lib/stores/statsStore';
   import { onDestroy } from 'svelte';
   import { getCharacterName } from '$lib/helpers/getCharacterName';
@@ -33,6 +35,7 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
+  $: constellationReq = data.constellation ?? 0;
 
   let isActive: boolean = false;
   let addedStats: { scaling: string; coef: number }[] = [];
@@ -97,6 +100,13 @@
     }
   }
 
+  // apply infusion
+  $: if (isActive && data.infusion) {
+    infusion.setInfusion(data.infusion, target, id);
+  } else if (!isActive && data.infusion) {
+    infusion.reset();
+  }
+
   onDestroy(() => {
     if (isActive) {
       removeStats();
@@ -106,6 +116,8 @@
   });
 </script>
 
-<button on:click={handleToggle}>
-  <ActionButton {type} {isActive} url={data.url} />
-</button>
+{#if constellationReq <= currentChar.constellation}
+  <button on:click={handleToggle}>
+    <ActionButton {type} {isActive} url={data.url} />
+  </button>
+{/if}
