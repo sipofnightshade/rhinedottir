@@ -581,12 +581,27 @@ const charName: CharacterRecord = {
   ],
   actions: [
     {
+      name: 'Chisel-Light Mirror',
+      url: 'UI_Talent_S_Alhatham_05',
+      description:
+        "When he possesses Chisel-Light Mirrors, Alhaitham's Normal, Charged, and Plunging Attacks will be converted to Dendro DMG. This cannot be overridden.",
+      level: 2,
+      target: 'self',
+      infusion: 'dendro',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'dendro',
+          coef: 0
+        }
+      ]
+    },
+    {
       name: 'Mysteries Laid Bare',
       url: 'UI_Talent_S_Alhatham_06',
       description:
         "Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and Particular Field: Fetters of Phenomena by 0.1%.The DMG of both aforementioned abilities can be increased by a maximum of 100% this way.",
       level: 8,
-      constellation: 0,
       target: 'self',
       actionType: 'toggle',
       sourceStats: ['em'],
