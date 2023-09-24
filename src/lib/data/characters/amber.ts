@@ -304,7 +304,7 @@ const charName: CharacterRecord = {
       name: 'Every Arrow Finds Its Target',
       url: 'UI_Talent_S_Ambor_05',
       description:
-        'Increases the CRIT Rate of Fiery Rain by 10% and widens its AoE by 30%.',
+        'Increases the CRIT Rate of **Fiery Rain** by 10% and widens its AoE by 30%.',
       level: 2,
       target: 'self',
       actionType: 'passive',
@@ -348,7 +348,7 @@ const charName: CharacterRecord = {
       name: 'Wildfire',
       url: 'UI_Talent_S_Ambor_04',
       description:
-        "Fiery Rain increases all party members' Movement SPD by 15% and ATK by 15% for 10s.",
+        "**Fiery Rain** increases all party members' Movement SPD by 15% and ATK by 15% for 10s.",
       constellation: 2,
       target: 'party',
       actionType: 'passive',

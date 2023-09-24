@@ -246,7 +246,6 @@ const charName: CharacterRecord = {
   burst: [
     {
       name: 'Single-Instance DMG',
-      tag: 'Q',
       damageBonus: 'burst',
       hasOwnBonusDMG: 'projectionAttacks',
       damage: [
@@ -263,8 +262,8 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Basic Burst DMG',
-      tag: 'QB',
+      name: '0-Mirror Burst DMG',
+      tag: 'Q0',
       multiHit: 4,
       damageBonus: 'burst',
       hasOwnBonusDMG: 'projectionAttacks',
@@ -585,7 +584,6 @@ const charName: CharacterRecord = {
       url: 'UI_Talent_S_Alhatham_05',
       description:
         "When he possesses Chisel-Light Mirrors, Alhaitham's Normal, Charged, and Plunging Attacks will be converted to Dendro DMG. This cannot be overridden.",
-      level: 2,
       target: 'self',
       infusion: 'dendro',
       actionType: 'toggle',
@@ -600,7 +598,7 @@ const charName: CharacterRecord = {
       name: 'Mysteries Laid Bare',
       url: 'UI_Talent_S_Alhatham_06',
       description:
-        "Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and Particular Field: Fetters of Phenomena by 0.1%.The DMG of both aforementioned abilities can be increased by a maximum of 100% this way.",
+        "Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and **Particular Field: Fetters of Phenomena** by 0.1%.\nThe DMG of both aforementioned abilities can be increased by a maximum of 100% this way.",
       level: 8,
       target: 'self',
       actionType: 'toggle',
@@ -632,7 +630,7 @@ const charName: CharacterRecord = {
       name: 'Elucidation - Alhaitham',
       url: 'UI_Talent_S_Alhatham_03',
       description:
-        'When Particular Field: Fetters of Phenomena is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around: \n·Each Mirror generated will grant Alhaitham a 10% Dendro DMG Bonus for 15s.',
+        'When  **Particular Field: Fetters of Phenomena** is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around: \n·Each Mirror generated will grant Alhaitham a 10% Dendro DMG Bonus for 15s.',
       constellation: 4,
       target: 'self',
       actionType: 'stack',
@@ -647,7 +645,7 @@ const charName: CharacterRecord = {
       name: 'Elucidation - Party',
       url: 'UI_Talent_S_Alhatham_03',
       description:
-        'When Particular Field: Fetters of Phenomena is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around: \n·Each Mirror consumed will increase the Elemental Mastery of all other nearby party members by 30 for 15s.',
+        'When  **Particular Field: Fetters of Phenomena** is unleashed, the following effects will become active based on the number of Chisel-Light Mirrors consumed and created this time around: \n·Each Mirror consumed will increase the Elemental Mastery of all other nearby party members by 30 for 15s.',
       constellation: 4,
       target: 'nearby',
       actionType: 'stack',
@@ -662,7 +660,7 @@ const charName: CharacterRecord = {
       name: 'Structuration',
       url: 'UI_Talent_S_Alhatham_06',
       description:
-        'Alhaitham gains the following effects: 2 seconds after Particular Field: Fetters of Phenomena is unleashed, he will generate 3 Chisel-Light Mirrors regardless of the number of mirrors consumed. If Alhaitham generates Chisel-Light Mirrors when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by 10% and 70% respectively for 6s. If this effect is triggered again during its initial duration, the duration remaining will be increased by 6s.',
+        'Alhaitham gains the following effects:\n· 2 seconds after **Particular Field: Fetters of Phenomena** is unleashed, he will generate 3 Chisel-Light Mirrors regardless of the number of mirrors consumed.\n· If Alhaitham generates Chisel-Light Mirrors when their numbers have already maxed out, his CRIT Rate and CRIT DMG will increase by 10% and 70% respectively for 6s. If this effect is triggered again during its initial duration, the duration remaining will be increased by 6s.',
       constellation: 6,
       target: 'self',
       actionType: 'toggle',

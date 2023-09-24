@@ -279,8 +279,8 @@ const charName: CharacterRecord = {
       name: 'Gift of the Woods',
       url: 'UI_Talent_S_Collei_03',
       description:
-        "When in the party and not on the field, Collei's Energy Recharge is increased by 20%.",
-      constellation: 1,
+        "Using **Trump-Card Kitty** will increase all nearby characters' Elemental Mastery by 60 for 12s (not including Collei herself).",
+      constellation: 4,
       target: 'nearby',
       actionType: 'toggle',
       values: [

@@ -167,7 +167,7 @@ const charName: CharacterRecord = {
   skill: [
     {
       name: 'Skill DMG',
-      tag: 'EP',
+      tag: 'E',
       damageBonus: 'skill',
       damage: [
         [

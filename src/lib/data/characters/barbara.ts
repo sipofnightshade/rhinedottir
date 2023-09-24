@@ -198,7 +198,8 @@ const charName: CharacterRecord = {
     {
       name: 'Vitality Burst',
       url: 'UI_Talent_S_Barbara_02',
-      description: 'description',
+      description:
+        "Decreases the CD of **Let the Show Begin♪** by 15%.\nDuring the ability's duration, your active character gains a 15% Hydro DMG Bonus.",
       constellation: 2,
       target: 'active',
       actionType: 'toggle',

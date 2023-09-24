@@ -280,7 +280,7 @@ const charName: CharacterRecord = {
       name: 'Grand Expectation',
       url: 'UI_Talent_S_Bennett_01',
       description:
-        "Fantastic Voyage's ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
+        "**Fantastic Voyage**'s ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
       target: 'party',
       constellation: 1,
       sourceStats: ['baseATK'],
@@ -312,7 +312,7 @@ const charName: CharacterRecord = {
       name: 'Fire Ventures With Me',
       url: 'UI_Talent_S_Bennett_04',
       description:
-        "Sword, Claymore, or Polearm-wielding characters inside Fantastic Voyage's radius gain a 15% Pyro DMG Bonus and their weapons are infused with Pyro.",
+        "Sword, Claymore, or Polearm-wielding characters inside **Fantastic Voyage**'s radius gain a 15% Pyro DMG Bonus and their weapons are infused with Pyro.",
       target: 'party',
       constellation: 6,
       infusion: 'pyro',

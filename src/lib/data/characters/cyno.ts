@@ -340,7 +340,7 @@ const charName: CharacterRecord = {
       name: 'Pactsworn Pathclearer',
       url: 'Skill_E_Cyno_01',
       description:
-        "Cyno's Normal, Charged, and Plunging Attacks will be converted to Electro DMG that cannot be overridden. ·Cyno's Elemental Mastery and resistance to interruption will increase, and he gains immunity to Electro-Charged DMG. This effect will be canceled when Cyno leaves the field and lasts a maximum of 18s.",
+        "Cyno's Normal, Charged, and Plunging Attacks will be converted to Electro DMG that cannot be overridden.\n·Cyno's Elemental Mastery and resistance to interruption will increase, and he gains immunity to Electro-Charged DMG. This effect will be canceled when Cyno leaves the field and lasts a maximum of 18s.",
       target: 'self',
       actionType: 'toggle',
       values: [
@@ -354,7 +354,7 @@ const charName: CharacterRecord = {
       name: 'Featherfall Judgment',
       url: 'UI_Talent_S_Cyno_05',
       description:
-        "When Cyno is in the Pactsworn Pathclearer state activated by Sacred Rite: Wolf's Swiftness, Cyno will enter the Endseer stance at intervals. If he activates Secret Rite: Chasmic Soulfarer while affected by this stance, he will activate the Judication effect, increasing the DMG of this Secret Rite: Chasmic Soulfarer by 35%, and firing off 3 Duststalker Bolts that deal 100% of Cyno's ATK as Electro DMG.",
+        "When Cyno is in the Pactsworn Pathclearer state activated by **Sacred Rite: Wolf's Swiftness**, Cyno will enter the Endseer stance at intervals. If he activates **Secret Rite: Chasmic Soulfarer** while affected by this stance, he will activate the Judication effect, increasing the DMG of this Secret Rite: Chasmic Soulfarer by 35%, and firing off 3 Duststalker Bolts that deal 100% of Cyno's ATK as Electro DMG.\nDuststalker Bolt DMG is considered Elemental Skill DMG.",
       level: 2,
       target: 'self',
       actionType: 'toggle',
@@ -369,7 +369,7 @@ const charName: CharacterRecord = {
       name: 'Authority Over the Nine Bows',
       url: 'UI_Talent_S_Cyno_06',
       description:
-        "Cyno's DMG values will be increased based on his Elemental Mastery as follows: ·Pactsworn Pathclearer's Normal Attack DMG is increased by 150% of his Elemental Mastery. ·Duststalker Bolt DMG from his Passive Talent Featherfall Judgment is increased by 250% of his Elemental Mastery.",
+        "Cyno's DMG values will be increased based on his Elemental Mastery as follows:\n·Pactsworn Pathclearer's Normal Attack DMG is increased by 150% of his Elemental Mastery.\n·Duststalker Bolt DMG from his Passive Talent Featherfall Judgment is increased by 250% of his Elemental Mastery.",
       level: 8,
       target: 'self',
       actionType: 'toggle',
@@ -391,7 +391,7 @@ const charName: CharacterRecord = {
       name: 'Ordinance: Unceasing Vigil',
       url: 'UI_Talent_S_Cyno_01',
       description:
-        "After using Sacred Rite: Wolf's Swiftness, Cyno's Normal Attack SPD will be increased by 20% for 10s. If the Judication effect of his Passive Talent Featherfall Judgment is triggered during Secret Rite: Chasmic Soulfarer, the duration of this increase will be refreshed.",
+        "After using **Sacred Rite: Wolf's Swiftness**, Cyno's Normal Attack SPD will be increased by 20% for 10s. If the Judication effect of his Passive Talent Featherfall Judgment is triggered during **Secret Rite: Chasmic Soulfarer**, the duration of this increase will be refreshed.",
       constellation: 1,
       target: 'self',
       actionType: 'toggle',
@@ -417,8 +417,7 @@ const charName: CharacterRecord = {
         }
       ]
     }
-  ],
-  offField: []
+  ]
 };
 
 export default charName;
