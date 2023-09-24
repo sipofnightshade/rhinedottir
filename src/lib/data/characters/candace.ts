@@ -179,7 +179,7 @@ const charName: CharacterRecord = {
   ],
   burst: [
     {
-      name: 'Skill DMG',
+      name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
       damage: [
@@ -241,10 +241,11 @@ const charName: CharacterRecord = {
       name: 'Celestial Dome of Sand',
       url: 'UI_Talent_S_Candace_06',
       description:
-        "Characters affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide will deal 0.5% increased DMG to opponents for every 1,000 points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.",
+        "Characters affected by the Prayer of the Crimson Crown caused by **Sacred Rite: Wagtail's Tide** will deal 0.5% increased DMG to opponents for every 1,000 points of Candace's Max HP when they deal Elemental DMG with their Normal Attacks.",
       target: 'active',
       level: 8,
       actionType: 'toggle',
+      sourceStats: ['hp'],
       values: [
         {
           scaling: 'normal',
@@ -257,7 +258,7 @@ const charName: CharacterRecord = {
       name: 'Moon-Piercing Brilliance',
       url: 'UI_Talent_S_Candace_02',
       description:
-        "When Sacred Rite: Heron's Sanctum hits opponents, Candace's Max HP will be increased by 20% for 15s.",
+        "When **Sacred Rite: Heron's Sanctum** hits opponents, Candace's Max HP will be increased by 20% for 15s.",
       target: 'self',
       constellation: 2,
       actionType: 'toggle',

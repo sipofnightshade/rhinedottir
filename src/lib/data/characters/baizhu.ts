@@ -234,7 +234,7 @@ const charName: CharacterRecord = {
       name: 'Five Fortunes Forever',
       url: 'UI_Talent_S_Baizhuer_05',
       description:
-        'Baizhu gains different effects according to the current HP of your current active character: \n·When their HP is less than 50%, Baizhu gains 20% Healing Bonus. \n·When their HP is equal to or more than 50%, Baizhu gains 25% Dendro DMG Bonus.',
+        'Baizhu gains different effects according to the current HP of your current active character:\n·When their HP is less than 50%, Baizhu gains 20% Healing Bonus.\n·When their HP is equal to or more than 50%, Baizhu gains 25% Dendro DMG Bonus.',
       level: 2,
       target: 'self',
       actionType: 'select',
@@ -253,10 +253,11 @@ const charName: CharacterRecord = {
       name: 'All Things Are of the Earth',
       url: 'UI_Talent_S_Baizhuer_06',
       description:
-        'Characters who are healed by Seamless Shields will gain the Year of Verdant Favor effect: Each 1,000 Max HP that Baizhu possesses that does not exceed 50,000 will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by 2%, and will increase the DMG Bonus provided by Aggravate and Spread by 0.8%. This effect lasts 6s.',
+        'Characters who are healed by **Seamless Shields** will gain the Year of Verdant Favor effect: Each 1,000 Max HP that Baizhu possesses that does not exceed 50,000 will increase the Burning, Bloom, Hyperbloom, and Burgeon reaction DMG dealt by these characters by 2%, and will increase the DMG Bonus provided by Aggravate and Spread by 0.8%. This effect lasts 6s.',
       level: 8,
       target: 'party',
       actionType: 'toggle',
+      sourceStats: ['hp'],
       values: [
         {
           scaling: 'burning',
@@ -309,10 +310,11 @@ const charName: CharacterRecord = {
       name: 'Elimination of Malicious Qi',
       url: 'UI_Talent_S_Baizhuer_04',
       description:
-        "Increases the DMG dealt by Holistic Revivification's Spiritveins by 8% of Baizhu's Max HP",
+        "Increases the DMG dealt by **Holistic Revivification**'s Spiritveins by 8% of Baizhu's Max HP.\nAdditionally, when a **Gossamer Sprite** or Gossamer Sprite: Splice hits opponents, there is a 100% chance of generating one of **Holistic Revivification**'s Seamless Shields. This effect can only be triggered once by each Gossamer Sprite or Gossamer Sprite: Splice.",
       constellation: 6,
       target: 'nearby',
       actionType: 'toggle',
+      sourceStats: ['hp'],
       values: [
         {
           scaling: 'revivification',

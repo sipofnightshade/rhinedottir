@@ -296,7 +296,8 @@ const charName: CharacterRecord = {
     {
       name: 'Lightning Storm',
       url: 'UI_Talent_S_Beidou_06',
-      description: 'description',
+      description:
+        'Gain the following effects for 10s after unleashing **Tidecaller** with its maximum DMG Bonus: \n·DMG dealt by Normal and Charged Attacks is increased by 15%. ATK SPD of Normal and Charged Attacks is increased by 15%.\n·Greatly reduced delay before unleashing Charged Attacks.',
       level: 8,
       target: 'self',
       actionType: 'toggle',
@@ -314,7 +315,9 @@ const charName: CharacterRecord = {
     {
       name: 'Bane of Evil',
       url: 'UI_Talent_S_Beidou_04',
-      description: 'description',
+      description:
+        'During the duration of **Stormbreaker**, the Electro RES of surrounding opponents is decreased by 15%.',
+      constellation: 6,
       target: 'enemy',
       actionType: 'toggle',
       values: [

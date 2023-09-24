@@ -5,12 +5,12 @@ const charName: CharacterRecord = {
   fullName: 'Arataki Itto',
   rating: 5,
   weapon: 'claymore',
-  region: 'mondstat',
+  region: 'inazuma',
   vision: 'geo',
   specialized: 'critrate',
   c3: 'skill',
   c5: 'burst',
-  burstCost: 80,
+  burstCost: 70,
   talentNames: {
     normal: 'Fight Club Legend',
     skill: 'Masatsu Zetsugi: Akaushi Burst!',
@@ -175,7 +175,7 @@ const charName: CharacterRecord = {
       name: 'Royal Descent: Behold, Itto the Evil!',
       url: 'Skill_E_Itto_01',
       description:
-        "Time to show 'em the might of the Arataki Gang! For a time, Itto lets out his inner Raging Oni King, wielding his Oni King's Kanabou in battle.\nThis state has the following special properties:\n· Converts Itto's Normal, Charged, and Plunging Attacks to Geo DMG. This cannot be overridden.\n· Increases Itto's Normal Attack SPD. Also increases his ATK based on his DEF.\n· On hit, the 1st and 3rd strikes of his attack combo will each grant Arataki Itto 1 stack of Superlative Superstrength.\n· Decreases Itto's Elemental and Physical RES by 20%.",
+        "Time to show 'em the might of the Arataki Gang! For a time, Itto lets out his inner Raging Oni King, wielding his Oni King's Kanabou in battle.\nThis state has the following special properties:\n· Converts Itto's Normal, Charged, and Plunging Attacks to Geo DMG. This cannot be overridden.\n· Increases Itto's Normal Attack SPD. Also increases his ATK based on his DEF.\n· On hit, the 1st and 3rd strikes of his attack combo will each grant Arataki Itto 1 stack of Superlative Superstrength.\n· Decreases Itto's Elemental and Physical RES by 20%.\n\nThe Raging Oni King state will be cleared when Itto leaves the field.",
       target: 'self',
       infusion: 'geo',
       hasLevels: 'burst',
@@ -232,6 +232,7 @@ const charName: CharacterRecord = {
       target: 'self',
       level: 8,
       actionType: 'passive',
+      sourceStats: ['def'],
       values: [
         {
           scaling: 'crimsonOni',
@@ -244,7 +245,7 @@ const charName: CharacterRecord = {
       name: 'Jailhouse Bread and Butter',
       url: 'UI_Talent_S_Itto_03',
       description:
-        'When the Raging Oni King state caused by Royal Descent: Behold, Itto the Evil! ends, all nearby party members gain 20% DEF and 20% ATK for 10s.',
+        'When the Raging Oni King state caused by **Royal Descent: Behold, Itto the Evil!** ends, all nearby party members gain 20% DEF and 20% ATK for 10s.',
       target: 'nearby',
       constellation: 4,
       actionType: 'toggle',
@@ -274,8 +275,7 @@ const charName: CharacterRecord = {
         }
       ]
     }
-  ],
-  offField: []
+  ]
 };
 
 export default charName;

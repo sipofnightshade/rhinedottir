@@ -277,7 +277,7 @@ const charName: CharacterRecord = {
       name: 'Rimechaser Blade',
       url: 'UI_Talent_S_Chongyun_06',
       description:
-        "When the field created by Spirit Blade: Chonghua's Layered Frost disappears, another spirit blade will be summoned to strike nearby opponents, dealing 100% of Chonghua's Layered Frost's Skill DMG as AoE Cryo DMG. Opponents hit by this blade will have their Cryo RES decreased by 10% for 8s.",
+        "When the field created by **Spirit Blade: Chonghua's Layered Frost** disappears, another spirit blade will be summoned to strike nearby opponents, dealing 100% of Chonghua's Layered Frost's Skill DMG as AoE Cryo DMG. Opponents hit by this blade will have their Cryo RES decreased by 10% for 8s.",
       level: 8,
       target: 'enemy',
       actionType: 'toggle',
@@ -292,7 +292,7 @@ const charName: CharacterRecord = {
       name: 'Rally of Four Blades',
       url: 'UI_Talent_S_Chongyun_04',
       description:
-        'Spirit Blade: Cloud-Parting Star deals 15% more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.',
+        '**Spirit Blade: Cloud-Parting Star** deals 15% more DMG to opponents with a lower percentage of their Max HP remaining than Chongyun.',
       constellation: 6,
       target: 'self',
       actionType: 'toggle',
