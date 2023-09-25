@@ -5,16 +5,16 @@ const charName: CharacterRecord = {
   fullName: 'Aether',
   rating: 5,
   weapon: 'sword',
-  region: 'mondstat',
+  region: 'other',
   vision: 'hydro',
   c3: 'skill',
   c5: 'burst',
   specialized: 'atk%',
-  burstCost: 60,
+  burstCost: 80,
   talentNames: {
-    normal: 'Foreign Ironwind',
-    skill: 'Palm Vortex',
-    burst: 'Gust Surge'
+    normal: 'Foreign Stream',
+    skill: 'Aquacrest Saber',
+    burst: 'Rising Waters'
   },
   normal: [
     {
@@ -64,16 +64,6 @@ const charName: CharacterRecord = {
         [{ scaling: 'atk', param: 'param6' }],
         [{ scaling: 'atk', param: 'param7' }]
       ]
-    },
-    {
-      name: '1 - Hit DMG',
-      damageBonus: 'charged',
-      damage: [[{ scaling: 'atk', param: 'param6' }]]
-    },
-    {
-      name: '2 - Hit DMG',
-      damageBonus: 'charged',
-      damage: [[{ scaling: 'atk', param: 'param7' }]]
     }
   ],
   plunge: [
@@ -98,122 +88,66 @@ const charName: CharacterRecord = {
   ],
   skill: [
     {
-      name: 'Press DMG',
+      name: 'Torrent Surge DMG',
+      url: 'Skill_S_PlayerWater_01',
       tag: 'EP',
       damageBonus: 'skill',
-      damage: [[{ scaling: 'atk', param: 'param3' }]]
+      damage: [[{ scaling: 'atk', param: 'param2' }]]
     },
     {
-      name: 'Hold DMG - Total',
-      tag: 'EH',
-      damageBonus: 'skill',
-      damage: [
-        [{ scaling: 'atk', param: 'param4' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param1' }],
-        [{ scaling: 'atk', param: 'param2' }],
-        [{ scaling: 'atk', param: 'param2' }],
-        [{ scaling: 'atk', param: 'param2' }]
-      ]
-    },
-    {
-      name: 'Max Storm Damage',
-      damageBonus: 'skill',
-      damage: [[{ scaling: 'atk', param: 'param4' }]]
-    },
-    {
-      name: 'Initial Cutting DMG x3',
+      name: 'Dewdrop DMG',
+      url: 'Skill_S_PlayerWater_01',
+      tag: 'EC',
+      hasOwnBonusFlatDMG: 'suffusion',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
-      name: 'Max Cutting DMG x3',
+      name: 'Hold Torrent Surge DMG',
+      url: 'Skill_S_PlayerWater_01',
+      tag: 'EH',
+      hasOwnBonusFlatDMG: 'torrentSurge',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
+    },
+    {
+      name: 'Spiritbreath Thorn DMG',
+      url: 'Skill_S_PlayerWater_01',
+      tag: 'PN',
+      damageBonus: 'skill',
+      damage: [[{ scaling: 'atk', param: 'param3' }]]
     }
   ],
   burst: [
     {
-      name: 'Tornado DMG',
-      tag: 'Q1',
-      multiHit: 9,
+      name: 'Burst DMG',
+      tag: 'Q',
+      url: 'Skill_E_PlayerWater_01',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
-    },
-    {
-      name: 'Additional Elemental DMG',
-      multiHit: 9,
-      tag: 'Q2',
-      damageBonus: 'burst',
-      damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
   ],
   actions: [
     {
-      name: 'Uprising Whirlwind',
-      url: 'UI_Talent_S_PlayerWind_02',
+      name: 'Suffusion',
+      url: 'Skill_S_PlayerWater_01',
       description:
-        'Guiding the path of the wind currents, you summon a forward-moving tornado that pulls objects and opponents towards itself, dealing continuous Anemo DMG.\n\n**Elemental Absorption**\nIf the tornado comes into contact with Hydro/Pyro/Cryo/Electro, it will deal additional elemental DMG of that type.\nElemental Absorption may only occur once per use.',
-      level: 2,
-      constellation: 2,
+        "When using the Hold configuration of this skill, if the Traveler's HP is higher than 50%, the DMG dealt by Dewdrops will increase based on the Traveler's Max HP, and the Traveler will lose a fixed amount of HP every second.",
+      target: 'self',
+      sourceStats: ['hp'],
+      hasLevels: 'skill',
+      actionType: 'toggle',
+      values: [{ scaling: 'suffusion', coef: 'param6', source: ['hp', 0] }]
+    },
+    {
+      name: 'Clear Waters',
+      url: 'UI_Talent_S_PlayerWater_06',
+      description:
+        "If HP has been consumed via Suffusion while using the Hold Mode **Aquacrest Saber**, the Torrent Surge at the skill's end will deal Bonus DMG equal to 45% of the total HP the Traveler has consumed in this skill use via Suffusion.\nThe maximum DMG Bonus that can be gained this way is 5,000.\n**MODIFIED**\nAdds flat 5000 DMG Bonus to Torrent Surge at the end of Hold Mode **Aquacrest Saber**.",
+      level: 8,
       target: 'self',
       actionType: 'passive',
-      values: [{ scaling: 'energy', coef: 0.16 }]
-    },
-    {
-      name: 'Intertwined Winds',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'Targets who take DMG from Gust Surge have their Anemo RES decreased by 20%. If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'toggle',
-      values: [{ scaling: 'anemoRes', coef: 0.2 }]
-    },
-    {
-      name: 'Intertwined Winds - Elemental Absorption',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'multiSelect',
-      values: [
-        { scaling: 'pyroRes', coef: 0.2 },
-        { scaling: 'hydroRes', coef: 0.2 },
-        { scaling: 'electroRes', coef: 0.2 },
-        { scaling: 'cryoRes', coef: 0.2 }
-      ]
-    },
-    {
-      name: 'Testing',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'stack',
-      values: [{ scaling: 'anemo', coef: [0.15, 0.05, 0.05, 0.05] }]
-    },
-    {
-      name: 'Testing2',
-      url: 'UI_Talent_S_PlayerWind_04',
-      description:
-        'If an Elemental Absorption occurred, then their RES towards the corresponding Element is also decreased by 20%.',
-      level: 2,
-      constellation: 6,
-      target: 'enemy',
-      actionType: 'select',
-      values: [
-        { scaling: 'electroRes', coef: 0.15 },
-        { scaling: 'pyroRes', coef: 0.05 },
-        { scaling: 'hydroRes', coef: 0.15 },
-        { scaling: 'cryoRes', coef: 0.05 }
-      ]
+      values: [{ scaling: 'torrentSurge', coef: 5000 }]
     }
   ]
 };
