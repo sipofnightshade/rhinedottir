@@ -157,6 +157,7 @@ const charName: CharacterRecord = {
     {
       name: 'Base Shield DMG Absorption',
       damageBonus: 'skill',
+      url: 'Skill_S_Diona_01',
       isShield: true,
       damage: [
         [
@@ -174,6 +175,7 @@ const charName: CharacterRecord = {
     {
       name: 'Icy Paw DMG',
       damageBonus: 'skill',
+      url: 'Skill_S_Diona_01',
       hasOwnBonusDMG: 'icyPaws',
       damage: [
         [
@@ -188,6 +190,7 @@ const charName: CharacterRecord = {
       name: 'Icy Paw DMG x2',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Diona_01',
       hasOwnBonusDMG: 'icyPaws',
       damage: [
         [
@@ -208,6 +211,7 @@ const charName: CharacterRecord = {
       name: 'Icy Paw DMG x5',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Diona_01',
       hasOwnBonusDMG: 'icyPaws',
       damage: [
         [
@@ -247,6 +251,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'Q',
+      url: 'Skill_E_Diona_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -260,6 +265,7 @@ const charName: CharacterRecord = {
     {
       name: 'Continuous Field DMG',
       tag: 'QC',
+      url: 'Skill_E_Diona_01',
       damageBonus: 'burst',
       damage: [
         [

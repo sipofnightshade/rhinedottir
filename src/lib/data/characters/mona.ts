@@ -131,6 +131,7 @@ const charName: CharacterRecord = {
       name: 'DoT',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Mona_01',
       damage: [
         [
           {
@@ -144,6 +145,7 @@ const charName: CharacterRecord = {
       name: 'Explosion DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Mona_01',
       damage: [
         [
           {
@@ -159,6 +161,7 @@ const charName: CharacterRecord = {
       name: 'Bubble Explosion DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Mona_01',
       damage: [
         [
           {

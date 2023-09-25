@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Collei_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -160,6 +161,7 @@ const charName: CharacterRecord = {
       name: 'Explosion DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Collei_01',
       damage: [
         [
           {
@@ -173,6 +175,7 @@ const charName: CharacterRecord = {
       name: 'Leap DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Collei_01',
       damage: [
         [
           {
@@ -186,6 +189,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst DMG',
       tag: 'QT',
       damageBonus: 'burst',
+      url: 'Skill_E_Collei_01',
       damage: [
         [
           {
@@ -247,6 +251,7 @@ const charName: CharacterRecord = {
       name: 'Cuilein-Anbar',
       tag: 'X6',
       damageBonus: 'burst',
+      url: 'Skill_E_Collei_01',
       constellation: 6,
       damage: [
         [

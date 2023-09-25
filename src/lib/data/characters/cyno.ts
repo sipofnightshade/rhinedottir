@@ -137,6 +137,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Cyno_01',
       hasOwnBonusDMG: 'mortuaryRite',
       damage: [
         [
@@ -151,6 +152,7 @@ const charName: CharacterRecord = {
       name: 'Mortuary Rite DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Cyno_02',
       hasOwnBonusDMG: 'mortuaryRite',
       damage: [
         [
@@ -164,6 +166,7 @@ const charName: CharacterRecord = {
     {
       name: '1x Duststalker Bolt',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Cyno_05',
       hasOwnBonusFlatDMG: 'duststalkerBolt',
       damage: [
         [
@@ -179,6 +182,7 @@ const charName: CharacterRecord = {
       name: '3x Dustalker Bolts',
       tag: 'A1',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Cyno_05',
       hasOwnBonusFlatDMG: 'duststalkerBolt',
       damage: [
         [

@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: 'Upward Thrust DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       damage: [
         [
           {
@@ -158,6 +159,7 @@ const charName: CharacterRecord = {
       tag: 'EC',
       hasOwnBonusDMG: 'subnauticalHunter',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       damage: [
         [
           {
@@ -173,6 +175,7 @@ const charName: CharacterRecord = {
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       damage: [
         [
           {
@@ -188,6 +191,7 @@ const charName: CharacterRecord = {
       hasOwnCritRate: 'pressurizedFloe',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       damage: [
         [
           {
@@ -201,6 +205,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 2 Shattering Pressure',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       damage: [
@@ -216,6 +221,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 3 Shattering Pressure',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       damage: [
@@ -232,6 +238,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 1 Shattering Pressure',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       hasOwnDMGType: 'physical',
@@ -248,6 +255,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 2 Shattering Pressure',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       hasOwnDMGType: 'physical',
@@ -264,6 +272,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 3 Shattering Pressure',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       hasOwnDMGType: 'physical',
@@ -280,6 +289,7 @@ const charName: CharacterRecord = {
       name: 'Lv. 4 Shattering Pressure',
       tag: 'E4',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       hasOwnBonusDMG: 'shatteringPressure',
       hasOwnCritRate: 'pressurizedFloe',
       hasOwnDMGType: 'physical',
@@ -296,6 +306,7 @@ const charName: CharacterRecord = {
       name: 'Spiritbreath Thorn DMG',
       tag: 'PN',
       damageBonus: 'skill',
+      url: 'Skill_S_Freminet_01',
       damage: [
         [
           {
@@ -311,6 +322,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Freminet_01',
       damage: [
         [
           {

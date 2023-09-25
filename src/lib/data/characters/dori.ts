@@ -137,6 +137,7 @@ const charName: CharacterRecord = {
       name: 'Troubleshooter Shot DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Dori_01',
       damage: [
         [
           {
@@ -150,6 +151,7 @@ const charName: CharacterRecord = {
       name: 'After-Sales Service Round DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Dori_01',
       damage: [
         [
           {
@@ -168,6 +170,7 @@ const charName: CharacterRecord = {
     {
       name: '1x After-Sales Service Round DMG',
       damageBonus: 'skill',
+      url: 'Skill_S_Dori_01',
       damage: [
         [
           {
@@ -180,6 +183,7 @@ const charName: CharacterRecord = {
     {
       name: 'Sprinkling Weight',
       damageBonus: 'skill',
+      isHealing: true,
       constellation: 6,
       damage: [
         [
@@ -196,6 +200,7 @@ const charName: CharacterRecord = {
     {
       name: 'Connector DMG',
       tag: 'Q',
+      url: 'Skill_E_Dori_01',
       damageBonus: 'burst',
       damage: [
         [

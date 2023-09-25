@@ -174,6 +174,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Chongyun_01',
       damage: [
         [
           {
@@ -188,6 +189,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG - 1 Sword',
       damageBonus: 'burst',
+      url: 'Skill_E_Chongyun_01',
       damage: [
         [
           {
@@ -201,6 +203,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG - 3 Swords',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Chongyun_01',
       damage: [
         [
           {
@@ -227,6 +230,7 @@ const charName: CharacterRecord = {
       tag: 'QX',
       constellation: 6,
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Chongyun_04',
       damage: [
         [
           {

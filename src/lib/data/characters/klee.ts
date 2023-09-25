@@ -118,6 +118,7 @@ const charName: CharacterRecord = {
       name: 'Jumpy Dumpty DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Klee_01',
       damage: [
         [
           {
@@ -131,6 +132,7 @@ const charName: CharacterRecord = {
       name: 'Mine DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Klee_01',
       damage: [
         [
           {
@@ -146,6 +148,7 @@ const charName: CharacterRecord = {
       name: "Sparks 'n' Splash DMG",
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_S_Klee_01',
       damage: [
         [
           {
@@ -160,6 +163,7 @@ const charName: CharacterRecord = {
       tag: 'X1',
       constellation: 1,
       damageBonus: 'burst',
+      url: 'Skill_S_Klee_01',
       damage: [
         [
           {
@@ -174,6 +178,7 @@ const charName: CharacterRecord = {
       tag: 'X4',
       constellation: 4,
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Klee_03',
       damage: [
         [
           {

@@ -158,6 +158,7 @@ const charName: CharacterRecord = {
       name: 'Tengu Juurai: Ambush DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Sara_01',
       damage: [
         [
           {
@@ -171,6 +172,7 @@ const charName: CharacterRecord = {
       name: 'Dark Wings',
       tag: 'X2',
       damageBonus: 'skill',
+      url: 'Skill_S_Sara_01',
       damage: [
         [
           {
@@ -186,6 +188,7 @@ const charName: CharacterRecord = {
       name: 'Tengu Juurai: Titanbreaker DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Sara_01',
       damage: [
         [
           {
@@ -199,6 +202,7 @@ const charName: CharacterRecord = {
       name: 'Tengu Juurai: Stormcluster DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Sara_01',
       damage: [
         [
           {

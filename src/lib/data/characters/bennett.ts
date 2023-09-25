@@ -150,6 +150,7 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Bennett_01',
       damage: [
         [
           {
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Charge Level 1 DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Bennett_01',
       damage: [
         [
           {
@@ -182,6 +184,7 @@ const charName: CharacterRecord = {
       name: 'Charge Level 2 DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Bennett_01',
       damage: [
         [
           {
@@ -201,6 +204,7 @@ const charName: CharacterRecord = {
       name: 'Explosion DMG',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Bennett_01',
       damage: [
         [
           {
@@ -214,6 +218,7 @@ const charName: CharacterRecord = {
       name: 'Unexpected Odyssey',
       tag: 'X4',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Bennett_03',
       constellation: 4,
       damage: [
         [
@@ -231,6 +236,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Bennett_01',
       damage: [
         [
           {

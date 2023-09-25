@@ -217,6 +217,7 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Eula_01',
       damage: [
         [
           {
@@ -230,6 +231,7 @@ const charName: CharacterRecord = {
       name: 'Hold DMG + 1 Stack',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Eula_01',
       damage: [
         [
           {
@@ -249,6 +251,7 @@ const charName: CharacterRecord = {
       name: 'Hold DMG + 2 Stacks',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Eula_01',
       damage: [
         [
           {
@@ -273,6 +276,7 @@ const charName: CharacterRecord = {
     {
       name: 'Icewhirl Brand DMG',
       damageBonus: 'skill',
+      url: 'Skill_S_Eula_01',
       damage: [
         [
           {
@@ -287,6 +291,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q1',
+      url: 'Skill_E_Eula_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -300,6 +305,7 @@ const charName: CharacterRecord = {
     {
       name: 'Lightfall Sword Base DMG',
       tag: 'Q2',
+      url: 'Skill_E_Eula_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'physical',
       hasOwnBonusDMG: 'lightfallSword',
@@ -315,6 +321,7 @@ const charName: CharacterRecord = {
     {
       name: 'DMG Per Stack',
       tag: 'Qx',
+      url: 'Skill_E_Eula_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'physical',
       hasOwnBonusDMG: 'lightfallSword',
@@ -331,6 +338,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shattered Lightfall Sword',
       tag: 'A1',
+      url: 'UI_Talent_S_Eula_05',
       damageBonus: 'burst',
       hasOwnDMGType: 'physical',
       hasOwnBonusDMG: 'shatteredLightfallSword',

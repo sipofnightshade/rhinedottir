@@ -130,6 +130,7 @@ const charName: CharacterRecord = {
     {
       name: 'Droplet DMG',
       damageBonus: 'skill',
+      url: 'Skill_S_Barbara_01',
       tag: 'E',
       damage: [
         [

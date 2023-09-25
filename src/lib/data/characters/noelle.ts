@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Noel_01',
       damage: [
         [
           {
@@ -157,6 +158,7 @@ const charName: CharacterRecord = {
       name: 'DMG Absorption',
       isShield: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Noel_01',
       damage: [
         [
           {
@@ -174,6 +176,7 @@ const charName: CharacterRecord = {
       name: 'Healing',
       isHealing: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Noel_01',
       damage: [
         [
           {
@@ -191,6 +194,7 @@ const charName: CharacterRecord = {
       name: 'Devotion',
       isShield: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Noel_01',
       damage: [
         [
           {
@@ -206,6 +210,7 @@ const charName: CharacterRecord = {
       constellation: 4,
       tag: 'X4',
       damageBonus: 'skill',
+      url: 'Skill_S_Noel_01',
       damage: [
         [
           {
@@ -222,6 +227,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Noel_01',
       damage: [
         [
           {
@@ -235,6 +241,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Noel_01',
       damage: [
         [
           {

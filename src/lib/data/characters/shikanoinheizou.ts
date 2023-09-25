@@ -156,6 +156,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E0',
       damageBonus: 'skill',
+      url: 'Skill_S_Heizo_01',
       damage: [
         [
           {
@@ -168,6 +169,7 @@ const charName: CharacterRecord = {
     {
       name: 'Declension DMG Bonus/stack',
       damageBonus: 'skill',
+      url: 'Skill_S_Heizo_01',
       damage: [
         [
           {
@@ -180,6 +182,7 @@ const charName: CharacterRecord = {
     {
       name: 'Conviction DMG Bonus',
       damageBonus: 'skill',
+      url: 'Skill_S_Heizo_01',
       damage: [
         [
           {
@@ -195,6 +198,7 @@ const charName: CharacterRecord = {
       hasOwnCritDMG: 'convictionCitDMG',
       hasOwnCritRate: 'convictionCritRate',
       damageBonus: 'skill',
+      url: 'Skill_S_Heizo_01',
       damage: [
         [
           {
@@ -230,6 +234,7 @@ const charName: CharacterRecord = {
       name: 'Fudou Style Vacuum Slugger DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Heizo_01',
       damage: [
         [
           {
@@ -243,6 +248,7 @@ const charName: CharacterRecord = {
       name: 'Windmuster Iris DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Heizo_01',
       hasOwnDMGType: 'hydro',
       damage: [
         [
@@ -256,6 +262,7 @@ const charName: CharacterRecord = {
     {
       name: 'Windmuster Iris DMG',
       tag: 'Q2',
+      url: 'Skill_E_Heizo_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'pyro',
       damage: [
@@ -270,6 +277,7 @@ const charName: CharacterRecord = {
     {
       name: 'Windmuster Iris DMG',
       tag: 'Q2',
+      url: 'Skill_E_Heizo_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'electro',
       damage: [
@@ -284,6 +292,7 @@ const charName: CharacterRecord = {
     {
       name: 'Windmuster Iris DMG',
       tag: 'Q2',
+      url: 'Skill_E_Heizo_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'cryo',
       damage: [

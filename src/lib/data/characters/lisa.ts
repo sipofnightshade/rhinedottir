@@ -131,6 +131,7 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Lisa_01',
       damage: [
         [
           {
@@ -144,6 +145,7 @@ const charName: CharacterRecord = {
       name: 'Non-Conductive Hold DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Lisa_01',
       damage: [
         [
           {
@@ -157,6 +159,7 @@ const charName: CharacterRecord = {
       name: 'Stack 1 Conductive Hold DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Lisa_01',
       damage: [
         [
           {
@@ -170,6 +173,7 @@ const charName: CharacterRecord = {
       name: 'Stack 2 Conductive Hold DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Lisa_01',
       damage: [
         [
           {
@@ -183,6 +187,7 @@ const charName: CharacterRecord = {
       name: 'Stack 3 Conductive Hold DMG',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Lisa_01',
       damage: [
         [
           {
@@ -198,6 +203,7 @@ const charName: CharacterRecord = {
       name: 'Discharge DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Lisa_01',
       damage: [
         [
           {

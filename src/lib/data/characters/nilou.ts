@@ -123,6 +123,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -136,6 +137,7 @@ const charName: CharacterRecord = {
     {
       name: 'Sword Dance 1-Hit DMG',
       tag: 'E1',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -149,6 +151,7 @@ const charName: CharacterRecord = {
     {
       name: 'Sword Dance 2-Hit DMG',
       tag: 'E2',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -162,6 +165,7 @@ const charName: CharacterRecord = {
     {
       name: 'Luminous Illusion DMG',
       tag: 'E3',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       hasOwnBonusDMG: 'luminousIllusion',
       damage: [
@@ -176,6 +180,7 @@ const charName: CharacterRecord = {
     {
       name: 'Whirling Steps 1-Hit DMG',
       tag: 'E1',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -189,6 +194,7 @@ const charName: CharacterRecord = {
     {
       name: 'Whirling Steps 2-Hit DMG',
       tag: 'E2',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -202,6 +208,7 @@ const charName: CharacterRecord = {
     {
       name: 'Whirling Steps 1-Hit DMG',
       tag: 'E3',
+      url: 'Skill_S_Nilou_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -217,6 +224,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q1',
+      url: 'Skill_E_Nilou_01',
       damageBonus: 'burst',
       icd: 0,
       damage: [
@@ -231,6 +239,7 @@ const charName: CharacterRecord = {
     {
       name: 'Lingering Aeon DMG',
       tag: 'Q2',
+      url: 'Skill_E_Nilou_01',
       damageBonus: 'burst',
       icd: 0,
       damage: [

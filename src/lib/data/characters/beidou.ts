@@ -171,6 +171,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shield DMG Absorption',
       damageBonus: 'skill',
+      url: 'Skill_S_Beidou_01',
       isShield: true,
       damage: [
         [
@@ -189,6 +190,7 @@ const charName: CharacterRecord = {
       name: 'Base DMG',
       tag: 'E0',
       damageBonus: 'skill',
+      url: 'Skill_S_Beidou_01',
       damage: [
         [
           {
@@ -201,6 +203,7 @@ const charName: CharacterRecord = {
     {
       name: 'DMG Bonus on Hit Taken',
       damageBonus: 'skill',
+      url: 'Skill_S_Beidou_01',
       damage: [
         [
           {
@@ -214,6 +217,7 @@ const charName: CharacterRecord = {
       name: 'Total DMG  1 Hit Taken',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Beidou_01',
       damage: [
         [
           {
@@ -231,6 +235,7 @@ const charName: CharacterRecord = {
       name: 'DMG With 2+ Hits Taken',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Beidou_01',
       damage: [
         [
           {
@@ -254,6 +259,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Beidou_01',
       damage: [
         [
           {
@@ -267,6 +273,7 @@ const charName: CharacterRecord = {
       name: 'Lightning DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Beidou_01',
       damage: [
         [
           {
@@ -279,6 +286,7 @@ const charName: CharacterRecord = {
     {
       name: "Sea Beast's Scourge",
       damageBonus: 'burst',
+      url: 'Skill_E_Beidou_01',
       isShield: true,
       constellation: 1,
       damage: [

@@ -150,6 +150,7 @@ const charName: CharacterRecord = {
       name: 'Flowfrost Arrow DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Mika_01',
       damage: [
         [
           {
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Rimestar Flare DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Mika_01',
       damage: [
         [
           {
@@ -175,6 +177,7 @@ const charName: CharacterRecord = {
     {
       name: 'Rimestar Shard DMG',
       damageBonus: 'skill',
+      url: 'Skill_S_Mika_01',
       damage: [
         [
           {

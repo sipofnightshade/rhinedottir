@@ -149,6 +149,7 @@ const charName: CharacterRecord = {
       name: 'Regeneration',
       isHealing: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Kokomi_01',
       damage: [
         [
           {
@@ -166,6 +167,7 @@ const charName: CharacterRecord = {
       name: 'Ripple DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Kokomi_01',
       hasOwnBonusFlatDMG: 'bakeKurageDMG',
       damage: [
         [
@@ -181,6 +183,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'Q',
+      url: 'Skill_E_Kokomi_01',
       damageBonus: 'burst',
       damage: [
         [

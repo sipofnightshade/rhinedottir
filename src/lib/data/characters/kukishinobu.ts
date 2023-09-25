@@ -138,6 +138,7 @@ const charName: CharacterRecord = {
       tag: 'E',
       hasOwnBonusFlatDMG: 'sanctifyingRing',
       damageBonus: 'skill',
+      url: 'Skill_S_Shinobu_01',
       damage: [
         [
           {
@@ -152,6 +153,7 @@ const charName: CharacterRecord = {
       tag: 'EC',
       hasOwnBonusFlatDMG: 'sanctifyingRing',
       damageBonus: 'skill',
+      url: 'Skill_S_Shinobu_01',
       damage: [
         [
           {
@@ -165,6 +167,7 @@ const charName: CharacterRecord = {
       name: 'Grass Ring of Sanctification Healing',
       isHealing: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Shinobu_01',
       damage: [
         [
           {
@@ -183,6 +186,7 @@ const charName: CharacterRecord = {
       tag: 'X4',
       constellation: 4,
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Shinobu_03',
       damage: [
         [
           {
@@ -198,6 +202,7 @@ const charName: CharacterRecord = {
     {
       name: 'Single Instance DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Shinobu_01',
       damage: [
         [
           {
@@ -211,6 +216,7 @@ const charName: CharacterRecord = {
       name: 'Total DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Shinobu_01',
       damage: [
         [
           {
@@ -224,6 +230,7 @@ const charName: CharacterRecord = {
       name: 'Total Low HP DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Shinobu_01',
       damage: [
         [
           {

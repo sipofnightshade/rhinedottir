@@ -209,6 +209,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Ningguang_01',
       damage: [
         [
           {
@@ -223,6 +224,7 @@ const charName: CharacterRecord = {
     {
       name: 'DMG Per Gem',
       damageBonus: 'burst',
+      url: 'Skill_E_Ningguang_01',
       damage: [
         [
           {
@@ -236,6 +238,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Ningguang_01',
       damage: [
         [
           {
@@ -279,6 +282,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst + Jade Screen DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Ningguang_01',
       damage: [
         [
           {

@@ -158,6 +158,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       hasOwnBonusDMG: 'spiralingTempest',
+      url: 'Skill_S_Qin_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -174,6 +175,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Qin_01',
       damage: [
         [
           {
@@ -187,6 +189,7 @@ const charName: CharacterRecord = {
       name: 'Field Entering/Exiting DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Qin_01',
       damage: [
         [
           {

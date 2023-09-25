@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: '1-Hit DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Diluc_01_01',
       damage: [
         [
           {
@@ -158,6 +159,7 @@ const charName: CharacterRecord = {
       tag: 'E2',
       hasOwnBonusDMG: 'searingOnslaught',
       damageBonus: 'skill',
+      url: 'Skill_S_Diluc_01_02',
       damage: [
         [
           {
@@ -171,6 +173,7 @@ const charName: CharacterRecord = {
       name: '3-Hit DMG',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Diluc_01_03',
       hasOwnBonusDMG: 'searingOnslaught',
       damage: [
         [
@@ -185,8 +188,9 @@ const charName: CharacterRecord = {
   burst: [
     {
       name: 'Slashing DMG',
-      tag: 'QS',
+      tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Diluc_01',
       damage: [
         [
           {
@@ -198,8 +202,9 @@ const charName: CharacterRecord = {
     },
     {
       name: 'DoT',
-      tag: 'Qt',
+      tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Diluc_01',
       damage: [
         [
           {
@@ -213,6 +218,7 @@ const charName: CharacterRecord = {
       name: 'Explosion DMG',
       tag: 'QE',
       damageBonus: 'burst',
+      url: 'Skill_E_Diluc_01',
       damage: [
         [
           {

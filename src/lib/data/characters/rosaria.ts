@@ -156,6 +156,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Rosaria_01',
       damage: [
         [
           {
@@ -177,6 +178,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Rosaria_01',
       damage: [
         [
           {
@@ -196,6 +198,7 @@ const charName: CharacterRecord = {
       name: 'Ice Lance DoT',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Rosaria_01',
       damage: [
         [
           {

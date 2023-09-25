@@ -145,6 +145,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Faruzan_01',
       damage: [
         [
           {
@@ -158,6 +159,7 @@ const charName: CharacterRecord = {
       name: 'Pressurized Collapse Vortex DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Faruzan_01',
       damage: [
         [
           {
@@ -172,6 +174,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q',
+      url: 'Skill_E_Faruzan_01',
       damageBonus: 'burst',
       damage: [
         [

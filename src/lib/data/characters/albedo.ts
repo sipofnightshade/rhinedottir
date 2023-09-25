@@ -148,8 +148,9 @@ const charName: CharacterRecord = {
   skill: [
     {
       name: 'Skill DMG',
-      tag: 'ES',
+      tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Albedo_01',
       damage: [
         [
           {
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Transient Blossom DMG',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Albedo_01',
       hasOwnBonusDMG: 'transientBlossoms',
       damage: [
         [
@@ -179,6 +181,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Albedo_01',
       hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
@@ -193,6 +196,7 @@ const charName: CharacterRecord = {
       name: 'Fatal Blossom DMG - Total',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Albedo_01',
       hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
@@ -242,6 +246,7 @@ const charName: CharacterRecord = {
     {
       name: 'Fatal Blossom DMG ',
       damageBonus: 'burst',
+      url: 'Skill_E_Albedo_01',
       hasOwnBonusFlatDMG: 'phanerozoic',
       damage: [
         [
