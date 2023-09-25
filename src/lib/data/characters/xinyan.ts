@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: 'Swing DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Xinyan_01',
       damage: [
         [
           {
@@ -207,6 +208,7 @@ const charName: CharacterRecord = {
     {
       name: 'DoT DMG',
       tag: 'EC',
+      url: 'Skill_S_Xinyan_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -225,6 +227,7 @@ const charName: CharacterRecord = {
       hasOwnDMGType: 'physical',
       hasOwnCritRate: 'riffRevolution',
       damageBonus: 'burst',
+      url: 'Skill_E_Xinyan_01',
       damage: [
         [
           {
@@ -237,6 +240,7 @@ const charName: CharacterRecord = {
     {
       name: 'Pyro DoT x1',
       damageBonus: 'burst',
+      url: 'Skill_E_Xinyan_01',
       damage: [
         [
           {
@@ -250,6 +254,7 @@ const charName: CharacterRecord = {
       name: 'Pyro DoT x7',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Xinyan_01',
       damage: [
         [
           {

@@ -134,6 +134,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Sucrose_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -149,6 +150,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DoT',
       tag: 'Q1',
+      url: 'Skill_E_Sucrose_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -163,6 +165,7 @@ const charName: CharacterRecord = {
       name: 'Infusion DMG',
       tag: 'Q2',
       hasOwnDMGType: 'hydro',
+      url: 'Skill_E_Sucrose_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -177,6 +180,7 @@ const charName: CharacterRecord = {
       name: 'Infusion DMG',
       tag: 'Q2',
       hasOwnDMGType: 'pyro',
+      url: 'Skill_E_Sucrose_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -191,6 +195,7 @@ const charName: CharacterRecord = {
       name: 'Infusion DMG',
       tag: 'Q2',
       hasOwnDMGType: 'cryo',
+      url: 'Skill_E_Sucrose_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -205,6 +210,7 @@ const charName: CharacterRecord = {
       name: 'Infusion DMG',
       tag: 'Q2',
       hasOwnDMGType: 'electro',
+      url: 'Skill_E_Sucrose_01',
       damageBonus: 'burst',
       damage: [
         [

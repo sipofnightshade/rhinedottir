@@ -169,6 +169,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Xiao_01',
       damage: [
         [
           {

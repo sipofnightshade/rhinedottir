@@ -296,6 +296,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q',
+      url: 'Skill_E_Yoimiya_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -310,6 +311,7 @@ const charName: CharacterRecord = {
       name: 'Aurous Blaze Explosion DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Yoimiya_01',
       damage: [
         [
           {

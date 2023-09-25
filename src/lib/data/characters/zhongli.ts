@@ -185,6 +185,7 @@ const charName: CharacterRecord = {
       name: 'Stone Stele DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Zhongli_01',
       hasOwnBonusFlatDMG: 'dominusLapidis',
       damage: [
         [
@@ -199,6 +200,7 @@ const charName: CharacterRecord = {
       name: 'Resonance DMG',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Zhongli_01',
       hasOwnBonusFlatDMG: 'dominusLapidis',
       damage: [
         [
@@ -213,6 +215,7 @@ const charName: CharacterRecord = {
       name: 'Hold DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Zhongli_01',
       hasOwnBonusFlatDMG: 'dominusLapidis',
       damage: [
         [
@@ -246,6 +249,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       hasOwnBonusFlatDMG: 'planetBefall',
+      url: 'Skill_E_Zhongli_01',
       damageBonus: 'burst',
       damage: [
         [

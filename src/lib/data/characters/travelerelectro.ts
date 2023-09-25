@@ -83,6 +83,7 @@ const charName: CharacterRecord = {
     {
       name: 'Press DMG',
       tag: 'E',
+      url: 'Skill_S_PlayerElectric_01',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     }
@@ -90,13 +91,15 @@ const charName: CharacterRecord = {
   burst: [
     {
       name: 'Burst DMG',
-      tag: 'Q1',
+      tag: 'Q',
+      url: 'Skill_E_PlayerElectric_01',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
       name: 'Falling Thunder DMG',
       tag: 'QC',
+      url: 'Skill_E_PlayerElectric_01',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     },
@@ -104,6 +107,7 @@ const charName: CharacterRecord = {
       name: 'Enhanced Falling Thunder DMG',
       tag: 'X6',
       constellation: 6,
+      url: 'UI_Talent_S_PlayerElectric_04',
       damageBonus: 'burst',
       damage: [[{ scaling: 'atk', param: 'param12' }]]
     }

@@ -118,6 +118,7 @@ const charName: CharacterRecord = {
       name: 'Sesshou Sakura DMG: Level 1',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Yae_01',
       damage: [
         [
           {
@@ -131,6 +132,7 @@ const charName: CharacterRecord = {
       name: 'Sesshou Sakura DMG: Level 2',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Yae_01',
       damage: [
         [
           {
@@ -144,6 +146,7 @@ const charName: CharacterRecord = {
       name: 'Sesshou Sakura DMG: Level 3',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Yae_01',
       damage: [
         [
           {
@@ -157,6 +160,7 @@ const charName: CharacterRecord = {
       name: 'Sesshou Sakura DMG: Level 4',
       tag: 'E4',
       damageBonus: 'skill',
+      url: 'Skill_S_Yae_01',
       damage: [
         [
           {
@@ -173,6 +177,7 @@ const charName: CharacterRecord = {
       tag: 'Q1',
       icd: 0,
       damageBonus: 'burst',
+      url: 'Skill_E_Yae_01',
       damage: [
         [
           {
@@ -187,6 +192,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       icd: 0,
       damageBonus: 'burst',
+      url: 'Skill_E_Yae_01',
       damage: [
         [
           {
@@ -201,6 +207,7 @@ const charName: CharacterRecord = {
       tag: 'QT',
       icd: 0,
       damageBonus: 'burst',
+      url: 'Skill_E_Yae_01',
       damage: [
         [
           {

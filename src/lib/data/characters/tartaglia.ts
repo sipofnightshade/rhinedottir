@@ -98,6 +98,7 @@ const charName: CharacterRecord = {
     {
       name: 'Riptide Burst',
       tag: 'Rb',
+      url: 'UI_Talent_S_Tartaglia_06',
       damageBonus: 'none',
       hasOwnDMGType: 'hydro',
       damage: [
@@ -141,6 +142,7 @@ const charName: CharacterRecord = {
     {
       name: 'Riptide Flash',
       tag: 'Rf',
+      url: 'UI_Talent_S_Tartaglia_06',
       hasOwnDMGType: 'hydro',
       damageBonus: 'charged',
       damage: [
@@ -210,6 +212,7 @@ const charName: CharacterRecord = {
     {
       name: 'Stance Change DMG',
       tag: 'EP',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -223,6 +226,7 @@ const charName: CharacterRecord = {
     {
       name: '1 - Hit DMG',
       tag: 'E1',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -236,6 +240,7 @@ const charName: CharacterRecord = {
     {
       name: '2 - Hit DMG',
       tag: 'E2',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -249,6 +254,7 @@ const charName: CharacterRecord = {
     {
       name: '3 - Hit DMG',
       tag: 'E3',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -262,6 +268,7 @@ const charName: CharacterRecord = {
     {
       name: '4 - Hit DMG',
       tag: 'E4',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -275,6 +282,7 @@ const charName: CharacterRecord = {
     {
       name: '5 - Hit DMG',
       tag: 'E5',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -288,6 +296,7 @@ const charName: CharacterRecord = {
     {
       name: '6 - Hit DMG',
       tag: 'E6',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -307,6 +316,7 @@ const charName: CharacterRecord = {
     {
       name: 'Charged Attack DMG',
       tag: 'EC',
+      url: 'Skill_S_Tartaglia_01',
       damageBonus: 'normal',
       damage: [
         [
@@ -326,6 +336,7 @@ const charName: CharacterRecord = {
     {
       name: 'Riptide Slash',
       tag: 'RS',
+      url: 'UI_Talent_S_Tartaglia_06',
       damageBonus: 'skill',
       icd: 0,
       damage: [
@@ -342,6 +353,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG: Melee',
       tag: 'QM',
+      url: 'Skill_E_Tartaglia_01',
       damageBonus: 'burst',
       icd: 0,
       damage: [
@@ -356,6 +368,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG: Ranged',
       tag: 'QR',
+      url: 'Skill_E_Tartaglia_01',
       damageBonus: 'burst',
       icd: 0,
       damage: [
@@ -370,6 +383,7 @@ const charName: CharacterRecord = {
     {
       name: 'Riptide Blast DMG',
       tag: 'RB',
+      url: 'UI_Talent_S_Tartaglia_06',
       damageBonus: 'burst',
       icd: 0,
       damage: [

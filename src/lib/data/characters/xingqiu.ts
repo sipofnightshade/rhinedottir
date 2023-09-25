@@ -162,6 +162,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       icd: 0,
+      url: 'Skill_S_Xingqiu_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -184,6 +185,7 @@ const charName: CharacterRecord = {
       name: 'Sword Rain x1 DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Xingqiu_01',
       damage: [
         [
           {
@@ -197,6 +199,7 @@ const charName: CharacterRecord = {
       name: 'Sword Rain x2 DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Xingqiu_01',
       damage: [
         [
           {
@@ -216,6 +219,7 @@ const charName: CharacterRecord = {
       name: 'Sword Rain x3 DMG',
       tag: 'Q3',
       damageBonus: 'burst',
+      url: 'Skill_E_Xingqiu_01',
       damage: [
         [
           {
@@ -242,6 +246,7 @@ const charName: CharacterRecord = {
       tag: 'Q5',
       constellation: 6,
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Xingqiu_04',
       damage: [
         [
           {

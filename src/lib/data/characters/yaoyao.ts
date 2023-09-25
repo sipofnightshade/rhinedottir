@@ -137,6 +137,7 @@ const charName: CharacterRecord = {
       name: 'Radish DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Yaoyao_01',
       damage: [
         [
           {
@@ -150,6 +151,7 @@ const charName: CharacterRecord = {
       name: 'Radish Healing',
       isHealing: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Yaoyao_01',
       damage: [
         [
           {
@@ -168,6 +170,7 @@ const charName: CharacterRecord = {
       tag: 'X6',
       constellation: 6,
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Yaoyao_04',
       damage: [
         [
           {
@@ -183,6 +186,7 @@ const charName: CharacterRecord = {
       isHealing: true,
       constellation: 6,
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Yaoyao_04',
       damage: [
         [
           {
@@ -199,6 +203,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Yaoyao_01',
       damage: [
         [
           {
@@ -212,6 +217,7 @@ const charName: CharacterRecord = {
       name: 'Adeptal Legacy Radish DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Yaoyao_01',
       damage: [
         [
           {
@@ -225,6 +231,7 @@ const charName: CharacterRecord = {
       name: 'Adeptal Legacy Radish Healing',
       isHealing: true,
       damageBonus: 'burst',
+      url: 'Skill_E_Yaoyao_01',
       damage: [
         [
           {

@@ -181,6 +181,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Yelan_01',
       damage: [
         [
           {
@@ -196,6 +197,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'QP',
       damageBonus: 'burst',
+      url: 'Skill_E_Yelan_01',
       damage: [
         [
           {
@@ -208,6 +210,7 @@ const charName: CharacterRecord = {
     {
       name: 'Exquisite Throw DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Yelan_01',
       damage: [
         [
           {
@@ -220,6 +223,7 @@ const charName: CharacterRecord = {
     {
       name: 'Taking All Comers',
       damageBonus: 'burst',
+      url: 'Skill_E_Yelan_01',
       tag: 'X2',
       constellation: 2,
       damage: [
@@ -235,6 +239,7 @@ const charName: CharacterRecord = {
       name: 'Exquisite Throw x3 DMG',
       tag: 'Q3',
       damageBonus: 'burst',
+      url: 'Skill_E_Yelan_01',
       damage: [
         [
           {
@@ -261,6 +266,7 @@ const charName: CharacterRecord = {
       tag: 'Q4',
       constellation: 2,
       damageBonus: 'burst',
+      url: 'Skill_E_Yelan_01',
       damage: [
         [
           {

@@ -90,12 +90,14 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_PlayerRock_01',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
       name: 'Explosion DMG',
       tag: 'X2',
+      url: 'UI_Talent_S_PlayerRock_02',
       constellation: 2,
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
@@ -106,6 +108,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerRock_01',
       damage: [
         [{ scaling: 'atk', param: 'param1' }],
         [{ scaling: 'atk', param: 'param1' }],

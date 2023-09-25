@@ -136,6 +136,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Tohma_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -185,6 +186,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q',
+      url: 'Skill_E_Tohma_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -198,6 +200,7 @@ const charName: CharacterRecord = {
     {
       name: 'Fiery Collapse DMG',
       tag: 'QC',
+      url: 'Skill_E_Tohma_01',
       damageBonus: 'burst',
       hasOwnBonusFlatDMG: 'fieryCollapse',
       damage: [

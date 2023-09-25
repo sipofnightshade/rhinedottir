@@ -183,6 +183,7 @@ const charName: CharacterRecord = {
     {
       name: 'Flame DMG',
       tag: 'E',
+      url: 'Skill_S_Xiangling_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -199,6 +200,7 @@ const charName: CharacterRecord = {
       name: 'Total Swing DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Xiangling_01',
       damage: [
         [
           {
@@ -223,6 +225,7 @@ const charName: CharacterRecord = {
     {
       name: '1-Hit Swing DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Xiangling_01',
       damage: [
         [
           {
@@ -235,6 +238,7 @@ const charName: CharacterRecord = {
     {
       name: '2-Hit Swing DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Xiangling_01',
       damage: [
         [
           {
@@ -247,6 +251,7 @@ const charName: CharacterRecord = {
     {
       name: '3-Hit Swing DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Xiangling_01',
       damage: [
         [
           {
@@ -261,6 +266,7 @@ const charName: CharacterRecord = {
       icd: 0,
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Xiangling_01',
       damage: [
         [
           {

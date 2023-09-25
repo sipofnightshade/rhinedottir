@@ -184,6 +184,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Feiyan_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -200,6 +201,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Feiyan_01',
       damage: [
         [
           {

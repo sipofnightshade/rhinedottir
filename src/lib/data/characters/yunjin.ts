@@ -156,6 +156,7 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Yunjin_01',
       damage: [
         [
           {
@@ -169,6 +170,7 @@ const charName: CharacterRecord = {
       name: 'Charge Level 1 DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Yunjin_01',
       damage: [
         [
           {
@@ -182,6 +184,7 @@ const charName: CharacterRecord = {
       name: 'Charge Level 2 DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Yunjin_01',
       damage: [
         [
           {
@@ -195,6 +198,7 @@ const charName: CharacterRecord = {
       name: 'Shield DMG Absorption',
       isShield: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Yunjin_01',
       damage: [
         [
           {
@@ -214,6 +218,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Yunjin_01',
       damage: [
         [
           {

@@ -83,6 +83,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_E_PlayerGrass_01',
       damageBonus: 'skill',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     }
@@ -92,12 +93,14 @@ const charName: CharacterRecord = {
       name: 'Lea Lotus Lamp DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_S_PlayerGrass_01',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
       name: 'Explosion DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_S_PlayerGrass_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
   ],

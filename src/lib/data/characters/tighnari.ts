@@ -174,9 +174,26 @@ const charName: CharacterRecord = {
       ]
     },
     {
+      name: 'C6 Clusterbloom Arrow DMG',
+      hasOwnBonusDMG: 'tanglevine',
+      constellation: 6,
+      hasOwnDMGType: 'dendro',
+      damageBonus: 'charged',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param8',
+            coef: 1.5
+          }
+        ]
+      ]
+    },
+    {
       name: 'C6 Wreath Arrow Total DMG',
       hasOwnBonusDMG: 'tanglevine',
       hasOwnDMGType: 'dendro',
+      url: 'UI_Talent_S_Tighnari_04',
       constellation: 6,
       tag: 'X6',
       damageBonus: 'charged',
@@ -211,22 +228,6 @@ const charName: CharacterRecord = {
             param: 'param8'
           }
         ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param8',
-            coef: 1.5
-          }
-        ]
-      ]
-    },
-    {
-      name: 'C6 Clusterbloom Arrow DMG',
-      hasOwnBonusDMG: 'tanglevine',
-      constellation: 6,
-      hasOwnDMGType: 'dendro',
-      damageBonus: 'charged',
-      damage: [
         [
           {
             scaling: 'atk',
@@ -283,6 +284,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Tighnari_01',
       damage: [
         [
           {
@@ -298,6 +300,7 @@ const charName: CharacterRecord = {
       name: 'Tanglevine Shaft DMG',
       hasOwnBonusDMG: 'tanglevine',
       damageBonus: 'burst',
+      url: 'Skill_E_Tighnari_01',
       damage: [
         [
           {
@@ -311,6 +314,7 @@ const charName: CharacterRecord = {
       name: 'Secondary Tanglevine Shaft DMG',
       hasOwnBonusDMG: 'tanglevine',
       damageBonus: 'burst',
+      url: 'Skill_E_Tighnari_01',
       damage: [
         [
           {
@@ -324,6 +328,7 @@ const charName: CharacterRecord = {
       name: 'Total Tanglevine Shaft DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Tighnari_01',
       hasOwnBonusDMG: 'tanglevine',
       damage: [
         [

@@ -196,6 +196,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Wanderer_01',
       damage: [
         [
           {
@@ -209,6 +210,7 @@ const charName: CharacterRecord = {
       name: 'Wind Arrows',
       hasOwnBonusFlatDMG: 'windArrows',
       tag: 'A4',
+      url: 'UI_Talent_S_Wanderer_06',
       damageBonus: 'skill',
       damage: [
         [
@@ -246,6 +248,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG x1',
       damageBonus: 'burst',
+      url: 'Skill_E_Wanderer_01',
       damage: [
         [
           {
@@ -259,6 +262,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG x5',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Wanderer_01',
       damage: [
         [
           {

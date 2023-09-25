@@ -101,12 +101,14 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param3' }]]
     },
     {
       name: 'Hold DMG - Total',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_PlayerWind_01',
       damage: [
         [{ scaling: 'atk', param: 'param4' }],
         [{ scaling: 'atk', param: 'param1' }],
@@ -120,16 +122,19 @@ const charName: CharacterRecord = {
     {
       name: 'Max Storm Damage',
       damageBonus: 'skill',
+      url: 'Skill_S_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param4' }]]
     },
     {
       name: 'Initial Cutting DMG x3',
       damageBonus: 'skill',
+      url: 'Skill_S_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
       name: 'Max Cutting DMG x3',
       damageBonus: 'skill',
+      url: 'Skill_S_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
   ],
@@ -138,6 +143,7 @@ const charName: CharacterRecord = {
       name: 'Tornado DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param1' }]]
     },
     {
@@ -145,6 +151,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       hasOwnDMGType: 'hydro',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     },
     {
@@ -152,6 +159,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       hasOwnDMGType: 'pyro',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     },
     {
@@ -159,6 +167,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       hasOwnDMGType: 'cryo',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     },
     {
@@ -166,6 +175,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       hasOwnDMGType: 'electro',
       damageBonus: 'burst',
+      url: 'Skill_E_PlayerWind_01',
       damage: [[{ scaling: 'atk', param: 'param2' }]]
     }
   ],
