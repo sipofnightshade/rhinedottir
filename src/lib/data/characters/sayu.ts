@@ -150,6 +150,7 @@ const charName: CharacterRecord = {
       name: 'Fuufuu Windwheel DMG',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Sayu_01',
       damage: [
         [
           {
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Fuufuu Windwheel Elemental DMG',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Sayu_01',
       damage: [
         [
           {
@@ -177,6 +179,7 @@ const charName: CharacterRecord = {
       hasOwnBonusDMG: 'whirlwindKick',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Sayu_01',
       damage: [
         [
           {
@@ -190,6 +193,7 @@ const charName: CharacterRecord = {
       name: 'Fuufuu Whirlwind Kick Hold DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Sayu_01',
       damage: [
         [
           {
@@ -203,6 +207,7 @@ const charName: CharacterRecord = {
       name: 'Fuufuu Whirlwind Kick Elemental DMG',
       tag: 'E3',
       damageBonus: 'skill',
+      url: 'Skill_S_Sayu_01',
       damage: [
         [
           {
@@ -218,6 +223,7 @@ const charName: CharacterRecord = {
       name: 'Burst Activation DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Sayu_01',
       damage: [
         [
           {
@@ -248,6 +254,7 @@ const charName: CharacterRecord = {
       name: 'Muji-Muji Daruma DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Sayu_01',
       damage: [
         [
           {

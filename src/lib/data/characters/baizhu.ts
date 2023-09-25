@@ -136,6 +136,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'E',
+      url: 'Skill_S_Baizhuer_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -167,6 +168,7 @@ const charName: CharacterRecord = {
       name: 'Incisive Discernment',
       tag: 'X2',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Baizhuer_02',
       constellation: 2,
       damage: [
         [
@@ -184,6 +186,7 @@ const charName: CharacterRecord = {
       name: 'Spiritvein DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Baizhuer_01',
       hasOwnBonusFlatDMG: 'revivification',
       damage: [
         [

@@ -131,6 +131,7 @@ const charName: CharacterRecord = {
       name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Nahida_01',
       damage: [
         [
           {
@@ -144,6 +145,7 @@ const charName: CharacterRecord = {
       name: 'Hold DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Nahida_01',
       damage: [
         [
           {
@@ -159,6 +161,7 @@ const charName: CharacterRecord = {
       hasOwnBonusDMG: 'triKarma',
       hasOwnCritRate: 'triKarmaCritRate',
       damageBonus: 'skill',
+      url: 'Skill_S_Nahida_01',
       damage: [
         [
           {
@@ -179,6 +182,7 @@ const charName: CharacterRecord = {
       hasOwnBonusDMG: 'triKarma',
       hasOwnCritRate: 'triKarmaCritRate',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Nahida_04',
       damage: [
         [
           {

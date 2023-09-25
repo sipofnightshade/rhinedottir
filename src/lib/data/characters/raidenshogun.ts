@@ -150,6 +150,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Shougun_01',
       damage: [
         [
           {
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Coordinated ATK DMG',
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Shougun_01',
       damage: [
         [
           {
@@ -178,6 +180,7 @@ const charName: CharacterRecord = {
       name: 'Musou no Hitotachi DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -191,6 +194,7 @@ const charName: CharacterRecord = {
       name: '1-Hit DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -204,6 +208,7 @@ const charName: CharacterRecord = {
       name: '2-Hit DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -217,6 +222,7 @@ const charName: CharacterRecord = {
       name: '3-Hit DMG',
       tag: 'Q3',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -230,6 +236,7 @@ const charName: CharacterRecord = {
       name: '4-Hit DMG',
       tag: 'Q4',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -249,6 +256,7 @@ const charName: CharacterRecord = {
       name: '5-Hit DMG',
       tag: 'Q5',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -262,6 +270,7 @@ const charName: CharacterRecord = {
       name: 'Charged Attack DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -280,6 +289,7 @@ const charName: CharacterRecord = {
     {
       name: 'Plunge DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -292,6 +302,7 @@ const charName: CharacterRecord = {
     {
       name: 'Low Plunge DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {
@@ -304,6 +315,7 @@ const charName: CharacterRecord = {
     {
       name: 'High Plunge DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Shougun_01',
       damage: [
         [
           {

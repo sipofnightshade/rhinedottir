@@ -158,6 +158,7 @@ const charName: CharacterRecord = {
     {
       name: 'Skill DMG',
       tag: 'EP',
+      url: 'Skill_S_Itto_01',
       damageBonus: 'skill',
       damage: [
         [

@@ -221,6 +221,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Ganyu_01',
       damage: [
         [
           {
@@ -235,6 +236,7 @@ const charName: CharacterRecord = {
     {
       name: 'Ice Shard DMG',
       tag: 'QC',
+      url: 'Skill_E_Ganyu_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -249,6 +251,7 @@ const charName: CharacterRecord = {
       name: 'x10 Ice Shard DMG',
       tag: 'QT',
       icd: 2, // gpt link explaining why i used icd of 2 here https://chat.openai.com/share/d447b200-a250-4b5a-8de9-9fd078855747
+      url: 'Skill_E_Ganyu_01',
       damageBonus: 'burst',
       damage: [
         [

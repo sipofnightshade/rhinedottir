@@ -220,6 +220,7 @@ const charName: CharacterRecord = {
       name: 'Press Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Razor_01',
       damage: [
         [
           {
@@ -233,6 +234,7 @@ const charName: CharacterRecord = {
       name: 'Hold Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Razor_01',
       damage: [
         [
           {
@@ -248,6 +250,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Razor_01',
       damage: [
         [
           {

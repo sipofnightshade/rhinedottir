@@ -195,6 +195,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Ayaka_01',
       damage: [
         [
           {
@@ -210,6 +211,7 @@ const charName: CharacterRecord = {
       name: 'Cutting DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Ayaka',
       damage: [
         [
           {
@@ -223,6 +225,7 @@ const charName: CharacterRecord = {
       name: 'Bloom DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Ayaka',
       damage: [
         [
           {
@@ -236,6 +239,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst DMG',
       tag: 'QT',
       damageBonus: 'burst',
+      url: 'Skill_E_Ayaka',
       damage: [
         [
           {
@@ -363,6 +367,7 @@ const charName: CharacterRecord = {
       name: 'Frostflake Seki no To DMG',
       tag: 'X2',
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Ayaka_02',
       constellation: 2,
       damage: [
         [

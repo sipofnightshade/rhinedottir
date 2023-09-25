@@ -187,6 +187,7 @@ const charName: CharacterRecord = {
       name: "Oz's ATK DMG",
       tag: 'EC',
       damageBonus: 'skill',
+      url: 'Skill_S_Fischl_01',
       damage: [
         [
           {
@@ -200,6 +201,7 @@ const charName: CharacterRecord = {
       name: 'Summoning DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Fischl_01',
       hasOwnBonusFlatDMG: 'nightrider',
       damage: [
         [
@@ -214,6 +216,7 @@ const charName: CharacterRecord = {
       name: 'Thundering Retribution DMG',
       tag: 'A4',
       damageBonus: 'skill',
+      url: 'UI_Talent_S_Fischl_06',
       damage: [
         [
           {
@@ -229,6 +232,7 @@ const charName: CharacterRecord = {
       tag: 'X6',
       constellation: 6,
       damageBonus: 'skill',
+      url: 'Skill_S_Fischl_01',
       damage: [
         [
           {
@@ -245,6 +249,7 @@ const charName: CharacterRecord = {
       name: 'Falling Thunder DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Fischl_01',
       damage: [
         [
           {
@@ -259,11 +264,28 @@ const charName: CharacterRecord = {
       tag: 'X4',
       constellation: 4,
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Fischl_03',
       damage: [
         [
           {
             scaling: 'atk',
             param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Her Pilgrimage of Bleak Healing',
+      constellation: 4,
+      isHealing: true,
+      damageBonus: 'burst',
+      url: 'UI_Talent_S_Fischl_03',
+      damage: [
+        [
+          {
+            scaling: 'hp',
+            param: 'param1',
+            coef: 0.2
           }
         ]
       ]

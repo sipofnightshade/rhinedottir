@@ -124,6 +124,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E1',
       damageBonus: 'skill',
+      url: 'Skill_S_Layla_01',
       damage: [
         [
           {
@@ -139,6 +140,7 @@ const charName: CharacterRecord = {
       hasOwnBonusFlatDMG: 'shootingStars',
       hasOwnBonusDMG: 'radiantSoulfire',
       damageBonus: 'skill',
+      url: 'Skill_S_Layla_01',
       damage: [
         [
           {
@@ -172,6 +174,7 @@ const charName: CharacterRecord = {
       tag: 'Q',
       hasOwnBonusDMG: 'radiantSoulfire',
       damageBonus: 'burst',
+      url: 'Skill_E_Layla_01',
       damage: [
         [
           {

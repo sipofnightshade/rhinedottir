@@ -143,6 +143,7 @@ const charName: CharacterRecord = {
     {
       name: 'Indomitable Flame DMG',
       tag: 'E1',
+      url: 'Skill_S_Dehya_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -156,6 +157,7 @@ const charName: CharacterRecord = {
     {
       name: 'Ranging Flame DMG',
       tag: 'E2',
+      url: 'Skill_S_Dehya_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -169,6 +171,7 @@ const charName: CharacterRecord = {
     {
       name: 'Field DMG',
       tag: 'EC',
+      url: 'Skill_S_Dehya_01',
       damageBonus: 'skill',
       hasOwnBonusDMG: 'fierySanctum',
       damage: [
@@ -190,6 +193,7 @@ const charName: CharacterRecord = {
       name: "Flame-Mane's Fist DMG",
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Dehya_02',
       damage: [
         [
           {
@@ -207,6 +211,7 @@ const charName: CharacterRecord = {
       name: 'Incineration Drive DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Dehya_01',
       damage: [
         [
           {

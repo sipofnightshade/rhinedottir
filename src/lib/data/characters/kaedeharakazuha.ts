@@ -271,6 +271,7 @@ const charName: CharacterRecord = {
       name: 'Press Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Kazuha_01',
       damage: [
         [
           {
@@ -284,6 +285,7 @@ const charName: CharacterRecord = {
       name: 'Hold Skill DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Kazuha_01',
       damage: [
         [
           {
@@ -299,6 +301,7 @@ const charName: CharacterRecord = {
       name: 'Slashing DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Kazuha_01',
       damage: [
         [
           {
@@ -312,6 +315,7 @@ const charName: CharacterRecord = {
       name: 'DoT',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Kazuha_01',
       damage: [
         [
           {
@@ -325,6 +329,7 @@ const charName: CharacterRecord = {
       name: 'Additional Elemental DMG',
       tag: 'Qx',
       damageBonus: 'burst',
+      url: 'Skill_E_Kazuha_01',
       damage: [
         [
           {

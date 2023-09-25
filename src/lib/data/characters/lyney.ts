@@ -211,6 +211,7 @@ const charName: CharacterRecord = {
       tag: 'E',
       hasOwnBonusFlatDMG: 'propSurplus',
       damageBonus: 'skill',
+      url: 'Skill_S_Liney_01',
       damage: [
         [
           {
@@ -226,6 +227,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Liney_01',
       damage: [
         [
           {
@@ -239,6 +241,7 @@ const charName: CharacterRecord = {
       name: 'Explosive Firework DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Liney_01',
       damage: [
         [
           {

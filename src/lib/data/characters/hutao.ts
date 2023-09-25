@@ -162,6 +162,7 @@ const charName: CharacterRecord = {
     {
       name: 'Blood Blossom DMG',
       tag: 'EC',
+      url: 'Skill_S_Hutao_01',
       damageBonus: 'skill',
       hasOwnBonusFlatDMG: 'bloodblossom',
       damage: [
@@ -178,6 +179,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q1',
+      url: 'Skill_E_Hutao_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -191,6 +193,7 @@ const charName: CharacterRecord = {
     {
       name: 'Low HP Burst DMG',
       tag: 'Q2',
+      url: 'Skill_E_Hutao_01',
       damageBonus: 'burst',
       damage: [
         [

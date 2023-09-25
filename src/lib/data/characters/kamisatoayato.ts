@@ -5,7 +5,7 @@ const charName: CharacterRecord = {
   fullName: 'Kamisato Ayato',
   rating: 5,
   weapon: 'sword',
-  region: 'mondstat',
+  region: 'inazuma',
   vision: 'hydro',
   specialized: 'critdmg',
   c3: 'skill',
@@ -149,6 +149,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shunsuiken 1-Hit DMG',
       tag: 'E1',
+      url: 'Skill_S_Ayato_01',
       damageBonus: 'normal',
       hasOwnBonusFlatDMG: 'namisen',
       hasOwnBonusDMG: 'shunsuiken',
@@ -164,6 +165,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shunsuiken 2-Hit DMG',
       tag: 'E2',
+      url: 'Skill_S_Ayato_01',
       damageBonus: 'normal',
       hasOwnBonusFlatDMG: 'namisen',
       hasOwnBonusDMG: 'shunsuiken',
@@ -179,6 +181,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shunsuiken 3-Hit DMG',
       tag: 'E3',
+      url: 'Skill_S_Ayato_01',
       damageBonus: 'normal',
       hasOwnBonusFlatDMG: 'namisen',
       hasOwnBonusDMG: 'shunsuiken',
@@ -195,6 +198,7 @@ const charName: CharacterRecord = {
       name: 'Water Illusion DMG',
       tag: 'Ex',
       damageBonus: 'skill',
+      url: 'Skill_S_Ayato_01',
       damage: [
         [
           {
@@ -204,108 +208,110 @@ const charName: CharacterRecord = {
         ]
       ]
     },
-    {
-      name: 'Shunsuiken Total x15 DMG',
-      tag: 'ET',
-      damageBonus: 'normal',
-      hasOwnBonusFlatDMG: 'namisen',
-      hasOwnBonusDMG: 'shunsuiken',
-      damage: [
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param2'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param3'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param2'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param3'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param2'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param3'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param2'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param3'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param1'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param2'
-          }
-        ],
-        [
-          {
-            scaling: 'atk',
-            param: 'param3'
-          }
-        ]
-      ]
-    },
+    // {
+    //   name: 'Shunsuiken Total x15 DMG',
+    //   tag: 'ET',
+    //   url:'Skill_S_Ayato_01',
+    //   damageBonus: 'normal',
+    //   hasOwnBonusFlatDMG: 'namisen',
+    //   hasOwnBonusDMG: 'shunsuiken',
+    //   damage: [
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param1'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param2'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param3'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param1'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param2'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param3'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param1'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param2'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param3'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param1'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param2'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param3'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param1'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param2'
+    //       }
+    //     ],
+    //     [
+    //       {
+    //         scaling: 'atk',
+    //         param: 'param3'
+    //       }
+    //     ]
+    //   ]
+    // },
     {
       name: 'Boundless Origin DMG',
       tag: 'X6',
+      url: 'UI_Talent_S_Ayato_04',
       damageBonus: 'normal',
       damage: [
         [
@@ -322,6 +328,7 @@ const charName: CharacterRecord = {
     {
       name: 'Bloomwater Blade DMG',
       tag: 'Q',
+      url: 'Skill_E_Ayato_01',
       damageBonus: 'burst',
       damage: [
         [

@@ -143,6 +143,7 @@ const charName: CharacterRecord = {
       name: 'Enigma Thrust DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Linette_01',
       damage: [
         [
           {
@@ -156,6 +157,7 @@ const charName: CharacterRecord = {
       name: 'Surging Blade DMG',
       tag: 'OU',
       damageBonus: 'skill',
+      url: 'Skill_S_Linette_01',
       damage: [
         [
           {
@@ -169,6 +171,7 @@ const charName: CharacterRecord = {
       name: 'HP Regeneration',
       isHealing: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Linette_01',
       damage: [
         [
           {
@@ -184,6 +187,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {
@@ -198,6 +202,7 @@ const charName: CharacterRecord = {
       tag: 'Q2',
       hasOwnBonusDMG: 'bogglecatBox',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {
@@ -212,6 +217,7 @@ const charName: CharacterRecord = {
       tag: 'Q3',
       hasOwnDMGType: 'hydro',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {
@@ -226,6 +232,7 @@ const charName: CharacterRecord = {
       tag: 'Q3',
       hasOwnDMGType: 'pyro',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {
@@ -240,6 +247,7 @@ const charName: CharacterRecord = {
       tag: 'Q3',
       hasOwnDMGType: 'cryo',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {
@@ -254,6 +262,7 @@ const charName: CharacterRecord = {
       tag: 'Q3',
       hasOwnDMGType: 'electro',
       damageBonus: 'burst',
+      url: 'Skill_E_Linette_01',
       damage: [
         [
           {

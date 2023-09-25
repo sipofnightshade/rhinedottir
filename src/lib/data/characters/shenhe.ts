@@ -150,6 +150,7 @@ const charName: CharacterRecord = {
       name: 'Press Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Shenhe_01',
       hasOwnBonusDMG: 'springSpiritSummoning',
       damage: [
         [
@@ -164,6 +165,7 @@ const charName: CharacterRecord = {
       name: 'Hold Skill DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Shenhe_01',
       hasOwnBonusDMG: 'springSpiritSummoning',
       damage: [
         [
@@ -180,6 +182,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Shenhe_01',
       damage: [
         [
           {
@@ -193,6 +196,7 @@ const charName: CharacterRecord = {
       name: 'DoT DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Shenhe_01',
       damage: [
         [
           {

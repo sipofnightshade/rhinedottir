@@ -37,6 +37,7 @@ export type Hit = {
   isHealing?: boolean;
   isShield?: boolean;
   info?: string;
+  url?: string;
   hasOwnDMGType?:
     | 'anemo'
     | 'cryo'

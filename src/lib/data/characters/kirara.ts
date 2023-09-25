@@ -149,6 +149,7 @@ const charName: CharacterRecord = {
       name: 'Tail-Flicking Flying Kick DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Momoka_01',
       hasOwnBonusDMG: 'meowTeorKick',
       damage: [
         [
@@ -163,6 +164,7 @@ const charName: CharacterRecord = {
       name: 'Shield DMG Absorption',
       isShield: true,
       damageBonus: 'skill',
+      url: 'Skill_S_Momoka_01',
       damage: [
         [
           {
@@ -201,6 +203,7 @@ const charName: CharacterRecord = {
       name: 'Urgent Neko Parcel Hit DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Momoka_01',
       hasOwnBonusDMG: 'meowTeorKick',
       damage: [
         [
@@ -215,6 +218,7 @@ const charName: CharacterRecord = {
       name: 'Flipclaw Strike DMG',
       tag: 'E2',
       damageBonus: 'skill',
+      url: 'Skill_S_Momoka_01',
       hasOwnBonusDMG: 'meowTeorKick',
       damage: [
         [
@@ -231,6 +235,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Momoka_01',
       hasOwnBonusDMG: 'surpriseDispatch',
       icd: 0,
       damage: [
@@ -246,6 +251,7 @@ const charName: CharacterRecord = {
       name: 'Cat Grass Cardamom Explosion DMG',
       tag: 'Q2',
       damageBonus: 'burst',
+      url: 'Skill_E_Momoka_01',
       hasOwnBonusDMG: 'surpriseDispatch',
       damage: [
         [
@@ -260,6 +266,7 @@ const charName: CharacterRecord = {
       name: 'Cat Grass Cardamom Explosion DMG x6',
       tag: 'QT',
       damageBonus: 'burst',
+      url: 'Skill_E_Momoka_01',
       hasOwnBonusDMG: 'surpriseDispatch',
       damage: [
         [
@@ -373,6 +380,7 @@ const charName: CharacterRecord = {
       name: 'Small Cat Grass Cardamom DMG',
       tag: 'X4',
       damageBonus: 'burst',
+      url: 'Skill_E_Momoka_01',
       hasOwnBonusDMG: 'surpriseDispatch',
       damage: [
         [

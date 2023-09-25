@@ -157,6 +157,7 @@ const charName: CharacterRecord = {
     {
       name: 'Explosion DMG',
       tag: 'E',
+      url: 'Skill_S_Ambor_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -171,7 +172,8 @@ const charName: CharacterRecord = {
   burst: [
     {
       name: 'Fiery Rain DMG Per Wave',
-      tag: 'Q1',
+      tag: 'Q',
+      url: 'Skill_E_Ambor',
       damageBonus: 'burst',
       damage: [
         [
@@ -184,7 +186,8 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Total Fiery Rain DMG',
-      tag: 'Q1',
+      tag: 'QT',
+      url: 'Skill_E_Ambor',
       multiHit: 18, // 5 Main arrows + 13 Sub arrows
       damageBonus: 'burst',
       damage: [

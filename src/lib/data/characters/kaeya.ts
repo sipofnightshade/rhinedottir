@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Kaeya_01',
       damage: [
         [
           {
@@ -172,6 +173,7 @@ const charName: CharacterRecord = {
       name: '1x Icicle Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Kaeya_01',
       damage: [
         [
           {
@@ -185,6 +187,7 @@ const charName: CharacterRecord = {
       name: '3x Icicle Burst DMG',
       tag: 'Q3',
       damageBonus: 'burst',
+      url: 'Skill_E_Kaeya_01',
       damage: [
         [
           {
@@ -211,6 +214,7 @@ const charName: CharacterRecord = {
       tag: 'Q4',
       constellation: 6,
       damageBonus: 'burst',
+      url: 'Skill_E_Kaeya_01',
       damage: [
         [
           {

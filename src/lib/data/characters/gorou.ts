@@ -5,7 +5,7 @@ const charName: CharacterRecord = {
   fullName: 'Gorou',
   rating: 4,
   weapon: 'bow',
-  region: 'mondstat',
+  region: 'inazuma',
   vision: 'geo',
   specialized: 'geo',
   c3: 'skill',
@@ -145,6 +145,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Gorou_01',
       hasOwnBonusFlatDMG: 'allRoundDefenses',
       damage: [
         [
@@ -161,6 +162,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Gorou_01',
       hasOwnBonusFlatDMG: 'juugaForward',
       damage: [
         [
@@ -175,6 +177,7 @@ const charName: CharacterRecord = {
       name: 'Crystal Collapse DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Gorou_01',
       hasOwnBonusFlatDMG: 'juugaForward',
       damage: [
         [
@@ -188,6 +191,7 @@ const charName: CharacterRecord = {
     {
       name: 'Lapping Hound: Warm as Water',
       damageBonus: 'burst',
+      url: 'Skill_E_Gorou_01',
       constellation: 4,
       isHealing: true,
       damage: [

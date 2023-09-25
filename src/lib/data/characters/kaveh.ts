@@ -144,6 +144,7 @@ const charName: CharacterRecord = {
       name: 'Skill DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Kaveh_01',
       damage: [
         [
           {
@@ -158,6 +159,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q',
+      url: 'Skill_E_Kaveh_01',
       damageBonus: 'burst',
       damage: [
         [
@@ -185,6 +187,7 @@ const charName: CharacterRecord = {
     {
       name: "Pairidaeza's Light",
       constellation: 6,
+      url: 'UI_Talent_S_Kaveh_04',
       damageBonus: 'burst',
       damage: [
         [

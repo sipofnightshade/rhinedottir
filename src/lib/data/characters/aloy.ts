@@ -151,6 +151,7 @@ const charName: CharacterRecord = {
       name: 'Freeze Bomb DMG',
       tag: 'E',
       damageBonus: 'skill',
+      url: 'Skill_S_Aloy_01',
       damage: [
         [
           {
@@ -164,6 +165,7 @@ const charName: CharacterRecord = {
       name: 'Chillwater Bomblet DMG',
       tag: 'EB',
       damageBonus: 'skill',
+      url: 'Skill_S_Aloy_01',
       damage: [
         [
           {
@@ -178,6 +180,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       tag: 'Q',
+      url: 'Skill_E_Aloy_01',
       damageBonus: 'burst',
       damage: [
         [

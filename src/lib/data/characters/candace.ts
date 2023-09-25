@@ -136,6 +136,7 @@ const charName: CharacterRecord = {
     {
       name: 'Shield DMG Absorption',
       damageBonus: 'skill',
+      url: 'Skill_S_Candace_01',
       isShield: true,
       damage: [
         [
@@ -154,6 +155,7 @@ const charName: CharacterRecord = {
       name: 'Base DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Candace_01',
       damage: [
         [
           {
@@ -167,6 +169,7 @@ const charName: CharacterRecord = {
       name: 'Charged Up DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Candace_01',
       damage: [
         [
           {
@@ -182,6 +185,7 @@ const charName: CharacterRecord = {
       name: 'Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Candace_01',
       damage: [
         [
           {
@@ -195,6 +199,7 @@ const charName: CharacterRecord = {
       name: 'Wave Impact DMG',
       tag: 'QC',
       damageBonus: 'burst',
+      url: 'Skill_E_Candace_01',
       damage: [
         [
           {
@@ -209,6 +214,7 @@ const charName: CharacterRecord = {
       info: "When characters (excluding Candace herself) affected by the Prayer of the Crimson Crown caused by Sacred Rite: Wagtail's Tide deal Elemental DMG to opponents using Normal Attacks, an attack wave will be unleashed that deals AoE Hydro DMG equal to 15% of Candace's Max HP. This effect can trigger once every 2.3s and is considered Elemental Burst DMG.",
       tag: 'X6',
       damageBonus: 'burst',
+      url: 'UI_Talent_S_Candace_04',
       constellation: 6,
       damage: [
         [

@@ -155,6 +155,7 @@ const charName: CharacterRecord = {
     {
       name: 'Lightning Stiletto DMG',
       tag: 'E0',
+      url: 'Skill_S_Keqing_01',
       damageBonus: 'skill',
       icd: 0,
       damage: [
@@ -169,6 +170,7 @@ const charName: CharacterRecord = {
     {
       name: 'Slashing DMG',
       tag: 'E1',
+      url: 'Skill_S_Keqing_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -182,6 +184,7 @@ const charName: CharacterRecord = {
     {
       name: 'Thunderclap Slash DMG',
       tag: 'E2',
+      url: 'Skill_S_Keqing_01',
       damageBonus: 'skill',
       damage: [
         [
@@ -201,6 +204,7 @@ const charName: CharacterRecord = {
     {
       name: 'Thundering Might DMG',
       tag: 'X1',
+      url: 'Skill_S_Keqing_01',
       damageBonus: 'skill',
       constellation: 1,
       damage: [
@@ -218,6 +222,7 @@ const charName: CharacterRecord = {
     {
       name: 'Burst DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Keqing_01',
       damage: [
         [
           {
@@ -230,6 +235,7 @@ const charName: CharacterRecord = {
     {
       name: 'Consecutive Slash DMG x8',
       damageBonus: 'burst',
+      url: 'Skill_E_Keqing_01',
       damage: [
         [
           {
@@ -242,6 +248,7 @@ const charName: CharacterRecord = {
     {
       name: 'Last Attack DMG',
       damageBonus: 'burst',
+      url: 'Skill_E_Keqing_01',
       damage: [
         [
           {
@@ -255,6 +262,7 @@ const charName: CharacterRecord = {
       name: 'Total Burst DMG',
       tag: 'Q',
       damageBonus: 'burst',
+      url: 'Skill_E_Keqing_01',
       damage: [
         [
           {
