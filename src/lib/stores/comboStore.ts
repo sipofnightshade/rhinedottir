@@ -1,3 +1,4 @@
+import type { Visions } from '$lib/types/global';
 import type { Hit } from '$lib/types/talents';
 import { writable } from 'svelte/store';
 
@@ -11,7 +12,10 @@ export type TalentRowID =
 export type ButtonDamage =
   | 'base'
   | 'superconduct'
-  | 'swirl'
+  | 'pyroSwirl'
+  | 'hydroSwirl'
+  | 'cryoSwirl'
+  | 'electroSwirl'
   | 'electrocharged'
   | 'overloaded'
   | 'melt'
@@ -22,6 +26,7 @@ export type ButtonDamage =
 export type Damage = Hit & {
   damage: Record<ButtonDamage, number>;
   dmgId?: ButtonDamage;
+  elemental: Visions;
 };
 
 type ComboRow = {
