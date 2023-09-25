@@ -206,9 +206,10 @@ const charName: CharacterRecord = {
   ],
   skill: [
     {
-      name: 'Skill DMG',
+      name: 'Press DMG',
       tag: 'EP',
       damageBonus: 'skill',
+      url: 'Skill_S_Venti_01',
       damage: [
         [
           {
@@ -219,9 +220,10 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Skill DMG',
+      name: 'Hold DMG',
       tag: 'EH',
       damageBonus: 'skill',
+      url: 'Skill_S_Venti_01',
       damage: [
         [
           {
@@ -234,9 +236,557 @@ const charName: CharacterRecord = {
   ],
   burst: [
     {
-      name: 'Burst DoT',
+      name: 'Total Anemo DMG',
       tag: 'Q1',
       damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param1'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Hydro DMG',
+      damageBonus: 'burst',
+      tag: 'Q2',
+      url: 'Skill_E_Venti_01',
+      hasOwnDMGType: 'hydro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Pyro DMG',
+      damageBonus: 'burst',
+      tag: 'Q2',
+      url: 'Skill_E_Venti_01',
+      hasOwnDMGType: 'pyro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Cryo DMG',
+      damageBonus: 'burst',
+      tag: 'Q2',
+      url: 'Skill_E_Venti_01',
+      hasOwnDMGType: 'cryo',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Total Electro DMG',
+      damageBonus: 'burst',
+      tag: 'Q2',
+      url: 'Skill_E_Venti_01',
+      hasOwnDMGType: 'electro',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param2'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Anemo DoT',
+      damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
       damage: [
         [
           {
@@ -247,9 +797,9 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Additional Elemental DMG',
-      tag: 'Q2',
+      name: 'Hydro DoT',
       damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
       hasOwnDMGType: 'hydro',
       damage: [
         [
@@ -261,9 +811,9 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Additional Elemental DMG',
-      tag: 'Q2',
+      name: 'Pyro DoT',
       damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
       hasOwnDMGType: 'pyro',
       damage: [
         [
@@ -275,9 +825,9 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Additional Elemental DMG',
-      tag: 'Q2',
+      name: 'Cryo DoT',
       damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
       hasOwnDMGType: 'cryo',
       damage: [
         [
@@ -289,9 +839,9 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Additional Elemental DMG',
-      tag: 'Q2',
+      name: 'Electro DoT',
       damageBonus: 'burst',
+      url: 'Skill_E_Venti_01',
       hasOwnDMGType: 'electro',
       damage: [
         [
