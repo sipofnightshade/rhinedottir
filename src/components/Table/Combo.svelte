@@ -3,18 +3,22 @@
 
   import Row from '../Modal/Combo/Row.svelte';
 
-  let rows = [{ id: 1, title: 'New Row', hits: [], totalDamage: 0 }];
+  let rows = [{ id: 1, title: 'New Row' }];
 
   function addRow() {
-    rows = [...rows, { id: rows.length + 1, title: 'New Row', hits: [], totalDamage: 0 }];
+    rows = [...rows, { id: rows.length + 1, title: 'New Row' }];
   }
 
-  $: $character.selected.name,
-    (rows = [{ id: 1, title: 'New Row', hits: [], totalDamage: 0 }]);
+  function resetRows() {
+    rows = [];
+    // rows = [{ id: 1, title: 'New Row'}];
+  }
+
+  $: $character.selected.name, resetRows();
 </script>
 
 <div class="flex flex-col">
-  {#each rows as row (row.id)}
+  {#each rows as row}
     <Row {row} />
   {/each}
   <button
