@@ -3,6 +3,7 @@
   import { character } from '$lib/stores/characterStore';
 
   export let btn: any;
+  $: console.log(btn);
 
   const weapon = $character.selected.weapon;
 
