@@ -53,7 +53,7 @@ function createComboRow() {
         state.splice(rowIndex, 1);
         return state;
       }),
-    addRowButton: (rowIndex: number, talent: Damage) =>
+    addRowButton: (rowIndex: number, talent: any) =>
       update((state) => {
         state[rowIndex].hits.push({ ...talent, dmgId: 'base' });
         state[rowIndex].totalDamage += talent.damage.base;

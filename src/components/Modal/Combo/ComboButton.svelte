@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { combos, type ButtonDamage, type Damage } from '$lib/stores/comboStore';
+  // import { combos, type ButtonDamage, type Damage } from '$lib/stores/comboStore';
   import { character } from '$lib/stores/characterStore';
 
-  export let btn: Damage;
-  export let rowIndex: number;
-  export let btnIndex: number;
+  export let btn: any;
 
   const weapon = $character.selected.weapon;
 
@@ -15,7 +13,7 @@
   function switchDamage() {
     currentIndex = (currentIndex + 1) % dmgTypes.length;
     currentDmgType = dmgTypes[currentIndex];
-    combos.changeBtnReaction(rowIndex, btnIndex, currentDmgType as ButtonDamage);
+    // combos.changeBtnReaction(rowIndex, btnIndex, currentDmgType as ButtonDamage);
   }
 
   const btnImage = btn.url
