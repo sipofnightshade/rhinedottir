@@ -11,7 +11,7 @@
 
   function resetRows() {
     rows = [];
-    // rows = [{ id: 1, title: 'New Row'}];
+    // rows = [{ id: 1, title: ' Row', hits: [], totalDamage: 0 }];
   }
 
   $: $character.selected.name, resetRows();
