@@ -10,7 +10,9 @@
   <Cell align="start" col="col-span-2" value={data.tag || '-'} />
   <Cell align="start" col="col-span-10 text-slate-400" value={data.name} />
   <Cell align="center" col="col-span-2">
-    <StatImage stat={data.elemental} />
+    <div class="h-5 w-5">
+      <StatImage stat={data.elemental} />
+    </div>
   </Cell>
   <!-- <Cell align="end" col="col-span-4 text-slate-400" value={nonCritDMG.toFixed(0)} /> -->
   <Cell align="end" col="col-span-6" value={damage} />
