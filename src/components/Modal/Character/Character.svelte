@@ -9,8 +9,7 @@
   // stores
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
-  import { combos } from '$lib/stores/comboStore';
-
+  import { infusion } from '$lib/stores/infusionStore';
   // data
   import { DefaultWeapons } from '$lib/data/DefaultWeapons';
   import { characterData } from '$lib/data/characters/index';
@@ -49,9 +48,9 @@
       weapon.setWeapon(DefaultWeapons[$character.selected.weapon] as SelectedWeapon);
     }
 
-    // Reset combos if the character has changed
+    // Reset infusion if the active character changes
     if (currentCharacter !== previousCharacter) {
-      combos.reset();
+      infusion.reset();
     }
 
     // Update the previousCharacter with the currentCharacter for the next comparison

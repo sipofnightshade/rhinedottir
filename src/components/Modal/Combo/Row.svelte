@@ -15,6 +15,7 @@
 
   let dialog: HTMLDialogElement;
   let rowButtons: { id: CharacterID; type: TalentType; index: number }[] = [];
+  let totalDamage = 0;
 
   function addButton(event: CustomEvent) {
     const { index, id, type } = event.detail;
@@ -35,10 +36,20 @@
   />
 
   <div class="flex w-full items-center overflow-x-auto">
-    {#each rowButtons as { id, type, index }}
-      <ComboButton btn={$talents[id][type][index]} />
+    {#each rowButtons as { id, type, index }, i (i)}
+      <ComboButton btn={$talents[id][type][index]} bind:totalDamage />
     {/each}
     <ComboAddButton on:click={toggleModal} />
+  </div>
+  <div class="flex justify-between">
+    <div class="mt-2 flex gap-1">
+      <img
+        class="h-5 w-5 self-center"
+        src="/images/elements/physical.svg"
+        alt="element"
+      />
+      <span>{Math.round(totalDamage).toLocaleString() || '-'}</span>
+    </div>
   </div>
 </section>
 
