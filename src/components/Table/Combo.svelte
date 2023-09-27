@@ -10,15 +10,14 @@
   }
 
   function resetRows() {
-    rows = [];
-    // rows = [{ id: 1, title: ' Row', hits: [], totalDamage: 0 }];
+    rows = [{ id: 1, title: 'New Row' }];
   }
 
   $: $character.selected.name, resetRows();
 </script>
 
 <div class="flex flex-col">
-  {#each rows as row}
+  {#each rows as row (row.id + $character.selected.name)}
     <Row {row} />
   {/each}
   <button

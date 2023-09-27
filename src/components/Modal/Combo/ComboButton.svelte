@@ -1,22 +1,20 @@
 <script lang="ts">
   import { getButtonHalves } from '$lib/helpers/getButtonHalves';
   import { character } from '$lib/stores/characterStore';
-  import { onMount } from 'svelte';
+  import { beforeUpdate, onMount } from 'svelte';
 
   export let btn: any;
-  export let totalDamage: number;
+  export let totalDamage: any;
 
   let previousDamage = 0;
   let previousElement = btn.elemental;
 
   onMount(() => {
-    totalDamage += btn.damage.base;
-    previousDamage += btn.damage.base;
-    console.log('mounted');
+    $totalDamage += btn.damage.base;
 
     return () => {
       if (previousDamage !== 0) {
-        totalDamage -= previousDamage;
+        $totalDamage -= previousDamage;
       }
     };
   });
@@ -29,34 +27,33 @@
   let currentIndex = 0;
   let currentDmgType = dmgTypes[currentIndex];
 
-  function switchDamage() {
-    totalDamage -= btn.damage[currentDmgType];
+  beforeUpdate(() => {
+    previousDamage = btn.damage[currentDmgType];
+  });
+
+  const addDamage = (dmgType: any) => {
+    $totalDamage -= previousDamage;
+    $totalDamage += btn.damage[dmgType];
+  };
+
+  const switchDamageType = () => {
+    previousDamage = btn.damage[currentDmgType];
     currentIndex = (currentIndex + 1) % dmgTypes.length;
     currentDmgType = dmgTypes[currentIndex];
-    totalDamage += btn.damage[currentDmgType];
-    previousDamage = totalDamage;
-  }
 
-  $: dmgTypes = Object.keys(btn.damage);
+    addDamage(currentDmgType);
+  };
 
-  $: if (btn.elemental !== previousElement) {
-    // ✅ - this conditional ensures changing stats don't switch
-    // buttons from an elemental reaction state
+  // ✅ - this conditional ensures changing stats don't switch
+  // buttons from an elemental reaction state
+  $: if (previousElement !== btn.elemental) {
+    previousElement = btn.elemental;
     currentIndex = 0;
     currentDmgType = 'base';
+    dmgTypes = Object.keys(btn.damage);
 
-    previousElement = btn.elemental;
+    addDamage(currentDmgType);
   }
-
-  $: if (btn.damage.base) {
-    if (previousDamage !== btn.damage[currentDmgType]) {
-      totalDamage -= previousDamage;
-      totalDamage += btn.damage[currentDmgType];
-      previousDamage = totalDamage;
-    }
-  }
-
-  $: console.log('totalDMG:', totalDamage);
 
   $: damageType = currentDmgType === 'base' ? btn.elemental : currentDmgType;
   $: classes = getButtonHalves(damageType, btn.elemental);
@@ -64,7 +61,7 @@
 
 <button
   class="mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-slate-600"
-  on:click={switchDamage}
+  on:click={switchDamageType}
 >
   <div
     class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 {classes.top}"
