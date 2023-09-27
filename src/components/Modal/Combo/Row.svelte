@@ -7,6 +7,7 @@
   import ComboAddButton from './ComboAddButton.svelte';
   import ComboButton from './ComboButton.svelte';
   import ShortModal from '../ShortModal.svelte';
+  import { onMount } from 'svelte';
 
   type CharacterID = 'main' | 'one' | 'two' | 'three';
   type TalentType = 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
@@ -21,6 +22,10 @@
     const { index, id, type } = event.detail;
     rowButtons = [...rowButtons, { index, id, type }];
   }
+
+  onMount(() => {
+    rowButtons = [...rowButtons, { index: 0, id: 'main', type: 'normal' }];
+  });
 
   // handle modal
   function toggleModal() {

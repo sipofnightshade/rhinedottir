@@ -8,9 +8,11 @@
 
   let previousDamage = 0;
   let previousElement = btn.elemental;
+  let isInitialized = false; // Add a flag to track component initialization
 
   onMount(() => {
     $totalDamage += btn.damage.base;
+    isInitialized = true;
 
     return () => {
       if (previousDamage !== 0) {
@@ -51,8 +53,13 @@
     currentIndex = 0;
     currentDmgType = 'base';
     dmgTypes = Object.keys(btn.damage);
+  }
 
-    addDamage(currentDmgType);
+  $: {
+    if (isInitialized && btn.damage[currentDmgType] !== previousDamage) {
+      addDamage(currentDmgType);
+      previousDamage = btn.damage[currentDmgType];
+    }
   }
 
   $: damageType = currentDmgType === 'base' ? btn.elemental : currentDmgType;
