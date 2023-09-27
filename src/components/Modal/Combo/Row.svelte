@@ -31,8 +31,6 @@
   function toggleModal() {
     dialog.showModal();
   }
-
-  $: console.log('-----Row TOTAL: ', totalDamage);
 </script>
 
 <section class="my-2 w-full border-b border-slate-700 pb-2">
