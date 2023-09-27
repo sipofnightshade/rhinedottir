@@ -1,6 +1,6 @@
 <script lang="ts">
   import TalentSection from './TalentSection.svelte';
-
+  import { writable } from 'svelte/store';
   // misc
   import { talents } from '$lib/stores/talentStore';
   // components
@@ -15,7 +15,7 @@
 
   let dialog: HTMLDialogElement;
   let rowButtons: { id: CharacterID; type: TalentType; index: number }[] = [];
-  let totalDamage = 0;
+  let totalDamage = writable(0);
 
   function addButton(event: CustomEvent) {
     const { index, id, type } = event.detail;
@@ -26,6 +26,8 @@
   function toggleModal() {
     dialog.showModal();
   }
+
+  $: console.log('-----Row TOTAL: ', totalDamage);
 </script>
 
 <section class="my-2 w-full border-b border-slate-700 pb-2">
@@ -37,7 +39,7 @@
 
   <div class="flex w-full items-center overflow-x-auto">
     {#each rowButtons as { id, type, index }, i (i)}
-      <ComboButton btn={$talents[id][type][index]} bind:totalDamage />
+      <ComboButton btn={$talents[id][type][index]} {totalDamage} />
     {/each}
     <ComboAddButton on:click={toggleModal} />
   </div>
@@ -48,7 +50,7 @@
         src="/images/elements/physical.svg"
         alt="element"
       />
-      <span>{Math.round(totalDamage).toLocaleString() || '-'}</span>
+      <span>{Math.round($totalDamage).toLocaleString() || '-'}</span>
     </div>
   </div>
 </section>
