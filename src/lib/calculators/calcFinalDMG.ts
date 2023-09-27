@@ -117,6 +117,7 @@ export function calcFinalDMG(
         critDMG
       );
       total.base += result;
+      // total[element] += result;
 
       const catalyzeResult = calcDamageNoReaction(
         hitDMG,
@@ -299,6 +300,7 @@ export function calcFinalDMG(
       }
       return total;
     },
+    // { base: 0, [element]: 0 }
     { base: 0 }
   );
 
