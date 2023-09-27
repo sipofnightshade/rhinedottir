@@ -21,6 +21,8 @@
     };
   });
 
+  // merge conflict
+
   const btnImage = btn.url
     ? `/images/talents/${btn.url}.webp`
     : `/images/ui/${$character.selected.weapon}.webp`;
