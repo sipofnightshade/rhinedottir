@@ -41,11 +41,11 @@
   };
 
   const switchDamageType = () => {
-    previousDamage = btn.damage[currentDmgType];
     currentIndex = (currentIndex + 1) % dmgTypes.length;
     currentDmgType = dmgTypes[currentIndex];
 
     addDamage(currentDmgType);
+    previousDamage = btn.damage[currentDmgType];
   };
 
   // ✅ - this conditional ensures changing stats don't switch
