@@ -8,6 +8,7 @@
   import ComboButton from './ComboButton.svelte';
   import ShortModal from '../ShortModal.svelte';
   import { onMount } from 'svelte';
+  import RowHeading from './RowHeading.svelte';
 
   type CharacterID = 'main' | 'one' | 'two' | 'three';
   type TalentType = 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
@@ -34,11 +35,7 @@
 </script>
 
 <section class="my-2 w-full border-b border-slate-700 pb-2">
-  <h3
-    class="mb-2 w-fit min-w-[120px] underline-offset-2 hover:underline"
-    contenteditable="true"
-    bind:textContent={row.title}
-  />
+  <RowHeading title={row.title} />
 
   <div class="flex w-full items-center overflow-x-auto">
     {#each rowButtons as { id, type, index }, i (i)}
@@ -46,7 +43,7 @@
     {/each}
     <ComboAddButton on:click={toggleModal} />
   </div>
-  <div class="flex justify-between">
+  <div class="ml-0.5 flex justify-between">
     <div class="mt-2 flex gap-1">
       <img
         class="h-5 w-5 self-center"
