@@ -2,6 +2,7 @@
   import Button from './Button.svelte';
   import { talents } from '$lib/stores/talentStore';
   import { createEventDispatcher } from 'svelte';
+  import { uid } from 'uid';
 
   type CharacterID = 'main' | 'one' | 'two' | 'three';
   type TalentType = 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
@@ -10,11 +11,11 @@
   export let type: TalentType;
 
   const dispatch = createEventDispatcher<{
-    addbutton: { index: number; id: CharacterID; type: TalentType };
+    addbutton: { index: number; id: CharacterID; type: TalentType; btnID: string };
   }>();
 
   function sendData(index: number) {
-    dispatch('addbutton', { index, id, type });
+    dispatch('addbutton', { index, id, type, btnID: uid() });
   }
 </script>
 
