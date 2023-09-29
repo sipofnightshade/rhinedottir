@@ -71,17 +71,19 @@
 <button
   class="mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-slate-600"
   on:click={switchDamageType}
+  draggable="true"
+  data-item-id={btn.btnID}
 >
   <div
     class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 {classes.top}"
     class:border-opacity-100={classes.top !== classes.bot}
   >
-    <span class="mt-1 text-slate-100">{btn.tag}</span>
+    <span class="pointer-events-none mt-1 text-slate-100">{btn.tag}</span>
   </div>
   <div
     class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-all {classes.bot}"
     class:border-opacity-100={classes.top !== classes.bot}
   >
-    <img src={btnImage} class="top-1 mb-1 h-7 w-7" alt="Talent" />
+    <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
   </div>
 </button>

@@ -1,13 +1,16 @@
 <script lang="ts">
   import TalentSection from './TalentSection.svelte';
   import { writable } from 'svelte/store';
+  import reorderable from '$lib/actions/reorderable';
+
   // misc
   import { talents } from '$lib/stores/talentStore';
+  // import { onMount } from 'svelte';
+
   // components
   import ComboAddButton from './ComboAddButton.svelte';
   import ComboButton from './ComboButton.svelte';
   import ShortModal from '../ShortModal.svelte';
-  import { onMount } from 'svelte';
   import RowHeading from './RowHeading.svelte';
 
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -15,13 +18,16 @@
 
   export let row: any;
 
+  type Buttons = { id: CharacterID; type: TalentType; index: number; btnID: string }[];
+
+  // main functionality
   let dialog: HTMLDialogElement;
-  let rowButtons: { id: CharacterID; type: TalentType; index: number }[] = [];
+  let rowButtons: Buttons = [];
   let totalDamage = writable(0);
 
   function addButton(event: CustomEvent) {
-    const { index, id, type } = event.detail;
-    rowButtons = [...rowButtons, { index, id, type }];
+    const { index, id, type, btnID } = event.detail;
+    rowButtons = [...rowButtons, { index, id, type, btnID }];
   }
 
   // onMount(() => {
@@ -34,15 +40,24 @@
   function toggleModal() {
     dialog.showModal();
   }
+
+  function handleSort(newItems: Buttons) {
+    rowButtons = newItems;
+  }
 </script>
 
 <section class="my-2 w-full border-b border-slate-700 pb-2">
   <RowHeading title={row.title} />
 
-  <div class="flex w-full items-center overflow-x-auto">
-    {#each rowButtons as { id, type, index }, i (i)}
-      <ComboButton btn={$talents[id][type][index]} {totalDamage} />
-    {/each}
+  <div class="flex w-full items-center justify-start overflow-x-auto">
+    <div
+      class="flex w-fit overflow-x-auto"
+      use:reorderable={() => handleSort(rowButtons)}
+    >
+      {#each rowButtons as { id, type, index, btnID } (btnID)}
+        <ComboButton btn={$talents[id][type][index]} {totalDamage} />
+      {/each}
+    </div>
     <ComboAddButton on:click={toggleModal} />
   </div>
   <div class="ml-0.5">
