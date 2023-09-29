@@ -24,9 +24,11 @@
     rowButtons = [...rowButtons, { index, id, type }];
   }
 
-  onMount(() => {
-    rowButtons = [...rowButtons, { index: 0, id: 'main', type: 'normal' }];
-  });
+  // onMount(() => {
+  //   if (row.id === 1) {
+  //     rowButtons = [...rowButtons, { index: 0, id: 'main', type: 'normal' }];
+  //   }
+  // });
 
   // handle modal
   function toggleModal() {
@@ -43,14 +45,14 @@
     {/each}
     <ComboAddButton on:click={toggleModal} />
   </div>
-  <div class="ml-0.5 flex justify-between">
+  <div class="ml-0.5">
     <div class="mt-2 flex gap-1">
       <img
         class="h-5 w-5 self-center"
         src="/images/elements/physical.svg"
         alt="element"
       />
-      <span>{Math.round($totalDamage).toLocaleString() || '-'}</span>
+      <span class="ml-0.5">{Math.round($totalDamage).toLocaleString() || '-'}</span>
     </div>
   </div>
 </section>

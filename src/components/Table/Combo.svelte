@@ -3,14 +3,14 @@
 
   import Row from '../Modal/Combo/Row.svelte';
 
-  let rows = [{ id: 1, title: 'New Row' }];
+  let rows = [{ id: 1, title: 'Basic rotation!' }];
 
   function addRow() {
-    rows = [...rows, { id: rows.length + 1, title: 'New Row' }];
+    rows = [...rows, { id: rows.length + 1, title: '' }];
   }
 
   function resetRows() {
-    rows = [{ id: 1, title: 'New Row' }];
+    rows = [{ id: 1, title: 'Basic rotation!' }];
   }
 
   $: $character.selected.name, resetRows();
