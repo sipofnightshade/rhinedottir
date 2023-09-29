@@ -1,5 +1,7 @@
+type SortCallback = (items: HTMLElement[]) => void;
+
 // reorderDraggable.js
-function reorderable(node: HTMLElement) {
+function reorderable(node: HTMLElement, onSort: SortCallback) {
   let selectedItem: HTMLElement | null = null;
 
   function handleDragStart(event: DragEvent) {
@@ -27,6 +29,11 @@ function reorderable(node: HTMLElement) {
           selectedItem,
           swapIndex < selectedIndex ? swapItem : swapItem?.nextSibling
         );
+      }
+
+      if (onSort && typeof onSort === 'function') {
+        // Invoke the callback function with the updated items order
+        onSort(Array.from(list.children) as HTMLElement[]);
       }
     }
   }
