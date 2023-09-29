@@ -7,7 +7,7 @@
   $: x = $stats.main;
 </script>
 
-<div class="">
+<div>
   <div
     class="mb-.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
   >
@@ -15,41 +15,51 @@
     <Cell align="end" col="col-span-4" value="Base" />
     <Cell align="end" col="col-span-4" value="Total" />
   </div>
-  <StatRow label="HP" total={x.hp} base={x.baseHP} isPcnt={false} />
-  <StatRow label="ATK" total={x.atk} base={x.baseATK} isPcnt={false} />
-  <StatRow label="DEF" total={x.def} base={x.baseDEF} isPcnt={false} />
-  <StatRow label="Elemental Mastery" total={x.em} isPcnt={false} />
-  <StatRow label="CRIT Rate" total={x.critrate} base={5} isPcnt={true} />
-  <StatRow label="CRIT DMG" total={x.critdmg} base={50} isPcnt={true} />
-  <StatRow label="Energy Recharge" total={x.energy} base={100} isPcnt={true} />
+  <StatRow label="HP" total={$stats.main.hp} base={$stats.main.baseHP} isPcnt={false} />
+  <StatRow
+    label="ATK"
+    total={$stats.main.atk}
+    base={$stats.main.baseATK}
+    isPcnt={false}
+  />
+  <StatRow
+    label="DEF"
+    total={$stats.main.def}
+    base={$stats.main.baseDEF}
+    isPcnt={false}
+  />
+  <StatRow label="Elemental Mastery" total={$stats.main.em} isPcnt={false} />
+  <StatRow label="CRIT Rate" total={$stats.main.critrate} base={5} isPcnt={true} />
+  <StatRow label="CRIT DMG" total={$stats.main.critdmg} base={50} isPcnt={true} />
+  <StatRow label="Energy Recharge" total={$stats.main.energy} base={100} isPcnt={true} />
   <!-- Add separator here -->
-  <StatRow label="Anemo Bonus" total={x.anemo} isPcnt={true} />
-  <StatRow label="Anemo Res" total={x.anemoRes} isPcnt={true} />
-  <StatRow label="Cryo Bonus" total={x.cryo} isPcnt={true} />
-  <StatRow label="Cryo Res" total={x.cryoRes} isPcnt={true} />
-  <StatRow label="Dendro Bonus" total={x.dendro} isPcnt={true} />
-  <StatRow label="Dendro Res" total={x.dendroRes} isPcnt={true} />
-  <StatRow label="Electro Bonus" total={x.electro} isPcnt={true} />
-  <StatRow label="Electro Res" total={x.electroRes} isPcnt={true} />
-  <StatRow label="Geo Bonus" total={x.geo} isPcnt={true} />
-  <StatRow label="Geo Res" total={x.geoRes} isPcnt={true} />
-  <StatRow label="Hydro Bonus" total={x.hydro} isPcnt={true} />
-  <StatRow label="Hydro Res" total={x.hydroRes} isPcnt={true} />
-  <StatRow label="Pyro Bonus" total={x.pyro} isPcnt={true} />
-  <StatRow label="Pyro Res" total={x.pyroRes} isPcnt={true} />
-  <StatRow label="Physical Bonus" total={x.physical} isPcnt={true} />
-  <StatRow label="Physical Res" total={x.physicalRes} isPcnt={true} />
+  <StatRow label="Anemo Bonus" total={$stats.main.anemo} isPcnt={true} />
+  <StatRow label="Anemo Res" total={$stats.main.anemoRes} isPcnt={true} />
+  <StatRow label="Cryo Bonus" total={$stats.main.cryo} isPcnt={true} />
+  <StatRow label="Cryo Res" total={$stats.main.cryoRes} isPcnt={true} />
+  <StatRow label="Dendro Bonus" total={$stats.main.dendro} isPcnt={true} />
+  <StatRow label="Dendro Res" total={$stats.main.dendroRes} isPcnt={true} />
+  <StatRow label="Electro Bonus" total={$stats.main.electro} isPcnt={true} />
+  <StatRow label="Electro Res" total={$stats.main.electroRes} isPcnt={true} />
+  <StatRow label="Geo Bonus" total={$stats.main.geo} isPcnt={true} />
+  <StatRow label="Geo Res" total={$stats.main.geoRes} isPcnt={true} />
+  <StatRow label="Hydro Bonus" total={$stats.main.hydro} isPcnt={true} />
+  <StatRow label="Hydro Res" total={$stats.main.hydroRes} isPcnt={true} />
+  <StatRow label="Pyro Bonus" total={$stats.main.pyro} isPcnt={true} />
+  <StatRow label="Pyro Res" total={$stats.main.pyroRes} isPcnt={true} />
+  <StatRow label="Physical Bonus" total={$stats.main.physical} isPcnt={true} />
+  <StatRow label="Physical Res" total={$stats.main.physicalRes} isPcnt={true} />
   <!-- Add separator here -->
-  <StatRow label="Normal Attack Bonus" total={x.normal} isPcnt={true} />
-  <StatRow label="Charged Attack Bonus" total={x.charged} isPcnt={true} />
-  <StatRow label="Plunge Attack Bonus" total={x.plunge} isPcnt={true} />
-  <StatRow label="Elemental Skill Bonus" total={x.skill} isPcnt={true} />
-  <StatRow label="Elemental Burst Bonus" total={x.burst} isPcnt={true} />
+  <StatRow label="Normal Attack Bonus" total={$stats.main.normal} isPcnt={true} />
+  <StatRow label="Charged Attack Bonus" total={$stats.main.charged} isPcnt={true} />
+  <StatRow label="Plunge Attack Bonus" total={$stats.main.plunge} isPcnt={true} />
+  <StatRow label="Elemental Skill Bonus" total={$stats.main.skill} isPcnt={true} />
+  <StatRow label="Elemental Burst Bonus" total={$stats.main.burst} isPcnt={true} />
   <!-- Add separator here -->
-  <StatRow label="ATK SPD" total={x.normalATKSpd} isPcnt={true} />
-  <StatRow label="Move SPD" total={x.moveSpd} isPcnt={true} />
-  <StatRow label="Healing Bonus" total={x.healing} isPcnt={true} />
-  <StatRow label="Incoming Healing" total={x.healingIncoming} isPcnt={true} />
+  <StatRow label="ATK SPD" total={$stats.main.normalATKSpd} isPcnt={true} />
+  <StatRow label="Move SPD" total={$stats.main.moveSpd} isPcnt={true} />
+  <StatRow label="Healing Bonus" total={$stats.main.healing} isPcnt={true} />
+  <StatRow label="Incoming Healing" total={$stats.main.healingIncoming} isPcnt={true} />
   <div class="px-0.5 py-1 text-tb">
     <h3 class="text-red-500">ENEMY ------------------</h3>
   </div>

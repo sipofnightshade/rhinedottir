@@ -1,7 +1,6 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
   import { artifactSubStats, StatLabels } from '$lib/data/Stats';
-  import type { ArtifactStats } from '$lib/types/global';
   import Transition from 'svelte-transition';
   import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
