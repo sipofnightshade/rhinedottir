@@ -85,26 +85,26 @@
   disabled={deletable}
 >
   <div
-    class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 {deletable
-      ? 'bg-inherit'
-      : classes.top}"
+    class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
     class:border-opacity-100={classes.top !== classes.bot}
+    class:bg-opacity-0={deletable}
   >
     <span class="pointer-events-none mt-1 text-slate-100">{btn.tag}</span>
   </div>
   <div
-    class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-all {deletable
-      ? 'bg-inherit'
-      : classes.bot}"
+    class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
     class:border-opacity-100={classes.top !== classes.bot}
+    class:bg-opacity-0={deletable}
   >
     <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
   </div>
 
-  {#if deletable === true}
+  {#if deletable}
     <button
-      class="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-red-500 bg-opacity-60"
+      class="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-red-500 bg-opacity-60 transition-opacity"
       on:click={removeButton}
+      class:opacity-0={!deletable}
+      class:opacity-100={deletable}
     >
       <div class="h-5 w-5 fill-slate-300">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
