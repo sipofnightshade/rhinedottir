@@ -47,6 +47,7 @@
     if (deletable) {
       rowButtons = [];
       deletable = false;
+      $totalDamage = 0;
     } else {
       dialog.showModal();
     }
