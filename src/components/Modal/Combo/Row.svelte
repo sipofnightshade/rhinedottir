@@ -1,7 +1,7 @@
 <script lang="ts">
   import TalentSection from './TalentSection.svelte';
   import { writable } from 'svelte/store';
-  import reorderable from '$lib/actions/reorderable';
+  import { SortableList } from '@jhubbardsf/svelte-sortablejs';
 
   // misc
   import { talents } from '$lib/stores/talentStore';
@@ -53,9 +53,9 @@
     }
   }
 
-  function handleSort(newItems: Buttons) {
-    rowButtons = newItems;
-  }
+  // function handleSort(newItems: Buttons) {
+  //   rowButtons = newItems;
+  // }
 
   function handleEditButton() {
     deletable = !deletable;
@@ -66,9 +66,11 @@
   <RowHeading title={row.title} />
 
   <div class="flex w-full items-center justify-start">
-    <div
-      class="rowScrollbar grid h-full w-fit auto-cols-max grid-flow-col items-center overflow-x-auto pb-2"
-      use:reorderable={() => handleSort(rowButtons)}
+    <SortableList
+      animation={300}
+      ghostClass="opacity-0"
+      chosenClass="border-gray-300"
+      class="horizontalScrollbar grid h-full w-fit auto-cols-max grid-flow-col items-center overflow-x-auto pb-2"
     >
       {#each rowButtons as { id, type, index, btnID } (btnID)}
         <ComboButton
@@ -80,7 +82,7 @@
         />
       {/each}
       <ComboAddButton on:click={handleComboAddButton} {deletable} />
-    </div>
+    </SortableList>
   </div>
   <div class="mx-0.5 mt-1 flex items-center justify-between">
     <div class="flex gap-1">
@@ -118,24 +120,3 @@
   <TalentSection on:addbutton={addButton} type="skill" id="three" />
   <TalentSection on:addbutton={addButton} type="burst" id="three" />
 </ShortModal>
-
-<style>
-  @media (min-width: 768px) {
-    .rowScrollbar::-webkit-scrollbar {
-      width: 8px;
-      height: 5px;
-      margin-top: 10px;
-    }
-
-    .rowScrollbar::-webkit-scrollbar-track {
-      border-radius: 12px;
-      background-color: #e2e8f0;
-      padding: 1px;
-    }
-
-    .rowScrollbar::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: #334155;
-    }
-  }
-</style>
