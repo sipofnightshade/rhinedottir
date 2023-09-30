@@ -3,14 +3,14 @@
 </script>
 
 <button
-  class="mr-1 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 transition-transform"
+  class="mr-1 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700"
   on:click
-  class:rotate-45={deletable}
   title="Clear All"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    height="1em"
+    class="h-4 w-4 transition-transform"
+    class:rotate-45={deletable}
     viewBox="0 0 448 512"
     class:fill-slate-300={!deletable}
     class:fill-red-500={deletable}
