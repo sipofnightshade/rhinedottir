@@ -610,7 +610,7 @@ const charName: CharacterRecord = {
         "Each point of Alhaitham's Elemental Mastery will increase the DMG dealt by Projection Attacks and **Particular Field: Fetters of Phenomena** by 0.1%.\nThe DMG of both aforementioned abilities can be increased by a maximum of 100% this way.",
       level: 8,
       target: 'self',
-      actionType: 'toggle',
+      actionType: 'passive',
       sourceStats: ['em'],
       values: [
         {
