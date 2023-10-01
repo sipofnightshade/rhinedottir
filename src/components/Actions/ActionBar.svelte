@@ -8,33 +8,16 @@
   import { action } from '$lib/stores/actionStore';
 
   // import components
-  import ToggleButton from './_ToggleButton.svelte';
-  import PassiveButton from './_PassiveButton.svelte';
-  import StackButton from './_StackButton.svelte';
-  import SelectButton from './_SelectButton.svelte';
-  import MultiSelectButton from './_MultiSelectButton.svelte';
   import ArtifactButton from './ArtifactButton.svelte';
-  import VisionMatchButton from './_VisionMatchButton.svelte';
-  import VisionMatchToggle from './_VisionMatchToggle.svelte';
   import WeaponButton from './WeaponButton.svelte';
+  import CharacterButton from './CharacterButton.svelte';
 
   export let margin = true;
 
-  const buttons = {
-    toggle: ToggleButton,
-    passive: PassiveButton,
-    stack: StackButton,
-    select: SelectButton,
-    multiSelect: MultiSelectButton,
-    input: MultiSelectButton,
-    visionMatch: VisionMatchButton,
-    visionMatchToggle: VisionMatchToggle
-  };
-
-  $: if ($character.selected) action.reset('main');
-  $: if ($party.one && $party.one.character) action.reset('one');
-  $: if ($party.two && $party.two.character) action.reset('two');
-  $: if ($party.three && $party.three.character) action.reset('three');
+  $: $character.selected, action.reset('main');
+  $: $party.one && $party.one.character, action.reset('one');
+  $: $party.two && $party.two.character, action.reset('two');
+  $: $party.three && $party.three.character, action.reset('three');
 </script>
 
 <section
@@ -42,10 +25,8 @@
   class:my-4={margin}
 >
   {#each $character.selected.actions as data (data.name)}
-    <svelte:component
-      this={buttons[data.actionType]}
+    <CharacterButton
       {data}
-      type={$character.selected.vision}
       id="main"
       currentChar={$character}
       currentStats={$stats.main}
@@ -63,6 +44,4 @@
     currentChar={$character}
     currentStats={$stats.main}
   />
-  <!-- main weapon actions -->
-  <!-- main artifact actions -->
 </section>
