@@ -319,13 +319,28 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'DMG Per Stack',
+      name: 'Additional Stack DMG',
       tag: 'Qx',
       url: 'Skill_E_Eula_01',
       damageBonus: 'burst',
       hasOwnDMGType: 'physical',
       hasOwnBonusDMG: 'lightfallSword',
+      hasOwnSpecialMultiplier: 'lightfallStacks',
       stackable: 30,
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param3'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'DMG Per Stack',
+      damageBonus: 'burst',
+      hasOwnDMGType: 'physical',
+      hasOwnBonusDMG: 'lightfallSword',
       damage: [
         [
           {
@@ -382,6 +397,23 @@ const charName: CharacterRecord = {
         {
           scaling: 'cryoRes',
           coef: 'param5'
+        }
+      ]
+    },
+    {
+      name: 'Lightfall Sword Stacks',
+      url: 'Skill_E_Eula_01',
+      description:
+        "When Eula's own Normal Attack, Elemental Skill, and Elemental Burst deal DMG to opponents, they will charge the Lightfall Sword, which can gain an energy stack once every 0.1s.\nThis DMG scales on the number of energy stacks the Lightfall Sword has accumulated. If Eula leaves the field, the Lightfall Sword will explode immediately.",
+      target: 'self',
+      actionType: 'stack',
+      values: [
+        {
+          scaling: 'lightfallStacks',
+          coef: [
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1
+          ]
         }
       ]
     },
