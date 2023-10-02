@@ -34,7 +34,6 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
-  $: constellationReq = data.constellation ?? 0;
 
   let stacks = 0;
   let stackCoefs: number[] = [];
@@ -91,23 +90,31 @@
     return false;
   }
 
-  $: {
-    if (talentLvl !== previousTalentLvl || (isAnyStatChanged() && stacks > 0)) {
+  function resetStats(
+    tLvl: number | null,
+    isAnyStatChanged: boolean | null,
+    constellation: number
+  ) {
+    if (tLvl !== previousTalentLvl || isAnyStatChanged || constellation) {
       removeStats();
       for (let i = 0; i < stacks; i++) {
         addStats();
       }
-      previousTalentLvl = talentLvl;
+      previousTalentLvl = tLvl;
       previousStatValues = { ...currentStats }; // Create a copy of the current stats
     }
   }
 
-  // apply infusion
-  $: if (stacks > 0 && data.infusion) {
-    infusion.setInfusion(data.infusion, target, id);
-  } else if (stacks === 0 && data.infusion) {
-    infusion.reset();
+  function applyInfusion(isActive: boolean) {
+    if (isActive && data.infusion) {
+      infusion.setInfusion(data.infusion, target, id);
+    } else if (!isActive && data.infusion) {
+      infusion.reset();
+    }
   }
+
+  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: applyInfusion(stacks > 0);
 
   onDestroy(() => {
     if (stacks > 0) {
@@ -133,20 +140,18 @@
   };
 </script>
 
-{#if constellationReq <= currentChar.constellation}
-  <button on:click={handleStacking} class="relative shadow-red-300">
-    <ActionButton {type} isActive={stacks > 0} url={data.url} />
-    {#if stacks > 0}
-      <p
-        class="stacks absolute top-0 right-0 z-10 text-lg font-bold {textColors[
-          type
-        ]} shadow-red-400"
-      >
-        x{stacks}
-      </p>
-    {/if}
-  </button>
-{/if}
+<button on:click={handleStacking} class="relative shadow-red-300">
+  <ActionButton {type} isActive={stacks > 0} url={data.url} />
+  {#if stacks > 0}
+    <p
+      class="stacks absolute right-0 top-0 z-10 text-lg font-bold {textColors[
+        type
+      ]} shadow-red-400"
+    >
+      x{stacks}
+    </p>
+  {/if}
+</button>
 
 <style lang="postcss">
   .stacks {

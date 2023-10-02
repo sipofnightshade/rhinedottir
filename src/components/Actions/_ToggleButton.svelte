@@ -35,7 +35,6 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
-  $: constellationReq = data.constellation ?? 0;
 
   let isActive: boolean = false;
   let addedStats: { scaling: string; coef: number }[] = [];
@@ -86,38 +85,42 @@
     return false;
   }
 
-  // ▶ if button has a talentLvl, and it changes while the button is Active,
-  // reset the current values that were added.
-  // ▶ if stats change then also run this reactivity statement
-  $: {
-    if (talentLvl !== previousTalentLvl || isAnyStatChanged()) {
-      if (isActive) {
+  function resetStats(
+    tLvl: number | null,
+    isAnyStatChanged: boolean | null,
+    constellation: number
+  ) {
+    if (tLvl !== previousTalentLvl || isAnyStatChanged || constellation) {
+      if (addedStats.length > 0) {
         removeStats();
         addStats();
       }
-      previousTalentLvl = talentLvl;
+      previousTalentLvl = tLvl;
       previousStatValues = { ...currentStats }; // Create a copy of the current stats
     }
   }
 
-  // apply infusion
-  $: if (isActive && data.infusion) {
-    infusion.setInfusion(data.infusion, target, id);
-  } else if (!isActive && data.infusion) {
-    infusion.reset();
+  function applyInfusion(isActive: boolean) {
+    if (isActive && data.infusion) {
+      infusion.setInfusion(data.infusion, target, id);
+    } else if (!isActive && data.infusion) {
+      infusion.reset();
+    }
   }
+
+  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: applyInfusion(isActive);
 
   onDestroy(() => {
     if (isActive) {
       removeStats();
+      infusion.reset();
     }
     isActive = false;
     addedStats = [];
   });
 </script>
 
-{#if constellationReq <= currentChar.constellation}
-  <button on:click={handleToggle}>
-    <ActionButton {type} {isActive} url={data.url} />
-  </button>
-{/if}
+<button on:click={handleToggle}>
+  <ActionButton {type} {isActive} url={data.url} />
+</button>

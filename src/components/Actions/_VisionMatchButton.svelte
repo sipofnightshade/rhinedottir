@@ -40,8 +40,6 @@
   let previousStatValues: any = {};
   let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
-  $: constellationReq = data.constellation ?? 0;
-
   // vision button exclusive
   $: partyVisions = [
     $character.selected.vision,
@@ -99,15 +97,25 @@
     return false;
   }
 
-  $: {
-    if (isInitialized && (talentLvl !== previousTalentLvl || isAnyStatChanged())) {
-      removeStats();
-      addStats();
-      previousTalentLvl = talentLvl;
+  function resetStats(
+    tLvl: number | null,
+    isAnyStatChanged: boolean | null,
+    constellation: number
+  ) {
+    if (
+      isInitialized &&
+      (tLvl !== previousTalentLvl || isAnyStatChanged || constellation)
+    ) {
+      if (addedStats.length > 0) {
+        removeStats();
+        addStats();
+      }
+      previousTalentLvl = tLvl;
       previousStatValues = { ...currentStats }; // Create a copy of the current stats
     }
   }
 
+  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
   $: {
     if (isInitialized && statIndex) {
       removeStats();
@@ -127,8 +135,6 @@
   });
 </script>
 
-{#if constellationReq <= currentChar.constellation}
-  <button data-testid="passive-action-button">
-    <ActionButton {type} url={data.url} isActive />
-  </button>
-{/if}
+<button data-testid="passive-action-button">
+  <ActionButton {type} url={data.url} isActive />
+</button>
