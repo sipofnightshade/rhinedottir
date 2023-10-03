@@ -3,7 +3,7 @@
   import { character } from '$lib/stores/characterStore';
   import { beforeUpdate, onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
-  import { fade } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
 
   const dispatch = createEventDispatcher();
 
@@ -84,7 +84,7 @@
   draggable="true"
   data-item-id={btn.btnID}
   disabled={deletable}
-  transition:fade
+  transition:fly
 >
   <div
     class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
