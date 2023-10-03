@@ -4,8 +4,7 @@
 
   import Row from '../Modal/Combo/Row.svelte';
 
-  const startingRow = { id: '1337', title: 'Basic rotation!' };
-  let rows = [startingRow];
+  let rows = [{ id: uid(), title: 'Basic rotation!' }];
 
   function addRow() {
     rows = [...rows, { id: uid(), title: '' }];
@@ -17,15 +16,15 @@
   }
 
   function resetRows() {
-    rows = [startingRow];
+    rows = [{ id: uid(), title: 'Basic rotation!' }];
   }
 
   $: $character.selected.name, resetRows();
 </script>
 
 <div class="flex flex-col">
-  {#each rows as row (row.id)}
-    <Row {row} on:deleteRow={deleteRow} />
+  {#each rows as row, index (row.id)}
+    <Row {row} on:deleteRow={deleteRow} {index} />
   {/each}
   <button
     class="my-4 flex h-16 items-center justify-center rounded-lg border-2 border-dashed border-slate-400 opacity-60 transition-opacity hover:opacity-100"
