@@ -3,21 +3,11 @@
 
   export let value: string | undefined;
   export let el: DamageType = 'physical';
-
-  // let toggled = false;
-  // function toggle() {
-  //   toggled = !toggled;
-  // }
 </script>
-
-<!-- @component
-- Add `+1` animation whenever button is clicked
-- Show a count of each button that is in play
- -->
 
 {#if value}
   <button
-    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-3 text-sm text-slate-900 transition hover:bg-slate-50 md:text-base"
+    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-3 text-sm text-slate-900 transition hover:bg-slate-50"
     on:click
     class:bg-slate-400={el === 'physical'}
     class:bg-anemo={el === 'anemo'}
