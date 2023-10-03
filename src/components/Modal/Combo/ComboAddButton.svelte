@@ -3,7 +3,7 @@
 </script>
 
 <button
-  class="mr-1 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700"
+  class="mr-1 flex h-8 w-8 min-w-[32px] items-center justify-center rounded-full bg-slate-700"
   on:click
   title="Clear All"
 >
