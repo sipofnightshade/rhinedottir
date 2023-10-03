@@ -22,11 +22,7 @@
 
     return () => {
       if (previousDamage !== 0 && $totalDamage > 0) {
-        console.log('previousDamage', previousDamage);
-        console.log('$totalDamage', $totalDamage);
-
         $totalDamage -= btn.damage[currentDmgType];
-        console.log('$totalDamage after', $totalDamage);
       }
     };
   });
