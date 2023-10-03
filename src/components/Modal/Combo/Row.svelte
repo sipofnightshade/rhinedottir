@@ -3,14 +3,15 @@
   import { SortableList } from '@jhubbardsf/svelte-sortablejs';
   import { talents } from '$lib/stores/talentStore';
   import { createPopover } from 'svelte-headlessui';
-  import Transition from 'svelte-transition';
+  import { createEventDispatcher, onMount } from 'svelte';
+  import { uid } from 'uid';
 
   // components
-  import ComboAddButton from './ComboAddButton.svelte';
   import ComboButton from './ComboButton.svelte';
-  import ShortModal from '../ShortModal.svelte';
   import RowHeading from './RowHeading.svelte';
   import TalentSection from './TalentSection.svelte';
+  import Transition from 'svelte-transition';
+  import Close from '$lib/icons/Close.svelte';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -21,12 +22,28 @@
   export let row: any;
 
   // main functionality
-  let dialog: HTMLDialogElement;
   let rowButtons: Buttons = [];
   let totalDamage = writable(0);
   let deletable = false;
 
+  const dispatch = createEventDispatcher();
   const popover = createPopover({});
+
+  onMount(() => {
+    if (row.id === '1337') {
+      rowButtons = [
+        ...rowButtons,
+        { index: 0, id: 'main', type: 'normal', btnID: uid() }
+      ];
+    }
+  });
+
+  function deleteRow() {
+    dispatch('deleteRow', { rowId: row.id });
+    // if the row buttons.length > 3, prompt them
+    // and ask if they're sure they want to delete
+    // the row.
+  }
 
   function addButton(event: CustomEvent) {
     const { index, id, type, btnID } = event.detail;
@@ -35,37 +52,32 @@
 
   function removeButton(event: CustomEvent) {
     const { btnID } = event.detail;
-    const result = rowButtons.filter((button) => button.btnID !== btnID);
-    rowButtons = result;
+    rowButtons = rowButtons.filter((button) => button.btnID !== btnID);
   }
 
-  // onMount(() => {
-  //   if (row.id === 1) {
-  //     rowButtons = [...rowButtons, { index: 0, id: 'main', type: 'normal' }];
-  //   }
-  // });
-
-  function handleComboAddButton() {
+  function handleClearAll() {
     if (deletable) {
       rowButtons = [];
       deletable = false;
       $totalDamage = 0;
-    } else {
-      dialog.showModal();
     }
   }
-
-  // function handleSort(newItems: Buttons) {
-  //   rowButtons = newItems;
-  // }
 
   function handleEditButton() {
     deletable = !deletable;
   }
 </script>
 
-<section class="relative my-2 w-full border-b border-slate-700 pb-2">
-  <RowHeading title={row.title} />
+<section class="group relative my-2 w-full border-b border-slate-700 pb-3">
+  <div class="flex items-center justify-between gap-2">
+    <RowHeading title={row.title} />
+    <button
+      class="w-fit p-2 opacity-0 transition-opacity group-hover:opacity-100"
+      on:click={deleteRow}
+    >
+      <Close class="h-3 w-3 fill-slate-300" />
+    </button>
+  </div>
 
   <div class="flex w-full items-center justify-start">
     <SortableList
@@ -84,24 +96,22 @@
         />
       {/each}
       <!-- <ComboAddButton on:click={handleComboAddButton} {deletable} /> -->
-      <button
-        use:popover.button
-        class="mr-1 flex h-8 w-8 min-w-[32px] items-center justify-center rounded-full bg-slate-700"
-        title={deletable ? 'Clear All' : 'Add Buttons!'}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4 transition-transform"
-          class:rotate-45={deletable}
-          viewBox="0 0 448 512"
-          class:fill-slate-300={!deletable}
-          class:fill-red-500={deletable}
+      {#if !deletable}
+        <button
+          use:popover.button
+          class="mr-1 flex h-8 w-8 min-w-[32px] items-center justify-center rounded-full bg-slate-700 fill-slate-300"
         >
-          <path
-            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
-          />
-        </svg>
-      </button>
+          <Close class="h-2.5 w-2.5 -rotate-45 fill-slate-300" />
+        </button>
+      {:else}
+        <button
+          class="mr-1 flex h-8 w-8 min-w-[32px] items-center justify-center rounded-full bg-slate-700"
+          on:click={handleClearAll}
+          title="Clear All"
+        >
+          <Close class="h-3 w-3 fill-red-600" />
+        </button>
+      {/if}
     </SortableList>
     <Transition
       show={$popover.expanded}
@@ -116,10 +126,10 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div
         use:popover.panel
-        class="absolute left-1/2 top-24 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl"
+        class="triangle absolute left-1/2 top-28 z-10 mt-3 w-64 max-w-xs -translate-x-1/2 transform px-4 xs-300:w-80 sm:px-0 lg:max-w-3xl"
       >
         <!-- <button on:click={popover.close}>Close</button> -->
-        <div class="rounded-xl border border-slate-500 bg-slate-800 p-4">
+        <div class="rounded-xl border border-slate-500 bg-slate-800 p-2 xs-300:p-4">
           <TalentSection on:addbutton={addButton} type="normal" id="main" />
           <TalentSection on:addbutton={addButton} type="charged" id="main" />
           <TalentSection on:addbutton={addButton} type="plunge" id="main" />
@@ -158,19 +168,31 @@
   </div>
 </section>
 
-<ShortModal bind:dialog modalTitle="Talents">
-  <TalentSection on:addbutton={addButton} type="normal" id="main" />
-  <TalentSection on:addbutton={addButton} type="charged" id="main" />
-  <TalentSection on:addbutton={addButton} type="plunge" id="main" />
-  <TalentSection on:addbutton={addButton} type="skill" id="main" />
-  <TalentSection on:addbutton={addButton} type="burst" id="main" />
-
-  <TalentSection on:addbutton={addButton} type="skill" id="one" />
-  <TalentSection on:addbutton={addButton} type="burst" id="one" />
-
-  <TalentSection on:addbutton={addButton} type="skill" id="two" />
-  <TalentSection on:addbutton={addButton} type="burst" id="two" />
-
-  <TalentSection on:addbutton={addButton} type="skill" id="three" />
-  <TalentSection on:addbutton={addButton} type="burst" id="three" />
-</ShortModal>
+<style lang="postcss">
+  .triangle:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid theme(colors.slate.400);
+    top: -12px;
+    left: 47%;
+    margin-right: 12px;
+    z-index: 5;
+  }
+  .triangle:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid theme(colors.slate.800);
+    top: -11px;
+    left: 47%;
+    margin-right: 12px;
+    z-index: 5;
+  }
+</style>

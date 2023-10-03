@@ -2,7 +2,7 @@
   export let title: string;
 </script>
 
-<div class="relative mx-[1px] mb-1">
+<div class="relative mx-[1px] mb-1 w-full">
   <div
     class="pointer-events-none absolute inset-y-0 left-0 flex items-center stroke-slate-500 p-1"
   >
