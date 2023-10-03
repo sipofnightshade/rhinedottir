@@ -3,6 +3,7 @@
   import { character } from '$lib/stores/characterStore';
   import { beforeUpdate, onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
+  import { fade } from 'svelte/transition';
 
   const dispatch = createEventDispatcher();
 
@@ -83,6 +84,7 @@
   draggable="true"
   data-item-id={btn.btnID}
   disabled={deletable}
+  transition:fade
 >
   <div
     class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
@@ -101,7 +103,7 @@
 
   {#if deletable}
     <button
-      class="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-red-500 bg-opacity-60 transition-opacity"
+      class="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-red-500 bg-opacity-60 transition-opacity"
       on:click={removeButton}
       class:opacity-0={!deletable}
       class:opacity-100={deletable}
