@@ -12,6 +12,7 @@
   import TalentSection from './TalentSection.svelte';
   import Transition from 'svelte-transition';
   import Close from '$lib/icons/Close.svelte';
+  import ComboTabs from './ComboTabs.svelte';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -20,6 +21,7 @@
 
   // props
   export let row: any;
+  export let index: number;
 
   // main functionality
   let rowButtons: Buttons = [];
@@ -30,7 +32,7 @@
   const popover = createPopover({});
 
   onMount(() => {
-    if (row.id === '1337') {
+    if (index === 0) {
       rowButtons = [
         ...rowButtons,
         { index: 0, id: 'main', type: 'normal', btnID: uid() }
@@ -56,11 +58,9 @@
   }
 
   function handleClearAll() {
-    if (deletable) {
-      rowButtons = [];
-      deletable = false;
-      $totalDamage = 0;
-    }
+    rowButtons = [];
+    $totalDamage = 0;
+    deletable = false;
   }
 
   function handleEditButton() {
@@ -95,7 +95,6 @@
           on:removeBtn={removeButton}
         />
       {/each}
-      <!-- <ComboAddButton on:click={handleComboAddButton} {deletable} /> -->
       {#if !deletable}
         <button
           use:popover.button
@@ -128,22 +127,8 @@
         use:popover.panel
         class="triangle absolute left-1/2 top-28 z-10 mt-3 w-64 max-w-xs -translate-x-1/2 transform px-4 xs-300:w-80 sm:px-0 lg:max-w-3xl"
       >
-        <!-- <button on:click={popover.close}>Close</button> -->
         <div class="rounded-xl border border-slate-500 bg-slate-800 p-2 xs-300:p-4">
-          <TalentSection on:addbutton={addButton} type="normal" id="main" />
-          <TalentSection on:addbutton={addButton} type="charged" id="main" />
-          <TalentSection on:addbutton={addButton} type="plunge" id="main" />
-          <TalentSection on:addbutton={addButton} type="skill" id="main" />
-          <TalentSection on:addbutton={addButton} type="burst" id="main" />
-
-          <TalentSection on:addbutton={addButton} type="skill" id="one" />
-          <TalentSection on:addbutton={addButton} type="burst" id="one" />
-
-          <TalentSection on:addbutton={addButton} type="skill" id="two" />
-          <TalentSection on:addbutton={addButton} type="burst" id="two" />
-
-          <TalentSection on:addbutton={addButton} type="skill" id="three" />
-          <TalentSection on:addbutton={addButton} type="burst" id="three" />
+          <ComboTabs on:addbutton={addButton} />
         </div>
       </div>
     </Transition>
