@@ -11,6 +11,7 @@
   import { weapon } from '$lib/stores/weaponStore';
   import { statValueFormatter } from '$lib/helpers/statFormatter';
   import { party } from '$lib/stores/partyStore';
+  import StatImage from './StatImage.svelte';
 
   type PartyModal = {
     id: 'one' | 'two' | 'three';
@@ -54,7 +55,7 @@
 <section class="relative grid h-full max-h-40 w-full grid-flow-col gap-2 xl:gap-3">
   <!-- CHARACTER Button -->
   <button
-    class="h relative h-[120px] w-[120px] bg-slate-400 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
+    class="relative h-[120px] w-[120px] rounded-xl border border-slate-500 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
@@ -83,11 +84,8 @@
         <div
           class="flex w-full items-center justify-between rounded-full bg-slate-800 px-2 py-1"
         >
-          <img
-            class="h-4 w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6"
-            src="/images/elements/crit.svg"
-            alt="crit"
-          />
+          <StatImage stat={$weapon.selected.specialized} />
+
           <span class="text-xs lg:text-sm xl:text-base">{stats}</span>
         </div>
       </div>
