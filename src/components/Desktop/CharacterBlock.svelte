@@ -96,15 +96,14 @@
     <div class="grid grid-flow-col gap-2 lg:gap-3">
       {#each menuModals as modal (modal.id)}
         <button
-          class="flex h-14 w-14 items-center justify-center rounded-md bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
+          class="flex h-14 w-14 items-center justify-center rounded-xl bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
           on:click={() => toggleModal(modal.component, 'Select a Teammate')}
         >
           {#if $party[modal.id]}
-            {@const character = $party[modal.id]?.character.selected}
             <Thumbnail
-              img="/images/character/{character.name}.webp"
-              vision={character.vision}
-              alt={character.name}
+              img="/images/character/{$party[modal.id]?.character.selected.name}.webp"
+              vision={$party[modal.id]?.character.selected.vision}
+              alt="character"
             />
           {:else}
             <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
