@@ -86,7 +86,7 @@
 </script>
 
 {#if stat}
-  <svelte:component this={icon} class="w-3 md:w-[18px] xl:w-5" />
+  <svelte:component this={icon} class="w-full md:w-[18px] xl:w-5" />
 {:else}
   <span>-</span>
 {/if}
