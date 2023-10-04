@@ -489,6 +489,127 @@ const charName: CharacterRecord = {
             scaling: 'atk',
             param: 'param7'
           }
+        ],
+        // second one
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param6'
+          }
+        ],
+        [
+          {
+            scaling: 'atk',
+            param: 'param7'
+          }
         ]
       ]
     }
