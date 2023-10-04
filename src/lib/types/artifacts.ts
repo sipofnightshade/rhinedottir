@@ -50,7 +50,7 @@ export type ArtifactType = 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet'
 export type ArtifactModalButtons = {
   id: ArtifactType;
   img: string;
-  component: SvelteComponent;
+  component: any;
   title: string;
 }[];
 

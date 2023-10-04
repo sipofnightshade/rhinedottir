@@ -75,10 +75,10 @@
         {/if}
       </div>
       <ul
-        class="absolute top-0 left-0 z-10 flex h-full w-full flex-col justify-between p-2"
+        class="absolute left-0 top-0 z-10 flex h-full w-full flex-col justify-between p-1.5"
       >
         <li
-          class="flex h-full items-center justify-between rounded-md bg-slate-800 py-1 px-1 lg:px-2"
+          class="flex h-full items-center justify-between rounded-md bg-slate-800 px-1 py-1"
         >
           <StatImage stat={$artifact[modal.id].mainStat.stat} />
 
