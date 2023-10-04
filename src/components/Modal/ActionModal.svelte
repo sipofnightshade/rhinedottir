@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Formatted from '../Text/Formatted.svelte';
+
   export let dialog: HTMLDialogElement;
 
   export let modalTitle: string;
@@ -8,6 +10,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
   bind:this={dialog}
   on:click|self={() => dialog.close()}
@@ -31,9 +34,7 @@
     </button>
   </div>
   <div class="h-full overflow-hidden px-4 pb-4">
-    <p class="text-base">
-      {details}
-    </p>
+    <Formatted content={details} />
   </div>
   <div
     class="grid h-12 w-full grid-flow-col items-center gap-x-4 border-t border-slate-500"
