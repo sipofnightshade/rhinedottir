@@ -21,6 +21,7 @@
   } from '$lib/icons';
   import type { ComponentType } from 'svelte';
 
+  export let stat: string;
   let icon: ComponentType;
 
   function renderIcon(stat: string) {
@@ -67,7 +68,7 @@
       case 'critrate':
         icon = CritRate;
         break;
-      case 'critdamage':
+      case 'critdmg':
         icon = CritDamage;
         break;
       case 'energy':
@@ -81,12 +82,11 @@
     }
   }
 
-  export let stat: string;
   $: renderIcon(stat);
 </script>
 
 {#if stat}
   <svelte:component this={icon} class="w-3 md:w-[18px] xl:w-5" />
 {:else}
-  <span> -</span>
+  <span>-</span>
 {/if}
