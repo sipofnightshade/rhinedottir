@@ -10,13 +10,15 @@
   import { weaponStatLabels } from '$lib/data/Stats';
   import { statValueFormatter } from '$lib/helpers/statFormatter';
 
+  import { generateWeaponEffect } from '$lib/helpers/generateWeaponText';
+  import EffectDetails from './EffectDetails.svelte';
+
   // filter data
   const filters = ['atk', 'def', 'hp', 'em', 'crit', 'physical', 'energy'];
 
   // state
   let profileH;
   let contentH;
-  let passive = false; // adjust when passive logic added
   let filter = '';
   let filteredData = WeaponData[$character.selected.weapon];
   let stats: number | string;
@@ -50,6 +52,8 @@
         item.specialized.includes(filter)
       )
     : WeaponData[$character.selected.weapon];
+
+  $: effectDetails = generateWeaponEffect($weapon.selected, $weapon.refinement);
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -86,19 +90,7 @@
         />
       </div>
     </div>
-    <button
-      on:click|stopPropagation={() => (passive = !passive)}
-      class="relative col-span-3 w-full rounded-md bg-slate-800 py-2 px-3"
-    >
-      <p class="text-left text-base">{$weapon.selected.effectname}</p>
-      {#if passive}
-        <div
-          class="absolute top-9 right-0 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
-        >
-          {$weapon.selected.effect}
-        </div>
-      {/if}
-    </button>
+    <EffectDetails {effectDetails} name={$weapon.selected.effectname} />
   </div>
   <div class="h-full">
     <Filters selected={filter} {filters} on:filter={handleFilters} />
