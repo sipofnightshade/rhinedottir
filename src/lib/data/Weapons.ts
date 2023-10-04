@@ -2449,11 +2449,11 @@ export const WeaponData: Data = {
         {
           actionType: 'stack',
           values: [
-            [{ scaling: 'normal', coef: 0.2 }],
-            [{ scaling: 'normal', coef: 0.25 }],
-            [{ scaling: 'normal', coef: 0.3 }],
-            [{ scaling: 'normal', coef: 0.35 }],
-            [{ scaling: 'normal', coef: 0.4 }]
+            [{ scaling: 'normal', coef: [0.2, 0.2] }],
+            [{ scaling: 'normal', coef: [0.25, 0.25] }],
+            [{ scaling: 'normal', coef: [0.3, 0.3] }],
+            [{ scaling: 'normal', coef: [0.35, 0.35] }],
+            [{ scaling: 'normal', coef: [0.4, 0.4] }]
           ]
         }
       ],
