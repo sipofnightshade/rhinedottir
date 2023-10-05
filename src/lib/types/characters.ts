@@ -73,4 +73,6 @@ export type CharacterNames =
   | 'lyney'
   | 'lynette'
   | 'freminet'
+  | 'wriothesley'
+  | 'neuvillette'
   | 'zhongli';

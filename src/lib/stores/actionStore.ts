@@ -42,7 +42,7 @@ function createAction() {
     subscribe,
     addStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        // console.log('add to ', target, ' | ', scaling, coef);
+        console.log('add to ', target, ' | ', scaling, coef);
 
         const addStatValue = (id: ActionId, scaling: string, value: number) => {
           if (!state[id][scaling]) state[id][scaling] = 0;
@@ -98,7 +98,7 @@ function createAction() {
       }),
     removeStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        // console.log('rm from ', target, ' | ', scaling, coef);
+        console.log('rm from ', target, ' | ', scaling, coef);
 
         const removeStatValue = (id: ActionId, scaling: string, value: number) => {
           if (state[id][scaling]) {

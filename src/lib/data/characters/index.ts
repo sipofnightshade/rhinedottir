@@ -73,6 +73,8 @@ import { default as yelan } from './yelan';
 import { default as yoimiya } from './yoimiya';
 import { default as yunjin } from './yunjin';
 import { default as zhongli } from './zhongli';
+import { default as wriothesley } from './wriothesley';
+import { default as neuvillette } from './neuvillette';
 
 export const characterData = [
   traveleranemo,
@@ -122,6 +124,7 @@ export const characterData = [
   mika,
   mona,
   nahida,
+  neuvillette,
   nilou,
   ningguang,
   noelle,
@@ -139,6 +142,7 @@ export const characterData = [
   tighnari,
   venti,
   wanderer,
+  wriothesley,
   xiangling,
   xiao,
   xingqiu,
