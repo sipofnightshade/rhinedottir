@@ -20,7 +20,7 @@
 </script>
 
 {#if $talents[id][type]}
-  <section class="mb-1 grid grid-flow-col gap-1">
+  <section class="mb-1 grid auto-cols-[minmax(0,1fr)] grid-flow-col gap-1">
     {#each $talents[id][type] as talent, index}
       <Button el={talent.elemental} value={talent.tag} on:click={() => sendData(index)} />
     {/each}
