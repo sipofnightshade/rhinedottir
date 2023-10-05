@@ -78,17 +78,14 @@
     isAnyStatChanged: boolean | null,
     constellation: number
   ) {
-    if (
-      isInitialized &&
-      (tLvl !== previousTalentLvl || isAnyStatChanged || constellation)
-    ) {
-      if (addedStats.length > 0) {
-        removeStats();
-        addStats();
-      }
-      previousTalentLvl = tLvl;
-      previousStatValues = { ...currentStats }; // Create a copy of the current stats
+    console.log(`%cReset Stats called`, 'color: #34cdeb');
+
+    if (addedStats.length > 0) {
+      removeStats();
+      addStats();
     }
+    previousTalentLvl = tLvl;
+    // previousStatValues = { ...currentStats }; // Create a copy of the current stats
   }
 
   $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
@@ -105,6 +102,6 @@
   });
 </script>
 
-<button data-testid="passive-action-button">
+<button on:contextmenu={() => console.log(data.name)} data-testid="passive-action-button">
   <ActionButton {type} url={data.url} isActive />
 </button>
