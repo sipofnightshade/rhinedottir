@@ -16,7 +16,8 @@ export function calcCritStat(
       ? stats[dmgType + 'CritRate'] ?? 0
       : stats[dmgType + 'CritDMG'] ?? 0;
 
-  const customValue = hasOwnCritValue ? stats[hasOwnCritValue] : 0;
+  const customValue =
+    hasOwnCritValue && stats[hasOwnCritValue] ? stats[hasOwnCritValue] : 0;
 
   const result = baseValue + talentValue + dmgTypeValue + customValue;
 
