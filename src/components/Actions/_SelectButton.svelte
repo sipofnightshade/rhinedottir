@@ -37,7 +37,6 @@
   let selected: Stat | undefined;
   let addedStats: { [key: string]: number } = {};
   let prevSelected: Stat | undefined;
-  let previousTalentLvl: number | null = null;
 
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
@@ -91,22 +90,14 @@
     return false;
   }
 
-  function resetStats(
-    tLvl: number | null,
-    isAnyStatChanged: boolean | null,
-    constellation: number
-  ) {
-    if (tLvl !== previousTalentLvl || isAnyStatChanged || constellation) {
-      if (selected) {
-        removeStats(selected);
-        addStats(selected);
-      }
-      previousTalentLvl = tLvl;
-      previousStatValues = { ...currentStats }; // Create a copy of the current stats
+  function recalculateStats() {
+    if (selected) {
+      removeStats(selected);
+      addStats(selected);
     }
   }
 
-  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
 
   // remove any added stats if
   onDestroy(() => {
@@ -142,57 +133,6 @@
     </div>
   {/if}
 </button>
-<!-- {#if showModal}
-  <ActionModal
-    on:click={toggleModal}
-    on:escapeClick={toggleModal}
-    modalTitle={data.name}
-    actionType="Elemental Burst"
-    buttonType="Select"
-    details={data.description}
-  >
-    <ul class="flex h-full items-center" class:bg-red-700={false}>
-      <li
-        class="flex h-full w-full items-center justify-center  bg-slate-600"
-        class:bg-slate-600={selected === undefined}
-      >
-        <input
-          type="radio"
-          bind:group={selected}
-          name="radio"
-          id="empty"
-          value={undefined}
-          class="hidden"
-        />
-        <label for="empty" class="flex h-full w-full items-center justify-center"
-          ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
-        </label>
-      </li>
-      {#each data.values as item}
-        <li
-          class="flex h-full w-full items-center justify-center  bg-slate-600"
-          class:bg-slate-600={selected === item}
-        >
-          <input
-            type="radio"
-            bind:group={selected}
-            name="radio"
-            id={item.scaling}
-            value={item}
-            class="hidden"
-          />
-          <label for={item.scaling} class="flex h-full w-full items-center justify-center"
-            ><img
-              class="w-6"
-              src="/images/elements/{stripStat(item.scaling)}.svg"
-              alt={item.scaling}
-            />
-          </label>
-        </li>
-      {/each}
-    </ul>
-  </ActionModal>
-{/if} -->
 <ActionModal
   bind:dialog
   modalTitle={data.name}

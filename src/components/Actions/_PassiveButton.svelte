@@ -30,7 +30,6 @@
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
-  let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
   let isInitialized = false; // Add a flag to track component initialization
@@ -73,22 +72,14 @@
     return false;
   }
 
-  function resetStats(
-    tLvl: number | null,
-    isAnyStatChanged: boolean | null,
-    constellation: number
-  ) {
-    console.log(`%cReset Stats called`, 'color: #34cdeb');
-
+  function recalculateStats() {
     if (addedStats.length > 0) {
       removeStats();
       addStats();
     }
-    previousTalentLvl = tLvl;
-    // previousStatValues = { ...currentStats }; // Create a copy of the current stats
   }
 
-  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
 
   onMount(() => {
     addStats();

@@ -38,7 +38,6 @@
   let addedStats: { scaling: string; coef: number }[] = [];
 
   let previousStatValues: any = {};
-  let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
   // vision button exclusive
   $: partyVisions = [
@@ -97,25 +96,15 @@
     return false;
   }
 
-  function resetStats(
-    tLvl: number | null,
-    isAnyStatChanged: boolean | null,
-    constellation: number
-  ) {
-    if (
-      isInitialized &&
-      (tLvl !== previousTalentLvl || isAnyStatChanged || constellation)
-    ) {
-      if (addedStats.length > 0) {
-        removeStats();
-        addStats();
-      }
-      previousTalentLvl = tLvl;
-      previousStatValues = { ...currentStats }; // Create a copy of the current stats
+  function recalculateStats() {
+    if (addedStats.length > 0) {
+      removeStats();
+      addStats();
     }
   }
 
-  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
+
   $: {
     if (isInitialized && statIndex) {
       removeStats();

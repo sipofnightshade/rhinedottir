@@ -38,7 +38,6 @@
   let selectedStats: SELECTED = {};
   let isActive = false;
   let addedStats: Stat[] = [];
-  let previousTalentLvl: number | null = null;
 
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
@@ -102,24 +101,16 @@
     return false;
   }
 
-  function resetStats(
-    tLvl: number | null,
-    isAnyStatChanged: boolean | null,
-    constellation: number
-  ) {
-    if (tLvl !== previousTalentLvl || isAnyStatChanged || constellation) {
-      if (addedStats.length > 0) {
-        addedStats.forEach((stat: Stat) => {
-          removeStats(stat);
-          addStats(stat);
-        });
-      }
-      previousTalentLvl = tLvl;
-      previousStatValues = { ...currentStats }; // Create a copy of the current stats
+  function recalculateStats() {
+    if (addedStats.length > 0) {
+      addedStats.forEach((stat: Stat) => {
+        removeStats(stat);
+        addStats(stat);
+      });
     }
   }
 
-  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
 
   // handle Modal
   let dialog: HTMLDialogElement;

@@ -32,7 +32,6 @@
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
-  let previousTalentLvl: number | null = null;
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
   let stacks = 0;
