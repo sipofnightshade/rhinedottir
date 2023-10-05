@@ -38,7 +38,7 @@
   let stacks = 0;
   let stackCoefs: number[] = [];
 
-  function addStats() {
+  function addStats(currentStacks: number) {
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
 
@@ -47,10 +47,10 @@
           ? getCoefficientFromValues(
               combatValue,
               cName as CharacterSpecificNames,
-              (coef as number[])[stacks - 1],
+              (coef as number[])[currentStacks - 1],
               talentLvl
             )
-          : (coef as number[])[stacks - 1];
+          : (coef as number[])[currentStacks - 1];
       const result = calcCoefficient(talentValue, currentStats, source);
 
       if (!stackCoefs[i]) stackCoefs[i] = 0;
@@ -59,9 +59,6 @@
     });
   }
 
-  // ❗ this does not remove the correct stats when triggered as
-  // it loops through the original values of data instead of
-  // using the stackCoefs
   function removeStats() {
     data.values.forEach((value, i) => {
       action.removeStat(id, target as Target, value.scaling, stackCoefs[i]);
@@ -75,7 +72,7 @@
       removeStats();
     } else {
       stacks++; // Increment the stacks
-      addStats();
+      addStats(stacks);
     }
   }
 
@@ -90,18 +87,12 @@
     return false;
   }
 
-  function resetStats(
-    tLvl: number | null,
-    isAnyStatChanged: boolean | null,
-    constellation: number
-  ) {
-    if (tLvl !== previousTalentLvl || isAnyStatChanged || constellation) {
-      removeStats();
-      for (let i = 0; i < stacks; i++) {
-        addStats();
-      }
-      previousTalentLvl = tLvl;
-      previousStatValues = { ...currentStats }; // Create a copy of the current stats
+  function recalculateStats() {
+    console.log(`%cRecalculate Stats`, 'color: #34cdeb');
+
+    removeStats();
+    for (let i = 0; i < stacks; i++) {
+      addStats(i + 1);
     }
   }
 
@@ -113,7 +104,7 @@
     }
   }
 
-  $: resetStats(talentLvl, isAnyStatChanged(), currentChar.constellation);
+  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
   $: applyInfusion(stacks > 0);
 
   onDestroy(() => {
@@ -121,11 +112,6 @@
       removeStats();
     }
   });
-
-  /**
-   * @Important
-   * - If using modals, use increment buttons and not an input
-   */
 
   const textColors = {
     anemo: 'text-anemo',
