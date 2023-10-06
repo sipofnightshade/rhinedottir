@@ -5,7 +5,7 @@ import type { CharacterRecord } from '$lib/types/global';
 import traveleranemo from '$lib/data/characters/traveleranemo';
 import { allStats, type All_Stats } from '$lib/data/Stats';
 
-type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
+export type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
 export type CurrentCharacter = {
   selected: CharacterRecord;
@@ -62,15 +62,42 @@ function createCharacter() {
       }),
     increment: (key: Adjustable) =>
       update((state) => {
-        if (state[key] < labels[key].length - 1) {
-          state[key]++;
-          state.stats = GenshinStats.calcStatsForCharacter(
-            state.selected.name,
-            labels.lvlValues[state.lvl]
-          );
+        if (key === 'atk' || key === 'skill' || key === 'burst') {
+          const isC3Increase = state.constellation >= 3 && key === state.selected.c3;
+          const isC5Increase = state.constellation >= 5 && key === state.selected.c5;
+
+          // With c3/c5, the maximum is 12
+          if ((isC3Increase || isC5Increase) && state[key] < 12) {
+            state[key]++;
+          } else if (state[key] < 9) {
+            // Without c3/c5, the maximum is 9
+            state[key]++;
+          }
+        } else {
+          // Handle increment for other properties
+          if (state[key] < labels[key].length - 1) {
+            state[key]++;
+          }
+
+          // Handle c3/c5 talent increase
+          if (key === 'constellation' && state[key] === 3 && state.selected.c3) {
+            state[state.selected.c3] += 3;
+          }
+
+          if (key === 'constellation' && state[key] === 5 && state.selected.c5) {
+            state[state.selected.c5] += 3;
+          }
         }
+
+        // Recalculate stats after any updates
+        state.stats = GenshinStats.calcStatsForCharacter(
+          state.selected.name,
+          labels.lvlValues[state.lvl]
+        );
+
         return state;
       }),
+
     decrement: (key: Adjustable) =>
       update((state) => {
         if (state[key] > 0) {
@@ -79,6 +106,15 @@ function createCharacter() {
             state.selected.name,
             labels.lvlValues[state.lvl]
           );
+
+          // handle c3/cs5 talent decrease
+          if (key === 'constellation' && state[key] === 2 && state.selected.c3) {
+            state[state.selected.c3] -= 3;
+          }
+
+          if (key === 'constellation' && state[key] === 4 && state.selected.c5) {
+            state[state.selected.c5] -= 3;
+          }
         }
         return state;
       }),
