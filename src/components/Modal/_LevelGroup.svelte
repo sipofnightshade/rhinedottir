@@ -48,6 +48,8 @@
 
     // level
     if (id === 'lvl' && value >= 13) return true;
+    if (id === 'constellation' && value >= 6) return true;
+    if (id === 'refinement' && value >= 4) return true;
   }
 
   $: isDisabled = disableIncrement(plusThree, rating, value);
