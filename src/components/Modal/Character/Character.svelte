@@ -69,6 +69,20 @@
   $: filteredData = filter
     ? characterData.filter((item) => item.vision === filter)
     : characterData;
+
+  function calcPlusThree(
+    type: 'atk' | 'skill' | 'burst',
+    constellation: number
+  ): boolean {
+    return (
+      ($character.selected.c3 === type && constellation >= 3) ||
+      ($character.selected.c5 === type && constellation >= 5)
+    );
+  }
+
+  $: atkPlusThree = calcPlusThree('atk', $character.constellation);
+  $: skillPlusThree = calcPlusThree('skill', $character.constellation);
+  $: burstPlusThree = calcPlusThree('burst', $character.constellation);
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -86,14 +100,14 @@
       <div class="grid grid-cols-2 gap-x-2">
         <LevelGroup
           label="Level"
-          value={labels.lvl[$character.lvl]}
+          value={$character.lvl}
           id="lvl"
           on:increment={handleIncrement}
           on:decrement={handleDecrement}
         />
         <LevelGroup
           label="Const."
-          value={labels.constellation[$character.constellation]}
+          value={$character.constellation}
           id="constellation"
           on:increment={handleIncrement}
           on:decrement={handleDecrement}
@@ -102,22 +116,25 @@
     </div>
     <LevelGroup
       label="Normal"
-      value={labels.atk[$character.atk]}
+      value={$character.atk + 1}
       id="atk"
+      plusThree={atkPlusThree}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />
     <LevelGroup
       label="Skill"
-      value={labels.skill[$character.skill]}
+      value={$character.skill + 1}
       id="skill"
+      plusThree={skillPlusThree}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />
     <LevelGroup
       label="Burst"
-      value={labels.burst[$character.burst]}
+      value={$character.burst + 1}
       id="burst"
+      plusThree={burstPlusThree}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />

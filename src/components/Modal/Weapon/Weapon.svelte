@@ -76,14 +76,14 @@
       <div class="mt-0.5 grid grid-cols-2 gap-x-2">
         <LevelGroup
           label="Level"
-          value={labels.lvl[$weapon.lvl]}
+          value={$weapon.lvl}
           id="lvl"
           on:increment={handleIncrement}
           on:decrement={handleDecrement}
         />
         <LevelGroup
           label="Refinement"
-          value={labels.refinement[$weapon.refinement]}
+          value={$weapon.refinement}
           id="refinement"
           on:increment={handleIncrement}
           on:decrement={handleDecrement}

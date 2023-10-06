@@ -8,7 +8,6 @@
   import { artifact } from '$lib/stores/artifactStore';
 
   import { ArtifactData } from '$lib/data/Artifacts';
-  import { labels } from '$lib/data/Levels';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
 
@@ -62,8 +61,9 @@
           <StarSelector {type} />
           <LevelGroup
             label="Level"
-            value={labels.artifactLevels[$artifact[type].lvl]}
+            value={$artifact[type].lvl}
             id={type}
+            rating={$artifact[type].isFiveStar}
             on:increment={handleIncrement}
             on:decrement={handleDecrement}
           />
@@ -73,7 +73,7 @@
     </div>
     <button
       on:click|stopPropagation={() => (passive = !passive)}
-      class="relative col-span-3 flex w-full items-center justify-between rounded-md bg-slate-800 py-2 px-3"
+      class="relative col-span-3 flex w-full items-center justify-between rounded-md bg-slate-800 px-3 py-2"
     >
       <div class="text-sm">
         <span>{$artifact[type].selected.fullName}</span>
@@ -83,7 +83,7 @@
 
       {#if passive}
         <div
-          class="absolute top-9 right-0 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 py-2 px-3 text-left"
+          class="absolute right-0 top-9 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 px-3 py-2 text-left"
         >
           {#each $artifact[type].selected.fourPiece as action}
             <p>{action.description || ''}</p>
