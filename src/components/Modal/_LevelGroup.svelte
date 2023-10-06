@@ -37,7 +37,7 @@
     });
   }
 
-  function disableIncrement(p3: boolean, value: number) {
+  function disableIncrement(p3: boolean, rating: boolean, value: number) {
     // talents
     if (isTalent && p3 && value >= 13) return true;
     if (isTalent && !p3 && value >= 10) return true;
@@ -45,16 +45,27 @@
     // artifacts
     if (isArtifact && rating && value >= 20) return true;
     if (isArtifact && !rating && value >= 16) return true;
+
+    // level
+    if (id === 'lvl' && value >= 13) return true;
   }
 
-  $: isDisabled = disableIncrement(plusThree, value);
-  $: displayValue = id === 'lvl' ? labels.lvl[value] : value;
+  $: isDisabled = disableIncrement(plusThree, rating, value);
+  $: displayValue =
+    id === 'lvl' || id === 'refinement' || id === 'constellation'
+      ? labels[id][value]
+      : value;
 </script>
 
 <div>
   <div class="mb-1 flex justify-between px-1 text-sm">
     <span class="text-slate-400">{label}</span>
-    <strong class:text-emerald-400={plusThree}>{isArtifact && '+'}{displayValue}</strong>
+    <strong class:text-emerald-400={plusThree}>
+      {#if isArtifact}
+        <span>+</span>
+      {/if}
+      {displayValue}
+    </strong>
   </div>
   <div class="flex h-10 overflow-hidden rounded-lg bg-slate-800">
     <button
