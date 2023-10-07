@@ -24,7 +24,8 @@ export function calcFinalDMG(
   $enemy: any,
   addStats: any
 ) {
-  const talentLvl = $character[addStats.talentLvlId];
+  const talentLvl =
+    $character[addStats.talentLvlId] + $character.lvlBonus[addStats.talentLvlId];
 
   // if this hit is a heal, then return only the healing values
   if (hit.isHealing) {
