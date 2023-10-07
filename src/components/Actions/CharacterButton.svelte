@@ -7,7 +7,7 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
-
+  import AddLevelButton from './AddLevelButton.svelte';
   // types
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
@@ -27,7 +27,8 @@
     multiSelect: MultiSelectButton,
     input: MultiSelectButton,
     visionMatch: VisionMatchButton,
-    visionMatchToggle: VisionMatchToggle
+    visionMatchToggle: VisionMatchToggle,
+    addLevel: AddLevelButton
   };
 
   const constellationReq = data.constellation ?? 0;

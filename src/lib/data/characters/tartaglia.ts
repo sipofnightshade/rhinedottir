@@ -402,10 +402,10 @@ const charName: CharacterRecord = {
       url: 'UI_Talent_S_Tartaglia_07',
       description: "Increases your own party members' **Normal Attack** Level by 1.",
       target: 'party',
-      actionType: 'passive',
+      actionType: 'addLevel',
       values: [
         {
-          scaling: 'normalLevel',
+          scaling: 'atk',
           coef: 1
         }
       ]

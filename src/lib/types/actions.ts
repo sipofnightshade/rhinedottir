@@ -28,8 +28,10 @@ export type ActionType =
   | 'multiSelect'
   | 'input'
   | 'passive'
+  // | 'regionMatch'
   | 'visionMatch'
-  | 'visionMatchToggle';
+  | 'visionMatchToggle'
+  | 'addLevel';
 
 export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 

@@ -7,16 +7,16 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
-
+  import AddLevelButton from './AddLevelButton.svelte';
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';
+  import { activeSets } from '$lib/stores/activeSetsStore';
 
   // types
   import type { ArtifactState } from '$lib/stores/artifactStore';
   import type { Action } from '$lib/types/actions';
   import type { WeaponCategory } from '$lib/types/global';
-  import { activeSets } from '$lib/stores/activeSetsStore';
   import type { ArtifactNames } from '$lib/types/artifacts';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
@@ -37,7 +37,8 @@
     multiSelect: MultiSelectButton,
     input: MultiSelectButton,
     visionMatch: VisionMatchButton,
-    visionMatchToggle: VisionMatchToggle
+    visionMatchToggle: VisionMatchToggle,
+    addLevel: AddLevelButton
   };
 
   let prevPassives: Stats[] = [];

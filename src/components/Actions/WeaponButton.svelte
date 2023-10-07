@@ -7,24 +7,20 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
-
+  import AddLevelButton from './AddLevelButton.svelte';
   // stores / helpers / context
-  import { action } from '$lib/stores/actionStore';
 
   // types
-  import type { Action, ActionValue } from '$lib/types/actions';
+  import type { Action } from '$lib/types/actions';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
   import type { CurrentWeapon } from '$lib/stores/weaponStore';
-  import { onMount } from 'svelte';
 
   // props
   export let currentWeapon: CurrentWeapon;
   export let id: 'main' | 'one' | 'two' | 'three';
   export let currentStats: Index_Stats;
   export let currentChar: CurrentCharacter;
-
-  type Stats = { scaling: string; coef: number | number[] };
 
   const buttons = {
     toggle: ToggleButton,
@@ -34,7 +30,8 @@
     multiSelect: MultiSelectButton,
     input: MultiSelectButton,
     visionMatch: VisionMatchButton,
-    visionMatchToggle: VisionMatchToggle
+    visionMatchToggle: VisionMatchToggle,
+    addLevel: AddLevelButton
   };
 
   let actionData: Action[] = [];
