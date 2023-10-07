@@ -22,7 +22,7 @@ export function getTalentRows(
   type: TalentType,
   dmgType: DamageType
 ) {
-  const cName = getCharacterName(character.selected);
+  const cName = getCharacterName(character.selected.name, character.selected.vision);
   const combatValue = getCombatValue(type);
   const values = TalentValues[cName as keyof typeof TalentValues][combatValue];
   const additionalStats = getAdditionalStats(type);
