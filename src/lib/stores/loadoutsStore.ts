@@ -1,14 +1,12 @@
+import type { SavedArtifacts, SavedCharacter, SavedWeapon } from '$lib/types/loadout';
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { ArtifactState } from './artifactStore';
-import type { CurrentCharacter } from './characterStore';
-import type { CurrentWeapon } from './weaponStore';
 
 type Loadout = {
   title: string;
-  character: CurrentCharacter;
-  weapon: CurrentWeapon;
-  artifacts: ArtifactState;
+  character: SavedCharacter;
+  weapon: SavedWeapon;
+  artifacts: SavedArtifacts;
 };
 
 const initialState: Loadout[] = [];

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { loadouts } from '$lib/stores/loadoutsStore';
   import { party } from '$lib/stores/partyStore';
+  import { activeSets } from '$lib/stores/activeSetsStore';
   import Thumbnail from '../../Thumbnail/Thumbnail.svelte';
 
   // props
@@ -13,6 +14,10 @@
   function toggleLoadoutButton(loadout: any) {
     party.setPartyMember(id, loadout);
   }
+
+  // $: if($party[id]){
+  //   activeSets.setActiveSet('artifacts',id,)
+  // }
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -37,33 +42,33 @@
         >
           <h3 class="col-span-7 text-left capitalize text-slate-300">{item.title}</h3>
           <Thumbnail
-            img="/images/character/{item.character.selected.name}.webp"
-            vision={item.character.selected.vision}
-            alt={item.character.selected.fullName}
+            img="/images/character/{item.character.selected}.webp"
+            vision={item.character.vision}
+            alt={item.character.selected}
           />
           <Thumbnail
-            img="/images/weapon/{item.weapon.selected.name}.webp"
-            alt={item.weapon.selected.fullName}
+            img="/images/weapon/{item.weapon.selected}.webp"
+            alt={item.weapon.selected}
           />
           <Thumbnail
-            img="/images/artifact/flower/{item.artifacts.flower.selected.name}.webp"
-            alt={item.artifacts.flower.selected.fullName}
+            img="/images/artifact/flower/{item.artifacts.flower.selected}.webp"
+            alt={item.artifacts.flower.selected}
           />
           <Thumbnail
-            img="/images/artifact/feather/{item.artifacts.feather.selected.name}.webp"
-            alt={item.artifacts.feather.selected.fullName}
+            img="/images/artifact/feather/{item.artifacts.feather.selected}.webp"
+            alt={item.artifacts.feather.selected}
           />
           <Thumbnail
-            img="/images/artifact/sands/{item.artifacts.sands.selected.name}.webp"
-            alt={item.artifacts.sands.selected.fullName}
+            img="/images/artifact/sands/{item.artifacts.sands.selected}.webp"
+            alt={item.artifacts.sands.selected}
           />
           <Thumbnail
-            img="/images/artifact/goblet/{item.artifacts.goblet.selected.name}.webp"
-            alt={item.artifacts.goblet.selected.fullName}
+            img="/images/artifact/goblet/{item.artifacts.goblet.selected}.webp"
+            alt={item.artifacts.goblet.selected}
           />
           <Thumbnail
-            img="/images/artifact/circlet/{item.artifacts.circlet.selected.name}.webp"
-            alt={item.artifacts.circlet.selected.fullName}
+            img="/images/artifact/circlet/{item.artifacts.circlet.selected}.webp"
+            alt={item.artifacts.circlet.selected}
           />
         </button>
       {/each}

@@ -1,18 +1,34 @@
+import type { SavedArtifacts, SavedCharacter, SavedWeapon } from '$lib/types/loadout';
 import { writable } from 'svelte/store';
+import GenshinStats from '$lib/helpers/genshinStatsAll';
+
+// local data
+import { characterData } from '$lib/data/characters';
+import { WeaponData } from '$lib/data/Weapons';
+import { ArtifactData } from '$lib/data/Artifacts';
+import { labels } from '$lib/data/Levels';
 import type { CurrentCharacter } from './characterStore';
 import type { ArtifactState } from './artifactStore';
 import type { CurrentWeapon } from './weaponStore';
+import type { CharacterRecord, SelectedWeapon } from '$lib/types/global';
+import type { Artifact } from '$lib/types/artifacts';
 
-type CharacterBuild = {
+type Loadout = {
+  character: SavedCharacter;
+  artifacts: SavedArtifacts;
+  weapon: SavedWeapon;
+};
+
+type PartyMember = {
   character: CurrentCharacter;
   artifacts: ArtifactState;
   weapon: CurrentWeapon;
 };
 
 type Party = {
-  one: CharacterBuild | undefined;
-  two: CharacterBuild | undefined;
-  three: CharacterBuild | undefined;
+  one: PartyMember | undefined;
+  two: PartyMember | undefined;
+  three: PartyMember | undefined;
 };
 
 const initialState: Party = {
@@ -26,13 +42,80 @@ function createParty() {
 
   return {
     subscribe,
-    set,
     setPartyMember: (
       id: 'one' | 'two' | 'three',
-      character: CharacterBuild // Fix the type here
+      loadout: Loadout // Fix the type here
     ) =>
       update((state) => {
-        state[id] = character;
+        // character data
+        const cName = loadout.character.selected;
+        const cWeapon = loadout.character.weapon;
+        const cVision = loadout.character.vision;
+        const cLvl = loadout.character.lvl;
+        // weapon data
+        const wName = loadout.weapon.selected;
+        const wLvl = loadout.weapon.lvl;
+        // artifact data
+        const flowerName = loadout.artifacts.flower.selected;
+        const featherName = loadout.artifacts.feather.selected;
+        const sandsName = loadout.artifacts.sands.selected;
+        const gobletName = loadout.artifacts.goblet.selected;
+        const circletName = loadout.artifacts.circlet.selected;
+
+        // set character
+        const character = {
+          ...loadout.character,
+          stats: GenshinStats.calcStatsForCharacter(cName, labels.lvlValues[cLvl]),
+          selected: characterData.find(
+            (data) => data.name === cName && data.vision === cVision
+          ) as CharacterRecord
+        };
+
+        // set weapon
+        const weapon = {
+          ...loadout.weapon,
+          stats: GenshinStats.calcStatsForWeapon(wName, labels.lvlValues[wLvl]),
+          selected: WeaponData[cWeapon].find(
+            (data) => data.name === wName
+          ) as SelectedWeapon
+        };
+
+        // set artifacts
+        const flower = {
+          ...loadout.artifacts.flower,
+          selected: ArtifactData.find((data) => data.name === flowerName) as Artifact
+        };
+        const feather = {
+          ...loadout.artifacts.feather,
+          selected: ArtifactData.find((data) => data.name === featherName) as Artifact
+        };
+        const sands = {
+          ...loadout.artifacts.sands,
+          selected: ArtifactData.find((data) => data.name === sandsName) as Artifact
+        };
+        const goblet = {
+          ...loadout.artifacts.goblet,
+          selected: ArtifactData.find((data) => data.name === gobletName) as Artifact
+        };
+        const circlet = {
+          ...loadout.artifacts.circlet,
+          selected: ArtifactData.find((data) => data.name === circletName) as Artifact
+        };
+
+        state[id] = {
+          character,
+          weapon,
+          artifacts: {
+            flower,
+            feather,
+            sands,
+            goblet,
+            circlet
+          }
+        };
+
+        console.log(state[id]);
+
         return state;
       }),
     removePartyMember: (id: 'one' | 'two' | 'three') =>

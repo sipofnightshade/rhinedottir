@@ -4,6 +4,8 @@
   import { artifact } from '$lib/stores/artifactStore';
   import { loadouts } from '$lib/stores/loadoutsStore';
   import ShortModal from '../Modal/ShortModal.svelte';
+  import { allStats } from '$lib/data/Stats';
+
   /**
    * @todo
    */
@@ -20,12 +22,24 @@
   function saveLoadout() {
     const newLoadout = {
       title,
-      character: $character,
-      weapon: $weapon,
-      artifacts: $artifact
+      character: {
+        ...$character,
+        selected: $character.selected.name,
+        weapon: $character.selected.weapon,
+        vision: $character.selected.vision,
+        additionalStats: { ...allStats }
+      },
+      weapon: { ...$weapon, selected: $weapon.selected.name },
+      artifacts: {
+        flower: { ...$artifact.flower, selected: $artifact.flower.selected.name },
+        feather: { ...$artifact.feather, selected: $artifact.feather.selected.name },
+        sands: { ...$artifact.sands, selected: $artifact.sands.selected.name },
+        goblet: { ...$artifact.goblet, selected: $artifact.goblet.selected.name },
+        circlet: { ...$artifact.circlet, selected: $artifact.circlet.selected.name }
+      }
     };
 
-    loadouts.addLoadout(newLoadout);
+    loadouts.addLoadout({ ...newLoadout });
     dialog.close();
   }
 </script>
@@ -73,6 +87,6 @@
   />
   <button
     on:click={saveLoadout}
-    class="mt-1 ml-auto h-9 w-full rounded bg-emerald-600 py-2 px-4">Save</button
+    class="ml-auto mt-1 h-9 w-full rounded bg-emerald-600 px-4 py-2">Save</button
   >
 </ShortModal>
