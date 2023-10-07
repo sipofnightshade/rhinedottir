@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Button from './Button.svelte';
   import Builds from './_Builds.svelte';
   import Details from './_Details.svelte';
   import Settings from './_Settings.svelte';
@@ -8,7 +7,7 @@
   import Updates from './_Updates.svelte';
 
   import { clickOutside } from '$lib/helpers/clickOutside';
-  import SaveLoadout from '../Buttons/SaveLoadout.svelte';
+  import SaveLoadout from '../Loadout/SaveLoadout.svelte';
 
   interface MenuItem {
     id: string;
