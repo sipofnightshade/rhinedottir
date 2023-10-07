@@ -26,7 +26,11 @@ export type CurrentCharacter = {
   atk: number;
   skill: number;
   burst: number;
-  // could put combos here as well
+  lvlBonus: {
+    atk: number;
+    skill: number;
+    burst: number;
+  };
 };
 
 const initialState: CurrentCharacter = {
@@ -37,7 +41,12 @@ const initialState: CurrentCharacter = {
   skill: 9,
   burst: 9,
   stats: GenshinStats.calcStatsForCharacter('aether', labels.lvlValues[13]),
-  additionalStats: { ...allStats }
+  additionalStats: { ...allStats },
+  lvlBonus: {
+    atk: 0,
+    skill: 0,
+    burst: 0
+  }
 };
 
 function createCharacter() {
@@ -45,6 +54,7 @@ function createCharacter() {
 
   return {
     subscribe,
+    set,
     setChar: (selected: CharacterRecord) =>
       update((state) => {
         state.selected = selected;
@@ -62,38 +72,30 @@ function createCharacter() {
       }),
     increment: (key: Adjustable) =>
       update((state) => {
-        if (key === 'atk' || key === 'skill' || key === 'burst') {
-          const isC3Increase = state.constellation >= 3 && key === state.selected.c3;
-          const isC5Increase = state.constellation >= 5 && key === state.selected.c5;
-
-          // With c3/c5, the maximum is 12
-          if ((isC3Increase || isC5Increase) && state[key] < 12) {
-            state[key]++;
-          } else if (state[key] < 9) {
-            // Without c3/c5, the maximum is 9
-            state[key]++;
-          }
-        } else {
-          // Handle increment for other properties
-          if (state[key] < labels[key].length - 1) {
-            state[key]++;
-          }
-
+        if (state[key] < labels[key].length - 1) {
+          state[key]++;
+          // Recalculate stats after any updates
+          state.stats = GenshinStats.calcStatsForCharacter(
+            state.selected.name,
+            labels.lvlValues[state.lvl]
+          );
           // Handle c3/c5 talent increase
-          if (key === 'constellation' && state[key] === 3 && state.selected.c3) {
-            state[state.selected.c3] += 3;
+          if (key === 'constellation' && state.constellation === 3 && state.selected.c3) {
+            if (state.lvlBonus[state.selected.c3] > 2) {
+              state.lvlBonus[state.selected.c3] = 5; // this ensures the lvl bonus is capped at 5
+            } else {
+              state.lvlBonus[state.selected.c3] += 3;
+            }
           }
 
-          if (key === 'constellation' && state[key] === 5 && state.selected.c5) {
-            state[state.selected.c5] += 3;
+          if (key === 'constellation' && state.constellation === 5 && state.selected.c5) {
+            if (state.lvlBonus[state.selected.c5] > 2) {
+              state.lvlBonus[state.selected.c5] = 5; // this ensures the lvl bonus is capped at 5
+            } else {
+              state.lvlBonus[state.selected.c5] += 3;
+            }
           }
         }
-
-        // Recalculate stats after any updates
-        state.stats = GenshinStats.calcStatsForCharacter(
-          state.selected.name,
-          labels.lvlValues[state.lvl]
-        );
 
         return state;
       }),
@@ -108,14 +110,23 @@ function createCharacter() {
           );
 
           // handle c3/cs5 talent decrease
-          if (key === 'constellation' && state[key] === 2 && state.selected.c3) {
-            state[state.selected.c3] -= 3;
+          if (key === 'constellation' && state.constellation === 2 && state.selected.c3) {
+            if (state.lvlBonus[state.selected.c3] >= 3) {
+              state.lvlBonus[state.selected.c3] -= 3;
+            } else {
+              state.lvlBonus[state.selected.c3] = 0; // this ensures the lvl bonus's minimum is 0
+            }
           }
 
-          if (key === 'constellation' && state[key] === 4 && state.selected.c5) {
-            state[state.selected.c5] -= 3;
+          if (key === 'constellation' && state.constellation === 4 && state.selected.c5) {
+            if (state.lvlBonus[state.selected.c5] >= 3) {
+              state.lvlBonus[state.selected.c5] -= 3;
+            } else {
+              state.lvlBonus[state.selected.c5] = 0; // this ensures the lvl bonus's minimum is 0
+            }
           }
         }
+
         return state;
       }),
     reset: () => set(initialState)

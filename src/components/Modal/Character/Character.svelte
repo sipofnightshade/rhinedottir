@@ -70,19 +70,9 @@
     ? characterData.filter((item) => item.vision === filter)
     : characterData;
 
-  function calcPlusThree(
-    type: 'atk' | 'skill' | 'burst',
-    constellation: number
-  ): boolean {
-    return (
-      ($character.selected.c3 === type && constellation >= 3) ||
-      ($character.selected.c5 === type && constellation >= 5)
-    );
-  }
-
-  $: atkPlusThree = calcPlusThree('atk', $character.constellation);
-  $: skillPlusThree = calcPlusThree('skill', $character.constellation);
-  $: burstPlusThree = calcPlusThree('burst', $character.constellation);
+  $: charNormalLvl = $character.atk + $character.lvlBonus.atk + 1;
+  $: charSkillLvl = $character.skill + $character.lvlBonus.skill + 1;
+  $: charBurstLvl = $character.burst + $character.lvlBonus.burst + 1;
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -116,25 +106,25 @@
     </div>
     <LevelGroup
       label="Normal"
-      value={$character.atk + 1}
+      value={charNormalLvl}
       id="atk"
-      plusThree={atkPlusThree}
+      plusThree={$character.lvlBonus.atk > 0}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />
     <LevelGroup
       label="Skill"
-      value={$character.skill + 1}
+      value={charSkillLvl}
       id="skill"
-      plusThree={skillPlusThree}
+      plusThree={$character.lvlBonus.skill > 0}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />
     <LevelGroup
       label="Burst"
-      value={$character.burst + 1}
+      value={charBurstLvl}
       id="burst"
-      plusThree={burstPlusThree}
+      plusThree={$character.lvlBonus.burst > 0}
       on:increment={handleIncrement}
       on:decrement={handleDecrement}
     />

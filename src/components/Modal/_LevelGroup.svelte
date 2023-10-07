@@ -76,7 +76,7 @@
       disabled={value <= 0}
       class:bg-slate-600={value <= 0}
     >
-      <Minus class="h-3 w-3 fill-slate-300" />
+      <Minus class="pointer-events-none h-3 w-3 fill-slate-300" />
     </button>
     <div class="h-full w-[1px] bg-slate-500" />
     <button
@@ -85,7 +85,7 @@
       disabled={isDisabled}
       class:bg-slate-600={isDisabled}
     >
-      <Plus class="h-3 w-3 fill-slate-300" />
+      <Plus class="pointer-events-none h-3 w-3 fill-slate-300" />
     </button>
   </div>
 </div>
