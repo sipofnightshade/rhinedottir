@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 import { getArtifactStat } from '$lib/helpers/getArtifactStat';
 import type { SelectedArtifact, ArtifactType, ArtifactStats } from '$lib/types/artifacts';
 
-type Artifact = {
+export type Artifact = {
   selected: SelectedArtifact;
   lvl: number;
   isFiveStar: boolean;
