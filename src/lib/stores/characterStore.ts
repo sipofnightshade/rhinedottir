@@ -68,6 +68,11 @@ function createCharacter() {
         state.atk = 9;
         state.skill = 9;
         state.burst = 9;
+        state.lvlBonus = {
+          atk: 0,
+          skill: 0,
+          burst: 0
+        };
         return state;
       }),
     increment: (key: Adjustable) =>
