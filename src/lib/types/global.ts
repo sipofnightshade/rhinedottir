@@ -1,4 +1,4 @@
-import type { CharacterNames } from './characters';
+import type { CharacterNames, CharacterSpecificNames } from './characters';
 import type { WeaponNames } from './weapons';
 import type { Action, ActionValue, Regions, Target } from './actions';
 import type { Hit, OffField } from './talents';
@@ -88,6 +88,7 @@ export type WeaponSpecialized =
   | 'energy';
 
 export type CharacterRecord = {
+  id: CharacterSpecificNames;
   name: CharacterNames;
   fullName: string;
   region: Regions;

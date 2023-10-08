@@ -1,6 +1,7 @@
 import type { CharacterRecord } from '$lib/types/global';
 
 const charName: CharacterRecord = {
+  id: 'yoimiya',
   name: 'yoimiya',
   fullName: 'Yoimiya',
   rating: 5,
