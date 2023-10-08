@@ -2,10 +2,10 @@
   import Transition from 'svelte-transition';
   import { createPopover } from 'svelte-headlessui';
   import Chevron from '$lib/icons/Chevron.svelte';
-  import Paragraph from '../../Text/Paragraph.svelte';
+  import Paragraph from '../Text/Paragraph.svelte';
 
-  export let name: string;
-  export let effectDetails: string;
+  // export let name: string;
+  // export let effectDetails: string;
 
   const popover = createPopover({});
 </script>
@@ -15,13 +15,13 @@
     use:popover.button
     class="flex h-9 w-full items-center justify-between gap-2 rounded-md bg-slate-800 px-3 py-2 text-slate-300"
   >
-    <span class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left"
-      >{name}</span
-    >
+    <div class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left text-sm">
+      <slot name="title" />
+    </div>
     <Chevron
       class="h-3 fill-slate-300 transition-transform duration-300 {$popover.expanded
         ? ''
-        : 'rotate-180'}"
+        : '-rotate-180'}"
     />
   </button>
   <Transition
@@ -42,7 +42,9 @@
       <div
         class="w-full rounded-md border border-slate-500 bg-slate-800 p-2 px-3 py-2 text-left"
       >
-        <Paragraph>{effectDetails}</Paragraph>
+        <Paragraph>
+          <slot name="details" />
+        </Paragraph>
       </div>
     </div>
   </Transition>

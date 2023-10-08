@@ -11,7 +11,7 @@
   import { statValueFormatter } from '$lib/helpers/statFormatter';
 
   import { generateWeaponEffect } from '$lib/helpers/generateWeaponText';
-  import EffectDetails from './EffectDetails.svelte';
+  import EffectDetails from '../EffectDetails.svelte';
 
   // filter data
   const filters = ['atk', 'def', 'hp', 'em', 'crit', 'physical', 'energy'];
@@ -90,7 +90,10 @@
         />
       </div>
     </div>
-    <EffectDetails {effectDetails} name={$weapon.selected.effectname} />
+    <EffectDetails>
+      <span slot="title">{$weapon.selected.effectname}</span>
+      <span slot="details">{effectDetails} </span>
+    </EffectDetails>
   </div>
   <div class="h-full">
     <Filters selected={filter} {filters} on:filter={handleFilters} />

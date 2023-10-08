@@ -6,10 +6,13 @@
   import StarSelector from '../../Stars/StarSelector.svelte';
   import MainStat from './_MainStat.svelte';
   import { artifact } from '$lib/stores/artifactStore';
+  import { activeSets } from '$lib/stores/activeSetsStore';
 
   import { ArtifactData } from '$lib/data/Artifacts';
+  import EffectDetails from '../EffectDetails.svelte';
+  import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
 
-  export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
+  export let type: ArtifactType;
 
   const imgType = {
     flower: 'artifact/flower',
@@ -19,7 +22,6 @@
     circlet: 'artifact/circlet'
   };
 
-  let passive = false;
   let profile;
   let contentH;
 
@@ -47,6 +49,28 @@
   function handleInput(event: any) {
     artifact.setInput(type, event.detail.id, event.detail.value);
   }
+
+  function countArtifactSets(artifactSet: ArtifactNames) {
+    if (artifactSet === 'none') return 1;
+
+    const artifactTypes: ArtifactType[] = [
+      'flower',
+      'feather',
+      'sands',
+      'goblet',
+      'circlet'
+    ];
+
+    let count = 0;
+    for (const value of artifactTypes) {
+      if (artifactSet === $artifact[value].selected.name) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  $: artifactCount = countArtifactSets($artifact[type].selected.name);
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
@@ -71,26 +95,20 @@
         <MainStat {type} on:selected={handleMainstat} />
       </div>
     </div>
-    <button
-      on:click|stopPropagation={() => (passive = !passive)}
-      class="relative col-span-3 flex w-full items-center justify-between rounded-md bg-slate-800 px-3 py-2"
-    >
-      <div class="text-sm">
+    <EffectDetails>
+      <p slot="title">
         <span>{$artifact[type].selected.fullName}</span>
-        <span class:text-green-500={true}>(1/4)</span>
-      </div>
-      <img src="/images/ui/chevron_down.svg" alt="chevron down" />
-
-      {#if passive}
-        <div
-          class="absolute right-0 top-9 z-20 mt-1 w-full rounded-md bg-slate-800 p-2 px-3 py-2 text-left"
+        <span class="ml-1" class:text-green-400={artifactCount > 1}
+          >{`(${artifactCount}/4)`}</span
         >
-          {#each $artifact[type].selected.fourPiece as action}
-            <p>{action.description || ''}</p>
-          {/each}
-        </div>
-      {/if}
-    </button>
+      </p>
+      <div slot="details">
+        {#each $artifact[type].selected.fourPiece as action}
+          <p>{action.description || ''}</p>
+        {/each}
+      </div>
+    </EffectDetails>
+
     <div class="col-span-3 grid grid-cols-2 gap-2">
       <SubstatGroup
         {type}
