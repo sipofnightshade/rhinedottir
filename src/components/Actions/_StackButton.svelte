@@ -27,7 +27,7 @@
   export let currentStats: Index_Stats;
 
   const target = data.target ?? 'self';
-  const cName = getCharacterName(currentChar.selected);
+  const cName = currentChar.selected.id;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
