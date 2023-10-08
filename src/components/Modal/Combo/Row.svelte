@@ -13,6 +13,7 @@
   import Transition from 'svelte-transition';
   import Close from '$lib/icons/Close.svelte';
   import ComboTabs from './ComboTabs.svelte';
+  import { escape } from '$lib/actions/escape';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -66,9 +67,18 @@
   function handleEditButton() {
     deletable = !deletable;
   }
+
+  function handleEscapeClick() {
+    if (deletable) {
+      deletable = false;
+    }
+  }
 </script>
 
-<section class="group relative my-2 w-full border-b border-slate-700 pb-3">
+<section
+  use:escape={handleEscapeClick}
+  class="group relative my-2 w-full border-b border-slate-700 pb-3"
+>
   <div class="flex items-center justify-between gap-2">
     <RowHeading title={row.title} />
     <button
