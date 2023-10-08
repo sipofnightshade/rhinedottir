@@ -34,7 +34,8 @@
   const constellationReq = data.constellation ?? 0;
   const levelReq = data.level ?? 0;
 
-  $: isButtonMounted = currentChar.constellation >= constellationReq && true;
+  $: isButtonMounted =
+    currentChar.constellation >= constellationReq && currentChar.lvl >= levelReq;
 </script>
 
 {#if isButtonMounted}
