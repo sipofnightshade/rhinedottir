@@ -50,7 +50,7 @@ function createParty() {
         // character data
         const cName = loadout.character.selected;
         const cWeapon = loadout.character.weapon;
-        const cVision = loadout.character.vision;
+        const cID = loadout.character.id;
         const cLvl = loadout.character.lvl;
         // weapon data
         const wName = loadout.weapon.selected;
@@ -66,9 +66,7 @@ function createParty() {
         const character = {
           ...loadout.character,
           stats: GenshinStats.calcStatsForCharacter(cName, labels.lvlValues[cLvl]),
-          selected: characterData.find(
-            (data) => data.name === cName && data.vision === cVision
-          ) as CharacterRecord
+          selected: characterData.find((data) => data.id === cID) as CharacterRecord
         };
 
         // set weapon

@@ -27,6 +27,7 @@
         selected: $character.selected.name,
         weapon: $character.selected.weapon,
         vision: $character.selected.vision,
+        id: $character.selected.id,
         additionalStats: { ...allStats }
       },
       weapon: { ...$weapon, selected: $weapon.selected.name },
