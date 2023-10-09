@@ -2,7 +2,7 @@ import type { SavedArtifacts, SavedCharacter, SavedWeapon } from '$lib/types/loa
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-type Loadout = {
+export type LoadoutItem = {
   id: string;
   title: string;
   character: SavedCharacter;
@@ -10,9 +10,9 @@ type Loadout = {
   artifacts: SavedArtifacts;
 };
 
-const initialState: Loadout[] = [];
+const initialState: LoadoutItem[] = [];
 
-function createLoadouts(initial_value: Loadout[], init = true) {
+function createLoadouts(initial_value: LoadoutItem[], init = true) {
   // Load data from localStorage (if available)
   if (init) {
     const storedData = localStorage.getItem('loadouts');
@@ -24,13 +24,13 @@ function createLoadouts(initial_value: Loadout[], init = true) {
   return {
     subscribe,
     set,
-    addLoadout: (characterLoadout: Loadout) =>
+    addLoadout: (characterLoadout: LoadoutItem) =>
       update((state) => {
         state.push(characterLoadout);
         saveToLocalStorage(state);
         return state;
       }),
-    editLoadout: (id: string, updatedLoadout: Loadout) =>
+    editLoadout: (id: string, updatedLoadout: LoadoutItem) =>
       update((state) => {
         const index = state.findIndex((loadout) => loadout.id === id);
         if (index !== -1) {
