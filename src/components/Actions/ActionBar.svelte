@@ -21,7 +21,7 @@
 </script>
 
 <section
-  class="grid h-[76px] w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto rounded-xl bg-slate-700 p-2 pt-1"
+  class="grid h-20 w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto overflow-y-hidden rounded-xl bg-slate-700 p-2 pt-1"
   class:my-4={margin}
 >
   {#each $character.selected.actions as data (data.name)}
