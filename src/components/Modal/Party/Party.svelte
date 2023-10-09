@@ -35,14 +35,14 @@
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profileH} class="">
+  <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-4">
     <div class="w-full">Filters</div>
   </div>
   <div class="h-full">
     <div style="height:{contentH - profileH}px" class="overflow-y-auto">
       {#each $loadouts as item}
         {#if item.character.selected !== $character.selected.name}
-          <Loadout {item} {id} />
+          <Loadout {item} {id} /><br />
         {/if}
       {/each}
     </div>
