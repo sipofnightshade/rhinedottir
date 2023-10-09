@@ -55,7 +55,7 @@
 <section class="relative grid h-full max-h-40 w-full grid-flow-col gap-2 xl:gap-3">
   <!-- CHARACTER Button -->
   <button
-    class="relative h-[120px] w-[120px] rounded-xl border border-slate-500 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
+    class="relative h-[120px] w-[120px] rounded-xl border border-slate-600 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
@@ -94,8 +94,9 @@
     <div class="grid grid-flow-col gap-2 lg:gap-3">
       {#each menuModals as modal (modal.id)}
         <button
-          class="flex h-14 w-14 items-center justify-center rounded-xl bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
+          class="flex h-14 w-14 items-center justify-center rounded-xl border-slate-600 bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
           on:click={() => toggleModal(modal.component, 'Select a Teammate')}
+          class:border={$party[modal.id]}
         >
           {#if $party[modal.id]}
             <Thumbnail
