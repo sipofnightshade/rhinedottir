@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="h-full">
-    <div style="height:{contentH - profileH}px" class="overflow-y-scroll">
+    <div style="height:{contentH - profileH}px" class="overflow-y-auto">
       {#each $loadouts as item}
         {#if item.character.selected !== $character.selected.name}
           <button

@@ -5,6 +5,7 @@
   import { loadouts } from '$lib/stores/loadoutsStore';
   import ShortModal from '../Modal/ShortModal.svelte';
   import { allStats } from '$lib/data/Stats';
+  import { uid } from 'uid';
 
   /**
    * @todo
@@ -21,6 +22,7 @@
 
   function saveLoadout() {
     const newLoadout = {
+      id: uid(),
       title,
       character: {
         ...$character,

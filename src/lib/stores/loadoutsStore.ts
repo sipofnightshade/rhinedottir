@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 type Loadout = {
+  id: string;
   title: string;
   character: SavedCharacter;
   weapon: SavedWeapon;
@@ -29,9 +30,19 @@ function createLoadouts(initial_value: Loadout[], init = true) {
         saveToLocalStorage(state);
         return state;
       }),
-    removeLoadout: (index: number) =>
+    editLoadout: (id: string, updatedLoadout: Loadout) =>
       update((state) => {
-        if (index >= 0 && index < state.length) {
+        const index = state.findIndex((loadout) => loadout.id === id);
+        if (index !== -1) {
+          state[index] = updatedLoadout;
+          saveToLocalStorage(state);
+        }
+        return state;
+      }),
+    removeLoadout: (id: string) =>
+      update((state) => {
+        const index = state.findIndex((loadout) => loadout.id === id);
+        if (index !== -1) {
           state.splice(index, 1);
           saveToLocalStorage(state);
         }
