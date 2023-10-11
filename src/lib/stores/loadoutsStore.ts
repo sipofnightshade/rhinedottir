@@ -1,10 +1,16 @@
-import type { SavedArtifacts, SavedCharacter, SavedWeapon } from '$lib/types/loadout';
+import type {
+  LoadOutTag,
+  SavedArtifacts,
+  SavedCharacter,
+  SavedWeapon
+} from '$lib/types/loadout';
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 export type LoadoutItem = {
   id: string;
   title: string;
+  tag: LoadOutTag;
   character: SavedCharacter;
   weapon: SavedWeapon;
   artifacts: SavedArtifacts;

@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let role: 'DPS' | 'Sub DPS' | 'Shield' | 'Healer' | 'Support';
+  import type { LoadOutTag } from '$lib/types/loadout';
+
+  export let role: LoadOutTag;
 </script>
 
 <div

@@ -28,3 +28,5 @@ export type SavedArtifacts = {
   goblet: NewArtifact;
   circlet: NewArtifact;
 };
+
+export type LoadOutTag = 'DPS' | 'Sub DPS' | 'Shield' | 'Healer' | 'Support';
