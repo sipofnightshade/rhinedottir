@@ -31,7 +31,7 @@
 
 <button
   on:click={setPartyMember}
-  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-400 p-3"
+  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-500 p-3 transition-all hover:border-slate-400"
 >
   <!-- Title -->
   <div class="flex w-full items-center justify-between px-1">
@@ -51,19 +51,28 @@
       </span>
     </div>
     <div>
-      <span class="rounded-full bg-slate-800 px-2 py-1">
+      <span
+        class="rounded-full bg-slate-800 px-2 py-1"
+        class:text-green-500={item.character.lvlBonus.atk > 0}
+      >
         {item.character.atk + 1 + item.character.lvlBonus.atk}
       </span>
-      <span class="rounded-full bg-slate-800 px-2 py-1">
+      <span
+        class="rounded-full bg-slate-800 px-2 py-1"
+        class:text-green-500={item.character.lvlBonus.skill > 0}
+      >
         {item.character.skill + 1 + item.character.lvlBonus.skill}
       </span>
-      <span class="rounded-full bg-slate-800 px-2 py-1">
+      <span
+        class="rounded-full bg-slate-800 px-2 py-1"
+        class:text-green-500={item.character.lvlBonus.burst > 0}
+      >
         {item.character.burst + 1 + item.character.lvlBonus.burst}
       </span>
     </div>
 
     <div class="ml-auto">
-      <RoleTag role="Support" />
+      <RoleTag role={item.tag} />
     </div>
   </div>
   <!-- Images -->
