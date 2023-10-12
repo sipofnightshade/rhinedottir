@@ -12,14 +12,10 @@ import type { ArtifactState } from './artifactStore';
 import type { CurrentWeapon } from './weaponStore';
 import type { CharacterRecord, SelectedWeapon } from '$lib/types/global';
 import type { Artifact } from '$lib/types/artifacts';
-
-type Loadout = {
-  character: SavedCharacter;
-  artifacts: SavedArtifacts;
-  weapon: SavedWeapon;
-};
+import type { LoadoutItem } from './loadoutsStore';
 
 type PartyMember = {
+  loadoutID: string;
   character: CurrentCharacter;
   artifacts: ArtifactState;
   weapon: CurrentWeapon;
@@ -44,7 +40,7 @@ function createParty() {
     subscribe,
     setPartyMember: (
       id: 'one' | 'two' | 'three',
-      loadout: Loadout // Fix the type here
+      loadout: LoadoutItem // Fix the type here
     ) =>
       update((state) => {
         // character data
@@ -101,6 +97,7 @@ function createParty() {
         };
 
         state[id] = {
+          loadoutID: loadout.id,
           character,
           weapon,
           artifacts: {
@@ -119,6 +116,7 @@ function createParty() {
     removePartyMember: (id: 'one' | 'two' | 'three') =>
       update((state) => {
         state[id] = undefined;
+        console.log('removed party member:', id);
         return state;
       }),
 

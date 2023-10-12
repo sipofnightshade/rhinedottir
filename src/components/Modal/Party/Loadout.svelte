@@ -24,24 +24,48 @@
     'circlet'
   ];
 
-  function setPartyMember() {
-    party.setPartyMember(id, item);
+  function handleClick() {
+    if ($party[id]?.loadoutID === item.id) {
+      party.removePartyMember(id);
+      return;
+    } else {
+      party.setPartyMember(id, item);
+      removeDuplicateParty(item.character.id);
+      return;
+    }
   }
+
+  function removeDuplicateParty(selected: string) {
+    if (id !== 'one' && selected === $party.one?.character.selected.id) {
+      party.removePartyMember('one');
+    }
+
+    if (id !== 'two' && selected === $party.two?.character.selected.id) {
+      party.removePartyMember('two');
+    }
+
+    if (id !== 'three' && selected === $party.three?.character.selected.id) {
+      party.removePartyMember('three');
+    }
+  }
+
+  $: isActive = $party[id]?.loadoutID === item.id;
 </script>
 
 <button
-  on:click={setPartyMember}
-  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-500 p-3 transition-all hover:border-slate-400"
+  on:click={handleClick}
+  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-500 p-3 transition-all hover:border-slate-300"
+  class:bg-slate-950={isActive}
 >
   <!-- Title -->
-  <div class="flex w-full items-center justify-between px-1">
+  <div class="pointer-events-none flex w-full items-center justify-between px-1">
     <h3 class="text-left capitalize text-slate-300">{item.title}</h3>
-    <div>
+    {#if isActive}
       <Close class="h-3 w-3 fill-slate-300" />
-    </div>
+    {/if}
   </div>
   <!-- Tags -->
-  <div class="flex w-full items-center text-sm">
+  <div class="pointer-events-none flex w-full items-center text-sm">
     <div class="mr-4">
       <span class="w-fit rounded-full bg-slate-800 px-2.5 py-1">
         {labels.lvl[item.character.lvl]}
@@ -76,7 +100,7 @@
     </div>
   </div>
   <!-- Images -->
-  <div class="grid grid-cols-7 gap-1">
+  <div class="pointer-events-none grid grid-cols-7 gap-1">
     <Thumbnail
       img="/images/character/{item.character.selected}.webp"
       vision={item.character.vision}
