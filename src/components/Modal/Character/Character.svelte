@@ -18,6 +18,7 @@
   // types
   import type { SelectedWeapon } from '$lib/types/global';
   import type { SelectedCharacter } from '$lib/types/global';
+  import { party } from '$lib/stores/partyStore';
 
   // filter data
   const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
@@ -57,6 +58,20 @@
     previousCharacter = currentCharacter;
   }
 
+  function removeDuplicateCharacter(selected: string) {
+    if (selected === $party.one?.character.selected.id) {
+      party.removePartyMember('one');
+    }
+
+    if (selected === $party.two?.character.selected.id) {
+      party.removePartyMember('two');
+    }
+
+    if (selected === $party.three?.character.selected.id) {
+      party.removePartyMember('three');
+    }
+  }
+
   function handleFilters(event: any) {
     if (event.detail.selected === filter) {
       filter = '';
@@ -69,6 +84,8 @@
   $: filteredData = filter
     ? characterData.filter((item) => item.vision === filter)
     : characterData;
+
+  $: removeDuplicateCharacter($character.selected.id);
 
   $: charNormalLvl = $character.atk + $character.lvlBonus.atk + 1;
   $: charSkillLvl = $character.skill + $character.lvlBonus.skill + 1;
