@@ -8,13 +8,16 @@
   import type { LoadoutItem } from '$lib/stores/loadoutsStore';
   import type { ArtifactType } from '$lib/types/artifacts';
 
-  // stores
+  // stores & actions
   import { loadouts } from '$lib/stores/loadoutsStore';
   import { party } from '$lib/stores/partyStore';
+  import { longpress } from '$lib/actions/longpress';
 
   // props
   export let id: 'one' | 'two' | 'three';
   export let item: LoadoutItem;
+
+  let deletable = false;
 
   const artifactTypes: ArtifactType[] = [
     'flower',
@@ -49,13 +52,28 @@
     }
   }
 
+  function handleLongPress() {
+    deletable = !deletable;
+  }
+
+  function handleDelete() {
+    if (deletable) {
+      loadouts.removeLoadout(item.id);
+    }
+  }
+
   $: isActive = $party[id]?.loadoutID === item.id;
 </script>
 
 <button
   on:click={handleClick}
-  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-500 p-3 transition-all hover:border-slate-300"
+  on:longpress={handleLongPress}
+  use:longpress={500}
+  class="flex w-full flex-col gap-y-2 rounded-lg border border-slate-600 p-3 transition-all"
   class:bg-slate-950={isActive}
+  class:opacity-50={deletable}
+  class:hover:border-slate-300={!deletable}
+  disabled={deletable}
 >
   <!-- Title -->
   <div class="pointer-events-none flex w-full items-center justify-between px-1">
@@ -119,3 +137,14 @@
     {/each}
   </div>
 </button>
+{#if deletable}
+  <div class="mt-1 flex justify-between gap-2">
+    <button
+      class="w-full rounded-md border border-slate-500 p-2"
+      on:click={() => (deletable = false)}>Cancel</button
+    >
+    <button class="w-full rounded-md bg-red-700 p-2" on:click={handleDelete}
+      >Delete</button
+    >
+  </div>
+{/if}
