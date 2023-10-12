@@ -13,7 +13,7 @@ const charName: CharacterRecord = {
   c5: 'burst',
   burstCost: 40,
   talentNames: {
-    normal: 'Normal Attack: Favonius Bladework - Weiss',
+    normal: 'Favonius Bladework - Weiss',
     skill: 'Abiogenesis: Solar Isotoma',
     burst: 'Rite of Progeniture: Tectonic Tide'
   },

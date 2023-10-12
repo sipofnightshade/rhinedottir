@@ -13,7 +13,7 @@ const charName: CharacterRecord = {
   c5: 'burst',
   burstCost: 80,
   talentNames: {
-    normal: 'Normal Attack: Abductive Reasoning',
+    normal: 'Abductive Reasoning',
     skill: 'Universality: An Elaboration on Form',
     burst: 'Particular Field: Fetters of Phenomena'
   },

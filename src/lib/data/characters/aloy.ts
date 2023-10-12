@@ -13,7 +13,7 @@ const charName: CharacterRecord = {
   c5: undefined,
   burstCost: 80,
   talentNames: {
-    normal: 'Normal Attack: Rapid Fire',
+    normal: 'Rapid Fire',
     skill: 'Frozen Wilds',
     burst: 'Prophecies of Dawn'
   },
