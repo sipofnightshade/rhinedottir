@@ -2,6 +2,8 @@ import { writable } from 'svelte/store';
 // import { labels } from '$lib/data/Levels';
 import { getArtifactStat } from '$lib/helpers/getArtifactStat';
 import type { SelectedArtifact, ArtifactType, ArtifactStats } from '$lib/types/artifacts';
+import type { SavedArtifacts } from '$lib/types/loadout';
+import { ArtifactData } from '$lib/data/Artifacts';
 
 export type Artifact = {
   selected: SelectedArtifact;
@@ -182,7 +184,28 @@ function createArtifact() {
         }
         return state;
       }),
+    importArtifacts: (savedArtifacts: SavedArtifacts) =>
+      update((state) => {
+        const categories: ArtifactType[] = [
+          'flower',
+          'feather',
+          'sands',
+          'goblet',
+          'circlet'
+        ];
 
+        categories.forEach((artifact) => {
+          state[artifact].selected = ArtifactData.find(
+            (data) => data.name === savedArtifacts[artifact].selected
+          ) as SelectedArtifact;
+          state[artifact].isFiveStar = savedArtifacts[artifact].isFiveStar;
+          state[artifact].lvl = savedArtifacts[artifact].lvl;
+          state[artifact].mainStat = { ...savedArtifacts[artifact].mainStat };
+          state[artifact].substats = [...savedArtifacts[artifact].substats];
+        });
+
+        return state;
+      }),
     increment: (relic: ArtifactType) =>
       update((state) => {
         if (state[relic].isFiveStar && state[relic].lvl < 20) {

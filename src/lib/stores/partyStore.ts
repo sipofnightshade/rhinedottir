@@ -109,8 +109,6 @@ function createParty() {
           }
         };
 
-        console.log(state[id]);
-
         return state;
       }),
     removePartyMember: (id: 'one' | 'two' | 'three') =>

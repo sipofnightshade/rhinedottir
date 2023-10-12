@@ -4,6 +4,8 @@ import { labels } from '$lib/data/Levels';
 import type { CharacterRecord } from '$lib/types/global';
 import traveleranemo from '$lib/data/characters/traveleranemo';
 import { allStats, type All_Stats } from '$lib/data/Stats';
+import type { SavedCharacter } from '$lib/types/loadout';
+import { characterData } from '$lib/data/characters';
 
 export type Adjustable = 'lvl' | 'constellation' | 'atk' | 'skill' | 'burst';
 
@@ -73,6 +75,32 @@ function createCharacter() {
           skill: 0,
           burst: 0
         };
+        return state;
+      }),
+    importChar: (savedCharacter: SavedCharacter) =>
+      update((state) => {
+        state.selected = characterData.find(
+          (character) => character.id === savedCharacter.id
+        ) as CharacterRecord;
+        state.lvl = savedCharacter.lvl;
+        state.constellation = savedCharacter.constellation;
+        state.additionalStats = { ...allStats };
+        state.atk = savedCharacter.atk;
+        state.skill = savedCharacter.skill;
+        state.burst = savedCharacter.burst;
+
+        // get accurate constellation lvl bonuses
+        if (state.constellation >= 3 && state.selected.c3)
+          state.lvlBonus[state.selected.c3] += 3;
+        if (state.constellation >= 5 && state.selected.c5)
+          state.lvlBonus[state.selected.c5] += 3;
+
+        // calculate character stats using the new state that was set above
+        state.stats = GenshinStats.calcStatsForCharacter(
+          state.selected.name,
+          labels.lvlValues[state.lvl]
+        );
+
         return state;
       }),
     increment: (key: Adjustable) =>

@@ -1,7 +1,9 @@
 import { writable } from 'svelte/store';
 import GenshinStats from '$lib/helpers/genshinStatsAll';
 import { labels } from '$lib/data/Levels';
-import type { SelectedWeapon } from '$lib/types/global';
+import type { SelectedWeapon, WeaponCategory } from '$lib/types/global';
+import type { SavedWeapon } from '$lib/types/loadout';
+import { WeaponData } from '$lib/data/Weapons';
 
 type Adjustable = 'lvl' | 'refinement';
 
@@ -72,6 +74,21 @@ function createWeapon() {
     setWeapon: (selected: SelectedWeapon) =>
       update((state) => {
         state.selected = selected;
+        state.stats = GenshinStats.calcStatsForWeapon(
+          state.selected.name,
+          labels.lvlValues[state.lvl]
+        );
+        return state;
+      }),
+    importWeapon: (savedWeapon: SavedWeapon, weaponType: WeaponCategory) =>
+      update((state) => {
+        state.selected = WeaponData[weaponType].find(
+          (weapon) => weapon.name === savedWeapon.selected
+        ) as SelectedWeapon;
+        state.lvl = savedWeapon.lvl;
+        state.refinement = savedWeapon.refinement;
+
+        // calculate weapon stats using the new state that was set above
         state.stats = GenshinStats.calcStatsForWeapon(
           state.selected.name,
           labels.lvlValues[state.lvl]
