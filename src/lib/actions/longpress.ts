@@ -7,9 +7,8 @@ type LongPressAction = Action<HTMLElement, number, Attributes>;
 
 export const longpress: LongPressAction = (node, threshold = 500) => {
   const handle_pointerdown = () => {
-    let start = Date.now();
-
     const longpressEvent = new CustomEvent('longpress');
+
     const timeout = setTimeout(() => {
       node.dispatchEvent(longpressEvent);
     }, threshold);
