@@ -8,6 +8,7 @@
 
   import { clickOutside } from '$lib/helpers/clickOutside';
   import SaveLoadout from '../Loadout/SaveLoadout.svelte';
+  import SetLoadout from '../Loadout/SetLoadout.svelte';
 
   interface MenuItem {
     id: string;
@@ -60,11 +61,15 @@
 <div class="relative" use:clickOutside={closeMenu}>
   <!-- Top Menu -->
   <nav
-    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-3 md:flex"
+    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-2 md:flex"
   >
-    <SaveLoadout />
+    <div class="flex gap-3 rounded-full bg-slate-700 p-1">
+      <SaveLoadout />
+      <SetLoadout />
+    </div>
+
     <p>Rhinedottir</p>
-    <div class="flex items-center space-x-6">
+    <div class=" flex items-center space-x-6">
       <!-- <button on:click={() => handleMenu(menuItems[0])}>Updates</button> -->
       <!-- <button on:click={() => handleMenu(menuItems[1])}>Builds</button> -->
       <!-- <button on:click={() => handleMenu(menuItems[3])}>Artifacts</button> -->

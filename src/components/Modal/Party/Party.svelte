@@ -1,10 +1,9 @@
 <script lang="ts">
   // components
-  import Loadout from './Loadout.svelte';
+  import PartyLoadout from './PartyLoadout.svelte';
 
   // stores
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import { party } from '$lib/stores/partyStore';
   import { character } from '$lib/stores/characterStore';
 
   // props
@@ -20,10 +19,13 @@
     <div class="w-full">Filters</div>
   </div>
   <div class="h-full">
-    <div style="height:{contentH - profileH}px" class="overflow-y-auto">
+    <div
+      style="height:{contentH - profileH}px"
+      class="flex flex-col gap-y-4 overflow-y-auto"
+    >
       {#each $loadouts as item (item.id)}
         {#if item.character.id !== $character.selected.id}
-          <Loadout {item} {id} /><br />
+          <PartyLoadout {item} {id} />
         {/if}
       {/each}
     </div>
