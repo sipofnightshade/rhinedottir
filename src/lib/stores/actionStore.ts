@@ -32,6 +32,7 @@ const initialState: State = {
 };
 
 const idList = ['main', 'one', 'two', 'three'];
+const isValidNumber = (value: number) => !isNaN(value) && isFinite(value);
 
 export type ActionId = keyof typeof initialState;
 
@@ -42,11 +43,14 @@ function createAction() {
     subscribe,
     addStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        console.log(`%cadd to ${target} | ${scaling} ${coef}`, 'color: #34eb46');
+        // if (Number.isNaN(coef)) {
+        //   console.log(`%cadd to ${target} | ${scaling} ${coef}`, 'color: #34eb46');
+        // }
 
         const addStatValue = (id: ActionId, scaling: string, value: number) => {
           if (!state[id][scaling]) state[id][scaling] = 0;
-          state[id][scaling] += value;
+          const newValue = state[id][scaling] + value;
+          state[id][scaling] = isValidNumber(newValue) ? newValue : 0;
         };
 
         switch (target) {
@@ -101,11 +105,14 @@ function createAction() {
       }),
     removeStat: (id: ActionId, target: Target, scaling: string, coef: number) =>
       update((state) => {
-        console.log(`%crm from ${target} | ${scaling} ${coef}`, 'color: #eb3455');
+        // if (Number.isNaN(coef)) {
+        //   console.log(`%crm from ${target} | ${scaling} ${coef}`, 'color: #eb3455');
+        // }
 
         const removeStatValue = (id: ActionId, scaling: string, value: number) => {
           if (state[id][scaling]) {
-            state[id][scaling] -= value;
+            const newValue = state[id][scaling] - value;
+            state[id][scaling] = isValidNumber(newValue) ? newValue : 0;
           }
         };
 
