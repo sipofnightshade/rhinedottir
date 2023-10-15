@@ -91,9 +91,9 @@ function createCharacter() {
 
         // get accurate constellation lvl bonuses
         if (state.constellation >= 3 && state.selected.c3)
-          state.lvlBonus[state.selected.c3] += 3;
+          state.lvlBonus[state.selected.c3] = savedCharacter.lvlBonus[state.selected.c3];
         if (state.constellation >= 5 && state.selected.c5)
-          state.lvlBonus[state.selected.c5] += 3;
+          state.lvlBonus[state.selected.c5] = savedCharacter.lvlBonus[state.selected.c5];
 
         // calculate character stats using the new state that was set above
         state.stats = GenshinStats.calcStatsForCharacter(
