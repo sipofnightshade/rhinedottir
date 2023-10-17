@@ -1,6 +1,10 @@
 import type { SelectedWeapon } from '$lib/types/global';
 
-export const polearm: SelectedWeapon[] = [
+type Polearms = SelectedWeapon & {
+  type: 'polearm';
+};
+
+export const polearm: Polearms[] = [
   {
     name: 'blackcliffpole',
     fullName: 'Blackcliff Pole',
@@ -400,6 +404,50 @@ export const polearm: SelectedWeapon[] = [
     effect:
       'After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {0} ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field.',
     ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
+  },
+  {
+    name: 'prospectorsdrill',
+    fullName: "Prospector's Drill",
+    rating: 4,
+    type: 'polearm',
+    specialized: 'atk%',
+    effectname: "Masons' Ditty",
+    action: [
+      {
+        actionType: 'stack',
+        values: [
+          [
+            { scaling: 'normal', coef: [0.03, 0.03, 0.03] },
+            { scaling: 'dmgIncreaseElemental', coef: [0.07, 0.07, 0.07] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.04, 0.04, 0.04] },
+            { scaling: 'dmgIncreaseElemental', coef: [0.085, 0.085, 0.085] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.05, 0.05, 0.05] },
+            { scaling: 'dmgIncreaseElemental', coef: [0.1, 0.1, 0.1] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.06, 0.06, 0.06] },
+            { scaling: 'dmgIncreaseElemental', coef: [0.115, 0.115, 0.115] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.07, 0.07, 0.07] },
+            { scaling: 'dmgIncreaseElemental', coef: [0.13, 0.13, 0.13] }
+          ]
+        ]
+      }
+    ],
+    effect:
+      "When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain {0} ATK and {1} All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.",
+    ref: [
+      ['3%', '7%'],
+      ['4%', '8.5%'],
+      ['5%', '10%'],
+      ['6%', '11.5%'],
+      ['7%', '13%']
+    ]
   },
   {
     name: 'primordialjadewingedspear',

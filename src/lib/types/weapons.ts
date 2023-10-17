@@ -155,4 +155,9 @@ export type WeaponNames =
   | 'talkingstick'
   | 'fleuvecendreferryman'
   | 'wolffang'
-  | 'finaleofthedeep';
+  | 'finaleofthedeep'
+  | 'thedockhandsassistant'
+  | 'prospectorsdrill'
+  | 'portablepowersaw'
+  | 'balladoftheboundlessblue'
+  | 'rangegauge';

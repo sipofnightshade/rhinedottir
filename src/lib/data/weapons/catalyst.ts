@@ -1,6 +1,10 @@
 import type { SelectedWeapon } from '$lib/types/global';
 
-export const catalyst: SelectedWeapon[] = [
+type Cayalysts = SelectedWeapon & {
+  type: 'catalyst';
+};
+
+export const catalyst: Cayalysts[] = [
   {
     name: 'athousandfloatingdreams',
     fullName: 'A Thousand Floating Dreams',
@@ -51,6 +55,50 @@ export const catalyst: SelectedWeapon[] = [
       ['48', '18%', '44'],
       ['56', '22%', '46'],
       ['64', '26%', '48']
+    ]
+  },
+  {
+    name: 'balladoftheboundlessblue',
+    fullName: 'Ballad of the Boundless Blue',
+    rating: 4,
+    type: 'catalyst',
+    specialized: 'energy',
+    effectname: 'Azure Skies',
+    action: [
+      {
+        actionType: 'stack',
+        values: [
+          [
+            { scaling: 'normal', coef: [0.08, 0.08, 0.08] },
+            { scaling: 'charged', coef: [0.06, 0.06, 0.06] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.1, 0.1, 0.1] },
+            { scaling: 'charged', coef: [0.075, 0.075, 0.075] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.12, 0.12, 0.12] },
+            { scaling: 'charged', coef: [0.09, 0.09, 0.09] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.14, 0.14, 0.14] },
+            { scaling: 'charged', coef: [0.105, 0.105, 0.105] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.16, 0.16, 0.16] },
+            { scaling: 'charged', coef: [0.12, 0.12, 0.12] }
+          ]
+        ]
+      }
+    ],
+    effect:
+      'Within 6s after Normal or Charged Attacks hit an opponent, Normal Attack DMG will be increased by {0} and Charged Attack DMG will be increased by {1}. Max 3 stacks. This effect can be triggered once every 0.3s.',
+    ref: [
+      ['8%', '6%'],
+      ['10%', '7.5%'],
+      ['12%', '9%'],
+      ['14%', '10.5%'],
+      ['16%', '12%']
     ]
   },
   {

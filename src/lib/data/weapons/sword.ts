@@ -1,6 +1,10 @@
 import type { SelectedWeapon } from '$lib/types/global';
 
-export const sword: SelectedWeapon[] = [
+type Swords = SelectedWeapon & {
+  type: 'sword';
+};
+
+export const sword: Swords[] = [
   {
     name: 'amenomakageuchi',
     fullName: 'Amenoma Kageuchi',
@@ -954,6 +958,35 @@ export const sword: SelectedWeapon[] = [
       ['30%', '80%'],
       ['35%', '90%'],
       ['40%', '100%']
+    ]
+  },
+  {
+    name: 'thedockhandsassistant',
+    fullName: "The Dockhand's Assistant",
+    rating: 4,
+    type: 'sword',
+    specialized: 'hp%',
+    effectname: 'Sea Shanty',
+    action: [
+      {
+        actionType: 'stack',
+        values: [
+          [{ scaling: 'em', coef: [40, 40, 40] }],
+          [{ scaling: 'em', coef: [50, 50, 50] }],
+          [{ scaling: 'em', coef: [60, 60, 60] }],
+          [{ scaling: 'em', coef: [70, 70, 70] }],
+          [{ scaling: 'em', coef: [80, 80, 80] }]
+        ]
+      }
+    ],
+    effect:
+      "When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain {0} Elemental Mastery, and 2s after the effect occurs, {1} Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.",
+    ref: [
+      ['40', '2'],
+      ['50', '2.5'],
+      ['60', '3'],
+      ['70', '3.5'],
+      ['80', '4']
     ]
   },
   {
