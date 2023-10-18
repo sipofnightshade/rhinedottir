@@ -5,6 +5,7 @@
 
   //stores
   import { loadouts } from '$lib/stores/loadoutsStore';
+  import EnkaImport from './EnkaImport.svelte';
 
   let dialog: HTMLDialogElement;
   let profileH;
@@ -13,8 +14,6 @@
   function toggleModal() {
     dialog.showModal();
   }
-
-  // loads the current loadout data into the application
 </script>
 
 <button
@@ -35,6 +34,7 @@
 <Modal bind:dialog title="Select a loadout">
   <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
     <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-4">
+      <EnkaImport />
       <div class="w-full">Filters</div>
     </div>
     <div class="h-full">
