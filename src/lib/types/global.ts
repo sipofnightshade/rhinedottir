@@ -88,6 +88,7 @@ export type WeaponSpecialized =
   | 'energy';
 
 export type CharacterRecord = {
+  uid: number;
   id: CharacterSpecificNames;
   name: CharacterNames;
   fullName: string;
