@@ -7,6 +7,7 @@ import type { All_Stats } from '$lib/data/Stats';
 export type SelectedCharacter = CharacterRecord;
 
 export type SelectedWeapon = {
+  uid: number;
   name: WeaponNames;
   fullName: string;
   rating: 5 | 4 | 3;

@@ -6,6 +6,7 @@ type Claymores = SelectedWeapon & {
 
 export const claymore: Claymores[] = [
   {
+    uid: 12416,
     name: 'akuoumaru',
     fullName: 'Akuoumaru',
     rating: 4,
@@ -39,6 +40,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12511,
     name: 'beaconofthereedsea',
     fullName: 'Beacon of the Reed Sea',
     rating: 5,
@@ -80,6 +82,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12408,
     name: 'blackcliffslasher',
     fullName: 'Blackcliff Slasher',
     rating: 4,
@@ -104,6 +107,7 @@ export const claymore: Claymores[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 12302,
     name: 'bloodtaintedgreatsword',
     fullName: 'Bloodtainted Greatsword',
     rating: 3,
@@ -141,6 +145,7 @@ export const claymore: Claymores[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 12305,
     name: 'debateclub',
     fullName: 'Debate Club',
     rating: 3,
@@ -152,6 +157,7 @@ export const claymore: Claymores[] = [
     ref: [['60%'], ['75%'], ['90%'], ['105%'], ['120%']]
   },
   {
+    uid: 12401,
     name: 'favoniusgreatsword',
     fullName: 'Favonius Greatsword',
     rating: 4,
@@ -169,6 +175,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12301,
     name: 'ferrousshadow',
     fullName: 'Ferrous Shadow',
     rating: 3,
@@ -198,6 +205,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12417,
     name: 'forestregalia',
     fullName: 'Forest Regalia',
     rating: 4,
@@ -221,6 +229,7 @@ export const claymore: Claymores[] = [
     ref: [['60'], ['75'], ['90'], ['105'], ['120']]
   },
   {
+    uid: 12414,
     name: 'katsuragikirinagamasa',
     fullName: 'Katsuragikiri Nagamasa',
     rating: 4,
@@ -250,6 +259,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12410,
     name: 'lithicblade',
     fullName: 'Lithic Blade',
     rating: 4,
@@ -295,6 +305,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12412,
     name: 'luxurioussealord',
     fullName: 'Luxurious Sea-Lord',
     rating: 4,
@@ -324,6 +335,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12418,
     name: 'mailedflower',
     fullName: 'Mailed Flower',
     rating: 4,
@@ -368,6 +380,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12415,
     name: 'makhairaaquamarine',
     fullName: 'Makhaira Aquamarine',
     rating: 4,
@@ -406,6 +419,7 @@ export const claymore: Claymores[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 12427,
     name: 'portablepowersaw',
     fullName: 'Portable Power Saw',
     rating: 4,
@@ -435,6 +449,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12406,
     name: 'prototypearchaic',
     fullName: 'Prototype Archaic',
     rating: 4,
@@ -446,6 +461,7 @@ export const claymore: Claymores[] = [
     ref: [['240%'], ['300%'], ['360%'], ['420%'], ['480%']]
   },
   {
+    uid: 12405,
     name: 'rainslasher',
     fullName: 'Rainslasher',
     rating: 4,
@@ -483,6 +499,7 @@ export const claymore: Claymores[] = [
     ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
   },
   {
+    uid: 12510,
     name: 'redhornstonethresher',
     fullName: 'Redhorn Stonethresher',
     rating: 5,
@@ -534,6 +551,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12404,
     name: 'royalgreatsword',
     fullName: 'Royal Greatsword',
     rating: 4,
@@ -557,6 +575,7 @@ export const claymore: Claymores[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 12403,
     name: 'sacrificialgreatsword',
     fullName: 'Sacrificial Greatsword',
     rating: 4,
@@ -574,6 +593,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12409,
     name: 'serpentspine',
     fullName: 'Serpent Spine',
     rating: 4,
@@ -604,6 +624,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12306,
     name: 'skyridergreatsword',
     fullName: 'Skyrider Greatsword',
     rating: 3,
@@ -627,6 +648,7 @@ export const claymore: Claymores[] = [
     ref: [['6%'], ['7%'], ['8%'], ['9%'], ['10%']]
   },
   {
+    uid: 12501,
     name: 'skywardpride',
     fullName: 'Skyward Pride',
     rating: 5,
@@ -656,6 +678,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12411,
     name: 'snowtombedstarsilver',
     fullName: 'Snow-Tombed Starsilver',
     rating: 4,
@@ -673,6 +696,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12503,
     name: 'songofbrokenpines',
     fullName: 'Song of Broken Pines',
     rating: 5,
@@ -728,6 +752,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12424,
     name: 'talkingstick',
     fullName: 'Talking Stick',
     rating: 4,
@@ -772,6 +797,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12402,
     name: 'thebell',
     fullName: 'The Bell',
     rating: 4,
@@ -802,6 +828,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12504,
     name: 'theunforged',
     fullName: 'The Unforged',
     rating: 5,
@@ -841,6 +868,7 @@ export const claymore: Claymores[] = [
     ]
   },
   {
+    uid: 12425,
     name: 'tidalshadow',
     fullName: 'Tidal Shadow',
     rating: 4,
@@ -864,6 +892,7 @@ export const claymore: Claymores[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 12407,
     name: 'whiteblind',
     fullName: 'Whiteblind',
     rating: 4,
@@ -902,6 +931,7 @@ export const claymore: Claymores[] = [
     ref: [['6%'], ['7.5%'], ['9%'], ['10.5%'], ['12%']]
   },
   {
+    uid: 12303,
     name: 'whiteirongreatsword',
     fullName: 'White Iron Greatsword',
     rating: 3,
@@ -912,6 +942,7 @@ export const claymore: Claymores[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 12502,
     name: 'wolfsgravestone',
     fullName: "Wolf's Gravestone",
     rating: 5,

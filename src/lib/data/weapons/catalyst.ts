@@ -6,6 +6,7 @@ type Cayalysts = SelectedWeapon & {
 
 export const catalyst: Cayalysts[] = [
   {
+    uid: 14511,
     name: 'athousandfloatingdreams',
     fullName: 'A Thousand Floating Dreams',
     rating: 5,
@@ -58,6 +59,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14426,
     name: 'balladoftheboundlessblue',
     fullName: 'Ballad of the Boundless Blue',
     rating: 4,
@@ -102,6 +104,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14408,
     name: 'blackcliffagate',
     fullName: 'Blackcliff Agate',
     rating: 4,
@@ -125,6 +128,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 14413,
     name: 'dodocotales',
     fullName: 'Dodoco Tales',
     rating: 4,
@@ -169,6 +173,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14304,
     name: 'emeraldorb',
     fullName: 'Emerald Orb',
     rating: 3,
@@ -192,6 +197,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
   },
   {
+    uid: 14506,
     name: 'everlastingmoonglow',
     fullName: 'Everlasting Moonglow',
     rating: 5,
@@ -237,6 +243,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14409,
     name: 'eyeofperception',
     fullName: 'Eye of Perception',
     rating: 4,
@@ -254,6 +261,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14401,
     name: 'favoniuscodex',
     fullName: 'Favonius Codex',
     rating: 4,
@@ -271,6 +279,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14425,
     name: 'flowingpurity',
     fullName: 'Flowing Purity',
     rating: 4,
@@ -340,6 +349,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14412,
     name: 'frostbearer',
     fullName: 'Frostbearer',
     rating: 4,
@@ -357,6 +367,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14417,
     name: 'fruitoffulfillment',
     fullName: 'Fruit of Fulfillment',
     rating: 4,
@@ -395,6 +406,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['24'], ['27'], ['30'], ['33'], ['36']]
   },
   {
+    uid: 14414,
     name: 'hakushinring',
     fullName: 'Hakushin Ring',
     rating: 4,
@@ -420,6 +432,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['10%'], ['12.5%'], ['15%'], ['17.5%'], ['20%']]
   },
   {
+    uid: 14505,
     name: 'jadefallssplendor',
     fullName: "Jadefall's Splendor",
     rating: 5,
@@ -480,6 +493,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14509,
     name: 'kagurasverity',
     fullName: "Kagura's Verity",
     rating: 5,
@@ -524,6 +538,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14502,
     name: 'lostprayertothesacredwinds',
     fullName: 'Lost Prayer to the Sacred Winds',
     rating: 5,
@@ -557,6 +572,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 14301,
     name: 'magicguide',
     fullName: 'Magic Guide',
     rating: 3,
@@ -594,6 +610,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 14407,
     name: 'mappamare',
     fullName: 'Mappa Mare',
     rating: 4,
@@ -617,6 +634,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 14504,
     name: 'memoryofdust',
     fullName: 'Memory of Dust',
     rating: 5,
@@ -656,6 +674,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14415,
     name: 'oathsworneye',
     fullName: 'Oathsworn Eye',
     rating: 4,
@@ -678,6 +697,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 14303,
     name: 'otherworldlystory',
     fullName: 'Otherworldly Story',
     rating: 3,
@@ -688,6 +708,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
   },
   {
+    uid: 14406,
     name: 'prototypeamber',
     fullName: 'Prototype Amber',
     rating: 4,
@@ -705,6 +726,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14404,
     name: 'royalgrimoire',
     fullName: 'Royal Grimoire',
     rating: 4,
@@ -728,6 +750,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 14403,
     name: 'sacrificialfragments',
     fullName: 'Sacrificial Fragments',
     rating: 4,
@@ -745,6 +768,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14424,
     name: 'sacrificialjade',
     fullName: 'Sacrificial Jade',
     rating: 4,
@@ -789,6 +813,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14501,
     name: 'skywardatlas',
     fullName: 'Skyward Atlas',
     rating: 5,
@@ -818,6 +843,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14405,
     name: 'solarpearl',
     fullName: 'Solar Pearl',
     rating: 4,
@@ -867,6 +893,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14402,
     name: 'thewidsith',
     fullName: 'The Widsith',
     rating: 4,
@@ -916,6 +943,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14302,
     name: 'thrillingtalesofdragonslayers',
     fullName: 'Thrilling Tales of Dragon Slayers',
     rating: 3,
@@ -939,6 +967,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 14512,
     name: 'tulaytullahsremembrance',
     fullName: "Tulaytullah's Remembrance",
     rating: 5,
@@ -978,6 +1007,7 @@ export const catalyst: Cayalysts[] = [
     ]
   },
   {
+    uid: 14305,
     name: 'twinnephrite',
     fullName: 'Twin Nephrite',
     rating: 3,
@@ -1015,6 +1045,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['12%'], ['14%'], ['16%'], ['18%'], ['20%']]
   },
   {
+    uid: 14416,
     name: 'wanderingevenstar',
     fullName: 'Wandering Evenstar',
     rating: 4,
@@ -1053,6 +1084,7 @@ export const catalyst: Cayalysts[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 14410,
     name: 'wineandsong',
     fullName: 'Wine and Song',
     rating: 4,

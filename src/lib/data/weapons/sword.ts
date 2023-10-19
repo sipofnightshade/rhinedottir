@@ -6,6 +6,7 @@ type Swords = SelectedWeapon & {
 
 export const sword: Swords[] = [
   {
+    uid: 11414,
     name: 'amenomakageuchi',
     fullName: 'Amenoma Kageuchi',
     rating: 4,
@@ -17,6 +18,7 @@ export const sword: Swords[] = [
     ref: [['6'], ['7.5'], ['9'], ['10.5'], ['12']]
   },
   {
+    uid: 11501,
     name: 'aquilafavonia',
     fullName: 'Aquila Favonia',
     rating: 5,
@@ -46,6 +48,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11408,
     name: 'blackclifflongsword',
     fullName: 'Blackcliff Longsword',
     rating: 4,
@@ -69,6 +72,7 @@ export const sword: Swords[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 11415,
     name: 'cinnabarspindle',
     fullName: 'Cinnabar Spindle',
     rating: 4,
@@ -93,6 +97,7 @@ export const sword: Swords[] = [
     ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
   },
   {
+    uid: 11301,
     name: 'coolsteel',
     fullName: 'Cool Steel',
     rating: 3,
@@ -130,6 +135,7 @@ export const sword: Swords[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 11304,
     name: 'darkironsword',
     fullName: 'Dark Iron Sword',
     rating: 3,
@@ -153,6 +159,7 @@ export const sword: Swords[] = [
     ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
   },
   {
+    uid: 11401,
     name: 'favoniussword',
     fullName: 'Favonius Sword',
     rating: 4,
@@ -170,6 +177,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11413,
     name: 'festeringdesire',
     fullName: 'Festering Desire',
     rating: 4,
@@ -213,6 +221,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11425,
     name: 'finaleofthedeep',
     fullName: 'Finale of the Deep',
     rating: 4,
@@ -252,6 +261,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11426,
     name: 'fleuvecendreferryman',
     fullName: 'Fleuve Cendre Ferryman',
     rating: 4,
@@ -291,6 +301,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11305,
     name: 'filletblade',
     fullName: 'Fillet Blade',
     rating: 3,
@@ -308,6 +319,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11503,
     name: 'freedomsworn',
     fullName: 'Freedom-Sworn',
     rating: 5,
@@ -373,6 +385,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11510,
     name: 'harangeppakufutsu',
     fullName: 'Haran Geppaku Futsu',
     rating: 5,
@@ -412,6 +425,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11302,
     name: 'harbingerofdawn',
     fullName: 'Harbinger of Dawn',
     rating: 3,
@@ -434,6 +448,7 @@ export const sword: Swords[] = [
     ref: [['14%'], ['17.5%'], ['21%'], ['24.5%'], ['28%']]
   },
   {
+    uid: 11407,
     name: 'ironsting',
     fullName: 'Iron Sting',
     rating: 4,
@@ -457,6 +472,7 @@ export const sword: Swords[] = [
     ref: [['6%'], ['7.5%'], ['9%'], ['10.5%'], ['12%']]
   },
   {
+    uid: 11416,
     name: 'kagotsurubeisshin',
     fullName: 'Kagotsurube Isshin',
     rating: 4,
@@ -468,6 +484,7 @@ export const sword: Swords[] = [
     ref: [[], [], [], [], []]
   },
   {
+    uid: 11511,
     name: 'keyofkhajnisut',
     fullName: 'Key of Khaj-Nisut',
     rating: 5,
@@ -520,6 +537,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11512,
     name: 'lightoffoliarincision',
     fullName: 'Light of Foliar Incision',
     rating: 5,
@@ -575,6 +593,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11405,
     name: 'lionsroar',
     fullName: "Lion's Roar",
     rating: 4,
@@ -612,6 +631,7 @@ export const sword: Swords[] = [
     ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
   },
   {
+    uid: 11509,
     name: 'mistsplitterreforged',
     fullName: 'Mistsplitter Reforged',
     rating: 5,
@@ -651,6 +671,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11505,
     name: 'primordialjadecutter',
     fullName: 'Primordial Jade Cutter',
     rating: 5,
@@ -691,6 +712,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11406,
     name: 'prototyperancour',
     fullName: 'Prototype Rancour',
     rating: 4,
@@ -729,6 +751,7 @@ export const sword: Swords[] = [
     ref: [['4%'], ['5%'], ['6%'], ['7%'], ['8%']]
   },
   {
+    uid: 11404,
     name: 'royallongsword',
     fullName: 'Royal Longsword',
     rating: 4,
@@ -752,6 +775,7 @@ export const sword: Swords[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 11403,
     name: 'sacrificialsword',
     fullName: 'Sacrificial Sword',
     rating: 4,
@@ -769,6 +793,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11417,
     name: 'sapwoodblade',
     fullName: 'Sapwood Blade',
     rating: 4,
@@ -792,6 +817,7 @@ export const sword: Swords[] = [
     ref: [['60'], ['75'], ['90'], ['105'], ['120']]
   },
   {
+    uid: 11306,
     name: 'skyridersword',
     fullName: 'Skyrider Sword',
     rating: 3,
@@ -815,6 +841,7 @@ export const sword: Swords[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 11502,
     name: 'skywardblade',
     fullName: 'Skyward Blade',
     rating: 5,
@@ -844,6 +871,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11504,
     name: 'summitshaper',
     fullName: 'Summit Shaper',
     rating: 5,
@@ -883,6 +911,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11412,
     name: 'swordofdescension',
     fullName: 'Sword of Descension',
     rating: 4,
@@ -894,6 +923,7 @@ export const sword: Swords[] = [
     ref: [['50%', '200%', '66'], [], [], [], []]
   },
   {
+    uid: 11410,
     name: 'thealleyflash',
     fullName: 'The Alley Flash',
     rating: 4,
@@ -917,6 +947,7 @@ export const sword: Swords[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 11409,
     name: 'theblacksword',
     fullName: 'The Black Sword',
     rating: 4,
@@ -961,6 +992,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11427,
     name: 'thedockhandsassistant',
     fullName: "The Dockhand's Assistant",
     rating: 4,
@@ -990,6 +1022,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11402,
     name: 'theflute',
     fullName: 'The Flute',
     rating: 4,
@@ -1001,6 +1034,7 @@ export const sword: Swords[] = [
     ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
   },
   {
+    uid: 11422,
     name: 'toukaboushigure',
     fullName: 'Toukabou Shigure',
     rating: 4,
@@ -1024,6 +1058,7 @@ export const sword: Swords[] = [
     ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
   },
   {
+    uid: 11424,
     name: 'wolffang',
     fullName: 'Wolf-Fang',
     rating: 4,
@@ -1088,6 +1123,7 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11303,
     name: 'travelershandysword',
     fullName: "Traveler's Handy Sword",
     rating: 3,
@@ -1098,6 +1134,7 @@ export const sword: Swords[] = [
     ref: [['1%'], ['1.25%'], ['1.5%'], ['1.75%'], ['2%']]
   },
   {
+    uid: 11418,
     name: 'xiphosmoonlight',
     fullName: "Xiphos' Moonlight",
     rating: 4,

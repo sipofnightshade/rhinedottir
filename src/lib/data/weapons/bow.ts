@@ -6,6 +6,7 @@ type Bows = SelectedWeapon & {
 
 export const bow: Bows[] = [
   {
+    uid: 15410,
     name: 'alleyhunter',
     fullName: 'Alley Hunter',
     rating: 4,
@@ -60,6 +61,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15502,
     name: 'amosbow',
     fullName: "Amos' Bow",
     rating: 5,
@@ -114,6 +116,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15508,
     name: 'aquasimulacra',
     fullName: 'Aqua Simulacra',
     rating: 5,
@@ -153,6 +156,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15408,
     name: 'blackcliffwarbow',
     fullName: 'Blackcliff Warbow',
     rating: 4,
@@ -176,6 +180,7 @@ export const bow: Bows[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 15407,
     name: 'compoundbow',
     fullName: 'Compound Bow',
     rating: 4,
@@ -220,6 +225,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15503,
     name: 'elegyfortheend',
     fullName: 'Elegy for the End',
     rating: 5,
@@ -275,6 +281,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15418,
     name: 'endoftheline',
     fullName: 'End of the Line',
     rating: 4,
@@ -286,6 +293,7 @@ export const bow: Bows[] = [
     ref: [['80%'], ['100%'], ['120%'], ['140%'], ['160%']]
   },
   {
+    uid: 15411,
     name: 'fadingtwilight',
     fullName: 'Fading Twilight',
     rating: 4,
@@ -335,6 +343,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15401,
     name: 'favoniuswarbow',
     fullName: 'Favonius Warbow',
     rating: 4,
@@ -352,6 +361,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15414,
     name: 'hamayumi',
     fullName: 'Hamayumi',
     rating: 4,
@@ -421,6 +431,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15511,
     name: 'hunterspath',
     fullName: "Hunter's Path",
     rating: 5,
@@ -461,6 +472,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15419,
     name: 'ibispiercer',
     fullName: 'Ibis Piercer',
     rating: 4,
@@ -484,6 +496,7 @@ export const bow: Bows[] = [
     ref: [['40'], ['50'], ['60'], ['70'], ['80']]
   },
   {
+    uid: 15417,
     name: 'kingssquire',
     fullName: "King's Squire",
     rating: 4,
@@ -513,6 +526,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15305,
     name: 'messenger',
     fullName: 'Messenger',
     rating: 3,
@@ -524,6 +538,7 @@ export const bow: Bows[] = [
     ref: [['100%'], ['125%'], ['150%'], ['175%'], ['200%']]
   },
   {
+    uid: 15412,
     name: 'mitternachtswaltz',
     fullName: 'Mitternachts Waltz',
     rating: 4,
@@ -568,6 +583,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15416,
     name: 'mouunsmoon',
     fullName: "Mouun's Moon",
     rating: 4,
@@ -598,6 +614,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15507,
     name: 'polarstar',
     fullName: 'Polar Star',
     rating: 5,
@@ -652,6 +669,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15415,
     name: 'predator',
     fullName: 'Predator',
     rating: 4,
@@ -690,6 +708,7 @@ export const bow: Bows[] = [
     ref: [[], [], [], [], []]
   },
   {
+    uid: 15406,
     name: 'prototypecrescent',
     fullName: 'Prototype Crescent',
     rating: 4,
@@ -713,6 +732,7 @@ export const bow: Bows[] = [
     ref: [['36%'], ['45%'], ['54%'], ['63%'], ['72%']]
   },
   {
+    uid: 15301,
     name: 'ravenbow',
     fullName: 'Raven Bow',
     rating: 3,
@@ -750,6 +770,7 @@ export const bow: Bows[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 15303,
     name: 'recurvebow',
     fullName: 'Recurve Bow',
     rating: 3,
@@ -760,6 +781,7 @@ export const bow: Bows[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 15404,
     name: 'royalbow',
     fullName: 'Royal Bow',
     rating: 4,
@@ -783,6 +805,7 @@ export const bow: Bows[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 15427,
     name: 'rangegauge',
     fullName: 'Range Gauge',
     rating: 4,
@@ -827,6 +850,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15405,
     name: 'rust',
     fullName: 'Rust',
     rating: 4,
@@ -864,6 +888,7 @@ export const bow: Bows[] = [
     ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
   },
   {
+    uid: 15403,
     name: 'sacrificialbow',
     fullName: 'Sacrificial Bow',
     rating: 4,
@@ -881,6 +906,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15302,
     name: 'sharpshootersoath',
     fullName: "Sharpshooter's Oath",
     rating: 3,
@@ -903,6 +929,7 @@ export const bow: Bows[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 15501,
     name: 'skywardharp',
     fullName: 'Skyward Harp',
     rating: 5,
@@ -932,6 +959,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15304,
     name: 'slingshot',
     fullName: 'Slingshot',
     rating: 3,
@@ -955,6 +983,7 @@ export const bow: Bows[] = [
     ref: [['36%'], ['42%'], ['48%'], ['54%'], ['60%']]
   },
   {
+    uid: 15424,
     name: 'scionoftheblazingsun',
     fullName: 'Scion of the Blazing Sun',
     rating: 4,
@@ -984,6 +1013,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15425,
     name: 'songofstillness',
     fullName: 'Song of Stillness',
     rating: 4,
@@ -1007,6 +1037,7 @@ export const bow: Bows[] = [
     ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
   },
   {
+    uid: 15402,
     name: 'thestringless',
     fullName: 'The Stringless',
     rating: 4,
@@ -1044,6 +1075,7 @@ export const bow: Bows[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 15409,
     name: 'theviridescenthunt',
     fullName: 'The Viridescent Hunt',
     rating: 4,
@@ -1061,6 +1093,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15509,
     name: 'thunderingpulse',
     fullName: 'Thundering Pulse',
     rating: 5,
@@ -1100,6 +1133,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15512,
     name: 'thefirstgreatmagic',
     fullName: 'The First Great Magic',
     rating: 5,
@@ -1151,6 +1185,7 @@ export const bow: Bows[] = [
     ]
   },
   {
+    uid: 15413,
     name: 'windblumeode',
     fullName: 'Windblume Ode',
     rating: 4,

@@ -6,6 +6,7 @@ type Polearms = SelectedWeapon & {
 
 export const polearm: Polearms[] = [
   {
+    uid: 13404,
     name: 'blackcliffpole',
     fullName: 'Blackcliff Pole',
     rating: 4,
@@ -29,6 +30,7 @@ export const polearm: Polearms[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 13303,
     name: 'blacktassel',
     fullName: 'Black Tassel',
     rating: 3,
@@ -52,6 +54,7 @@ export const polearm: Polearms[] = [
     ref: [['40%'], ['50%'], ['60%'], ['70%'], ['80%']]
   },
   {
+    uid: 13507,
     name: 'calamityqueller',
     fullName: 'Calamity Queller',
     rating: 5,
@@ -91,6 +94,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13403,
     name: 'crescentpike',
     fullName: 'Crescent Pike',
     rating: 4,
@@ -114,6 +118,7 @@ export const polearm: Polearms[] = [
     ref: [['20%'], ['25%'], ['30%'], ['35%'], ['40%']]
   },
   {
+    uid: 13405,
     name: 'deathmatch',
     fullName: 'Deathmatch',
     rating: 4,
@@ -143,6 +148,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13401,
     name: 'dragonsbane',
     fullName: "Dragon's Bane",
     rating: 4,
@@ -180,6 +186,7 @@ export const polearm: Polearms[] = [
     ref: [['20%'], ['24%'], ['28%'], ['32%'], ['36%']]
   },
   {
+    uid: 13409,
     name: 'dragonspinespear',
     fullName: 'Dragonspine Spear',
     rating: 4,
@@ -197,6 +204,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13509,
     name: 'engulfinglightning',
     fullName: 'Engulfing Lightning',
     rating: 5,
@@ -237,6 +245,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13407,
     name: 'favoniuslance',
     fullName: 'Favonius Lance',
     rating: 4,
@@ -254,6 +263,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13302,
     name: 'halberd',
     fullName: 'Halberd',
     rating: 3,
@@ -265,6 +275,7 @@ export const polearm: Polearms[] = [
     ref: [['160%'], ['200%'], ['240%'], ['280%'], ['320%']]
   },
   {
+    uid: 13414,
     name: 'kitaincrossspear',
     fullName: 'Kitain Cross Spear',
     rating: 4,
@@ -294,6 +305,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13406,
     name: 'lithicspear',
     fullName: 'Lithic Spear',
     rating: 4,
@@ -339,6 +351,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13419,
     name: 'missivewindspear',
     fullName: 'Missive Windspear',
     rating: 4,
@@ -383,6 +396,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13417,
     name: 'moonpiercer',
     fullName: 'Moonpiercer',
     rating: 4,
@@ -406,6 +420,7 @@ export const polearm: Polearms[] = [
     ref: [['16%'], ['20%'], ['24%'], ['28%'], ['32%']]
   },
   {
+    uid: 13427,
     name: 'prospectorsdrill',
     fullName: "Prospector's Drill",
     rating: 4,
@@ -450,6 +465,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13505,
     name: 'primordialjadewingedspear',
     fullName: 'Primordial Jade Winged-Spear',
     rating: 5,
@@ -506,6 +522,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13402,
     name: 'prototypestarglitter',
     fullName: 'Prototype Starglitter',
     rating: 4,
@@ -544,6 +561,7 @@ export const polearm: Polearms[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 13425,
     name: 'rightfulreward',
     fullName: 'Rightful Reward',
     rating: 4,
@@ -555,6 +573,7 @@ export const polearm: Polearms[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 13408,
     name: 'royalspear',
     fullName: 'Royal Spear',
     rating: 4,
@@ -578,6 +597,7 @@ export const polearm: Polearms[] = [
     ref: [['8%'], ['10%'], ['12%'], ['14%'], ['16%']]
   },
   {
+    uid: 13502,
     name: 'skywardspine',
     fullName: 'Skyward Spine',
     rating: 5,
@@ -622,6 +642,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13501,
     name: 'staffofhoma',
     fullName: 'Staff of Homa',
     rating: 5,
@@ -662,6 +683,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13511,
     name: 'staffofthescarletsands',
     fullName: 'Staff of the Scarlet Sands',
     rating: 5,
@@ -703,6 +725,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13415,
     name: 'thecatch',
     fullName: '"The Catch"',
     rating: 4,
@@ -746,6 +769,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13424,
     name: 'balladofthefjords',
     fullName: 'Ballad of the Fjords',
     rating: 4,
@@ -770,6 +794,7 @@ export const polearm: Polearms[] = [
     ref: [['120.'], ['150.'], ['180.'], ['210.'], ['240.']]
   },
   {
+    uid: 13504,
     name: 'vortexvanquisher',
     fullName: 'Vortex Vanquisher',
     rating: 5,
@@ -809,6 +834,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13416,
     name: 'wavebreakersfin',
     fullName: "Wavebreaker's Fin",
     rating: 4,
@@ -839,6 +865,7 @@ export const polearm: Polearms[] = [
     ]
   },
   {
+    uid: 13301,
     name: 'whitetassel',
     fullName: 'White Tassel',
     rating: 3,
