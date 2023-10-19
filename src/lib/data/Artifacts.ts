@@ -3,6 +3,7 @@ import type { Artifact } from '$lib/types/artifacts';
 // change into object
 export const ArtifactData: Artifact[] = [
   {
+    uid: 0,
     name: 'none',
     fullName: 'None',
     rating: [],
@@ -15,6 +16,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15001,
     name: 'gladiators',
     fullName: "Gladiator's Finale",
     rating: [4, 5],
@@ -29,6 +31,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15003,
     name: 'wanderers',
     fullName: "Wanderer's Troupe",
     rating: [4, 5],
@@ -43,6 +46,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15007,
     name: 'noblesseoblige',
     fullName: 'Noblesse Oblige',
     rating: [4, 5],
@@ -59,6 +63,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15008,
     name: 'bloodstained',
     fullName: 'Bloodstained Chivalry',
     rating: [4, 5],
@@ -73,6 +78,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 14004,
     name: 'maidenbeloved',
     fullName: 'Maiden Beloved',
     rating: [4, 5],
@@ -88,6 +94,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15002,
     name: 'viridescent',
     fullName: 'Viridescent Venerer',
     rating: [4, 5],
@@ -113,6 +120,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15014,
     name: 'archaicpetra',
     fullName: 'Archaic Petra',
     rating: [4, 5],
@@ -134,6 +142,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15015,
     name: 'retracingbolide',
     fullName: 'Retracing Bolide',
     rating: [4, 5],
@@ -152,6 +161,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 14002,
     name: 'thundersoother',
     fullName: 'Thundersoother',
     rating: [4, 5],
@@ -164,6 +174,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15005,
     name: 'thunderingfury',
     fullName: 'Thundering Fury',
     rating: [4, 5],
@@ -183,6 +194,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 14003,
     name: 'lavawalker',
     fullName: 'Lavawalker',
     rating: [4, 5],
@@ -195,6 +207,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15006,
     name: 'crimsonwitch',
     fullName: 'Crimson Witch of Flames',
     rating: [4, 5],
@@ -220,6 +233,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 14001,
     name: 'blizzardstrayer',
     fullName: 'Blizzard Strayer',
     rating: [4, 5],
@@ -234,6 +248,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15016,
     name: 'heartofdepth',
     fullName: 'Heart of Depth',
     rating: [4, 5],
@@ -251,6 +266,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15017,
     name: 'tenacityofmillelith',
     fullName: 'Tenacity of the Millelith',
     rating: [4, 5],
@@ -269,6 +285,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15018,
     name: 'paleflame',
     fullName: 'Pale Flame',
     rating: [4, 5],
@@ -286,6 +303,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15019,
     name: 'shimenawa',
     fullName: "Shimenawa's Reminiscence",
     rating: [4, 5],
@@ -304,6 +322,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15020,
     name: 'emblemofseveredfate',
     fullName: 'Emblem of Severed Fate',
     rating: [4, 5],
@@ -323,6 +342,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15021,
     name: 'huskofopulentdreams',
     fullName: 'Husk of Opulent Dreams',
     rating: [4, 5],
@@ -340,6 +360,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15022,
     name: 'oceanhued',
     fullName: 'Ocean-Hued Clam',
     rating: [4, 5],
@@ -353,6 +374,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15023,
     name: 'vermillionhereafter',
     fullName: 'Vermillion Hereafter',
     rating: [4, 5],
@@ -367,6 +389,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15024,
     name: 'echoesofanoffering',
     fullName: 'Echoes of an Offering',
     rating: [4, 5],
@@ -380,6 +403,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15025,
     name: 'deepwoodmemories',
     fullName: 'Deepwood Memories',
     rating: [4, 5],
@@ -395,6 +419,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15026,
     name: 'gildeddreams',
     fullName: 'Gilded Dreams',
     rating: [4, 5],
@@ -412,6 +437,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15027,
     name: 'desertpavilionchronicle',
     fullName: 'Desert Pavilion Chronicle',
     rating: [4, 5],
@@ -431,6 +457,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15028,
     name: 'flowerofparadiselost',
     fullName: 'Flower of Paradise Lost',
     rating: [4, 5],
@@ -458,6 +485,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15029,
     name: 'nymphsdream',
     fullName: "Nymph's Dream",
     rating: [4, 5],
@@ -475,6 +503,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15030,
     name: 'vourukashasglow',
     fullName: "Vourukasha's Glow",
     rating: [4, 5],
@@ -499,6 +528,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15031,
     name: 'marechausseehunter',
     fullName: 'Marechaussee Hunter',
     rating: [4, 5],
@@ -516,6 +546,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 15032,
     name: 'goldentroupe',
     fullName: 'Golden Troupe',
     rating: [4, 5],
@@ -530,6 +561,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10001,
     name: 'sojourner',
     fullName: 'Resolution of Sojourner',
     rating: [4],
@@ -542,6 +574,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10004,
     name: 'tinymiracle',
     fullName: 'Tiny Miracle',
     rating: [4],
@@ -564,6 +597,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10005,
     name: 'berserker',
     fullName: 'Berserker',
     rating: [4],
@@ -577,6 +611,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10007,
     name: 'instructor',
     fullName: 'Instructor',
     rating: [4],
@@ -592,6 +627,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10009,
     name: 'theexile',
     fullName: 'The Exile',
     rating: [4],
@@ -605,6 +641,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10003,
     name: 'defenderswill',
     fullName: "Defender's Will",
     rating: [4],
@@ -618,6 +655,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10002,
     name: 'braveheart',
     fullName: 'Brave Heart',
     rating: [4],
@@ -631,6 +669,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10006,
     name: 'martialartist',
     fullName: 'Martial Artist',
     rating: [4],
@@ -655,6 +694,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10008,
     name: 'gambler',
     fullName: 'Gambler',
     rating: [4],
@@ -668,6 +708,7 @@ export const ArtifactData: Artifact[] = [
     ]
   },
   {
+    uid: 10012,
     name: 'scholar',
     fullName: 'Scholar',
     rating: [4],

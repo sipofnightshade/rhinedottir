@@ -97,6 +97,7 @@ export type Action = {
 };
 
 export type Artifact = {
+  uid: number;
   name: ArtifactNames;
   fullName: string;
   rating: number[];
