@@ -5,7 +5,7 @@
 
   //stores
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import EnkaImport from './EnkaImport.svelte';
+  import EnkaImport from '../EnkaImport/EnkaImport.svelte';
 
   let dialog: HTMLDialogElement;
   let profileH;
