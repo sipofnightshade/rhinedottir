@@ -24,6 +24,7 @@ export type CurrentWeapon = {
 
 const initialState: CurrentWeapon = {
   selected: {
+    uid: 11406,
     name: 'prototyperancour',
     fullName: 'Prototype Rancour',
     rating: 4,
