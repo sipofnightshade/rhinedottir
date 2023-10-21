@@ -33,14 +33,22 @@
       tag: tags,
       title,
       character: {
-        ...$character,
         selected: $character.selected.name,
-        weapon: $character.selected.weapon,
         vision: $character.selected.vision,
         id: $character.selected.id,
-        additionalStats: { ...allStats }
+        atk: $character.atk,
+        skill: $character.skill,
+        burst: $character.burst,
+        weapon: $character.selected.weapon,
+        lvlBonus: $character.lvlBonus,
+        constellation: $character.constellation,
+        lvl: $character.lvl
       },
-      weapon: { ...$weapon, selected: $weapon.selected.name },
+      weapon: {
+        selected: $weapon.selected.name,
+        lvl: $weapon.lvl,
+        refinement: $weapon.refinement
+      },
       artifacts: {
         flower: { ...$artifact.flower, selected: $artifact.flower.selected.name },
         feather: { ...$artifact.feather, selected: $artifact.feather.selected.name },
