@@ -1,18 +1,20 @@
 import { WeaponData } from '$lib/data/Weapons';
 import type { WeaponCategory } from '$lib/types/global';
+import type { SavedWeapon } from '$lib/types/loadout';
+import type { WeaponNames } from '$lib/types/weapons';
 
-export function createWeapon(data: any) {
-  const weaponType = Math.floor(data.itemId / 10000);
-  const selectedWeapon = WeaponData[getWeaponType(weaponType)].find(
+export function createWeapon(data: any): SavedWeapon {
+  const weaponType = Math.floor(data.itemId / 1000);
+  const selectedWeapon = WeaponData[getWeaponType(weaponType) as WeaponCategory].find(
     (weaponData) => weaponData.uid === data.itemId
   );
 
-  const name = selectedWeapon ? selectedWeapon.name : 'Unknown Weapon';
-  const refinement = Object.values(data.weapon.affixMap)[0];
-  return { name, lvl: data.weapon.level, refinement };
+  const name = selectedWeapon?.name as WeaponNames;
+  const refinement = Object.values(data.weapon.affixMap)[0] as number;
+  return { selected: name, lvl: data.weapon.level, refinement };
 }
 
-function getWeaponType(weaponTypeCode: number): WeaponCategory {
+function getWeaponType(weaponTypeCode: number) {
   switch (weaponTypeCode) {
     case 11:
       return 'sword';
@@ -24,7 +26,5 @@ function getWeaponType(weaponTypeCode: number): WeaponCategory {
       return 'catalyst';
     case 15:
       return 'bow';
-    default:
-      return 'sword';
   }
 }
