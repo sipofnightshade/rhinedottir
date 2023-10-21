@@ -3,7 +3,7 @@
  * @param inputString - The input string containing the ID number.
  * @returns The extracted 5-digit ID number or null if no match is found.
  */
-function extractIdNumber(inputString: string): number | null {
+export function extractIdNumber(inputString: string): number | null {
   const regex: RegExp = /UI_RelicIcon_(\d{5})_\d+/;
   const match: RegExpMatchArray | null = inputString.match(regex);
   if (match && match[1]) {

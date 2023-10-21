@@ -13,6 +13,7 @@ import type { CurrentWeapon } from './weaponStore';
 import type { CharacterRecord, SelectedWeapon } from '$lib/types/global';
 import type { Artifact } from '$lib/types/artifacts';
 import type { LoadoutItem } from './loadoutsStore';
+import { allStats } from '$lib/data/Stats';
 
 type PartyMember = {
   loadoutID: string;
@@ -62,7 +63,8 @@ function createParty() {
         const character = {
           ...loadout.character,
           stats: GenshinStats.calcStatsForCharacter(cName, labels.lvlValues[cLvl]),
-          selected: characterData.find((data) => data.id === cID) as CharacterRecord
+          selected: characterData.find((data) => data.id === cID) as CharacterRecord,
+          additionalStats: { ...allStats }
         };
 
         // set weapon

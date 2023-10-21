@@ -58,6 +58,7 @@ export type ArtifactStats =
   | ''
   | 'hp'
   | 'atk'
+  | 'def'
   | 'hp%'
   | 'atk%'
   | 'def%'

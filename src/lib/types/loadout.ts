@@ -1,32 +1,47 @@
+import type { All_Stats } from '$lib/data/Stats';
 import type { Artifact } from '$lib/stores/artifactStore';
-import type { CurrentCharacter } from '$lib/stores/characterStore';
-import type { CurrentWeapon } from '$lib/stores/weaponStore';
 import type { CharacterNames, CharacterSpecificNames } from '$lib/types/characters';
-import type { ArtifactNames } from './artifacts';
+import type { ArtifactNames, ArtifactStats } from './artifacts';
 import type { Visions, WeaponCategory } from './global';
 import type { WeaponNames } from './weapons';
 
-export type SavedCharacter = Omit<CurrentCharacter, 'selected'> & {
+export type SavedCharacter = {
   selected: CharacterNames;
   vision: Visions;
   id: CharacterSpecificNames;
   weapon: WeaponCategory;
+  lvl: number;
+  constellation: number;
+  atk: number;
+  skill: number;
+  burst: number;
+  lvlBonus: {
+    atk: number;
+    skill: number;
+    burst: number;
+  };
 };
 
-export type SavedWeapon = Omit<CurrentWeapon, 'selected'> & {
+export type SavedWeapon = {
   selected: WeaponNames;
+  lvl: number;
+  refinement: number;
 };
 
-type NewArtifact = Omit<Artifact, 'selected'> & {
+export type SavedArtifactItem = {
   selected: ArtifactNames;
+  lvl: number;
+  isFiveStar: boolean;
+  mainStat: { stat: ArtifactStats; value: number };
+  substats: { stat: ArtifactStats; value: number }[];
 };
 
 export type SavedArtifacts = {
-  flower: NewArtifact;
-  feather: NewArtifact;
-  sands: NewArtifact;
-  goblet: NewArtifact;
-  circlet: NewArtifact;
+  flower: SavedArtifactItem;
+  feather: SavedArtifactItem;
+  sands: SavedArtifactItem;
+  goblet: SavedArtifactItem;
+  circlet: SavedArtifactItem;
 };
 
 export type LoadOutTag = 'DPS' | 'Sub DPS' | 'Shield' | 'Healer' | 'Support';

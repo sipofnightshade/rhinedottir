@@ -1,30 +1,24 @@
+import { extractIdNumber } from './extractIDNumber';
+import { ArtifactData } from '$lib/data/Artifacts';
+import { convertStat } from './convertStats';
+import type { ArtifactStats } from '$lib/types/artifacts';
+import type { SavedArtifactItem } from '$lib/types/loadout';
+
 interface ReliquarySubStat {
   appendPropId: string;
   statValue: number;
 }
 
 interface Stats {
-  stat: string;
+  stat: ArtifactStats;
   value: number;
 }
 
-interface ArtifactData {
-  name: string;
-  lvl: number;
-  isFiveStar: boolean;
-  mainStat: Stats;
-  substats: Stats[];
-}
-
-import { extractIdNumber } from './extractIDNumber';
-import { ArtifactData } from '$lib/data/Artifacts';
-import { convertStat } from './convertStats';
-
-export function createArtifact(data: any) {
+export function createArtifact(data: any): SavedArtifactItem | null {
   // get artifact name
   const artifactID = extractIdNumber(data.flat.icon);
   const artifact = ArtifactData.find((artifact) => {
-    artifact.uid === artifactID;
+    return artifact.uid === artifactID;
   });
 
   // get artifact stats
@@ -38,11 +32,14 @@ export function createArtifact(data: any) {
       value: substat.statValue
     })
   );
-  return {
-    name: artifact?.name ?? 'none',
-    lvl: data.reliquary.level - 1,
-    isFiveStar: data.flat.rankLevel === 5,
-    mainStat: mainStat,
-    substats: substats
-  };
+
+  if (artifact) {
+    return {
+      selected: artifact.name,
+      lvl: data.reliquary.level - 1,
+      isFiveStar: data.flat.rankLevel === 5,
+      mainStat,
+      substats
+    };
+  } else return null;
 }
