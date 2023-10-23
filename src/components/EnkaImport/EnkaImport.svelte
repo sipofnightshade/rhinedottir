@@ -1,8 +1,8 @@
 <script lang="ts">
   import { uid } from 'uid';
-  import { testData } from './helpers/convertStats';
+  import { testData } from '$lib/helpers/convertStats';
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import { createEquipment } from './helpers/createEquipment';
+  import { createEquipment } from '$lib/helpers/createEquipment';
 
   let playerID: number = 618285856;
   let lastApiCallTimestamp: number = 0;
