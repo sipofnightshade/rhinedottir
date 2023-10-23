@@ -33,7 +33,7 @@
 
 <Modal bind:dialog title="Select a loadout">
   <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-    <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-4">
+    <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-2">
       <EnkaImport />
       <div class="w-full">Filters</div>
     </div>

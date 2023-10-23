@@ -1,7 +1,6 @@
 <script lang="ts">
   import ShortModal from '../Modal/ShortModal.svelte';
   import TagInputLabel from './TagInputLabel.svelte';
-  import { allStats } from '$lib/data/Stats';
   import { uid } from 'uid';
   import type { LoadOutTag } from '$lib/types/loadout';
 
@@ -61,8 +60,6 @@
     loadouts.addLoadout({ ...newLoadout });
     dialog.close();
   }
-
-  $: console.log(tags);
 </script>
 
 <button
