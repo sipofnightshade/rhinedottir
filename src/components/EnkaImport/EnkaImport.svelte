@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { uid } from 'uid';
   import { testData } from '$lib/helpers/convertStats';
-  import { loadouts } from '$lib/stores/loadoutsStore';
   import { createEquipment } from '$lib/helpers/createEquipment';
+  import LoadoutCreators from './LoadoutCreators.svelte';
 
   let playerID: number = 618285856;
   let lastApiCallTimestamp: number = 0;
   let cachedData: any = null;
+
+  let playerBuilds: any = null;
 
   const cacheTTL: number = 60000;
   const headers = {
@@ -50,47 +51,33 @@
     }
   }
 
-  function saveLoadout() {
-    const newLoadout = {
-      id: uid(),
-      tag: null,
-      title: null,
-      character: null,
-      weapon: null,
-      artifacts: {
-        flower: null,
-        feather: null,
-        sands: null,
-        goblet: null,
-        circlet: null
-      }
-    };
-
-    // loadouts.addLoadout({ ...newLoadout });
-  }
-
+  // this function should be ran with the `cachedData`
   function handleLoadoutBuilders(data: any) {
     const { playerInfo, avatarInfoList } = data;
     const loadouts = avatarInfoList.map((item: any) => {
-      const x = createEquipment(item, playerInfo.showAvatarInfoList);
-      return x;
+      return createEquipment(item, playerInfo.showAvatarInfoList);
     });
 
-    console.log(loadouts);
+    playerBuilds = loadouts;
   }
 </script>
 
-<div class="mb-4 flex w-full gap-2">
-  <input
-    bind:value={playerID}
-    type="text"
-    class="w-full rounded-full border border-slate-500 bg-transparent focus:ring-emerald-500"
-    placeholder="Enter Player ID"
-  />
-  <button
-    on:click={() => handleLoadoutBuilders(testData)}
-    class="rounded-full bg-slate-600 px-4 py-1"
-  >
-    Import
-  </button>
+<div class="mb-4">
+  <div class="flex w-full gap-2">
+    <input
+      bind:value={playerID}
+      type="text"
+      class="w-full rounded-full border border-slate-500 bg-transparent focus:ring-emerald-500"
+      placeholder="Enter Player ID"
+    />
+    <button
+      on:click={() => handleLoadoutBuilders(testData)}
+      class="rounded-full bg-slate-600 px-4 py-1"
+    >
+      Import
+    </button>
+  </div>
+  {#if playerBuilds}
+    <LoadoutCreators {playerBuilds} />
+  {/if}
 </div>
