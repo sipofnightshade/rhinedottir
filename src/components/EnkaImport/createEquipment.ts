@@ -1,15 +1,19 @@
 import { createArtifact } from './createArtifact';
 import { createWeapon } from './createWeapon';
+import { createCharacter } from './createCharacter';
 // types
-import type { SavedArtifactItem, SavedWeapon } from '$lib/types/loadout';
+import type { SavedArtifactItem, SavedCharacter, SavedWeapon } from '$lib/types/loadout';
 
 interface Equipment {
+  character: SavedCharacter | null;
   weapon: SavedWeapon | null;
-  flower: SavedArtifactItem;
-  feather: SavedArtifactItem;
-  sands: SavedArtifactItem;
-  goblet: SavedArtifactItem;
-  circlet: SavedArtifactItem;
+  artifacts: {
+    flower: SavedArtifactItem;
+    feather: SavedArtifactItem;
+    sands: SavedArtifactItem;
+    goblet: SavedArtifactItem;
+    circlet: SavedArtifactItem;
+  };
 }
 
 const noArtifact: SavedArtifactItem = {
@@ -28,22 +32,36 @@ const noArtifact: SavedArtifactItem = {
   ]
 };
 
-export function createEquipment(avatarList: any): Equipment {
-  const equipmentData: Equipment = {
+export function createEquipment(data: any, showAvatarInfoList: []): Equipment | null {
+  const { avatarId, equipList, skillLevelMap, talentIdList } = data;
+
+  const loadout: Equipment = {
+    character: null,
     weapon: null,
-    flower: noArtifact,
-    feather: noArtifact,
-    sands: noArtifact,
-    goblet: noArtifact,
-    circlet: noArtifact
+    artifacts: {
+      flower: noArtifact,
+      feather: noArtifact,
+      sands: noArtifact,
+      goblet: noArtifact,
+      circlet: noArtifact
+    }
   };
 
-  avatarList.equipList.forEach((equipment: any) => {
+  // create character
+  loadout.character = createCharacter(
+    avatarId,
+    skillLevelMap,
+    showAvatarInfoList,
+    talentIdList
+  );
+
+  // create artifacts & weapons
+  equipList.forEach((equipment: any) => {
     if (equipment.flat) {
       switch (equipment.flat.itemType) {
         case 'ITEM_WEAPON':
           if (equipment.weapon) {
-            equipmentData.weapon = createWeapon(equipment);
+            loadout.weapon = createWeapon(equipment);
           }
           break;
 
@@ -53,19 +71,19 @@ export function createEquipment(avatarList: any): Equipment {
 
           switch (equipType) {
             case 'EQUIP_BRACER':
-              equipmentData.flower = artifact;
+              loadout.artifacts.flower = artifact;
               break;
             case 'EQUIP_NECKLACE':
-              equipmentData.feather = artifact;
+              loadout.artifacts.feather = artifact;
               break;
             case 'EQUIP_SHOES':
-              equipmentData.sands = artifact;
+              loadout.artifacts.sands = artifact;
               break;
             case 'EQUIP_RING':
-              equipmentData.goblet = artifact;
+              loadout.artifacts.goblet = artifact;
               break;
             case 'EQUIP_DRESS':
-              equipmentData.circlet = artifact;
+              loadout.artifacts.circlet = artifact;
               break;
           }
           break;
@@ -73,5 +91,6 @@ export function createEquipment(avatarList: any): Equipment {
     }
   });
 
-  return equipmentData;
+  if (!loadout.character || !loadout.weapon) return null;
+  return loadout;
 }

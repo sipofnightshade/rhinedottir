@@ -1,15 +1,23 @@
 <script lang="ts">
-  let playerID: string;
+  import { uid } from 'uid';
+  import { testData } from './convertStats';
+  import { loadouts } from '$lib/stores/loadoutsStore';
+  import { createEquipment } from './createEquipment';
+
+  let playerID: number = 618285856;
   let lastApiCallTimestamp: number = 0;
   let cachedData: any = null;
-  const cacheTTL: number = 60000;
 
-  async function fetchDataFromApi(playerId: string) {
-    const apiUrl = `https://enka.network/api/uid/618285856`; // Replace YOUR_API_ENDPOINT with the actual API endpoint
-    const apiURL = 'https://dummyjson.com/products?limit=10';
+  const cacheTTL: number = 60000;
+  const headers = {
+    'User-Agent': 'Rhinedottir WebApp - 0.83'
+  };
+
+  async function fetchDataFromApi(playerId: number) {
+    const apiUrl = `https://enka.network/api/uid/${playerId}`; // Replace YOUR_API_ENDPOINT with the actual API endpoint
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl, { headers });
       if (response.ok) {
         const data = await response.json();
         return data;
@@ -41,6 +49,35 @@
         });
     }
   }
+
+  function saveLoadout() {
+    const newLoadout = {
+      id: uid(),
+      tag: null,
+      title: null,
+      character: null,
+      weapon: null,
+      artifacts: {
+        flower: null,
+        feather: null,
+        sands: null,
+        goblet: null,
+        circlet: null
+      }
+    };
+
+    // loadouts.addLoadout({ ...newLoadout });
+  }
+
+  function handleLoadoutBuilders(data: any) {
+    const { playerInfo, avatarInfoList } = data;
+    const loadouts = avatarInfoList.map((item: any) => {
+      const x = createEquipment(item, playerInfo.showAvatarInfoList);
+      return x;
+    });
+
+    console.log(loadouts);
+  }
 </script>
 
 <div class="mb-4 flex w-full gap-2">
@@ -50,7 +87,10 @@
     class="w-full rounded-full border border-slate-500 bg-transparent focus:ring-emerald-500"
     placeholder="Enter Player ID"
   />
-  <button on:click={runEnkaImport} class="rounded-full bg-slate-600 px-4 py-1"
-    >Import</button
+  <button
+    on:click={() => handleLoadoutBuilders(testData)}
+    class="rounded-full bg-slate-600 px-4 py-1"
   >
+    Import
+  </button>
 </div>
