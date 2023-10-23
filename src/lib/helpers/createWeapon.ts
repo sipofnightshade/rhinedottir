@@ -2,6 +2,7 @@ import { WeaponData } from '$lib/data/Weapons';
 import type { WeaponCategory } from '$lib/types/global';
 import type { SavedWeapon } from '$lib/types/loadout';
 import type { WeaponNames } from '$lib/types/weapons';
+import { getLevelIndex } from './getLevelIndex';
 
 export function createWeapon(data: any): SavedWeapon {
   const weaponType = Math.floor(data.itemId / 1000);
@@ -11,7 +12,8 @@ export function createWeapon(data: any): SavedWeapon {
 
   const name = selectedWeapon?.name as WeaponNames;
   const refinement = Object.values(data.weapon.affixMap)[0] as number;
-  return { selected: name, lvl: data.weapon.level, refinement };
+  const lvl = getLevelIndex(data.weapon.promoteLevel, data.weapon.lvl);
+  return { selected: name, lvl, refinement };
 }
 
 function getWeaponType(weaponTypeCode: number) {

@@ -33,7 +33,7 @@ const noArtifact: SavedArtifactItem = {
 };
 
 export function createEquipment(data: any, showAvatarInfoList: []): Equipment | null {
-  const { avatarId, equipList, skillLevelMap, talentIdList } = data;
+  const { avatarId, equipList, skillLevelMap, talentIdList, propMap } = data;
 
   const loadout: Equipment = {
     character: null,
@@ -52,7 +52,8 @@ export function createEquipment(data: any, showAvatarInfoList: []): Equipment | 
     avatarId,
     skillLevelMap,
     showAvatarInfoList,
-    talentIdList
+    talentIdList,
+    propMap
   );
 
   // create artifacts & weapons

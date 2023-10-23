@@ -1,21 +1,28 @@
 import { characterData } from '$lib/data/characters';
 import type { SavedCharacter } from '$lib/types/loadout';
+import { getLevelIndex } from './getLevelIndex';
 
 export function createCharacter(
   avatarId: number,
   skillLevelMap: { [key: string]: number },
   showAvatarInfoList: { avatarId: number; level: number }[],
-  talentIdList: number[] | undefined
+  talentIdList: number[] | undefined,
+  propMap: any
 ): SavedCharacter | null {
   const characterInfo = showAvatarInfoList.find((info) => info.avatarId === avatarId);
   const character = characterData.find((data) => data.uid === avatarId);
   const talentLevels = Object.values(skillLevelMap);
 
   if (characterInfo && character) {
-    const atk = talentLevels[0];
-    const skill = talentLevels[1];
-    const burst = talentLevels[2];
+    const atk = talentLevels[0] - 1;
+    const skill = talentLevels[1] - 1;
+    const burst = talentLevels[2] - 1;
     const constellation = talentIdList ? talentIdList.length : 0; // Numerical length of talentIdList
+
+    const characterAscension = Number(propMap['1002'].val);
+    const characterLevel = Number(propMap['4001'].val);
+
+    const lvl = getLevelIndex(characterAscension, characterLevel);
 
     let lvlBonus = {
       atk: 0,
@@ -29,7 +36,7 @@ export function createCharacter(
     return {
       id: character.id,
       selected: character.name,
-      lvl: characterInfo.level,
+      lvl,
       atk: atk,
       skill: skill,
       burst: burst,
