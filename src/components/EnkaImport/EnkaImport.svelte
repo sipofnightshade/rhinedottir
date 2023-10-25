@@ -2,7 +2,7 @@
   import { createEquipment } from '$lib/helpers/createEquipment';
   import LoadoutCreators from './LoadoutCreators.svelte';
 
-  let playerID: number = 618285856;
+  let playerID: number;
   let lastApiCallTimestamp: number = 0;
   let cachedData: any = null;
 
