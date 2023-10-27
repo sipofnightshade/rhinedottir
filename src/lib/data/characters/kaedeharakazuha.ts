@@ -8,6 +8,7 @@ const charName: CharacterRecord = {
   rating: 5,
   weapon: 'sword',
   region: 'inazuma',
+  url: 'UI_AvatarIcon_Kazuha',
   vision: 'anemo',
   specialized: 'em',
   c3: 'skill',

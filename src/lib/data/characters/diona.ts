@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'diona',
   name: 'diona',
   fullName: 'Diona',
+  url: 'UI_AvatarIcon_Diona',
   rating: 4,
   weapon: 'bow',
   region: 'mondstat',

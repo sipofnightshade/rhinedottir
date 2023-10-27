@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'lisa',
   name: 'lisa',
   fullName: 'Lisa',
+  url: 'UI_AvatarIcon_Lyney',
   rating: 4,
   weapon: 'catalyst',
   region: 'mondstat',

@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'sayu',
   name: 'sayu',
   fullName: 'Sayu',
+  url: 'UI_AvatarIcon_Sayu',
   rating: 4,
   weapon: 'claymore',
   region: 'inazuma',

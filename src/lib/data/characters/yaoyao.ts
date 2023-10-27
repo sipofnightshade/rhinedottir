@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'yaoyao',
   name: 'yaoyao',
   fullName: 'Yaoyao',
+  url: 'UI_AvatarIcon_Yaoyao',
   rating: 4,
   weapon: 'polearm',
   region: 'liyue',

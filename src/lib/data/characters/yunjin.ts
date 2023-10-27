@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'yunjin',
   name: 'yunjin',
   fullName: 'Yunjin',
+  url: 'UI_AvatarIcon_Yunjin',
   rating: 4,
   weapon: 'polearm',
   region: 'liyue',

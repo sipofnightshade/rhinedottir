@@ -3,6 +3,7 @@ import type { CharacterRecord } from '$lib/types/global';
 const charName: CharacterRecord = {
   uid: 10000005,
   id: 'travelerdendro',
+  url: 'UI_AvatarIcon_PlayerBoy',
   name: 'aether',
   fullName: 'Aether',
   rating: 5,

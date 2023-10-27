@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'rosaria',
   name: 'rosaria',
   fullName: 'Rosaria',
+  url: 'UI_AvatarIcon_Rosaria',
   rating: 4,
   weapon: 'polearm',
   region: 'mondstat',

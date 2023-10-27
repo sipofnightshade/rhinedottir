@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'kamisatoayaka',
   name: 'kamisatoayaka',
   fullName: 'Kamisato Ayaka',
+  url: 'UI_AvatarIcon_Ayaka',
   rating: 5,
   weapon: 'sword',
   region: 'inazuma',

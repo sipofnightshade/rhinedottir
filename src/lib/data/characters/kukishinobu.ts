@@ -8,6 +8,7 @@ const charName: CharacterRecord = {
   rating: 4,
   weapon: 'sword',
   region: 'inazuma',
+  url: 'UI_AvatarIcon_Shinobu',
   vision: 'electro',
   specialized: 'hp%',
   c3: 'skill',

@@ -91,6 +91,7 @@ export type WeaponSpecialized =
 export type CharacterRecord = {
   uid: number;
   id: CharacterSpecificNames;
+  url: string;
   name: CharacterNames;
   fullName: string;
   region: Regions;

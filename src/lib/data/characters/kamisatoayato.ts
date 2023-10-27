@@ -7,6 +7,7 @@ const charName: CharacterRecord = {
   fullName: 'Kamisato Ayato',
   rating: 5,
   weapon: 'sword',
+  url: 'UI_AvatarIcon_Ayato',
   region: 'inazuma',
   vision: 'hydro',
   specialized: 'critdmg',

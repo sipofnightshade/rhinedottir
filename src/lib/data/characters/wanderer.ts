@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'wanderer',
   name: 'wanderer',
   fullName: 'Wanderer',
+  url: 'UI_AvatarIcon_Wanderer.',
   rating: 5,
   weapon: 'catalyst',
   region: 'sumeru',

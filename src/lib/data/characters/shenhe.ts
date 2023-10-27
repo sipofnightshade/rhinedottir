@@ -7,6 +7,7 @@ const charName: CharacterRecord = {
   fullName: 'Shenhe',
   rating: 5,
   weapon: 'polearm',
+  url: 'UI_AvatarIcon_Shenhe',
   region: 'liyue',
   vision: 'cryo',
   specialized: 'atk%',

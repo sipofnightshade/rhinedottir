@@ -4,6 +4,7 @@ const charName: CharacterRecord = {
   uid: 10000036,
   id: 'chongyun',
   name: 'chongyun',
+  url: 'UI_AvatarIcon_Chongyun',
   fullName: 'Chongyun',
   rating: 4,
   weapon: 'claymore',

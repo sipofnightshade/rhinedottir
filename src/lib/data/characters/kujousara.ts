@@ -8,6 +8,7 @@ const charName: CharacterRecord = {
   rating: 4,
   weapon: 'bow',
   region: 'inazuma',
+  url: 'UI_AvatarIcon_Sara',
   vision: 'electro',
   specialized: 'atk%',
   c3: 'skill',

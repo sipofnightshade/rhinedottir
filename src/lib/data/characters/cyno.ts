@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'cyno',
   name: 'cyno',
   fullName: 'Cyno',
+  url: 'UI_AvatarIcon_Cyno',
   rating: 5,
   weapon: 'polearm',
   region: 'sumeru',

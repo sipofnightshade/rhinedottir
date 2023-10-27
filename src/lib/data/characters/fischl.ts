@@ -4,6 +4,7 @@ const charName: CharacterRecord = {
   uid: 10000031,
   id: 'fischl',
   name: 'fischl',
+  url: 'UI_AvatarIcon_Fischl',
   fullName: 'Fischl',
   rating: 4,
   weapon: 'bow',

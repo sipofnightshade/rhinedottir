@@ -4,6 +4,7 @@ const charName: CharacterRecord = {
   uid: 10000057,
   id: 'aratakiitto',
   name: 'aratakiitto',
+  url: 'UI_AvatarIcon_Itto',
   fullName: 'Arataki Itto',
   rating: 5,
   weapon: 'claymore',

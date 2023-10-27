@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'zhongli',
   name: 'zhongli',
   fullName: 'Zhongli',
+  url: 'UI_AvatarIcon_Zhongli',
   rating: 5,
   weapon: 'polearm',
   region: 'liyue',

@@ -7,6 +7,7 @@ const charName: CharacterRecord = {
   fullName: 'Hu Tao',
   rating: 5,
   weapon: 'polearm',
+  url: 'UI_AvatarIcon_Hutao',
   region: 'liyue',
   vision: 'pyro',
   specialized: 'critdmg',

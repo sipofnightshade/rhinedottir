@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'collei',
   name: 'collei',
   fullName: 'Collei',
+  url: 'UI_AvatarIcon_Collei',
   rating: 4,
   weapon: 'bow',
   region: 'sumeru',

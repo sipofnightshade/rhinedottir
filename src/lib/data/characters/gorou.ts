@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'gorou',
   name: 'gorou',
   fullName: 'Gorou',
+  url: 'UI_AvatarIcon_Gorou',
   rating: 4,
   weapon: 'bow',
   region: 'inazuma',

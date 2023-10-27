@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'ganyu',
   name: 'ganyu',
   fullName: 'Ganyu',
+  url: 'UI_AvatarIcon_Ganyu',
   rating: 5,
   weapon: 'bow',
   region: 'liyue',

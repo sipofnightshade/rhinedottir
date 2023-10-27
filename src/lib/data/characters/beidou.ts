@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'beidou',
   name: 'beidou',
   fullName: 'Beidou',
+  url: 'UI_AvatarIcon_Beidou',
   rating: 4,
   weapon: 'claymore',
   region: 'liyue',

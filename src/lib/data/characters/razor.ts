@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'razor',
   name: 'razor',
   fullName: 'Razor',
+  url: 'UI_AvatarIcon_Razor',
   rating: 4,
   weapon: 'claymore',
   region: 'mondstat',

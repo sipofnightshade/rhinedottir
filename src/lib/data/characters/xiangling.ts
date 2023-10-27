@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'xiangling',
   name: 'xiangling',
   fullName: 'Xiangling',
+  url: 'UI_AvatarIcon_Xiangling',
   rating: 4,
   weapon: 'polearm',
   region: 'liyue',

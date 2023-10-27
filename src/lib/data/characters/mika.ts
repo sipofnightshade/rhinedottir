@@ -6,6 +6,7 @@ const charName: CharacterRecord = {
   name: 'mika',
   fullName: 'Mika',
   rating: 4,
+  url: 'UI_AvatarIcon_Mika',
   weapon: 'polearm',
   region: 'mondstat',
   vision: 'cryo',

@@ -9,6 +9,7 @@ const charName: CharacterRecord = {
   weapon: 'catalyst',
   region: 'mondstat',
   vision: 'pyro',
+  url: 'UI_AvatarIcon_Klee',
   specialized: 'pyro',
   c3: 'skill',
   c5: 'burst',

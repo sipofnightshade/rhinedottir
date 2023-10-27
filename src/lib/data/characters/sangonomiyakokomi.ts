@@ -7,6 +7,7 @@ import type { CharacterRecord } from '$lib/types/global';
 const charName: CharacterRecord = {
   uid: 10000054,
   id: 'sangonomiyakokomi',
+  url: 'UI_AvatarIcon_Kokomi',
   name: 'sangonomiyakokomi',
   fullName: 'Sangonomiya Kokomi',
   rating: 5,

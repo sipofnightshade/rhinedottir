@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'raidenshogun',
   name: 'raidenshogun',
   fullName: 'Raiden Shogun',
+  url: 'UI_AvatarIcon_Shougun',
   rating: 5,
   weapon: 'polearm',
   region: 'inazuma',

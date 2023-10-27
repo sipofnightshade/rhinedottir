@@ -6,6 +6,7 @@ const charName: CharacterRecord = {
   name: 'xinyan',
   fullName: 'Xinyan',
   rating: 4,
+  url: 'UI_AvatarIcon_Xinyan',
   weapon: 'claymore',
   region: 'liyue',
   vision: 'pyro',

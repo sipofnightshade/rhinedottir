@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'xingqiu',
   name: 'xingqiu',
   fullName: 'Xingqiu',
+  url: 'UI_AvatarIcon_Xingqiu',
   rating: 4,
   weapon: 'sword',
   region: 'liyue',

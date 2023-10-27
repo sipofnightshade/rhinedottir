@@ -7,6 +7,7 @@ const charName: CharacterRecord = {
   fullName: 'Jean',
   rating: 5,
   weapon: 'sword',
+  url: 'UI_AvatarIcon_Qin',
   region: 'mondstat',
   vision: 'anemo',
   specialized: 'healing',

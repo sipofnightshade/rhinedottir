@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'tighnari',
   name: 'tighnari',
   fullName: 'Tighnari',
+  url: 'UI_AvatarIcon_Tighnari',
   rating: 5,
   weapon: 'bow',
   region: 'sumeru',

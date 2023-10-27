@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'nilou',
   name: 'nilou',
   fullName: 'Nilou',
+  url: 'UI_AvatarIcon_Nilou',
   rating: 5,
   weapon: 'sword',
   region: 'sumeru',

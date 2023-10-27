@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'dehya',
   name: 'dehya',
   fullName: 'Dehya',
+  url: 'UI_AvatarIcon_Dehya',
   rating: 5,
   weapon: 'claymore',
   region: 'sumeru',

@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'neuvillette',
   name: 'neuvillette',
   fullName: 'Neuvillette',
+  url: 'UI_AvatarIcon_Neuvillette',
   region: 'fontaine',
   rating: 5,
   weapon: 'catalyst',

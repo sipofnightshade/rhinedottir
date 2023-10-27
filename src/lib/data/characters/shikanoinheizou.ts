@@ -7,6 +7,7 @@ const charName: CharacterRecord = {
   fullName: 'Shikanoin Heizou',
   rating: 4,
   weapon: 'catalyst',
+  url: 'UI_AvatarIcon_Heizo',
   region: 'inazuma',
   vision: 'anemo',
   specialized: 'atk%',

@@ -10,6 +10,7 @@ const charName: CharacterRecord = {
   region: 'inazuma',
   vision: 'dendro',
   specialized: 'hp%',
+  url: 'UI_AvatarIcon_Momoka',
   c3: 'skill',
   c5: 'burst',
   burstCost: 60,

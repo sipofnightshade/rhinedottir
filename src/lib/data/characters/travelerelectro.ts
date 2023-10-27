@@ -4,6 +4,7 @@ const charName: CharacterRecord = {
   uid: 10000005,
   id: 'travelerelectro',
   name: 'aether',
+  url: 'UI_AvatarIcon_PlayerBoy',
   fullName: 'Aether',
   rating: 5,
   weapon: 'sword',

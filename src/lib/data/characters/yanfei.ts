@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'yanfei',
   name: 'yanfei',
   fullName: 'Yanfei',
+  url: 'UI_AvatarIcon_Feiyan',
   rating: 4,
   weapon: 'catalyst',
   region: 'liyue',

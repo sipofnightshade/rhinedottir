@@ -5,6 +5,7 @@ const charName: CharacterRecord = {
   id: 'faruzan',
   name: 'faruzan',
   fullName: 'Faruzan',
+  url: 'UI_AvatarIcon_Faruzan',
   rating: 4,
   weapon: 'bow',
   region: 'sumeru',

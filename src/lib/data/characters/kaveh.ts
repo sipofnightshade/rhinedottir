@@ -8,6 +8,7 @@ const charName: CharacterRecord = {
   rating: 4,
   weapon: 'claymore',
   region: 'sumeru',
+  url: 'UI_AvatarIcon_Kaveh',
   vision: 'dendro',
   specialized: 'em',
   c3: 'burst',
