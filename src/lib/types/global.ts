@@ -9,6 +9,7 @@ export type SelectedCharacter = CharacterRecord;
 export type SelectedWeapon = {
   uid: number;
   name: WeaponNames;
+  url: string;
   fullName: string;
   rating: 5 | 4 | 3;
   type: WeaponCategory;
