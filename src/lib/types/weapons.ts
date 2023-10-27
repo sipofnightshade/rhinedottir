@@ -160,4 +160,6 @@ export type WeaponNames =
   | 'prospectorsdrill'
   | 'portablepowersaw'
   | 'balladoftheboundlessblue'
-  | 'rangegauge';
+  | 'rangegauge'
+  | 'tomeoftheeternalflow'
+  | 'cashflowsupervision';

@@ -131,6 +131,67 @@ export const catalyst: Cayalysts[] = [
     ref: [['12%'], ['15%'], ['18%'], ['21%'], ['24%']]
   },
   {
+    uid: 14513,
+    name: 'cashflowsupervision',
+    fullName: 'Cashflow Supervision',
+    url: 'UI_EquipIcon_Catalyst_Wheatley',
+    rating: 5,
+    type: 'catalyst',
+    specialized: 'critrate',
+    effectname: 'Golden Blood-Tide',
+    action: [
+      {
+        actionType: 'passive',
+        values: [
+          [{ scaling: 'atk%', coef: 0.16 }],
+          [{ scaling: 'atk%', coef: 0.2 }],
+          [{ scaling: 'atk%', coef: 0.24 }],
+          [{ scaling: 'atk%', coef: 0.28 }],
+          [{ scaling: 'atk%', coef: 0.32 }]
+        ]
+      },
+      {
+        actionType: 'stack',
+        values: [
+          [
+            { scaling: 'normal', coef: [0.16, 0.16, 0.16] },
+            { scaling: 'charged', coef: [0.14, 0.14, 0.14] },
+            { scaling: 'normalAtkSpd', coef: [0, 0, 0.08] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.2, 0.2, 0.2] },
+            { scaling: 'charged', coef: [0.175, 0.175, 0.175] },
+            { scaling: 'normalAtkSpd', coef: [0, 0, 0.1] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.24, 0.24, 0.24] },
+            { scaling: 'charged', coef: [0.21, 0.21, 0.21] },
+            { scaling: 'normalAtkSpd', coef: [0, 0, 0.12] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.28, 0.28, 0.28] },
+            { scaling: 'charged', coef: [0.245, 0.245, 0.245] },
+            { scaling: 'normalAtkSpd', coef: [0, 0, 0.14] }
+          ],
+          [
+            { scaling: 'normal', coef: [0.32, 0.32, 0.32] },
+            { scaling: 'charged', coef: [0.28, 0.28, 0.28] },
+            { scaling: 'normalAtkSpd', coef: [0, 0, 0.16] }
+          ]
+        ]
+      }
+    ],
+    effect:
+      'ATK is increased by {0}. When current HP increases or decreases, Normal Attack DMG will be increased by {1} and Charged Attack DMG will be increased by {2} for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by {3}.',
+    ref: [
+      ['16%', '16%', '14%', '8%'],
+      ['20%', '20%', '17.5%', '10%'],
+      ['24%', '24%', '21%', '12%'],
+      ['28%', '28%', '24.5%', '14%'],
+      ['32%', '32%', '28%', '16%']
+    ]
+  },
+  {
     uid: 14413,
     name: 'dodocotales',
     fullName: 'Dodoco Tales',
@@ -993,6 +1054,47 @@ export const catalyst: Cayalysts[] = [
     effect:
       'When switching characters, the new character taking the field has their ATK increased by {0} for 10s. This effect can only occur once every 20s.',
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
+  },
+  {
+    uid: 14514,
+    name: 'tomeoftheeternalflow',
+    fullName: 'Tome of the Eternal Flow',
+    url: 'UI_EquipIcon_Catalyst_Iudex',
+    rating: 5,
+    type: 'catalyst',
+    specialized: 'critdmg',
+    effectname: 'Aeon Wave',
+    action: [
+      {
+        actionType: 'passive',
+        values: [
+          [{ scaling: 'hp%', coef: 0.16 }],
+          [{ scaling: 'hp%', coef: 0.2 }],
+          [{ scaling: 'hp%', coef: 0.24 }],
+          [{ scaling: 'hp%', coef: 0.28 }],
+          [{ scaling: 'hp%', coef: 0.32 }]
+        ]
+      },
+      {
+        actionType: 'stack',
+        values: [
+          [{ scaling: 'charged', coef: [0.14, 0.14, 0.14] }],
+          [{ scaling: 'charged', coef: [0.18, 0.18, 0.18] }],
+          [{ scaling: 'charged', coef: [0.22, 0.22, 0.22] }],
+          [{ scaling: 'charged', coef: [0.26, 0.26, 0.26] }],
+          [{ scaling: 'charged', coef: [0.3, 0.3, 0.3] }]
+        ]
+      }
+    ],
+    effect:
+      "HP is increased by {0}. When current HP increases or decreases, Charged Attack DMG will be increased by {1} for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the character has 3 stacks or a third stack's duration refreshes, {2} Energy will be restored. This Energy restoration effect can be triggered once every 12s.",
+    ref: [
+      ['16%', '14%', '8'],
+      ['20%', '18%', '9'],
+      ['24%', '22%', '10'],
+      ['28%', '26%', '11'],
+      ['32%', '30%', '12']
+    ]
   },
   {
     uid: 14512,
