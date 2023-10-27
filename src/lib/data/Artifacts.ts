@@ -4,6 +4,7 @@ import type { Artifact } from '$lib/types/artifacts';
 export const ArtifactData: Artifact[] = [
   {
     uid: 0,
+    url: 'none',
     name: 'none',
     fullName: 'None',
     rating: [],
@@ -17,6 +18,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15001,
+    url: 'UI_RelicIcon_15001',
     name: 'gladiators',
     fullName: "Gladiator's Finale",
     rating: [4, 5],
@@ -32,6 +34,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15003,
+    url: 'UI_RelicIcon_15003',
     name: 'wanderers',
     fullName: "Wanderer's Troupe",
     rating: [4, 5],
@@ -47,6 +50,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15007,
+    url: 'UI_RelicIcon_15007',
     name: 'noblesseoblige',
     fullName: 'Noblesse Oblige',
     rating: [4, 5],
@@ -64,6 +68,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15008,
+    url: 'UI_RelicIcon_15008',
     name: 'bloodstained',
     fullName: 'Bloodstained Chivalry',
     rating: [4, 5],
@@ -79,6 +84,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 14004,
+    url: 'UI_RelicIcon_14004',
     name: 'maidenbeloved',
     fullName: 'Maiden Beloved',
     rating: [4, 5],
@@ -95,6 +101,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15002,
+    url: 'UI_RelicIcon_15002',
     name: 'viridescent',
     fullName: 'Viridescent Venerer',
     rating: [4, 5],
@@ -121,6 +128,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15014,
+    url: 'UI_RelicIcon_15014',
     name: 'archaicpetra',
     fullName: 'Archaic Petra',
     rating: [4, 5],
@@ -143,6 +151,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15015,
+    url: 'UI_RelicIcon_15015',
     name: 'retracingbolide',
     fullName: 'Retracing Bolide',
     rating: [4, 5],
@@ -162,6 +171,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 14002,
+    url: 'UI_RelicIcon_14002',
     name: 'thundersoother',
     fullName: 'Thundersoother',
     rating: [4, 5],
@@ -175,6 +185,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15005,
+    url: 'UI_RelicIcon_15005',
     name: 'thunderingfury',
     fullName: 'Thundering Fury',
     rating: [4, 5],
@@ -195,6 +206,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 14003,
+    url: 'UI_RelicIcon_14003',
     name: 'lavawalker',
     fullName: 'Lavawalker',
     rating: [4, 5],
@@ -208,6 +220,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15006,
+    url: 'UI_RelicIcon_15006',
     name: 'crimsonwitch',
     fullName: 'Crimson Witch of Flames',
     rating: [4, 5],
@@ -234,6 +247,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 14001,
+    url: 'UI_RelicIcon_14001',
     name: 'blizzardstrayer',
     fullName: 'Blizzard Strayer',
     rating: [4, 5],
@@ -249,6 +263,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15016,
+    url: 'UI_RelicIcon_15016',
     name: 'heartofdepth',
     fullName: 'Heart of Depth',
     rating: [4, 5],
@@ -267,6 +282,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15017,
+    url: 'UI_RelicIcon_15017',
     name: 'tenacityofmillelith',
     fullName: 'Tenacity of the Millelith',
     rating: [4, 5],
@@ -286,6 +302,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15018,
+    url: 'UI_RelicIcon_15018',
     name: 'paleflame',
     fullName: 'Pale Flame',
     rating: [4, 5],
@@ -304,6 +321,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15019,
+    url: 'UI_RelicIcon_15019',
     name: 'shimenawa',
     fullName: "Shimenawa's Reminiscence",
     rating: [4, 5],
@@ -323,6 +341,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15020,
+    url: 'UI_RelicIcon_15020',
     name: 'emblemofseveredfate',
     fullName: 'Emblem of Severed Fate',
     rating: [4, 5],
@@ -343,6 +362,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15021,
+    url: 'UI_RelicIcon_15021',
     name: 'huskofopulentdreams',
     fullName: 'Husk of Opulent Dreams',
     rating: [4, 5],
@@ -361,6 +381,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15022,
+    url: 'UI_RelicIcon_15022',
     name: 'oceanhued',
     fullName: 'Ocean-Hued Clam',
     rating: [4, 5],
@@ -375,6 +396,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15023,
+    url: 'UI_RelicIcon_15023',
     name: 'vermillionhereafter',
     fullName: 'Vermillion Hereafter',
     rating: [4, 5],
@@ -390,6 +412,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15024,
+    url: 'UI_RelicIcon_15024',
     name: 'echoesofanoffering',
     fullName: 'Echoes of an Offering',
     rating: [4, 5],
@@ -404,6 +427,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15025,
+    url: 'UI_RelicIcon_15025',
     name: 'deepwoodmemories',
     fullName: 'Deepwood Memories',
     rating: [4, 5],
@@ -420,6 +444,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15026,
+    url: 'UI_RelicIcon_15026',
     name: 'gildeddreams',
     fullName: 'Gilded Dreams',
     rating: [4, 5],
@@ -438,6 +463,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15027,
+    url: 'UI_RelicIcon_15027',
     name: 'desertpavilionchronicle',
     fullName: 'Desert Pavilion Chronicle',
     rating: [4, 5],
@@ -458,6 +484,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15028,
+    url: 'UI_RelicIcon_15028',
     name: 'flowerofparadiselost',
     fullName: 'Flower of Paradise Lost',
     rating: [4, 5],
@@ -486,6 +513,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15029,
+    url: 'UI_RelicIcon_15029',
     name: 'nymphsdream',
     fullName: "Nymph's Dream",
     rating: [4, 5],
@@ -504,6 +532,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15030,
+    url: 'UI_RelicIcon_15030',
     name: 'vourukashasglow',
     fullName: "Vourukasha's Glow",
     rating: [4, 5],
@@ -529,6 +558,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15031,
+    url: 'UI_RelicIcon_15031',
     name: 'marechausseehunter',
     fullName: 'Marechaussee Hunter',
     rating: [4, 5],
@@ -547,6 +577,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 15032,
+    url: 'UI_RelicIcon_15032',
     name: 'goldentroupe',
     fullName: 'Golden Troupe',
     rating: [4, 5],
@@ -562,6 +593,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10001,
+    url: 'UI_RelicIcon_10001',
     name: 'sojourner',
     fullName: 'Resolution of Sojourner',
     rating: [4],
@@ -575,6 +607,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10004,
+    url: 'UI_RelicIcon_10004',
     name: 'tinymiracle',
     fullName: 'Tiny Miracle',
     rating: [4],
@@ -598,6 +631,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10005,
+    url: 'UI_RelicIcon_10005',
     name: 'berserker',
     fullName: 'Berserker',
     rating: [4],
@@ -612,6 +646,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10007,
+    url: 'UI_RelicIcon_10007',
     name: 'instructor',
     fullName: 'Instructor',
     rating: [4],
@@ -628,6 +663,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10009,
+    url: 'UI_RelicIcon_10009',
     name: 'theexile',
     fullName: 'The Exile',
     rating: [4],
@@ -642,6 +678,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10003,
+    url: 'UI_RelicIcon_10003',
     name: 'defenderswill',
     fullName: "Defender's Will",
     rating: [4],
@@ -656,6 +693,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10002,
+    url: 'UI_RelicIcon_10002',
     name: 'braveheart',
     fullName: 'Brave Heart',
     rating: [4],
@@ -670,6 +708,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10006,
+    url: 'UI_RelicIcon_10006',
     name: 'martialartist',
     fullName: 'Martial Artist',
     rating: [4],
@@ -695,6 +734,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10008,
+    url: 'UI_RelicIcon_10008',
     name: 'gambler',
     fullName: 'Gambler',
     rating: [4],
@@ -709,6 +749,7 @@ export const ArtifactData: Artifact[] = [
   },
   {
     uid: 10012,
+    url: 'UI_RelicIcon_10012',
     name: 'scholar',
     fullName: 'Scholar',
     rating: [4],

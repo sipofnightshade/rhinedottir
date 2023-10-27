@@ -101,6 +101,7 @@ export type Artifact = {
   uid: number;
   name: ArtifactNames;
   fullName: string;
+  url: string;
   rating: number[];
   twoPiece: Action[];
   fourPiece: Action[];
