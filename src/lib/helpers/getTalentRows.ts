@@ -7,7 +7,6 @@ import type { Index_Stats } from '$lib/data/Stats';
 
 // helpers & calculators
 import { calcFinalDMG } from '$lib/calculators/calcFinalDMG';
-import { getCharacterName } from './getCharacterName';
 
 // data
 import TalentValues from '$lib/data/TalentValues.json';
@@ -22,7 +21,7 @@ export function getTalentRows(
   type: TalentType,
   dmgType: DamageType
 ) {
-  const cName = getCharacterName(character.selected.name, character.selected.vision);
+  const cName = character.selected.id;
   const combatValue = getCombatValue(type);
   const values = TalentValues[cName as keyof typeof TalentValues][combatValue];
   const additionalStats = getAdditionalStats(type);
