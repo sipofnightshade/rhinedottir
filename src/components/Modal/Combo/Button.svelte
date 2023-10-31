@@ -1,8 +1,6 @@
 <script lang="ts">
-  import type { DamageType } from '$lib/types/global';
-
   export let value: string | undefined;
-  export let el: DamageType = 'physical';
+  export let el: string = 'physical';
 </script>
 
 {#if value}
