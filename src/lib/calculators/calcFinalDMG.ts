@@ -32,7 +32,7 @@ export function calcFinalDMG(
     const healing = calcHealing(hit.damage[0], $stats, values, talentLvl);
     return {
       ...hit,
-      elemental: element,
+      elemental: 'healing',
       damage: {
         base: healing
       }
@@ -44,7 +44,7 @@ export function calcFinalDMG(
     const shielding = calcShield(hit.damage[0], $stats, values, talentLvl);
     return {
       ...hit,
-      elemental: element,
+      elemental: 'shield',
       damage: {
         base: shielding
       }
