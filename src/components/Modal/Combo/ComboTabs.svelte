@@ -58,21 +58,27 @@
   };
 </script>
 
-<div class="mb-2 grid list-none grid-cols-4 gap-2">
+<div class="mb-2 grid list-none grid-flow-col gap-2">
   {#each tabs as item}
-    <button
-      class="h- flex h-9 w-full items-center justify-center rounded-md border
-      {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
-      on:click={handleClick(item.value)}
-      class:opacity-30={!item.name}
-      disabled={!item.name}
-    >
-      {#if item.name}
-        <Thumbnail alt="temp" img="/images/character/{item.name}.webp" classes="h-full" />
-      {:else}
-        <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
-      {/if}
-    </button>
+    {#if item.name}
+      <button
+        class="h- flex h-9 w-full items-center justify-center rounded-md border
+    {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
+        on:click={handleClick(item.value)}
+        class:opacity-30={!item.name}
+        disabled={!item.name}
+      >
+        {#if item.name}
+          <Thumbnail
+            alt="temp"
+            img="/images/character/{item.name}.webp"
+            classes="h-full"
+          />
+        {:else}
+          <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
+        {/if}
+      </button>
+    {/if}
   {/each}
 </div>
 <section class="scrollbar w-full flex-1 overflow-y-auto">
