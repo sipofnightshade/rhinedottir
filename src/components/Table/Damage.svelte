@@ -18,7 +18,7 @@
     <Cell align="end" col="col-span-6" value="Damage" />
   </div>
 
-  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
     <Cell
       align="start"
       col="col-span-full"
@@ -43,25 +43,31 @@
     <TalentRow {data} />
   {/each}
 
-  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell
-      align="start"
-      col="col-span-full"
-      value={$character.selected.talentNames.skill}
-    />
-  </div>
+  <!---------- S K I L L ---------->
+  {#if $talents.main.skill.length > 0}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
+      <Cell
+        align="start"
+        col="col-span-full"
+        value={$character.selected.talentNames.skill}
+      />
+    </div>
+  {/if}
 
   {#each $talents.main.skill as data}
     <TalentRow {data} />
   {/each}
+
   <!---------- B U R S T ---------->
-  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
-    <Cell
-      align="start"
-      col="col-span-full"
-      value={$character.selected.talentNames.burst}
-    />
-  </div>
+  {#if $talents.main.burst.length > 0}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
+      <Cell
+        align="start"
+        col="col-span-full"
+        value={$character.selected.talentNames.burst}
+      />
+    </div>
+  {/if}
 
   {#each $talents.main.burst as data}
     <TalentRow {data} />
@@ -70,7 +76,7 @@
   <!---------- Party 1 ---------->
   {#if $party.one}
     {@const character = $party.one.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
       <Cell align="start" col="col-span-full" value={character.selected.fullName} />
     </div>
     {#each $talents.one.skill as data}
@@ -84,7 +90,7 @@
   <!---------- Party 2 ---------->
   {#if $party.two}
     {@const character = $party.two.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
       <Cell align="start" col="col-span-full" value={character.selected.fullName} />
     </div>
     {#each $talents.two.skill as data}
@@ -98,7 +104,7 @@
   <!---------- Party 3 ---------->
   {#if $party.three}
     {@const character = $party.three.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 py-1 px-1.5 text-tb">
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
       <Cell align="start" col="col-span-full" value={character.selected.fullName} />
     </div>
     {#each $talents.three.skill as data}
