@@ -22,28 +22,35 @@
       vision: $character.selected.vision as Visions,
       id: 'main' as CharacterID,
       value: 0,
-      sections: ['normal', 'charged', 'plunge', 'skill', 'burst'] as TalentType[]
+      sections: [
+        'normal',
+        'charged',
+        'plunge',
+        'skill',
+        'burst',
+        'reactions'
+      ] as TalentType[]
     },
     {
       name: $party.one?.character.selected.name,
       vision: $party.one?.character.selected.vision as Visions,
       id: 'one' as CharacterID,
       value: 1,
-      sections: ['skill', 'burst'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[]
     },
     {
       name: $party.two?.character.selected.name,
       vision: $party.two?.character.selected.vision as Visions,
       id: 'two' as CharacterID,
       value: 2,
-      sections: ['skill', 'burst'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[]
     },
     {
       name: $party.three?.character.selected.name,
       vision: $party.three?.character.selected.vision as Visions,
       id: 'three' as CharacterID,
       value: 3,
-      sections: ['skill', 'burst'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[]
     }
   ];
 

@@ -73,6 +73,16 @@
     <TalentRow {data} />
   {/each}
 
+  <!---------- R E A C T I O N S ---------->
+  {#if $talents.main.reactions.length > 0}
+    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
+      <Cell align="start" col="col-span-full" value="Reactions" />
+    </div>
+  {/if}
+  {#each $talents.main.reactions as data}
+    <TalentRow {data} />
+  {/each}
+
   <!---------- Party 1 ---------->
   {#if $party.one}
     {@const character = $party.one.character}
@@ -83,6 +93,9 @@
       <TalentRow {data} />
     {/each}
     {#each $talents.one.burst as data}
+      <TalentRow {data} />
+    {/each}
+    {#each $talents.one.reactions as data}
       <TalentRow {data} />
     {/each}
   {/if}
@@ -99,6 +112,9 @@
     {#each $talents.two.burst as data}
       <TalentRow {data} />
     {/each}
+    {#each $talents.two.reactions as data}
+      <TalentRow {data} />
+    {/each}
   {/if}
 
   <!---------- Party 3 ---------->
@@ -111,6 +127,9 @@
       <TalentRow {data} />
     {/each}
     {#each $talents.three.burst as data}
+      <TalentRow {data} />
+    {/each}
+    {#each $talents.three.reactions as data}
       <TalentRow {data} />
     {/each}
   {/if}

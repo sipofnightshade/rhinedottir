@@ -5,7 +5,14 @@
   import { uid } from 'uid';
 
   type CharacterID = 'main' | 'one' | 'two' | 'three';
-  type TalentType = 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
+  type TalentType =
+    | 'normal'
+    | 'charged'
+    | 'plunge'
+    | 'special'
+    | 'skill'
+    | 'burst'
+    | 'reactions';
 
   export let id: CharacterID;
   export let type: TalentType;

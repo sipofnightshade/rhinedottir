@@ -8,6 +8,7 @@ import { infusion } from './infusionStore';
 
 // helpers
 import { getTalentRows } from '$lib/helpers/getTalentRows';
+import { getReactionButtons } from '$lib/helpers/getReactionButtons';
 
 function createTalents() {
   return derived(
@@ -33,7 +34,8 @@ function createTalents() {
         charged: getTalentRows($character, $stats.main, $enemy, 'charged', mainDmgType),
         plunge: getTalentRows($character, $stats.main, $enemy, 'plunge', mainDmgType),
         skill: getTalentRows($character, $stats.main, $enemy, 'skill', vision),
-        burst: getTalentRows($character, $stats.main, $enemy, 'burst', vision)
+        burst: getTalentRows($character, $stats.main, $enemy, 'burst', vision),
+        reactions: getReactionButtons($character, $stats.main, $enemy)
       };
 
       // -------------------------------- 🛠 PARTY 🛠 --------------------------------
@@ -44,25 +46,28 @@ function createTalents() {
       if ($party.one && $stats.one) {
         const character = $party.one.character;
         const vision = character.selected.vision;
+        one['name'] = character.selected.fullName;
         one['skill'] = getTalentRows(character, $stats.one, $enemy, 'skill', vision);
         one['burst'] = getTalentRows(character, $stats.one, $enemy, 'burst', vision);
-        one['name'] = character.selected.fullName;
+        one['reactions'] = getReactionButtons(character, $stats.one, $enemy);
       }
 
       if ($party.two && $stats.two) {
         const character = $party.two.character;
         const vision = character.selected.vision;
+        two['name'] = character.selected.fullName;
         two['skill'] = getTalentRows(character, $stats.two, $enemy, 'skill', vision);
         two['burst'] = getTalentRows(character, $stats.two, $enemy, 'burst', vision);
-        two['name'] = character.selected.fullName;
+        two['reactions'] = getReactionButtons(character, $stats.two, $enemy);
       }
 
       if ($party.three && $stats.three) {
         const character = $party.three.character;
         const vision = character.selected.vision;
+        three['name'] = character.selected.fullName;
         three['skill'] = getTalentRows(character, $stats.three, $enemy, 'skill', vision);
         three['burst'] = getTalentRows(character, $stats.three, $enemy, 'burst', vision);
-        three['name'] = character.selected.fullName;
+        three['reactions'] = getReactionButtons(character, $stats.three, $enemy);
       }
 
       return { main, one, two, three };
