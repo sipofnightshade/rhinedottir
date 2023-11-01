@@ -48,12 +48,6 @@ export function getReactionButtons(
     reactions.push(getShattered(em, stats.burning, enemy.physical));
   }
 
-  // if Nilou is present and her party is dendro/hydro only, then show
-  // the dendro button with the blue around it.
-  //   if(character.selected.id==='nilou'){
-  //     reactions.push('shatter')
-  //   }
-
   function getHyperBurgeon(
     rxn: 'hyperbloom' | 'burgeon',
     em: number,
