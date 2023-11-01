@@ -19,7 +19,7 @@
     </li>
   {/each}
 </ul>
-<section class="scrollbar w-full flex-1 overflow-y-auto">
+<section class="flex overflow-hidden">
   {#each items as item (item.value)}
     {#if activeTabValue == item.value}
       <div class="bg-slate-800">

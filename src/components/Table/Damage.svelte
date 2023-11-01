@@ -69,49 +69,51 @@
   ];
 </script>
 
-<div class="mb-2 grid list-none grid-flow-col gap-2">
-  {#each tabs as item}
-    {#if item.name}
-      <button
-        class="h- flex h-9 w-full items-center justify-center rounded-md border
+<div class="flex h-full w-full flex-col overflow-hidden">
+  <div class="mb-2 grid list-none grid-flow-col gap-2">
+    {#each tabs as item}
+      {#if item.name}
+        <button
+          class="h- flex h-9 w-full items-center justify-center rounded-md border
       {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
-        on:click={handleClick(item.value)}
-        class:opacity-30={!item.name}
-        disabled={!item.name}
-      >
-        {#if item.name}
-          <Thumbnail
-            alt="temp"
-            img="/images/character/{item.name}.webp"
-            classes="h-full"
-          />
-        {:else}
-          <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
-        {/if}
-      </button>
-    {/if}
-  {/each}
-</div>
-<div
-  class="mb-1.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
->
-  <Cell align="start" col="col-span-2" value="ID" />
-  <Cell align="start" col="col-span-10" value="Talent" />
-  <Cell align="center" col="col-span-2" value="-" />
-  <Cell align="end" col="col-span-6" value="Damage" />
-</div>
-<div class="h-full overflow-auto">
-  {#each tabs as item (item.value)}
-    {#if activeTabValue == item.value}
-      {#each sections as section}
-        {#if $talents[item.id][section] && $talents[item.id][section].length > 0}
-          <DamageHeadingRow {section} value={item.talentName} />
+          on:click={handleClick(item.value)}
+          class:opacity-30={!item.name}
+          disabled={!item.name}
+        >
+          {#if item.name}
+            <Thumbnail
+              alt="temp"
+              img="/images/character/{item.name}.webp"
+              classes="h-full"
+            />
+          {:else}
+            <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
+          {/if}
+        </button>
+      {/if}
+    {/each}
+  </div>
+  <div
+    class="mb-1.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
+  >
+    <Cell align="start" col="col-span-2" value="ID" />
+    <Cell align="start" col="col-span-10" value="Talent" />
+    <Cell align="center" col="col-span-2" value="-" />
+    <Cell align="end" col="col-span-6" value="Damage" />
+  </div>
+  <div class="scrollbar overflow-auto">
+    {#each tabs as item (item.value)}
+      {#if activeTabValue == item.value}
+        {#each sections as section}
+          {#if $talents[item.id][section] && $talents[item.id][section].length > 0}
+            <DamageHeadingRow {section} value={item.talentName} />
 
-          {#each $talents[item.id][section] as data}
-            <TalentRow {data} />
-          {/each}
-        {/if}
-      {/each}
-    {/if}
-  {/each}
+            {#each $talents[item.id][section] as data}
+              <TalentRow {data} />
+            {/each}
+          {/if}
+        {/each}
+      {/if}
+    {/each}
+  </div>
 </div>
