@@ -1,136 +1,117 @@
 <script lang="ts">
   import TalentRow from '../TableRow/TalentRow.svelte';
   import Cell from '../TableRow/Cell.svelte';
+  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+
+  // types
+  type CharacterID = 'main' | 'one' | 'two' | 'three';
 
   // stores
   import { character } from '$lib/stores/characterStore';
   import { talents } from '$lib/stores/talentStore';
   import { party } from '$lib/stores/partyStore';
+  import type { Visions } from '$lib/types/global';
+  import DamageHeadingRow from '../TableRow/DamageHeadingRow.svelte';
+
+  type Heading = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst' | 'reactions';
+
+  export let activeTabValue = 0;
+  const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
+
+  $: tabs = [
+    {
+      name: $character.selected.name,
+      vision: $character.selected.vision as Visions,
+      talentName: $character.selected.talentNames,
+      id: 'main' as CharacterID,
+      value: 0
+    },
+    {
+      name: $party.one?.character.selected.name,
+      vision: $party.one?.character.selected.vision as Visions,
+      talentName: $party.one?.character.selected.talentNames,
+      id: 'one' as CharacterID,
+      value: 1
+    },
+    {
+      name: $party.two?.character.selected.name,
+      vision: $party.two?.character.selected.vision as Visions,
+      talentName: $party.two?.character.selected.talentNames,
+      id: 'two' as CharacterID,
+      value: 2
+    },
+    {
+      name: $party.three?.character.selected.name,
+      vision: $party.three?.character.selected.vision as Visions,
+      talentName: $party.three?.character.selected.talentNames,
+      id: 'three' as CharacterID,
+      value: 3
+    }
+  ];
+
+  const visionClasses = {
+    anemo: 'border-anemo',
+    cryo: 'border-cryo',
+    dendro: 'border-dendro',
+    electro: 'border-electro',
+    geo: 'border-geo',
+    pyro: 'border-pyro',
+    hydro: 'border-hydro'
+  };
+
+  const sections: Heading[] = [
+    'normal',
+    'charged',
+    'plunge',
+    'skill',
+    'burst',
+    'reactions'
+  ];
 </script>
 
-<div>
-  <div
-    class="mb-1.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
-  >
-    <Cell align="start" col="col-span-2" value="ID" />
-    <Cell align="start" col="col-span-10" value="Talent" />
-    <Cell align="center" col="col-span-2" value="-" />
-    <Cell align="end" col="col-span-6" value="Damage" />
-  </div>
-
-  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-    <Cell
-      align="start"
-      col="col-span-full"
-      value={$character.selected.talentNames.normal}
-    />
-  </div>
-
-  <!-- Normal -->
-  {#each $talents.main.normal as data}
-    <TalentRow {data} />
+<div class="mb-2 grid list-none grid-flow-col gap-2">
+  {#each tabs as item}
+    {#if item.name}
+      <button
+        class="h- flex h-9 w-full items-center justify-center rounded-md border
+      {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
+        on:click={handleClick(item.value)}
+        class:opacity-30={!item.name}
+        disabled={!item.name}
+      >
+        {#if item.name}
+          <Thumbnail
+            alt="temp"
+            img="/images/character/{item.name}.webp"
+            classes="h-full"
+          />
+        {:else}
+          <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
+        {/if}
+      </button>
+    {/if}
   {/each}
+</div>
+<div
+  class="mb-1.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
+>
+  <Cell align="start" col="col-span-2" value="ID" />
+  <Cell align="start" col="col-span-10" value="Talent" />
+  <Cell align="center" col="col-span-2" value="-" />
+  <Cell align="end" col="col-span-6" value="Damage" />
+</div>
+<div class="h-full overflow-auto">
+  {#each tabs as item (item.value)}
+    {#if activeTabValue == item.value}
+      {#each sections as section}
+        {#if $talents[item.id][section] && $talents[item.id][section].length > 0}
+          <DamageHeadingRow {section} value={item.talentName} />
 
-  <!-- Charged -->
-  <div class="h-[1px] w-full bg-slate-600" />
-  {#each $talents.main.charged as data}
-    <TalentRow {data} />
+          {#each $talents[item.id][section] as data}
+            <TalentRow {data} />
+          {/each}
+        {/if}
+      {/each}
+    {/if}
   {/each}
-
-  <!-- Plunge -->
-  <div class="h-[1px] w-full bg-slate-600" />
-  {#each $talents.main.plunge as data}
-    <TalentRow {data} />
-  {/each}
-
-  <!---------- S K I L L ---------->
-  {#if $talents.main.skill.length > 0}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell
-        align="start"
-        col="col-span-full"
-        value={$character.selected.talentNames.skill}
-      />
-    </div>
-  {/if}
-
-  {#each $talents.main.skill as data}
-    <TalentRow {data} />
-  {/each}
-
-  <!---------- B U R S T ---------->
-  {#if $talents.main.burst.length > 0}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell
-        align="start"
-        col="col-span-full"
-        value={$character.selected.talentNames.burst}
-      />
-    </div>
-  {/if}
-
-  {#each $talents.main.burst as data}
-    <TalentRow {data} />
-  {/each}
-
-  <!---------- R E A C T I O N S ---------->
-  {#if $talents.main.reactions.length > 0}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell align="start" col="col-span-full" value="Reactions" />
-    </div>
-  {/if}
-  {#each $talents.main.reactions as data}
-    <TalentRow {data} />
-  {/each}
-
-  <!---------- Party 1 ---------->
-  {#if $party.one}
-    {@const character = $party.one.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
-    </div>
-    {#each $talents.one.skill as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.one.burst as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.one.reactions as data}
-      <TalentRow {data} />
-    {/each}
-  {/if}
-
-  <!---------- Party 2 ---------->
-  {#if $party.two}
-    {@const character = $party.two.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
-    </div>
-    {#each $talents.two.skill as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.two.burst as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.two.reactions as data}
-      <TalentRow {data} />
-    {/each}
-  {/if}
-
-  <!---------- Party 3 ---------->
-  {#if $party.three}
-    {@const character = $party.three.character}
-    <div class=" grid grid-cols-20 rounded-sm bg-slate-600 px-1.5 py-1 text-tb">
-      <Cell align="start" col="col-span-full" value={character.selected.fullName} />
-    </div>
-    {#each $talents.three.skill as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.three.burst as data}
-      <TalentRow {data} />
-    {/each}
-    {#each $talents.three.reactions as data}
-      <TalentRow {data} />
-    {/each}
-  {/if}
 </div>
