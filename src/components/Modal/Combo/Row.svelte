@@ -158,7 +158,8 @@
       class:animate-pulse={deletable}
       class:border-red-400={deletable}
       class:text-red-400={deletable}
-      >Edit
+    >
+      {deletable ? 'Cancel' : 'Edit'}
     </button>
   </div>
 </section>
