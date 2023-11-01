@@ -69,12 +69,12 @@
   ];
 </script>
 
-<div class="flex h-full w-full flex-col overflow-hidden">
+<div class="flex h-full flex-1 flex-col overflow-hidden">
   <div class="mb-2 grid list-none grid-flow-col gap-2">
     {#each tabs as item}
       {#if item.name}
         <button
-          class="h- flex h-9 w-full items-center justify-center rounded-md border
+          class="flex h-9 w-full flex-grow items-center justify-center rounded-md border
       {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
           on:click={handleClick(item.value)}
           class:opacity-30={!item.name}
@@ -101,7 +101,7 @@
     <Cell align="center" col="col-span-2" value="-" />
     <Cell align="end" col="col-span-6" value="Damage" />
   </div>
-  <div class="scrollbar overflow-auto">
+  <div class="scrollbar w-full overflow-auto">
     {#each tabs as item (item.value)}
       {#if activeTabValue == item.value}
         {#each sections as section}

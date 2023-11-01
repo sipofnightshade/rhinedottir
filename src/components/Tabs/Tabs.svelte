@@ -22,7 +22,7 @@
 <section class="flex overflow-hidden">
   {#each items as item (item.value)}
     {#if activeTabValue == item.value}
-      <div class="bg-slate-800">
+      <div class="w-full">
         <svelte:component this={item.component} />
       </div>
     {/if}
