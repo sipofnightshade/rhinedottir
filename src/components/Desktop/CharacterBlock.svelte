@@ -76,7 +76,7 @@
           alt={$weapon.selected.fullName}
         />
       </div>
-      <div class="flex flex-1 flex-col items-center space-y-1 px-1">
+      <div class="flex flex-1 flex-col space-y-0.5 px-1 lg:space-y-1">
         <div class="flex w-full justify-between px-0.5 xl:text-lg">
           <span>Base ATK</span>
           <strong>{$weapon.stats?.attack.toFixed(0)}</strong>
