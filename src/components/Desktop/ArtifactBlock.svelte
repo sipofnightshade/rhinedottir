@@ -6,10 +6,11 @@
   import Goblet from '../Modal/Artifact/Goblet.svelte';
   import Circlet from '../Modal/Artifact/Circlet.svelte';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+  import StatImage from './StatImage.svelte';
 
   import { artifact } from '$lib/stores/artifactStore';
+  import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
-  import StatImage from './StatImage.svelte';
 
   const menuModals: ArtifactModalButtons = [
     {
@@ -56,7 +57,9 @@
   }
 </script>
 
-<section class="grid max-h-[120px] w-full grid-cols-5 gap-2 lg:max-h-[144px] xl:max-h-40">
+<section
+  class="grid max-h-[120px] w-full grid-cols-5 gap-2 text-slate-200 lg:max-h-[144px] xl:max-h-40"
+>
   {#each menuModals as modal (modal.id)}
     <button
       class="relative h-full w-full rounded-lg bg-slate-700 p-2"
@@ -68,7 +71,7 @@
         {:else}
           <Thumbnail
             img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
-            classes="opacity-40"
+            classes="opacity-30"
             alt="rust"
             hasBG={false}
           />
@@ -82,14 +85,19 @@
         >
           <StatImage stat={$artifact[modal.id].mainStat.stat} />
 
-          <span class=" text-xs lg:text-sm xl:text-base"
-            >{$artifact[modal.id].mainStat.value}</span
-          >
+          <span class=" text-xs lg:text-sm xl:text-base">
+            {artifactStatFormatter(
+              $artifact[modal.id].mainStat.stat,
+              $artifact[modal.id].mainStat.value
+            )}
+          </span>
         </li>
         {#each $artifact[modal.id].substats as substat}
           <li class="flex h-full items-center justify-between px-1">
             <StatImage stat={substat.stat} />
-            <span class=" text-xs lg:text-sm xl:text-base">{substat.value}</span>
+            <span class=" text-xs lg:text-sm xl:text-base">
+              {artifactStatFormatter(substat.stat, substat.value)}
+            </span>
           </li>
         {/each}
       </ul>

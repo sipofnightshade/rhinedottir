@@ -1,7 +1,5 @@
 export function artifactStatFormatter(stat: string, value: number) {
-  if (value === 0) {
-    return '';
-  }
+  if (value === 0) return 0;
 
   switch (stat) {
     case 'em':
