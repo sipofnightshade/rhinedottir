@@ -27,7 +27,8 @@ const initialState: State = {
     hydroRes: 0,
     pyroRes: 0,
     physicalRes: 0,
-    dmgReduction: 0
+    dmgReduction: 0,
+    defReduce: 0
   }
 };
 

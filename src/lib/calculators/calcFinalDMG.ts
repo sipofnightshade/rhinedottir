@@ -61,7 +61,7 @@ export function calcFinalDMG(
   const DEFMultiplier = calcDEFMultiplier(
     $character.lvl,
     $enemy.lvl,
-    $stats.defReduce,
+    $enemy.defReduce,
     $stats[addStats.defIgnore]
   );
 

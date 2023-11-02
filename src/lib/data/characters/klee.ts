@@ -219,7 +219,7 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'def%',
+          scaling: 'defReduce',
           coef: 0.23
         }
       ]

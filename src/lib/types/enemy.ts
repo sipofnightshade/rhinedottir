@@ -1,6 +1,7 @@
 export type Enemy = {
   lvl: number;
   dmgReduction: number;
+  defReduce: number;
   physical: number;
   anemo: number;
   geo: number;

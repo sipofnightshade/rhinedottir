@@ -17,10 +17,12 @@ function createEnemy() {
     const pyro = calcRESMultiplier(0.1, 0, enemy.pyroRes);
 
     const dmgReduction = enemy.dmgReduction;
+    const defReduce = enemy.defReduce;
 
     return {
       lvl: enemyLvl,
       dmgReduction,
+      defReduce,
       physical,
       anemo,
       geo,
