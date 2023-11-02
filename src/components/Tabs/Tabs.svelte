@@ -19,7 +19,7 @@
     </li>
   {/each}
 </ul>
-<section class="flex overflow-hidden">
+<section class="flex h-full overflow-hidden">
   {#each items as item (item.value)}
     {#if activeTabValue == item.value}
       <div class="w-full">
