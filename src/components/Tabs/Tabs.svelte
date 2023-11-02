@@ -21,10 +21,10 @@
 </ul>
 <section class="flex h-full overflow-hidden">
   {#each items as item (item.value)}
-    {#if activeTabValue == item.value}
-      <div class="w-full">
-        <svelte:component this={item.component} />
-      </div>
-    {/if}
+    <!-- {#if activeTabValue === item.value} -->
+    <div class="w-full {activeTabValue === item.value ? '' : 'hidden'}">
+      <svelte:component this={item.component} />
+    </div>
+    <!-- {/if} -->
   {/each}
 </section>
