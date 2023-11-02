@@ -9,15 +9,18 @@ import { party } from './partyStore';
 // helpers
 import { getFinalStats } from '$lib/helpers/getFinalStats';
 
+type STATS = { [key: string]: number };
+type PARTY_STATS = STATS | undefined;
+
 function createStats() {
   return derived(
     [character, weapon, artifact, action, party],
     ([$character, $weapon, $artifacts, $action, $party]) => {
-      const main = getFinalStats($character, $weapon, $artifacts, $action.main);
+      const main: STATS = getFinalStats($character, $weapon, $artifacts, $action.main);
 
       // let partyBurstCost = $character.selected.burstCost;
 
-      let p1Stats, p2Stats, p3Stats;
+      let p1Stats: PARTY_STATS, p2Stats: PARTY_STATS, p3Stats: PARTY_STATS;
       if ($party?.one) {
         p1Stats = getFinalStats(
           $party.one.character,
