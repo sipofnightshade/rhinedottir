@@ -2,15 +2,17 @@
   import StatRow from '../TableRow/StatRow.svelte';
   import Cell from '../TableRow/Cell.svelte';
 
-  // stores
+  // stores & helpers
   import { stats } from '$lib/stores/statsStore';
   import { enemy } from '$lib/stores/enemyStore';
   import { party } from '$lib/stores/partyStore';
   import { character } from '$lib/stores/characterStore';
+  import { calcDEFMultiplier } from '$lib/calculators/calcDEFMultiplier';
 
   // types
   import type { Visions } from '$lib/types/global';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+  import EnemyStatRow from '../TableRow/EnemyStatRow.svelte';
   type CharacterID = 'main' | 'one' | 'two' | 'three';
 
   export let activeTabValue = 0;
@@ -56,6 +58,13 @@
     pyro: 'border-pyro',
     hydro: 'border-hydro'
   };
+
+  $: enemyDefMultiplier = calcDEFMultiplier(
+    $character.lvl,
+    $enemy.lvl,
+    $enemy.defReduce,
+    0
+  );
 </script>
 
 <div class="flex h-full flex-1 flex-col overflow-hidden">
@@ -171,31 +180,23 @@
       {/if}
     {/each}
     {#if activeTabValue === 4}
-      <!-- Heading -->
       <div
         class="mb-.5 grid grid-cols-20 border-b border-slate-500 px-0.5 pb-1.5 text-sm font-bold uppercase"
       >
         <Cell align="start" col="col-span-12" value="Stat" />
-        <Cell align="end" col="col-span-4" value="Multiplier" />
-        <Cell align="end" col="col-span-4" value="Total" />
+        <Cell align="end" col="col-span-8" value="Value" />
       </div>
-      <!-- ENEMY LVL -->
-      <StatRow label="Level" base={0} total={$enemy.lvl} isPcnt={false} />
-      <StatRow
-        label="DMG Reduction"
-        base={0}
-        total={$enemy.dmgReduction}
-        isPcnt={false}
-      />
-      <!-- ENEMY STATS -->
-      <StatRow label="Anemo Res" base={0} total={$enemy.anemo} isPcnt={true} />
-      <StatRow label="Cryo Res" base={0} total={$enemy.cryo} isPcnt={true} />
-      <StatRow label="Dendro Res" base={0} total={$enemy.dendro} isPcnt={true} />
-      <StatRow label="Electro Res" base={0} total={$enemy.electro} isPcnt={true} />
-      <StatRow label="Hydro Res" base={0} total={$enemy.hydro} isPcnt={true} />
-      <StatRow label="Geo Res" base={0} total={$enemy.geo} isPcnt={true} />
-      <StatRow label="Pyro Res" base={0} total={$enemy.pyro} isPcnt={true} />
-      <StatRow label="Physical Res" base={0} total={$enemy.physical} isPcnt={true} />
+      <EnemyStatRow label="Level" value={$enemy.lvl} multiplier={false} />
+      <EnemyStatRow label="Defence" value={enemyDefMultiplier} />
+      <div class="h-[1px] w-full bg-slate-600" />
+      <EnemyStatRow label="Anemo Res" value={$enemy.anemo} />
+      <EnemyStatRow label="Cryo Res" value={$enemy.cryo} />
+      <EnemyStatRow label="Dendro Res" value={$enemy.dendro} />
+      <EnemyStatRow label="Electro Res" value={$enemy.electro} />
+      <EnemyStatRow label="Hydro Res" value={$enemy.hydro} />
+      <EnemyStatRow label="Geo Res" value={$enemy.geo} />
+      <EnemyStatRow label="Pyro Res" value={$enemy.pyro} />
+      <EnemyStatRow label="Physical Res" value={$enemy.physical} />
     {/if}
   </div>
 </div>
