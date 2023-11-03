@@ -142,6 +142,7 @@ const charName: CharacterRecord = {
     {
       name: 'Splitting Gales',
       tag: 'X1',
+      constellation: 1,
       damageBonus: 'charged',
       hasOwnDMGType: 'anemo',
       damage: [

@@ -314,6 +314,7 @@ const charName: CharacterRecord = {
     {
       name: 'Boundless Origin DMG',
       tag: 'X6',
+      constellation: 6,
       url: 'UI_Talent_S_Ayato_04',
       damageBonus: 'normal',
       damage: [
