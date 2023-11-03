@@ -24,28 +24,32 @@
       vision: $character.selected.vision as Visions,
       talentName: $character.selected.talentNames,
       id: 'main' as CharacterID,
-      value: 0
+      value: 0,
+      constellation: $character.constellation
     },
     {
       name: $party.one?.character.selected.name,
       vision: $party.one?.character.selected.vision as Visions,
       talentName: $party.one?.character.selected.talentNames,
       id: 'one' as CharacterID,
-      value: 1
+      value: 1,
+      constellation: $party.one?.character.constellation
     },
     {
       name: $party.two?.character.selected.name,
       vision: $party.two?.character.selected.vision as Visions,
       talentName: $party.two?.character.selected.talentNames,
       id: 'two' as CharacterID,
-      value: 2
+      value: 2,
+      constellation: $party.two?.character.constellation
     },
     {
       name: $party.three?.character.selected.name,
       vision: $party.three?.character.selected.vision as Visions,
       talentName: $party.three?.character.selected.talentNames,
       id: 'three' as CharacterID,
-      value: 3
+      value: 3,
+      constellation: $party.three?.character.constellation
     }
   ];
 
@@ -109,7 +113,7 @@
             <DamageHeadingRow {section} value={item.talentName} />
 
             {#each $talents[item.id][section] as data}
-              <TalentRow {data} />
+              <TalentRow {data} constellation={item.constellation} />
             {/each}
           {/if}
         {/each}

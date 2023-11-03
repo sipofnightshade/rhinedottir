@@ -29,28 +29,32 @@
         'skill',
         'burst',
         'reactions'
-      ] as TalentType[]
+      ] as TalentType[],
+      constellation: $character.constellation
     },
     {
       name: $party.one?.character.selected.name,
       vision: $party.one?.character.selected.vision as Visions,
       id: 'one' as CharacterID,
       value: 1,
-      sections: ['skill', 'burst', 'reactions'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[],
+      constellation: $party.one?.character.constellation
     },
     {
       name: $party.two?.character.selected.name,
       vision: $party.two?.character.selected.vision as Visions,
       id: 'two' as CharacterID,
       value: 2,
-      sections: ['skill', 'burst', 'reactions'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[],
+      constellation: $party.two?.character.constellation
     },
     {
       name: $party.three?.character.selected.name,
       vision: $party.three?.character.selected.vision as Visions,
       id: 'three' as CharacterID,
       value: 3,
-      sections: ['skill', 'burst', 'reactions'] as TalentType[]
+      sections: ['skill', 'burst', 'reactions'] as TalentType[],
+      constellation: $party.three?.character.constellation
     }
   ];
 
@@ -92,7 +96,12 @@
   {#each tabs as item (item.value)}
     {#if activeTabValue == item.value}
       {#each item.sections as section}
-        <TalentSection on:addbutton id={item.id} type={section} />
+        <TalentSection
+          on:addbutton
+          id={item.id}
+          type={section}
+          constellation={item.constellation}
+        />
       {/each}
     {/if}
   {/each}

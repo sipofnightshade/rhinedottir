@@ -1,6 +1,11 @@
 <script lang="ts">
   export let value: string | undefined;
   export let el: string = 'physical';
+  export let constellation: number;
+  export let talentConstellation: number | undefined;
+
+  $: show = constellation >= (talentConstellation ?? 0);
+  // $: console.log(value, show);
 </script>
 
 {#if value}
@@ -15,6 +20,7 @@
     class:bg-hydro={el === 'hydro'}
     class:bg-geo={el === 'geo'}
     class:bg-pyro={el === 'pyro'}
+    class:hidden={!show}
   >
     {value}
   </button>

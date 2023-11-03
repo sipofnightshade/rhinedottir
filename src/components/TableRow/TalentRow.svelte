@@ -3,10 +3,14 @@
   import StatImage from '../Desktop/StatImage.svelte';
 
   export let data: any;
+  export let constellation: number = 0;
+
+  $: show = constellation >= (data.constellation ?? 0);
+
   $: damage = Math.floor(data.damage.base).toLocaleString();
 </script>
 
-<div class="grid grid-cols-20 px-1 py-1 text-tb">
+<div class="grid grid-cols-20 px-1 py-1 text-tb" class:hidden={!show}>
   <Cell align="start" col="col-span-2" value={data.tag || '-'} />
   <Cell align="start" col="col-span-10 text-slate-400" value={data.name} />
   <Cell align="center" col="col-span-2">

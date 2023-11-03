@@ -16,6 +16,7 @@
 
   export let id: CharacterID;
   export let type: TalentType;
+  export let constellation = 0;
 
   const dispatch = createEventDispatcher<{
     addbutton: { index: number; id: CharacterID; type: TalentType; btnID: string };
@@ -27,9 +28,15 @@
 </script>
 
 {#if $talents[id][type]}
-  <section class="mb-1 grid auto-cols-[minmax(0,1fr)] grid-flow-col gap-1">
+  <section class="mb-1 grid grid-flow-col gap-1">
     {#each $talents[id][type] as talent, index}
-      <Button el={talent.elemental} value={talent.tag} on:click={() => sendData(index)} />
+      <Button
+        el={talent.elemental}
+        value={talent.tag}
+        on:click={() => sendData(index)}
+        {constellation}
+        talentConstellation={talent.constellation}
+      />
     {/each}
   </section>
 {/if}
