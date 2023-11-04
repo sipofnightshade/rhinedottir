@@ -11,6 +11,7 @@
   import ArtifactButton from './ArtifactButton.svelte';
   import WeaponButton from './WeaponButton.svelte';
   import CharacterButton from './CharacterButton.svelte';
+  import ResonanceButton from './ResonanceButton.svelte';
 
   export let margin = true;
 
@@ -115,4 +116,6 @@
       currentStats={$stats.three}
     />
   {/if}
+
+  <ResonanceButton />
 </section>

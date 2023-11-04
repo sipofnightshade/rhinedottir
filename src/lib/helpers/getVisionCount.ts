@@ -18,7 +18,7 @@ export function getVisionCount(
     | 'geo'
     | 'hydro'
     | 'pyro',
-  targetValue: string
+  targetValue?: string
 ): number {
   // Remove 'none' values from the array
   const filteredValues = values.filter((value) => value !== 'none');
