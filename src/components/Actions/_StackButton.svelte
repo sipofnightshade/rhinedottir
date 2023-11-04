@@ -1,7 +1,11 @@
 <script lang="ts">
   // types
-  import type { Action, ActionBtnID, Target } from '$lib/types/actions';
-  import type { Visions } from '$lib/types/global';
+  import type {
+    Action,
+    ActionBtnID,
+    ActionButtonColor,
+    Target
+  } from '$lib/types/actions';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
   import type { All_Stats, Index_Stats } from '$lib/data/Stats';
@@ -9,7 +13,6 @@
   // helpers & calculators
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
-  import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
 
@@ -20,7 +23,7 @@
   import ActionButton from './ActionButton.svelte';
   import { infusion } from '$lib/stores/infusionStore';
 
-  export let type: Visions | 'weapon' | 'artifact';
+  export let type: ActionButtonColor;
   export let data: Action;
   export let id: ActionBtnID;
   export let currentChar: CurrentCharacter;
@@ -121,7 +124,8 @@
     geo: 'text-geo',
     pyro: 'text-pyro',
     weapon: 'text-slate-300',
-    artifact: 'text-slate-300'
+    artifact: 'text-slate-300',
+    resonance: 'text-slate-300'
   };
 </script>
 

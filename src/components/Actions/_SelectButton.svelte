@@ -1,10 +1,15 @@
 <script lang="ts">
   // types & misc
-  import type { Action, ActionBtnID, CoefSource, Target } from '$lib/types/actions';
-  import type { Visions } from '$lib/types/global';
+  import type {
+    Action,
+    ActionBtnID,
+    ActionButtonColor,
+    CoefSource,
+    Target
+  } from '$lib/types/actions';
   import type { CharacterSpecificNames } from '$lib/types/characters';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
-  import type { All_Stats, Index_Stats } from '$lib/data/Stats';
+  import type { Index_Stats } from '$lib/data/Stats';
 
   // external functions & stores
   import { action } from '$lib/stores/actionStore';
@@ -12,7 +17,6 @@
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
-  import { getCharacterName } from '$lib/helpers/getCharacterName';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
 
   // component
@@ -20,7 +24,7 @@
   import ActionModal from '../Modal/ActionModal.svelte';
 
   // props
-  export let type: Visions | 'weapon' | 'artifact';
+  export let type: ActionButtonColor;
   export let data: Action;
   export let id: ActionBtnID;
   export let currentChar: CurrentCharacter;

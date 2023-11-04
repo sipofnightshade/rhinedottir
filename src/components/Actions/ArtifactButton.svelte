@@ -7,7 +7,7 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
-  import AddLevelButton from './AddLevelButton.svelte';
+  import AddLevelButton from './_AddLevelButton.svelte';
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Visions } from '$lib/types/global';
+  import type { ActionButtonColor } from '$lib/types/actions';
 
   // props
-  export let type: Visions | 'weapon' | 'artifact' = 'anemo';
+  export let type: ActionButtonColor;
   export let url: string;
   export let isActive = true;
 
@@ -15,7 +15,8 @@
     geo: 'bg-geo',
     pyro: 'bg-pyro',
     weapon: 'bg-slate-300',
-    artifact: 'bg-slate-300'
+    artifact: 'bg-slate-300',
+    resonance: 'bg-slate-300'
   };
 
   const gradients = {
@@ -27,7 +28,8 @@
     geo: 'bg-gradient-to-b from-geo to-geoDark',
     pyro: 'bg-gradient-to-b from-pyro to-pyroDark',
     weapon: 'bg-gradient-to-b from-slate-400 to-slate-500',
-    artifact: 'bg-gradient-to-b from-slate-400 to-slate-500'
+    artifact: 'bg-gradient-to-b from-slate-400 to-slate-500',
+    resonance: 'bg-gradient-to-b from-slate-400 to-slate-500'
   };
 
   const outlines = {
@@ -39,7 +41,8 @@
     geo: 'outline-geo',
     pyro: 'outline-pyro',
     weapon: 'outline-slate-300',
-    artifact: 'outline-slate-300'
+    artifact: 'outline-slate-300',
+    resonance: 'outline-slate-300'
   };
 </script>
 

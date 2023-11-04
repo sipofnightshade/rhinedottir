@@ -78,3 +78,5 @@ export type Action = {
   sourceStats?: CoefStats[];
   values: ActionValue[];
 };
+
+export type ActionButtonColor = Visions | 'weapon' | 'artifact' | 'resonance';

@@ -1,7 +1,6 @@
 <script lang="ts">
   // types
-  import type { Action, ActionBtnID } from '$lib/types/actions';
-  import type { Visions } from '$lib/types/global';
+  import type { Action, ActionBtnID, ActionButtonColor } from '$lib/types/actions';
   import type { Index_Stats } from '$lib/data/Stats';
 
   // components
@@ -13,7 +12,7 @@
   import { party } from '$lib/stores/partyStore';
 
   // props
-  export let type: Visions | 'weapon' | 'artifact';
+  export let type: ActionButtonColor;
   export let data: Action;
   export let id: ActionBtnID;
   export let currentChar: CurrentCharacter;

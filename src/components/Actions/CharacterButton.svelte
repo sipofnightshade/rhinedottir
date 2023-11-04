@@ -7,7 +7,7 @@
   import MultiSelectButton from './_MultiSelectButton.svelte';
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
-  import AddLevelButton from './AddLevelButton.svelte';
+  import AddLevelButton from './_AddLevelButton.svelte';
   // types
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
