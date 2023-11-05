@@ -5,15 +5,15 @@
   import { createPopover } from 'svelte-headlessui';
   import { createEventDispatcher, onMount } from 'svelte';
   import { uid } from 'uid';
+  import { escape } from '$lib/actions/escape';
 
   // components
   import ComboButton from './ComboButton.svelte';
   import RowHeading from './RowHeading.svelte';
-  import TalentSection from './TalentSection.svelte';
   import Transition from 'svelte-transition';
   import Close from '$lib/icons/Close.svelte';
   import ComboTabs from './ComboTabs.svelte';
-  import { escape } from '$lib/actions/escape';
+  import Delete from '$lib/icons/Delete.svelte';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -118,7 +118,7 @@
           on:click={handleClearAll}
           title="Clear All"
         >
-          <Close class="h-3 w-3 fill-red-600" />
+          <Delete class="h-3.5 fill-red-600" />
         </button>
       {/if}
     </SortableList>
@@ -155,7 +155,6 @@
     <button
       on:click={handleEditButton}
       class="rounded border border-slate-500 px-3 py-1"
-      class:animate-pulse={deletable}
       class:border-red-400={deletable}
       class:text-red-400={deletable}
     >
