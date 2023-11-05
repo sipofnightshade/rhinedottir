@@ -116,3 +116,17 @@ export type CharacterRecord = {
   actions: Action[];
   offField?: OffField[];
 };
+
+export interface ReactionTotals {
+  aggravate?: number;
+  superconduct?: number;
+  electrocharged?: number;
+  overloaded?: number;
+  spread?: number;
+  pyroSwirl?: number;
+  cryoSwirl?: number;
+  electroSwirl?: number;
+  hydroSwirl?: number;
+  vaporize?: number;
+  melt?: number;
+}
