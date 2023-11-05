@@ -14,9 +14,9 @@
   // props
   export let type: ActionButtonColor;
   export let data: Action;
-  export let id: ActionBtnID;
-  export let currentChar: CurrentCharacter;
-  export let currentStats: Index_Stats;
+  // export let id: ActionBtnID;
+  // export let currentChar: CurrentCharacter;
+  // export let currentStats: Index_Stats;
 
   let isInitialized = false;
 
