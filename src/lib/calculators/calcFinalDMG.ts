@@ -130,7 +130,7 @@ export function calcFinalDMG(
         critDMG
       );
 
-      total.base += result;
+      // total.base += result;
       total[element] += result;
 
       /**
@@ -293,7 +293,7 @@ export function calcFinalDMG(
 
       return total;
     },
-    { base: 0, [element]: 0 }
+    { [element]: 0 }
   );
 
   const newDMG = Object.entries(FinalDMG).map(([type, value]) => ({ type, value }));

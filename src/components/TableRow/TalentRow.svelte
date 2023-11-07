@@ -6,8 +6,8 @@
   export let constellation: number = 0;
 
   $: show = constellation >= (data.constellation ?? 0);
-
-  $: damage = Math.floor(data.damage.base).toLocaleString();
+  $: damage = Math.floor(data.damage[data.elemental]).toLocaleString();
+  // $: console.log(data.name, data);
 </script>
 
 <div class="grid grid-cols-20 px-1 py-1 text-tb" class:hidden={!show}>
