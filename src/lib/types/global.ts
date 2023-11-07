@@ -130,3 +130,16 @@ export interface ReactionTotals {
   vaporize?: number;
   melt?: number;
 }
+
+export type Reactions =
+  | 'aggravate'
+  | 'superconduct'
+  | 'electrocharged'
+  | 'overloaded'
+  | 'spread'
+  | 'pyroSwirl'
+  | 'cryoSwirl'
+  | 'electroSwirl'
+  | 'hydroSwirl'
+  | 'vaporize'
+  | 'melt';

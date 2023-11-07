@@ -24,9 +24,21 @@
   export let row: any;
   export let index: number;
 
+  const initialDMG = {
+    pyro: 0,
+    hydro: 0,
+    electro: 0,
+    dendro: 0,
+    geo: 0,
+    cryo: 0,
+    anemo: 0,
+    physical: 0,
+    total: 0
+  };
+
   // main functionality
   let rowButtons: Buttons = [];
-  let totalDamage = writable(0);
+  let damage = writable({ ...initialDMG });
   let deletable = false;
 
   const dispatch = createEventDispatcher();
@@ -60,7 +72,7 @@
 
   function handleClearAll() {
     rowButtons = [];
-    $totalDamage = 0;
+    $damage = { ...initialDMG };
     deletable = false;
   }
 
@@ -73,6 +85,10 @@
       deletable = false;
     }
   }
+
+  $: totalDamageSum = Object.values($damage).reduce((a, c) => {
+    return a + c;
+  }, 0);
 </script>
 
 <section
@@ -99,9 +115,9 @@
       {#each rowButtons as { id, type, index, btnID } (btnID)}
         <ComboButton
           btn={$talents[id][type][index]}
-          {totalDamage}
           {btnID}
           {deletable}
+          {damage}
           on:removeBtn={removeButton}
         />
       {/each}
@@ -145,12 +161,62 @@
   </div>
   <div class="mx-0.5 mt-1 flex items-center justify-between">
     <div class="flex gap-1">
+      <span class="">{Math.round(totalDamageSum).toLocaleString() || '0'}</span>
       <img
-        class="h-5 w-5 self-center"
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/anemo.svg"
+        alt="element"
+      />
+      <span class=" text-anemo">{Math.round($damage.anemo).toLocaleString() || '0'}</span>
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/pyro.svg"
+        alt="element"
+      />
+      <span class=" text-pyro">{Math.round($damage.pyro).toLocaleString() || '0'}</span>
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/hydro.svg"
+        alt="element"
+      />
+      <span class=" text-hydro">{Math.round($damage.hydro).toLocaleString() || '0'}</span>
+
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/electro.svg"
+        alt="element"
+      />
+      <span class=" text-electro"
+        >{Math.round($damage.electro).toLocaleString() || '0'}</span
+      >
+
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/cryo.svg"
+        alt="element"
+      />
+      <span class=" text-cryo">{Math.round($damage.cryo).toLocaleString() || '0'}</span>
+      <!-- 
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/geo.svg"
+        alt="element"
+      />
+      <span class=" text-geo">{Math.round($damage.geo).toLocaleString() || '0'}</span>
+
+      <img
+        class="ml-2 h-5 w-5 self-center"
+        src="/images/elements/dendro.svg"
+        alt="element"
+      />
+      <span class=" text-dendro">{Math.round($damage.dendro).toLocaleString() || '0'}</span> -->
+
+      <img
+        class="ml-2 h-5 w-5 self-center"
         src="/images/elements/physical.svg"
         alt="element"
       />
-      <span class="ml-0.5">{Math.round($totalDamage).toLocaleString() || '0'}</span>
+      <span class="">{Math.round($damage.physical).toLocaleString() || '0'}</span>
     </div>
     <button
       on:click={handleEditButton}

@@ -1,31 +1,115 @@
 <script lang="ts">
+  import type { DamageType, Reactions } from '$lib/types/global';
   import { getButtonHalves } from '$lib/helpers/getButtonHalves';
+  import { separateDamage } from '$lib/helpers/separateDamage';
   import { character } from '$lib/stores/characterStore';
   import { beforeUpdate, onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
   import { fly } from 'svelte/transition';
 
+  type DamageObject = { dmgType: DamageType; dmgValue: number };
+
   const dispatch = createEventDispatcher();
 
   export let btn: any;
-  export let totalDamage: any;
   export let btnID: string;
   export let deletable = false;
+  export let damage: any;
 
-  let previousDamage = 0;
-  let previousElement = btn.elemental;
+  const btnImage = btn.url
+    ? `/images/talents/${btn.url}.webp`
+    : `/images/ui/${$character.selected.weapon}.webp`;
   let isInitialized = false; // Add a flag to track component initialization
 
+  // previous values
+  let prevDmgObjs: any = [];
+  let previousDmgType = btn.elemental;
+
+  // current values
+  let currentIndex = 0;
+  let dmgTypes = Object.keys(btn.damage);
+  let currentDmgType = dmgTypes[currentIndex];
+
   onMount(() => {
-    $totalDamage += btn.damage.base;
+    $damage[btn.elemental] += btn.damage[btn.elemental];
     isInitialized = true;
 
     return () => {
-      if (previousDamage !== 0 && $totalDamage > 0) {
-        $totalDamage -= btn.damage[currentDmgType];
+      if ((currentIndex = 0)) {
+        $damage[btn.elemental] -= btn.damage[btn.elemental];
+      } else {
+        separateDamage(
+          currentDmgType as DamageType | Reactions,
+          btn.damage[currentDmgType],
+          btn.elemental,
+          btn.damage[btn.elemental]
+        ).forEach((dmgObj) => {
+          $damage[dmgObj.dmgType] -= dmgObj.dmgValue;
+        });
       }
     };
   });
+
+  beforeUpdate(() => {
+    // previousDamage = btn.damage[currentDmgType];
+    // new
+    prevDmgObjs = separateDamage(
+      currentDmgType as DamageType | Reactions,
+      btn.damage[currentDmgType],
+      btn.elemental,
+      btn.damage[btn.elemental]
+    );
+  });
+
+  function addDamage(curr: DamageObject[], prev: DamageObject[]) {
+    // remove previous damage objects
+    prev.forEach((dmgObj: DamageObject) => {
+      $damage[dmgObj.dmgType] -= dmgObj.dmgValue;
+    });
+
+    // add current damage objects
+    curr.forEach((dmgObj: DamageObject) => {
+      $damage[dmgObj.dmgType] += dmgObj.dmgValue;
+    });
+  }
+
+  function switchDamageType() {
+    currentIndex = (currentIndex + 1) % dmgTypes.length;
+    currentDmgType = dmgTypes[currentIndex];
+
+    const currDmgObjs = separateDamage(
+      currentDmgType as DamageType | Reactions,
+      btn.damage[currentDmgType],
+      btn.elemental,
+      btn.damage[btn.elemental]
+    );
+
+    addDamage(currDmgObjs, prevDmgObjs);
+    prevDmgObjs = currDmgObjs;
+  }
+
+  // ✅ - this conditional ensures changing stats don't switch
+  // buttons from an elemental reaction state
+  $: if (previousDmgType !== btn.elemental) {
+    previousDmgType = btn.elemental;
+    currentIndex = 0;
+    currentDmgType = btn.elemental;
+    dmgTypes = Object.keys(btn.damage);
+  }
+
+  $: {
+    if (isInitialized) {
+      const currDmgObjs = separateDamage(
+        currentDmgType as DamageType | Reactions,
+        btn.damage[currentDmgType],
+        btn.elemental,
+        btn.damage[btn.elemental]
+      );
+
+      addDamage(currDmgObjs, prevDmgObjs);
+      prevDmgObjs = currDmgObjs;
+    }
+  }
 
   function removeButton() {
     if (deletable === true) {
@@ -33,49 +117,7 @@
     }
   }
 
-  const btnImage = btn.url
-    ? `/images/talents/${btn.url}.webp`
-    : `/images/ui/${$character.selected.weapon}.webp`;
-
-  let dmgTypes = Object.keys(btn.damage);
-  let currentIndex = 0;
-  let currentDmgType = dmgTypes[currentIndex];
-
-  beforeUpdate(() => {
-    previousDamage = btn.damage[currentDmgType];
-  });
-
-  const addDamage = (dmgType: any) => {
-    $totalDamage -= previousDamage;
-    $totalDamage += btn.damage[dmgType];
-  };
-
-  const switchDamageType = () => {
-    currentIndex = (currentIndex + 1) % dmgTypes.length;
-    currentDmgType = dmgTypes[currentIndex];
-
-    addDamage(currentDmgType);
-    previousDamage = btn.damage[currentDmgType];
-  };
-
-  // ✅ - this conditional ensures changing stats don't switch
-  // buttons from an elemental reaction state
-  $: if (previousElement !== btn.elemental) {
-    previousElement = btn.elemental;
-    currentIndex = 0;
-    currentDmgType = 'base';
-    dmgTypes = Object.keys(btn.damage);
-  }
-
-  $: {
-    if (isInitialized && btn.damage[currentDmgType] !== previousDamage) {
-      addDamage(currentDmgType);
-      previousDamage = btn.damage[currentDmgType];
-    }
-  }
-
-  $: damageType = currentDmgType === 'base' ? btn.elemental : currentDmgType;
-  $: classes = getButtonHalves(damageType, btn.elemental);
+  $: classes = getButtonHalves(currentDmgType, btn.elemental);
 </script>
 
 <button
