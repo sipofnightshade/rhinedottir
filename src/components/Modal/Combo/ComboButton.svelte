@@ -133,7 +133,9 @@
     class:border-opacity-100={classes.top !== classes.bot}
     class:bg-opacity-0={deletable}
   >
-    <span class="pointer-events-none mt-1 text-slate-100">{btn.tag}</span>
+    <span class="text-shadow pointer-events-none mt-1 text-base text-slate-100"
+      >{btn.tag}</span
+    >
   </div>
   <div
     class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
@@ -160,3 +162,10 @@
     </button>
   {/if}
 </button>
+
+<style>
+  .text-shadow {
+    text-shadow: -1px 1px 0 rgba(15, 23, 42, 0.5), 1px 1px 0 rgba(15, 23, 42, 0.5),
+      1px -1px 0 rgba(15, 23, 42, 0.5), -1px -1px 0 rgba(15, 23, 42, 0.5);
+  }
+</style>
