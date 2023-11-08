@@ -383,6 +383,7 @@ const charName: CharacterRecord = {
       name: 'Small Cat Grass Cardamom DMG',
       tag: 'X4',
       damageBonus: 'burst',
+      constellation: 4,
       url: 'Skill_E_Momoka_01',
       hasOwnBonusDMG: 'surpriseDispatch',
       damage: [
