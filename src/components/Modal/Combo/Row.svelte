@@ -16,6 +16,7 @@
   import Delete from '$lib/icons/Delete.svelte';
   import DamageValue from './DamageValue.svelte';
   import type { DamageType } from '$lib/types/global';
+  import { sortObjectByValue } from '$lib/helpers/sortObjectByValue';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -28,7 +29,7 @@
     | 'burst'
     | 'reactions';
   type Buttons = { id: CharacterID; type: TalentType; index: number; btnID: string }[];
-
+  type DamageArray = [DamageType, number][];
   // props
   export let row: any;
   export let index: number;
@@ -108,6 +109,9 @@
   $: totalDamageSum = Object.values($damage).reduce((a, c) => {
     return a + c;
   }, 0);
+
+  $: sortedDMGValues = sortObjectByValue($damage) as DamageArray;
+  $: console.log(sortedDMGValues);
 </script>
 
 <section
@@ -137,7 +141,7 @@
           {btnID}
           {deletable}
           {damage}
-          isReaction={type==='reactions'}
+          isReaction={type === 'reactions'}
           on:removeBtn={removeButton}
         />
       {/each}
@@ -194,8 +198,8 @@
           {#if totalDamageSum === 0}
             <DamageValue type="none" value={0} />
           {/if}
-          {#each damageTypes as type (type)}
-            <DamageValue {type} value={$damage[type]} />
+          {#each sortedDMGValues as item (item[0])}
+            <DamageValue type={item[0]} value={item[1]} />
           {/each}
         </div>
       </div>
