@@ -10,7 +10,7 @@
 
 {#if value}
   <button
-    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-3 text-sm text-slate-900 transition hover:bg-slate-50"
+    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-3 text-sm text-slate-900 transition hover:opacity-80"
     on:click
     class:bg-slate-400={el === 'physical'}
     class:bg-anemo={el === 'anemo'}
