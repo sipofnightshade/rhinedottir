@@ -14,6 +14,8 @@
   import Close from '$lib/icons/Close.svelte';
   import ComboTabs from './ComboTabs.svelte';
   import Delete from '$lib/icons/Delete.svelte';
+  import DamageValue from './DamageValue.svelte';
+  import type { DamageType } from '$lib/types/global';
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
@@ -24,6 +26,17 @@
   export let row: any;
   export let index: number;
 
+  const damageTypes: DamageType[] = [
+    'pyro',
+    'hydro',
+    'electro',
+    'dendro',
+    'geo',
+    'cryo',
+    'anemo',
+    'physical'
+  ];
+
   const initialDMG = {
     pyro: 0,
     hydro: 0,
@@ -32,8 +45,7 @@
     geo: 0,
     cryo: 0,
     anemo: 0,
-    physical: 0,
-    total: 0
+    physical: 0
   };
 
   // main functionality
@@ -159,73 +171,46 @@
       </div>
     </Transition>
   </div>
-  <div class="mx-0.5 mt-1 flex items-center justify-between">
-    <div class="flex gap-1">
-      <span class="">{Math.round(totalDamageSum).toLocaleString() || '0'}</span>
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/anemo.svg"
-        alt="element"
-      />
-      <span class=" text-anemo">{Math.round($damage.anemo).toLocaleString() || '0'}</span>
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/pyro.svg"
-        alt="element"
-      />
-      <span class=" text-pyro">{Math.round($damage.pyro).toLocaleString() || '0'}</span>
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/hydro.svg"
-        alt="element"
-      />
-      <span class=" text-hydro">{Math.round($damage.hydro).toLocaleString() || '0'}</span>
+  <div
+    class="mx-0.5 mt-1 flex flex-col justify-between gap-2 xs:flex-row xs:items-center"
+  >
+    <div class="flex gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase text-slate-400">Total</p>
+        <DamageValue type="none" value={totalDamageSum} />
+      </div>
 
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/electro.svg"
-        alt="element"
-      />
-      <span class=" text-electro"
-        >{Math.round($damage.electro).toLocaleString() || '0'}</span
-      >
-
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/cryo.svg"
-        alt="element"
-      />
-      <span class=" text-cryo">{Math.round($damage.cryo).toLocaleString() || '0'}</span>
-      <!-- 
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/geo.svg"
-        alt="element"
-      />
-      <span class=" text-geo">{Math.round($damage.geo).toLocaleString() || '0'}</span>
-
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/dendro.svg"
-        alt="element"
-      />
-      <span class=" text-dendro">{Math.round($damage.dendro).toLocaleString() || '0'}</span> -->
-
-      <img
-        class="ml-2 h-5 w-5 self-center"
-        src="/images/elements/physical.svg"
-        alt="element"
-      />
-      <span class="">{Math.round($damage.physical).toLocaleString() || '0'}</span>
+      <div>
+        <p class="text-xs font-bold uppercase text-slate-400">DMG by type</p>
+        <div class="flex flex-wrap gap-x-2.5 gap-y-1">
+          {#each damageTypes as type (type)}
+            <DamageValue {type} value={$damage[type]} />
+          {/each}
+        </div>
+      </div>
     </div>
-    <button
-      on:click={handleEditButton}
-      class="rounded border border-slate-500 px-3 py-1"
-      class:border-red-400={deletable}
-      class:text-red-400={deletable}
-    >
-      {deletable ? 'Cancel' : 'Edit'}
-    </button>
+    <div class="flex h-9 gap-2">
+      <!-- <div class="flex w-[68px] items-center rounded-lg border border-slate-500">
+        <div class="pl-3 pr-0">
+          <Close class="h-2.5 fill-slate-400" />
+        </div>
+        <input
+          type="number"
+          placeholder="1"
+          maxlength="2"
+          value="1"
+          class="ml-2 h-full w-full rounded-r-lg border-none bg-transparent pl-1 text-right"
+        />
+      </div> -->
+      <button
+        on:click={handleEditButton}
+        class="rounded-lg border border-slate-500 px-3 py-1"
+        class:border-red-400={deletable}
+        class:text-red-400={deletable}
+      >
+        {deletable ? 'Cancel' : 'Edit'}
+      </button>
+    </div>
   </div>
 </section>
 
@@ -255,5 +240,17 @@
     left: 47%;
     margin-right: 12px;
     z-index: 5;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
   }
 </style>
