@@ -3,59 +3,59 @@ export function getButtonHalves(dmgType: string, el: string) {
   let bot = '';
 
   if (dmgType === 'melt' && el === 'pyro') {
-    top = 'bg-pyro';
-    bot = 'bg-cryo';
+    top = 'bg-dark-pyro';
+    bot = 'bg-dark-cryo';
   } else if (dmgType === 'melt' && el === 'cryo') {
-    top = 'bg-cryo';
-    bot = 'bg-pyro';
+    top = 'bg-dark-cryo';
+    bot = 'bg-dark-pyro';
   }
 
   if (dmgType === 'vaporize' && el === 'pyro') {
-    top = 'bg-pyro';
-    bot = 'bg-hydro';
+    top = 'bg-dark-pyro';
+    bot = 'bg-dark-hydro';
   } else if (dmgType === 'vaporize' && el === 'hydro') {
-    top = 'bg-hydro';
-    bot = 'bg-pyro';
+    top = 'bg-dark-hydro';
+    bot = 'bg-dark-pyro';
   }
 
   if (dmgType === 'spread') {
-    top = 'bg-dendro';
-    bot = 'bg-electro';
+    top = 'bg-dark-dendro';
+    bot = 'bg-dark-electro';
   }
 
   if (dmgType === 'aggravate') {
-    top = 'bg-electro';
-    bot = 'bg-dendro';
+    top = 'bg-dark-electro';
+    bot = 'bg-dark-dendro';
   }
 
   if (dmgType === 'overloaded') {
-    top = 'bg-pyro';
-    bot = 'bg-electro';
+    top = 'bg-dark-pyro';
+    bot = 'bg-dark-electro';
   }
 
   if (dmgType === 'superconduct') {
-    top = 'bg-cryo';
-    bot = 'bg-electro';
+    top = 'bg-dark-cryo';
+    bot = 'bg-dark-electro';
   }
   if (dmgType === 'electrocharged') {
-    top = 'bg-electro';
-    bot = 'bg-hydro';
+    top = 'bg-dark-electro';
+    bot = 'bg-dark-hydro';
   }
   if (dmgType === 'hydroSwirl') {
-    top = 'bg-hydro';
-    bot = 'bg-anemo';
+    top = 'bg-dark-hydro';
+    bot = 'bg-dark-anemo';
   }
   if (dmgType === 'pyroSwirl') {
-    top = 'bg-pyro';
-    bot = 'bg-anemo';
+    top = 'bg-dark-pyro';
+    bot = 'bg-dark-anemo';
   }
   if (dmgType === 'cryoSwirl') {
-    top = 'bg-cryo';
-    bot = 'bg-anemo';
+    top = 'bg-dark-cryo';
+    bot = 'bg-dark-anemo';
   }
   if (dmgType === 'electroSwirl') {
-    top = 'bg-electro';
-    bot = 'bg-anemo';
+    top = 'bg-dark-electro';
+    bot = 'bg-dark-anemo';
   }
 
   if (dmgType === 'physical') {
@@ -71,8 +71,8 @@ export function getButtonHalves(dmgType: string, el: string) {
     case 'electro':
     case 'geo':
     case 'anemo':
-      top = `bg-${dmgType}`;
-      bot = `bg-${dmgType}`;
+      top = `bg-dark-${dmgType}`;
+      bot = `bg-dark-${dmgType}`;
       break;
   }
 
