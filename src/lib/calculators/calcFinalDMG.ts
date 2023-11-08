@@ -296,13 +296,10 @@ export function calcFinalDMG(
     { [element]: 0 }
   );
 
-  const newDMG = Object.entries(FinalDMG).map(([type, value]) => ({ type, value }));
-
   return {
     ...hit,
     numOfHits: hit.damage.length,
     elemental: element,
-    damage: { ...FinalDMG },
-    newDMG
+    damage: { ...FinalDMG }
   };
 }
