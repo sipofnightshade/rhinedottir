@@ -211,7 +211,7 @@ const charName: CharacterRecord = {
         "Increases Kaveh's Normal, Charged, and Plunging Attack AoE, and converts his attack DMG to Dendro DMG that cannot be overridden.\n·All Dendro Cores created by all your own party members through Bloom reactions will deal additional DMG when they burst.\n·Increases Kaveh's resistance to interruption.",
       infusion: 'dendro',
       target: 'self',
-      actionType: 'passive',
+      actionType: 'toggle',
       hasLevels: 'burst',
       values: [
         {
