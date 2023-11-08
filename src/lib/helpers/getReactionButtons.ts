@@ -1,7 +1,5 @@
 // types
-import type { Hit } from '$lib/types/talents';
 import type { CurrentCharacter } from '$lib/stores/characterStore';
-import type { DamageType } from '$lib/types/global';
 import type { Enemy } from '$lib/types/enemy';
 import type { Index_Stats } from '$lib/data/Stats';
 
@@ -28,11 +26,11 @@ export function getReactionButtons(
   }
 
   if (element === 'electro') {
-    reactions.push(getHyperBurgeon('hyperbloom', em, stats.hyperbloom, enemy.dendro));
+    reactions.push(getHyperbloom(em, stats.bloom, enemy.dendro));
   }
 
   if (element === 'pyro') {
-    reactions.push(getHyperBurgeon('burgeon', em, stats.burgeon, enemy.dendro));
+    reactions.push(getBurgeon(em, stats.bloom, enemy.dendro));
     reactions.push(getBurning(em, stats.burning, enemy.pyro));
   }
 
@@ -48,23 +46,30 @@ export function getReactionButtons(
     reactions.push(getShattered(em, stats.burning, enemy.physical));
   }
 
-  function getHyperBurgeon(
-    rxn: 'hyperbloom' | 'burgeon',
-    em: number,
-    bonus: number,
-    res: number
-  ) {
-    const dmg = calcTransforming(rxn, em, lvl, bonus, res);
-    const name = rxn === 'burgeon' ? 'Burgeon' : 'Hyperbloom';
-    const tag = rxn === 'burgeon' ? 'BG' : 'HB';
+  function getHyperbloom(em: number, bonus: number, res: number) {
+    const dmg = calcTransforming('hyperbloom', em, lvl, bonus, res);
     return {
-      name,
-      tag,
-      damageBonus: rxn,
+      name: 'Hyperbloom',
+      tag: 'HB',
+      damageBonus: 'hyperbloom',
       elemental: 'dendro',
-      stackable: 2,
       damage: {
-        dendro: dmg
+        hyperbloom: dmg,
+        hyperbloom2: dmg * 2
+      }
+    };
+  }
+
+  function getBurgeon(em: number, bonus: number, res: number) {
+    const dmg = calcTransforming('burgeon', em, lvl, bonus, res);
+    return {
+      name: 'Burgeon',
+      tag: 'HB',
+      damageBonus: 'burgeon',
+      elemental: 'dendro',
+      damage: {
+        burgeon: dmg,
+        burgeon2: dmg * 2
       }
     };
   }
@@ -76,9 +81,12 @@ export function getReactionButtons(
       tag: 'BL',
       damageBonus: 'bloom',
       elemental: 'dendro',
-      stackable: 5,
       damage: {
-        dendro: dmg
+        bloom: dmg,
+        bloom2: dmg * 2,
+        bloom3: dmg * 3,
+        bloom4: dmg * 4,
+        bloom5: dmg * 5
       }
     };
   }
@@ -90,9 +98,15 @@ export function getReactionButtons(
       tag: 'BN',
       damageBonus: 'burning',
       elemental: 'pyro',
-      stackable: 8,
       damage: {
-        pyro: dmg
+        burning: dmg,
+        burning2: dmg * 2,
+        burning3: dmg * 3,
+        burning4: dmg * 4,
+        burning5: dmg * 5,
+        burning6: dmg * 6,
+        burning7: dmg * 7,
+        burning8: dmg * 8
       }
     };
   }
@@ -104,7 +118,6 @@ export function getReactionButtons(
       tag: 'SH',
       damageBonus: 'shattered',
       elemental: 'physical',
-      stackable: 1,
       damage: {
         physical: dmg
       }
@@ -118,7 +131,6 @@ export function getReactionButtons(
     return {
       name: 'Crystallize',
       damageBonus: 'crystallize',
-      stackable: 1,
       elemental: 'shield',
       damage: {
         shield: finalShield
