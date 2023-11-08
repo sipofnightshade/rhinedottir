@@ -6,15 +6,35 @@
   import { beforeUpdate, onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
   import { fly } from 'svelte/transition';
+  import { Bloom, Hyperbloom, Burgeon, Burning, Shattered } from '$lib/icons';
 
   type DamageObject = { dmgType: DamageType; dmgValue: number };
+  type ButtonReactions = 'bloom' | 'hyperbloom' | 'burgeon' | 'burning' | 'shattered';
 
   const dispatch = createEventDispatcher();
+  const reactions = {
+    bloom: Bloom,
+    hyperbloom: Hyperbloom,
+    burgeon: Burgeon,
+    burning: Burning,
+    shattered: Shattered
+  };
+
+  const reactions2 = {
+    bloom: { component: Bloom, text: 'text-dendro' },
+    hyperbloom: { component: Hyperbloom, text: 'text-dendro' },
+    burgeon: { component: Burgeon, text: 'text-dendro' },
+    burning: { component: Burning, text: 'text-pyro' },
+    shattered: { component: Shattered, text: '' }
+  };
 
   export let btn: any;
   export let btnID: string;
   export let deletable = false;
   export let damage: any;
+  export let isReaction = false;
+
+  $: console.log(btn);
 
   const btnImage = btn.url
     ? `/images/talents/${btn.url}.webp`
@@ -31,12 +51,13 @@
   let currentDmgType = dmgTypes[currentIndex];
 
   onMount(() => {
-    $damage[btn.elemental] += btn.damage[btn.elemental];
+    $damage[btn.elemental] += btn.damage[btn.elemental] ?? btn.damage[btn.damageBonus];
     isInitialized = true;
 
     return () => {
       if ((currentIndex = 0)) {
-        $damage[btn.elemental] -= btn.damage[btn.elemental];
+        $damage[btn.elemental] -=
+          btn.damage[btn.elemental] ?? btn.damage[btn.damageBonus];
       } else {
         separateDamage(
           currentDmgType as DamageType | Reactions,
@@ -118,6 +139,8 @@
   }
 
   $: classes = getButtonHalves(currentDmgType, btn.elemental);
+  $: reactionType = btn.damageBonus as ButtonReactions;
+  $: stacks = currentIndex + 1;
 </script>
 
 <button
@@ -128,20 +151,31 @@
   disabled={deletable}
   transition:fly
 >
-  <div
-    class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
-    class:border-opacity-100={classes.top !== classes.bot}
-  >
-    <span class="text-shadow pointer-events-none mt-1 text-base text-slate-100"
-      >{btn.tag}</span
+  {#if !isReaction}
+    <div
+      class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
+      class:border-opacity-100={classes.top !== classes.bot}
     >
-  </div>
-  <div
-    class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
-    class:border-opacity-100={classes.top !== classes.bot}
-  >
-    <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
-  </div>
+      <span class="text-shadow pointer-events-none mt-1 text-base text-slate-100"
+        >{btn.tag}</span
+      >
+    </div>
+    <div
+      class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
+      class:border-opacity-100={classes.top !== classes.bot}
+    >
+      <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
+    </div>
+  {:else}
+    <div class="flex h-full flex-col items-center justify-center gap-1">
+      <svelte:component this={reactions2[reactionType].component} class="h-6" />
+      {#if dmgTypes.length > 1}
+        <span class="stacks text-sm font-bold {reactions2[reactionType].text}"
+          >x{stacks}</span
+        >
+      {/if}
+    </div>
+  {/if}
 
   {#if deletable}
     <button
@@ -165,5 +199,10 @@
   .text-shadow {
     text-shadow: -1px 1px 0 rgba(15, 23, 42, 0.5), 1px 1px 0 rgba(15, 23, 42, 0.5),
       1px -1px 0 rgba(15, 23, 42, 0.5), -1px -1px 0 rgba(15, 23, 42, 0.5);
+  }
+
+  .stacks {
+    text-shadow: -1px -1px 2px #334155, 1px -1px 2px #334155, -1px 1px 1px #334155,
+      1px 1px 1px #334155;
   }
 </style>

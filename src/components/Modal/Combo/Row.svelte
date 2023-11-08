@@ -19,7 +19,14 @@
 
   // types
   type CharacterID = 'main' | 'one' | 'two' | 'three';
-  type TalentType = 'normal' | 'charged' | 'plunge' | 'special' | 'skill' | 'burst';
+  type TalentType =
+    | 'normal'
+    | 'charged'
+    | 'plunge'
+    | 'special'
+    | 'skill'
+    | 'burst'
+    | 'reactions';
   type Buttons = { id: CharacterID; type: TalentType; index: number; btnID: string }[];
 
   // props
@@ -130,6 +137,7 @@
           {btnID}
           {deletable}
           {damage}
+          isReaction={type==='reactions'}
           on:removeBtn={removeButton}
         />
       {/each}
