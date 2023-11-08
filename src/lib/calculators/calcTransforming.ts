@@ -68,17 +68,15 @@ export function calcTransforming(
   const EMBonusTransformative = 16 * (em / (em + 2000));
   const EMBonusCrystallize = 4.44 * (em / (em + 1400));
 
-  let reactionDamage: number;
-
   if (reaction === 'crystallize') {
-    reactionDamage =
-      baseTransformative[reaction][lvl] * (1 + EMBonusCrystallize + reactionBonus);
+    return baseTransformative[reaction][lvl] * (1 + EMBonusCrystallize + reactionBonus);
   } else {
-    reactionDamage =
-      baseTransformative[reaction][lvl] * (1 + EMBonusTransformative + reactionBonus);
+    return (
+      baseTransformative[reaction][lvl] *
+      (1 + EMBonusTransformative + reactionBonus) *
+      enemyResMultiplier
+    );
   }
-
-  return reactionDamage * enemyResMultiplier;
 }
 
 /**
