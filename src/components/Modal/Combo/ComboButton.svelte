@@ -34,8 +34,6 @@
   export let damage: any;
   export let isReaction = false;
 
-  $: console.log(btn);
-
   const btnImage = btn.url
     ? `/images/talents/${btn.url}.webp`
     : `/images/ui/${$character.selected.weapon}.webp`;

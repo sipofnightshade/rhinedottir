@@ -111,7 +111,6 @@
   }, 0);
 
   $: sortedDMGValues = sortObjectByValue($damage) as DamageArray;
-  $: console.log(sortedDMGValues);
 </script>
 
 <section
