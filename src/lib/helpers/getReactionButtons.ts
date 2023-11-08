@@ -62,9 +62,9 @@ export function getReactionButtons(
       tag,
       damageBonus: rxn,
       elemental: 'dendro',
+      stackable: 2,
       damage: {
-        base: dmg,
-        basex2: dmg * 2
+        dendro: dmg
       }
     };
   }
@@ -76,12 +76,9 @@ export function getReactionButtons(
       tag: 'BL',
       damageBonus: 'bloom',
       elemental: 'dendro',
+      stackable: 5,
       damage: {
-        base: dmg,
-        basex2: dmg * 2,
-        basex3: dmg * 3,
-        basex4: dmg * 4,
-        basex5: dmg * 5
+        dendro: dmg
       }
     };
   }
@@ -93,15 +90,9 @@ export function getReactionButtons(
       tag: 'BN',
       damageBonus: 'burning',
       elemental: 'pyro',
+      stackable: 8,
       damage: {
-        base: dmg,
-        basex2: dmg * 2,
-        basex3: dmg * 3,
-        basex4: dmg * 4,
-        basex5: dmg * 5,
-        basex6: dmg * 6,
-        basex7: dmg * 7,
-        basex8: dmg * 8
+        pyro: dmg
       }
     };
   }
@@ -113,20 +104,24 @@ export function getReactionButtons(
       tag: 'SH',
       damageBonus: 'shattered',
       elemental: 'physical',
+      stackable: 1,
       damage: {
-        base: dmg
+        physical: dmg
       }
     };
   }
 
   function getCrystallized(em: number, bonus: number, res: number) {
-    const dmg = calcTransforming('crystallize', em, lvl, bonus, res);
+    const crystalShield = calcTransforming('crystallize', em, lvl, bonus, res);
+    const shieldStrength = stats.shieldStrength ?? 0;
+    const finalShield = crystalShield * (1 + shieldStrength);
     return {
       name: 'Crystallize',
       damageBonus: 'crystallize',
+      stackable: 1,
       elemental: 'shield',
       damage: {
-        base: dmg
+        shield: finalShield
       }
     };
   }

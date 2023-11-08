@@ -142,4 +142,10 @@ export type Reactions =
   | 'electroSwirl'
   | 'hydroSwirl'
   | 'vaporize'
-  | 'melt';
+  | 'melt'
+  | 'hyperbloom'
+  | 'bloom'
+  | 'burgeon'
+  | 'shattered'
+  | 'crystallize'
+  | 'burning';
