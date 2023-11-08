@@ -146,7 +146,7 @@
           on:click={handleClearAll}
           title="Clear All"
         >
-          <Delete class="h-3.5 fill-red-600" />
+          <Delete class="h-3.5 fill-slate-100" />
         </button>
       {/if}
     </SortableList>
@@ -208,8 +208,8 @@
       <button
         on:click={handleEditButton}
         class="rounded-lg border border-slate-500 px-3 py-1"
-        class:border-red-400={deletable}
-        class:text-red-400={deletable}
+        class:border-slate-200={deletable}
+        class:text-slate-200={deletable}
       >
         {deletable ? 'Cancel' : 'Edit'}
       </button>
