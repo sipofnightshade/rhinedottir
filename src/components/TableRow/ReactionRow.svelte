@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Bloom, Hyperbloom, Burgeon, Burning, Shattered } from '$lib/icons';
+  import { Bloom, Hyperbloom, Burgeon, Burning, Shattered, Geo } from '$lib/icons';
 
   import Cell from './Cell.svelte';
   import StatImage from '../Desktop/StatImage.svelte';
@@ -11,10 +11,14 @@
     hyperbloom: Hyperbloom,
     burgeon: Burgeon,
     burning: Burning,
-    shattered: Shattered
+    shattered: Shattered,
+    crystallize: Geo
   };
 
-  $: damage = Math.floor(data.damage[data.damageBonus]).toLocaleString();
+  $: damage =
+    data.damageBonus === 'crystallize'
+      ? Math.floor(data.damage.shield).toLocaleString()
+      : Math.floor(data.damage[data.damageBonus]).toLocaleString();
   $: icon = data.damageBonus as keyof typeof reactions;
 </script>
 
@@ -28,6 +32,5 @@
       <StatImage stat={data.elemental} />
     </div>
   </Cell>
-  <!-- <Cell align="end" col="col-span-4 text-slate-400" value={nonCritDMG.toFixed(0)} /> -->
   <Cell align="end" col="col-span-6" value={damage} />
 </div>
