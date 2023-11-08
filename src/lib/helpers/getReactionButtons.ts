@@ -119,7 +119,7 @@ export function getReactionButtons(
       damageBonus: 'shattered',
       elemental: 'physical',
       damage: {
-        physical: dmg
+        shattered: dmg
       }
     };
   }
