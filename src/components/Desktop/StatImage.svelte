@@ -1,6 +1,5 @@
 <script lang="ts">
-  // -> make a function that has a switch statement to render correct icon
-  // -> make a reactive statement using that function
+  import type { ComponentType } from 'svelte';
   import {
     Anemo,
     Attack,
@@ -17,76 +16,51 @@
     Healing,
     HP,
     Physical,
-    Pyro
+    Pyro,
+    Bloom,
+    Hyperbloom,
+    Burgeon,
+    Burning,
+    Shattered
   } from '$lib/icons';
-  import type { ComponentType } from 'svelte';
+  import type { All_Stats } from '$lib/data/Stats';
 
   export let stat: string;
-  let icon: ComponentType;
 
-  function renderIcon(stat: string) {
-    switch (stat) {
-      case 'anemo':
-        icon = Anemo;
-        break;
-      case 'cryo':
-        icon = Cryo;
-        break;
-      case 'dendro':
-        icon = Dendro;
-        break;
-      case 'electro':
-        icon = Electro;
-        break;
-      case 'geo':
-        icon = Geo;
-        break;
-      case 'hydro':
-        icon = Hydro;
-        break;
-      case 'pyro':
-        icon = Pyro;
-        break;
-      case 'physical':
-        icon = Physical;
-        break;
-      case 'atk':
-      case 'atk%':
-        icon = Attack;
-        break;
-      case 'def':
-      case 'def%':
-        icon = Defence;
-        break;
-      case 'hp':
-      case 'hp%':
-        icon = HP;
-        break;
-      case 'healing':
-        icon = Healing;
-        break;
-      case 'critrate':
-        icon = CritRate;
-        break;
-      case 'critdmg':
-        icon = CritDamage;
-        break;
-      case 'energy':
-        icon = Energy;
-        break;
-      case 'em':
-        icon = EM;
-        break;
-      default:
-        break;
-    }
-  }
+  type Icons = {
+    [key in string]: ComponentType;
+  };
 
-  $: renderIcon(stat);
+  const iconMap: Partial<Icons> = {
+    anemo: Anemo,
+    cryo: Cryo,
+    dendro: Dendro,
+    electro: Electro,
+    geo: Geo,
+    hydro: Hydro,
+    pyro: Pyro,
+    physical: Physical,
+    atk: Attack,
+    'atk%': Attack,
+    def: Defence,
+    'def%': Defence,
+    hp: HP,
+    'hp%': HP,
+    healing: Healing,
+    critrate: CritRate,
+    critdmg: CritDamage,
+    energy: Energy,
+    em: EM,
+    bloom: Bloom,
+    hyperbloom: Hyperbloom,
+    burgeon: Burgeon,
+    burning: Burning,
+    shattered: Shattered
+  };
 </script>
 
-{#if stat}
-  <svelte:component this={icon} class="w-full md:w-[18px] xl:w-5" />
+{#if iconMap[stat]}
+  <svelte:component this={iconMap[stat]} class="w-full md:w-[18px] xl:w-5" />
 {:else}
   <span>-</span>
 {/if}
