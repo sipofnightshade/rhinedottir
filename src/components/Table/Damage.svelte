@@ -12,6 +12,7 @@
   import { party } from '$lib/stores/partyStore';
   import type { Visions } from '$lib/types/global';
   import DamageHeadingRow from '../TableRow/DamageHeadingRow.svelte';
+  import ReactionRow from '../TableRow/ReactionRow.svelte';
 
   type Heading = 'normal' | 'charged' | 'plunge' | 'skill' | 'burst' | 'reactions';
 
@@ -112,9 +113,15 @@
           {#if $talents[item.id][section] && $talents[item.id][section].length > 0}
             <DamageHeadingRow {section} value={item.talentName} />
 
-            {#each $talents[item.id][section] as data}
-              <TalentRow {data} constellation={item.constellation} />
-            {/each}
+            {#if section !== 'reactions'}
+              {#each $talents[item.id][section] as data}
+                <TalentRow {data} constellation={item.constellation} />
+              {/each}
+            {:else}
+              {#each $talents[item.id][section] as data}
+                <ReactionRow {data} />
+              {/each}
+            {/if}
           {/if}
         {/each}
       {/if}
