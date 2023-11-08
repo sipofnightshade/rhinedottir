@@ -29,3 +29,7 @@
     {/if}
   </div>
 {/if}
+
+{#if value === 0 && type === 'none'}
+  <span class="text-slate-200">0</span>
+{/if}

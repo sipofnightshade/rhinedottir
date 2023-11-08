@@ -183,6 +183,9 @@
       <div>
         <p class="text-xs font-bold uppercase text-slate-400">DMG by type</p>
         <div class="flex flex-wrap gap-x-2.5 gap-y-1">
+          {#if totalDamageSum === 0}
+            <DamageValue type="none" value={0} />
+          {/if}
           {#each damageTypes as type (type)}
             <DamageValue {type} value={$damage[type]} />
           {/each}
