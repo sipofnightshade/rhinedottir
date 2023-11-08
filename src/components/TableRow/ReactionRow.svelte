@@ -15,7 +15,6 @@
   };
 
   $: damage = Math.floor(data.damage[data.damageBonus]).toLocaleString();
-  $: console.log(data.name, data);
   $: icon = data.damageBonus as keyof typeof reactions;
 </script>
 
