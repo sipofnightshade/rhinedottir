@@ -108,6 +108,9 @@ export function separateDamage(
     case 'burning8':
       return [{ dmgType: 'pyro', dmgValue: value }];
 
+    case 'shattered':
+      return [{ dmgType: 'physical', dmgValue: value }];
+
     default:
       throw new Error(`Unknown type: ${type}`);
   }
