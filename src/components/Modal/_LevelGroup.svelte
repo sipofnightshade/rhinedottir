@@ -2,6 +2,7 @@
   // components
   import Minus from '$lib/icons/Minus.svelte';
   import Plus from '$lib/icons/Plus.svelte';
+  import Label from '../Text/Label.svelte';
   // types
   import type { ArtifactType } from '$lib/types/artifacts';
   import type { Adjustable } from '$lib/stores/characterStore';
@@ -60,32 +61,33 @@
 </script>
 
 <div>
-  <div class="mb-1 flex justify-between px-1 text-sm">
-    <span class="text-slate-400">{label}</span>
-    <strong class:text-emerald-400={plusThree}>
+  <div class="mb-1 flex justify-between px-1">
+    <Label>
+      {label}
+    </Label>
+    <Label class={plusThree && ' text-emerald-400'}>
       {#if isArtifact}
-        <span>+</span>
+        +
       {/if}
       {displayValue}
-    </strong>
+    </Label>
   </div>
-  <div class="flex h-10 overflow-hidden rounded-lg bg-slate-800">
+  <div class="grid h-10 w-full grid-cols-2 gap-0.5 rounded-lg [&>button]:bg-slate-700">
     <button
       on:click={decreaseValue}
-      class="flex w-full items-center justify-center"
+      class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm"
       disabled={value <= 0}
-      class:bg-slate-600={value <= 0}
+      class:opacity-30={value <= 0}
     >
-      <Minus class="pointer-events-none h-3 w-3 fill-slate-300" />
+      <Minus class="pointer-events-none h-3 w-3 fill-slate-200" />
     </button>
-    <div class="h-full w-[1px] bg-slate-500" />
     <button
       on:click={increaseValue}
-      class="flex w-full items-center justify-center"
+      class="flex w-full items-center justify-center rounded-l-sm rounded-r-lg"
       disabled={isDisabled}
-      class:bg-slate-600={isDisabled}
+      class:opacity-30={isDisabled}
     >
-      <Plus class="pointer-events-none h-3 w-3 fill-slate-300" />
+      <Plus class="pointer-events-none h-3 w-3 fill-slate-200" />
     </button>
   </div>
 </div>
