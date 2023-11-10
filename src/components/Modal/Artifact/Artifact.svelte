@@ -87,11 +87,10 @@
   $: fourPieceDetails = $artifact[type].selected.fourPiece.map(
     (bonus) => bonus.description
   );
-
 </script>
 
-<div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profile} class="mb-4 flex h-28 gap-x-2">
+<div class="flex h-full flex-col gap-4 overflow-hidden" bind:clientHeight={contentH}>
+  <div bind:clientHeight={profile} class="flex h-28 gap-x-2">
     <div class="rounded-2xl border border-slate-600">
       <Thumbnail
         img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
@@ -155,7 +154,7 @@
     </div>
   </EffectDetails>
 
-  <div class="col-span-3 grid grid-cols-2 gap-2">
+  <div class="flex flex-col gap-2">
     {#each substatIDs as id (id)}
       <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
     {/each}

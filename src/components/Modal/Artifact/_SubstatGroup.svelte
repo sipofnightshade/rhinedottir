@@ -1,9 +1,12 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
-  import { artifactSubStats, StatLabels } from '$lib/data/Stats';
+  import { artifactSubStats, StatLabels, type All_Stats } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
   import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
+  import StatImage from '../../Desktop/StatImage.svelte';
+  import Chevron from '$lib/icons/Chevron.svelte';
+  import Caret from '$lib/icons/Caret.svelte';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
   export let id: 0 | 1 | 2 | 3;
@@ -29,36 +32,59 @@
       id: id
     });
   }
+
+  function evaluateStat(stat: string) {
+    if (!stat) return false;
+    switch (stat) {
+      case 'atk':
+      case 'def':
+      case 'hp':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  $: isBadStat = evaluateStat($artifact[type].substats[id].stat);
 </script>
 
-<div class="grid grid-cols-3 gap-x-1 pr-0.5">
-  <div class="relative col-span-2 text-sm">
+<div class="grid grid-cols-12 gap-x-2 pr-0.5">
+  <div class="relative col-span-8 text-sm">
     <button
       use:listbox.button
       on:select={onSelect}
-      class="relative h-10 w-full cursor-default text-ellipsis rounded-md border-2 border-slate-800 bg-slate-800 py-2 pl-2 text-left sm:text-sm"
-      class:border-slate-400={$listbox.expanded}
+      class="relative flex h-9 w-full cursor-default items-center justify-between gap-2 rounded-lg bg-slate-700 p-2 transition-colors duration-200 sm:text-sm md:h-10"
+      class:border-slate-300={$listbox.expanded}
+      class:border-slate-600={!$listbox.expanded}
     >
-      <span class="block">{StatLabels[$artifact[type].substats[id].stat]}</span>
+      <div
+        class="pointer-events-none flex items-center gap-2"
+        class:opacity-60={isBadStat}
+      >
+        {#if $artifact[type].substats[id].stat}
+          <StatImage stat={$artifact[type].substats[id].stat} />
+        {/if}
+        <span class="text-ellipsis">{StatLabels[$artifact[type].substats[id].stat]}</span>
+      </div>
+      <Chevron class="w-3 fill-slate-100" flip={!$listbox.expanded} />
     </button>
     <Transition show={$listbox.expanded}>
       <ul
         use:listbox.items
-        class="absolute z-10 mt-0.5 max-h-40 w-full overflow-y-scroll rounded-md bg-slate-800 shadow-md"
+        class="scrollbar absolute z-10 mt-1 max-h-52 w-full overflow-y-auto rounded-md bg-slate-700 p-0.5 shadow-lg"
       >
-        {#each artifactSubStats as value, i}
-          {@const active = $listbox.active === value}
-          {@const selected = $listbox.selected === value}
+        {#each artifactSubStats as stat, i (i)}
+          {@const active = $listbox.active === stat}
           <li
-            class="cursor-default select-none p-2"
-            class:bg-slate-300={active}
-            class:text-slate-900={active}
-            use:listbox.item={{ value }}
+            class="flex cursor-default select-none items-center gap-1 rounded-md p-2.5"
+            class:bg-slate-800={active}
+            use:listbox.item={{ value: stat }}
           >
-            <span
-              class="center block truncate capitalize {selected
-                ? 'font-medium'
-                : 'font-normal'}">{value.label}</span
+            {#if stat.value}
+              <StatImage stat={stat.value} />
+            {/if}
+            <span class=" center pointer-events-none block truncate capitalize"
+              >{stat.label}</span
             >
           </li>
         {/each}
@@ -66,12 +92,20 @@
     </Transition>
   </div>
   <input
-    class="col-span-1 appearance-none rounded-md border border-slate-800 bg-slate-800 py-1 px-1 text-right focus:border-slate-400 focus:ring-slate-300"
+    class="col-span-3 h-9 appearance-none rounded-md border border-slate-600 bg-slate-800 p-2 text-right focus:border-slate-400 focus:ring-slate-300 md:h-10"
+    class:opacity-60={isBadStat}
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
     type="number"
     disabled={!$artifact[type].substats[id].stat}
   />
+  <div
+    class="col-span-1 flex items-center gap-1 fill-slate-100"
+    class:opacity-60={isBadStat}
+  >
+    <span>5</span>
+    <Caret class="w-2.5 " />
+  </div>
 </div>
 
 <style lang="postcss">
