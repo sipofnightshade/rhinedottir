@@ -33,6 +33,8 @@ export const artifactMainStats = {
 
 export const artifactSubStats = [
   { label: 'Select...', value: '' },
+  { label: 'CRIT Rate', value: 'critrate' },
+  { label: 'CRIT DMG', value: 'critdmg' },
   { label: 'HP', value: 'hp' },
   { label: 'ATK', value: 'atk' },
   { label: 'DEF', value: 'def' },
@@ -40,9 +42,7 @@ export const artifactSubStats = [
   { label: 'ATK%', value: 'atk%' },
   { label: 'DEF%', value: 'def%' },
   { label: 'EM', value: 'em' },
-  { label: 'ER', value: 'energy' },
-  { label: 'CRIT Rate', value: 'critrate' },
-  { label: 'CRIT DMG', value: 'critdmg' }
+  { label: 'ER', value: 'energy' }
 ];
 
 export const StatLabels = {
