@@ -79,6 +79,34 @@ export const weaponStatLabels = {
   physical: 'Physical DMG Bonus'
 };
 
+export type TwoPiece_Stats = keyof typeof TwoPieceLabels;
+export const TwoPieceLabels = {
+  hp: 'HP',
+  atk: 'ATK',
+  def: 'DEF',
+  'hp%': 'HP',
+  'atk%': 'ATK',
+  'def%': 'DEF',
+  em: 'Elemental Mastery',
+  energy: 'Energy Recharge',
+  critrate: 'CRIT Rate',
+  critdmg: 'CRIT DMG',
+  anemo: 'Anemo DMG Bonus',
+  cryo: 'Cryo DMG Bonus',
+  dendro: 'Dendro DMG Bonus',
+  electro: 'Electro DMG Bonus',
+  geo: 'Geo DMG Bonus',
+  hydro: 'Hydro DMG Bonus',
+  pyro: 'Pyro DMG Bonus',
+  physical: 'Physical DMG Bonus',
+  healing: 'Healing Bonus',
+  shieldStrength: 'Shield Strength',
+  normal: 'Normal Attack DMG',
+  charged: 'Charged Attack DMG',
+  skill: 'Elemental Skill DMG',
+  burst: 'Elemental Burst DMG'
+};
+
 export type All_Stats = keyof typeof allStats;
 
 export interface Index_Stats {
