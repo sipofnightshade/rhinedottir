@@ -22,6 +22,8 @@
     circlet: 'artifact/circlet'
   };
 
+  const substatIDs: [0, 1, 2, 3] = [0, 1, 2, 3];
+
   let profile;
   let contentH;
 
@@ -74,67 +76,45 @@
 </script>
 
 <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profile} class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
-    <Thumbnail
-      img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
-      alt="wanderer"
-    />
-    <div class="col-span-2 flex flex-col justify-end">
-      <div class="grid grid-cols-2 gap-x-2">
-        <div>
-          <StarSelector {type} />
-          <LevelGroup
-            label="Level"
-            value={$artifact[type].lvl}
-            id={type}
-            rating={$artifact[type].isFiveStar}
-            on:increment={handleIncrement}
-            on:decrement={handleDecrement}
-          />
-        </div>
-        <MainStat {type} on:selected={handleMainstat} />
-      </div>
+  <div bind:clientHeight={profile} class="mb-4 flex h-28 gap-x-2">
+    <div class="rounded-2xl border border-slate-600">
+      <Thumbnail
+        img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
+        alt={$artifact[type].selected.name}
+        classes="w-28"
+      />
     </div>
-    <EffectDetails>
-      <p slot="title">
-        <span>{$artifact[type].selected.fullName}</span>
-        <span class="ml-1" class:text-green-400={artifactCount > 1}
-          >{`(${artifactCount}/4)`}</span
-        >
-      </p>
-      <div slot="details">
-        {#each $artifact[type].selected.fourPiece as action}
-          <p>{action.description || ''}</p>
-        {/each}
-      </div>
-    </EffectDetails>
+    <div class="flex w-32 flex-col justify-between">
+      <StarSelector {type} />
+      <LevelGroup
+        label="Level"
+        value={$artifact[type].lvl}
+        id={type}
+        rating={$artifact[type].isFiveStar}
+        on:increment={handleIncrement}
+        on:decrement={handleDecrement}
+      />
+    </div>
+    <MainStat {type} on:selected={handleMainstat} />
+  </div>
+  <EffectDetails>
+    <p slot="title">
+      <span>{$artifact[type].selected.fullName}</span>
+      <span class="ml-1" class:text-green-400={artifactCount > 1}
+        >{`(${artifactCount}/4)`}</span
+      >
+    </p>
+    <div slot="details">
+      {#each $artifact[type].selected.fourPiece as action}
+        <p>{action.description || ''}</p>
+      {/each}
+    </div>
+  </EffectDetails>
 
-    <div class="col-span-3 grid grid-cols-2 gap-2">
-      <SubstatGroup
-        {type}
-        id={0}
-        on:inputBlur={handleInput}
-        on:selected={handleSubstats}
-      />
-      <SubstatGroup
-        {type}
-        id={1}
-        on:inputBlur={handleInput}
-        on:selected={handleSubstats}
-      />
-      <SubstatGroup
-        {type}
-        id={2}
-        on:inputBlur={handleInput}
-        on:selected={handleSubstats}
-      />
-      <SubstatGroup
-        {type}
-        id={3}
-        on:inputBlur={handleInput}
-        on:selected={handleSubstats}
-      />
-    </div>
+  <div class="col-span-3 grid grid-cols-2 gap-2">
+    {#each substatIDs as id (id)}
+      <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
+    {/each}
   </div>
   <div class="h-full">
     <Picker
