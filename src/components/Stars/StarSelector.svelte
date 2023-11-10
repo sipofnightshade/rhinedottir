@@ -27,7 +27,7 @@
 
 <button
   on:click={() => artifact.setRating(type)}
-  class="flex h-10 w-32 items-center justify-between rounded-lg bg-slate-700 p-3"
+  class="flex h-9 w-32 items-center justify-between rounded-lg bg-slate-700 p-3 md:h-10"
   class:opacity-0={$artifact[type].selected.name === 'none'}
   disabled={$artifact[type].selected.name === 'none'}
 >
