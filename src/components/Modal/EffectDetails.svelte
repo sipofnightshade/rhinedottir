@@ -4,25 +4,22 @@
   import Chevron from '$lib/icons/Chevron.svelte';
   import Paragraph from '../Text/Paragraph.svelte';
 
-  // export let name: string;
-  // export let effectDetails: string;
+  export let disabled = false;
 
   const popover = createPopover({});
 </script>
 
 <div class="relative col-span-3">
   <button
+    {disabled}
+    class:opacity-30={disabled}
     use:popover.button
-    class="flex h-9 w-full items-center justify-between gap-2 rounded-md bg-slate-800 px-3 py-2 text-slate-300"
+    class="flex h-9 w-full items-center justify-between gap-2 rounded-md bg-slate-700 px-3 py-2 md:h-10"
   >
     <div class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left text-sm">
       <slot name="title" />
     </div>
-    <Chevron
-      class="h-3 fill-slate-300 transition-transform duration-300 {$popover.expanded
-        ? ''
-        : '-rotate-180'}"
-    />
+    <Chevron class="w-3 fill-slate-100" flip={!$popover.expanded} />
   </button>
   <Transition
     show={$popover.expanded}
@@ -37,11 +34,9 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div
       use:popover.panel
-      class="triangle absolute left-1/2 top-9 z-10 mt-1 w-full -translate-x-1/2 transform"
+      class="triangle absolute left-1/2 top-9 z-10 mt-1 min-h-[36px] w-full -translate-x-1/2 transform md:top-10"
     >
-      <div
-        class="w-full rounded-md border border-slate-500 bg-slate-800 p-2 px-3 py-2 text-left"
-      >
+      <div class="w-full rounded-md bg-slate-700 p-3 text-left">
         <Paragraph>
           <slot name="details" />
         </Paragraph>
