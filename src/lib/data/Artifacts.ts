@@ -26,7 +26,7 @@ export const ArtifactData: Artifact[] = [
     fourPiece: [
       {
         description:
-          'If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35.',
+          'If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.',
         weapons: ['sword', 'polearm', 'claymore'],
         values: [{ scaling: 'normal', coef: 0.35 }]
       }
@@ -228,7 +228,7 @@ export const ArtifactData: Artifact[] = [
     fourPiece: [
       {
         description:
-          'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.',
+          'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%.',
         values: [
           { scaling: 'overloaded', coef: 0.4 },
           { scaling: 'burning', coef: 0.4 },
@@ -239,7 +239,7 @@ export const ArtifactData: Artifact[] = [
       },
       {
         description:
-          'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.',
+          'Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks.',
         actionType: 'stack',
         values: [{ scaling: 'pyro', coef: [0.075, 0.075, 0.075] }]
       }
@@ -563,8 +563,12 @@ export const ArtifactData: Artifact[] = [
     fullName: 'Marechaussee Hunter',
     rating: [4, 5],
     twoPiece: [
-      { values: [{ scaling: 'normal', coef: 0.15 }] },
-      { values: [{ scaling: 'charged', coef: 0.15 }] }
+      {
+        values: [
+          { scaling: 'normal', coef: 0.15 },
+          { scaling: 'charged', coef: 0.15 }
+        ]
+      }
     ],
     fourPiece: [
       {
