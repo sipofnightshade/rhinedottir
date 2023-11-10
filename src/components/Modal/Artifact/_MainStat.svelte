@@ -5,6 +5,8 @@
   import Transition from 'svelte-transition';
   import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
+  import Chevron from '$lib/icons/Chevron.svelte';
+  import StatImage from '../../Desktop/StatImage.svelte';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
 
@@ -22,13 +24,13 @@
   }
 </script>
 
-<div class="mt-auto">
-  <p class="mb-[1px] text-right text-2xl font-bold">
+<div class="mt-auto w-full">
+  <p class="text-right text-2xl font-bold">
     {artifactStatFormatter($artifact[type].mainStat.stat, $artifact[type].mainStat.value)}
   </p>
   {#if type === 'flower' || type === 'feather'}
     <div
-      class="flex h-10 w-full items-center justify-center rounded-md bg-slate-600 py-2 pl-2"
+      class="flex h-10 w-full items-center justify-center rounded-md bg-slate-900 py-2 pl-2"
     >
       <p>{type === 'flower' ? 'HP' : 'ATK'}</p>
     </div>
@@ -37,29 +39,32 @@
       <button
         use:listbox.button
         on:select={onSelect}
-        class="relative h-10 w-full cursor-default text-ellipsis rounded-md border-2 border-slate-800 bg-slate-800 py-2 pl-2 text-left sm:text-sm"
-        class:border-slate-400={$listbox.expanded}
+        class="relative flex h-10 w-full cursor-default items-center justify-between gap-2 rounded-lg bg-slate-700 p-2 transition-colors duration-200 sm:text-sm"
+        class:border-slate-300={$listbox.expanded}
+        class:border-slate-600={!$listbox.expanded}
       >
-        <span class="block">{StatLabels[$artifact[type].mainStat.stat]}</span>
+        <div class="pointer-events-none flex items-center gap-1">
+          <StatImage stat={$artifact[type].mainStat.stat} />
+          <span class="text-ellipsis">{StatLabels[$artifact[type].mainStat.stat]}</span>
+        </div>
+        <Chevron class="w-3 fill-slate-100" flip={!$listbox.expanded} />
       </button>
       <Transition show={$listbox.expanded}>
         <ul
           use:listbox.items
-          class="absolute z-10 mt-0.5 max-h-40 w-full overflow-y-scroll rounded-md bg-slate-800 shadow-md"
+          class="absolute z-10 mt-1 w-full rounded-lg bg-slate-700 p-0.5 shadow-lg"
         >
-          {#each artifactMainStats[type] as value, i}
-            {@const active = $listbox.active === value}
-            {@const selected = $listbox.selected === value}
+          {#each artifactMainStats[type] as stat, i (i)}
+            {@const active = $listbox.active === stat}
             <li
-              class="cursor-default select-none p-2"
-              class:bg-slate-300={active}
-              class:text-slate-900={active}
-              use:listbox.item={{ value }}
+              class="flex cursor-default select-none items-center gap-1 rounded-md p-2.5"
+              class:bg-slate-800={active}
+              use:listbox.item={{ value: stat }}
             >
-              <span
-                class="center block truncate capitalize {selected
-                  ? 'font-medium'
-                  : 'font-normal'}">{value.label}</span
+              <StatImage stat={stat.value} />
+
+              <span class=" center pointer-events-none block truncate capitalize"
+                >{stat.label}</span
               >
             </li>
           {/each}
