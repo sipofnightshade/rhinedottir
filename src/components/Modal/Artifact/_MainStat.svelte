@@ -43,7 +43,7 @@
         class:border-slate-300={$listbox.expanded}
         class:border-slate-600={!$listbox.expanded}
       >
-        <div class="pointer-events-none flex items-center gap-1">
+        <div class="pointer-events-none flex items-center gap-2">
           <StatImage stat={$artifact[type].mainStat.stat} />
           <span class="text-ellipsis">{StatLabels[$artifact[type].mainStat.stat]}</span>
         </div>
