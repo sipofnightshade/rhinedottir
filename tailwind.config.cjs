@@ -34,7 +34,8 @@ module.exports = {
         '3-star1': '#347C9D',
         '3-star2': '#2A80A7',
         '0-star1': '#DEE1E3',
-        '0-star2': '#CBD0D2'
+        '0-star2': '#CBD0D2',
+        'rd-green': '#3CDE6A'
       },
       fontSize: {
         xs: ['12px', '15px'],
