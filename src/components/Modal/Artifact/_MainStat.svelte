@@ -52,7 +52,7 @@
       <Transition show={$listbox.expanded}>
         <ul
           use:listbox.items
-          class="absolute z-10 mt-1 w-full rounded-lg bg-slate-700 p-0.5 shadow-lg"
+          class="scrollbar absolute z-10 mt-1 max-h-52 w-full overflow-y-auto rounded-md bg-slate-700 p-0.5 shadow-lg"
         >
           {#each artifactMainStats[type] as stat, i (i)}
             {@const active = $listbox.active === stat}
@@ -73,3 +73,15 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background-color: #334155;
+    padding: 1px;
+  }
+</style>
