@@ -9,10 +9,10 @@
 <dialog
   bind:this={dialog}
   on:click|self={() => dialog.close()}
-  class="h-full max-w-md bg-slate-800 text-slate-200 shadow-lg backdrop:bg-black/60 xs-300:p-2 xs:h-[90vh] xs:rounded-2xl xs:p-4"
+  class="h-full w-11/12 max-w-md overflow-hidden rounded-md bg-slate-800 text-slate-200 shadow-lg backdrop:bg-slate-950/60 xs-300:p-2 xs:h-[90vh] xs:rounded-xl xs:p-4"
 >
   <!-- Dialog Container starts here -->
-  <div class="flex h-full flex-col rounded-xl">
+  <div class="flex h-full flex-col">
     <header class="flex w-full justify-between border-b border-slate-600 p-2 xs:p-4">
       <slot name="title" />
       <button on:click={() => dialog.close()}>
