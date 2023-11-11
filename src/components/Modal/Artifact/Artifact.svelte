@@ -157,7 +157,5 @@
     {/each}
   </div>
 
-  <div class="h-[1px] w-full bg-slate-600" />
-
   <Picker on:selected={handleArtifactSelect} data={ArtifactData} type={imgType[type]} />
 </div>

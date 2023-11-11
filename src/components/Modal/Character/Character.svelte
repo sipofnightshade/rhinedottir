@@ -144,9 +144,7 @@
       on:decrement={handleDecrement}
     />
   </div>
-  <div class="flex flex-col gap-2">
-    <Filters selected={filter} {filters} on:filter={handleFilters} />
-    <div class="h-[1px] w-full bg-slate-600" />
-  </div>
+
+  <Filters selected={filter} {filters} on:filter={handleFilters} />
   <Picker on:selected={handleCharacterSelect} data={filteredData} type="character" />
 </div>
