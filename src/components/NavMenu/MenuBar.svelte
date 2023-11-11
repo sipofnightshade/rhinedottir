@@ -88,7 +88,7 @@
       <button
         on:click={() => handleMenu(item)}
         class="flex h-12 w-12 items-center justify-center rounded-lg"
-        class:bg-anemo={currentMenuItem?.id === item.id}
+        class:bg-slate-700={currentMenuItem?.id === item.id}
       >
         <img class="h-8 w-8" src="/images/ui/{item.img}" alt="Menu UI Icon:{item.img}" />
       </button>
