@@ -24,8 +24,6 @@
   const filters = ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'];
 
   // state
-  let profileH;
-  let contentH;
   let filter = '';
   let filteredData = characterData;
 
@@ -92,8 +90,8 @@
   $: charBurstLvl = $character.burst + $character.lvlBonus.burst + 1;
 </script>
 
-<div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profileH} class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
+<div class="flex h-full flex-col gap-4 overflow-hidden">
+  <div class="grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
       img="/images/character/{$character.selected.name}.webp"
       vision={$character.selected.vision}
@@ -146,13 +144,9 @@
       on:decrement={handleDecrement}
     />
   </div>
-  <div class="h-full">
+  <div class="flex flex-col gap-2">
     <Filters selected={filter} {filters} on:filter={handleFilters} />
-    <Picker
-      on:selected={handleCharacterSelect}
-      data={filteredData}
-      type="character"
-      h={contentH - profileH - 16 - 46 - 16}
-    />
+    <div class="h-[1px] w-full bg-slate-600" />
   </div>
+  <Picker on:selected={handleCharacterSelect} data={filteredData} type="character" />
 </div>

@@ -12,6 +12,7 @@
   import { statValueFormatter } from '$lib/helpers/statFormatter';
   import { party } from '$lib/stores/partyStore';
   import StatImage from './StatImage.svelte';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
 
   type PartyModal = {
     id: 'one' | 'two' | 'three';
@@ -113,6 +114,11 @@
   </div>
 </section>
 
-<Modal bind:dialog title={modalTitle}>
+<!-- <Modal bind:dialog title={modalTitle}>
   <svelte:component this={modalContent} />
-</Modal>
+</Modal> -->
+
+<MultiModal bind:dialog>
+  <h3 slot="title">{modalTitle}</h3>
+  <svelte:component this={modalContent} />
+</MultiModal>
