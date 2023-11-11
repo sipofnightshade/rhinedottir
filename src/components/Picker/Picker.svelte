@@ -5,7 +5,6 @@
   // props
   export let data: any;
   export let type: string;
-  export let h: number;
 
   const dispatch = createEventDispatcher();
 
@@ -16,20 +15,18 @@
   }
 </script>
 
-<div
-  style="height: {h}px;"
-  class="mt-2 grid auto-rows-min grid-cols-4 gap-2 overflow-y-auto rounded-2xl border border-slate-600 p-2"
->
+<div class="scrollbar mt-2 grid grid-cols-4 items-start gap-2 overflow-y-auto pr-2">
   {#each data as item}
     <button on:click={() => handleClick(item)}>
       <Thumbnail
         alt={item.fullName}
         img="/images/{type}/{item.name}.webp"
         vision={item.vision}
+        classes="bg-slate-700"
       />
-      <!-- <p class="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium">
+      <p class="mt-1 text-xs">
         {item.fullName}
-      </p> -->
+      </p>
     </button>
   {/each}
 </div>
