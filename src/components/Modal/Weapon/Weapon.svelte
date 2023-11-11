@@ -15,10 +15,17 @@
 
   // filter data
   const filters = ['atk', 'def', 'hp', 'em', 'crit', 'physical', 'energy'];
+  const visionClasses = {
+    anemo: 'text-anemo',
+    cryo: 'text-cryo',
+    dendro: 'text-dendro',
+    electro: 'text-electro',
+    geo: 'text-geo',
+    pyro: 'text-pyro',
+    hydro: 'text-hydro'
+  };
 
   // state
-  let profileH;
-  let contentH;
   let filter = '';
   let filteredData = WeaponData[$character.selected.weapon];
   let stats: number | string;
@@ -56,8 +63,8 @@
   $: effectDetails = generateWeaponEffect($weapon.selected, $weapon.refinement);
 </script>
 
-<div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profileH} class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
+<div class="flex h-full flex-col gap-4 overflow-hidden">
+  <div class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
       img="/images/weapon/{$weapon.selected.name}.webp"
       alt={$weapon.selected.fullName}
@@ -68,7 +75,11 @@
           <h2>{$weapon.selected.fullName}</h2>
           <h2 class="ml-2 text-xl">{$weapon.stats?.attack.toFixed(0)}</h2>
         </div>
-        <div class="flex justify-between text-sm font-bold text-anemo">
+        <div
+          class="flex justify-between text-sm font-bold {visionClasses[
+            $character.selected.vision
+          ]}"
+        >
           <span>{weaponStatLabels[$weapon.selected.specialized]}</span>
           <span>{stats}</span>
         </div>
@@ -95,13 +106,7 @@
       <span slot="details">{effectDetails} </span>
     </EffectDetails>
   </div>
-  <div class="h-full">
-    <Filters selected={filter} {filters} on:filter={handleFilters} />
-    <Picker
-      on:selected={handleWeaponSelect}
-      data={filteredData}
-      type="weapon"
-      h={contentH - profileH - 16 - 46 - 16}
-    />
-  </div>
+
+  <Filters selected={filter} {filters} on:filter={handleFilters} />
+  <Picker on:selected={handleWeaponSelect} data={filteredData} type="weapon" />
 </div>
