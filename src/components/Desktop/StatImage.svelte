@@ -60,7 +60,7 @@
 </script>
 
 {#if iconMap[stat]}
-  <svelte:component this={iconMap[stat]} class="w-full md:w-[18px] xl:w-5" />
+  <svelte:component this={iconMap[stat]} class="w-full max-w-[20px] md:w-4 xl:w-5" />
 {:else}
   <span>-</span>
 {/if}
