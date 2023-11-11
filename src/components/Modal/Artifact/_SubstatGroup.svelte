@@ -117,4 +117,14 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background-color: #334155;
+    padding: 1px;
+  }
 </style>
