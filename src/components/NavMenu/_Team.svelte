@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { DefaultWeapons } from '$lib/data/DefaultWeapons';
-  import type { WeaponNames } from '$lib/types/weapons';
   // modal pages
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
@@ -16,11 +14,11 @@
   import { artifact } from '$lib/stores/artifactStore';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
-  import Modal from '../Modal/Modal.svelte';
   import One from '../Modal/Party/One.svelte';
   import Two from '../Modal/Party/Two.svelte';
   import Three from '../Modal/Party/Three.svelte';
   import { party } from '$lib/stores/partyStore';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
 
   // initialise modal state and content
 
@@ -106,7 +104,7 @@
     />
   </button>
   <button
-    class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    class="flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
     on:click={() => toggleModal(Weapon, 'Weapon')}
   >
     <Thumbnail
@@ -122,14 +120,13 @@
       on:click={() => toggleModal(modal.component, 'Select a Teammate')}
     >
       {#if $party[modal.id]}
-        {@const character = $party[modal.id]?.character.selected}
         <Thumbnail
-          img="/images/character/{character.name}.webp"
-          vision={character.vision}
-          alt={character.name}
+          img="/images/character/{$party[modal.id]?.character.selected.name}.webp"
+          vision={$party[modal.id]?.character.selected.vision}
+          alt={$party[modal.id]?.character.selected.name || 'character'}
         />
       {:else}
-        <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
+        <img src={modal.img} alt="{modal.id} image" class="w-3/5" />
       {/if}
     </button>
   {/each}
@@ -137,11 +134,11 @@
   <!-- Artifact buttons -->
   {#each artifactModals as modal (modal.id)}
     <button
-      class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 p-2 hover:border-2 hover:border-slate-300"
+      class="flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
       on:click={() => toggleModal(modal.component, modal.title)}
     >
       {#if $artifact[modal.id].selected.name === 'none'}
-        <img src={modal.img} alt="{modal.title} image" />
+        <img src={modal.img} alt="{modal.title} image" class="w-3/5" />
       {:else}
         <Thumbnail
           img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
@@ -152,6 +149,7 @@
   {/each}
 </div>
 
-<Modal bind:dialog title={modalTitle}>
+<MultiModal bind:dialog>
+  <h3 slot="title">{modalTitle}</h3>
   <svelte:component this={modalContent} />
-</Modal>
+</MultiModal>
