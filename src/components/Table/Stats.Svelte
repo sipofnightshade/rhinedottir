@@ -82,6 +82,7 @@
             <Thumbnail
               alt="temp"
               img="/images/character/{item.name}.webp"
+              hasBG={false}
               classes="h-full"
             />
           {:else}
