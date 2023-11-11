@@ -6,6 +6,12 @@
   export let hasBG: boolean = true;
   export let classes: string = '';
   export let imgClasses: string = '';
+
+  const ratingColors = {
+    5: 'bg-gradient-to-b from-yellow-600 via-yellow-700 to-yellow-700',
+    4: 'bg-gradient-to-b from-violet-500 via-violet-600 to-violet-700',
+    3: 'bg-gradient-to-b from-sky-500 via-sky-600 to-sky-700'
+  };
 </script>
 
 <div
