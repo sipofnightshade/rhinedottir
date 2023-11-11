@@ -10,7 +10,7 @@
 
 <div
   class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {classes}"
-  class:bg-slate-800={hasBG}
+  class:bg-slate-700={hasBG}
 >
   <img src={img} alt="{alt} thumbnail" class={imgClasses} />
   {#if vision}
