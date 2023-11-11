@@ -7,6 +7,7 @@
   import Circlet from '../Modal/Artifact/Circlet.svelte';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import StatImage from './StatImage.svelte';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
 
   import { artifact } from '$lib/stores/artifactStore';
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
@@ -67,13 +68,12 @@
     >
       <div class="mx-auto flex items-center lg:w-2/3">
         {#if $artifact[modal.id].selected.name === 'none'}
-          <Thumbnail img={modal.img} classes="opacity-30" alt="rust" hasBG={false} />
+          <Thumbnail img={modal.img} classes="opacity-30" alt="rust" />
         {:else}
           <Thumbnail
             img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
             classes="opacity-30"
             alt="rust"
-            hasBG={false}
           />
         {/if}
       </div>
@@ -104,6 +104,11 @@
     </button>
   {/each}
 </section>
-<Modal bind:dialog title={modalTitle}>
+<!-- <Modal bind:dialog title={modalTitle}>
   <svelte:component this={modalContent} />
-</Modal>
+</Modal> -->
+
+<MultiModal bind:dialog>
+  <h3 slot="title">{modalTitle}</h3>
+  <svelte:component this={modalContent} />
+</MultiModal>

@@ -29,9 +29,6 @@
 
   const substatIDs: [0, 1, 2, 3] = [0, 1, 2, 3];
 
-  let profile;
-  let contentH;
-
   // state methods
   function handleArtifactSelect(event: any) {
     artifact.setArtifact(type, event.detail.selected);
@@ -89,9 +86,9 @@
   );
 </script>
 
-<div class="flex h-full flex-col gap-4 overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profile} class="flex h-28 gap-x-2">
-    <div class="rounded-2xl border border-slate-600">
+<div class="flex h-full flex-col gap-4 overflow-hidden">
+  <div class="flex h-28 gap-x-2">
+    <div class="rounded-2xl">
       <Thumbnail
         img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
         alt={$artifact[type].selected.name}
@@ -159,12 +156,8 @@
       <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
     {/each}
   </div>
-  <div class="h-full">
-    <Picker
-      on:selected={handleArtifactSelect}
-      data={ArtifactData}
-      type={imgType[type]}
-      h={contentH - profile - 16}
-    />
-  </div>
+
+  <div class="h-[1px] w-full bg-slate-600" />
+
+  <Picker on:selected={handleArtifactSelect} data={ArtifactData} type={imgType[type]} />
 </div>
