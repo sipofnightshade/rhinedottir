@@ -55,12 +55,10 @@
     <!-- Filters -->
     <LoadoutFilters {filters} selected={filter} on:filter={handleFilters} />
     <!-- Loadouts -->
-    <div class="h-full">
-      <div class="flex flex-col gap-y-4 overflow-y-auto">
-        {#each filteredData as loadout (loadout.id)}
-          <Loadout item={loadout} />
-        {/each}
-      </div>
+    <div class="scrollbar flex flex-col gap-y-4 overflow-y-auto md:pr-0.5">
+      {#each filteredData as loadout (loadout.id)}
+        <Loadout item={loadout} />
+      {/each}
     </div>
   </div>
 </MultiModal>

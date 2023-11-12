@@ -107,7 +107,7 @@
     <Cell align="center" col="col-span-2" value="-" />
     <Cell align="end" col="col-span-6" value="Damage" />
   </div>
-  <div class="scrollbar w-full overflow-auto">
+  <div class="scrollbar w-full overflow-auto md:pr-0.5">
     {#each tabs as item (item.value)}
       {#if activeTabValue == item.value}
         {#each sections as section}

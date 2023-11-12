@@ -100,7 +100,7 @@
       <Thumbnail alt="hilichurl" img="/images/ui/hilichurl.svg" classes="h-2/3" />
     </button>
   </div>
-  <div class="scrollbar w-full overflow-auto">
+  <div class="scrollbar w-full overflow-auto md:pr-0.5">
     {#each tabs as item (item.value)}
       {#if activeTabValue === item.value}
         {#if item.stats}
