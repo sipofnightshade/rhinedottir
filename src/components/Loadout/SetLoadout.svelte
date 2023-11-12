@@ -1,15 +1,30 @@
 <script lang="ts">
   // components
-  import Modal from '../Modal/Modal.svelte';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
   import Loadout from './Loadout.svelte';
+  import EnkaImport from '../EnkaImport/EnkaImport.svelte';
+  import LoadoutFilters from './LoadoutFilters.svelte';
 
   //stores
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import EnkaImport from '../EnkaImport/EnkaImport.svelte';
+
+  // types
+  import type { LoadOutTag } from '$lib/types/loadout';
 
   let dialog: HTMLDialogElement;
-  let profileH;
-  let contentH;
+
+  // Filter Logic
+  let filter: LoadOutTag | '' = '';
+  const filters: LoadOutTag[] = ['DPS', 'Sub DPS', 'Shield', 'Support', 'Healer'];
+
+  function handleFilters(event: any) {
+    if (event.detail.selected === filter) {
+      filter = '';
+    } else {
+      filter = event.detail.selected;
+    }
+  }
+  $: filteredData = filter ? $loadouts.filter((item) => item.tag === filter) : $loadouts;
 
   function toggleModal() {
     dialog.showModal();
@@ -31,21 +46,21 @@
   </svg>
 </button>
 
-<Modal bind:dialog title="Select a loadout">
-  <div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-    <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-2">
-      <EnkaImport />
-      <div class="w-full">Filters</div>
-    </div>
+<MultiModal bind:dialog>
+  <h3 slot="title">Select a loadout</h3>
+  <!-- Content -->
+  <div class="flex h-full flex-col gap-4">
+    <EnkaImport />
+
+    <!-- Filters -->
+    <LoadoutFilters {filters} selected={filter} on:filter={handleFilters} />
+    <!-- Loadouts -->
     <div class="h-full">
-      <div
-        style="height:{contentH - profileH}px"
-        class="flex flex-col gap-y-4 overflow-y-auto"
-      >
-        {#each $loadouts as item (item.id)}
-          <Loadout {item} />
+      <div class="flex flex-col gap-y-4 overflow-y-auto">
+        {#each filteredData as loadout (loadout.id)}
+          <Loadout item={loadout} />
         {/each}
       </div>
     </div>
   </div>
-</Modal>
+</MultiModal>
