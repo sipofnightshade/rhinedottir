@@ -84,6 +84,7 @@
             alt="temp"
             img="/images/character/{item.name}.webp"
             classes="h-full"
+            hasBG={false}
           />
         {:else}
           <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
