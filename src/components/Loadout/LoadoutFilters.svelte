@@ -8,7 +8,7 @@
 
   const tags = {
     DPS: '!bg-rose-600',
-    'Sub DPS': '!bg-sky-600',
+    'Sub DPS': '!bg-amber-600',
     Shield: '!bg-stone-500',
     Support: '!bg-violet-600',
     Healer: '!bg-green-600'
