@@ -1,35 +1,38 @@
 <script lang="ts">
-  import ShortModal from '../Modal/ShortModal.svelte';
-  import TagInputLabel from './TagInputLabel.svelte';
-  import { uid } from 'uid';
+  // types
   import type { LoadOutTag } from '$lib/types/loadout';
 
-  //stores
+  // stores & helpers
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
   import { artifact } from '$lib/stores/artifactStore';
-  import { loadouts } from '$lib/stores/loadoutsStore';
+  import { loadouts, type LoadoutItem } from '$lib/stores/loadoutsStore';
+  import { uid } from 'uid';
+
+  // components
+  import MultiModal from '../MultiModal/MultiModal.svelte';
+  import LoadoutBlockImages from './LoadoutBlockImages.svelte';
+  import LoadoutTags from './LoadoutFilters.svelte';
 
   let dialog: HTMLDialogElement;
   let title: string;
-  let tags: LoadOutTag = 'DPS';
+  let tag: LoadOutTag = 'DPS';
 
-  const roleTags = [
-    { label: 'DPS', color: 'peer-checked:bg-rose-600' },
-    { label: 'Sub DPS', color: 'peer-checked:bg-amber-600' },
-    { label: 'Shield', color: 'peer-checked:bg-stone-500' },
-    { label: 'Healer', color: 'peer-checked:bg-emerald-500' },
-    { label: 'Support', color: 'peer-checked:bg-violet-600' }
-  ];
+  let currentLoadout: LoadoutItem | undefined = undefined;
+
+  function setTag(event: any) {
+    tag = event.detail.selected;
+  }
 
   function toggleModal() {
     dialog.showModal();
-  }
+    tag = 'DPS';
 
-  function saveLoadout() {
-    const newLoadout = {
+    title = `C${$character.constellation} ${tag} - ${$character.selected.fullName}`;
+
+    currentLoadout = {
       id: uid(),
-      tag: tags,
+      tag: tag,
       title,
       character: {
         selected: $character.selected.name,
@@ -56,8 +59,14 @@
         circlet: { ...$artifact.circlet, selected: $artifact.circlet.selected.name }
       }
     };
+  }
 
-    loadouts.addLoadout({ ...newLoadout });
+  function saveLoadout() {
+    if (currentLoadout) {
+      loadouts.addLoadout({ ...currentLoadout });
+    }
+
+    currentLoadout = undefined;
     dialog.close();
   }
 </script>
@@ -73,38 +82,35 @@
     />
   </svg>
 </button>
-<!-- @component
-- Properly implement the `saveLoadout` modal design
- -->
-<ShortModal bind:dialog modalTitle="Save Character Loadout">
-  <label for="loadoutTitle" class="text-slate-300">Loadout Name</label>
-  <input
-    type="text"
-    id="loadoutTitle"
-    placeholder="Enter a descriptive title for your loadout..."
-    bind:value={title}
-    class="my-2 h-9 w-full appearance-none rounded-md border border-slate-700 bg-slate-700 p-1 focus:border-slate-400 focus:ring-slate-300"
-  />
-  <h4 class="mt-2 text-slate-300">Tag</h4>
-  <div class="my-2">
-    <fieldset class="grid grid-cols-3 gap-2">
-      {#each roleTags as item}
-        <div class="relative">
-          <input
-            id={item.label}
-            class="peer absolute h-0 w-0 opacity-0"
-            type="radio"
-            bind:group={tags}
-            name="type"
-            value={item.label}
-          />
-          <TagInputLabel color={item.color} label={item.label} />
-        </div>
-      {/each}
-    </fieldset>
+
+<MultiModal bind:dialog small>
+  <h3 slot="title">Save Character Loadout</h3>
+  <div class=" flex flex-col gap-y-4 pb-1">
+    {#if currentLoadout}
+      <LoadoutBlockImages item={currentLoadout} />
+      <div>
+        <label for="loadoutTitle" class="text-sm font-bold uppercase text-slate-300">
+          Title
+        </label>
+        <input
+          type="text"
+          id="loadoutTitle"
+          placeholder="Enter a descriptive title for your loadout..."
+          bind:value={title}
+          autocomplete="off"
+          class="mt-2 h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 focus:border-slate-400 focus:ring-slate-300 md:h-10"
+        />
+      </div>
+
+      <div>
+        <h4 class="mb-2 text-sm font-bold uppercase text-slate-300">Tag</h4>
+        <LoadoutTags selected={tag} on:filter={setTag} />
+      </div>
+      <button
+        on:click={saveLoadout}
+        class="mx-auto mt-2 h-9 w-full rounded-lg bg-slate-300 uppercase text-slate-900 md:h-10"
+        >Save</button
+      >
+    {/if}
   </div>
-  <button
-    on:click={saveLoadout}
-    class="ml-auto mt-2 h-9 w-full rounded-full bg-emerald-600 px-4 py-2">Save</button
-  >
-</ShortModal>
+</MultiModal>
