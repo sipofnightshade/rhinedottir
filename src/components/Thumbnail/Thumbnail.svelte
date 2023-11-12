@@ -6,17 +6,22 @@
   export let hasBG: boolean = true;
   export let classes: string = '';
   export let imgClasses: string = '';
+  export let rating: 5 | 4 | 3 | undefined = undefined;
 
   const ratingColors = {
-    5: 'bg-gradient-to-b from-yellow-600 via-yellow-700 to-yellow-700',
+    5: 'bg-gradient-to-b from-yellow-700 via-yellow-600 to-yellow-700',
     4: 'bg-gradient-to-b from-violet-500 via-violet-600 to-violet-700',
-    3: 'bg-gradient-to-b from-sky-500 via-sky-600 to-sky-700'
+    3: 'bg-gradient-to-b from-sky-700 via-sky-600 to-sky-700'
   };
+
+  $: bgColor = rating ? ratingColors[rating] : '';
 </script>
 
 <div
-  class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {classes}"
-  class:bg-slate-700={hasBG}
+  class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
+  class:bg-slate-700={rating === undefined && hasBG}
+  class:border={rating === undefined && hasBG}
+  class:border-slate-600={rating === undefined && hasBG}
 >
   <img src={img} alt="{alt} thumbnail" class={imgClasses} />
   {#if vision}
