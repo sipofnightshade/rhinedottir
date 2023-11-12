@@ -2,6 +2,7 @@
   import Close from '$lib/icons/Close.svelte';
 
   export let dialog: HTMLDialogElement;
+  export let small = false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -9,7 +10,10 @@
 <dialog
   bind:this={dialog}
   on:click|self={() => dialog.close()}
-  class="h-full w-11/12 max-w-md overflow-hidden rounded-md bg-slate-800 text-slate-200 shadow-lg backdrop:bg-slate-950/60 xs-300:p-2 xs:h-[90vh] xs:rounded-xl xs:p-4"
+  class="h-full w-11/12 overflow-hidden rounded-md bg-slate-800 text-slate-200 shadow-md shadow-slate-950 backdrop:bg-slate-950/70 xs-300:p-2 xs:h-[90vh] xs:rounded-xl xs:p-4"
+  class:max-w-md={!small}
+  class:max-w-sm={small}
+  class:!h-fit={small}
 >
   <!-- Dialog Container starts here -->
   <div class="flex h-full flex-col">
