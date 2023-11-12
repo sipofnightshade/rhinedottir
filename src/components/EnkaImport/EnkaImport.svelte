@@ -1,12 +1,13 @@
 <script lang="ts">
   import { createEquipment } from '$lib/helpers/createEquipment';
   import LoadoutCreators from './LoadoutCreators.svelte';
+  import ResponseMessage from './ResponseMessage.svelte';
 
   let playerID: number;
   let lastApiCallTimestamp: number = 0;
   let cachedData: any = null;
 
-  let errorMessage: string = '';
+  let responseMsg = 'No Imported Characters';
 
   const cacheTTL: number = 60000;
   const headers = {
@@ -46,19 +47,19 @@
         })
         .catch((error) => {
           if (error.message.includes('400')) {
-            errorMessage = 'Wrong UID format. Please enter a valid Player ID.';
+            responseMsg = 'Wrong UID format. Please enter a valid Player ID.';
           } else if (error.message.includes('404')) {
-            errorMessage = 'Player does not exist. Please check the Player ID.';
+            responseMsg = 'Player does not exist. Please check the Player ID.';
           } else if (error.message.includes('424')) {
-            errorMessage = 'Game maintenance or server error. Please try again later.';
+            responseMsg = 'Game maintenance or server error. Please try again later.';
           } else if (error.message.includes('429')) {
-            errorMessage = 'Rate-limited. Too many requests. Please wait and try again.';
+            responseMsg = 'Rate-limited. Too many requests. Please wait and try again.';
           } else if (error.message.includes('500')) {
-            errorMessage = 'General server error. Please try again later.';
+            responseMsg = 'General server error. Please try again later.';
           } else if (error.message.includes('503')) {
-            errorMessage = 'Server error. Please try again later.';
+            responseMsg = 'Server error. Please try again later.';
           } else {
-            errorMessage = 'Unexpected error occurred. Please try again later.';
+            responseMsg = 'Unexpected error occurred. Please try again later.';
           }
         });
     }
@@ -75,27 +76,28 @@
     return loadouts;
   }
 
-  $: playerBuilds = handleLoadoutBuilders(cachedData);
+  $: playerBuilds = handleLoadoutBuilders(cachedData) ?? [];
 </script>
 
-<div class="mb-4">
+<div>
+  <!-- INPUT & BUTTON -->
   <div class="flex w-full gap-2">
     <input
       bind:value={playerID}
       type="text"
-      class="w-full rounded-full border border-slate-500 bg-transparent focus:ring-emerald-500"
+      class="h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 focus:border-slate-400 focus:ring-slate-300 md:h-10"
       placeholder="Enter Player ID"
     />
-    <button on:click={runEnkaImport} class="rounded-full bg-slate-600 px-4 py-1">
+    <button on:click={runEnkaImport} class="h-9 rounded-lg bg-slate-700 px-3 md:h-10">
       Import
     </button>
   </div>
-  {#if errorMessage}
-    <div class="mt-2 rounded bg-red-700 px-2 py-1">
-      <p class="text-sm">{errorMessage}</p>
-    </div>
-  {/if}
-  {#if playerBuilds}
-    <LoadoutCreators {playerBuilds} />
-  {/if}
+  <!-- RESPONSE MESSAGE -->
+  <ResponseMessage {responseMsg} />
+
+  <!-- CREATE LOADOUT BUTTONS -->
+  <LoadoutCreators {playerBuilds} />
+
+  <!-- Divider -->
+  <div class="mt-4 h-[1px] w-full bg-slate-600" />
 </div>
