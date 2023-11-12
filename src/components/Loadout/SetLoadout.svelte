@@ -15,7 +15,6 @@
 
   // Filter Logic
   let filter: LoadOutTag | '' = '';
-  const filters: LoadOutTag[] = ['DPS', 'Sub DPS', 'Shield', 'Support', 'Healer'];
 
   function handleFilters(event: any) {
     if (event.detail.selected === filter) {
@@ -24,6 +23,7 @@
       filter = event.detail.selected;
     }
   }
+
   $: filteredData = filter ? $loadouts.filter((item) => item.tag === filter) : $loadouts;
 
   function toggleModal() {
@@ -53,7 +53,7 @@
     <EnkaImport />
 
     <!-- Filters -->
-    <LoadoutFilters {filters} selected={filter} on:filter={handleFilters} />
+    <LoadoutFilters selected={filter} on:filter={handleFilters} />
     <!-- Loadouts -->
     <div class="scrollbar flex flex-col gap-y-4 overflow-y-auto md:pr-0.5">
       {#each filteredData as loadout (loadout.id)}
