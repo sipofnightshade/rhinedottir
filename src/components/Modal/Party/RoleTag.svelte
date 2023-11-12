@@ -12,5 +12,5 @@
   class:bg-green-600={role === 'Healer'}
   class:bg-violet-600={role === 'Support'}
 >
-  <span class="text-xs uppercase text-slate-200">{role}</span>
+  <span class="text-xs">{role}</span>
 </div>
