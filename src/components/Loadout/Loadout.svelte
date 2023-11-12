@@ -11,6 +11,7 @@
   import { artifact } from '$lib/stores/artifactStore';
   // components
   import LoadoutBlock from '../Loadout/LoadoutBlock.svelte';
+  import Delete from '$lib/icons/Delete.svelte';
 
   type PartyID = 'one' | 'two' | 'three';
   // props
@@ -51,21 +52,25 @@
   <button
     on:click={handleClick}
     on:longpress={handleLongPress}
-    use:longpress={500}
+    use:longpress={300}
     disabled={deletable}
   >
     <LoadoutBlock {item} {deletable} />
   </button>
   {#if deletable}
-    <div class="mt-1 flex justify-between gap-2">
+    <div class="mt-2 flex justify-between gap-2 text-slate-200">
       <button
-        class="w-full rounded-md border border-slate-500 p-2"
+        class="w-full rounded-md border border-slate-600 p-2"
         on:click={() => (deletable = false)}
       >
         Cancel
       </button>
-      <button class="w-full rounded-md bg-red-700 p-2" on:click={handleDelete}>
-        Delete
+      <button
+        class="flex w-full items-center justify-center gap-1.5 rounded-md bg-red-700 p-2"
+        on:click={handleDelete}
+      >
+        <Delete class="w-3 fill-slate-200" />
+        <span>Delete</span>
       </button>
     </div>
   {/if}
