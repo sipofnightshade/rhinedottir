@@ -27,6 +27,7 @@ const initialState: CurrentWeapon = {
     uid: 11406,
     name: 'prototyperancour',
     fullName: 'Prototype Rancour',
+    url: 'UI_EquipIcon_Sword_Proto',
     rating: 4,
     type: 'sword',
     specialized: 'physical',
@@ -79,6 +80,8 @@ function createWeapon() {
           state.selected.name,
           labels.lvlValues[state.lvl]
         );
+        state.refinement = 0;
+
         return state;
       }),
     importWeapon: (savedWeapon: SavedWeapon, weaponType: WeaponCategory) =>
