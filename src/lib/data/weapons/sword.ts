@@ -621,7 +621,7 @@ export const sword: Swords[] = [
     effectname: 'Bane of Fire and Thunder',
     action: [
       {
-        actionType: 'passive',
+        actionType: 'toggle',
         values: [
           [
             { scaling: 'pyro', coef: 0.2 },
