@@ -2,13 +2,15 @@
   import ActionStats from './ActionStats.svelte';
 
   // types
-  import type { Action } from '$lib/types/actions';
+  import type { Action, ActionBtnID } from '$lib/types/actions';
 
   //components
   import MultiModal from '../MultiModal/MultiModal.svelte';
   import Formatted from '../Text/Formatted.svelte';
+  import ActionTarget from './ActionTarget.svelte';
 
   export let dialog: HTMLDialogElement;
+  export let id: ActionBtnID;
   export let data: Action;
   export let talentLvl: number | null = null;
 
@@ -56,7 +58,11 @@
     <!-- ❗ Stats ❗ -->
     <!-- <ActionStats values={data.values} /> -->
     <!-- Target -->
-
-    <!-- Interactive FOOTER -->
+    <ActionTarget target={data.target} />
+  </div>
+  <!-- Interactive FOOTER -->
+  <div slot="footer" class="flex w-full items-center justify-between">
+    <h4 class="text-sm font-bold">{data.actionType.toLocaleUpperCase()}</h4>
+    <slot name="footer" />
   </div>
 </MultiModal>
