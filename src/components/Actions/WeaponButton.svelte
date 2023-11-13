@@ -8,6 +8,7 @@
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
   import AddLevelButton from './_AddLevelButton.svelte';
+
   // stores / helpers / context
 
   // types
@@ -15,6 +16,7 @@
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
   import type { CurrentWeapon } from '$lib/stores/weaponStore';
+  import { generateWeaponEffect } from '$lib/helpers/generateWeaponText';
 
   // props
   export let currentWeapon: CurrentWeapon;
@@ -46,6 +48,11 @@
    * ✅ - handle weapon refinement.
    */
 
+  $: weaponEffect = {
+    ...selected,
+    effect: `**${selected.effectname}**\n${selected.effect}`
+  };
+
   function setWeaponBonuses(actions: any, refinement: number) {
     if (!actions) return;
     // ------------------
@@ -54,6 +61,7 @@
         ...action,
         name: selected.fullName,
         url: selected.name,
+        description: generateWeaponEffect(weaponEffect, refinement),
         // @ts-ignore
         values: action.values[refinement]
       });
