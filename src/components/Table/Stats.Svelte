@@ -86,7 +86,12 @@
               classes="h-full"
             />
           {:else}
-            <Thumbnail alt="temp" img="/images/ui/UI_BtnIcon_Team.png" classes="h-2/3" />
+            <Thumbnail
+              alt="temp"
+              img="/images/ui/UI_BtnIcon_Team.png"
+              classes="h-2/3"
+              hasBG={false}
+            />
           {/if}
         </button>
       {/if}
@@ -97,7 +102,12 @@
       {activeTabValue === 4 ? 'border-red-600' : 'border-slate-500'}"
       on:click={handleClick(4)}
     >
-      <Thumbnail alt="hilichurl" img="/images/ui/hilichurl.svg" classes="h-2/3" />
+      <Thumbnail
+        alt="hilichurl"
+        img="/images/ui/hilichurl.svg"
+        classes="h-2/3"
+        hasBG={false}
+      />
     </button>
   </div>
   <div class="scrollbar w-full overflow-auto md:pr-0.5">
