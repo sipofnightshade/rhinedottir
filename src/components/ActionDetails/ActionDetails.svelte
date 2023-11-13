@@ -41,8 +41,8 @@
 <MultiModal bind:dialog small>
   <div slot="title" class="flex items-center gap-2">
     {#if shortID}
-      <div class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-600">
-        <span class="text-xs font-bold uppercase">{shortID}</span>
+      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-600">
+        <span class="text-sm font-bold uppercase">{shortID}</span>
       </div>
     {/if}
     <h3>{data.name} {showTalentLvl}</h3>
@@ -58,7 +58,7 @@
     <!-- ❗ Stats ❗ -->
     <!-- <ActionStats values={data.values} /> -->
     <!-- Target -->
-    <ActionTarget target={data.target} />
+    <ActionTarget {id} target={data.target} />
   </div>
   <!-- Interactive FOOTER -->
   <div slot="footer" class="flex w-full items-center justify-between">
