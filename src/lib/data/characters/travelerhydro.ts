@@ -49,13 +49,6 @@ const charName: CharacterRecord = {
       tag: 'N5',
       damageBonus: 'normal',
       damage: [[{ scaling: 'atk', param: 'param5' }]]
-    },
-    {
-      name: 'Slitting DMG',
-      tag: 'A1',
-      damageBonus: 'normal',
-      hasOwnDMGType: 'anemo',
-      damage: [[{ scaling: 'atk', param: 'param1', coef: 0.6 }]]
     }
   ],
   charged: [
