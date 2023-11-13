@@ -64,7 +64,7 @@
 </script>
 
 <div class="flex h-full flex-col gap-4 overflow-hidden">
-  <div class=" mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
+  <div class="grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
       img="/images/weapon/{$weapon.selected.name}.webp"
       alt={$weapon.selected.fullName}
