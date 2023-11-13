@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="scrollbar mt-2 grid grid-cols-4 items-start gap-2 overflow-y-auto pr-2">
+<div class="scrollbar mt-2 grid grid-cols-4 items-start gap-2 overflow-y-auto md:pr-2">
   {#each data as item}
     <button on:click={() => handleClick(item)}>
       <Thumbnail
