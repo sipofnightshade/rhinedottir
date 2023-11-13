@@ -75,14 +75,14 @@ function createAction() {
             break;
           case 'nearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId && nearbyId !== 'enemy') {
+              if (id !== nearbyId && id !== 'enemy') {
                 addStatValue(nearbyId as keyof typeof initialState, scaling, coef);
               }
             }
             break;
           case 'halfnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId && nearbyId !== 'enemy') {
+              if (id !== nearbyId && id !== 'enemy') {
                 addStatValue(nearbyId as keyof typeof initialState, scaling, coef / 2);
               } else if (id === nearbyId) {
                 addStatValue(id, scaling, coef);
@@ -91,7 +91,7 @@ function createAction() {
             break;
           case 'thirdnearby':
             for (const nearbyId of idList) {
-              if (id !== nearbyId && nearbyId !== 'enemy') {
+              if (id !== nearbyId && id !== 'enemy') {
                 addStatValue(nearbyId as keyof typeof initialState, scaling, coef * 0.3);
               } else if (id === nearbyId) {
                 addStatValue(id, scaling, coef);
