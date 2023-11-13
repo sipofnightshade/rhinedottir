@@ -6,7 +6,6 @@
   import { WeaponData } from '$lib/data/Weapons';
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
-  import { labels } from '$lib/data/Levels';
   import { weaponStatLabels } from '$lib/data/Stats';
   import { statValueFormatter } from '$lib/helpers/statFormatter';
 
@@ -14,7 +13,16 @@
   import EffectDetails from '../EffectDetails.svelte';
 
   // filter data
-  const filters = ['atk', 'def', 'hp', 'em', 'crit', 'physical', 'energy'];
+  const filters = [
+    'atk%',
+    'def%',
+    'hp%',
+    'em',
+    'critrate',
+    'critdmg',
+    'physical',
+    'energy'
+  ];
   const visionClasses = {
     anemo: 'text-anemo',
     cryo: 'text-cryo',
@@ -55,9 +63,7 @@
   $: stats = statValueFormatter($weapon.selected.specialized, $weapon.stats?.specialized);
 
   $: filteredData = filter
-    ? WeaponData[$character.selected.weapon].filter((item) =>
-        item.specialized.includes(filter)
-      )
+    ? WeaponData[$character.selected.weapon].filter((item) => item.specialized === filter)
     : WeaponData[$character.selected.weapon];
 
   $: effectDetails = generateWeaponEffect($weapon.selected, $weapon.refinement);

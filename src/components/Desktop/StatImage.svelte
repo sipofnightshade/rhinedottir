@@ -23,9 +23,9 @@
     Burning,
     Shattered
   } from '$lib/icons';
-  import type { All_Stats } from '$lib/data/Stats';
 
   export let stat: string;
+  export let lg = false;
 
   type Icons = {
     [key in string]: ComponentType;
@@ -60,7 +60,7 @@
 </script>
 
 {#if iconMap[stat]}
-  <svelte:component this={iconMap[stat]} class="w-full max-w-[20px] md:w-4 xl:w-5" />
+  <svelte:component this={iconMap[stat]} class={lg ? 'w-5 xs-375:w-6' : 'w-4 lg:w-5'} />
 {:else}
   <span>-</span>
 {/if}
