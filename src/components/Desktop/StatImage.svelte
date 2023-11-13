@@ -47,6 +47,7 @@
     hp: HP,
     'hp%': HP,
     healing: Healing,
+    healingIncoming: Healing,
     critrate: CritRate,
     critdmg: CritDamage,
     energy: Energy,
@@ -60,7 +61,7 @@
 </script>
 
 {#if iconMap[stat]}
-  <svelte:component this={iconMap[stat]} class={lg ? 'w-5 xs-375:w-6' : 'w-4 lg:w-5'} />
+  <svelte:component this={iconMap[stat]} class={lg ? 'h-5 xs-375:h-6' : 'h-4 lg:h-5'} />
 {:else}
   <span>-</span>
 {/if}
