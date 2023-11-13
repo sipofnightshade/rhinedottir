@@ -1,3 +1,3 @@
-<p class="text-sm font-medium leading-5">
+<p class="text-sm leading-relaxed">
   <slot />
 </p>

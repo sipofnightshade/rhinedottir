@@ -28,7 +28,17 @@ export function formatText(text: string): string {
     'Cryo DMG': 'text-cryo',
     'Cryo RES': 'text-cryo',
     'Physical DMG': 'text-gray-500',
-    'Physical RES': 'text-gray-500'
+    'Physical RES': 'text-gray-500',
+    Aggravate: 'text-electro',
+    Spread: 'text-dendro',
+    Burning: 'text-pyro',
+    Bloom: 'text-dendro',
+    Hyperbloom: 'text-dendro',
+    Burgeon: 'text-dendro',
+    Overloaded: 'text-pyro',
+    Superconduct: 'text-cryo',
+    'Electro-Charged': 'text-electro',
+    Crystallize: 'text-cryo'
   };
 
   // Apply class and bold to specific phrases
