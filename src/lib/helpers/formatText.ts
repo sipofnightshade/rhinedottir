@@ -7,7 +7,9 @@ export function formatText(text: string): string {
   const formattedText: string = text
     .split('**')
     .map((part, index) => {
-      return index % 2 === 0 ? part.replace(/\n/g, '<br/>') : `<strong>${part}</strong>`;
+      return index % 2 === 0
+        ? part.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br/>')
+        : `<strong>${part}</strong>`;
     })
     .join('');
 

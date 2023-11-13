@@ -6,6 +6,6 @@
   $: formattedText = formatText(content);
 </script>
 
-<p class="text-sm leading-relaxed {$$props.class}">
+<div class="text-sm leading-relaxed {$$props.class} [&>p]:p-1">
   {@html formattedText}
-</p>
+</div>
