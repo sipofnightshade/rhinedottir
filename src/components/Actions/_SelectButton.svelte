@@ -13,7 +13,6 @@
 
   // external functions & stores
   import { action } from '$lib/stores/actionStore';
-  import { stripStat } from '$lib/helpers/stripStats';
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
@@ -21,7 +20,9 @@
 
   // component
   import ActionButton from './ActionButton.svelte';
-  import ActionModal from '../Modal/ActionModal.svelte';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import StatImage from '../Desktop/StatImage.svelte';
+  import Close from '$lib/icons/Close.svelte';
 
   // props
   export let type: ActionButtonColor;
@@ -38,7 +39,7 @@
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
-  let selected: Stat | undefined;
+  let selected: any;
   let addedStats: { [key: string]: number } = {};
   let prevSelected: Stat | undefined;
 
@@ -74,12 +75,8 @@
   }
 
   function onSelect(selected: Stat | undefined) {
-    if (prevSelected) {
-      removeStats(prevSelected);
-    }
-    if (selected !== undefined) {
-      addStats(selected);
-    }
+    if (prevSelected) removeStats(prevSelected);
+    if (selected) addStats(selected);
     prevSelected = selected;
   }
 
@@ -128,64 +125,31 @@
   {#if selected != undefined}
     <div class="absolute bottom-0 right-0 z-10 flex">
       <div class="rounded-full bg-slate-800 p-1">
-        <img
-          class="w-4"
-          src="/images/elements/{stripStat(selected.scaling)}.svg"
-          alt="close"
-        />
+        <StatImage stat={selected.scaling} />
       </div>
     </div>
   {/if}
 </button>
-<ActionModal
-  bind:dialog
-  modalTitle={data.name}
-  actionType="Elemental Burst"
-  buttonType="Select"
-  details={data.description || ''}
->
-  <form class="flex h-full items-center" class:bg-red-700={false} method="dialog">
-    <div
-      class="relative flex h-full w-full items-center justify-center bg-slate-600"
-      class:bg-slate-600={selected === undefined}
-    >
-      <input
-        type="radio"
-        bind:group={selected}
-        name="radio"
-        id="empty"
-        value={undefined}
-        class="hidden"
-      />
-      <label
-        for="empty"
-        class="flex h-full w-full cursor-pointer items-center justify-center"
-        ><img class="w-3.5" src="/images/ui/close.svg" alt="close" />
-      </label>
-    </div>
-    {#each data.values as item}
-      <div
-        class="relative flex h-full w-full items-center justify-center bg-slate-600"
-        class:bg-slate-600={selected === item}
+
+<ActionDetails {id} {data} bind:dialog>
+  <svelte:fragment slot="footer">
+    <div class="grid auto-cols-max grid-flow-col gap-1">
+      <button
+        on:click={() => (selected = undefined)}
+        class="flex h-full items-center justify-center rounded-lg p-3.5 transition-all hover:bg-slate-700 focus:bg-slate-800"
       >
-        <input
-          type="radio"
-          bind:group={selected}
-          name="radio"
-          id={item.scaling}
-          value={item}
-          class="hidden"
-        />
-        <label
-          for={item.scaling}
-          class="flex h-full w-full cursor-pointer items-center justify-center"
-          ><img
-            class="w-6"
-            src="/images/elements/{stripStat(item.scaling)}.svg"
-            alt={item.scaling}
-          />
-        </label>
-      </div>
-    {/each}
-  </form>
-</ActionModal>
+        <Close class="w-3 fill-slate-200" />
+      </button>
+      {#each data.values as item (item.scaling)}
+        <button
+          on:click={() => (selected = item)}
+          class="flex aspect-square items-center justify-center rounded-lg p-2 transition-all"
+          class:bg-slate-500={item.scaling === selected?.scaling}
+          class:hover:bg-slate-700={item.scaling !== selected?.scaling}
+        >
+          <StatImage stat={item.scaling} lg />
+        </button>
+      {/each}
+    </div>
+  </svelte:fragment>
+</ActionDetails>

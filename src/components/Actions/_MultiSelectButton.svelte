@@ -22,6 +22,8 @@
   import ActionButton from './ActionButton.svelte';
   import ActionModal from '../Modal/ActionModal.svelte';
   import type { Index_Stats } from '$lib/data/Stats';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import StatImage from '../Desktop/StatImage.svelte';
 
   // props
   export let type: ActionButtonColor;
@@ -138,43 +140,25 @@
         class="rounded-full bg-slate-800 p-1"
         class:hidden={selectedStats[value.scaling] === false}
       >
-        <img
-          class="w-4"
-          src="/images/elements/{stripStat(value.scaling)}.svg"
-          alt="close"
-        />
+        <StatImage stat={value.scaling} />
       </div>
     {/each}
   </div>
 </button>
-<ActionModal
-  bind:dialog
-  modalTitle={data.name}
-  actionType="Elemental Burst"
-  buttonType="Select"
-  details={data.description ?? ''}
->
-  <div class="flex h-full items-center">
-    <!-- <li class="h-10 w-10">
+
+<ActionDetails {id} {data} bind:dialog>
+  <svelte:fragment slot="footer">
+    <div class="flex gap-1">
+      {#each data.values as value}
         <button
-          on:click={clearState}
-          class="flex h-full w-full items-center justify-center rounded-full "
+          class="flex aspect-square items-center justify-center rounded-lg p-2 transition-all"
+          class:bg-slate-500={selectedStats[value.scaling] === true}
+          class:hover:bg-slate-700={!selectedStats[value.scaling]}
+          on:click={() => handleClick(value)}
         >
-          <img class="w-3.5" src="/images/ui/close.svg" alt={'close'} />
+          <StatImage stat={value.scaling} lg />
         </button>
-      </li> -->
-    {#each data.values as value}
-      <button
-        class="flex h-full w-full items-center justify-center bg-slate-600"
-        class:bg-slate-600={selectedStats[value.scaling] === true}
-        on:click={() => handleClick(value)}
-      >
-        <img
-          class="w-6"
-          src="/images/elements/{stripStat(value.scaling)}.svg"
-          alt={stripStat(value.scaling)}
-        />
-      </button>
-    {/each}
-  </div>
-</ActionModal>
+      {/each}
+    </div>
+  </svelte:fragment>
+</ActionDetails>
