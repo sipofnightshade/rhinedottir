@@ -32,7 +32,7 @@
       <slot />
     </div>
     {#if $$slots.footer}
-      <footer class="flex w-full justify-between border-t border-slate-600 p-2 xs:p-4">
+      <footer class="flex w-full justify-between border-t border-slate-600 p-2 xs:px-4">
         <slot name="footer" />
       </footer>
     {/if}
