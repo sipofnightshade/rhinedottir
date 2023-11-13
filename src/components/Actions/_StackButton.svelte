@@ -22,6 +22,8 @@
   // components
   import ActionButton from './ActionButton.svelte';
   import { infusion } from '$lib/stores/infusionStore';
+  import { longpress } from '$lib/actions/longpress';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
 
   export let type: ActionButtonColor;
   export let data: Action;
@@ -106,6 +108,12 @@
     }
   }
 
+  // handle longPress modal
+  let dialog: HTMLDialogElement;
+  const handleLongPress = () => {
+    dialog.showModal();
+  };
+
   $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
   $: applyInfusion(stacks > 0);
 
@@ -129,7 +137,12 @@
   };
 </script>
 
-<button on:click={handleStacking} class="relative shadow-red-300">
+<button
+  on:longpress={handleLongPress}
+  use:longpress={300}
+  on:click={handleStacking}
+  class="relative shadow-red-300"
+>
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
     <p
@@ -141,6 +154,8 @@
     </p>
   {/if}
 </button>
+
+<ActionDetails {data} {talentLvl} bind:dialog />
 
 <style lang="postcss">
   .stacks {

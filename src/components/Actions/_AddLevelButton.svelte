@@ -10,6 +10,8 @@
   import { onMount } from 'svelte';
   import { character, type CurrentCharacter } from '$lib/stores/characterStore';
   import { party } from '$lib/stores/partyStore';
+  import { longpress } from '$lib/actions/longpress';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
 
   // props
   export let type: ActionButtonColor;
@@ -74,6 +76,12 @@
     });
   }
 
+  // handle longPress modal
+  let dialog: HTMLDialogElement;
+  const handleLongPress = () => {
+    dialog.showModal();
+  };
+
   onMount(() => {
     addLevel();
     // this return might be problematic if the state is reset when character changes
@@ -86,6 +94,13 @@
   });
 </script>
 
-<button on:contextmenu={() => console.log(data.name)} data-testid="passive-action-button">
+<button
+  on:longpress={handleLongPress}
+  use:longpress={300}
+  on:contextmenu={() => console.log(data.name)}
+  data-testid="passive-action-button"
+>
   <ActionButton {type} url={data.url} isActive />
 </button>
+
+<ActionDetails {data} bind:dialog />

@@ -19,6 +19,8 @@
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import { longpress } from '$lib/actions/longpress';
 
   // props
   export let type: ActionButtonColor;
@@ -84,6 +86,12 @@
 
   $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
 
+  // handle longPress modal
+  let dialog: HTMLDialogElement;
+  const handleLongPress = () => {
+    dialog.showModal();
+  };
+
   onMount(() => {
     addStats();
     // this return might be problematic if the state is reset when character changes
@@ -96,6 +104,12 @@
   });
 </script>
 
-<button on:contextmenu={() => console.log(data.name)} data-testid="passive-action-button">
+<button
+  on:longpress={handleLongPress}
+  use:longpress={300}
+  on:contextmenu={() => console.log(data.name)}
+  data-testid="passive-action-button"
+>
   <ActionButton {type} url={data.url} isActive />
 </button>
+<ActionDetails {data} bind:dialog />

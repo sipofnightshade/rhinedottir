@@ -23,6 +23,8 @@
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
   import { getVisionCount } from '$lib/helpers/getVisionCount';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import { longpress } from '$lib/actions/longpress';
 
   // props
   export let type: ActionButtonColor;
@@ -128,6 +130,12 @@
   //   }
   // }
 
+  // handle longPress modal
+  let dialog: HTMLDialogElement;
+  const handleLongPress = () => {
+    dialog.showModal();
+  };
+
   onDestroy(() => {
     if (isActive) {
       removeStats();
@@ -137,6 +145,8 @@
   });
 </script>
 
-<button on:click={handleToggle}>
+<button on:longpress={handleLongPress} use:longpress={300} on:click={handleToggle}>
   <ActionButton {type} {isActive} url={data.url} />
 </button>
+
+<ActionDetails {data} bind:dialog />

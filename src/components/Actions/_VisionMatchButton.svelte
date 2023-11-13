@@ -22,6 +22,8 @@
   import { character } from '$lib/stores/characterStore';
   import { party } from '$lib/stores/partyStore';
   import { getVisionCount } from '$lib/helpers/getVisionCount';
+  import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import { longpress } from '$lib/actions/longpress';
 
   // props
   export let type: ActionButtonColor;
@@ -115,6 +117,12 @@
     }
   }
 
+  // handle longPress modal
+  let dialog: HTMLDialogElement;
+  const handleLongPress = () => {
+    dialog.showModal();
+  };
+
   onMount(() => {
     addStats();
     // this return might be problematic if the state is reset when character changes
@@ -127,6 +135,12 @@
   });
 </script>
 
-<button data-testid="passive-action-button">
+<button
+  on:longpress={handleLongPress}
+  use:longpress={300}
+  data-testid="passive-action-button"
+>
   <ActionButton {type} url={data.url} isActive />
 </button>
+
+<ActionDetails {data} bind:dialog />
