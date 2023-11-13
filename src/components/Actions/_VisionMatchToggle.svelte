@@ -149,4 +149,4 @@
   <ActionButton {type} {isActive} url={data.url} />
 </button>
 
-<ActionDetails {data} bind:dialog />
+<ActionDetails {id} {talentLvl} {data} bind:dialog />

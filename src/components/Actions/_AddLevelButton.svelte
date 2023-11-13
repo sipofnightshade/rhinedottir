@@ -16,7 +16,7 @@
   // props
   export let type: ActionButtonColor;
   export let data: Action;
-  // export let id: ActionBtnID;
+  export let id: ActionBtnID;
   // export let currentChar: CurrentCharacter;
   // export let currentStats: Index_Stats;
 
@@ -103,4 +103,4 @@
   <ActionButton {type} url={data.url} isActive />
 </button>
 
-<ActionDetails {data} bind:dialog />
+<ActionDetails {id} {data} bind:dialog />

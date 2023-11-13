@@ -8,7 +8,7 @@
   } from '$lib/types/actions';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { CharacterSpecificNames } from '$lib/types/characters';
-  import type { All_Stats, Index_Stats } from '$lib/data/Stats';
+  import type { Index_Stats } from '$lib/data/Stats';
 
   // helpers & calculators
   import { onDestroy } from 'svelte';
@@ -16,13 +16,14 @@
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
 
+  import { longpress } from '$lib/actions/longpress';
   // stores &
   import { action } from '$lib/stores/actionStore';
+  import { infusion } from '$lib/stores/infusionStore';
 
   // components
   import ActionButton from './ActionButton.svelte';
-  import { infusion } from '$lib/stores/infusionStore';
-  import { longpress } from '$lib/actions/longpress';
+
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
 
   export let type: ActionButtonColor;
@@ -114,7 +115,7 @@
     dialog.showModal();
   };
 
-  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
+  $: isAnyStatChanged(), talentLvl, data, currentChar.constellation, recalculateStats();
   $: applyInfusion(stacks > 0);
 
   onDestroy(() => {
@@ -155,7 +156,7 @@
   {/if}
 </button>
 
-<ActionDetails {data} {talentLvl} bind:dialog />
+<ActionDetails {id} {data} {talentLvl} bind:dialog />
 
 <style lang="postcss">
   .stacks {

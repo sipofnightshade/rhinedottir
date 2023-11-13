@@ -104,7 +104,7 @@
     }
   }
 
-  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
+  $: isAnyStatChanged(), talentLvl, data, currentChar.constellation, recalculateStats();
   $: applyInfusion(isActive);
 
   // handle longPress modal
@@ -127,4 +127,4 @@
   <ActionButton {type} {isActive} url={data.url} />
 </button>
 
-<ActionDetails {data} bind:dialog />
+<ActionDetails {id} {talentLvl} {data} bind:dialog />

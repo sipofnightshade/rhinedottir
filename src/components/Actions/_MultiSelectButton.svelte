@@ -114,7 +114,7 @@
     }
   }
 
-  $: isAnyStatChanged(), talentLvl, currentChar.constellation, recalculateStats();
+  $: isAnyStatChanged(), talentLvl, data, currentChar.constellation, recalculateStats();
 
   // handle Modal
   let dialog: HTMLDialogElement;

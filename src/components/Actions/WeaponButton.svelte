@@ -68,10 +68,12 @@
     });
   }
 
-  $: if (selected) {
+  function resetWeapon() {
     actionData = [];
     setWeaponBonuses(actions, refinement);
   }
+
+  $: resetWeapon(), selected, refinement;
 </script>
 
 {#each actionData as action}
