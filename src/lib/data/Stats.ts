@@ -13,7 +13,7 @@ export const artifactMainStats = {
     { label: 'ATK%', value: 'atk%' },
     { label: 'DEF%', value: 'def%' },
     { label: 'EM', value: 'em' },
-    { label: 'Healing%', value: 'healing' }
+    { label: 'Healing', value: 'healing' }
   ],
   goblet: [
     { label: 'HP%', value: 'hp%' },
@@ -65,7 +65,7 @@ export const StatLabels = {
   hydro: 'Hydro DMG',
   pyro: 'Pyro DMG',
   physical: 'Physical DMG',
-  healing: 'Healing BONUS'
+  healing: 'Healing'
 };
 
 export const weaponStatLabels = {

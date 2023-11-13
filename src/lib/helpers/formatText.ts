@@ -40,7 +40,8 @@ export function formatText(text: string): string {
     Overloaded: 'text-pyro',
     Superconduct: 'text-cryo',
     'Electro-Charged': 'text-electro',
-    Crystallize: 'text-cryo'
+    Crystallize: 'text-cryo',
+    Swirl: 'text-anemo'
   };
 
   // Apply class and bold to specific phrases
