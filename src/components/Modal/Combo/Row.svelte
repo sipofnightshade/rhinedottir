@@ -30,20 +30,10 @@
     | 'reactions';
   type Buttons = { id: CharacterID; type: TalentType; index: number; btnID: string }[];
   type DamageArray = [DamageType, number][];
+
   // props
   export let row: any;
   export let index: number;
-
-  const damageTypes: DamageType[] = [
-    'pyro',
-    'hydro',
-    'electro',
-    'dendro',
-    'geo',
-    'cryo',
-    'anemo',
-    'physical'
-  ];
 
   const initialDMG = {
     pyro: 0,
@@ -204,18 +194,6 @@
       </div>
     </div>
     <div class="flex h-9 gap-2">
-      <!-- <div class="flex w-[68px] items-center rounded-lg border border-slate-500">
-        <div class="pl-3 pr-0">
-          <Close class="h-2.5 fill-slate-400" />
-        </div>
-        <input
-          type="number"
-          placeholder="1"
-          maxlength="2"
-          value="1"
-          class="ml-2 h-full w-full rounded-r-lg border-none bg-transparent pl-1 text-right"
-        />
-      </div> -->
       <button
         on:click={handleEditButton}
         class="rounded-lg border border-slate-500 px-3 py-1"

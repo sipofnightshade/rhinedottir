@@ -20,7 +20,7 @@
 </script>
 
 {#if value > 0}
-  <div class="flex items-center gap-0.5 text-base">
+  <div class="flex items-center gap-0.5 text-base" class:hidden={value <= 0}>
     {#if type !== 'none'}
       <svelte:component this={elements[type].component} class="h-5" />
       <span class={elements[type].text}>{damage}</span>
