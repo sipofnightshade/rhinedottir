@@ -12,15 +12,8 @@
   type ButtonReactions = 'bloom' | 'hyperbloom' | 'burgeon' | 'burning' | 'shattered';
 
   const dispatch = createEventDispatcher();
-  const reactions = {
-    bloom: Bloom,
-    hyperbloom: Hyperbloom,
-    burgeon: Burgeon,
-    burning: Burning,
-    shattered: Shattered
-  };
 
-  const reactions2 = {
+  const reactions = {
     bloom: { component: Bloom, text: 'text-dendro' },
     hyperbloom: { component: Hyperbloom, text: 'text-dendro' },
     burgeon: { component: Burgeon, text: 'text-dendro' },
@@ -93,6 +86,8 @@
   }
 
   function switchDamageType() {
+    if (dmgTypes.length === 1) return;
+
     currentIndex = (currentIndex + 1) % dmgTypes.length;
     currentDmgType = dmgTypes[currentIndex];
 
@@ -166,9 +161,9 @@
     </div>
   {:else}
     <div class="flex h-full flex-col items-center justify-center gap-1">
-      <svelte:component this={reactions2[reactionType].component} class="h-6" />
+      <svelte:component this={reactions[reactionType].component} class="h-6" />
       {#if dmgTypes.length > 1}
-        <span class="stacks text-sm font-bold {reactions2[reactionType].text}"
+        <span class="stacks text-sm font-bold {reactions[reactionType].text}"
           >x{stacks}</span
         >
       {/if}
