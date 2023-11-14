@@ -17,7 +17,6 @@
   };
 
   $: show = constellation >= (talentConstellation ?? 0);
-  $: console.log(rxn);
 </script>
 
 {#if value && !reactions[rxn]}
