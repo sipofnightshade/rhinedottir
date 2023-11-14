@@ -5,29 +5,33 @@
   // stores
   import { loadouts } from '$lib/stores/loadoutsStore';
   import { character } from '$lib/stores/characterStore';
+  import LoadoutFilters from '../../Loadout/LoadoutFilters.svelte';
+  import type { LoadOutTag } from '$lib/types/loadout';
 
   // props
   export let id: 'one' | 'two' | 'three';
 
-  // state
-  let profileH;
-  let contentH;
+  // Filter Logic
+  let filter: LoadOutTag | '' = '';
+
+  function handleFilters(event: any) {
+    if (event.detail.selected === filter) {
+      filter = '';
+    } else {
+      filter = event.detail.selected;
+    }
+  }
+
+  $: filteredData = filter ? $loadouts.filter((item) => item.tag === filter) : $loadouts;
 </script>
 
-<div class="h-full overflow-hidden" bind:clientHeight={contentH}>
-  <div bind:clientHeight={profileH} class="mb-3 rounded-md bg-slate-800 p-4">
-    <div class="w-full">Filters</div>
-  </div>
-  <div class="h-full">
-    <div
-      style="height:{contentH - profileH}px"
-      class="flex flex-col gap-y-4 overflow-y-auto"
-    >
-      {#each $loadouts as item (item.id)}
-        {#if item.character.id !== $character.selected.id}
-          <PartyLoadout {item} {id} />
-        {/if}
-      {/each}
-    </div>
+<div class="flex h-full flex-col gap-4">
+  <LoadoutFilters selected={filter} on:filter={handleFilters} />
+  <div class="scrollbar flex flex-col gap-y-4 overflow-y-auto md:pr-0.5">
+    {#each filteredData as item (item.id)}
+      {#if item.character.id !== $character.selected.id}
+        <PartyLoadout {item} {id} />
+      {/if}
+    {/each}
   </div>
 </div>

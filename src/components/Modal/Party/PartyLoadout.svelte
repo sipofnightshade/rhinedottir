@@ -48,8 +48,6 @@
       loadouts.removeLoadout(item.id);
     }
   }
-
-  $: isActive = $party[id]?.loadoutID === item.id;
 </script>
 
 <div>
@@ -59,7 +57,7 @@
     use:longpress={500}
     disabled={deletable}
   >
-    <LoadoutBlock {item} {isActive} {deletable} />
+    <LoadoutBlock {item} {deletable} />
   </button>
   {#if deletable}
     <div class="mt-1 flex justify-between gap-2">
