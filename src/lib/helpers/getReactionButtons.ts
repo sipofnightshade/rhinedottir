@@ -19,6 +19,7 @@ export function getReactionButtons(
 
   if (element === 'dendro') {
     reactions.push(getBloom(em, stats.bloom, enemy.dendro));
+    reactions.push(getBurning(em, stats.burning, enemy.pyro));
   }
 
   if (element === 'hydro') {
@@ -36,6 +37,13 @@ export function getReactionButtons(
 
   if (element === 'geo') {
     reactions.push(getCrystallized(em, stats.crystallize, 0));
+  }
+
+  if (element === 'anemo') {
+    reactions.push(getBloom(em, stats.bloom, enemy.dendro));
+    reactions.push(getHyperbloom(em, stats.bloom, enemy.dendro));
+    reactions.push(getBurgeon(em, stats.bloom, enemy.dendro));
+    reactions.push(getBurning(em, stats.burning, enemy.pyro));
   }
 
   if (
