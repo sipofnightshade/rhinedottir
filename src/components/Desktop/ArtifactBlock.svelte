@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Modal from '../Modal/Modal.svelte';
   import Flower from '../Modal/Artifact/Flower.svelte';
   import Feather from '../Modal/Artifact/Feather.svelte';
   import Sands from '../Modal/Artifact/Sands.svelte';
@@ -63,17 +62,18 @@
 >
   {#each menuModals as modal (modal.id)}
     <button
-      class="relative h-full w-full rounded-lg bg-slate-700 p-2"
+      class="relative h-full w-full rounded-lg border border-slate-600 bg-slate-700 p-2"
       on:click={() => toggleModal(modal.component, modal.title)}
     >
       <div class="mx-auto flex items-center lg:w-2/3">
         {#if $artifact[modal.id].selected.name === 'none'}
-          <Thumbnail img={modal.img} classes="opacity-30" alt="rust" />
+          <Thumbnail img={modal.img} classes="opacity-30" alt="none" hasBG={false} />
         {:else}
           <Thumbnail
             img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
             classes="opacity-30"
-            alt="rust"
+            alt={$artifact[modal.id].selected.name}
+            hasBG={false}
           />
         {/if}
       </div>
@@ -104,10 +104,6 @@
     </button>
   {/each}
 </section>
-<!-- <Modal bind:dialog title={modalTitle}>
-  <svelte:component this={modalContent} />
-</Modal> -->
-
 <MultiModal bind:dialog>
   <h3 slot="title">{modalTitle}</h3>
   <svelte:component this={modalContent} />
