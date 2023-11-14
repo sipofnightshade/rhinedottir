@@ -48,8 +48,9 @@
 
   // main functionality
   let rowButtons: Buttons = [];
-  let damage = writable({ ...initialDMG });
   let deletable = false;
+
+  const damage = writable({ ...initialDMG });
 
   const dispatch = createEventDispatcher();
   const popover = createPopover({});
@@ -82,7 +83,6 @@
 
   function handleClearAll() {
     rowButtons = [];
-    $damage = { ...initialDMG };
     deletable = false;
   }
 
@@ -101,6 +101,7 @@
   }, 0);
 
   $: sortedDMGValues = sortObjectByValue($damage) as DamageArray;
+  $: console.log($damage.physical);
 </script>
 
 <section
@@ -235,14 +236,14 @@
   }
 
   /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
+  /* input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
+  } */
 
   /* Firefox */
-  input[type='number'] {
+  /* input[type='number'] {
     -moz-appearance: textfield;
-  }
+  } */
 </style>
