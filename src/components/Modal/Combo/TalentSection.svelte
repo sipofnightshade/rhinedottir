@@ -28,7 +28,7 @@
 </script>
 
 {#if $talents[id][type]}
-  <section class="mb-1 grid grid-flow-col gap-1">
+  <section class="mb-1 grid auto-cols-fr grid-flow-col gap-1">
     {#each $talents[id][type] as talent, index}
       <Button
         el={talent.elemental}
@@ -36,6 +36,7 @@
         on:click={() => sendData(index)}
         {constellation}
         talentConstellation={talent.constellation}
+        rxn={talent.damageBonus}
       />
     {/each}
   </section>
