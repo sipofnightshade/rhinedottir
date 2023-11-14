@@ -53,7 +53,7 @@
     isInitialized = true;
 
     return () => {
-      if ((currentIndex = 0)) {
+      if (currentIndex === 0) {
         $damage[btn.elemental] -=
           btn.damage[btn.elemental] ?? btn.damage[btn.damageBonus];
       } else {
@@ -142,7 +142,7 @@
 </script>
 
 <button
-  class="relative mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-slate-600"
+  class="relative mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-600"
   on:click={switchDamageType}
   draggable="true"
   data-item-id={btn.btnID}
