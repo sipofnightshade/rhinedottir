@@ -302,34 +302,38 @@ const charName: CharacterRecord = {
     }
   ],
   actions: [
-    // {
-    //   name: 'Diversified Investigation - Fontainians',
-    //   url: 'UI_Talent_S_Charlotte_06',
-    //   description: 'When the party contains 1/2/3 Fontainians other than herself, Charlotte gains a 5%/10%/15% Healing Bonus. When the party contains 1/2/3 non-Fontainians, Charlotte gains a 5%/10%/15% Cryo DMG Bonus.',
-    //   level: 8,
-    //   target: 'self',
-    //   actionType: 'region',
-    //   values: [
-    //     {
-    //       scaling: 'healing',
-    //       coef: [0,0.05,0.10,0.15]
-    //     }
-    //   ]
-    // },
-    // {
-    //     name: 'Diversified Investigation - Outsiders',
-    //     url: 'UI_Talent_S_Charlotte_06',
-    //     description: 'When the party contains 1/2/3 Fontainians other than herself, Charlotte gains a 5%/10%/15% Healing Bonus. When the party contains 1/2/3 non-Fontainians, Charlotte gains a 5%/10%/15% Cryo DMG Bonus.',
-    //     level: 8,
-    //     target: 'self',
-    //     actionType: 'region',
-    //     values: [
-    //       {
-    //         scaling: 'cryo',
-    //         coef: [0,0.05,0.10,0.15]
-    //     }
-    //     ]
-    //   },
+    {
+      name: 'Diversified Investigation - Fontainians',
+      url: 'UI_Talent_S_Charlotte_06',
+      description:
+        'When the party contains 1/2/3 Fontainians other than herself, Charlotte gains a 5%/10%/15% Healing Bonus.',
+      level: 8,
+      target: 'self',
+      actionType: 'region',
+      regionCondition: 'same',
+      values: [
+        {
+          scaling: 'healing',
+          coef: [0, 0.05, 0.1, 0.15]
+        }
+      ]
+    },
+    {
+      name: 'Diversified Investigation - Outsiders',
+      url: 'UI_Talent_S_Charlotte_06',
+      description:
+        ' When the party contains 1/2/3 non-Fontainians, Charlotte gains a 5%/10%/15% Cryo DMG Bonus.',
+      level: 8,
+      target: 'self',
+      actionType: 'region',
+      regionCondition: 'different',
+      values: [
+        {
+          scaling: 'cryo',
+          coef: [0, 0.05, 0.1, 0.15]
+        }
+      ]
+    },
     {
       name: 'A Duty to Pursue Truth',
       url: 'UI_Talent_S_Charlotte_02',

@@ -8,6 +8,8 @@
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
   import AddLevelButton from './_AddLevelButton.svelte';
+  import RegionMatchButton from './_RegionMatchButton.svelte';
+
   // stores / helpers / context
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';
@@ -38,7 +40,8 @@
     input: MultiSelectButton,
     visionMatch: VisionMatchButton,
     visionMatchToggle: VisionMatchToggle,
-    addLevel: AddLevelButton
+    addLevel: AddLevelButton,
+    region: RegionMatchButton
   };
 
   let prevPassives: Stats[] = [];

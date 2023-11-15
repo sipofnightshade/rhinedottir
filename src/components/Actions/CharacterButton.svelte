@@ -8,6 +8,7 @@
   import VisionMatchButton from './_VisionMatchButton.svelte';
   import VisionMatchToggle from './_VisionMatchToggle.svelte';
   import AddLevelButton from './_AddLevelButton.svelte';
+  import RegionMatchButton from './_RegionMatchButton.svelte';
   // types
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
@@ -28,7 +29,8 @@
     input: MultiSelectButton,
     visionMatch: VisionMatchButton,
     visionMatchToggle: VisionMatchToggle,
-    addLevel: AddLevelButton
+    addLevel: AddLevelButton,
+    region: RegionMatchButton
   };
 
   $: constellationReq = data.constellation ?? 0;

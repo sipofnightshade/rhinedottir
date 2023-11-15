@@ -28,7 +28,7 @@ export type ActionType =
   | 'multiSelect'
   | 'input'
   | 'passive'
-  // | 'regionMatch'
+  | 'region'
   | 'visionMatch'
   | 'visionMatchToggle'
   | 'addLevel';
@@ -65,6 +65,18 @@ export type Action = {
     | 'geo'
     | 'hydro'
     | 'pyro';
+  hasRegionRequirement?: Regions[]; // for actions that require specific visions in party alone
+  regionCondition?:
+    | 'same'
+    | 'different'
+    | 'liyue'
+    | 'sumeru'
+    | 'mondstat'
+    | 'inazuma'
+    | 'fontaine'
+    | 'natlan'
+    | 'snezhnaya'
+    | 'other';
   hasVisionLabel?: Visions; // adds an element icon centered at the bottom of the action button, eg. Nahida Burst, Wanderer A4
   weapons?: WeaponCategory[];
   level?: 2 | 8;
