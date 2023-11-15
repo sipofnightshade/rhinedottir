@@ -1,4 +1,4 @@
-interface ElementalClasses {
+interface ModdedClasses {
   [key: string]: string;
 }
 
@@ -14,7 +14,7 @@ export function formatText(text: string): string {
     .join('');
 
   // Map elemental phrases to their corresponding CSS classes
-  const elementalClasses: ElementalClasses = {
+  const customClasses: ModdedClasses = {
     'Anemo DMG': 'text-anemo',
     'Anemo RES': 'text-anemo',
     'Pyro DMG': 'text-pyro',
@@ -41,17 +41,20 @@ export function formatText(text: string): string {
     Superconduct: 'text-cryo',
     'Electro-Charged': 'text-electro',
     Crystallize: 'text-cryo',
-    Swirl: 'text-anemo'
+    Swirl: 'text-anemo',
+    MODIFIED: 'text-[#C2B396] tracking-wide',
+    Pneuma: 'text-amber-200 ',
+    Ousia: 'text-indigo-300 '
   };
 
   // Apply class and bold to specific phrases
   const regex: RegExp = new RegExp(
-    `\\b(${Object.keys(elementalClasses).join('|')})\\b`,
+    `\\b(${Object.keys(customClasses).join('|')})\\b`,
     'gi'
   );
 
   return formattedText.replace(regex, (match: string) => {
-    const cssClass: string = elementalClasses[match];
+    const cssClass: string = customClasses[match];
     return `<strong class="${cssClass}">${match}</strong>`;
   });
 }
