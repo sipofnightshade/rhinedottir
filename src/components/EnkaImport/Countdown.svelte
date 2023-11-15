@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  export let remainingTime = 60;
+  export let remainingTime = 30;
 
   let countdown = remainingTime;
   let interval: string | number | NodeJS.Timeout | undefined;
@@ -24,7 +24,12 @@
 <div id="countdown">
   <div id="countdown-number">{countdown}</div>
   <svg>
-    <circle r="10" cx="20" cy="20" style="stroke-width: 4px;" />
+    <circle
+      r="10"
+      cx="20"
+      cy="20"
+      style="stroke-width: 4px; animation: countdown {remainingTime}s linear infinite forwards;"
+    />
   </svg>
 </div>
 
@@ -33,9 +38,9 @@
     margin: auto;
     margin-top: 100px;
     height: 40px;
-    width: 80px; /* Adjust the width to accommodate the countdown number and the SVG circle */
-    display: flex; /* Use flexbox to layout the countdown number and the SVG circle side by side */
-    justify-content: space-between; /* Add space between the countdown number and the SVG circle */
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
   }
 
   #countdown-number {
@@ -55,10 +60,9 @@
     stroke-width: 2px;
     stroke: white;
     fill: none;
-    animation: countdown 60s linear infinite forwards;
   }
 
-  @keyframes countdown {
+  @keyframes -global-countdown {
     from {
       stroke-dashoffset: 0px;
     }
