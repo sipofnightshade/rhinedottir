@@ -270,11 +270,11 @@ const charName: CharacterRecord = {
       name: 'Universal Revelry State',
       url: 'Skill_E_Furina_01',
       description:
-        "Party members enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, 1 Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.\nAt the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.\nWhen the duration ends, Furina's Fanfare points will be cleared.\n**MODIFIED**\nEach button stack counts as 50 Fanfare stacks.",
+        "Party members enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, 1 Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.\nAt the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.\nWhen the duration ends, Furina's Fanfare points will be cleared.\n\n**MODIFIED:** Each button stack counts as 50 Fanfare stacks.",
       target: 'party',
       hasLevels: 'burst',
       actionType: 'stack',
-      hideAtConstelltion: 1,
+      hideAtConstellation: 1,
       values: [
         {
           scaling: 'dmgIncrease',
@@ -307,7 +307,7 @@ const charName: CharacterRecord = {
       name: 'Universal Revelry State - C1',
       url: 'UI_Talent_S_Furina_01',
       description:
-        "**Love Is a Rebellious Bird That None Can Tame**\n\nWhen using **Let the People Rejoice**, Furina will gain 150 Fanfare.\nAdditionally, Furina's Fanfare limit is increased by 100.",
+        "Party members enter the Universal Revelry state: During this time, when nearby party members' HP increases or decreases, 1 Fanfare point will be granted to Furina for each percentage point of their Max HP by which their HP changes.\nAt the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.\nWhen the duration ends, Furina's Fanfare points will be cleared.\n\n**MODIFIED:** Each button stack counts as 50 Fanfare stacks.\n\n**C1 - Love Is a Rebellious Bird That None Can Tame**\nWhen using **Let the People Rejoice**, Furina will gain 150 Fanfare.\nAdditionally, Furina's Fanfare limit is increased by 100.",
       constellation: 1,
       target: 'party',
       hasLevels: 'burst',
@@ -345,7 +345,7 @@ const charName: CharacterRecord = {
       name: 'A Woman Adapts Like Duckweed in Water',
       url: 'UI_Talent_S_Furina_04',
       description:
-        "While **Let the People Rejoice** lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by 250%. Each point of Fanfare above the limit will increase Furina's Max HP by 0.35%. Her maximum Max HP increase is 140%.\n**MODIFIED**\nEach button stack counts as 50 Fanfare stacks.",
+        "While **Let the People Rejoice** lasts, Furina's Fanfare gain from increases or decreases in nearby characters' HP is increased by 250%. Each point of Fanfare above the limit will increase Furina's Max HP by 0.35%. Her maximum Max HP increase is 140%.\n\n**MODIFIED:** Each button stack counts as 50 Fanfare stacks.",
       constellation: 2,
       target: 'self',
       actionType: 'stack',
@@ -360,7 +360,7 @@ const charName: CharacterRecord = {
       name: 'Center of Attention',
       url: 'UI_Talent_S_Furina_02',
       description:
-        'When using **Salon Solitaire**, Furina gains "Center of Attention" for 10s.\nThroughout the duration, Furina\'s Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to 18% of Furina\'s max HP.\nThroughout the duration, Furina\'s Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every 0.1s after hitting opponents depending on her current Arkhe alignment:\n\n**Arkhe: Ousia**\nEvery 1s, all nearby characters in the party will be healed by 4% of Furina\'s max HP, for a duration of 2.9s. Triggering this effect again will extend its duration.\n**Arkhe: Pneuma**\nThis Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to 25% of Furina\'s max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume 1% of their current HP.\n\nDuring the duration of each instance of "Center of Attention," the above effects can be triggered up to 6 times. "Center of Attention" will end when its effects have triggered 6 times or when the duration expires.\n**MODIFIED**\nBase DMG increase is 1 stack. Pneuma DMG increase is 2 stacks.',
+        'When using **Salon Solitaire**, Furina gains "Center of Attention" for 10s.\nThroughout the duration, Furina\'s Normal Attacks, Charged Attacks, and Plunging Attacks are converted into Hydro DMG which cannot be overridden by any other elemental infusion. DMG is also increased by an amount equivalent to 18% of Furina\'s max HP.\nThroughout the duration, Furina\'s Normal Attacks (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attacks, and the impact of Plunging Attacks will cause different effects up to every 0.1s after hitting opponents depending on her current Arkhe alignment:\n\n**Arkhe: Ousia**\nEvery 1s, all nearby characters in the party will be healed by 4% of Furina\'s max HP, for a duration of 2.9s. Triggering this effect again will extend its duration.\n**Arkhe: Pneuma**\nThis Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to 25% of Furina\'s max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume 1% of their current HP.\n\nDuring the duration of each instance of "Center of Attention," the above effects can be triggered up to 6 times. "Center of Attention" will end when its effects have triggered 6 times or when the duration expires.\n\n**MODIFIED:** Base DMG increase is 1 stack. Pneuma DMG increase is 2 stacks.',
       constellation: 6,
       infusion: 'hydro',
       target: 'self',
