@@ -47,6 +47,7 @@ export type ActionValue = {
   coef: number | number[] | DamageValueID | DamageValueID[];
   source?: CoefSource;
   label?: All_Stats;
+  textLabel?: string;
 };
 
 export type Action = {
@@ -71,6 +72,7 @@ export type Action = {
   hasLevels?: 'atk' | 'skill' | 'burst';
   infusion?: Visions;
   constellation?: number;
+  hideAtConstelltion?: number;
   target?: Target;
   shielded?: boolean;
   unique?: boolean;
