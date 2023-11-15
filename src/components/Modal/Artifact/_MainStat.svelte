@@ -39,7 +39,7 @@
       <button
         use:listbox.button
         on:select={onSelect}
-        class="relative flex h-9 w-full cursor-default items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 sm:text-sm md:h-10"
+        class="relative flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 sm:text-sm md:h-10"
         class:border-slate-300={$listbox.expanded}
         class:border-slate-600={!$listbox.expanded}
       >
