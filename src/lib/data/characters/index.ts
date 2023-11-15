@@ -75,6 +75,8 @@ import { default as yunjin } from './yunjin';
 import { default as zhongli } from './zhongli';
 import { default as wriothesley } from './wriothesley';
 import { default as neuvillette } from './neuvillette';
+import { default as furina } from './furina';
+import { default as charlotte } from './charlotte';
 
 export const characterData = [
   traveleranemo,
@@ -92,6 +94,7 @@ export const characterData = [
   beidou,
   bennett,
   candace,
+  charlotte,
   chongyun,
   collei,
   cyno,
@@ -103,6 +106,7 @@ export const characterData = [
   faruzan,
   fischl,
   freminet,
+  furina,
   ganyu,
   gorou,
   hutao,
