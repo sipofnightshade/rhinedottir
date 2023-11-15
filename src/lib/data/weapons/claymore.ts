@@ -279,27 +279,27 @@ export const claymore: Claymores[] = [
     action: [
       {
         actionType: 'region',
-        regions: ['liyue'],
+        regionCondition: 'liyue',
         values: [
           [
-            { scaling: 'atk%', coef: 0.07 },
-            { scaling: 'critrate', coef: 0.03 }
+            { scaling: 'atk%', coef: [0.07, 0.14, 0.21, 0.28] },
+            { scaling: 'critrate', coef: [0.03, 0.06, 0.09, 0.12] }
           ],
           [
-            { scaling: 'atk%', coef: 0.08 },
-            { scaling: 'critrate', coef: 0.04 }
+            { scaling: 'atk%', coef: [0.08, 0.16, 0.24, 0.32] },
+            { scaling: 'critrate', coef: [0.04, 0.08, 0.12, 0.16] }
           ],
           [
-            { scaling: 'atk%', coef: 0.09 },
-            { scaling: 'critrate', coef: 0.05 }
+            { scaling: 'atk%', coef: [0.09, 0.18, 0.27, 0.36] },
+            { scaling: 'critrate', coef: [0.05, 0.1, 0.15, 0.2] }
           ],
           [
-            { scaling: 'atk%', coef: 0.1 },
-            { scaling: 'critrate', coef: 0.06 }
+            { scaling: 'atk%', coef: [0.1, 0.2, 0.3, 0.4] },
+            { scaling: 'critrate', coef: [0.06, 0.12, 0.18, 0.24] }
           ],
           [
-            { scaling: 'atk%', coef: 0.11 },
-            { scaling: 'critrate', coef: 0.07 }
+            { scaling: 'atk%', coef: [0.11, 0.22, 0.33, 0.44] },
+            { scaling: 'critrate', coef: [0.07, 0.14, 0.21, 0.28] }
           ]
         ]
       }

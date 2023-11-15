@@ -41,7 +41,18 @@ export type SelectedWeapon = {
       | 'pyro';
     target?: Target;
     shielded?: boolean;
-    regions?: Regions[];
+    hasRegionRequirement?: Regions[]; // for actions that require specific visions in party alone
+    regionCondition?:
+      | 'same'
+      | 'different'
+      | 'liyue'
+      | 'sumeru'
+      | 'mondstat'
+      | 'inazuma'
+      | 'fontaine'
+      | 'natlan'
+      | 'snezhnaya'
+      | 'other';
     sourceStats?: All_Stats[];
     unique?: boolean;
     values: [ActionValue[], ActionValue[], ActionValue[], ActionValue[], ActionValue[]];
