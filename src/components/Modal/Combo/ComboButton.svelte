@@ -134,6 +134,7 @@
   $: classes = getButtonHalves(currentDmgType, btn.elemental);
   $: reactionType = btn.damageBonus as ButtonReactions;
   $: stacks = currentIndex + 1;
+  $: console.log(classes);
 </script>
 
 <button
@@ -143,6 +144,7 @@
   data-item-id={btn.btnID}
   disabled={deletable}
   transition:fly
+  class:bg-slate-700={isReaction}
 >
   {#if !isReaction}
     <div

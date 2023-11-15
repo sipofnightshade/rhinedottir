@@ -58,10 +58,10 @@ export function getButtonHalves(dmgType: string, el: string) {
     bot = 'bg-dark-anemo';
   }
 
-  if (dmgType === 'physical') {
-    top = 'bg-slate-700';
-    bot = 'bg-slate-700';
-  }
+  // if (dmgType === 'physical') {
+  //   top = 'bg-slate-800';
+  //   bot = 'bg-slate-800';
+  // }
 
   switch (dmgType) {
     case 'pyro':

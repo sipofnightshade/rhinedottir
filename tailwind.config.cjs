@@ -14,7 +14,7 @@ module.exports = {
         anemo: '#39cac1',
         geo: '#fab632',
         'dark-pyro': '#D05B1B',
-        'dark-hydro': '#1CA4EE',
+        'dark-hydro': '#33AEF0',
         'dark-electro': '#A24ECF',
         'dark-cryo': '#81C9DA',
         'dark-dendro': '#96B733',
