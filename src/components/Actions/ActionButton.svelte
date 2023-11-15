@@ -48,8 +48,8 @@
 
 <div
   data-testid="action-button"
-  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center grayscale-80"
-  class:filter-none={isActive}
+  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center"
+  class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >
   <div
