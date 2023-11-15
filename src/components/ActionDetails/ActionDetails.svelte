@@ -47,7 +47,7 @@
     {/if}
     <h3>{data.name} {showTalentLvl}</h3>
   </div>
-  <div class="flex flex-col gap-4 text-sm">
+  <div class="scrollbar flex max-h-vh50 flex-col gap-4 overflow-y-auto text-sm md:pr-2">
     <!-- Content -->
     {#if data.description}
       <Formatted content={data.description} class="text-slate-300" />
@@ -60,9 +60,11 @@
     <!-- Target -->
     <ActionTarget {id} target={data.target} />
   </div>
+  <svelte:fragment slot="footer">
+    <div class="flex w-full items-center justify-between">
+      <h4 class="text-sm font-bold">{data.actionType.toUpperCase()}</h4>
+      <slot name="footer" />
+    </div>
+  </svelte:fragment>
   <!-- Interactive FOOTER -->
-  <div slot="footer" class="flex w-full items-center justify-between">
-    <h4 class="text-sm font-bold">{data.actionType.toLocaleUpperCase()}</h4>
-    <slot name="footer" />
-  </div>
 </MultiModal>
