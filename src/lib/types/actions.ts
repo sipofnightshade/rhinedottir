@@ -72,7 +72,7 @@ export type Action = {
   hasLevels?: 'atk' | 'skill' | 'burst';
   infusion?: Visions;
   constellation?: number;
-  hideAtConstelltion?: number;
+  hideAtConstellation?: number;
   target?: Target;
   shielded?: boolean;
   unique?: boolean;

@@ -31,11 +31,17 @@
     addLevel: AddLevelButton
   };
 
-  const constellationReq = data.constellation ?? 0;
-  const levelReq = data.level ?? 0;
+  $: constellationReq = data.constellation ?? 0;
+  $: levelReq = data.level ?? 0;
+
+  $: hideConst = data.hideAtConstellation
+    ? currentChar.constellation >= data.hideAtConstellation
+    : false;
 
   $: isButtonMounted =
-    currentChar.constellation >= constellationReq && currentChar.lvl >= levelReq;
+    currentChar.constellation >= constellationReq &&
+    currentChar.lvl >= levelReq &&
+    !hideConst;
 </script>
 
 {#if isButtonMounted}
