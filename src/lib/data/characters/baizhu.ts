@@ -287,12 +287,12 @@ const charName: CharacterRecord = {
         },
         {
           scaling: 'spread',
-          coef: 0.08,
+          coef: 0.008,
           source: ['hp', 0, 50000, 1000]
         },
         {
           scaling: 'aggravate',
-          coef: 0.08,
+          coef: 0.008,
           source: ['hp', 0, 50000, 1000]
         }
       ]
