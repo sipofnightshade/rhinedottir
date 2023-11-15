@@ -134,7 +134,6 @@
   $: classes = getButtonHalves(currentDmgType, btn.elemental);
   $: reactionType = btn.damageBonus as ButtonReactions;
   $: stacks = currentIndex + 1;
-  $: console.log(classes);
 </script>
 
 <button
@@ -144,7 +143,6 @@
   data-item-id={btn.btnID}
   disabled={deletable}
   transition:fly
-  class:bg-slate-700={isReaction}
 >
   {#if !isReaction}
     <div
@@ -162,7 +160,10 @@
       <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
     </div>
   {:else}
-    <div class="flex h-full flex-col items-center justify-center gap-1">
+    <div
+      class="flex h-full w-full flex-col items-center justify-center gap-1"
+      class:bg-slate-700={isReaction && reactionType !== 'shattered'}
+    >
       <svelte:component this={reactions[reactionType].component} class="h-6" />
       {#if dmgTypes.length > 1}
         <span class="stacks text-sm font-bold {reactions[reactionType].text}"
