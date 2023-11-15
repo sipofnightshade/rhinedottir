@@ -20,8 +20,6 @@
 <div
   class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
   class:bg-slate-700={rating === undefined && hasBG}
-  class:border={rating === undefined && hasBG}
-  class:border-slate-600={rating === undefined && hasBG}
 >
   <img src={img} alt="{alt} thumbnail" class={imgClasses} />
   {#if vision}

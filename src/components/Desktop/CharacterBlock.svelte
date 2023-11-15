@@ -68,7 +68,7 @@
   <div class="flex flex-col gap-2 xl:gap-4">
     <!-- Weapon Button -->
     <button
-      class="col-span-3 flex h-fit w-full items-end rounded-2xl bg-slate-700 p-1 text-sm lg:text-base"
+      class="col-span-3 flex h-fit w-full items-end rounded-2xl border border-slate-600 bg-slate-700 p-1 text-sm lg:text-base"
       on:click={() => toggleModal(Weapon, 'Weapon')}
     >
       <div class="h-12 w-12 lg:h-[60px] lg:w-[60px] xl:h-16 xl:w-16">
@@ -95,9 +95,9 @@
     <div class="grid grid-flow-col gap-2 lg:gap-3">
       {#each menuModals as modal (modal.id)}
         <button
-          class="flex h-14 w-14 items-center justify-center rounded-xl border-slate-600 bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
+          class="flex h-14 w-14 items-center justify-center rounded-xl border border-slate-600 bg-slate-700 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
           on:click={() => toggleModal(modal.component, 'Select a Teammate')}
-          class:border={$party[modal.id]}
+          class:border-none={$party[modal.id]}
         >
           {#if $party[modal.id]}
             <Thumbnail

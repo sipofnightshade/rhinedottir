@@ -53,7 +53,7 @@
     <button
       use:listbox.button
       on:select={onSelect}
-      class="relative flex h-9 w-full cursor-default items-center justify-between gap-2 rounded-lg bg-slate-700 p-2 transition-colors duration-200 sm:text-sm md:h-10"
+      class="relative flex h-9 w-full cursor-default items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 sm:text-sm md:h-10"
       class:border-slate-300={$listbox.expanded}
       class:border-slate-600={!$listbox.expanded}
     >
@@ -71,7 +71,7 @@
     <Transition show={$listbox.expanded}>
       <ul
         use:listbox.items
-        class="scrollbar absolute z-10 mt-1 max-h-52 w-full overflow-y-auto rounded-md bg-slate-700 p-0.5 shadow-lg"
+        class="scrollbar absolute z-10 mt-1 max-h-52 w-full overflow-y-auto rounded-md border border-slate-600 bg-slate-700 p-0.5 shadow-md shadow-slate-900"
       >
         {#each artifactSubStats as stat, i (i)}
           {@const active = $listbox.active === stat}
@@ -97,7 +97,6 @@
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
     type="number"
-    disabled={!$artifact[type].substats[id].stat}
   />
   <div
     class="col-span-1 flex items-center gap-1 fill-slate-100"

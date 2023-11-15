@@ -77,7 +77,7 @@
   >
     <button
       on:click={decreaseValue}
-      class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm"
+      class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600"
       disabled={value <= 0}
       class:opacity-30={value <= 0}
     >
@@ -85,7 +85,7 @@
     </button>
     <button
       on:click={increaseValue}
-      class="flex w-full items-center justify-center rounded-l-sm rounded-r-lg"
+      class="flex w-full items-center justify-center rounded-l-sm rounded-r-lg border border-slate-600"
       disabled={isDisabled}
       class:opacity-30={isDisabled}
     >
