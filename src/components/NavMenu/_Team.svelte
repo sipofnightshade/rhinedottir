@@ -94,7 +94,7 @@
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
   <button
-    class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    class=" flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
@@ -104,7 +104,7 @@
     />
   </button>
   <button
-    class="flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+    class="flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
     on:click={() => toggleModal(Weapon, 'Weapon')}
   >
     <Thumbnail
@@ -116,7 +116,7 @@
   <!-- Party buttons -->
   {#each partyModals as modal (modal.id)}
     <button
-      class=" flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+      class=" flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
       on:click={() => toggleModal(modal.component, 'Select a Teammate')}
     >
       {#if $party[modal.id]}
@@ -134,7 +134,7 @@
   <!-- Artifact buttons -->
   {#each artifactModals as modal (modal.id)}
     <button
-      class="flex aspect-square items-center justify-center rounded-md border-2 border-slate-800 bg-slate-800 hover:border-2 hover:border-slate-300"
+      class="flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
       on:click={() => toggleModal(modal.component, modal.title)}
     >
       {#if $artifact[modal.id].selected.name === 'none'}
