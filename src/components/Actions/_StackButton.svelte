@@ -10,21 +10,22 @@
   import type { CharacterSpecificNames } from '$lib/types/characters';
   import type { Index_Stats } from '$lib/data/Stats';
 
-  // helpers & calculators
+  // helpers / calculators / actions
   import { onDestroy } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCombatValue } from '$lib/helpers/getCombatValue';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
-
   import { longpress } from '$lib/actions/longpress';
-  // stores &
+
+  // stores
   import { action } from '$lib/stores/actionStore';
   import { infusion } from '$lib/stores/infusionStore';
 
   // components
   import ActionButton from './ActionButton.svelte';
-
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
+  import Minus from '$lib/icons/Minus.svelte';
+  import Plus from '$lib/icons/Plus.svelte';
 
   export let type: ActionButtonColor;
   export let data: Action;
@@ -36,12 +37,14 @@
   const cName = currentChar.selected.id;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
   const sourceStats: string[] | null = data.sourceStats ?? null;
+  const maxStacks = (data.values[0].coef as number[]).length ?? 0;
 
   let previousStatValues: any = {};
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
   let stacks = 0;
   let stackCoefs: number[] = [];
+  let lastAddedStats: { scaling: string; coef: number }[] = [];
 
   function addStats(currentStacks: number) {
     data.values.forEach((value, i) => {
@@ -60,6 +63,7 @@
 
       if (!stackCoefs[i]) stackCoefs[i] = 0;
       stackCoefs[i] += result;
+      lastAddedStats[i] = { scaling, coef: result };
       action.addStat(id, target as Target, scaling, result);
     });
   }
@@ -72,12 +76,29 @@
   }
 
   function handleStacking() {
-    if (stacks === (data.values[0].coef as number[]).length) {
+    if (stacks === maxStacks) {
       stacks = 0; // Reset the stacks if max is reached
       removeStats();
     } else {
-      stacks++; // Increment the stacks
+      stacks++;
       addStats(stacks);
+    }
+  }
+
+  function handleIncrement() {
+    if (stacks !== maxStacks) {
+      stacks++;
+      addStats(stacks);
+    }
+  }
+
+  function handleDecrement() {
+    if (stacks > 0 && lastAddedStats.length > 0 && stackCoefs.length > 0) {
+      stacks--;
+      lastAddedStats.forEach(({ scaling, coef }, i) => {
+        action.removeStat(id, target as Target, scaling, coef);
+        stackCoefs[i] -= coef;
+      });
     }
   }
 
@@ -93,7 +114,7 @@
   }
 
   function recalculateStats() {
-    console.log(`%cRecalculate Stats`, 'color: #34cdeb');
+    // console.log(`%cRecalculate Stats`, 'color: #34cdeb');
 
     removeStats();
     for (let i = 0; i < stacks; i++) {
@@ -156,7 +177,31 @@
   {/if}
 </button>
 
-<ActionDetails {id} {data} {talentLvl} bind:dialog />
+<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
+  <div slot="footer" class="py-1">
+    <div class="flex items-center gap-4 rounded-lg md:h-10 [&>button]:bg-slate-700">
+      <button
+        on:click={handleDecrement}
+        class="flex h-full w-11 items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600 transition-opacity"
+        disabled={stacks <= 0}
+        class:opacity-30={stacks <= 0}
+      >
+        <Minus class="pointer-events-none h-3 w-3 fill-slate-200" />
+      </button>
+      <div>
+        <span>{stacks}</span>
+      </div>
+      <button
+        on:click={handleIncrement}
+        class="flex h-full w-11 items-center justify-center rounded-l-sm rounded-r-lg border border-slate-600 transition-opacity"
+        disabled={stacks >= maxStacks}
+        class:opacity-30={stacks >= maxStacks}
+      >
+        <Plus class="pointer-events-none h-3 w-3 fill-slate-200" />
+      </button>
+    </div>
+  </div>
+</ActionDetails>
 
 <style lang="postcss">
   .stacks {
