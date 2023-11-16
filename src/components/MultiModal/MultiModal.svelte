@@ -3,6 +3,7 @@
 
   export let dialog: HTMLDialogElement;
   export let small = false;
+  export let hasFooter = false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -31,7 +32,7 @@
     <div class="h-full overflow-hidden p-1 xs-300:p-2 xs:p-4">
       <slot />
     </div>
-    {#if $$slots.footer}
+    {#if hasFooter}
       <footer class="flex w-full justify-between border-t border-slate-600 p-2 xs:px-4">
         <slot name="footer" />
       </footer>
