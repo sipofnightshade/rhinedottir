@@ -22,14 +22,14 @@
   $: $character.selected.name, resetRows();
 </script>
 
-<div class="flex flex-col">
+<div class="scrollbar flex h-full flex-1 flex-col overflow-auto md:pr-1">
   {#each rows as row, index (row.id)}
     <Row {row} on:deleteRow={deleteRow} {index} />
   {/each}
   <button
-    class="my-4 flex h-16 items-center justify-center rounded-lg border-2 border-dashed border-slate-400 opacity-60 transition-opacity hover:opacity-100"
+    class="my-4 flex items-center justify-center rounded-lg border-2 border-dashed border-slate-300 p-4 text-slate-300 opacity-60 transition-opacity hover:opacity-100 active:border-slate-300"
     on:click={addRow}
   >
-    + Add a new row
+    + Add new row
   </button>
 </div>
