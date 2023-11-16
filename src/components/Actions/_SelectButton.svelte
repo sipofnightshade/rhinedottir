@@ -131,15 +131,9 @@
   {/if}
 </button>
 
-<ActionDetails {id} {data} bind:dialog>
+<ActionDetails {id} {talentLvl} {data} hasFooter {type} bind:dialog>
   <svelte:fragment slot="footer">
-    <div class="grid auto-cols-max grid-flow-col gap-1">
-      <button
-        on:click={() => (selected = undefined)}
-        class="flex h-full items-center justify-center rounded-lg p-3.5 transition-all hover:bg-slate-700 focus:bg-slate-800"
-      >
-        <Close class="w-3 fill-slate-200" />
-      </button>
+    <div class="grid auto-cols-fr grid-flow-col gap-1">
       {#each data.values as item (item.scaling)}
         <button
           on:click={() => (selected = item)}
@@ -147,9 +141,19 @@
           class:bg-slate-500={item.scaling === selected?.scaling}
           class:hover:bg-slate-700={item.scaling !== selected?.scaling}
         >
-          <StatImage stat={item.scaling} lg />
+          {#if item.textLabel}
+            <span class="text-sm font-bold">{item.textLabel}</span>
+          {:else}
+            <StatImage stat={item.scaling} lg />
+          {/if}
         </button>
       {/each}
+      <button
+        on:click={() => (selected = undefined)}
+        class="flex h-full items-center justify-center rounded-lg transition-all hover:bg-slate-700 focus:bg-slate-800"
+      >
+        <Close class="w-3 fill-slate-200" />
+      </button>
     </div>
   </svelte:fragment>
 </ActionDetails>
