@@ -101,7 +101,7 @@
   <svelte:component
     this={PassiveButton}
     data={ResonanceActions['none']}
-    type="artifact"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}

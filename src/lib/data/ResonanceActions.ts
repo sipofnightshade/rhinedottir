@@ -15,7 +15,7 @@ type VisionActions = {
 const ResonanceActions: VisionActions = {
   pyro: {
     name: 'Fervent Flames',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'FERVENT_FLAMES',
     description: 'Increases ATK by 25%',
     target: 'party',
     actionType: 'toggle',
@@ -28,7 +28,7 @@ const ResonanceActions: VisionActions = {
   },
   hydro: {
     name: 'Soothing Water',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'SOOTHING_WATER',
     description: 'Increases MAX HP by 25%',
     target: 'party',
     actionType: 'toggle',
@@ -41,7 +41,7 @@ const ResonanceActions: VisionActions = {
   },
   dendro: {
     name: 'Sprawling Greenery',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'SPRAWLING_GREENERY',
     description: '**MODIFIED** Increases Elemental Mastery by 50 per stack.',
     target: 'party',
     actionType: 'stack',
@@ -54,7 +54,7 @@ const ResonanceActions: VisionActions = {
   },
   geo: {
     name: 'Enduring Rock - BUFF',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'ENDURING_ROCK_1',
     description:
       'Increases shield strength by 15%. Characters protected by a shield will have the following characteristic: DMG dealt increased by 15%.',
     target: 'party',
@@ -72,7 +72,7 @@ const ResonanceActions: VisionActions = {
   },
   geo2: {
     name: 'Enduring Rock - DEBUFF',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'ENDURING_ROCK_2',
     description:
       'Characters protected by a shield will have the following characteristic: dealing dmg to enemies will decrease their Geo RES by 20% for 15s.',
     target: 'enemy',
@@ -86,7 +86,7 @@ const ResonanceActions: VisionActions = {
   },
   cryo: {
     name: 'Shattering Ice',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'SHATTERING_ICE',
     description:
       'Increases CRIT RATE against enemies that are **Frozen** or affected by Cryo by 15%',
     target: 'party',
@@ -100,7 +100,7 @@ const ResonanceActions: VisionActions = {
   },
   anemo: {
     name: 'Impetuous Winds',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'IMPETUOUS_WINDS',
     description: 'Increases Movement SPD by 10%.',
     target: 'party',
     actionType: 'toggle',
@@ -113,7 +113,7 @@ const ResonanceActions: VisionActions = {
   },
   none: {
     name: 'Protective Canopy',
-    url: 'UI_Talent_S_Albedo_03',
+    url: 'PROTECTIVE_CANOPY',
     description: 'All Element RES +15%. Physical RES +15%.',
     target: 'party',
     actionType: 'toggle',

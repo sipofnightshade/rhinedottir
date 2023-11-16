@@ -74,6 +74,12 @@
       src="/images/weapon/{url}.webp"
       alt={url}
     />
+  {:else if type === 'resonance'}
+    <img
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      src="images/resonance/{url}.webp"
+      alt={url}
+    />
   {:else}
     <img
       class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
