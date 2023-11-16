@@ -49,7 +49,7 @@
   </section>
 {:else}
   <!-- mobile -->
-  <section class="flex h-screen w-screen flex-col space-y-3 p-3 md:hidden">
+  <section class="mx-auto flex h-screen w-screen flex-col space-y-3 p-3 md:hidden">
     <Tabs items={mobileItems} />
     <ActionBar />
     <MenuBar />
