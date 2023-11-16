@@ -1,55 +1,50 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Builds from './_Builds.svelte';
-  import Details from './_Details.svelte';
+  import { clickOutside } from '$lib/helpers/clickOutside';
+  import { character } from '$lib/stores/characterStore';
+
+  // Import components
   import Settings from './_Settings.svelte';
   import Team from './_Team.svelte';
-  import Updates from './_Updates.svelte';
-
-  import { clickOutside } from '$lib/helpers/clickOutside';
   import SaveLoadout from '../Loadout/SaveLoadout.svelte';
   import SetLoadout from '../Loadout/SetLoadout.svelte';
+  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
 
+  // Define MenuItem interface
   interface MenuItem {
     id: string;
     img: string;
     component: any;
   }
 
+  // Define menuItems array
   const menuItems: MenuItem[] = [
-    { id: 'updates', img: 'UI_BtnIcon_Feedback.png', component: Updates },
-    { id: 'details', img: 'UI_BtnIcon_CharacterData.png', component: Details },
     { id: 'team', img: 'UI_BtnIcon_Team.png', component: Team },
-    { id: 'builds', img: 'UI_BtnIcon_AvatarList.png', component: Builds },
     { id: 'settings', img: 'UI_Icon_Intee_Mechanism.png', component: Settings }
   ];
 
   let currentMenuItem: MenuItem | undefined = undefined;
 
-  function handleMenu(item: any) {
-    if (item === currentMenuItem) {
-      // Clicked the same button again to close menu
-      currentMenuItem = undefined;
-    } else {
-      currentMenuItem = item;
-    }
+  // Handle menu click
+  function handleMenu(item: MenuItem) {
+    currentMenuItem = currentMenuItem === item ? undefined : item;
   }
 
+  // Handle Escape key press
   function handleEscape(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       currentMenuItem = undefined;
     }
   }
 
-  // if menu is open and user clicks outside, close menu
+  // Close menu if clicked outside
   function closeMenu() {
     if (currentMenuItem) {
       currentMenuItem = undefined;
     }
-    return null;
   }
 
-  // Add an event listener to detect the Escape key press
+  // Add event listener to detect Escape key press
   onMount(() => {
     window.addEventListener('keydown', handleEscape);
     return () => {
@@ -58,52 +53,73 @@
   });
 </script>
 
-<div class="relative" use:clickOutside={closeMenu}>
+<div class="relative flex w-full justify-center" use:clickOutside={closeMenu}>
   <!-- Top Menu -->
   <nav
-    class="hidden items-center justify-between rounded-lg border-2 border-slate-700 p-2 md:flex"
+    class="hidden w-full auto-cols-fr grid-flow-col items-center justify-between rounded-2xl border border-slate-600 p-2 md:grid"
   >
-    <div class="flex gap-3 rounded-full bg-slate-700 p-1">
+    <div class="mr-auto flex gap-x-4">
       <SaveLoadout />
       <SetLoadout />
     </div>
 
-    <p>Rhinedottir</p>
-    <div class=" flex items-center space-x-6">
-      <!-- <button on:click={() => handleMenu(menuItems[0])}>Updates</button> -->
-      <!-- <button on:click={() => handleMenu(menuItems[1])}>Builds</button> -->
-      <!-- <button on:click={() => handleMenu(menuItems[3])}>Artifacts</button> -->
-      <button on:click={() => handleMenu(menuItems[4])}>Settings</button>
+    <div class="flex w-full items-center">
+      <p class="mx-auto">Rhinedottir</p>
+    </div>
+
+    <div class="ml-auto flex items-center space-x-6">
+      <button on:click={() => handleMenu(menuItems[1])}>Settings</button>
     </div>
   </nav>
+
   <!-- Bottom Menu -->
-  <nav class="flex justify-between rounded-xl border border-slate-600 p-1 md:hidden">
-    {#each menuItems as item (item.id)}
-      <!-- <Button
-        on:menuHandler={handleMenu}
-        url={item.img}
-        selected={currentMenuItem?.id === item.id}
-        {item}
-      /> -->
-      <button
-        on:click={() => handleMenu(item)}
-        class="flex h-12 w-12 items-center justify-center rounded-lg"
-        class:bg-slate-700={currentMenuItem?.id === item.id}
-      >
-        <img class="h-8 w-8" src="/images/ui/{item.img}" alt="Menu UI Icon:{item.img}" />
-      </button>
-    {/each}
+  <nav
+    class="grid w-full auto-cols-fr grid-flow-col items-center rounded-xl border border-slate-600 p-1 md:hidden"
+  >
+    <div class="flex gap-3">
+      <SetLoadout />
+      <SaveLoadout />
+    </div>
+
+    <button
+      on:click={() => handleMenu(menuItems[0])}
+      class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg p-1"
+      class:bg-slate-700={currentMenuItem?.id === 'team'}
+    >
+      <Thumbnail
+        img={`/images/character/${$character.selected.name}.webp`}
+        vision={$character.selected.vision}
+        alt={$character.selected.fullName}
+      />
+    </button>
+
+    <button
+      on:click={() => handleMenu(menuItems[1])}
+      class="ml-auto flex h-12 w-12 items-center justify-center rounded-lg p-1"
+      class:bg-slate-700={currentMenuItem?.id === 'settings'}
+    >
+      <img
+        class="h-8 w-8"
+        src="/images/ui/UI_Icon_Intee_Mechanism.png"
+        alt="Settings Cog"
+      />
+    </button>
   </nav>
+
   {#if currentMenuItem}
+    <!-- @component
+- This should only be for TEAM. Everything else should
+  use Modals.
+ -->
     <div
-      class="menu absolute bottom-16 right-0 z-10 mb-1 flex max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:hidden"
+      class="menu absolute bottom-16 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
 
-    <!-- CREATE ONE SPECIFICALLY FOR DESKTOP -->
+    <!-- Desktop Menu -->
     <div
-      class="absolute right-0 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex lg:w-1/2"
+      class="absolute right-0 top-14 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex lg:w-1/2"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
