@@ -58,7 +58,7 @@
 </script>
 
 <section
-  class="grid max-h-[120px] w-full grid-cols-5 gap-2 text-slate-200 lg:max-h-[144px] xl:max-h-40"
+  class="grid max-h-[120px] w-full grid-cols-5 gap-2 text-slate-200 lg:max-h-[144px] xl:max-h-40 xl:gap-3"
 >
   {#each menuModals as modal (modal.id)}
     <button
