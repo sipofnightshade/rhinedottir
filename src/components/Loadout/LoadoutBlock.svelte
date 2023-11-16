@@ -1,18 +1,23 @@
 <script lang="ts">
-  //types
+  //types & data
   import type { LoadoutItem } from '$lib/stores/loadoutsStore';
+  // ------
+  import { labels } from '$lib/data/Levels';
+  import { elementalBorders } from '$lib/data/Colors';
 
   // components
-  import { labels } from '$lib/data/Levels';
   import RoleTag from '../Modal/Party/RoleTag.svelte';
   import LoadoutBlockImages from './LoadoutBlockImages.svelte';
 
   export let item: LoadoutItem;
   export let deletable = false;
+  export let highlighted = false;
 </script>
 
 <div
-  class="flex w-full flex-col gap-y-2.5 rounded-2xl border border-slate-600 bg-slate-700 p-3 transition-all"
+  class="flex w-full flex-col gap-y-2.5 rounded-2xl border bg-slate-700 p-3 transition-all {highlighted
+    ? elementalBorders[item.character.vision]
+    : 'border-slate-600'}"
   class:opacity-50={deletable}
   class:hover:bg-opacity-60={!deletable}
 >

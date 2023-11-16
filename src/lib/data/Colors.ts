@@ -23,3 +23,13 @@ export const actionsText = {
   artifact: 'text-slate-300',
   resonance: 'text-slate-300'
 };
+
+export const elementalBorders = {
+  anemo: 'border-anemo',
+  cryo: 'border-cryo',
+  dendro: 'border-dendro',
+  electro: 'border-electro',
+  hydro: 'border-hydro',
+  geo: 'border-geo',
+  pyro: 'border-pyro'
+};

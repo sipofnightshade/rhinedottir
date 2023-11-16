@@ -14,8 +14,10 @@
 
   let deletable = false;
 
+  $: selected = $party[id]?.loadoutID === item.id;
+
   function handleClick() {
-    if ($party[id]?.loadoutID === item.id) {
+    if (selected) {
       party.removePartyMember(id);
       return;
     } else {
@@ -57,7 +59,7 @@
     use:longpress={500}
     disabled={deletable}
   >
-    <LoadoutBlock {item} {deletable} />
+    <LoadoutBlock {item} {deletable} highlighted={selected} />
   </button>
   {#if deletable}
     <div class="mt-1 flex justify-between gap-2">
