@@ -25,6 +25,7 @@
   import { getVisionCount } from '$lib/helpers/getVisionCount';
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
   import { longpress } from '$lib/actions/longpress';
+  import { actionsBg } from '$lib/data/Colors';
 
   // props
   export let type: ActionButtonColor;
@@ -149,4 +150,20 @@
   <ActionButton {type} {isActive} url={data.url} />
 </button>
 
-<ActionDetails {id} {talentLvl} {data} bind:dialog />
+<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
+  <div slot="footer" class="py-1">
+    <button
+      class="flex w-[62px] rounded-full border border-slate-600 p-0.5 transition-colors duration-300 {isActive
+        ? actionsBg[type]
+        : 'bg-slate-800'}"
+      on:click={handleToggle}
+      role="checkbox"
+      aria-checked={isActive}
+    >
+      <div
+        class="h-7 w-7 rounded-full bg-slate-200 transition-all ease-in"
+        class:translate-x-full={isActive}
+      />
+    </button>
+  </div>
+</ActionDetails>

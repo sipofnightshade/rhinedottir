@@ -24,6 +24,7 @@
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
   import { longpress } from '$lib/actions/longpress';
+  import { actionsBg } from '$lib/data/Colors';
 
   // props
   export let type: ActionButtonColor;
@@ -121,37 +122,24 @@
     isActive = false;
     addedStats = [];
   });
-
-  const backgrounds = {
-    anemo: 'bg-anemo',
-    cryo: 'bg-cryo',
-    dendro: 'bg-dendro',
-    electro: 'bg-electro',
-    hydro: 'bg-hydro',
-    geo: 'bg-geo',
-    pyro: 'bg-pyro',
-    weapon: 'bg-slate-300',
-    artifact: 'bg-slate-300',
-    resonance: 'bg-slate-300'
-  };
 </script>
 
 <button on:longpress={handleLongPress} use:longpress={300} on:click={handleToggle}>
   <ActionButton {type} {isActive} url={data.url} />
 </button>
 
-<ActionDetails {id} {talentLvl} {data} bind:dialog>
+<ActionDetails hasFooter {id} {talentLvl} {data} {type} bind:dialog>
   <div slot="footer" class="py-1">
     <button
       class="flex w-[62px] rounded-full border border-slate-600 p-0.5 transition-colors duration-300 {isActive
-        ? backgrounds[type]
+        ? actionsBg[type]
         : 'bg-slate-800'}"
       on:click={handleToggle}
       role="checkbox"
       aria-checked={isActive}
     >
       <div
-        class="h-7 w-7 rounded-full bg-slate-600 transition-all ease-in"
+        class="h-7 w-7 rounded-full bg-slate-200 transition-all ease-in"
         class:translate-x-full={isActive}
       />
     </button>
