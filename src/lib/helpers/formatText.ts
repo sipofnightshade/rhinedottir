@@ -40,7 +40,7 @@ export function formatText(text: string): string {
     Overloaded: 'text-pyro',
     Superconduct: 'text-cryo',
     'Electro-Charged': 'text-electro',
-    Crystallize: 'text-cryo',
+    Crystallize: 'text-geo',
     Swirl: 'text-anemo',
     MODIFIED: 'text-[#C2B396] tracking-wide',
     Pneuma: 'text-amber-200 ',
