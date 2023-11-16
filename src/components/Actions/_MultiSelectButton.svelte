@@ -146,7 +146,7 @@
   </div>
 </button>
 
-<ActionDetails {id} {data} bind:dialog>
+<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
   <svelte:fragment slot="footer">
     <div class="flex gap-1">
       {#each data.values as value}

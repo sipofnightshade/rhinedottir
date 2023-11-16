@@ -103,4 +103,4 @@
   <ActionButton {type} url={data.url} isActive />
 </button>
 
-<ActionDetails {id} {data} bind:dialog />
+<ActionDetails {id} {data} {type} bind:dialog />

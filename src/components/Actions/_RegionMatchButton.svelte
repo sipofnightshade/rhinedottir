@@ -146,7 +146,7 @@
   <ActionButton {type} url={data.url} isActive />
 </button>
 
-<ActionDetails {id} {talentLvl} {data} {type} hasFooter={false} bind:dialog>
+<ActionDetails {id} {talentLvl} {data} {type} bind:dialog>
   <div slot="footer" class="py-1">
     <div
       class="flex w-[62px] rounded-full border border-slate-600 p-0.5 opacity-60 transition-colors duration-300 {actionsBg[
