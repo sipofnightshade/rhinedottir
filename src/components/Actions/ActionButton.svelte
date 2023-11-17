@@ -48,41 +48,47 @@
 
 <div
   data-testid="action-button"
-  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center"
+  class="relative flex h-14 w-14 flex-shrink-0 items-center justify-center xs:h-16 xs:w-16"
   class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >
   <div
-    class="absolute h-12 w-12 rounded-full {backgrounds[type]} opacity-0 blur-md"
+    class="absolute h-10 w-10 rounded-full xs:h-12 xs:w-12 {backgrounds[
+      type
+    ]} opacity-0 blur-md"
     class:opacity-50={isActive}
   />
-  <div class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[type]}" />
   <div
-    class="absolute h-[52px] w-[52px] rounded-full {gradients[
+    class="absolute h-[42px] w-[42px] rotate-45 rounded-sm xs:h-[46px] xs:w-[46px] {backgrounds[
+      type
+    ]}"
+  />
+  <div
+    class="absolute h-12 w-12 rounded-full xs:h-[52px] xs:w-[52px] {gradients[
       type
     ]} outline outline-1 {outlines[type]}"
   />
   {#if type === 'artifact'}
     <img
-      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
       src="/images/artifact/flower/{url}.webp"
       alt={url}
     />
   {:else if type === 'weapon'}
     <img
-      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
       src="/images/weapon/{url}.webp"
       alt={url}
     />
   {:else if type === 'resonance'}
     <img
-      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
       src="images/resonance/{url}.webp"
       alt={url}
     />
   {:else}
     <img
-      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
       src="/images/talents/{url}.webp"
       alt={url}
     />

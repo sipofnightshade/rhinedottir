@@ -13,8 +13,6 @@
   import CharacterButton from './CharacterButton.svelte';
   import ResonanceButton from './ResonanceButton.svelte';
 
-  export let margin = true;
-
   $: $character.selected, action.reset('main');
   $: $party.one && $party.one.character, action.reset('one');
   $: $party.two && $party.two.character, action.reset('two');
@@ -22,8 +20,7 @@
 </script>
 
 <section
-  class="grid h-[90px] w-full auto-cols-min grid-flow-col gap-1 self-end overflow-x-auto overflow-y-hidden rounded-xl bg-slate-700 p-2 pt-1 md:h-20"
-  class:my-4={margin}
+  class="flex w-full auto-cols-min grid-flow-col items-center gap-1 overflow-x-auto overflow-y-hidden rounded-lg bg-slate-700 px-2 py-4 md:py-2"
 >
   {#each $character.selected.actions as data (data.name)}
     <CharacterButton
