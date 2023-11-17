@@ -112,7 +112,7 @@
   use Modals.
  -->
     <div
-      class="menu absolute bottom-16 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
+      class="menu absolute bottom-16 z-20 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
