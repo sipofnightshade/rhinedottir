@@ -89,6 +89,9 @@ function createCharacter() {
         state.skill = savedCharacter.skill;
         state.burst = savedCharacter.burst;
 
+        // reset lvlBonus values (imporant)
+        state.lvlBonus = { atk: 0, skill: 0, burst: 0 };
+
         // get accurate constellation lvl bonuses
         if (state.constellation >= 3 && state.selected.c3)
           state.lvlBonus[state.selected.c3] = savedCharacter.lvlBonus[state.selected.c3];
