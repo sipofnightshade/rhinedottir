@@ -163,15 +163,11 @@
   on:longpress={handleLongPress}
   use:longpress={300}
   on:click={handleStacking}
-  class="relative shadow-red-300"
+  class="relative"
 >
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
-    <p
-      class="stacks absolute right-0 top-0 z-10 text-lg font-bold {textColors[
-        type
-      ]} shadow-red-400"
-    >
+    <p class="stacks absolute right-0 top-0 z-10 text-lg font-bold {textColors[type]}">
       x{stacks}
     </p>
   {/if}
