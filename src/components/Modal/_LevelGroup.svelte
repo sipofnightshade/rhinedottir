@@ -77,17 +77,19 @@
   >
     <button
       on:click={decreaseValue}
-      class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600"
+      class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600 transition-colors hover:border-slate-500"
       disabled={value <= 0}
       class:opacity-30={value <= 0}
+      class:active:bg-slate-600={value > 0}
     >
       <Minus class="pointer-events-none h-3 w-3 fill-slate-200" />
     </button>
     <button
       on:click={increaseValue}
-      class="flex w-full items-center justify-center rounded-l-sm rounded-r-lg border border-slate-600"
+      class="flex w-full items-center justify-center rounded-l-sm rounded-r-lg border border-slate-600 transition-colors hover:border-slate-500 active:bg-slate-600"
       disabled={isDisabled}
       class:opacity-30={isDisabled}
+      class:active:bg-slate-600={!isDisabled}
     >
       <Plus class="pointer-events-none h-3 w-3 fill-slate-200" />
     </button>

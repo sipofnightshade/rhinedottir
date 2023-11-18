@@ -22,7 +22,7 @@
         alt={item.fullName}
         img="/images/{type}/{item.name}.webp"
         vision={item.vision}
-        classes="bg-slate-700 border border-slate-600"
+        classes="bg-slate-700 border border-slate-600 border-slate-600 hover:border-slate-500 transition-colors"
       />
       <p class="mt-1 text-xs">
         {item.fullName}

@@ -88,7 +88,10 @@
       class="h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 focus:border-slate-400 focus:ring-slate-300 md:h-10"
       placeholder="Enter Player ID"
     />
-    <button on:click={runEnkaImport} class="h-9 rounded-lg bg-slate-700 px-3 md:h-10">
+    <button
+      on:click={runEnkaImport}
+      class="h-9 rounded-lg border border-slate-600 bg-slate-700 px-3 transition-colors hover:border-slate-500 active:bg-slate-600 md:h-10"
+    >
       Import
     </button>
   </div>
