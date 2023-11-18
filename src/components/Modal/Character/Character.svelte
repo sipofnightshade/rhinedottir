@@ -104,7 +104,7 @@
       </div>
       <div class="grid grid-cols-2 gap-x-2">
         <LevelGroup
-          label="Level"
+          label="Lvl"
           value={$character.lvl}
           id="lvl"
           on:increment={handleIncrement}

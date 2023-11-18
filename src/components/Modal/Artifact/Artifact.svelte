@@ -98,7 +98,7 @@
     <div class="flex w-32 flex-col justify-between">
       <StarSelector {type} />
       <LevelGroup
-        label="Level"
+        label="Lvl"
         value={$artifact[type].lvl}
         id={type}
         rating={$artifact[type].isFiveStar}
