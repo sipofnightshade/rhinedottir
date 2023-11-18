@@ -20,14 +20,14 @@ export const artifactMainStats = {
     { label: 'ATK%', value: 'atk%' },
     { label: 'DEF%', value: 'def%' },
     { label: 'EM', value: 'em' },
-    { label: 'Anemo DMG', value: 'anemo' },
-    { label: 'Cryo DMG', value: 'cryo' },
-    { label: 'Dendro DMG', value: 'dendro' },
-    { label: 'Electro DMG', value: 'electro' },
-    { label: 'Geo DMG', value: 'geo' },
-    { label: 'Hydro DMG', value: 'hydro' },
-    { label: 'Pyro DMG', value: 'pyro' },
-    { label: 'Physical DMG', value: 'physical' }
+    { label: 'Anemo', value: 'anemo' },
+    { label: 'Cryo', value: 'cryo' },
+    { label: 'Dendro', value: 'dendro' },
+    { label: 'Electro', value: 'electro' },
+    { label: 'Geo', value: 'geo' },
+    { label: 'Hydro', value: 'hydro' },
+    { label: 'Pyro', value: 'pyro' },
+    { label: 'Physical', value: 'physical' }
   ]
 };
 
@@ -57,14 +57,14 @@ export const StatLabels = {
   energy: 'ER',
   critrate: 'CRIT Rate',
   critdmg: 'CRIT DMG',
-  anemo: 'Anemo DMG',
-  cryo: 'Cryo DMG',
-  dendro: 'Dendro DMG',
-  electro: 'Electro DMG',
-  geo: 'Geo DMG',
-  hydro: 'Hydro DMG',
-  pyro: 'Pyro DMG',
-  physical: 'Physical DMG',
+  anemo: 'Anemo',
+  cryo: 'Cryo',
+  dendro: 'Dendro',
+  electro: 'Electro',
+  geo: 'Geo',
+  hydro: 'Hydro',
+  pyro: 'Pyro',
+  physical: 'Physical',
   healing: 'Healing'
 };
 
