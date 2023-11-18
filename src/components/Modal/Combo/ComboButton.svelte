@@ -137,11 +137,12 @@
 </script>
 
 <button
-  class="relative mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-600"
+  class="relative mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-600 transition-colors"
   on:click={switchDamageType}
   draggable="true"
   data-item-id={btn.btnID}
   disabled={deletable}
+  class:hover:border-slate-500={dmgTypes.length > 1}
   transition:fly
 >
   {#if !isReaction}
@@ -157,11 +158,7 @@
       class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
       class:border-opacity-100={classes.top !== classes.bot}
     >
-      <img
-        src={btnImage}
-        class="pointer-events-none top-1 mb-1 h-7 w-7"
-        alt="Talent"
-      />
+      <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
     </div>
   {:else}
     <div

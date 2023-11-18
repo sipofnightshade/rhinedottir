@@ -73,8 +73,10 @@
   {#each tabs as item}
     {#if item.name}
       <button
-        class="h- flex h-9 w-full items-center justify-center rounded-md border
-    {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-500'}"
+        class="flex h-9 w-full items-center justify-center rounded-md border transition-colors
+    {activeTabValue === item.value
+          ? visionClasses[item.vision]
+          : 'border-slate-600 hover:border-slate-500 '}"
         on:click={handleClick(item.value)}
         class:opacity-30={!item.name}
         disabled={!item.name}

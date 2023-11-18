@@ -32,7 +32,7 @@
 </script>
 
 <button
-  class="flex h-10 w-10 items-center gap-x-1.5 rounded-full border border-slate-600 bg-slate-700 md:w-full"
+  class="flex h-10 w-10 items-center gap-x-1.5 rounded-full border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 active:bg-slate-600 md:w-full"
   on:click={toggleModal}
 >
   <div class="flex h-9 w-9 items-center justify-center rounded-full md:bg-slate-800">

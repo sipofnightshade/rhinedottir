@@ -43,7 +43,10 @@
   }
 </script>
 
-<button class="bg-slate-500" on:click={toggleModal}>
+<button
+  class="border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500"
+  on:click={toggleModal}
+>
   <Thumbnail
     img="/images/character/{build.character.selected}.webp"
     vision={build.character.vision}
