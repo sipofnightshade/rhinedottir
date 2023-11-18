@@ -21,7 +21,10 @@
     Hyperbloom,
     Burgeon,
     Burning,
-    Shattered
+    Shattered,
+    HP_Percent,
+    Attack_Percent,
+    Defence_Percent
   } from '$lib/icons';
 
   export let stat: string;
@@ -49,11 +52,11 @@
     pyroRes: Pyro,
     physicalRes: Physical,
     atk: Attack,
-    'atk%': Attack,
     def: Defence,
-    'def%': Defence,
     hp: HP,
-    'hp%': HP,
+    'atk%': Attack_Percent,
+    'def%': Defence_Percent,
+    'hp%': HP_Percent,
     healing: Healing,
     healingIncoming: Healing,
     critrate: CritRate,
@@ -69,7 +72,10 @@
 </script>
 
 {#if iconMap[stat]}
-  <svelte:component this={iconMap[stat]} class={lg ? 'h-5 xs-375:h-6' : 'h-4 lg:h-5'} />
+  <svelte:component
+    this={iconMap[stat]}
+    class="{lg ? 'h-5 xs-375:h-6' : 'h-4 lg:h-5'} {stat.includes('%') && '!fill-red-600'}"
+  />
 {:else}
   <span>-</span>
 {/if}

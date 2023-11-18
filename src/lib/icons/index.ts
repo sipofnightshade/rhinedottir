@@ -14,6 +14,11 @@ export { default as HP } from './HP.svelte';
 export { default as Hydro } from './Hydro.svelte';
 export { default as Physical } from './Physical.svelte';
 export { default as Pyro } from './Pyro.svelte';
+// %
+export { default as HP_Percent } from './HP_Percent.svelte';
+export { default as Attack_Percent } from './Attack_Percent.svelte';
+export { default as Defence_Percent } from './Defence_Percent.svelte';
+
 // reactions
 export { default as Burgeon } from './Burgeon.svelte';
 export { default as Hyperbloom } from './Hyperbloom.svelte';
