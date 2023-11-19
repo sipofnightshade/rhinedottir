@@ -255,7 +255,7 @@ const charName: CharacterRecord = {
       name: 'SalonSolitaire',
       url: 'Skill_S_Furina_01',
       description:
-        "When **Salon Members** attack, if character(s) with more than 50% HP are nearby, the Members will increase their current attack's power based on the number of such characters, and consume said characters' HP. If the characters who meet these requirements are 1/2/3/4 (or more), the Members' attacks will deal 110%/120%/130%/140% of their original DMG.\n\nPneuma\nSummons the Singer of Many Waters, who will heal nearby active character(s) based on Max HP at intervals.\n\nThe Salon Members and Singer of Many Waters share a duration, and when Furina uses her Charged Attack to change the guest type, the new guests will inherit the initial duration.\nWhile the Salon Members and the Singer of Many Waters are on the field, Furina can move on the water's surface.",
+        "When **Salon Members** attack, if character(s) with more than 50% HP are nearby, the Members will increase their current attack's power based on the number of such characters, and consume said characters' HP. If the characters who meet these requirements are 1/2/3/4 (or more), the Members' attacks will deal 110%/120%/130%/140% of their original DMG.",
       hasLevels: 'skill',
       target: 'self',
       actionType: 'stack',
