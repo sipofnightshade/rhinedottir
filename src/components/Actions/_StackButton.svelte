@@ -181,6 +181,7 @@
         class="flex h-full w-11 items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600 transition-opacity"
         disabled={stacks <= 0}
         class:opacity-30={stacks <= 0}
+        class:active:bg-slate-600={stacks > 0}
       >
         <Minus class="pointer-events-none h-3 w-3 fill-slate-200" />
       </button>
@@ -192,6 +193,7 @@
         class="flex h-full w-11 items-center justify-center rounded-l-sm rounded-r-lg border border-slate-600 transition-opacity"
         disabled={stacks >= maxStacks}
         class:opacity-30={stacks >= maxStacks}
+        class:active:bg-slate-600={stacks < maxStacks}
       >
         <Plus class="pointer-events-none h-3 w-3 fill-slate-200" />
       </button>
