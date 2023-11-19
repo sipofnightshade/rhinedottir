@@ -130,7 +130,7 @@
         <ul>
           {#each twoPieceDetails as bonus}
             <li class="mt-0.5 flex w-full gap-1.5">
-              <Bullet class="ml-1 mt-1 h-3 flex-shrink-0 fill-current" />
+              <!-- <Bullet class="ml-1 mt-1 h-3 flex-shrink-0 fill-current" /> -->
               <p>{bonus}</p>
             </li>
           {/each}
@@ -141,8 +141,8 @@
         <p class="text-sm font-bold uppercase">4-PIECE BONUS:</p>
         <ul>
           {#each fourPieceDetails as bonus}
-            <li class="mt-0.5 flex w-full gap-1.5">
-              <Bullet class="ml-1 mt-1 h-3 flex-shrink-0 fill-current" />
+            <li class="mt-0.5 flex w-full gap-1.5 text-slate-300">
+              <!-- <Bullet class="ml-1 mt-1 h-3 flex-shrink-0 fill-current" /> -->
               <p>{bonus}</p>
             </li>
           {/each}
