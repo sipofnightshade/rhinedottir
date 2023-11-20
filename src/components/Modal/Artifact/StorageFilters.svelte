@@ -13,7 +13,7 @@
   }
 </script>
 
-<div class="grid w-full grid-cols-8 gap-2">
+<div class="grid w-full gap-2 {$$props.class}">
   {#each filters as filter}
     <button
       on:click={() => setFilter(filter)}

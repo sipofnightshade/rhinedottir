@@ -41,7 +41,6 @@
     'em',
     'critrate',
     'critdmg',
-    'physical',
     'energy'
   ];
 
@@ -72,10 +71,25 @@
 
 <div class="flex flex-col gap-4 overflow-hidden">
   {#if type === 'goblet'}
-    <StorageFilters filters={gobletFilters} selected={filter} on:filter={handleFilters} />
+    <StorageFilters
+      class="grid-cols-8"
+      filters={gobletFilters}
+      selected={filter}
+      on:filter={handleFilters}
+    />
   {:else if type === 'circlet'}
-    <StorageFilters filters={cicletfilters} selected={filter} on:filter={handleFilters} />
+    <StorageFilters
+      class="grid-cols-8"
+      filters={cicletfilters}
+      selected={filter}
+      on:filter={handleFilters}
+    />
   {:else}
-    <StorageFilters filters={basefilters} selected={filter} on:filter={handleFilters} />
+    <StorageFilters
+      class="grid-cols-7"
+      filters={basefilters}
+      selected={filter}
+      on:filter={handleFilters}
+    />
   {/if}
 </div>
