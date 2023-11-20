@@ -45,7 +45,9 @@
       >
         <div class="pointer-events-none flex items-center gap-2">
           <StatImage stat={$artifact[type].mainStat.stat} />
-          <span class="text-ellipsis">{StatLabels[$artifact[type].mainStat.stat]}</span>
+          <span class="hidden truncate xs-300:flex"
+            >{StatLabels[$artifact[type].mainStat.stat]}</span
+          >
         </div>
         <Chevron class="w-3 fill-slate-100" flip={!$listbox.expanded} />
       </button>
@@ -63,7 +65,8 @@
             >
               <StatImage stat={stat.value} />
 
-              <span class=" center pointer-events-none block truncate capitalize"
+              <span
+                class=" center pointer-events-none hidden truncate capitalize xs-300:flex"
                 >{stat.label}</span
               >
             </li>

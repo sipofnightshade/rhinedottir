@@ -22,7 +22,7 @@
   <Thumbnail
     img="/images/artifact/{type}/{name}.webp"
     alt={name}
-    classes="w-16 p-2"
+    classes="w-14 xs-300:w-16  p-1 xs-300:p-2"
     hasBG={false}
   />
   <Star class="absolute -bottom-[9px] left-[22px] w-5 stroke-slate-800 stroke-2" />
