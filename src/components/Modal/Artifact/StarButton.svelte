@@ -11,7 +11,8 @@
 </script>
 
 <button
-  class="relative rounded-xl border-2 border-slate-600 transition-colors hover:bg-slate-700/70 active:bg-slate-600"
+  class="relative rounded-xl border-2 border-slate-600 transition-colors
+  {name !== 'none' && 'hover:bg-slate-700/70 active:bg-slate-600'}"
   on:click={() => artifact.setRating(type)}
   disabled={name === 'none'}
   class:text-yellow-500={name !== 'none' && rating === 5}
