@@ -4,7 +4,7 @@
   import LevelGroup from '../_LevelGroup.svelte';
   import Picker from '../../Picker/Picker.svelte';
   import SubstatGroup from './_SubstatGroup.svelte';
-  import StarSelector from '../../Stars/StarSelector.svelte';
+  //   import StarSelector from '../../Stars/StarSelector.svelte';
   import EffectDetails from '../EffectDetails.svelte';
   import MainStat from './_MainStat.svelte';
 
@@ -14,6 +14,7 @@
   import { TwoPieceLabels, type TwoPiece_Stats } from '$lib/data/Stats';
   import { artifactStatFormatterX } from '$lib/helpers/artifactStatFormatter';
   import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
+  import StarButton from './StarButton.svelte';
 
   export let type: ArtifactType;
 
@@ -84,17 +85,10 @@
   );
 </script>
 
-<div class="flex flex-col gap-4 overflow-hidden">
-  <div class="flex h-28 gap-x-2">
-    <div class="rounded-2xl">
-      <Thumbnail
-        img="/images/artifact/{type}/{$artifact[type].selected.name}.webp"
-        alt={$artifact[type].selected.name}
-        classes="w-28"
-      />
-    </div>
-    <div class="flex w-32 flex-col justify-between">
-      <StarSelector {type} />
+<div class="flex flex-col gap-2 overflow-hidden xs:gap-4">
+  <div class="flex items-end gap-x-2">
+    <StarButton {type} name={$artifact[type].selected.name} />
+    <div class="w-64 xs:w-72">
       <LevelGroup
         label="Lvl"
         value={$artifact[type].lvl}
@@ -104,6 +98,7 @@
         on:decrement={handleDecrement}
       />
     </div>
+
     <MainStat {type} on:selected={handleMainstat} />
   </div>
   <EffectDetails disabled={$artifact[type].selected.name === 'none'}>
