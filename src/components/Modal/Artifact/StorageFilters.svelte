@@ -17,7 +17,7 @@
   {#each filters as filter}
     <button
       on:click={() => setFilter(filter)}
-      class="relative flex aspect-square items-center justify-center rounded-lg transition-colors hover:bg-slate-700/50"
+      class="relative flex aspect-square items-center justify-center rounded-lg border border-slate-800 transition-colors hover:border-slate-600 active:bg-slate-500"
       class:bg-slate-700={selected.has(filter)}
     >
       <StatImage stat={filter} lg />
