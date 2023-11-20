@@ -20,17 +20,17 @@
 </script>
 
 <!-- Artifact TABS -->
-<div class="XXX73 flex h-full flex-col gap-4 overflow-hidden">
-  <ul class="grid list-none grid-cols-2 justify-between rounded-full bg-slate-700 p-1">
+<div class="flex h-full flex-col gap-2 overflow-hidden xs:gap-4">
+  <ul
+    class="grid list-none grid-cols-2 justify-between rounded-full border border-slate-600 bg-slate-700 p-0"
+  >
     {#each items as item}
-      <li
-        class="flex items-center justify-center rounded-full"
-        class:bg-slate-50={activeTabValue === item.value}
-        class:text-slate-700={activeTabValue === item.value}
-      >
+      <li class="flex items-center justify-center rounded-full">
         <button
-          class="h-full w-full rounded-full py-1.5"
-          on:click={handleClick(item.value)}>{item.label}</button
+          class="h-full w-full rounded-full py-2"
+          on:click={handleClick(item.value)}
+          class:bg-slate-800={activeTabValue === item.value}
+          class:text-slate-100={activeTabValue === item.value}>{item.label}</button
         >
       </li>
     {/each}
