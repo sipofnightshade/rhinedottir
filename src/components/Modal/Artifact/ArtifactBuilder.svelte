@@ -147,7 +147,7 @@
     </div>
   </EffectDetails>
 
-  <div class="flex flex-col gap-2">
+  <div class="grid grid-cols-2 gap-2">
     {#each substatIDs as id (id)}
       <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
     {/each}
