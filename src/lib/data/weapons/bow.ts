@@ -310,33 +310,13 @@ export const bow: Bows[] = [
     effectname: 'Radiance of the Deeps',
     action: [
       {
-        actionType: 'passive',
+        actionType: 'stack',
         values: [
-          [
-            { scaling: 'dmgIncrease', coef: 0.06 },
-            { scaling: 'dmgIncrease', coef: 0.1 },
-            { scaling: 'dmgIncrease', coef: 0.14 }
-          ],
-          [
-            { scaling: 'dmgIncrease', coef: 0.075 },
-            { scaling: 'dmgIncrease', coef: 0.125 },
-            { scaling: 'dmgIncrease', coef: 0.175 }
-          ],
-          [
-            { scaling: 'dmgIncrease', coef: 0.09 },
-            { scaling: 'dmgIncrease', coef: 0.15 },
-            { scaling: 'dmgIncrease', coef: 0.21 }
-          ],
-          [
-            { scaling: 'dmgIncrease', coef: 0.105 },
-            { scaling: 'dmgIncrease', coef: 0.175 },
-            { scaling: 'dmgIncrease', coef: 0.245 }
-          ],
-          [
-            { scaling: 'dmgIncrease', coef: 0.12 },
-            { scaling: 'dmgIncrease', coef: 0.2 },
-            { scaling: 'dmgIncrease', coef: 0.28 }
-          ]
+          [{ scaling: 'dmgIncrease', coef: [0.06, 0.04, 0.04] }],
+          [{ scaling: 'dmgIncrease', coef: [0.075, 0.05, 0.05] }],
+          [{ scaling: 'dmgIncrease', coef: [0.09, 0.06, 0.06] }],
+          [{ scaling: 'dmgIncrease', coef: [0.105, 0.07, 0.07] }],
+          [{ scaling: 'dmgIncrease', coef: [0.12, 0.08, 0.08] }]
         ]
       }
     ],
