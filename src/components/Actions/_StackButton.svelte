@@ -175,7 +175,7 @@
 
 <ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
   <div slot="footer" class="py-1">
-    <div class="flex items-center gap-4 rounded-lg md:h-10 [&>button]:bg-slate-700">
+    <div class="flex h-9 items-center gap-4 rounded-lg md:h-10 [&>button]:bg-slate-700">
       <button
         on:click={handleDecrement}
         class="flex h-full w-11 items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600 transition-opacity"
