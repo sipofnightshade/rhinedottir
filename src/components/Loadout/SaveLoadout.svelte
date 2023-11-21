@@ -38,6 +38,7 @@
         selected: $character.selected.name,
         vision: $character.selected.vision,
         id: $character.selected.id,
+        url: $character.selected.url,
         atk: $character.atk,
         skill: $character.skill,
         burst: $character.burst,
@@ -48,15 +49,46 @@
       },
       weapon: {
         selected: $weapon.selected.name,
+        url: $weapon.selected.url,
         lvl: $weapon.lvl,
         refinement: $weapon.refinement
       },
       artifacts: {
-        flower: { ...$artifact.flower, selected: $artifact.flower.selected.name },
-        feather: { ...$artifact.feather, selected: $artifact.feather.selected.name },
-        sands: { ...$artifact.sands, selected: $artifact.sands.selected.name },
-        goblet: { ...$artifact.goblet, selected: $artifact.goblet.selected.name },
-        circlet: { ...$artifact.circlet, selected: $artifact.circlet.selected.name }
+        flower: {
+          ...$artifact.flower,
+          selected: $artifact.flower.selected.name,
+          uid: $artifact.flower.selected.uid,
+          url: $artifact.flower.selected.url,
+          fullName: $artifact.flower.selected.fullName
+        },
+        feather: {
+          ...$artifact.feather,
+          selected: $artifact.feather.selected.name,
+          uid: $artifact.feather.selected.uid,
+          url: $artifact.feather.selected.url,
+          fullName: $artifact.feather.selected.fullName
+        },
+        sands: {
+          ...$artifact.sands,
+          selected: $artifact.sands.selected.name,
+          uid: $artifact.sands.selected.uid,
+          url: $artifact.sands.selected.url,
+          fullName: $artifact.sands.selected.fullName
+        },
+        goblet: {
+          ...$artifact.goblet,
+          selected: $artifact.goblet.selected.name,
+          uid: $artifact.goblet.selected.uid,
+          url: $artifact.goblet.selected.url,
+          fullName: $artifact.goblet.selected.fullName
+        },
+        circlet: {
+          ...$artifact.circlet,
+          selected: $artifact.circlet.selected.name,
+          uid: $artifact.circlet.selected.uid,
+          url: $artifact.circlet.selected.url,
+          fullName: $artifact.circlet.selected.fullName
+        }
       }
     };
   }
