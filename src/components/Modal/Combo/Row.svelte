@@ -117,11 +117,13 @@
     </button>
   </div>
 
-  <div class="flex w-full items-center justify-start">
+  <div class="flex w-full items-center justify-start shadow-slate-200">
     <SortableList
       animation={300}
       ghostClass="opacity-0"
-      chosenClass="border-gray-300"
+      delay={200}
+      delayOnTouchOnly
+      chosenClass="border-slate-500"
       class="horizontalScrollbar grid h-full w-fit auto-cols-max grid-flow-col items-center overflow-x-auto pb-2"
     >
       {#each rowButtons as { id, type, index, btnID } (btnID)}
