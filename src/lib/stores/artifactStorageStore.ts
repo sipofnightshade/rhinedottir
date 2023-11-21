@@ -16,6 +16,7 @@ interface Artifact {
 }
 
 export interface ArtifactStorageItem extends Artifact {
+  storageID: string;
   tags: ArtifactStats[];
   critValue: number;
 }
@@ -52,6 +53,8 @@ function createStore(initial_value: ArtifactStore, init = true) {
           state[type] = [];
         }
 
+        const storageID = window.crypto.randomUUID();
+
         const tags = [artifact.mainStat.stat]; // used for efficient filtering
         let critValue = 0; // sums up total crit stats if any
 
@@ -66,26 +69,26 @@ function createStore(initial_value: ArtifactStore, init = true) {
 
         const uniqueTags = new Set(tags);
 
-        state[type].push({ ...artifact, tags: [...uniqueTags], critValue });
+        state[type].push({ ...artifact, tags: [...uniqueTags], critValue, storageID });
 
         saveToLocalStorage(state);
         return state;
       }),
 
-    removeArtifact: (type: ArtifactType, artifact: ArtifactStorageItem) =>
+    removeArtifact: (type: ArtifactType, id: string) =>
       update((state) => {
-        state[type] = state[type].filter((a) => a !== artifact);
+        state[type] = state[type].filter((a) => a.storageID !== id);
         saveToLocalStorage(state);
         return state;
       }),
 
     removeDupliecates: () =>
       update((state) => {
-        state.flower = removeDuplicatesFromArray(state.flower);
-        state.feather = removeDuplicatesFromArray(state.feather);
-        state.sands = removeDuplicatesFromArray(state.sands);
-        state.goblet = removeDuplicatesFromArray(state.goblet);
-        state.circlet = removeDuplicatesFromArray(state.circlet);
+        state.flower = removeDuplicatesFromArray(state.flower, 'storageID');
+        state.feather = removeDuplicatesFromArray(state.feather, 'storageID');
+        state.sands = removeDuplicatesFromArray(state.sands, 'storageID');
+        state.goblet = removeDuplicatesFromArray(state.goblet, 'storageID');
+        state.circlet = removeDuplicatesFromArray(state.circlet, 'storageID');
 
         saveToLocalStorage(state);
         return state;

@@ -66,6 +66,8 @@
     };
 
     artifactStorage.saveArtifact(type, currentArtifact);
+
+    /** @todo Add a specific button for this */
     artifactStorage.removeDupliecates();
   }
 
