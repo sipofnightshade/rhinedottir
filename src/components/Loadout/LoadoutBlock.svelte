@@ -14,12 +14,19 @@
   export let highlighted = false;
 </script>
 
+<!-- {highlighted
+  ? elementalBorders[item.character.vision]
+  : 'border-slate-600'} -->
+
 <div
-  class="flex w-full flex-col gap-y-2.5 rounded-2xl border bg-slate-700 p-3 transition-all {highlighted
+  class="flex w-full flex-col gap-y-2.5 rounded-2xl border bg-slate-700/80 p-3 transition-all {highlighted
     ? elementalBorders[item.character.vision]
     : 'border-slate-600'}"
-  class:opacity-50={deletable}
-  class:hover:bg-opacity-60={!deletable}
+  class:border-slate-600={!deletable}
+  class:hover:border-slate-500={!deletable}
+  class:active:bg-slate-600={!deletable}
+  class:border-red-500={deletable}
+  class:hover:border-red-500={deletable}
 >
   <!-- Title -->
   <h3 class="w-full text-left">{item.title}</h3>

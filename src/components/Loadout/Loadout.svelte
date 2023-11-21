@@ -60,16 +60,16 @@
   {#if deletable}
     <div class="mt-2 flex justify-between gap-2 text-slate-200">
       <button
-        class="w-full rounded-md border border-slate-600 p-2"
+        class="w-full rounded-md border border-slate-600 bg-slate-700 p-2 transition-colors hover:border-slate-500 active:bg-slate-600"
         on:click={() => (deletable = false)}
       >
         Cancel
       </button>
       <button
-        class="flex w-full items-center justify-center gap-1.5 rounded-md bg-red-700 p-2"
+        class="flex w-full items-center justify-center gap-1.5 rounded-md border border-red-700 bg-red-600 p-2 text-slate-100 transition-colors hover:border-red-500 active:bg-red-500"
         on:click={handleDelete}
       >
-        <Delete class="w-3 fill-slate-200" />
+        <Delete class="h-4 fill-slate-200" />
         <span>Delete</span>
       </button>
     </div>

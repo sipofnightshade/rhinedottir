@@ -54,14 +54,12 @@
     use:longpress={300}
     disabled={deletable}
     on:click={() => handleArtifactClick(storedArtifact)}
-    class="flex w-full items-center gap-2 rounded-xl border border-slate-600 bg-slate-700/80 pr-2 text-sm transition-colors"
-    class:border={!deletable}
+    class="flex w-full items-center gap-2 rounded-xl border bg-slate-700/80 pr-2 text-sm transition-colors"
     class:border-slate-600={!deletable}
     class:hover:border-slate-500={!deletable}
     class:active:bg-slate-600={!deletable}
-    class:border-2={deletable}
-    class:border-red-600={deletable}
-    class:hover:border-red-600={deletable}
+    class:border-red-500={deletable}
+    class:hover:border-red-500={deletable}
   >
     <div>
       <Thumbnail
