@@ -32,30 +32,31 @@
 
     :global(.scrollbar)::-webkit-scrollbar-track {
       border-radius: 12px;
-      background-color: #e2e8f0;
+      background-color: inherit;
       padding: 1px;
     }
 
     :global(.scrollbar)::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: #334155;
+      background-color: #475569;
     }
 
     :global(.horizontalScrollbar)::-webkit-scrollbar {
       width: 8px;
-      height: 5px;
+      height: 8px;
       margin-top: 10px;
     }
 
     :global(.horizontalScrollbar)::-webkit-scrollbar-track {
       border-radius: 12px;
-      background-color: #e2e8f0;
+      background-color: inherit;
       padding: 1px;
+      border-radius: 100%;
     }
 
     :global(.horizontalScrollbar)::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: #334155;
+      background-color: #475569;
     }
   }
 </style>
