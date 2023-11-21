@@ -6,25 +6,27 @@ import { getCritValue } from '$lib/helpers/getCritValue';
 interface Artifact {
   id: number;
   selected: ArtifactNames;
+  fullName: string;
+  url: string;
   lvl: number;
   isFiveStar: boolean;
   mainStat: { stat: ArtifactStats; value: number };
   substats: { stat: ArtifactStats; value: number }[];
 }
 
-interface ArtifactItem extends Artifact {
-  tags: Set<ArtifactStats | string>;
+export interface ArtifactStorageItem extends Artifact {
+  tags: ArtifactStats[];
   critValue: number;
 }
 
-type ArtifactStore = Record<ArtifactType, Set<ArtifactItem>>;
+type ArtifactStore = Record<ArtifactType, ArtifactStorageItem[]>;
 
 const initialState: ArtifactStore = {
-  flower: new Set(),
-  feather: new Set(),
-  sands: new Set(),
-  goblet: new Set(),
-  circlet: new Set()
+  flower: [],
+  feather: [],
+  sands: [],
+  goblet: [],
+  circlet: []
 };
 
 const LOCAL_STORAGE_KEY = 'artifactStorage';
@@ -41,33 +43,41 @@ function createStore(initial_value: ArtifactStore, init = true) {
   return {
     subscribe,
     set,
+
     saveArtifact: (type: ArtifactType, artifact: Artifact) =>
       update((state) => {
-        // get all all the unique stats in the artifact to use later
-        const tags = new Set(artifact.mainStat.stat);
-        let critValue = 0;
+        // check if state.type is defined as an array
+        if (!Array.isArray(state[type])) {
+          state[type] = [];
+        }
 
-        // add main stat to critvalue if crit
+        const tags = [artifact.mainStat.stat]; // used for efficient filtering
+        let critValue = 0; // sums up total crit stats if any
+
         critValue += getCritValue(artifact.mainStat);
 
         artifact.substats.forEach((substat) => {
-          // add artifact stats to a unique tags set
-          if (substat.stat) tags.add(substat.stat);
-          // add substats to critvalue if crit
+          if (substat.stat && !tags.includes(substat.stat)) {
+            tags.push(substat.stat);
+          }
           critValue += getCritValue(substat);
         });
 
-        state[type].add({ ...artifact, tags, critValue });
+        const uniqueTags = new Set(tags);
+
+        state[type].push({ ...artifact, tags: [...uniqueTags], critValue });
+
         saveToLocalStorage(state);
         return state;
       }),
 
-    removeArtifact: (type: ArtifactType, artifact: ArtifactItem) =>
+    removeArtifact: (type: ArtifactType, artifact: ArtifactStorageItem) =>
       update((state) => {
-        state[type].delete(artifact);
+        state[type] = state[type].filter((a) => a !== artifact);
         saveToLocalStorage(state);
         return state;
       }),
+
     reset: () => {
       set(initialState);
       localStorage.removeItem(LOCAL_STORAGE_KEY);
@@ -79,4 +89,4 @@ function saveToLocalStorage(data: any) {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 }
 
-export const artifactStorage = createStore(initialState, browser);
+export const artifactStorage = createStore({ ...initialState }, browser);

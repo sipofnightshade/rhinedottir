@@ -1,12 +1,11 @@
 <script lang="ts">
   // components
-  import Thumbnail from '../../Thumbnail/Thumbnail.svelte';
   import LevelGroup from '../_LevelGroup.svelte';
   import Picker from '../../Picker/Picker.svelte';
   import SubstatGroup from './_SubstatGroup.svelte';
-  //   import StarSelector from '../../Stars/StarSelector.svelte';
   import EffectDetails from '../EffectDetails.svelte';
   import MainStat from './_MainStat.svelte';
+  import StarButton from './StarButton.svelte';
 
   // stores & helpers
   import { artifact } from '$lib/stores/artifactStore';
@@ -14,7 +13,8 @@
   import { TwoPieceLabels, type TwoPiece_Stats } from '$lib/data/Stats';
   import { artifactStatFormatterX } from '$lib/helpers/artifactStatFormatter';
   import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
-  import StarButton from './StarButton.svelte';
+  import { artifactStorage } from '$lib/stores/artifactStorageStore';
+  import { isArtifactValid } from '$lib/helpers/isArtifactValid';
 
   export let type: ArtifactType;
 
@@ -53,6 +53,21 @@
     artifact.setInput(type, event.detail.id, event.detail.value);
   }
 
+  // handle saving
+  function handleSave() {
+    const { uid, url, name, fullName } = $artifact[type].selected;
+
+    const currentArtifact = {
+      ...$artifact[type],
+      selected: name,
+      id: uid,
+      url,
+      fullName
+    };
+
+    artifactStorage.saveArtifact(type, currentArtifact);
+  }
+
   function countArtifactSets(artifactSet: ArtifactNames) {
     if (artifactSet === 'none') return 1;
 
@@ -83,6 +98,10 @@
   $: fourPieceDetails = $artifact[type].selected.fourPiece.map(
     (bonus) => bonus.description
   );
+
+  $: canSave =
+    $artifact[type].selected.uid !== 0 &&
+    isArtifactValid($artifact[type].mainStat, $artifact[type].substats);
 </script>
 
 <div class="flex flex-col gap-2 overflow-hidden xs:gap-4">
@@ -147,6 +166,23 @@
       <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
     {/each}
   </div>
+
+  <div class="grid grid-cols-3 gap-x-3">
+    <div class="h-9 rounded-lg border border-dashed border-slate-700 md:h-10" />
+    <div class="h-9 rounded-lg border border-dashed border-slate-700 md:h-10" />
+    <button
+      on:click={handleSave}
+      disabled={!canSave}
+      class:opacity-50={!canSave}
+      class="h-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors md:h-10"
+      class:hover:border-slate-500={canSave}
+      class:active:bg-slate-600={canSave}
+    >
+      Save
+    </button>
+  </div>
+
+  <div class="h-[1px] bg-slate-600" />
 
   <Picker on:selected={handleArtifactSelect} data={ArtifactData} type={imgType[type]} />
 </div>
