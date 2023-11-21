@@ -65,7 +65,7 @@
       <Thumbnail
         img="/images/artifact/{type}/{storedArtifact.selected}.webp"
         alt={storedArtifact.selected}
-        classes="w-12 xs-300:w-16 xs-375:w-24 xs-375:p-2"
+        classes="w-12 xs-300:w-16 xs-375:w-20 xs-375:p-1"
         hasBG={false}
       />
     </div>
