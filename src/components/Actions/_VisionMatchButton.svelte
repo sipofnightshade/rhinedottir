@@ -152,7 +152,7 @@
       ]}"
     >
       <div
-        class="h-7 w-7 translate-x-full rounded-full bg-slate-200 transition-all ease-in"
+        class="h-7 w-7 translate-x-full rounded-full bg-slate-600 transition-all ease-in"
       />
     </div>
   </div>

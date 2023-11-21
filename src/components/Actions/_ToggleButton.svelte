@@ -139,7 +139,7 @@
       aria-checked={isActive}
     >
       <div
-        class="h-7 w-7 rounded-full bg-slate-200 transition-all ease-in"
+        class="h-7 w-7 rounded-full bg-slate-600 transition-all ease-in"
         class:translate-x-full={isActive}
       />
     </button>
