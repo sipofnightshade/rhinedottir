@@ -66,6 +66,7 @@
     };
 
     artifactStorage.saveArtifact(type, currentArtifact);
+    artifactStorage.removeDupliecates();
   }
 
   function countArtifactSets(artifactSet: ArtifactNames) {

@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import type { ArtifactNames, ArtifactStats, ArtifactType } from '$lib/types/artifacts';
 import { getCritValue } from '$lib/helpers/getCritValue';
+import { removeDuplicatesFromArray } from '$lib/helpers/removeDuplicatesFromArray';
 
 interface Artifact {
   id: number;
@@ -74,6 +75,18 @@ function createStore(initial_value: ArtifactStore, init = true) {
     removeArtifact: (type: ArtifactType, artifact: ArtifactStorageItem) =>
       update((state) => {
         state[type] = state[type].filter((a) => a !== artifact);
+        saveToLocalStorage(state);
+        return state;
+      }),
+
+    removeDupliecates: () =>
+      update((state) => {
+        state.flower = removeDuplicatesFromArray(state.flower);
+        state.feather = removeDuplicatesFromArray(state.feather);
+        state.sands = removeDuplicatesFromArray(state.sands);
+        state.goblet = removeDuplicatesFromArray(state.goblet);
+        state.circlet = removeDuplicatesFromArray(state.circlet);
+
         saveToLocalStorage(state);
         return state;
       }),
