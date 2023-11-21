@@ -1,21 +1,11 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { ArtifactNames, ArtifactStats, ArtifactType } from '$lib/types/artifacts';
+import type { ArtifactStats, ArtifactType } from '$lib/types/artifacts';
 import { getCritValue } from '$lib/helpers/getCritValue';
 import { removeDuplicatesFromArray } from '$lib/helpers/removeDuplicatesFromArray';
+import type { SavedArtifactItem } from '$lib/types/loadout';
 
-interface Artifact {
-  id: number;
-  selected: ArtifactNames;
-  fullName: string;
-  url: string;
-  lvl: number;
-  isFiveStar: boolean;
-  mainStat: { stat: ArtifactStats; value: number };
-  substats: { stat: ArtifactStats; value: number }[];
-}
-
-export interface ArtifactStorageItem extends Artifact {
+export interface ArtifactStorageItem extends SavedArtifactItem {
   storageID: string;
   tags: ArtifactStats[];
   critValue: number;
@@ -46,7 +36,7 @@ function createStore(initial_value: ArtifactStore, init = true) {
     subscribe,
     set,
 
-    saveArtifact: (type: ArtifactType, artifact: Artifact) =>
+    saveArtifact: (type: ArtifactType, artifact: SavedArtifactItem) =>
       update((state) => {
         // check if state.type is defined as an array
         if (!Array.isArray(state[type])) {

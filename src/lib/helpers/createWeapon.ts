@@ -11,9 +11,11 @@ export function createWeapon(data: any): SavedWeapon {
   );
 
   const name = selectedWeapon?.name as WeaponNames;
+  const url = selectedWeapon?.url as string;
+
   const refinement = Object.values(data.weapon.affixMap)[0] as number;
   const lvl = getLevelIndex(data.weapon.promoteLevel, data.weapon.lvl);
-  return { selected: name, lvl, refinement };
+  return { selected: name, lvl, refinement, url };
 }
 
 function getWeaponType(weaponTypeCode: number) {

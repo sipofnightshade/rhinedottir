@@ -18,6 +18,9 @@ interface Equipment {
 
 const noArtifact: SavedArtifactItem = {
   selected: 'none',
+  uid: 0,
+  url: 'none',
+  fullName: 'None',
   lvl: 0,
   isFiveStar: false,
   mainStat: {

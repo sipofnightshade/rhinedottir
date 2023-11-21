@@ -35,6 +35,7 @@ export function createCharacter(
 
     return {
       id: character.id,
+      url: character.url,
       selected: character.name,
       lvl,
       atk: atk,

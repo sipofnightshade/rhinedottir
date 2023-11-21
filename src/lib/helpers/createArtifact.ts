@@ -36,6 +36,9 @@ export function createArtifact(data: any): SavedArtifactItem | null {
   if (artifact) {
     return {
       selected: artifact.name,
+      uid: artifact.uid,
+      fullName: artifact.fullName,
+      url: artifact.url,
       lvl: data.reliquary.level - 1,
       isFiveStar: data.flat.rankLevel === 5,
       mainStat,

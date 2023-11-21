@@ -1,5 +1,4 @@
 import type { All_Stats } from '$lib/data/Stats';
-import type { Artifact } from '$lib/stores/artifactStore';
 import type { CharacterNames, CharacterSpecificNames } from '$lib/types/characters';
 import type { ArtifactNames, ArtifactStats } from './artifacts';
 import type { Visions, WeaponCategory } from './global';
@@ -7,6 +6,7 @@ import type { WeaponNames } from './weapons';
 
 export type SavedCharacter = {
   selected: CharacterNames;
+  url: string;
   vision: Visions;
   id: CharacterSpecificNames;
   weapon: WeaponCategory;
@@ -23,13 +23,17 @@ export type SavedCharacter = {
 };
 
 export type SavedWeapon = {
+  url: string;
   selected: WeaponNames;
   lvl: number;
   refinement: number;
 };
 
 export type SavedArtifactItem = {
+  uid: number;
   selected: ArtifactNames;
+  fullName: string;
+  url: string;
   lvl: number;
   isFiveStar: boolean;
   mainStat: { stat: ArtifactStats; value: number };
