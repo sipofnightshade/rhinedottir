@@ -1,11 +1,11 @@
 <script lang="ts">
   // types
-  import type { LoadOutTag } from '$lib/types/loadout';
+  import type { LoadOutTag, SavedArtifactItem } from '$lib/types/loadout';
 
   // stores & helpers
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
-  import { artifact } from '$lib/stores/artifactStore';
+  import { artifact, type Artifact } from '$lib/stores/artifactStore';
   import { loadouts, type LoadoutItem } from '$lib/stores/loadoutsStore';
   import { uid } from 'uid';
 
@@ -22,6 +22,16 @@
 
   function setTag(event: any) {
     tag = event.detail.selected;
+  }
+
+  function createArtifactItem(baseArtifact: Artifact) {
+    return {
+      ...baseArtifact,
+      selected: baseArtifact.selected.name,
+      uid: baseArtifact.selected.uid,
+      url: baseArtifact.selected.url,
+      fullName: baseArtifact.selected.fullName
+    };
   }
 
   function toggleModal() {
@@ -54,41 +64,11 @@
         refinement: $weapon.refinement
       },
       artifacts: {
-        flower: {
-          ...$artifact.flower,
-          selected: $artifact.flower.selected.name,
-          uid: $artifact.flower.selected.uid,
-          url: $artifact.flower.selected.url,
-          fullName: $artifact.flower.selected.fullName
-        },
-        feather: {
-          ...$artifact.feather,
-          selected: $artifact.feather.selected.name,
-          uid: $artifact.feather.selected.uid,
-          url: $artifact.feather.selected.url,
-          fullName: $artifact.feather.selected.fullName
-        },
-        sands: {
-          ...$artifact.sands,
-          selected: $artifact.sands.selected.name,
-          uid: $artifact.sands.selected.uid,
-          url: $artifact.sands.selected.url,
-          fullName: $artifact.sands.selected.fullName
-        },
-        goblet: {
-          ...$artifact.goblet,
-          selected: $artifact.goblet.selected.name,
-          uid: $artifact.goblet.selected.uid,
-          url: $artifact.goblet.selected.url,
-          fullName: $artifact.goblet.selected.fullName
-        },
-        circlet: {
-          ...$artifact.circlet,
-          selected: $artifact.circlet.selected.name,
-          uid: $artifact.circlet.selected.uid,
-          url: $artifact.circlet.selected.url,
-          fullName: $artifact.circlet.selected.fullName
-        }
+        flower: createArtifactItem($artifact.flower),
+        feather: createArtifactItem($artifact.feather),
+        sands: createArtifactItem($artifact.sands),
+        goblet: createArtifactItem($artifact.goblet),
+        circlet: createArtifactItem($artifact.circlet)
       }
     };
   }
