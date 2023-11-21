@@ -185,6 +185,12 @@ function createArtifact() {
 
         if (selected.name === 'none') {
           state[relic].mainStat.value = 0;
+          state[relic].substats = [
+            { stat: '', value: 0 },
+            { stat: '', value: 0 },
+            { stat: '', value: 0 },
+            { stat: '', value: 0 }
+          ];
         } else {
           state[relic].mainStat.value = getArtifactStat(
             state[relic].isFiveStar,
