@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="flex flex-wrap justify-between gap-y-2">
+<div class="flex flex-wrap justify-start gap-2 xs:justify-between">
   {#each filters as filter}
     <button
       on:click={() => setFilter(filter)}
