@@ -5,6 +5,8 @@
   import type { LoadOutTag } from '$lib/types/loadout';
   import ShortModal from '../Modal/ShortModal.svelte';
   import TagInputLabel from '../Loadout/TagInputLabel.svelte';
+  import type { ArtifactType } from '$lib/types/artifacts';
+  import { artifactStorage } from '$lib/stores/artifactStorageStore';
 
   export let build: any;
 
@@ -37,6 +39,13 @@
       weapon: { ...data.weapon },
       artifacts: { ...data.artifacts }
     };
+
+    // Save each valid artifact to storage
+    Object.keys(data.artifacts).forEach((type: any) => {
+      if (data.artifacts[type].selected !== 'none') {
+        artifactStorage.saveArtifact(type, data.artifacts[type]);
+      }
+    });
 
     loadouts.addLoadout({ ...newLoadout });
     dialog.close();
