@@ -60,7 +60,7 @@
     const currentArtifact = {
       ...$artifact[type],
       selected: name,
-      id: uid,
+      uid: uid,
       url,
       fullName
     };
