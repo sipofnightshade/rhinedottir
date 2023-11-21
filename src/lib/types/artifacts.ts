@@ -97,19 +97,11 @@ export type Action = {
   }[];
 };
 
-export type Artifact = {
+export type SelectedArtifact = {
   uid: number;
   name: ArtifactNames;
   fullName: string;
   url: string;
-  rating: number[];
-  twoPiece: Action[];
-  fourPiece: Action[];
-};
-
-export type SelectedArtifact = {
-  name: ArtifactNames;
-  fullName: string;
   rating: number[];
   twoPiece: Action[];
   fourPiece: Action[];

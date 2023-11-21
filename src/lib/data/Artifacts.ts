@@ -1,7 +1,7 @@
-import type { Artifact } from '$lib/types/artifacts';
+import type { SelectedArtifact } from '$lib/types/artifacts';
 
 // change into object
-export const ArtifactData: Artifact[] = [
+export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 0,
     url: 'none',

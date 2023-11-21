@@ -11,9 +11,9 @@ import type { CurrentCharacter } from './characterStore';
 import type { ArtifactState } from './artifactStore';
 import type { CurrentWeapon } from './weaponStore';
 import type { CharacterRecord, SelectedWeapon } from '$lib/types/global';
-import type { Artifact } from '$lib/types/artifacts';
 import type { LoadoutItem } from './loadoutsStore';
 import { allStats } from '$lib/data/Stats';
+import type { SelectedArtifact } from '$lib/types/artifacts';
 
 type PartyMember = {
   loadoutID: string;
@@ -79,23 +79,33 @@ function createParty() {
         // set artifacts
         const flower = {
           ...loadout.artifacts.flower,
-          selected: ArtifactData.find((data) => data.name === flowerName) as Artifact
+          selected: ArtifactData.find(
+            (data) => data.name === flowerName
+          ) as SelectedArtifact
         };
         const feather = {
           ...loadout.artifacts.feather,
-          selected: ArtifactData.find((data) => data.name === featherName) as Artifact
+          selected: ArtifactData.find(
+            (data) => data.name === featherName
+          ) as SelectedArtifact
         };
         const sands = {
           ...loadout.artifacts.sands,
-          selected: ArtifactData.find((data) => data.name === sandsName) as Artifact
+          selected: ArtifactData.find(
+            (data) => data.name === sandsName
+          ) as SelectedArtifact
         };
         const goblet = {
           ...loadout.artifacts.goblet,
-          selected: ArtifactData.find((data) => data.name === gobletName) as Artifact
+          selected: ArtifactData.find(
+            (data) => data.name === gobletName
+          ) as SelectedArtifact
         };
         const circlet = {
           ...loadout.artifacts.circlet,
-          selected: ArtifactData.find((data) => data.name === circletName) as Artifact
+          selected: ArtifactData.find(
+            (data) => data.name === circletName
+          ) as SelectedArtifact
         };
 
         state[id] = {

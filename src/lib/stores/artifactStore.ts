@@ -24,6 +24,8 @@ export interface ArtifactState {
 const initialState: ArtifactState = {
   flower: {
     selected: {
+      uid: 0,
+      url: 'none',
       name: 'none',
       fullName: 'None',
       rating: [],
@@ -50,6 +52,8 @@ const initialState: ArtifactState = {
   },
   feather: {
     selected: {
+      uid: 0,
+      url: 'none',
       name: 'none',
       fullName: 'None',
       rating: [],
@@ -76,6 +80,8 @@ const initialState: ArtifactState = {
   },
   sands: {
     selected: {
+      uid: 0,
+      url: 'none',
       name: 'none',
       fullName: 'None',
       rating: [],
@@ -102,6 +108,8 @@ const initialState: ArtifactState = {
   },
   goblet: {
     selected: {
+      uid: 0,
+      url: 'none',
       name: 'none',
       fullName: 'None',
       rating: [],
@@ -128,6 +136,8 @@ const initialState: ArtifactState = {
   },
   circlet: {
     selected: {
+      uid: 0,
+      url: 'none',
       name: 'none',
       fullName: 'None',
       rating: [],
