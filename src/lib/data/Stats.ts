@@ -68,6 +68,29 @@ export const StatLabels = {
   healing: 'Healing'
 };
 
+export const LongStatLabels = {
+  '': 'Select...',
+  hp: 'HP',
+  atk: 'ATK',
+  def: 'DEF',
+  'hp%': 'HP%',
+  'atk%': 'ATK%',
+  'def%': 'DEF%',
+  em: 'Elemental Mastery',
+  energy: 'Energy Recharge',
+  critrate: 'CRIT Rate',
+  critdmg: 'CRIT DMG',
+  anemo: 'Anemo DMG Bonus',
+  cryo: 'Cryo DMG Bonus',
+  dendro: 'Dendro DMG Bonus',
+  electro: 'Electro DMG Bonus',
+  geo: 'Geo DMG Bonus',
+  hydro: 'Hydro DMG Bonus',
+  pyro: 'Pyro DMG Bonus',
+  physical: 'Physical DMG Bonus',
+  healing: 'Healing Bonus'
+};
+
 export const weaponStatLabels = {
   critdmg: 'CRIT DMG',
   critrate: 'CRIT Rate',
