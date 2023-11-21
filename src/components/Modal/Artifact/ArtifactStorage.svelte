@@ -16,6 +16,8 @@
   import { ArtifactData } from '$lib/data/Artifacts';
   import { artifact } from '$lib/stores/artifactStore';
 
+  import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
+
   export let type: ArtifactType;
   // filter data
   const basefilters: ArtifactStats[] = [
@@ -122,7 +124,7 @@
     {#each filteredData as artifact}
       <button
         on:click={() => handleArtifactClick(artifact)}
-        class="flex w-full items-center gap-2 rounded-xl border border-slate-600 bg-slate-700/80 pr-2 text-sm transition-colors hover:border-slate-500 active:bg-slate-600 xs-375:text-[15px] xs-375:leading-5"
+        class="flex w-full items-center gap-2 rounded-xl border border-slate-600 bg-slate-700/80 pr-2 text-sm transition-colors hover:border-slate-500 active:bg-slate-600"
       >
         <div>
           <Thumbnail
@@ -151,9 +153,13 @@
           >
             <div class="flex items-center gap-0.5">
               <StatImage stat={artifact.mainStat.stat} />
-              <h3>{LongStatLabels[artifact.mainStat.stat]}</h3>
+              <h3 class="font-bold uppercase text-slate-300">
+                {LongStatLabels[artifact.mainStat.stat]}
+              </h3>
             </div>
-            <span>{artifact.mainStat.value}</span>
+            <span class="font-bold text-slate-300">
+              +{artifactStatFormatter(artifact.mainStat.stat, artifact.mainStat.value)}
+            </span>
           </div>
           <!-- substats -->
           <div class="grid grid-cols-2 gap-1">
@@ -161,10 +167,12 @@
               {#if substat.stat}
                 <div class="flex items-center justify-start">
                   <StatImage stat={substat.stat} />
-                  <span class="ml-0.5 hidden text-slate-300 xs:block"
+                  <span class="ml-0.5 hidden truncate text-slate-300 xs:block"
                     >{StatLabels[substat.stat]}</span
                   >
-                  <span class="ml-2 font-bold xs:ml-0">+{substat.value}</span>
+                  <span class="ml-2 font-bold text-[#DFD2B9] xs:ml-0">
+                    +{artifactStatFormatter(substat.stat, substat.value)}
+                  </span>
                 </div>
               {:else}
                 <div
