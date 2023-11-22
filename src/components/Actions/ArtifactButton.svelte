@@ -67,12 +67,13 @@
   }
 
   function handleActiveSets(name: ArtifactNames) {
-    if (!name) {
-      activeSets.removeActiveSet(name, id);
+    if (!name && prevActiveName) {
+      activeSets.removeActiveSet(prevActiveName, id);
       return;
     }
 
     activeSets.setActiveSet(name, id);
+    prevActiveName = name;
   }
 
   $: setCount = getArtifactSetCount(currentArtifacts);
