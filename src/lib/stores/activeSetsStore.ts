@@ -1,47 +1,40 @@
-import type { ArtifactNames } from '$lib/types/artifacts';
+// activeSetsStore.ts
 import { writable } from 'svelte/store';
+import type { ArtifactNames } from '$lib/types/artifacts';
 
-type Set = ArtifactNames | undefined;
+export type ActiveSets = Map<ArtifactNames, 'main' | 'one' | 'two' | 'three'>;
 
-export type ActiveSets = {
-  main: Set;
-  one: Set;
-  two: Set;
-  three: Set;
-};
-
-type State = {
-  artifacts: ActiveSets;
-  weapons: ActiveSets;
-};
-
-const initialState: State = {
-  artifacts: {
-    main: undefined,
-    one: undefined,
-    two: undefined,
-    three: undefined
-  },
-  weapons: {
-    main: undefined,
-    one: undefined,
-    two: undefined,
-    three: undefined
-  }
-};
+const initialState: ActiveSets = new Map();
 
 function createActiveSets() {
   const { subscribe, update } = writable(initialState);
 
   return {
     subscribe,
-    setActiveSet: (
-      type: 'weapons' | 'artifacts',
-      id: 'main' | 'one' | 'two' | 'three',
-      setName: Set
-    ) =>
+    setActiveSet: (activeName: ArtifactNames, id: 'main' | 'one' | 'two' | 'three') =>
       update((state) => {
-        state[type][id] = setName;
+        // return if undefined
+        if (!activeName) return state;
+
+        // Check if the activeName is already present and has a different id
+        const existingId = state.get(activeName);
+        if (existingId && existingId !== id) {
+          console.warn(
+            `Active ${activeName} is unique and can only be set for ${existingId}`
+          );
+          return state;
+        }
+
+        state.set(activeName, id);
+        return state;
+      }),
+    removeActiveSet: (activeName: ArtifactNames, id: 'main' | 'one' | 'two' | 'three') =>
+      update((state) => {
+        // return if undefined
+        if (!activeName) return state;
+
+        // if the activeName exists with the specified id, delete
+        if (state.get(activeName) === id) state.delete(activeName);
         return state;
       })
   };

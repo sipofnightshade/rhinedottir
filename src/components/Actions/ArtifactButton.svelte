@@ -21,6 +21,7 @@
   import type { Action } from '$lib/types/actions';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
+  import type { ArtifactNames } from '$lib/types/artifacts';
 
   // props
   export let id: 'main' | 'one' | 'two' | 'three';
@@ -49,6 +50,7 @@
 
   const weaponType = currentChar.selected.weapon;
   let prevPassives: Stats[] = [];
+  let prevActiveName: ArtifactNames;
 
   function handleSetPassives(passives: Stats[]) {
     // if passives didn't change, then return
@@ -64,6 +66,15 @@
     prevPassives = passives;
   }
 
+  function handleActiveSets(name: ArtifactNames) {
+    if (!name) {
+      activeSets.removeActiveSet(name, id);
+      return;
+    }
+
+    activeSets.setActiveSet(name, id);
+  }
+
   $: setCount = getArtifactSetCount(currentArtifacts);
   $: setBonuses = getArtifactSetBonuses(setCount, weaponType);
 
@@ -71,9 +82,14 @@
   $: handleSetPassives(currentPassives);
 
   $: currentActive = setBonuses.active as Action;
+  $: handleActiveSets(currentActive.name as ArtifactNames);
+
+  $: showAction = currentActive.unique
+    ? $activeSets.get(currentActive.name as ArtifactNames) === id
+    : true;
 </script>
 
-{#if currentActive}
+{#if currentActive && showAction}
   <svelte:component
     this={buttons[currentActive.actionType]}
     data={currentActive}
