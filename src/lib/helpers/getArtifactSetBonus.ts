@@ -1,7 +1,5 @@
 import { ArtifactData } from '$lib/data/Artifacts';
 import type { All_Stats } from '$lib/data/Stats';
-import type { ActiveSets } from '$lib/stores/activeSetsStore';
-import type { ArtifactState } from '$lib/stores/artifactStore';
 import type { Action, ArtifactNames } from '$lib/types/artifacts';
 import type { WeaponCategory } from '$lib/types/global';
 
@@ -15,59 +13,43 @@ interface ResultObject {
 }
 
 export function getArtifactSetBonuses(
-  artifactStore: ArtifactState,
-  weapon: WeaponCategory,
-  allActiveSets: ActiveSets
+  setCount: Map<ArtifactNames, number>,
+  weapon: WeaponCategory
 ) {
-  const artifactNames = Object.values(artifactStore).map(
-    (artifact) => artifact.selected.name
-  );
-
-  const artifactSetCount = artifactNames.reduce((count, name) => {
-    if (name !== 'none') {
-      count[name] = (count[name] || 0) + 1;
-    }
-    return count;
-  }, {});
-
   const setBonuses: Action[] = [];
   let activeDetails: { name: ArtifactNames; fullName: string };
 
-  for (const name in artifactSetCount) {
-    const artifactData = ArtifactData.find((data) => data.name === name);
-    if (!artifactData) continue;
+  setCount.forEach((count, name) => {
+    // Skip irrelevant artifacts
+    if (count < 2 || name === 'none') return;
 
-    if (artifactSetCount[name] >= 2 && artifactData.twoPiece) {
+    // Find the artifactData. Warn & Skip if not found
+    const artifactData = ArtifactData.find((data) => data.name === name);
+    if (!artifactData) {
+      console.warn(`ArtifactData not found for artifact: ${name}`);
+      return;
+    }
+
+    // ✅ Check for 2-piece set bonuses ---------------------//
+    if (count >= 2 && artifactData.twoPiece) {
       setBonuses.push(...artifactData.twoPiece);
     }
 
-    const unique =
-      Object.values(allActiveSets).includes(artifactData.name) &&
-      artifactData.fourPiece[0].unique;
-
-    /**
-     * @todo
-     * - Example: If main and party one have Noblesse Oblige sets,
-     * only main's set will show. However, when removing main's set
-     * or changing it, the party one Noblesse set active does not
-     * appear.
-     * - 💡 This makes me to believe that the party sets are not
-     * updated the properly.
-     */
-
-    if (artifactSetCount[name] >= 4 && artifactData.fourPiece && !unique) {
-      // checks to see if character weapon matches setBonus requirements
+    // ✅ Check for 4-piece set bonuses ---------------------//
+    if (count >= 4 && artifactData.fourPiece) {
+      // Filter valid 4-piece set bonuses based on the character's weapon
       const validFourPieceBonuses = artifactData.fourPiece.filter(
         (bonus) => !bonus.weapons || bonus.weapons.includes(weapon)
       );
 
+      // If valid 4-piece set bonuses are found, add them to setBonuses and update activeDetails
       if (validFourPieceBonuses.length > 0) {
         setBonuses.push(...validFourPieceBonuses);
-        // add the data in the above `push` one time
+        // Consider updating activeDetails only if it's necessary for further use
         activeDetails = { name: artifactData.name, fullName: artifactData.fullName };
       }
     }
-  }
+  });
 
   // separate & combine all similar bonuses
   const separatedBonuses = setBonuses.reduce<ResultObject>(
@@ -87,6 +69,8 @@ export function getArtifactSetBonuses(
     },
     { passives: [], active: {} }
   );
+
+  console.log('separatedBonuses', separatedBonuses);
 
   return { ...separatedBonuses };
 }

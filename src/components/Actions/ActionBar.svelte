@@ -20,7 +20,7 @@
 </script>
 
 <section
-  class="flex w-full auto-cols-min grid-flow-col items-center gap-1 overflow-x-auto overflow-y-hidden rounded-lg bg-slate-700 px-2 py-4 md:py-2"
+  class="horizontalScrollbar flex w-full auto-cols-min grid-flow-col items-center gap-1 overflow-x-auto overflow-y-hidden rounded-lg bg-slate-700 px-2 py-4 md:py-2"
 >
   {#each $character.selected.actions as data (data.name)}
     <CharacterButton
@@ -30,17 +30,17 @@
       currentStats={$stats.main}
     />
   {/each}
-  <ArtifactButton
-    setData={$artifact}
-    id="main"
-    currentChar={$character}
-    currentStats={$stats.main}
-  />
   <WeaponButton
     currentWeapon={$weapon}
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
+  />
+  <ArtifactButton
+    id="main"
+    currentChar={$character}
+    currentStats={$stats.main}
+    currentArtifacts={$artifact}
   />
 
   <!-- Party one -->
@@ -53,17 +53,17 @@
         currentStats={$stats.one}
       />
     {/each}
-    <ArtifactButton
-      setData={$party.one.artifacts}
-      id="one"
-      currentChar={$party.one.character}
-      currentStats={$stats.one}
-    />
     <WeaponButton
       currentWeapon={$party.one.weapon}
       id="one"
       currentChar={$party.one.character}
       currentStats={$stats.one}
+    />
+    <ArtifactButton
+      id="one"
+      currentChar={$party.one.character}
+      currentStats={$stats.one}
+      currentArtifacts={$party.one.artifacts}
     />
   {/if}
 
@@ -77,17 +77,17 @@
         currentStats={$stats.two}
       />
     {/each}
-    <ArtifactButton
-      setData={$party.two.artifacts}
-      id="two"
-      currentChar={$party.two.character}
-      currentStats={$stats.two}
-    />
     <WeaponButton
       currentWeapon={$party.two.weapon}
       id="two"
       currentChar={$party.two.character}
       currentStats={$stats.two}
+    />
+    <ArtifactButton
+      id="two"
+      currentChar={$party.two.character}
+      currentStats={$stats.two}
+      currentArtifacts={$party.two.artifacts}
     />
   {/if}
   <!-- Party three -->
@@ -100,17 +100,17 @@
         currentStats={$stats.three}
       />
     {/each}
-    <ArtifactButton
-      setData={$party.three.artifacts}
-      id="three"
-      currentChar={$party.three.character}
-      currentStats={$stats.three}
-    />
     <WeaponButton
       currentWeapon={$party.three.weapon}
       id="three"
       currentChar={$party.three.character}
       currentStats={$stats.three}
+    />
+    <ArtifactButton
+      id="three"
+      currentChar={$party.three.character}
+      currentStats={$stats.three}
+      currentArtifacts={$party.three.artifacts}
     />
   {/if}
 

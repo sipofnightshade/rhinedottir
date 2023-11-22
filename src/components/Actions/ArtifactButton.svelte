@@ -14,20 +14,19 @@
   import { getArtifactSetBonuses } from '$lib/helpers/getArtifactSetBonus';
   import { action } from '$lib/stores/actionStore';
   import { activeSets } from '$lib/stores/activeSetsStore';
+  import { getArtifactSetCount } from '$lib/helpers/getArtifactSetCount';
 
   // types
   import type { ArtifactState } from '$lib/stores/artifactStore';
   import type { Action } from '$lib/types/actions';
-  import type { WeaponCategory } from '$lib/types/global';
-  import type { ArtifactNames } from '$lib/types/artifacts';
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
 
   // props
-  export let setData: ArtifactState;
   export let id: 'main' | 'one' | 'two' | 'three';
   export let currentStats: Index_Stats;
   export let currentChar: CurrentCharacter;
+  export let currentArtifacts: ArtifactState;
 
   type Stats = { scaling: string; coef: number | number[] };
 
@@ -44,38 +43,37 @@
     region: RegionMatchButton
   };
 
+  /** @todo 💡💡💡💡💡💡💡💡💡💡💡💡💡💡💡💡
+   * - Use Context to share Passives with ActionStats
+   */
+
+  const weaponType = currentChar.selected.weapon;
   let prevPassives: Stats[] = [];
-  let currentActive: Action;
 
-  // Function to add or remove passive stats from the store
-  function updateBonuses(bonuses: Stats[], isAdding: boolean) {
-    for (const bonus of bonuses) {
-      const { scaling, coef } = bonus;
-      if (isAdding) {
-        action.addStat(id, 'self', scaling, coef as number);
-      } else {
-        action.removeStat(id, 'self', scaling, coef as number);
-      }
-    }
+  function handleSetPassives(passives: Stats[]) {
+    // if passives didn't change, then return
+    if (JSON.stringify(passives) === JSON.stringify(prevPassives)) return;
+
+    prevPassives.forEach((passive) => {
+      action.removeStat(id, 'self', passive.scaling, passive.coef as number);
+    });
+    passives.forEach((passive) => {
+      action.addStat(id, 'self', passive.scaling, passive.coef as number);
+    });
+
+    prevPassives = passives;
   }
 
-  function setBonuses(data: ArtifactState, weapon: WeaponCategory) {
-    const artifactSetBonuses = getArtifactSetBonuses(data, weapon, $activeSets.artifacts);
-    const newPassives = artifactSetBonuses.passives;
-    if (JSON.stringify(newPassives) !== JSON.stringify(prevPassives)) {
-      updateBonuses(prevPassives, false);
-      updateBonuses(newPassives, true);
-      // Update prevPassives with the latest value
-      prevPassives = newPassives;
-    }
-    currentActive = artifactSetBonuses.active as Action;
-    activeSets.setActiveSet('artifacts', id, currentActive.url as ArtifactNames);
-  }
+  $: setCount = getArtifactSetCount(currentArtifacts);
+  $: setBonuses = getArtifactSetBonuses(setCount, weaponType);
 
-  $: setBonuses(setData, currentChar.selected.weapon);
+  $: currentPassives = setBonuses.passives;
+  $: handleSetPassives(currentPassives);
+
+  $: currentActive = setBonuses.active as Action;
 </script>
 
-{#if currentActive?.actionType}
+{#if currentActive}
   <svelte:component
     this={buttons[currentActive.actionType]}
     data={currentActive}
