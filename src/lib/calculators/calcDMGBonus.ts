@@ -18,7 +18,7 @@ export function calcDMGBonus(hit: Hit, $stats: Index_Stats, element: DamageType)
   }
 
   // if hit is not physical, then add allElemental dmg bonus
-  if (hit.hasOwnDMGType !== 'physical') {
+  if (hit.hasOwnDMGType !== 'physical' && element !== 'physical') {
     dmgBonus += $stats.dmgIncreaseElemental;
   }
 
