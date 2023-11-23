@@ -4,7 +4,7 @@
 </script>
 
 <div class="mt-2">
-  <div class="mt-2 grid grid-cols-4 gap-2 xs:grid-cols-8">
+  <div class="mt-2 grid grid-cols-4 gap-2 xs-375:grid-cols-6 xs:grid-cols-8">
     {#each Array(8) as _, index (index)}
       {#if playerBuilds[index]}
         <ImportButton build={playerBuilds[index]} />
