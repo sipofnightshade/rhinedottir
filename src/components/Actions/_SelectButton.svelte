@@ -4,7 +4,7 @@
     Action,
     ActionBtnID,
     ActionButtonColor,
-    CoefSource,
+    ActionValue,
     Target
   } from '$lib/types/actions';
   import type { CharacterSpecificNames } from '$lib/types/characters';
@@ -22,7 +22,6 @@
   import ActionButton from './ActionButton.svelte';
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
   import StatImage from '../Desktop/StatImage.svelte';
-  import Close from '$lib/icons/Close.svelte';
 
   // props
   export let type: ActionButtonColor;
@@ -31,21 +30,18 @@
   export let currentChar: CurrentCharacter;
   export let currentStats: Index_Stats;
 
-  type Stat = { scaling: string; coef: number; source: CoefSource };
-
   const target = data.target ?? 'self';
   const cName = currentChar.selected.id;
   const combatValue = data.hasLevels ? getCombatValue(data.hasLevels) : null;
   const sourceStats: string[] | null = data.sourceStats ?? null;
 
   let previousStatValues: any = {};
-  let selected: any;
+  let selected: ActionValue | undefined;
   let addedStats: { [key: string]: number } = {};
-  let prevSelected: Stat | undefined;
 
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
-  function addStats(selected: Stat) {
+  function addStats(selected: ActionValue) {
     const { scaling, coef, source } = selected;
     const talentValue =
       talentLvl && combatValue
@@ -60,12 +56,9 @@
 
     action.addStat(id, target as Target, scaling, result);
     addedStats[scaling] = result;
-    if (prevSelected) {
-      removeStats(prevSelected);
-    }
   }
 
-  function removeStats(stat: Stat) {
+  function removeStats(stat: ActionValue) {
     const { scaling } = stat;
     if (scaling in addedStats) {
       const coef = addedStats[scaling];
@@ -74,10 +67,19 @@
     }
   }
 
-  function onSelect(selected: Stat | undefined) {
-    if (prevSelected) removeStats(prevSelected);
-    if (selected) addStats(selected);
-    prevSelected = selected;
+  function handleSelect(stat: ActionValue) {
+    // always remove selected if it exists
+    if (selected) removeStats(selected);
+
+    if (stat === selected) {
+      selected = undefined;
+      return;
+    }
+
+    if (stat) {
+      addStats(stat);
+      selected = stat;
+    }
   }
 
   function isAnyStatChanged() {
@@ -106,12 +108,7 @@
       removeStats(selected);
     }
     selected = undefined;
-    prevSelected = undefined;
   });
-
-  $: {
-    onSelect(selected);
-  }
 
   let dialog: HTMLDialogElement;
 
@@ -136,7 +133,7 @@
     <div class="grid auto-cols-fr grid-flow-col gap-1">
       {#each data.values as item (item.scaling)}
         <button
-          on:click={() => (selected = item)}
+          on:click={() => handleSelect(item)}
           class="flex aspect-square items-center justify-center rounded-lg p-2 transition-all"
           class:bg-slate-500={item.scaling === selected?.scaling}
           class:hover:bg-slate-700={item.scaling !== selected?.scaling}
@@ -148,12 +145,6 @@
           {/if}
         </button>
       {/each}
-      <button
-        on:click={() => (selected = undefined)}
-        class="flex h-full items-center justify-center rounded-lg transition-all hover:bg-slate-700 focus:bg-slate-800"
-      >
-        <Close class="w-3 fill-slate-200" />
-      </button>
     </div>
   </svelte:fragment>
 </ActionDetails>
