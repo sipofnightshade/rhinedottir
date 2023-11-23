@@ -275,6 +275,7 @@ const charName: CharacterRecord = {
         "If the health of a character within the AoE is higher than 70%, they gain an ATK Bonus that is based on Bennett's Base ATK.",
       target: 'party',
       actionType: 'toggle',
+      hideAtConstellation: 1,
       hasLevels: 'burst',
       sourceStats: ['baseATK'],
       values: [
@@ -286,22 +287,24 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Grand Expectation',
-      url: 'UI_Talent_S_Bennett_01',
+      name: 'Fantastic Voyage - Grand Expedition',
+      url: 'Skill_E_Bennett_01',
       description:
-        "**Fantastic Voyage**'s ATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
+        "If the health of a character within the AoE is higher than 70%, they gain an ATK Bonus that is based on Bennett's Base ATK.\n\n**C1 - Fantastic Voyage**\nATK increase no longer has an HP restriction, and gains an additional 20% of Bennett's Base ATK.",
       target: 'party',
-      constellation: 1,
-      sourceStats: ['baseATK'],
       actionType: 'toggle',
+      constellation: 1,
+      hasLevels: 'burst',
+      sourceStats: ['baseATK'],
       values: [
         {
           scaling: 'atk',
-          coef: 0.2,
+          coef: 'param8',
           source: ['baseATK', 0]
         }
       ]
     },
+
     {
       name: 'Impasse Conqueror',
       url: 'UI_Talent_S_Bennett_02',
