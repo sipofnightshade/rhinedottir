@@ -1,4 +1,3 @@
-import type { All_Stats } from '$lib/data/Stats';
 import type { CharacterNames, CharacterSpecificNames } from '$lib/types/characters';
 import type { ArtifactNames, ArtifactStats } from './artifacts';
 import type { Visions, WeaponCategory } from './global';
@@ -11,6 +10,7 @@ export type SavedCharacter = {
   id: CharacterSpecificNames;
   weapon: WeaponCategory;
   lvl: number;
+  rating: 4 | 5;
   constellation: number;
   atk: number;
   skill: number;
@@ -26,12 +26,14 @@ export type SavedWeapon = {
   url: string;
   selected: WeaponNames;
   lvl: number;
+  rating: 3 | 4 | 5;
   refinement: number;
 };
 
 export type SavedArtifactItem = {
   uid: number;
   selected: ArtifactNames;
+  rating: number[];
   fullName: string;
   url: string;
   lvl: number;

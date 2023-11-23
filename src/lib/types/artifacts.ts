@@ -97,12 +97,14 @@ export type Action = {
   }[];
 };
 
+type ArtifactRating = 5 | 4;
+
 export type SelectedArtifact = {
   uid: number;
   name: ArtifactNames;
   fullName: string;
   url: string;
-  rating: number[];
+  rating: ArtifactRating[];
   twoPiece: Action[];
   fourPiece: Action[];
 };
