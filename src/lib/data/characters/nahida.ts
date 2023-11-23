@@ -211,12 +211,48 @@ const charName: CharacterRecord = {
         'When the Shrine of Maya field is unleashed, the following effects will be separately unleashed based on the Elemental Types present within the party.\n·Pyro: While Nahida remains within the Shrine of Maya, the DMG dealt by Tri-Karma Purification from "All Schemes to Know" is increased.\n·Electro: While Nahida remains within the Shrine of Maya, the interval between each Tri-Karma Purification from "All Schemes to Know" is decreased.\n·Hydro: The Shrine of Maya\'s duration is increased.\n\nIf there are at least 2 party members of the aforementioned Elemental Types present when the field is deployed, the aforementioned effects will be increased further.\n\nEven if Nahida is not on the field, these bonuses will still take effect so long as party members are within the Shrine of Maya.',
       target: 'self',
       actionType: 'visionMatchToggle',
+      hideAtConstellation: 1,
+      visionCondition: 'pyro',
       hasLevels: 'burst',
       hasVisionLabel: 'pyro',
       values: [
         {
           scaling: 'triKarma',
           coef: ['param1', 'param2']
+        }
+      ]
+    },
+    {
+      name: 'The Seed of Stored Knowledge',
+      url: 'UI_Talent_S_Nahida_01',
+      description:
+        'When the **Shrine of Maya** is unleashed and the Elemental Types of the party members are being tabulated, the count will add 1 to the number of Pyro, Electro, and Hydro characters respectively.',
+      constellation: 1,
+      hasLevels: 'burst',
+      target: 'self',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'triKarma',
+          coef: 'param1'
+        }
+      ]
+    },
+    {
+      name: 'Shrine of Maya - Pyro - C1',
+      url: 'Skill_E_Nahida_01',
+      description:
+        'When the Shrine of Maya field is unleashed, the following effects will be separately unleashed based on the Elemental Types present within the party.\n·Pyro: While Nahida remains within the Shrine of Maya, the DMG dealt by Tri-Karma Purification from "All Schemes to Know" is increased.\n·Electro: While Nahida remains within the Shrine of Maya, the interval between each Tri-Karma Purification from "All Schemes to Know" is decreased.\n·Hydro: The Shrine of Maya\'s duration is increased.\n\nIf there are at least 2 party members of the aforementioned Elemental Types present when the field is deployed, the aforementioned effects will be increased further.\n\nEven if Nahida is not on the field, these bonuses will still take effect so long as party members are within the Shrine of Maya.\n\n**MODIFIED C1 - The Seed of Stored Knowledge:** Adds the second part of the DMG Bonus to **All Schemes to Know** if a single Pyro Character is in the party.',
+      target: 'self',
+      constellation: 1,
+      actionType: 'visionMatchToggle',
+      visionCondition: 'pyro',
+      hasLevels: 'burst',
+      hasVisionLabel: 'pyro',
+      values: [
+        {
+          scaling: 'triKarma',
+          coef: ['param10']
         }
       ]
     },
@@ -259,20 +295,6 @@ const charName: CharacterRecord = {
         }
       ]
     },
-    // {
-    //   name: 'The Seed of Stored Knowledge',
-    //   url: 'UI_Talent_S_Nahida_01',
-    //   description: "When the **Shrine of Maya** is unleashed and the Elemental Types of the party members are being tabulated, the count will add 1 to the number of Pyro, Electro, and Hydro characters respectively.",
-    //   constellation:1,
-    //   target: 'self',
-    //   actionType: 'passive',
-    //   values: [
-    //     {
-    //       scaling: 'energy',
-    //       coef: 0
-    //     }
-    //   ]
-    // },
     {
       name: 'The Root of All Fullness - Buffs',
       url: 'UI_Talent_S_Nahida_02',
