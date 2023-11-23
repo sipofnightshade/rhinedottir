@@ -898,6 +898,47 @@ export const sword: Swords[] = [
     ]
   },
   {
+    uid: 11513,
+    name: 'splendoroftranquilwaters',
+    fullName: 'Splendor of Tranquil Waters',
+    url: 'UI_EquipIcon_Sword_Regalis',
+    rating: 5,
+    type: 'sword',
+    specialized: 'critdmg',
+    effectname: 'Dawn and Dusk by the Lake',
+    action: [
+      {
+        actionType: 'stack',
+        values: [
+          [{ scaling: 'skill', coef: [0.08, 0.08, 0.08] }],
+          [{ scaling: 'skill', coef: [0.1, 0.1, 0.1] }],
+          [{ scaling: 'skill', coef: [0.12, 0.12, 0.12] }],
+          [{ scaling: 'skill', coef: [0.14, 0.14, 0.14] }],
+          [{ scaling: 'skill', coef: [0.16, 0.16, 0.16] }]
+        ]
+      },
+      {
+        actionType: 'stack',
+        values: [
+          [{ scaling: 'hp%', coef: [0.14, 0.14] }],
+          [{ scaling: 'hp%', coef: [0.175, 0.175] }],
+          [{ scaling: 'hp%', coef: [0.21, 0.21] }],
+          [{ scaling: 'hp%', coef: [0.245, 0.245] }],
+          [{ scaling: 'hp%', coef: [0.28, 0.28] }]
+        ]
+      }
+    ],
+    effect:
+      "When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by {0} for 6s. Max 3 stacks. This effect can be triggered once every 0.2s.\n\nWhen other party members' current HP increases or decreases, the equipping character's Max HP will be increased by {1} for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field.",
+    ref: [
+      ['8%', '14%'],
+      ['10%', '17.5%'],
+      ['12%', '21%'],
+      ['14%', '24.5%'],
+      ['16%', '28%']
+    ]
+  },
+  {
     uid: 11504,
     name: 'summitshaper',
     fullName: 'Summit Shaper',
@@ -950,6 +991,19 @@ export const sword: Swords[] = [
     effect:
       'Effective only on the following platform: \n"PlayStation Network"\nHitting opponents with Normal and Charged Attacks grants a {0} chance to deal {1} ATK as DMG in a small AoE. This effect can only occur once every 10s. Additionally, if the Traveler equips the Sword of Descension, their ATK is increased by {2}.',
     ref: [['50%', '200%', '66'], [], [], [], []]
+  },
+  {
+    uid: 11428,
+    name: 'swordofnarzissenkreuz',
+    fullName: 'Sword of Narzissenkreuz',
+    url: 'UI_EquipIcon_Sword_Purewill',
+    rating: 4,
+    type: 'sword',
+    specialized: 'atk%',
+    effectname: "Hero's Blade",
+    effect:
+      'When the equipping character does not have an Arkhe: When Normal Attacks, Charged Attacks, or Plunging Attacks strike, a Pneuma or Ousia energy blast will be unleashed, dealing {0} of ATK as DMG. This effect can be triggered once every 12s. The energy blast type is determined by the current type of the Sword of Narzissenkreuz.',
+    ref: [['160%'], ['200%'], ['240%'], ['280%'], ['320%']]
   },
   {
     uid: 11410,

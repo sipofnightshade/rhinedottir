@@ -162,4 +162,6 @@ export type WeaponNames =
   | 'balladoftheboundlessblue'
   | 'rangegauge'
   | 'tomeoftheeternalflow'
-  | 'cashflowsupervision';
+  | 'cashflowsupervision'
+  | 'splendoroftranquilwaters'
+  | 'swordofnarzissenkreuz';
