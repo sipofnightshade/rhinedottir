@@ -418,9 +418,23 @@ const charName: CharacterRecord = {
           source: ['hp', 0, 90000, 1000]
         }
       ]
+    },
+    {
+      name: 'Countless Sights to See',
+      url: 'UI_Talent_S_Momoka_03',
+      description:
+        'All nearby party members will gain 12% All Elemental DMG Bonus within 15s after Kirara uses her Elemental Skill or Burst.',
+      constellation: 6,
+      target: 'party',
+      actionType: 'toggle',
+      values: [
+        {
+          scaling: 'dmgIncreaseElemental',
+          coef: 0.12
+        }
+      ]
     }
-  ],
-  offField: []
+  ]
 };
 
 export default charName;
