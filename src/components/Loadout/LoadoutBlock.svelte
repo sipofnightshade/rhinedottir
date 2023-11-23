@@ -32,10 +32,10 @@
   <h3 class="w-full text-left">{item.title}</h3>
 
   <!-- Tags -->
-  <div class="pointer-events-none flex w-full items-center text-sm">
-    <div class="mr-4">
+  <div class="pointer-events-none flex w-full items-center gap-2 text-sm xs:gap-4">
+    <div>
       <span class="rounded-full bg-slate-800 px-2.5 py-1">
-        {labels.lvl[item.character.lvl]}
+        {labels.lvlValues[item.character.lvl]}
       </span>
       <span class="rounded-full bg-slate-800 px-2.5 py-1">
         C{item.character.constellation}
