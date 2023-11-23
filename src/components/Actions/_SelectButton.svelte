@@ -134,9 +134,8 @@
       {#each data.values as item (item.scaling)}
         <button
           on:click={() => handleSelect(item)}
-          class="flex aspect-square items-center justify-center rounded-lg p-2 transition-all"
-          class:bg-slate-500={item.scaling === selected?.scaling}
-          class:hover:bg-slate-700={item.scaling !== selected?.scaling}
+          class="flex aspect-square items-center justify-center rounded-lg border border-slate-800 p-2 transition-colors hover:border-slate-600 active:bg-slate-500"
+          class:bg-slate-700={item.scaling === selected?.scaling}
         >
           {#if item.textLabel}
             <span class="text-sm font-bold">{item.textLabel}</span>

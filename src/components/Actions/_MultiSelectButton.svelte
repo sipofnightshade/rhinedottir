@@ -151,9 +151,8 @@
     <div class="flex gap-1">
       {#each data.values as value}
         <button
-          class="flex aspect-square items-center justify-center rounded-lg p-2 transition-all"
-          class:bg-slate-500={selectedStats[value.scaling] === true}
-          class:hover:bg-slate-700={!selectedStats[value.scaling]}
+          class="flex aspect-square items-center justify-center rounded-lg border border-slate-800 p-2 transition-colors hover:border-slate-600 active:bg-slate-500"
+          class:bg-slate-700={selectedStats[value.scaling] === true}
           on:click={() => handleClick(value)}
         >
           <StatImage stat={value.scaling} lg />
