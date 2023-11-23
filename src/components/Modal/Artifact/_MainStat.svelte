@@ -30,7 +30,7 @@
   </p>
   {#if type === 'flower' || type === 'feather'}
     <div
-      class="flex h-10 w-full items-center justify-center rounded-md bg-slate-900 py-2 pl-2"
+      class="flex h-[37px] w-full items-center justify-center rounded-lg bg-slate-900 py-2 pl-2 md:h-10"
     >
       <p>{type === 'flower' ? 'HP' : 'ATK'}</p>
     </div>
