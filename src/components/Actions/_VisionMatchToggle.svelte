@@ -60,6 +60,7 @@
   );
 
   function addStats() {
+    if (statIndex === 0) return;
     data.values.forEach((value) => {
       const { scaling, coef, source } = value;
 
@@ -84,10 +85,12 @@
   }
 
   function removeStats() {
-    addedStats.forEach((stat) => {
-      action.removeStat(id, target as Target, stat.scaling, stat.coef);
-      addedStats = [];
-    });
+    if (addedStats.length > 0) {
+      addedStats.forEach((stat) => {
+        action.removeStat(id, target as Target, stat.scaling, stat.coef);
+        addedStats = [];
+      });
+    }
   }
 
   function handleToggle() {
@@ -112,10 +115,8 @@
   }
 
   function recalculateStats() {
-    if (addedStats.length > 0) {
-      removeStats();
-      addStats();
-    }
+    removeStats();
+    addStats();
   }
 
   $: isAnyStatChanged(),
@@ -124,12 +125,11 @@
     currentChar.constellation,
     recalculateStats();
 
-  // $: {
-  //   if (statIndex) {
-  //     removeStats();
-  //     addStats();
-  //   }
-  // }
+  $: {
+    if (statIndex > 0) {
+      recalculateStats();
+    }
+  }
 
   // handle longPress modal
   let dialog: HTMLDialogElement;
@@ -144,6 +144,8 @@
     isActive = false;
     addedStats = [];
   });
+
+  $: console.log('statIndex', statIndex);
 </script>
 
 <button on:longpress={handleLongPress} use:longpress={300} on:click={handleToggle}>
