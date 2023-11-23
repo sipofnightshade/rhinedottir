@@ -72,6 +72,11 @@
     'burst',
     'reactions'
   ];
+
+  // if tab destroyed while open, set tab to first tab
+  $: if (!tabs[activeTabValue].name) {
+    activeTabValue = 0;
+  }
 </script>
 
 <div class="flex h-full flex-1 flex-col overflow-hidden">
