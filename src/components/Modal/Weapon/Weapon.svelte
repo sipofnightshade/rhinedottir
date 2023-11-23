@@ -90,7 +90,7 @@
           <span>{stats}</span>
         </div>
       </div>
-      <div class="mt-0.5 grid grid-cols-2 gap-x-2">
+      <div class="mt-0.5 hidden grid-cols-2 gap-x-2 xs-375:grid">
         <LevelGroup
           label="Lvl"
           value={$weapon.lvl}
@@ -106,6 +106,22 @@
           on:decrement={handleDecrement}
         />
       </div>
+    </div>
+    <div class="col-span-3 grid w-full grid-cols-2 gap-x-2 xs-375:hidden">
+      <LevelGroup
+        label="Lvl"
+        value={$weapon.lvl}
+        id="lvl"
+        on:increment={handleIncrement}
+        on:decrement={handleDecrement}
+      />
+      <LevelGroup
+        label="Ref."
+        value={$weapon.refinement}
+        id="refinement"
+        on:increment={handleIncrement}
+        on:decrement={handleDecrement}
+      />
     </div>
     <EffectDetails>
       <span slot="title">{$weapon.selected.effectname}</span>
