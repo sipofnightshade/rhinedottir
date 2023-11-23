@@ -114,7 +114,7 @@
           placeholder="Enter a descriptive title for your loadout..."
           bind:value={title}
           autocomplete="off"
-          class="mt-2 h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 focus:border-slate-400 focus:ring-slate-300 md:h-10"
+          class="mt-2 h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 transition-colors hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300 md:h-10"
         />
       </div>
 
@@ -124,7 +124,7 @@
       </div>
       <button
         on:click={saveLoadout}
-        class="mx-auto mt-2 h-9 w-full rounded-lg bg-slate-300 uppercase text-slate-900 md:h-10"
+        class="mx-auto mt-2 h-9 w-full rounded-lg bg-slate-200 uppercase text-slate-900 transition-colors hover:bg-slate-300 active:bg-slate-200 md:h-10"
         >Save</button
       >
     {/if}
