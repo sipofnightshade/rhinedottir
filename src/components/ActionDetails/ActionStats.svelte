@@ -1,14 +1,27 @@
 <script lang="ts">
-  import type { ActionValue } from '$lib/types/actions';
+  import { getStatLabel } from '$lib/helpers/formatStatLabel';
+  import { elementalText } from '$lib/data/Colors';
 
-  export let values: ActionValue[];
+  export let values: { stat: string; value: number }[] = [];
+
+  function formatNumber(value: number) {
+    if (value === 0) return 0;
+    const isPercentage = value < 3;
+    return isPercentage ? `${+(value * 100).toFixed(1)}%` : value.toString();
+  }
+
+  function getColoredText(stat: string) {
+    if (elementalText[stat as keyof typeof elementalText] !== undefined) {
+      return elementalText[stat as keyof typeof elementalText];
+    } else return '';
+  }
 </script>
 
-<ul class="leaders list-none overflow-x-hidden p-0">
-  {#each values as { scaling, coef, source } (scaling)}
-    <li class="text-slate-600">
-      <span class="font-bold text-pyro">{scaling} {source ? `of ${source}` : ''}</span>
-      <span class="text-slate-300">{coef}</span>
+<ul class="leaders flex list-none flex-col gap-y-1 overflow-x-hidden">
+  {#each values as { stat, value } (stat)}
+    <li class="font-bold text-slate-300">
+      <span class={getColoredText(stat)}>{getStatLabel(stat)}</span>
+      <span>{formatNumber(value)}</span>
     </li>
   {/each}
 </ul>

@@ -124,8 +124,8 @@ export const TwoPieceLabels = {
   physical: 'Physical DMG Bonus',
   healing: 'Healing Bonus',
   shieldStrength: 'Shield Strength',
-  normal: 'Normal Attack DMG',
-  charged: 'Charged Attack DMG',
+  normal: 'Normal ATK DMG',
+  charged: 'Charged ATK DMG',
   skill: 'Elemental Skill DMG',
   burst: 'Elemental Burst DMG'
 };
