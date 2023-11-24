@@ -81,7 +81,7 @@ export const DefaultWeapons = {
     uid: 13402,
     name: 'prototypestarglitter',
     fullName: 'Prototype Starglitter',
-    url: 'UI_EquipIcon_Polearm_Proto',
+    url: 'UI_EquipIcon_Pole_Proto',
     rating: 4,
     type: 'polearm',
     specialized: 'energy',
