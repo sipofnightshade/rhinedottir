@@ -1,6 +1,6 @@
 <script lang="ts">
   // types
-  import type { LoadOutTag, SavedArtifactItem } from '$lib/types/loadout';
+  import type { LoadOutTag } from '$lib/types/loadout';
 
   // stores & helpers
   import { character } from '$lib/stores/characterStore';
@@ -18,13 +18,12 @@
   let title: string;
   let tag: LoadOutTag = 'DPS';
 
-  let currentLoadout: LoadoutItem | undefined = undefined;
-
   function setTag(event: any) {
     tag = event.detail.selected;
   }
 
   function createArtifactItem(baseArtifact: Artifact) {
+    console.log(baseArtifact.selected.url);
     return {
       ...baseArtifact,
       selected: baseArtifact.selected.name,
@@ -40,50 +39,48 @@
     tag = 'DPS';
 
     title = `C${$character.constellation} ${tag} - ${$character.selected.fullName}`;
-
-    currentLoadout = {
-      id: uid(),
-      tag: tag,
-      title,
-      character: {
-        selected: $character.selected.name,
-        vision: $character.selected.vision,
-        id: $character.selected.id,
-        url: $character.selected.url,
-        atk: $character.atk,
-        rating: $character.selected.rating,
-        skill: $character.skill,
-        burst: $character.burst,
-        weapon: $character.selected.weapon,
-        lvlBonus: $character.lvlBonus,
-        constellation: $character.constellation,
-        lvl: $character.lvl
-      },
-      weapon: {
-        selected: $weapon.selected.name,
-        url: $weapon.selected.url,
-        lvl: $weapon.lvl,
-        refinement: $weapon.refinement,
-        rating: $weapon.selected.rating
-      },
-      artifacts: {
-        flower: createArtifactItem($artifact.flower),
-        feather: createArtifactItem($artifact.feather),
-        sands: createArtifactItem($artifact.sands),
-        goblet: createArtifactItem($artifact.goblet),
-        circlet: createArtifactItem($artifact.circlet)
-      }
-    };
   }
 
   function saveLoadout() {
     if (currentLoadout) {
-      loadouts.addLoadout({ ...currentLoadout });
+      loadouts.addLoadout({ ...(currentLoadout as LoadoutItem) });
     }
-
-    currentLoadout = undefined;
     dialog.close();
   }
+
+  $: currentLoadout = {
+    id: uid(),
+    tag: tag,
+    title,
+    character: {
+      selected: $character.selected.name,
+      vision: $character.selected.vision,
+      id: $character.selected.id,
+      url: $character.selected.url,
+      atk: $character.atk,
+      rating: $character.selected.rating,
+      skill: $character.skill,
+      burst: $character.burst,
+      weapon: $character.selected.weapon,
+      lvlBonus: $character.lvlBonus,
+      constellation: $character.constellation,
+      lvl: $character.lvl
+    },
+    weapon: {
+      selected: $weapon.selected.name,
+      url: $weapon.selected.url,
+      lvl: $weapon.lvl,
+      refinement: $weapon.refinement,
+      rating: $weapon.selected.rating
+    },
+    artifacts: {
+      flower: createArtifactItem($artifact.flower),
+      feather: createArtifactItem($artifact.feather),
+      sands: createArtifactItem($artifact.sands),
+      goblet: createArtifactItem($artifact.goblet),
+      circlet: createArtifactItem($artifact.circlet)
+    }
+  };
 </script>
 
 <button
