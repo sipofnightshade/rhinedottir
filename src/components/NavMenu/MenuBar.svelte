@@ -68,7 +68,13 @@
     </div>
 
     <div class="ml-auto flex items-center space-x-6">
-      <button on:click={() => handleMenu(menuItems[1])}>Settings</button>
+      <button on:click={() => handleMenu(menuItems[1])}
+        ><img
+          class="h-8 w-8"
+          src="/images/ui/UI_Icon_Intee_Mechanism.png"
+          alt="Settings Cog"
+        /></button
+      >
     </div>
   </nav>
 
@@ -119,7 +125,7 @@
 
     <!-- Desktop Menu -->
     <div
-      class="absolute right-0 top-14 z-20 mt-1 hidden max-h-vh50 w-full flex-col overflow-auto rounded-lg bg-slate-700 p-2 md:flex lg:w-1/2"
+      class="absolute right-0 top-14 z-20 mt-1 hidden max-h-vh50 w-full max-w-xs flex-col overflow-auto rounded-lg border border-slate-600 bg-slate-800 p-2 shadow shadow-slate-800 md:flex lg:w-1/2"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
