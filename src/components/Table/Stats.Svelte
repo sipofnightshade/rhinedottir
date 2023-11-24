@@ -66,7 +66,7 @@
     0
   );
 
-  $: if (!tabs[activeTabValue].name) {
+  $: if (activeTabValue !== 4 && !tabs[activeTabValue].name) {
     activeTabValue = 0;
   }
 </script>
