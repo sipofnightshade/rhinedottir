@@ -23,7 +23,6 @@
   }
 
   function createArtifactItem(baseArtifact: Artifact) {
-    console.log(baseArtifact.selected.url);
     return {
       ...baseArtifact,
       selected: baseArtifact.selected.name,

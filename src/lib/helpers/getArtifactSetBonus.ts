@@ -74,7 +74,5 @@ export function getArtifactSetBonuses(
     { passives: [], active: {} }
   );
 
-  console.log('separatedBonuses', separatedBonuses);
-
   return { ...separatedBonuses };
 }

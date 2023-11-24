@@ -100,7 +100,7 @@ function createAction() {
             break;
         }
 
-        console.log('current', scaling, ':', state[id][scaling]);
+        // console.log('current', scaling, ':', state[id][scaling]);
 
         return state;
       }),
@@ -166,7 +166,7 @@ function createAction() {
             }
             break;
         }
-        console.log('current', scaling, ':', state[id][scaling]);
+        // console.log('current', scaling, ':', state[id][scaling]);
 
         return state;
       }),
