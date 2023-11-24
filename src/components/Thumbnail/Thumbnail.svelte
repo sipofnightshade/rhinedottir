@@ -11,7 +11,7 @@
 
   const ratingColors = {
     5: 'bg-gradient-to-b from-yellow-700 via-yellow-700 to-yellow-600',
-    4: 'bg-gradient-to-b from-violet-600 via-violet-500 to-violet-500',
+    4: 'bg-gradient-to-b from-purple-700 via-purple-500 to-purple-500',
     3: 'bg-gradient-to-b from-sky-700 via-sky-600 to-sky-600',
     1: ''
   };
