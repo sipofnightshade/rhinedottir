@@ -93,7 +93,7 @@
 <div class="flex h-full flex-col gap-4 overflow-hidden">
   <div class="grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
-      img="/images/character/{$character.selected.name}.webp"
+      img="https://enka.network/ui/{$character.selected.url}.png"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
       rating={$character.selected.rating}

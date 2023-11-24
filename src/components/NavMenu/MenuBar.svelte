@@ -93,7 +93,7 @@
       class:bg-slate-700={currentMenuItem?.id === 'team'}
     >
       <Thumbnail
-        img={`/images/character/${$character.selected.name}.webp`}
+        img="https://enka.network/ui/{$character.selected.url}.png"
         vision={$character.selected.vision}
         alt={$character.selected.fullName}
       />

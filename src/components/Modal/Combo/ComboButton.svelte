@@ -28,8 +28,9 @@
   export let isReaction = false;
 
   const btnImage = btn.url
-    ? `/images/talents/${btn.url}.webp`
+    ? `https://enka.network/ui/${btn.url}.png`
     : `/images/ui/${$character.selected.weapon}.webp`;
+
   let isInitialized = false; // Add a flag to track component initialization
 
   // previous values
@@ -158,7 +159,7 @@
       class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
       class:border-opacity-100={classes.top !== classes.bot}
     >
-      <img src={btnImage} class="pointer-events-none top-1 mb-1 h-7 w-7" alt="Talent" />
+      <img src={btnImage} class=" top-1 mb-1 h-7 w-7" alt="Talent" />
     </div>
   {:else}
     <div

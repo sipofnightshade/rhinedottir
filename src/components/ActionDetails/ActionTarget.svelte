@@ -76,7 +76,7 @@
         />
       {:else if characters[id]}
         <Thumbnail
-          img="/images/character/{characters[id]?.name}.webp"
+          img="https://enka.network/ui/{characters[id]?.url}.png"
           vision={characters[id]?.vision}
           alt={characters[id]?.fullName || 'target'}
           classes="h-7 !rounded-full overflow-hidden"

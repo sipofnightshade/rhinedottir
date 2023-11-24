@@ -22,6 +22,7 @@
   $: tabs = [
     {
       name: $character.selected.name,
+      url: $character.selected.url,
       vision: $character.selected.vision as Visions,
       talentName: $character.selected.talentNames,
       id: 'main' as CharacterID,
@@ -30,6 +31,7 @@
     },
     {
       name: $party.one?.character.selected.name,
+      url: $party.one?.character.selected.url,
       vision: $party.one?.character.selected.vision as Visions,
       talentName: $party.one?.character.selected.talentNames,
       id: 'one' as CharacterID,
@@ -38,6 +40,7 @@
     },
     {
       name: $party.two?.character.selected.name,
+      url: $party.two?.character.selected.url,
       vision: $party.two?.character.selected.vision as Visions,
       talentName: $party.two?.character.selected.talentNames,
       id: 'two' as CharacterID,
@@ -46,6 +49,7 @@
     },
     {
       name: $party.three?.character.selected.name,
+      url: $party.three?.character.selected.url,
       vision: $party.three?.character.selected.vision as Visions,
       talentName: $party.three?.character.selected.talentNames,
       id: 'three' as CharacterID,
@@ -94,8 +98,8 @@
         >
           {#if item.name}
             <Thumbnail
-              alt="temp"
-              img="/images/character/{item.name}.webp"
+              alt="{item.name} tab"
+              img="https://enka.network/ui/{item.url}.png"
               classes="h-full"
               hasBG={false}
             />

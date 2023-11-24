@@ -110,7 +110,7 @@
 
 <div class="flex flex-col gap-2 overflow-hidden xs:gap-4">
   <div class="flex items-end gap-x-2">
-    <StarButton {type} name={$artifact[type].selected.name} />
+    <StarButton {type} name={$artifact[type].selected.name} url={$artifact[type].selected.url} />
     <div class="w-64 xs:w-72">
       <LevelGroup
         label="Lvl"
@@ -188,5 +188,5 @@
 
   <div class="h-[1px] bg-slate-600" />
 
-  <Picker on:selected={handleArtifactSelect} data={ArtifactData} type={imgType[type]} />
+  <Picker on:selected={handleArtifactSelect} data={ArtifactData} {type} />
 </div>

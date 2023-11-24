@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { getImageUrl } from '$lib/helpers/getImageURL';
   import { artifact } from '$lib/stores/artifactStore';
   import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
   import Star from '../../Stars/Star.svelte';
@@ -6,6 +7,7 @@
 
   export let type: ArtifactType;
   export let name: ArtifactNames;
+  export let url: string;
 
   $: rating = $artifact[type].isFiveStar ? 5 : 4;
 </script>
@@ -21,7 +23,7 @@
   class:border-violet-500={name !== 'none' && rating === 4}
 >
   <Thumbnail
-    img="/images/artifact/{type}/{name}.webp"
+    img={getImageUrl(type, url, name)}
     alt={name}
     classes="w-14 xs-300:w-16  p-1 xs-300:p-2"
     hasBG={false}

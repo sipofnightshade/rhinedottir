@@ -71,13 +71,13 @@
   {#if type === 'artifact'}
     <img
       class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
-      src="/images/artifact/flower/{url}.webp"
+      src="https://enka.network/ui/{url}_4.png"
       alt={url}
     />
   {:else if type === 'weapon'}
     <img
       class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
-      src="/images/weapon/{url}.webp"
+      src="https://enka.network/ui/{url}.png"
       alt={url}
     />
   {:else if type === 'resonance'}
@@ -89,7 +89,7 @@
   {:else}
     <img
       class="z-10 h-12 w-12 rounded-full border-2 border-slate-200 xs:h-[52px] xs:w-[52px]"
-      src="/images/talents/{url}.webp"
+      src="https://enka.network/ui/{url}.png"
       alt={url}
     />
   {/if}

@@ -19,6 +19,7 @@
   import Three from '../Modal/Party/Three.svelte';
   import { party } from '$lib/stores/partyStore';
   import MultiModal from '../MultiModal/MultiModal.svelte';
+  import { getImageUrl } from '$lib/helpers/getImageURL';
 
   // initialise modal state and content
 
@@ -98,7 +99,7 @@
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
-      img="/images/character/{$character.selected.name}.webp"
+      img="https://enka.network/ui/{$character.selected.url}.png"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
     />
@@ -108,7 +109,7 @@
     on:click={() => toggleModal(Weapon, 'Weapon')}
   >
     <Thumbnail
-      img="/images/weapon/{$weapon.selected.name}.webp"
+      img="https://enka.network/ui/{$weapon.selected.url}.png"
       alt={$weapon.selected.fullName}
     />
   </button>
@@ -121,7 +122,7 @@
     >
       {#if $party[modal.id]}
         <Thumbnail
-          img="/images/character/{$party[modal.id]?.character.selected.name}.webp"
+          img="https://enka.network/ui/{$party[modal.id]?.character.selected.url}.png"
           vision={$party[modal.id]?.character.selected.vision}
           alt={$party[modal.id]?.character.selected.name || 'character'}
         />
@@ -141,7 +142,11 @@
         <img src={modal.img} alt="{modal.title} image" class="w-3/5" />
       {:else}
         <Thumbnail
-          img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
+          img={getImageUrl(
+            modal.id,
+            $artifact[modal.id].selected.url,
+            $artifact[modal.id].selected.name
+          )}
           alt={$artifact[modal.id].selected.fullName}
         />
       {/if}

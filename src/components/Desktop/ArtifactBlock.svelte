@@ -11,6 +11,7 @@
   import { artifact } from '$lib/stores/artifactStore';
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import type { ArtifactModalButtons } from '$lib/types/artifacts';
+  import { getImageUrl } from '$lib/helpers/getImageURL';
 
   const menuModals: ArtifactModalButtons = [
     {
@@ -70,7 +71,11 @@
           <Thumbnail img={modal.img} classes="opacity-30" alt="none" hasBG={false} />
         {:else}
           <Thumbnail
-            img="/images/artifact/{modal.id}/{$artifact[modal.id].selected.name}.webp"
+            img={getImageUrl(
+              modal.id,
+              $artifact[modal.id].selected.url,
+              $artifact[modal.id].selected.name
+            )}
             classes="opacity-30"
             alt={$artifact[modal.id].selected.name}
             hasBG={false}

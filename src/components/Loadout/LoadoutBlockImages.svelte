@@ -1,5 +1,6 @@
 <script lang="ts">
   // types
+  import { getImageUrl } from '$lib/helpers/getImageURL';
   import type { LoadoutItem } from '$lib/stores/loadoutsStore';
   import type { ArtifactType } from '$lib/types/artifacts';
 
@@ -31,21 +32,21 @@
     : ' [&>*]:bg-slate-800'}"
 >
   <Thumbnail
-    img="/images/character/{item.character.selected}.webp"
+    img="https://enka.network/ui/{item.character.url}.png"
     vision={item.character.vision}
     alt={item.character.selected}
     rating={item.character.rating}
     classes="!rounded-lg"
   />
   <Thumbnail
-    img="/images/weapon/{item.weapon.selected}.webp"
+    img="https://enka.network/ui/{item.weapon.url}.png"
     alt={item.weapon.selected}
     rating={item.weapon.rating}
     classes="!rounded-lg"
   />
   {#each artifactTypes as type}
     <Thumbnail
-      img="/images/artifact/{type}/{item.artifacts[type].selected}.webp"
+      img={getImageUrl(type, item.artifacts[type].url, item.artifacts[type].selected)}
       alt={item.artifacts[type].selected}
       imgClasses="w-5/6"
       classes="!rounded-lg"

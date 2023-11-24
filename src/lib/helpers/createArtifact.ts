@@ -37,6 +37,7 @@ export function createArtifact(data: any): SavedArtifactItem | null {
     return {
       selected: artifact.name,
       uid: artifact.uid,
+      rating: artifact.rating,
       fullName: artifact.fullName,
       url: artifact.url,
       lvl: data.reliquary.level - 1,

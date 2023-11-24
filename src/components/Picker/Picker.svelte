@@ -2,9 +2,14 @@
   import { createEventDispatcher } from 'svelte';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import type { SelectedCharacter, SelectedWeapon } from '$lib/types/global';
+  import type { ArtifactType } from '$lib/types/artifacts';
+  import { getImageUrl } from '$lib/helpers/getImageURL';
+
+  type PickerType = 'character' | 'weapon' | ArtifactType;
+
   // props
   export let data: any;
-  export let type: string;
+  export let type: PickerType;
 
   const dispatch = createEventDispatcher();
 
@@ -28,7 +33,7 @@
     <button on:click={() => handleClick(item)}>
       <Thumbnail
         alt={item.fullName}
-        img="/images/{type}/{item.name}.webp"
+        img={getImageUrl(type, item.url, item.name)}
         vision={item.vision}
         rating={getArtifactRating(item.rating, item.name)}
         classes="bg-slate-700 border border-slate-600 border-slate-600 hover:border-slate-400 active:border-slate-200 active:border-2 transition-colors"

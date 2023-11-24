@@ -59,7 +59,7 @@
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
-      img="/images/character/{$character.selected.name}.webp"
+      img="https://enka.network/ui/{$character.selected.url}.png"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
       rating={$character.selected.rating}
@@ -73,7 +73,7 @@
     >
       <div class="h-11 w-11 lg:h-[54px] lg:w-[54px] lg:p-0.5 xl:h-16 xl:w-16">
         <Thumbnail
-          img="/images/weapon/{$weapon.selected.name}.webp"
+          img="https://enka.network/ui/{$weapon.selected.url}.png"
           alt={$weapon.selected.fullName}
           rating={$weapon.selected.rating}
           classes="md:!rounded-lg bg-slate-800"
@@ -103,7 +103,7 @@
         >
           {#if $party[modal.id]}
             <Thumbnail
-              img="/images/character/{$party[modal.id]?.character.selected.name}.webp"
+              img="https://enka.network/ui/{$party[modal.id]?.character.selected.url}.png"
               vision={$party[modal.id]?.character.selected.vision}
               alt="teammate"
               rating={$party[modal.id]?.character.selected.rating}

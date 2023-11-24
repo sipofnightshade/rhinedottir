@@ -61,7 +61,7 @@
       actionData.push({
         ...action,
         name: selected.fullName,
-        url: selected.name,
+        url: selected.url,
         description: generateWeaponEffect(weaponEffect, refinement),
         // @ts-ignore
         values: action.values[refinement]

@@ -79,7 +79,6 @@ const charName: CharacterRecord = {
       tag: 'C1',
       hasOwnSpecialMultiplier: 'equitableJudgment',
       hasOwnCritDMG: 'equitableJudgmentCritDMG',
-      url: 'UI_Talent_EJ_Neuvillette',
       damageBonus: 'charged',
       damage: [
         [
@@ -95,7 +94,6 @@ const charName: CharacterRecord = {
       tag: 'C8',
       hasOwnSpecialMultiplier: 'equitableJudgment',
       hasOwnCritDMG: 'equitableJudgmentCritDMG',
-      url: 'UI_Talent_EJ_Neuvillette',
       damageBonus: 'charged',
       damage: [
         [

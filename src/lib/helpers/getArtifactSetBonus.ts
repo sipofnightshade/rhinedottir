@@ -17,7 +17,7 @@ export function getArtifactSetBonuses(
   weapon: WeaponCategory
 ) {
   const setBonuses: Action[] = [];
-  let activeDetails: { name: ArtifactNames; fullName: string };
+  let activeDetails: { name: ArtifactNames; fullName: string; url: string };
 
   setCount.forEach((count, name) => {
     // Skip irrelevant artifacts
@@ -46,7 +46,11 @@ export function getArtifactSetBonuses(
       if (validFourPieceBonuses.length > 0) {
         setBonuses.push(...validFourPieceBonuses);
         // Consider updating activeDetails only if it's necessary for further use
-        activeDetails = { name: artifactData.name, fullName: artifactData.fullName };
+        activeDetails = {
+          name: artifactData.name,
+          fullName: artifactData.fullName,
+          url: artifactData.url
+        };
       }
     }
   });
@@ -57,7 +61,7 @@ export function getArtifactSetBonuses(
       if (bonus.actionType) {
         result.active = {
           name: activeDetails.fullName,
-          url: activeDetails.name,
+          url: activeDetails.url,
           lvl: 1,
           constellation: 0,
           ...bonus

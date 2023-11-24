@@ -72,7 +72,7 @@
 <div class="flex h-full flex-col gap-4 overflow-hidden">
   <div class="grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
-      img="/images/weapon/{$weapon.selected.name}.webp"
+      img="https://enka.network/ui/{$weapon.selected.url}.png"
       alt={$weapon.selected.fullName}
       rating={$weapon.selected.rating}
     />

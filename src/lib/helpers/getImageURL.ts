@@ -16,6 +16,6 @@ export function getImageUrl(type: ImageType, url: string, name: string) {
   if (name !== 'none' && artifactID[type]) {
     return `https://enka.network/ui/${url}_${artifactID[type]}.png`;
   } else {
-    return `/images/artifact/${type}/${name}.webp`;
+    return `/images/artifact/${name}_${artifactID[type]}.webp`;
   }
 }

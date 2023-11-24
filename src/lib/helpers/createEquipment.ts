@@ -21,6 +21,7 @@ const noArtifact: SavedArtifactItem = {
   uid: 0,
   url: 'none',
   fullName: 'None',
+  rating: [1],
   lvl: 0,
   isFiveStar: false,
   mainStat: {
