@@ -97,7 +97,7 @@ export type Action = {
   }[];
 };
 
-type ArtifactRating = 5 | 4;
+type ArtifactRating = 5 | 4 | 1;
 
 export type SelectedArtifact = {
   uid: number;

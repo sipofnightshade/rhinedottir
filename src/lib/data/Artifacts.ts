@@ -7,7 +7,7 @@ export const ArtifactData: SelectedArtifact[] = [
     url: 'none',
     name: 'none',
     fullName: 'None',
-    rating: [],
+    rating: [1],
     twoPiece: [{ values: [{ scaling: 'atk', coef: 0 }] }],
     fourPiece: [
       {
