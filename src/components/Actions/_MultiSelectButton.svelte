@@ -12,7 +12,6 @@
 
   // external functions & stores
   import { action } from '$lib/stores/actionStore';
-  import { stripStat } from '$lib/helpers/stripStats';
   import { onMount } from 'svelte';
   import { calcCoefficient } from '$lib/calculators/calcCoefficient';
   import { getCoefficientFromValues } from '$lib/helpers/getCoefficientFromValues';
@@ -20,7 +19,6 @@
 
   // component
   import ActionButton from './ActionButton.svelte';
-  import ActionModal from '../Modal/ActionModal.svelte';
   import type { Index_Stats } from '$lib/data/Stats';
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
   import StatImage from '../Desktop/StatImage.svelte';

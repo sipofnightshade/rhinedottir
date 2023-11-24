@@ -3,10 +3,9 @@
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import { uid } from 'uid';
   import type { LoadOutTag } from '$lib/types/loadout';
-  import ShortModal from '../Modal/ShortModal.svelte';
   import TagInputLabel from '../Loadout/TagInputLabel.svelte';
-  import type { ArtifactType } from '$lib/types/artifacts';
   import { artifactStorage } from '$lib/stores/artifactStorageStore';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
 
   export let build: any;
 
@@ -63,7 +62,8 @@
   />
 </button>
 
-<ShortModal bind:dialog modalTitle="Save Character Loadout">
+<MultiModal bind:dialog>
+  <h3 slot="title">Save Character Loadout</h3>
   <label for="loadoutTitle" class="text-slate-300">Loadout Name</label>
   <input
     type="text"
@@ -92,4 +92,4 @@
     on:click={() => saveLoadout(build)}
     class="ml-auto mt-2 h-9 w-full rounded-full bg-emerald-600 px-4 py-2">Save</button
   >
-</ShortModal>
+</MultiModal>

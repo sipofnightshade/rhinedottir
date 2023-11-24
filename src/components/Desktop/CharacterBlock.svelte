@@ -1,6 +1,5 @@
 <script lang="ts">
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
-  import Modal from '../Modal/Modal.svelte';
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
   import One from '../Modal/Party/One.svelte';
