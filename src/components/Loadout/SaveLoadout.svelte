@@ -30,6 +30,7 @@
       selected: baseArtifact.selected.name,
       uid: baseArtifact.selected.uid,
       url: baseArtifact.selected.url,
+      rating: baseArtifact.selected.rating,
       fullName: baseArtifact.selected.fullName
     };
   }
@@ -50,6 +51,7 @@
         id: $character.selected.id,
         url: $character.selected.url,
         atk: $character.atk,
+        rating: $character.selected.rating,
         skill: $character.skill,
         burst: $character.burst,
         weapon: $character.selected.weapon,
@@ -61,7 +63,8 @@
         selected: $weapon.selected.name,
         url: $weapon.selected.url,
         lvl: $weapon.lvl,
-        refinement: $weapon.refinement
+        refinement: $weapon.refinement,
+        rating: $weapon.selected.rating
       },
       artifacts: {
         flower: createArtifactItem($artifact.flower),
@@ -103,7 +106,7 @@
   <h3 slot="title">Save Character Loadout</h3>
   <div class=" flex flex-col gap-y-4 pb-1">
     {#if currentLoadout}
-      <LoadoutBlockImages item={currentLoadout} />
+      <LoadoutBlockImages item={currentLoadout} hasBorder />
       <div>
         <label for="loadoutTitle" class="text-sm font-bold uppercase text-slate-300">
           Title

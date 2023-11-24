@@ -55,12 +55,13 @@
 
   // handle saving
   function handleSave() {
-    const { uid, url, name, fullName } = $artifact[type].selected;
+    const { uid, url, name, fullName, rating } = $artifact[type].selected;
 
     const currentArtifact = {
       ...$artifact[type],
       selected: name,
       uid: uid,
+      rating,
       url,
       fullName
     };

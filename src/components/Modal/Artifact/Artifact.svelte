@@ -1,6 +1,5 @@
 <script lang="ts">
   // components
-  import Tabs from '../../Tabs/Tabs.svelte';
   import ArtifactBuilder from './ArtifactBuilder.svelte';
   import ArtifactStorage from './ArtifactStorage.svelte';
 

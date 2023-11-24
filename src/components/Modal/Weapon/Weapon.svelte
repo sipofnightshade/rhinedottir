@@ -74,6 +74,7 @@
     <Thumbnail
       img="/images/weapon/{$weapon.selected.name}.webp"
       alt={$weapon.selected.fullName}
+      rating={$weapon.selected.rating}
     />
     <div class="col-span-2 flex flex-col justify-end">
       <div>

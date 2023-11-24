@@ -96,6 +96,7 @@
       img="/images/character/{$character.selected.name}.webp"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
+      rating={$character.selected.rating}
     />
     <div class="col-span-2 flex flex-col justify-end">
       <div>

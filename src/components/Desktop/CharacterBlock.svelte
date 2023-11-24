@@ -63,6 +63,7 @@
       img="/images/character/{$character.selected.name}.webp"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
+      rating={$character.selected.rating}
     />
   </button>
   <div class="flex flex-col justify-between">
@@ -71,10 +72,12 @@
       class="col-span-3 flex w-full items-end rounded-xl border border-slate-600 bg-slate-700 p-1 text-sm transition-colors hover:border-slate-500 lg:h-16 lg:text-base xl:h-fit"
       on:click={() => toggleModal(Weapon, 'Weapon')}
     >
-      <div class="h-11 w-11 lg:h-[60px] lg:w-[60px] xl:h-16 xl:w-16">
+      <div class="h-11 w-11 lg:h-[54px] lg:w-[54px] lg:p-0.5 xl:h-16 xl:w-16">
         <Thumbnail
           img="/images/weapon/{$weapon.selected.name}.webp"
           alt={$weapon.selected.fullName}
+          rating={$weapon.selected.rating}
+          classes="md:!rounded-lg bg-slate-800"
         />
       </div>
       <div class="flex flex-1 flex-col space-y-0.5 px-1 lg:space-y-1">
@@ -103,7 +106,8 @@
             <Thumbnail
               img="/images/character/{$party[modal.id]?.character.selected.name}.webp"
               vision={$party[modal.id]?.character.selected.vision}
-              alt="character"
+              alt="teammate"
+              rating={$party[modal.id]?.character.selected.rating}
             />
           {:else}
             <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
