@@ -8,7 +8,7 @@
   import Team from './_Team.svelte';
   import SaveLoadout from '../Loadout/SaveLoadout.svelte';
   import SetLoadout from '../Loadout/SetLoadout.svelte';
-  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
+  import FullLogo from '../Logos/FullLogo.svelte';
 
   // Define MenuItem interface
   interface MenuItem {
@@ -63,18 +63,22 @@
       <SetLoadout />
     </div>
 
-    <div class="flex w-full items-center">
-      <p class="mx-auto">Rhinedottir</p>
+    <div class="flex w-full justify-center">
+      <FullLogo
+        class="pointer-events-none h-12"
+        selected={false}
+        vision={$character.selected.vision}
+      />
     </div>
 
     <div class="ml-auto flex items-center space-x-6">
-      <button on:click={() => handleMenu(menuItems[1])}
-        ><img
-          class="h-8 w-8"
+      <button on:click={() => handleMenu(menuItems[1])}>
+        <img
+          class="h-10 w-10"
           src="/images/ui/UI_Icon_Intee_Mechanism.png"
           alt="Settings Cog"
-        /></button
-      >
+        />
+      </button>
     </div>
   </nav>
 
@@ -82,33 +86,34 @@
   <nav
     class="grid w-full auto-cols-fr grid-flow-col items-center rounded-xl border border-slate-600 p-1 md:hidden"
   >
-    <div class="flex gap-3">
+    <div class="flex gap-3 pl-1">
       <SetLoadout />
       <SaveLoadout />
     </div>
 
     <button
       on:click={() => handleMenu(menuItems[0])}
-      class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg p-1"
-      class:bg-slate-700={currentMenuItem?.id === 'team'}
+      class="mx-auto flex h-14 transform-gpu items-center justify-center rounded-lg p-1 transition-transform duration-300 ease-out active:scale-75"
     >
-      <Thumbnail
-        img="https://enka.network/ui/{$character.selected.url}.png"
+      <!-- <EmptyLogo
+        class="pointer-events-none h-full"
+        selected={currentMenuItem?.id === 'team'}
+        url={$character.selected.url}
         vision={$character.selected.vision}
-        alt={$character.selected.fullName}
+      /> -->
+      <FullLogo
+        class="pointer-events-none h-12 "
+        selected={true}
+        vision={$character.selected.vision}
       />
     </button>
 
     <button
       on:click={() => handleMenu(menuItems[1])}
-      class="ml-auto flex h-12 w-12 items-center justify-center rounded-lg p-1"
+      class="ml-auto flex items-center justify-center rounded-lg p-0.5"
       class:bg-slate-700={currentMenuItem?.id === 'settings'}
     >
-      <img
-        class="h-8 w-8"
-        src="/images/ui/UI_Icon_Intee_Mechanism.png"
-        alt="Settings Cog"
-      />
+      <img class="w-12" src="/images/ui/UI_Icon_Intee_Mechanism.png" alt="Settings Cog" />
     </button>
   </nav>
 
@@ -118,14 +123,14 @@
   use Modals.
  -->
     <div
-      class="menu absolute bottom-16 z-20 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
+      class="menu absolute bottom-[72px] z-20 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
 
     <!-- Desktop Menu -->
     <div
-      class="absolute right-0 top-14 z-20 mt-1 hidden max-h-vh50 w-full max-w-xs flex-col overflow-auto rounded-lg border border-slate-600 bg-slate-800 p-2 shadow shadow-slate-800 md:flex lg:w-1/2"
+      class="absolute right-0 top-16 z-20 mt-2 hidden max-h-vh50 w-full max-w-xs flex-col overflow-auto rounded-lg border border-slate-600 bg-slate-700 p-2 shadow-md shadow-slate-800 md:flex lg:w-1/2"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>

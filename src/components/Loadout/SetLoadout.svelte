@@ -32,11 +32,13 @@
 </script>
 
 <button
-  class="flex h-10 w-10 items-center gap-x-1.5 rounded-full border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 active:bg-slate-600 md:w-full"
+  class="flex items-center gap-x-1.5 rounded-full border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 active:bg-slate-600 md:w-full md:p-0.5"
   on:click={toggleModal}
 >
-  <div class="flex h-9 w-9 items-center justify-center rounded-full md:bg-slate-800">
-    <img class="h-5" src="/images/ui/UI_BtnIcon_AvatarList.png" alt="UI Team" />
+  <div
+    class="flex h-12 w-12 items-center justify-center rounded-full md:h-9 md:w-9 md:bg-slate-800"
+  >
+    <img class="h-[22px]" src="/images/ui/UI_BtnIcon_AvatarList.png" alt="UI Team" />
   </div>
   <p class="mr-2.5 hidden font-bold md:block">Load</p>
 </button>
