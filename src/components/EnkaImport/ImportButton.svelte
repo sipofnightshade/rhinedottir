@@ -1,44 +1,32 @@
 <script lang="ts">
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import { uid } from 'uid';
   import type { LoadOutTag } from '$lib/types/loadout';
-  import TagInputLabel from '../Loadout/TagInputLabel.svelte';
   import { artifactStorage } from '$lib/stores/artifactStorageStore';
+
+  // components
   import MultiModal from '../MultiModal/MultiModal.svelte';
+  import LoadoutBlockImages from '../Loadout/LoadoutBlockImages.svelte';
+  import LoadoutTags from '../Loadout/LoadoutFilters.svelte';
+  import Thumbnail from '../Thumbnail/Thumbnail.svelte';
 
   export let build: any;
 
   let dialog: HTMLDialogElement;
   let title: string;
-  let tags: LoadOutTag = 'DPS';
+  let tag: LoadOutTag = 'DPS';
 
-  const roleTags = [
-    { label: 'DPS', color: 'peer-checked:bg-rose-600' },
-    { label: 'Sub DPS', color: 'peer-checked:bg-amber-600' },
-    { label: 'Shield', color: 'peer-checked:bg-stone-500' },
-    { label: 'Healer', color: 'peer-checked:bg-emerald-500' },
-    { label: 'Support', color: 'peer-checked:bg-violet-600' }
-  ];
+  function setTag(event: any) {
+    tag = event.detail.selected;
+  }
 
   function toggleModal() {
     dialog.showModal();
+    (tag = 'DPS'),
+      (title = `C${build.character.constellation} ${tag} - ${build.character.selected} - C${build.character.constellation}`);
   }
 
   function saveLoadout(data: any) {
-    const loadoutTitle =
-      title ??
-      `C${data.character.constellation} ${tags} - ${data.character.selected} - C${data.character.constellation}`;
-
-    const newLoadout = {
-      id: uid(),
-      tag: tags,
-      title: loadoutTitle,
-      character: { ...data.character },
-      weapon: { ...data.weapon },
-      artifacts: { ...data.artifacts }
-    };
-
     // Save each valid artifact to storage
     Object.keys(data.artifacts).forEach((type: any) => {
       if (data.artifacts[type].selected !== 'none') {
@@ -46,50 +34,62 @@
       }
     });
 
-    loadouts.addLoadout({ ...newLoadout });
+    loadouts.addLoadout({ ...currentLoadout });
     dialog.close();
   }
+
+  $: currentLoadout = {
+    id: uid(),
+    tag,
+    title,
+    character: { ...build.character },
+    weapon: { ...build.weapon },
+    artifacts: { ...build.artifacts }
+  };
 </script>
 
 <button
-  class="border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500"
+  class="overflow-hidden rounded-full border border-slate-600 bg-slate-700 transition-colors hover:border-slate-400 active:border-2 active:border-slate-200"
   on:click={toggleModal}
 >
   <Thumbnail
-    img="/images/character/{build.character.selected}.webp"
+    img="https://enka.network/ui/{build.character.url}.png"
     vision={build.character.vision}
     alt={build.character.selected}
+    classes="pointer-events-none"
+    rating={build.character.rating}
+    hasBG
   />
 </button>
 
-<MultiModal bind:dialog>
+<MultiModal bind:dialog small>
   <h3 slot="title">Save Character Loadout</h3>
-  <label for="loadoutTitle" class="text-slate-300">Loadout Name</label>
-  <input
-    type="text"
-    id="loadoutTitle"
-    placeholder="Enter a descriptive title for your loadout..."
-    bind:value={title}
-    class="my-2 h-9 w-full appearance-none rounded-md border border-slate-700 bg-slate-700 p-1 focus:border-slate-400 focus:ring-slate-300"
-  />
-  <h4 class="mt-2 text-slate-300">Tag</h4>
-  <div class="my-2">
-    <fieldset class="grid grid-cols-3 gap-2">
-      {#each roleTags as item (item.label)}
+  <div class=" flex flex-col gap-y-4 pb-1">
+    {#if currentLoadout}
+      <LoadoutBlockImages item={currentLoadout} hasBorder />
+      <div>
+        <label for="loadoutTitle" class="text-sm font-bold uppercase text-slate-300">
+          Title
+        </label>
         <input
-          id={item.label}
-          class="peer absolute h-0 w-0 opacity-0"
-          type="radio"
-          bind:group={tags}
-          name="type"
-          value={item.label}
+          type="text"
+          id="loadoutTitle"
+          placeholder="Enter a descriptive title for your loadout..."
+          bind:value={title}
+          autocomplete="off"
+          class="mt-2 h-9 w-full rounded-md border border-slate-600 bg-slate-800 p-2 transition-colors hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300 md:h-10"
         />
-        <TagInputLabel color={item.color} label={item.label} />
-      {/each}
-    </fieldset>
+      </div>
+
+      <div>
+        <h4 class="mb-2 text-sm font-bold uppercase text-slate-300">Tag</h4>
+        <LoadoutTags selected={tag} on:filter={setTag} />
+      </div>
+      <button
+        on:click={() => saveLoadout(currentLoadout)}
+        class="mx-auto mt-2 h-9 w-full rounded-lg bg-slate-200 uppercase text-slate-900 transition-colors hover:bg-slate-300 active:bg-slate-200 md:h-10"
+        >Save</button
+      >
+    {/if}
   </div>
-  <button
-    on:click={() => saveLoadout(build)}
-    class="ml-auto mt-2 h-9 w-full rounded-full bg-emerald-600 px-4 py-2">Save</button
-  >
 </MultiModal>

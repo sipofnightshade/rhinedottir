@@ -36,14 +36,12 @@
     // Check if the data is present in the cache and if it's within the TTL
     if (cachedData && currentTime - lastApiCallTimestamp < cacheTTL) {
       // If data is in cache and within TTL, use cached data
-      console.log('Using cached data:', cachedData);
     } else {
       // If data is not in cache or expired, fetch from API and update the cache
       fetchDataFromApi(playerID)
         .then((data) => {
           cachedData = data;
           lastApiCallTimestamp = currentTime;
-          console.log('Fetched data from API:', cachedData);
         })
         .catch((error) => {
           if (error.message.includes('400')) {
