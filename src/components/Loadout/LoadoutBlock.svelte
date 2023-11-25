@@ -20,8 +20,7 @@
     : 'border-slate-600'}"
   class:hover:border-slate-500={!deletable && !highlighted}
   class:active:bg-slate-600={!deletable}
-  class:border-red-500={deletable}
-  class:hover:border-red-500={deletable}
+  class:!border-red-500={deletable}
 >
   <!-- Title -->
   <h3 class="w-full text-left">{item.title}</h3>
