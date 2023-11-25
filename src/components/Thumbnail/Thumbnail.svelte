@@ -20,7 +20,7 @@
 </script>
 
 <div
-  class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
+  class="pointer-events-none relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
   class:bg-slate-700={$settings.limitedColors && hasBG}
 >
   <img loading="lazy" src={img} alt="{alt} thumbnail" class={imgClasses} />
