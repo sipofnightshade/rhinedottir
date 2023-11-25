@@ -1237,11 +1237,11 @@ export const sword: Swords[] = [
         actionType: 'passive',
         sourceStats: ['em'],
         values: [
-          [{ scaling: 'atk', coef: 0.00036, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.00045, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.00054, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.00063, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.00072, source: ['em', 0] }]
+          [{ scaling: 'energy', coef: 0.00036, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.00045, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.00054, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.00063, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.00072, source: ['em', 0] }]
         ]
       },
       {
@@ -1249,11 +1249,11 @@ export const sword: Swords[] = [
         sourceStats: ['em'],
         target: 'nearby',
         values: [
-          [{ scaling: 'atk', coef: 0.000108, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.000135, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.000162, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.000189, source: ['em', 0] }],
-          [{ scaling: 'atk', coef: 0.000216, source: ['em', 0] }]
+          [{ scaling: 'energy', coef: 0.000108, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.000135, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.000162, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.000189, source: ['em', 0] }],
+          [{ scaling: 'energy', coef: 0.000216, source: ['em', 0] }]
         ]
       }
     ],
