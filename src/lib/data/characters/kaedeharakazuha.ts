@@ -134,7 +134,7 @@ const charName: CharacterRecord = {
   plunge: [
     {
       name: 'Plunge DMG',
-      tag: 'PD',
+      // tag: 'PD',
       damageBonus: 'plunge',
       hasOwnBonusDMG: 'crimsonMomiji',
       damage: [
@@ -176,6 +176,21 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Midare Ranzan',
+      tag: 'PD',
+      damageBonus: 'plunge',
+      hasOwnDMGType: 'anemo',
+      hasOwnBonusDMG: 'crimsonMomiji',
+      damage: [
+        [
+          {
+            scaling: 'atk',
+            param: 'param10'
+          }
+        ]
+      ]
+    },
+    {
+      name: 'Low - Midare Ranzan',
       tag: 'PL',
       damageBonus: 'plunge',
       hasOwnDMGType: 'anemo',
@@ -190,7 +205,7 @@ const charName: CharacterRecord = {
       ]
     },
     {
-      name: 'Midare Ranzan',
+      name: 'High - Midare Ranzan',
       tag: 'PH',
       damageBonus: 'plunge',
       hasOwnDMGType: 'anemo',
@@ -206,8 +221,7 @@ const charName: CharacterRecord = {
     },
     {
       name: 'Midare Ranzan',
-      tag: 'P1',
-      hasOwnBonusFlatDMG: 'midareRanzen',
+      tag: 'P2',
       damageBonus: 'plunge',
       hasOwnDMGType: 'electro',
       hasOwnBonusDMG: 'crimsonMomiji',
@@ -215,7 +229,8 @@ const charName: CharacterRecord = {
         [
           {
             scaling: 'atk',
-            param: 'param12'
+            param: 'param12',
+            coef: 2
           }
         ]
       ]
@@ -223,7 +238,6 @@ const charName: CharacterRecord = {
     {
       name: 'Midare Ranzan',
       tag: 'P2',
-      hasOwnBonusFlatDMG: 'midareRanzen',
       damageBonus: 'plunge',
       hasOwnDMGType: 'pyro',
       hasOwnBonusDMG: 'crimsonMomiji',
@@ -231,15 +245,15 @@ const charName: CharacterRecord = {
         [
           {
             scaling: 'atk',
-            param: 'param12'
+            param: 'param12',
+            coef: 2
           }
         ]
       ]
     },
     {
       name: 'Midare Ranzan',
-      tag: 'P3',
-      hasOwnBonusFlatDMG: 'midareRanzen',
+      tag: 'P2',
       damageBonus: 'plunge',
       hasOwnDMGType: 'cryo',
       hasOwnBonusDMG: 'crimsonMomiji',
@@ -247,15 +261,15 @@ const charName: CharacterRecord = {
         [
           {
             scaling: 'atk',
-            param: 'param12'
+            param: 'param12',
+            coef: 2
           }
         ]
       ]
     },
     {
       name: 'Midare Ranzan',
-      tag: 'P4',
-      hasOwnBonusFlatDMG: 'midareRanzen',
+      tag: 'P2',
       damageBonus: 'plunge',
       hasOwnDMGType: 'hydro',
       hasOwnBonusDMG: 'crimsonMomiji',
@@ -263,7 +277,8 @@ const charName: CharacterRecord = {
         [
           {
             scaling: 'atk',
-            param: 'param12'
+            param: 'param12',
+            coef: 2
           }
         ]
       ]
@@ -344,22 +359,6 @@ const charName: CharacterRecord = {
     }
   ],
   actions: [
-    {
-      name: 'Soumon Swordsmanship',
-      url: 'UI_Talent_S_Kazuha_05',
-      description:
-        'If **Chihayaburu** comes into contact with Hydro/Pyro/Cryo/Electro when cast, this **Chihayaburu** will absorb that element and if Plunging Attack: Midare Ranzan is used before the effect expires, it will deal an additional 200% ATK of the absorbed elemental type as DMG. This will be considered Plunging Attack DMG.\nElemental Absorption may only occur once per use of **Chihayaburu**.',
-      target: 'self',
-      actionType: 'passive',
-      sourceStats: ['atk'],
-      values: [
-        {
-          scaling: 'midareRanzen',
-          coef: 2.0,
-          source: ['atk', 0]
-        }
-      ]
-    },
     {
       name: 'Poetics of Fuubutsu',
       url: 'UI_Talent_S_Kazuha_06',
