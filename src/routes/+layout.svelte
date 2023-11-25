@@ -1,4 +1,6 @@
 <script>
+  export const prerender = true;
+
   import '../app.css';
   // import Analytics from '../components/Analytics/Analytics.svelte';
 </script>
