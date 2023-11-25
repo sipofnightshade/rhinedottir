@@ -49,9 +49,17 @@
   </section>
 {:else}
   <!-- mobile -->
-  <section class="mx-auto flex h-screen w-screen flex-col space-y-3 p-3 md:hidden">
+  <section
+    class="dynamic-height mx-auto flex h-screen w-screen flex-col space-y-3 p-3 transition-transform md:hidden"
+  >
     <Tabs items={mobileItems} />
     <ActionBar />
     <MenuBar />
   </section>
 {/if}
+
+<style lang="postcss">
+  .dynamic-height {
+    min-height: 100dvh;
+  }
+</style>
