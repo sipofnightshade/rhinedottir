@@ -83,6 +83,7 @@
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
     type="number"
+    inputmode="decimal"
   />
   <Transition show={$listbox.expanded}>
     <ul
