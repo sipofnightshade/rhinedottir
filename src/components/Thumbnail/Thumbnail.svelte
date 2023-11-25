@@ -20,10 +20,15 @@
 </script>
 
 <div
-  class="pointer-events-none relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
+  class="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl {bgColor} {classes}"
   class:bg-slate-700={$settings.limitedColors && hasBG}
 >
-  <img loading="lazy" src={img} alt="{alt} thumbnail" class={imgClasses} />
+  <img
+    loading="lazy"
+    src={img}
+    alt="{alt} thumbnail"
+    class="pointer-events-none {imgClasses}"
+  />
   {#if vision}
     <div
       class="absolute left-1 top-1 w-1/4 rounded outline-1 outline-offset-1 outline-slate-200"

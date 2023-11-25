@@ -36,7 +36,7 @@
         img={getImageUrl(type, item.url, item.name)}
         vision={item.vision}
         rating={getArtifactRating(item.rating, item.name)}
-        classes="bg-slate-700 border border-slate-600 border-slate-600 hover:border-slate-400 active:border-slate-200 active:border-2 transition-colors"
+        classes="bg-slate-700 border border-slate-600  hover:border-slate-400  active:border-2 active:border-slate-200 transition-colors"
       />
       <p class="mt-1 text-xs">
         {item.fullName}
