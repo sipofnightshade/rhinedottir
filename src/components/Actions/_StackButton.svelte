@@ -157,6 +157,11 @@
     artifact: 'text-slate-300',
     resonance: 'text-slate-300'
   };
+
+  // 🌊 - ActionStats Data
+  $: addedStats = data.values.map((stat, i) => {
+    return { scaling: stat.scaling, coef: stackCoefs[i] };
+  });
 </script>
 
 <button
@@ -173,7 +178,7 @@
   {/if}
 </button>
 
-<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
+<ActionDetails {id} {talentLvl} {data} {type} {addedStats} hasFooter bind:dialog>
   <div slot="footer" class="py-1">
     <div class="flex h-9 items-center gap-4 rounded-lg md:h-10 [&>button]:bg-slate-700">
       <button

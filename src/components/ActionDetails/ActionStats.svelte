@@ -2,29 +2,33 @@
   import { getStatLabel } from '$lib/helpers/formatStatLabel';
   import { elementalText } from '$lib/data/Colors';
 
-  export let values: { stat: string; value: number }[] = [];
+  export let values: { scaling: string; coef: number }[] = [];
 
-  function formatNumber(value: number) {
-    if (value === 0) return 0;
-    const isPercentage = value < 3;
-    return isPercentage ? `${+(value * 100).toFixed(1)}%` : value.toString();
+  function formatNumber(coef: number) {
+    if (coef === 0) return 0;
+    const isPercentage = coef < 3;
+    return isPercentage ? `${+(coef * 100).toFixed(1)}%` : coef.toString();
   }
 
-  function getColoredText(stat: string) {
-    if (elementalText[stat as keyof typeof elementalText] !== undefined) {
-      return elementalText[stat as keyof typeof elementalText];
+  function getColoredText(scaling: string) {
+    if (elementalText[scaling as keyof typeof elementalText] !== undefined) {
+      return elementalText[scaling as keyof typeof elementalText];
     } else return '';
   }
 </script>
 
-<ul class="leaders flex list-none flex-col gap-y-1 overflow-x-hidden">
-  {#each values as { stat, value } (stat)}
-    <li class="font-bold text-slate-300">
-      <span class={getColoredText(stat)}>{getStatLabel(stat)}</span>
-      <span>{formatNumber(value)}</span>
-    </li>
-  {/each}
-</ul>
+{#if values.length > 0}
+  <section>
+    <ul class="leaders flex list-none flex-col gap-y-1 overflow-x-hidden">
+      {#each values as { scaling, coef } (scaling)}
+        <li class="font-bold text-slate-300">
+          <span class={getColoredText(scaling)}>{getStatLabel(scaling)}</span>
+          <span>{formatNumber(coef)}</span>
+        </li>
+      {/each}
+    </ul>
+  </section>
+{/if}
 
 <style lang="postcss">
   ul.leaders li:before {

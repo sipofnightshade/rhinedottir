@@ -16,7 +16,7 @@
   export let talentLvl: number | null = null;
   export let type: ActionButtonColor;
   export let hasFooter = true;
-  export let actionStats: { stat: string; value: number }[] = [];
+  export let addedStats: { scaling: string; coef: number }[] = [];
 
   function createShortID(
     hasLevels: 'atk' | 'skill' | 'burst' | undefined,
@@ -66,7 +66,7 @@
     </div>
 
     <!-- ❗ Stats ❗ -->
-    <ActionStats values={actionStats} />
+    <ActionStats values={addedStats} />
     <!-- Target -->
     <ActionTarget {id} target={data.target} />
   </div>

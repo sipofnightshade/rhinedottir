@@ -79,7 +79,7 @@
             )
           : (coef as number[])[coefIndex];
       const result = calcCoefficient(talentValue, currentStats, source);
-      addedStats.push({ scaling, coef: result });
+      addedStats = [...addedStats, { scaling, coef: result }];
       action.addStat(id, target as Target, scaling, result);
     });
   }
@@ -152,7 +152,7 @@
   <ActionButton {type} {isActive} url={data.url} />
 </button>
 
-<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
+<ActionDetails {id} {addedStats} {talentLvl} {data} {type} hasFooter bind:dialog>
   <div slot="footer" class="py-1">
     <button
       class="flex w-[62px] rounded-full border border-slate-600 p-0.5 transition-colors duration-300 {isActive

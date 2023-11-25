@@ -77,12 +77,12 @@
   }
 
   function removeStats(stat: ActionValue) {
-    const foundIndex = addedStats.findIndex((x) => x.scaling === stat.scaling);
-    if (foundIndex !== -1) {
-      const { scaling, coef } = addedStats[foundIndex];
+    const newStats = addedStats.filter((x) => x.scaling !== stat.scaling);
+    const { scaling, coef } = addedStats.find((x) => x.scaling === stat.scaling) || {};
+    if (scaling && coef) {
       action.removeStat(id, target as Target, scaling, coef);
-      addedStats.splice(foundIndex, 1);
     }
+    addedStats = newStats;
   }
 
   function handleClick(stat: ActionValue) {
@@ -144,7 +144,7 @@
   </div>
 </button>
 
-<ActionDetails {id} {talentLvl} {data} {type} hasFooter bind:dialog>
+<ActionDetails {id} {talentLvl} {data} {type} {addedStats} hasFooter bind:dialog>
   <svelte:fragment slot="footer">
     <div class="flex gap-1">
       {#each data.values as value}

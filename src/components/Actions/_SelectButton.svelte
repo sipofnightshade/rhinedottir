@@ -37,7 +37,7 @@
 
   let previousStatValues: any = {};
   let selected: ActionValue | undefined;
-  let addedStats: { [key: string]: number } = {};
+  let addedStats: { scaling: string; coef: number }[] = [];
 
   $: talentLvl = data.hasLevels ? currentChar[data.hasLevels] : null;
 
@@ -55,15 +55,15 @@
     const result = calcCoefficient(talentValue, currentStats, source);
 
     action.addStat(id, target as Target, scaling, result);
-    addedStats[scaling] = result;
+    addedStats = [{ scaling, coef: result }];
   }
 
   function removeStats(stat: ActionValue) {
     const { scaling } = stat;
-    if (scaling in addedStats) {
-      const coef = addedStats[scaling];
+    if (addedStats[0].scaling === scaling) {
+      const coef = addedStats[0].coef;
       action.removeStat(id, target as Target, scaling, coef);
-      delete addedStats[scaling];
+      addedStats = [];
     }
   }
 
@@ -128,7 +128,7 @@
   {/if}
 </button>
 
-<ActionDetails {id} {talentLvl} {data} hasFooter {type} bind:dialog>
+<ActionDetails {id} {talentLvl} {data} {addedStats} hasFooter {type} bind:dialog>
   <svelte:fragment slot="footer">
     <div class="grid auto-cols-fr grid-flow-col gap-1">
       {#each data.values as item (item.scaling)}
