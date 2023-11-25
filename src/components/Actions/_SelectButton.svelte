@@ -22,6 +22,7 @@
   import ActionButton from './ActionButton.svelte';
   import ActionDetails from '../ActionDetails/ActionDetails.svelte';
   import StatImage from '../Desktop/StatImage.svelte';
+  import { longpress } from '$lib/actions/longpress';
 
   // props
   export let type: ActionButtonColor;
@@ -117,7 +118,12 @@
   }
 </script>
 
-<button on:click={toggleModal} class="relative">
+<button
+  on:longpress={toggleModal}
+  use:longpress={300}
+  on:click={toggleModal}
+  class="relative"
+>
   <ActionButton {type} isActive={selected != undefined} url={data.url} />
   {#if selected != undefined}
     <div class="absolute bottom-0 right-0 z-10 flex">
