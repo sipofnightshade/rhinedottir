@@ -18,8 +18,9 @@
     'circlet'
   ];
 
-  function getArtifactRating(arr: number[]) {
+  function getArtifactRating(arr: number[], uid: number) {
     if (arr === undefined) return undefined;
+    if (uid === 0) return 1;
     if (arr && arr.length === 2) return 5;
     return 4;
   }
@@ -50,7 +51,8 @@
       alt={item.artifacts[type].selected}
       imgClasses="w-5/6"
       classes="!rounded-lg"
-      rating={getArtifactRating(item.artifacts[type].rating)}
+      rating={getArtifactRating(item.artifacts[type].rating, item.artifacts[type].uid)}
+      hasBG={false}
     />
   {/each}
 </div>
