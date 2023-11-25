@@ -77,8 +77,8 @@ const charName: CharacterRecord = {
     {
       name: 'Equitable Judgment x1',
       tag: 'C1',
-      hasOwnSpecialMultiplier: 'equitableJudgment',
-      hasOwnCritDMG: 'equitableJudgmentCritDMG',
+      hasOwnSpecialMultiplier: 'Equitable Judgment',
+      hasOwnCritDMG: 'Equitable Judgment Crit DMG',
       damageBonus: 'charged',
       damage: [
         [
@@ -92,8 +92,8 @@ const charName: CharacterRecord = {
     {
       name: 'Equitable Judgment x8',
       tag: 'C8',
-      hasOwnSpecialMultiplier: 'equitableJudgment',
-      hasOwnCritDMG: 'equitableJudgmentCritDMG',
+      hasOwnSpecialMultiplier: 'Equitable Judgment',
+      hasOwnCritDMG: 'Equitable Judgment Crit DMG',
       damageBonus: 'charged',
       damage: [
         [
@@ -150,8 +150,8 @@ const charName: CharacterRecord = {
       name: 'Additional Currents x2',
       tag: 'X6',
       constellation: 6,
-      hasOwnSpecialMultiplier: 'equitableJudgment',
-      hasOwnCritDMG: 'equitableJudgmentCritDMG',
+      hasOwnSpecialMultiplier: 'Equitable Judgment',
+      hasOwnCritDMG: 'Equitable Judgment Crit DMG',
       url: 'UI_Talent_S_Neuvillette_04',
       damageBonus: 'charged',
       damage: [
@@ -174,8 +174,8 @@ const charName: CharacterRecord = {
     {
       name: 'Additional Current x1',
       constellation: 6,
-      hasOwnSpecialMultiplier: 'equitableJudgment',
-      hasOwnCritDMG: 'equitableJudgmentCritDMG',
+      hasOwnSpecialMultiplier: 'Equitable Judgment',
+      hasOwnCritDMG: 'Equitable Judgment Crit DMG',
       url: 'UI_Talent_S_Neuvillette_04',
       damageBonus: 'charged',
       damage: [
@@ -301,7 +301,7 @@ const charName: CharacterRecord = {
       actionType: 'stack',
       values: [
         {
-          scaling: 'equitableJudgment',
+          scaling: 'Equitable Judgment',
           coef: [1.1, 0.15, 0.35]
         }
       ]
@@ -337,7 +337,7 @@ const charName: CharacterRecord = {
       actionType: 'stack',
       values: [
         {
-          scaling: 'equitableJudgmentCritDMG',
+          scaling: 'Equitable Judgment Crit DMG',
           coef: [0.14, 0.14, 0.14]
         }
       ]

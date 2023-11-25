@@ -109,9 +109,9 @@ const charName: CharacterRecord = {
     {
       name: 'Rebuke: Vaulting Fist',
       tag: 'VF',
-      hasOwnBonusDMG: 'graciousRebuke',
-      hasOwnCritRate: 'vaultingFistCritRate',
-      hasOwnCritDMG: 'vaultingFistCritDMG',
+      hasOwnBonusDMG: 'Gracious Rebuke',
+      hasOwnCritRate: 'Vaulting Fist Crit Rate',
+      hasOwnCritDMG: 'Vaulting Fist Crit DMG',
       url: 'UI_Talent_S_Wriothesley_05',
       damageBonus: 'charged',
       damage: [
@@ -128,9 +128,9 @@ const charName: CharacterRecord = {
       tag: 'X6',
       constellation: 6,
       icd: 0,
-      hasOwnBonusDMG: 'graciousRebuke',
-      hasOwnCritRate: 'vaultingFistCritRate',
-      hasOwnCritDMG: 'vaultingFistCritDMG',
+      hasOwnBonusDMG: 'Gracious Rebuke',
+      hasOwnCritRate: 'Vaulting Fist Crit Rate',
+      hasOwnCritDMG: 'Vaulting Fist Crit DMG',
       url: 'UI_Talent_S_Wriothesley_04',
       damageBonus: 'charged',
       damage: [
@@ -286,7 +286,7 @@ const charName: CharacterRecord = {
       actionType: 'passive',
       values: [
         {
-          scaling: 'graciousRebuke',
+          scaling: 'Gracious Rebuke',
           coef: 0.5
         }
       ]
@@ -316,7 +316,7 @@ const charName: CharacterRecord = {
       actionType: 'passive',
       values: [
         {
-          scaling: 'graciousRebuke',
+          scaling: 'Gracious Rebuke',
           coef: 1.5
         }
       ]
@@ -361,11 +361,11 @@ const charName: CharacterRecord = {
       actionType: 'toggle',
       values: [
         {
-          scaling: 'vaultingFistCritRate',
+          scaling: 'Vaulting Fist Crit Rate',
           coef: 0.1
         },
         {
-          scaling: 'vaultingFistCritDMG',
+          scaling: 'Vaulting Fist Crit DMG',
           coef: 0.8
         }
       ]
