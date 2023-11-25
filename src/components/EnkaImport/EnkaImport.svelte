@@ -15,7 +15,7 @@
   };
 
   async function fetchDataFromApi(playerId: number) {
-    const apiUrl = `https://rhinedottir.com/${playerId}`;
+    const apiUrl = `https://rhinedottir-proxy.gregorymcmillan96.workers.dev/${playerId}`;
 
     try {
       const response = await fetch(apiUrl, { headers });
