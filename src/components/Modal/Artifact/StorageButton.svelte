@@ -14,6 +14,7 @@
 
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import Delete from '$lib/icons/Delete.svelte';
+  import { getImageUrl } from '$lib/helpers/getImageURL';
 
   export let storedArtifact: ArtifactStorageItem;
   export let type: ArtifactType;
@@ -63,7 +64,7 @@
   >
     <div>
       <Thumbnail
-        img="/images/artifact/{type}/{storedArtifact.selected}.webp"
+        img={getImageUrl(type, storedArtifact.url, storedArtifact.selected)}
         alt={storedArtifact.selected}
         classes="w-12 xs-300:w-16 xs-375:w-20 xs-375:p-1"
         hasBG={false}
