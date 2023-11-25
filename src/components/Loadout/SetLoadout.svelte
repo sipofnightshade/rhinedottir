@@ -45,7 +45,7 @@
   <h3 slot="title">Select a loadout</h3>
   <!-- Content -->
   <div class="flex h-full flex-col gap-4">
-    <!-- <EnkaImport /> -->
+    <EnkaImport />
 
     <!-- Filters -->
     <LoadoutFilters selected={filter} on:filter={handleFilters} />

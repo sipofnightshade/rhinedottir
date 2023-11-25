@@ -11,11 +11,11 @@
 
   const cacheTTL: number = 60000;
   const headers = {
-    'User-Agent': 'Rhinedottir | Version - 0.81'
+    'User-Agent': 'Rhinedottir Web'
   };
 
   async function fetchDataFromApi(playerId: number) {
-    const apiUrl = `https://enka.network/api/uid/${playerId}`;
+    const apiUrl = `https://rhinedottir.com/${playerId}`;
 
     try {
       const response = await fetch(apiUrl, { headers });
