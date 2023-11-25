@@ -81,7 +81,7 @@
       {#if item.name}
         <button
           class="flex h-9 w-full flex-grow items-center justify-center rounded-md border transition-colors
-      {activeTabValue === item.value
+        {activeTabValue === item.value
             ? visionClasses[item.vision]
             : 'border-slate-600 hover:border-slate-500'}"
           on:click={handleClick(item.value)}
@@ -109,7 +109,7 @@
     <!-- ENEMY TAB BUTTON -->
     <button
       class="flex h-9 w-full flex-grow items-center justify-center rounded-md border
-      {activeTabValue === 4
+        {activeTabValue === 4
         ? 'border-red-600'
         : 'border-slate-600 hover:border-slate-500'}"
       on:click={handleClick(4)}

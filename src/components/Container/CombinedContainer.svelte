@@ -6,17 +6,17 @@
   import Footer from '../Footer/Footer.svelte';
   import Combo from '../Table/Combo.svelte';
   import Damage from '../Table/Damage.svelte';
-  import Stats from '../Table/Stats.svelte';
   import Tabs from '../Tabs/Tabs.svelte';
+  import StatsAll from '../Table/StatsAll.svelte';
 
   const mobileItems: any = [
     { label: 'Combos', value: 1, component: Combo },
     { label: 'Damage', value: 2, component: Damage },
-    { label: 'Stats', value: 3, component: Stats }
+    { label: 'Stats', value: 3, component: StatsAll }
   ];
   const desktopItems: any = [
     { label: 'Damage', value: 1, component: Damage },
-    { label: 'Stats', value: 2, component: Stats }
+    { label: 'Stats', value: 2, component: StatsAll }
   ];
 
   let innerWidth: number;
