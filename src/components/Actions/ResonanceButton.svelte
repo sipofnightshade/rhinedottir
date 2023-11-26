@@ -33,7 +33,7 @@
   <svelte:component
     this={PassiveButton}
     data={ResonanceActions['pyro']}
-    type="pyro"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -43,7 +43,7 @@
   <svelte:component
     this={PassiveButton}
     data={ResonanceActions['hydro']}
-    type="hydro"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -53,7 +53,7 @@
   <svelte:component
     this={ToggleButton}
     data={ResonanceActions['geo']}
-    type="geo"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -61,7 +61,7 @@
   <svelte:component
     this={ToggleButton}
     data={ResonanceActions['geo2']}
-    type="geo"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -71,7 +71,7 @@
   <svelte:component
     this={StackButton}
     data={ResonanceActions['dendro']}
-    type="dendro"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -81,7 +81,7 @@
   <svelte:component
     this={PassiveButton}
     data={ResonanceActions['anemo']}
-    type="anemo"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}
@@ -91,7 +91,7 @@
   <svelte:component
     this={ToggleButton}
     data={ResonanceActions['cryo']}
-    type="cryo"
+    type="resonance"
     id="main"
     currentChar={$character}
     currentStats={$stats.main}

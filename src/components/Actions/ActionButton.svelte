@@ -29,7 +29,7 @@
     pyro: 'bg-gradient-to-b from-pyro to-pyroDark',
     weapon: 'bg-gradient-to-b from-slate-400 to-slate-500',
     artifact: 'bg-gradient-to-b from-slate-400 to-slate-500',
-    resonance: 'bg-gradient-to-b from-slate-400 to-slate-500'
+    resonance: 'bg-gradient-to-b from-slate-700 to-slate-800'
   };
 
   const outlines = {
@@ -42,7 +42,7 @@
     pyro: 'outline-pyro',
     weapon: 'outline-slate-300',
     artifact: 'outline-slate-300',
-    resonance: 'outline-slate-300'
+    resonance: 'outline-slate-500'
   };
 </script>
 
