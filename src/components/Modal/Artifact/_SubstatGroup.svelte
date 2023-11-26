@@ -53,7 +53,7 @@
     <button
       use:listbox.button
       on:select={onSelect}
-      class=" flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 hover:border-slate-500 active:bg-slate-600 sm:text-sm md:h-10"
+      class=" flex h-10 w-full items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 hover:border-slate-500 active:bg-slate-600 sm:text-sm"
       class:border-slate-300={$listbox.expanded}
       class:border-slate-600={!$listbox.expanded}
     >
@@ -78,7 +78,7 @@
     </button>
   </div>
   <input
-    class="col-span-5 h-9 appearance-none rounded-md border border-slate-600 bg-slate-800 p-2 text-right text-sm transition-colors hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300 md:h-10"
+    class="col-span-5 h-10 appearance-none rounded-md border border-slate-600 bg-slate-800 p-2 text-right text-sm transition-colors hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300"
     class:opacity-60={isBadStat}
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"

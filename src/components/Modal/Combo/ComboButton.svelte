@@ -138,7 +138,7 @@
 </script>
 
 <button
-  class="relative mr-2 flex h-[70px] w-10 flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-600 transition-colors"
+  class="relative mr-2 flex h-20 w-11 flex-col items-center justify-center overflow-hidden rounded-lg border border-slate-600 transition-colors md:h-[70px] md:w-10"
   on:click={switchDamageType}
   draggable="true"
   data-item-id={btn.btnID}
@@ -151,15 +151,17 @@
       class="flex h-full w-full items-center justify-center border-b border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.top}"
       class:border-opacity-100={classes.top !== classes.bot}
     >
-      <span class="text-shadow pointer-events-none mt-1 text-base text-slate-100"
+      <span
+        class="text-shadow pointer-events-none mt-1 text-lg text-slate-100 md:mt-1 md:text-base"
         >{btn.tag}</span
       >
     </div>
-    <div
-      class="relative flex h-full w-full items-center justify-center border-t border-slate-700 border-opacity-0 transition-opacity duration-500 {classes.bot}"
-      class:border-opacity-100={classes.top !== classes.bot}
-    >
-      <img src={btnImage} class=" top-1 mb-1 h-7 w-7" alt="Talent" />
+    <div class="relative flex h-full w-full items-center justify-center {classes.bot}">
+      <img
+        src={btnImage}
+        class="mb-2 h-8 w-8 md:top-1 md:mb-1 md:h-7 md:w-7"
+        alt="Talent"
+      />
     </div>
   {:else}
     <div

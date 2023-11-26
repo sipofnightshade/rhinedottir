@@ -72,9 +72,7 @@
       {displayValue}
     </Label>
   </div>
-  <div
-    class="grid h-9 w-full grid-cols-2 gap-0.5 rounded-lg md:h-10 [&>button]:bg-slate-700"
-  >
+  <div class="grid h-10 w-full grid-cols-2 gap-0.5 rounded-lg [&>button]:bg-slate-700">
     <button
       on:click={decreaseValue}
       class="flex w-full items-center justify-center rounded-l-lg rounded-r-sm border border-slate-600 transition-colors hover:border-slate-500"

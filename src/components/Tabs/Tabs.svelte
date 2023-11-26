@@ -12,7 +12,7 @@
   {#each items as item}
     <li class="flex items-center justify-center rounded-full">
       <button
-        class="h-full w-full rounded-full py-2 transition-colors"
+        class="h-full w-full rounded-full py-2.5 transition-colors"
         on:click={handleClick(item.value)}
         class:bg-slate-800={activeTabValue === item.value}
         class:text-slate-100={activeTabValue === item.value}>{item.label}</button

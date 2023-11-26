@@ -30,16 +30,16 @@
   </p>
   {#if type === 'flower' || type === 'feather'}
     <div
-      class="flex h-[37px] w-full items-center justify-center rounded-lg bg-slate-900 py-2 pl-2 md:h-10"
+      class="flex h-10 w-full items-center justify-center rounded-lg bg-slate-900 py-2 pl-2"
     >
-      <p>{type === 'flower' ? 'HP' : 'ATK'}</p>
+      <p class="font-bold">{type === 'flower' ? 'HP' : 'ATK'}</p>
     </div>
   {:else}
     <div class="relative text-sm">
       <button
         use:listbox.button
         on:select={onSelect}
-        class="relative flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 hover:border-slate-500 active:bg-slate-600 sm:text-sm md:h-10"
+        class="relative flex h-10 w-full items-center justify-between gap-2 rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors duration-200 hover:border-slate-500 active:bg-slate-600 sm:text-sm"
         class:border-slate-300={$listbox.expanded}
         class:border-slate-600={!$listbox.expanded}
       >

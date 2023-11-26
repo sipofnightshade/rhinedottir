@@ -166,25 +166,31 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div
         use:popover.panel
-        class="triangle absolute left-1/2 top-28 z-10 mt-3 w-64 max-w-xs -translate-x-1/2 transform px-4 xs-300:w-80 sm:px-0 lg:max-w-3xl"
+        class="triangle absolute left-1/2 top-28 z-10 mt-3 w-full max-w-xs -translate-x-1/2 transform px-4 xs-300:w-80 sm:px-0 lg:max-w-3xl"
       >
-        <div class="rounded-xl border border-slate-500 bg-slate-800 p-2 xs-300:p-4">
+        <div
+          class="rounded-xl border border-slate-500 bg-slate-800 p-2 xs-375:p-3 md:p-4"
+        >
           <ComboTabs on:addbutton={addButton} />
         </div>
       </div>
     </Transition>
   </div>
   <div
-    class="mx-0.5 mt-1 flex flex-col justify-between gap-2 xs:flex-row xs:items-center"
+    class="mx-0.5 mt-1 flex flex-col justify-between gap-2.5 xs:flex-row xs:items-center"
   >
     <div class="flex gap-3">
       <div>
-        <p class="text-xs font-bold uppercase text-slate-400">Total</p>
+        <p class="text-sm font-bold uppercase text-slate-400 md:text-xs lg:text-sm">
+          Total
+        </p>
         <DamageValue type="none" value={totalDamageSum} />
       </div>
 
       <div>
-        <p class="text-xs font-bold uppercase text-slate-400">DMG by type</p>
+        <p class="text-sm font-bold uppercase text-slate-400 md:text-xs lg:text-sm">
+          DMG by type
+        </p>
         <div class="flex flex-wrap gap-x-2.5 gap-y-1">
           {#if totalDamageSum === 0}
             <DamageValue type="none" value={0} />
@@ -195,10 +201,10 @@
         </div>
       </div>
     </div>
-    <div class="flex h-9 gap-2">
+    <div class="flex h-10 gap-2 md:h-9 lg:h-10">
       <button
         on:click={handleEditButton}
-        class="rounded-lg border border-slate-500 px-3 py-1"
+        class="flex w-24 items-center justify-center rounded-lg border border-slate-500 md:w-20 lg:w-24"
         class:border-slate-200={deletable}
         class:text-slate-200={deletable}
       >

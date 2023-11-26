@@ -18,14 +18,6 @@
 
   export let type: ArtifactType;
 
-  const imgType = {
-    flower: 'artifact/flower',
-    feather: 'artifact/feather',
-    sands: 'artifact/sands',
-    goblet: 'artifact/goblet',
-    circlet: 'artifact/circlet'
-  };
-
   const substatIDs: [0, 1, 2, 3] = [0, 1, 2, 3];
 
   // state methods
@@ -110,7 +102,11 @@
 
 <div class="flex flex-col gap-2 overflow-hidden xs:gap-4">
   <div class="flex items-end gap-x-2">
-    <StarButton {type} name={$artifact[type].selected.name} url={$artifact[type].selected.url} />
+    <StarButton
+      {type}
+      name={$artifact[type].selected.name}
+      url={$artifact[type].selected.url}
+    />
     <div class="w-64 xs:w-72">
       <LevelGroup
         label="Lvl"
@@ -172,13 +168,13 @@
   </div>
 
   <div class="grid grid-cols-3 gap-x-3">
-    <div class="h-9 rounded-lg border border-dashed border-slate-700 md:h-10" />
-    <div class="h-9 rounded-lg border border-dashed border-slate-700 md:h-10" />
+    <div class="h-10 rounded-lg border border-dashed border-slate-700" />
+    <div class="h-10 rounded-lg border border-dashed border-slate-700" />
     <button
       on:click={handleSave}
       disabled={!canSave}
       class:opacity-50={!canSave}
-      class="h-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors md:h-10"
+      class=" h-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors"
       class:hover:border-slate-500={canSave}
       class:active:bg-slate-600={canSave}
     >

@@ -21,7 +21,7 @@
 
 {#if value && !reactions[rxn]}
   <button
-    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-3 text-sm text-slate-900 transition hover:opacity-80 active:bg-slate-500"
+    class="flex w-full select-none items-center justify-center rounded bg-slate-400 py-2 text-sm text-slate-900 transition hover:opacity-80 active:bg-slate-500 xs-375:py-2.5 lg:py-3"
     on:click
     class:bg-slate-400={el === 'physical'}
     class:bg-anemo={el === 'anemo'}
@@ -38,7 +38,7 @@
 {:else if value && reactions[rxn]}
   <button
     on:click
-    class="flex w-full select-none items-center justify-center rounded border border-slate-600 bg-slate-700 py-2 text-sm transition hover:opacity-80"
+    class="flex w-full select-none items-center justify-center rounded border border-slate-600 bg-slate-700 py-1.5 text-sm transition hover:opacity-80 lg:py-2"
   >
     <svelte:component this={reactions[rxn].component} class="h-6" />
   </button>
