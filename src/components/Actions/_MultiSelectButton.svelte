@@ -95,17 +95,6 @@
     }
   }
 
-  function isAnyStatChanged() {
-    // Compare previous and current stat values
-    if (!sourceStats) return false;
-    for (const stat of sourceStats) {
-      if (previousStatValues[stat] !== currentStats[stat]) {
-        return true; // Return true if any tracked stat has changed
-      }
-    }
-    return false;
-  }
-
   function recalculateStats() {
     if (addedStats.length > 0) {
       addedStats.forEach((stat: Stat) => {
@@ -115,7 +104,26 @@
     }
   }
 
-  $: isAnyStatChanged(), talentLvl, data, currentChar.constellation, recalculateStats();
+  function handleSourceStatChange(currentStats: Index_Stats) {
+    if (!sourceStats) return false;
+    let changed = false;
+
+    for (const stat of sourceStats) {
+      if (previousStatValues[stat] !== currentStats[stat]) {
+        changed = true;
+        previousStatValues[stat] = currentStats[stat];
+      }
+    }
+
+    if (changed) {
+      recalculateStats();
+    }
+  }
+
+  // 🌊 Individually call `recalculateStats()` when dependencies change
+  $: handleSourceStatChange(currentStats);
+  $: talentLvl, recalculateStats();
+  $: currentChar.constellation, recalculateStats();
 
   // handle Modal
   let dialog: HTMLDialogElement;
