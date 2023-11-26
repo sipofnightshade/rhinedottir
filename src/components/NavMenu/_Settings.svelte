@@ -1,14 +1,16 @@
 <script lang="ts">
   import { settings } from '$lib/stores/settingsStore';
+  import { elementalBg } from '$lib/data/Colors';
+  import { character } from '$lib/stores/characterStore';
 </script>
 
 <div class="flex flex-col gap-y-2 p-2">
   <h2 class="text-sm font-bold uppercase">Settings</h2>
   <div class="flex items-center justify-between text-sm">
-    <p>Limit App Colors</p>
+    <p>Hide Rating Colors</p>
     <button
       class="flex w-[54px] rounded-full border border-slate-600 p-0.5 transition-colors duration-300 {$settings.limitedColors
-        ? 'bg-slate-300'
+        ? elementalBg[$character.selected.vision]
         : 'bg-slate-800'}"
       on:click={() => settings.switchSetting('limitedColors')}
       role="checkbox"

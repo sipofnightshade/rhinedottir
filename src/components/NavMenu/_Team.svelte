@@ -85,6 +85,14 @@
   let modalContent: any = undefined;
   let modalTitle: string | undefined = undefined;
 
+  function getArtifactRating(arr: number[], name: string) {
+    if (arr === undefined) return undefined;
+    if (name === 'none') return 1;
+    if (!Array.isArray(arr)) return arr;
+    if (arr && arr.length === 2) return 5;
+    return 4;
+  }
+
   // pass in component as parameter and toggle modal state
   function toggleModal(component: any, title: string) {
     dialog.showModal();
@@ -95,29 +103,35 @@
 
 <div class="grid auto-rows-min grid-cols-5 gap-2">
   <button
-    class=" flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
+    class="flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
       img="https://enka.network/ui/{$character.selected.url}.png"
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
+      classes="!rounded-none"
+      hasBG
+      rating={$character.selected.rating}
     />
   </button>
   <button
-    class="flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
+    class="flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
     on:click={() => toggleModal(Weapon, 'Weapon')}
   >
     <Thumbnail
       img="https://enka.network/ui/{$weapon.selected.url}.png"
       alt={$weapon.selected.fullName}
+      classes="!rounded-none"
+      hasBG
+      rating={$weapon.selected.rating}
     />
   </button>
 
   <!-- Party buttons -->
   {#each partyModals as modal (modal.id)}
     <button
-      class=" flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
+      class=" flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
       on:click={() => toggleModal(modal.component, 'Select a Teammate')}
     >
       {#if $party[modal.id]}
@@ -125,6 +139,9 @@
           img="https://enka.network/ui/{$party[modal.id]?.character.selected.url}.png"
           vision={$party[modal.id]?.character.selected.vision}
           alt={$party[modal.id]?.character.selected.name || 'character'}
+          hasBG
+          classes="!rounded-none"
+          rating={$party[modal.id]?.character.selected.rating}
         />
       {:else}
         <img src={modal.img} alt="{modal.id} image" class="w-3/5" />
@@ -135,7 +152,7 @@
   <!-- Artifact buttons -->
   {#each artifactModals as modal (modal.id)}
     <button
-      class="flex aspect-square items-center justify-center rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
+      class="flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-slate-600 bg-slate-700 hover:border hover:border-slate-300"
       on:click={() => toggleModal(modal.component, modal.title)}
     >
       {#if $artifact[modal.id].selected.name === 'none'}
@@ -147,7 +164,12 @@
             $artifact[modal.id].selected.url,
             $artifact[modal.id].selected.name
           )}
+          classes="!rounded-none"
           alt={$artifact[modal.id].selected.fullName}
+          rating={getArtifactRating(
+            $artifact[modal.id].selected.rating,
+            $artifact[modal.id].selected.name
+          )}
         />
       {/if}
     </button>

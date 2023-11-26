@@ -9,6 +9,7 @@
   import SaveLoadout from '../Loadout/SaveLoadout.svelte';
   import SetLoadout from '../Loadout/SetLoadout.svelte';
   import FullLogo from '../Logos/FullLogo.svelte';
+  import { elementalBorders } from '$lib/data/Colors';
 
   // Define MenuItem interface
   interface MenuItem {
@@ -64,11 +65,7 @@
     </div>
 
     <div class="flex w-full justify-center">
-      <FullLogo
-        class="pointer-events-none h-12"
-        selected={false}
-        vision={$character.selected.vision}
-      />
+      <FullLogo class="pointer-events-none h-12" vision={$character.selected.vision} />
     </div>
 
     <div class="ml-auto flex items-center space-x-6">
@@ -93,7 +90,7 @@
 
     <button
       on:click={() => handleMenu(menuItems[0])}
-      class="mx-auto flex h-14 transform-gpu items-center justify-center rounded-lg p-1 transition-transform duration-300 ease-out active:scale-75"
+      class="mx-auto flex h-14 transform-gpu items-center justify-center rounded-lg p-1 transition-transform duration-300 ease-out active:scale-90"
     >
       <!-- <EmptyLogo
         class="pointer-events-none h-full"
@@ -103,7 +100,8 @@
       /> -->
       <FullLogo
         class="pointer-events-none h-12 "
-        selected={true}
+        selected={currentMenuItem?.id === 'team'}
+        hasColor={true}
         vision={$character.selected.vision}
       />
     </button>
@@ -123,14 +121,18 @@
   use Modals.
  -->
     <div
-      class="menu absolute bottom-[72px] z-20 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border border-slate-600 bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
+      class="menu absolute bottom-[72px] z-20 mx-auto flex max-h-vh50 w-full max-w-md flex-col overflow-auto rounded-xl border {elementalBorders[
+        $character.selected.vision
+      ]} bg-slate-800 p-2 shadow-md shadow-slate-900 md:hidden"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
 
     <!-- Desktop Menu -->
     <div
-      class="absolute right-0 top-16 z-20 mt-2 hidden max-h-vh50 w-full max-w-xs flex-col overflow-auto rounded-lg border border-slate-600 bg-slate-700 p-2 shadow-md shadow-slate-800 md:flex lg:w-1/2"
+      class="absolute right-0 top-16 z-20 mt-1.5 hidden max-h-vh50 w-full max-w-xs flex-col overflow-auto rounded-lg border {elementalBorders[
+        $character.selected.vision
+      ]} bg-slate-800 p-2 shadow-md shadow-slate-800 md:flex lg:w-1/2"
     >
       <svelte:component this={currentMenuItem.component} />
     </div>
