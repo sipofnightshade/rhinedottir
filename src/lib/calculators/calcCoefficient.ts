@@ -6,9 +6,7 @@ export function calcCoefficient(
   $stats: Index_Stats,
   source: CoefSource | undefined
 ): number {
-  if (source === undefined) {
-    return coef;
-  }
+  if (!source) return coef;
 
   if (Number.isNaN(coef)) {
     throw new Error(`Incorrent coef value was passed - coef: ${coef}`);
