@@ -1,4 +1,5 @@
 <script lang="ts">
+  import TeamIcon from '$lib/icons/TeamIcon.svelte';
   import ImportButton from './ImportButton.svelte';
   export let playerBuilds: any[];
 </script>
@@ -12,11 +13,7 @@
         <div
           class="flex aspect-square items-center justify-center rounded-full border border-dashed border-slate-400"
         >
-          <img
-            src="/images/ui/UI_BtnIcon_Team.png"
-            alt="team placeholder"
-            class="w-1/2"
-          />
+          <TeamIcon class="w-1/2" />
         </div>
       {/if}
     {/each}
