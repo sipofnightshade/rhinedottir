@@ -7,7 +7,7 @@
   let lastApiCallTimestamp: number = 0;
   let cachedData: any = null;
 
-  let responseMsg = 'No Imported Characters';
+  let responseCode: number | null;
 
   const cacheTTL: number = 60000;
   const headers = {
@@ -16,6 +16,7 @@
 
   async function fetchDataFromApi(playerId: number) {
     const apiUrl = `https://rhinedottir-proxy.gregorymcmillan96.workers.dev/${playerId}`;
+    responseCode = 100;
 
     try {
       const response = await fetch(apiUrl, { headers });
@@ -30,7 +31,7 @@
     }
   }
 
-  function runEnkaImport() {
+  async function runEnkaImport() {
     const currentTime = Date.now();
 
     // Check if the data is present in the cache and if it's within the TTL
@@ -42,22 +43,24 @@
         .then((data) => {
           cachedData = data;
           lastApiCallTimestamp = currentTime;
+          // Update response message based on success
+          responseCode = 200;
         })
         .catch((error) => {
           if (error.message.includes('400')) {
-            responseMsg = 'Wrong UID format. Please enter a valid Player ID.';
+            responseCode = 400;
           } else if (error.message.includes('404')) {
-            responseMsg = 'Player does not exist. Please check the Player ID.';
+            responseCode = 404;
           } else if (error.message.includes('424')) {
-            responseMsg = 'Game maintenance or server error. Please try again later.';
+            responseCode = 424;
           } else if (error.message.includes('429')) {
-            responseMsg = 'Rate-limited. Too many requests. Please wait and try again.';
+            responseCode = 429;
           } else if (error.message.includes('500')) {
-            responseMsg = 'General server error. Please try again later.';
+            responseCode = 500;
           } else if (error.message.includes('503')) {
-            responseMsg = 'Server error. Please try again later.';
+            responseCode = 503;
           } else {
-            responseMsg = 'Unexpected error occurred. Please try again later.';
+            responseCode = -1; // An unexpected error code
           }
         });
     }
@@ -94,7 +97,7 @@
     </button>
   </div>
   <!-- RESPONSE MESSAGE -->
-  <ResponseMessage {responseMsg} />
+  <ResponseMessage {responseCode} />
 
   <!-- CREATE LOADOUT BUTTONS -->
   <LoadoutCreators {playerBuilds} />
