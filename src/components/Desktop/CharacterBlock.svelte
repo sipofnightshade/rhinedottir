@@ -12,27 +12,24 @@
   import { party } from '$lib/stores/partyStore';
   import StatImage from './StatImage.svelte';
   import MultiModal from '../MultiModal/MultiModal.svelte';
+  import TeamIcon from '$lib/icons/TeamIcon.svelte';
 
   type PartyModal = {
     id: 'one' | 'two' | 'three';
-    img: string;
     component: any;
   };
 
   const menuModals: PartyModal[] = [
     {
       id: 'one',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: One
     },
     {
       id: 'two',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: Two
     },
     {
       id: 'three',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: Three
     }
   ];
@@ -109,17 +106,13 @@
               rating={$party[modal.id]?.character.selected.rating}
             />
           {:else}
-            <img src={modal.img} alt="{modal.id} image" class="w-2/3" />
+            <TeamIcon class="w-3/5" />
           {/if}
         </button>
       {/each}
     </div>
   </div>
 </section>
-
-<!-- <Modal bind:dialog title={modalTitle}>
-  <svelte:component this={modalContent} />
-</Modal> -->
 
 <MultiModal bind:dialog>
   <h3 slot="title">{modalTitle}</h3>

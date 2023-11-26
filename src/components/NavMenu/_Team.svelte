@@ -20,6 +20,7 @@
   import { party } from '$lib/stores/partyStore';
   import MultiModal from '../MultiModal/MultiModal.svelte';
   import { getImageUrl } from '$lib/helpers/getImageURL';
+  import TeamIcon from '$lib/icons/TeamIcon.svelte';
 
   // initialise modal state and content
 
@@ -27,24 +28,20 @@
 
   type PartyModal = {
     id: 'one' | 'two' | 'three';
-    img: string;
     component: any;
   };
 
   const partyModals: PartyModal[] = [
     {
       id: 'one',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: One
     },
     {
       id: 'two',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: Two
     },
     {
       id: 'three',
-      img: '/images/ui/UI_BtnIcon_Team.png',
       component: Three
     }
   ];
@@ -52,31 +49,31 @@
   const artifactModals: ArtifactModalButtons = [
     {
       id: 'flower',
-      img: '/images/ui/UI_BtnIcon_RelicType1.png',
+      img: '/images/artifact/none_4.webp',
       component: Flower,
       title: 'Flower of Life'
     },
     {
       id: 'feather',
-      img: '/images/ui/UI_BtnIcon_RelicType2.png',
+      img: '/images/artifact/none_2.webp',
       component: Feather,
       title: 'Plume of Death'
     },
     {
       id: 'sands',
-      img: '/images/ui/UI_BtnIcon_RelicType3.png',
+      img: '/images/artifact/none_5.webp',
       component: Sands,
       title: 'Sands of Eon'
     },
     {
       id: 'goblet',
-      img: '/images/ui/UI_BtnIcon_RelicType4.png',
+      img: '/images/artifact/none_1.webp',
       component: Goblet,
       title: 'Goblet of Eonothem'
     },
     {
       id: 'circlet',
-      img: '/images/ui/UI_BtnIcon_RelicType5.png',
+      img: '/images/artifact/none_3.webp',
       component: Circlet,
       title: 'Circlet of Logos'
     }
@@ -144,7 +141,7 @@
           rating={$party[modal.id]?.character.selected.rating}
         />
       {:else}
-        <img src={modal.img} alt="{modal.id} image" class="w-3/5" />
+        <TeamIcon class="w-3/5" />
       {/if}
     </button>
   {/each}

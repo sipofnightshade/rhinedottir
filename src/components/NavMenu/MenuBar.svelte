@@ -10,6 +10,7 @@
   import SetLoadout from '../Loadout/SetLoadout.svelte';
   import FullLogo from '../Logos/FullLogo.svelte';
   import { elementalBorders } from '$lib/data/Colors';
+  import Gear from '$lib/icons/Gear.svelte';
 
   // Define MenuItem interface
   interface MenuItem {
@@ -57,7 +58,7 @@
 <div class="relative flex w-full justify-center" use:clickOutside={closeMenu}>
   <!-- Top Menu -->
   <nav
-    class="hidden w-full auto-cols-fr grid-flow-col items-center justify-between rounded-2xl border border-slate-600 p-2 md:grid"
+    class="hidden w-full auto-cols-fr grid-flow-col items-center justify-between rounded-2xl border border-slate-600 px-3 py-2 md:grid"
   >
     <div class="mr-auto flex gap-x-4">
       <SaveLoadout />
@@ -70,20 +71,16 @@
 
     <div class="ml-auto flex items-center space-x-6">
       <button on:click={() => handleMenu(menuItems[1])}>
-        <img
-          class="h-10 w-10"
-          src="/images/ui/UI_Icon_Intee_Mechanism.png"
-          alt="Settings Cog"
-        />
+        <Gear class="w-7" />
       </button>
     </div>
   </nav>
 
   <!-- Bottom Menu -->
   <nav
-    class="grid w-full auto-cols-fr grid-flow-col items-center rounded-xl border border-slate-600 p-1 md:hidden"
+    class="grid w-full auto-cols-fr grid-flow-col items-center rounded-xl border border-slate-600 px-2 py-1 md:hidden"
   >
-    <div class="flex gap-3 pl-1">
+    <div class="flex gap-3">
       <SetLoadout />
       <SaveLoadout />
     </div>
@@ -108,10 +105,10 @@
 
     <button
       on:click={() => handleMenu(menuItems[1])}
-      class="ml-auto flex items-center justify-center rounded-lg p-0.5"
+      class="ml-auto flex items-center justify-center rounded-lg"
       class:bg-slate-700={currentMenuItem?.id === 'settings'}
     >
-      <img class="w-12" src="/images/ui/UI_Icon_Intee_Mechanism.png" alt="Settings Cog" />
+      <Gear class="w-10" />
     </button>
   </nav>
 
