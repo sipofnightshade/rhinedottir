@@ -148,8 +148,6 @@
     isActive = false;
     addedStats = [];
   });
-
-  $: console.log('statIndex', statIndex);
 </script>
 
 <button on:longpress={handleLongPress} use:longpress={300} on:click={handleToggle}>

@@ -141,8 +141,6 @@
       removeStats();
     };
   });
-
-  $: console.log(addedStats);
 </script>
 
 <button

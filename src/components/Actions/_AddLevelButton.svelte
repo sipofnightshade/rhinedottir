@@ -97,7 +97,6 @@
 <button
   on:longpress={handleLongPress}
   use:longpress={300}
-  on:contextmenu={() => console.log(data.name)}
   data-testid="passive-action-button"
 >
   <ActionButton {type} url={data.url} isActive />
