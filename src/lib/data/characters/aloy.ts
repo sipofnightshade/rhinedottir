@@ -200,16 +200,12 @@ const charName: CharacterRecord = {
       name: 'Rushing Ice State',
       url: 'Skill_S_Aloy_01',
       description:
-        '**MODIFIED**\nAloy has 4 Coil stacks bonus and her Normal Attack DMG is converted to Cryo DMG',
+        '**MODIFIED:** Aloy has 4 Coil stacks bonus and her Normal Attack DMG is converted to Cryo DMG',
       infusion: 'cryo',
       target: 'self',
       actionType: 'toggle',
       hasLevels: 'skill',
       values: [
-        {
-          scaling: 'normal',
-          coef: 'param7'
-        },
         {
           scaling: 'normal',
           coef: 'param8'
