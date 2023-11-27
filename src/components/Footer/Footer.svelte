@@ -10,6 +10,6 @@
       target="_blank">Privacy</a
     >
     <div class="h-3/5 w-0.5 bg-slate-400" />
-    <p class="text-sm uppercase">BETA</p>
+    <p class="text-sm uppercase">V.1</p>
   </div>
 </footer>
