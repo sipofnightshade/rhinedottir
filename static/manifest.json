@@ -2,7 +2,7 @@
   "short_name": "Rhinedottir",
   "name": "Rhinedottir",
   "description": "Genshin Impact damage calculator and simulator.",
-  "start_url": "/",
+  "start_url": "https://rhinedottir.com/",
   "display": "standalone",
   "background_color": "#1E293B",
   "theme_color": "#334155",
