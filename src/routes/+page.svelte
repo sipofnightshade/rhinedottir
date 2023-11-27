@@ -2,13 +2,6 @@
   import CombinedContainer from '../components/Container/CombinedContainer.svelte';
 </script>
 
-<svelte:head>
-  <title>Rhinedottir</title>
-  <meta name="description" content="Genshin Impact Calculator" />
-</svelte:head>
-
-<!-- <DesktopContainer />
-<MobileContainer /> -->
 <CombinedContainer />
 
 <style lang="postcss">
