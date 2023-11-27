@@ -56,31 +56,27 @@
     class="absolute h-12 w-12 rounded-full {backgrounds[type]} opacity-0 blur-md"
     class:opacity-50={isActive}
   />
+  <div class="absolute h-[46px] w-[46px] rotate-45 rounded-sm {backgrounds[type]}" />
   <div
-    class="pointer-events-none absolute h-[46px] w-[46px] rotate-45 select-none rounded-sm {backgrounds[
-      type
-    ]}"
-  />
-  <div
-    class="pointer-events-none absolute h-[52px] w-[52px] select-none rounded-full {gradients[
+    class="absolute h-[52px] w-[52px] rounded-full {gradients[
       type
     ]} outline outline-1 {outlines[type]}"
   />
   {#if type === 'artifact'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200 opacity-95"
       src="https://enka.network/ui/{url}_4.png"
       alt={url}
     />
   {:else if type === 'resonance'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200 opacity-95"
       src="images/resonance/{url}.webp"
       alt={url}
     />
   {:else}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200 opacity-95"
       src="https://enka.network/ui/{url}.png"
       alt={url}
     />
