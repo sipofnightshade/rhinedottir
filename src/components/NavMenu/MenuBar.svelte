@@ -80,10 +80,13 @@
   <nav
     class="grid w-full auto-cols-fr grid-flow-col items-center rounded-xl border border-slate-600 px-2 py-1 md:hidden"
   >
-    <div class="flex gap-3">
-      <SetLoadout />
-      <SaveLoadout />
-    </div>
+    <button
+      on:click={() => handleMenu(menuItems[1])}
+      class="mr-auto flex items-center justify-center rounded-lg"
+      class:bg-slate-700={currentMenuItem?.id === 'settings'}
+    >
+      <Gear class="w-10" />
+    </button>
 
     <button
       on:click={() => handleMenu(menuItems[0])}
@@ -103,13 +106,10 @@
       />
     </button>
 
-    <button
-      on:click={() => handleMenu(menuItems[1])}
-      class="ml-auto flex items-center justify-center rounded-lg"
-      class:bg-slate-700={currentMenuItem?.id === 'settings'}
-    >
-      <Gear class="w-10" />
-    </button>
+    <div class="flex justify-end gap-2">
+      <SaveLoadout />
+      <SetLoadout />
+    </div>
   </nav>
 
   {#if currentMenuItem}

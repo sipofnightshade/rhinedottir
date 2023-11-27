@@ -36,11 +36,11 @@
   on:click={toggleModal}
 >
   <div
-    class="flex h-12 w-12 items-center justify-center rounded-full md:h-9 md:w-9 md:bg-slate-800"
+    class="flex h-12 w-12 items-center justify-center rounded-full xs:bg-slate-800 md:h-9 md:w-9"
   >
     <img class="h-[22px]" src="/images/ui/UI_BtnIcon_AvatarList.png" alt="UI Team" />
   </div>
-  <p class="mr-2.5 hidden font-bold md:block">Load</p>
+  <p class="mr-2.5 hidden font-bold xs:block">Load</p>
 </button>
 
 <MultiModal bind:dialog>

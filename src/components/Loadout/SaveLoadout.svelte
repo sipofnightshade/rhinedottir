@@ -87,7 +87,7 @@
   on:click={toggleModal}
 >
   <div
-    class="flex h-12 w-12 items-center justify-center rounded-full xs:bg-slate-800 md:h-9 md:w-9"
+    class="flex h-12 w-12 items-center justify-center rounded-full md:h-9 md:w-9 md:bg-slate-800"
   >
     <svg viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg" class="h-[20px] w-[20px]">
       <path
@@ -97,7 +97,7 @@
     </svg>
   </div>
 
-  <p class="mr-2.5 hidden font-bold xs:block">Save</p>
+  <p class="mr-2.5 hidden font-bold md:block">Save</p>
 </button>
 
 <MultiModal bind:dialog small>
