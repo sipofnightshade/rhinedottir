@@ -1,10 +1,11 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export type Settings = 'limitedColors';
+export type Settings = 'limitedColors' | 'hideZeroStats';
 
 const initialState: Record<Settings, boolean> = {
-  limitedColors: true
+  limitedColors: false,
+  hideZeroStats: false
 };
 
 const LOCAL_STORAGE_KEY = 'rhinedottir_settings';
