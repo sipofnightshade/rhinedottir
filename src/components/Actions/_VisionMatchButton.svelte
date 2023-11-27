@@ -118,6 +118,7 @@
   $: handleSourceStatChange(currentStats);
   $: talentLvl, recalculateStats();
   $: currentChar.constellation, recalculateStats();
+  $: data, recalculateStats(); // recalculates for weapon refinement changes etc.
 
   $: {
     if (isInitialized && statIndex) {
