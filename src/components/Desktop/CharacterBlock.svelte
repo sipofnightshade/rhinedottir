@@ -1,18 +1,20 @@
 <script lang="ts">
+  // components
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
   import Character from '../Modal/Character/Character.svelte';
   import Weapon from '../Modal/Weapon/Weapon.svelte';
   import One from '../Modal/Party/One.svelte';
   import Two from '../Modal/Party/Two.svelte';
   import Three from '../Modal/Party/Three.svelte';
+  import StatImage from './StatImage.svelte';
+  import MultiModal from '../MultiModal/MultiModal.svelte';
+  import TeamIcon from '$lib/icons/TeamIcon.svelte';
 
+  // stores & helpers
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
   import { statValueFormatter } from '$lib/helpers/statFormatter';
   import { party } from '$lib/stores/partyStore';
-  import StatImage from './StatImage.svelte';
-  import MultiModal from '../MultiModal/MultiModal.svelte';
-  import TeamIcon from '$lib/icons/TeamIcon.svelte';
 
   type PartyModal = {
     id: 'one' | 'two' | 'three';
@@ -116,5 +118,9 @@
 
 <MultiModal bind:dialog>
   <h3 slot="title">{modalTitle}</h3>
-  <svelte:component this={modalContent} />
+  {#if modalTitle === 'Weapon' || modalTitle === 'Character'}
+    <svelte:component this={modalContent} />
+  {:else}
+    <svelte:component this={modalContent} {dialog} />
+  {/if}
 </MultiModal>

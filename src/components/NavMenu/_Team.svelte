@@ -175,5 +175,9 @@
 
 <MultiModal bind:dialog>
   <h3 slot="title">{modalTitle}</h3>
-  <svelte:component this={modalContent} />
+  {#if modalTitle === 'Weapon' || modalTitle === 'Character'}
+    <svelte:component this={modalContent} />
+  {:else}
+    <svelte:component this={modalContent} {dialog} />
+  {/if}
 </MultiModal>

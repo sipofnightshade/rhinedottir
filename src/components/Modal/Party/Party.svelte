@@ -10,6 +10,7 @@
 
   // props
   export let id: 'one' | 'two' | 'three';
+  export let dialog: HTMLDialogElement;
 
   // Filter Logic
   let filter: LoadOutTag | '' = '';
@@ -30,7 +31,7 @@
   <div class="scrollbar flex flex-col gap-y-4 overflow-y-auto pb-0.5 md:pr-2">
     {#each filteredData as item (item.id)}
       {#if item.character.id !== $character.selected.id}
-        <PartyLoadout {item} {id} />
+        <PartyLoadout {item} {id} {dialog} />
       {/if}
     {/each}
   </div>

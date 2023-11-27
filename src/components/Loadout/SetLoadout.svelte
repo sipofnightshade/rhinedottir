@@ -54,7 +54,7 @@
     <!-- Loadouts -->
     <div class="scrollbar flex flex-col gap-y-2 overflow-y-auto pb-0.5 md:pr-2">
       {#each filteredData as loadout (loadout.id)}
-        <Loadout item={loadout} />
+        <Loadout item={loadout} {dialog} />
       {/each}
     </div>
   </div>

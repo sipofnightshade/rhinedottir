@@ -9,6 +9,7 @@
   import { character } from '$lib/stores/characterStore';
   import { weapon } from '$lib/stores/weaponStore';
   import { artifact } from '$lib/stores/artifactStore';
+
   // components
   import LoadoutBlock from '../Loadout/LoadoutBlock.svelte';
   import Delete from '$lib/icons/Delete.svelte';
@@ -16,6 +17,7 @@
   type PartyID = 'one' | 'two' | 'three';
   // props
   export let item: LoadoutItem;
+  export let dialog: HTMLDialogElement;
 
   let deletable = false;
 
@@ -35,6 +37,7 @@
 
     // remove any of the same character from party
     removeDuplicateParty(item.character.id);
+    dialog.close();
   }
 
   function handleLongPress() {

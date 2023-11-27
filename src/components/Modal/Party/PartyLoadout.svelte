@@ -11,6 +11,7 @@
   // props
   export let id: 'one' | 'two' | 'three';
   export let item: LoadoutItem;
+  export let dialog: HTMLDialogElement;
 
   let deletable = false;
 
@@ -23,6 +24,7 @@
     } else {
       party.setPartyMember(id, item);
       removeDuplicateParty(item.character.id);
+      dialog.close();
       return;
     }
   }

@@ -126,7 +126,6 @@ function createParty() {
     removePartyMember: (id: 'one' | 'two' | 'three') =>
       update((state) => {
         state[id] = undefined;
-        console.log('removed party member:', id);
         return state;
       }),
 
