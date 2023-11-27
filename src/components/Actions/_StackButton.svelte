@@ -172,12 +172,7 @@
   });
 </script>
 
-<button
-  on:longpress={handleLongPress}
-  use:longpress={300}
-  on:click={handleStacking}
-  class="relative"
->
+<div class="relative">
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
     <p
@@ -188,7 +183,13 @@
       x{stacks}
     </p>
   {/if}
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={handleLongPress}
+    use:longpress={300}
+    on:click={handleStacking}
+  />
+</div>
 
 <ActionDetails {id} {talentLvl} {data} {type} {addedStats} hasFooter bind:dialog>
   <div slot="footer" class="py-1">
