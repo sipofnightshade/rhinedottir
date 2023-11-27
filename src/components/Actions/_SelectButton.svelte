@@ -126,21 +126,22 @@
   }
 </script>
 
-<button
-  on:longpress={toggleModal}
-  use:longpress={300}
-  on:click={toggleModal}
-  class="relative"
->
+<div class="relative">
   <ActionButton {type} isActive={selected != undefined} url={data.url} />
   {#if selected != undefined}
-    <div class="absolute bottom-0 right-0 z-10 flex">
+    <div class="absolute bottom-0 right-0 flex">
       <div class="rounded-full bg-slate-800 p-1">
         <StatImage stat={selected.scaling} />
       </div>
     </div>
   {/if}
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={toggleModal}
+    use:longpress={300}
+    on:click={toggleModal}
+  />
+</div>
 
 <ActionDetails {id} {talentLvl} {data} {addedStats} hasFooter {type} bind:dialog>
   <svelte:fragment slot="footer">

@@ -151,9 +151,15 @@
   });
 </script>
 
-<button on:longpress={handleLongPress} use:longpress={300} on:click={handleToggle}>
+<div class="relative">
   <ActionButton {type} {isActive} url={data.url} />
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={handleLongPress}
+    use:longpress={300}
+    on:click={handleToggle}
+  />
+</div>
 
 <ActionDetails {id} {addedStats} {talentLvl} {data} {type} hasFooter bind:dialog>
   <div slot="footer" class="py-1">

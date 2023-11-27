@@ -145,13 +145,14 @@
   });
 </script>
 
-<button
-  on:longpress={handleLongPress}
-  use:longpress={300}
-  data-testid="passive-action-button"
->
+<div class="relative">
   <ActionButton {type} url={data.url} isActive />
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={handleLongPress}
+    use:longpress={300}
+  />
+</div>
 
 <ActionDetails {id} {talentLvl} {data} {addedStats} {type} bind:dialog>
   <div slot="footer" class="py-1">

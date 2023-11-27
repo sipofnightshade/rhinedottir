@@ -94,12 +94,13 @@
   });
 </script>
 
-<button
-  on:longpress={handleLongPress}
-  use:longpress={300}
-  data-testid="passive-action-button"
->
+<div>
   <ActionButton {type} url={data.url} isActive />
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={handleLongPress}
+    use:longpress={300}
+  />
+</div>
 
 <ActionDetails {id} {data} {type} bind:dialog />

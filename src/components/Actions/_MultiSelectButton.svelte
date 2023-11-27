@@ -140,14 +140,9 @@
   }
 </script>
 
-<button
-  on:longpress={toggleModal}
-  use:longpress={300}
-  on:click={toggleModal}
-  class="relative"
->
+<div class="relative">
   <ActionButton {type} {isActive} url={data.url} />
-  <div class="absolute bottom-0 right-0 z-10 flex -space-x-2.5">
+  <div class="absolute bottom-0 right-0 flex -space-x-2.5">
     {#each data.values as value}
       <div
         class="rounded-full bg-slate-800 p-1"
@@ -157,7 +152,13 @@
       </div>
     {/each}
   </div>
-</button>
+  <button
+    class="absolute top-0 h-full w-full bg-transparent"
+    on:longpress={toggleModal}
+    use:longpress={300}
+    on:click={toggleModal}
+  />
+</div>
 
 <ActionDetails {id} {talentLvl} {data} {type} {addedStats} hasFooter bind:dialog>
   <svelte:fragment slot="footer">
