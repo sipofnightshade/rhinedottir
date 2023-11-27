@@ -38,6 +38,12 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
     const cache = await caches.open(CACHE);
 
+    // 🌊 Check if the request scheme is 'chrome-extension'
+    if (url.protocol === 'chrome-extension:') {
+      // Do not cache or manipulate resources from Chrome extensions
+      return fetch(event.request);
+    }
+
     // `build`/`files` can always be served from the cache
     if (ASSETS.includes(url.pathname)) {
       return cache.match(url.pathname);
@@ -49,11 +55,15 @@ self.addEventListener('fetch', (event) => {
       const response = await fetch(event.request);
 
       if (response.status === 200) {
-        cache.put(event.request, response.clone());
+        // Do not attempt to cache resources with 'chrome-extension' scheme
+        if (url.protocol !== 'chrome-extension:') {
+          cache.put(event.request, response.clone());
+        }
       }
 
       return response;
-    } catch {
+    } catch (error) {
+      console.error('Fetch error:', error);
       return cache.match(event.request);
     }
   }
