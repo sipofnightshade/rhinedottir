@@ -67,6 +67,8 @@
         values: action.values[refinement]
       });
     });
+    // have to reassign for reactivity
+    actionData = actionData;
   }
 
   function resetWeapon() {
@@ -74,7 +76,8 @@
     setWeaponBonuses(actions, refinement);
   }
 
-  $: resetWeapon(), selected, refinement;
+  $: resetWeapon(), refinement;
+  $: resetWeapon(), selected;
 </script>
 
 {#each actionData as action}
