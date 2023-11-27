@@ -46,9 +46,9 @@
   };
 </script>
 
+<span class="hidden">{type} Button</span>
 <div
-  data-testid="action-button"
-  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center"
+  class="relative flex h-16 w-16 flex-shrink-0 touch-none items-center justify-center"
   class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >
@@ -64,25 +64,25 @@
   />
   {#if type === 'artifact'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="https://enka.network/ui/{url}_4.png"
       alt={url}
     />
   {:else if type === 'weapon'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="https://enka.network/ui/{url}.png"
       alt={url}
     />
   {:else if type === 'resonance'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="images/resonance/{url}.webp"
       alt={url}
     />
   {:else}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
+      class="z-10 h-[52px] w-[52px] rounded-full border-2 border-slate-200"
       src="https://enka.network/ui/{url}.png"
       alt={url}
     />
