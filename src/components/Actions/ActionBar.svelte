@@ -20,7 +20,7 @@
 </script>
 
 <section
-  class="horizontalScrollbar flex min-h-[70px] w-full auto-cols-min grid-flow-col items-center gap-1 overflow-x-auto overflow-y-hidden rounded-lg bg-slate-700 px-2 py-4 xs:min-h-[80px] md:py-2"
+  class="horizontalScrollbar flex min-h-[70px] w-full auto-cols-min grid-flow-col items-center gap-2 overflow-x-auto overflow-y-hidden rounded-lg bg-slate-700 px-2 py-4 xs:min-h-[80px] md:gap-1 md:py-2"
 >
   {#each $character.selected.actions as data (data.name)}
     <CharacterButton
