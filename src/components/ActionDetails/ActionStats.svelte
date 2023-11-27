@@ -7,7 +7,7 @@
   function formatNumber(coef: number) {
     if (coef === 0) return 0;
     const isPercentage = coef < 3;
-    return isPercentage ? `${+(coef * 100).toFixed(1)}%` : coef.toString();
+    return isPercentage ? `${+(coef * 100).toFixed(1)}%` : coef.toFixed(0);
   }
 
   function getColoredText(scaling: string) {
@@ -19,9 +19,9 @@
 
 {#if values.length > 0}
   <section>
-    <ul class="leaders flex list-none flex-col gap-y-1 overflow-x-hidden">
+    <ul class="leaders flex list-none flex-col gap-y-1.5 overflow-x-hidden">
       {#each values as { scaling, coef } (scaling)}
-        <li class="font-bold text-slate-300">
+        <li class="text-base font-bold text-slate-300">
           <span class={getColoredText(scaling)}>{getStatLabel(scaling)}</span>
           <span>{formatNumber(coef)}</span>
         </li>
