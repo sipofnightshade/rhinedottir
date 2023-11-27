@@ -82,6 +82,7 @@
     class:opacity-60={isBadStat}
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
+    id={id.toString()}
     type="number"
     inputmode="decimal"
   />
