@@ -168,9 +168,9 @@
       class="flex h-full w-full flex-col items-center justify-center gap-1"
       class:bg-slate-700={isReaction && reactionType !== 'shattered'}
     >
-      <svelte:component this={reactions[reactionType].component} class="h-6" />
+      <svelte:component this={reactions[reactionType].component} class="h-8 md:h-7" />
       {#if dmgTypes.length > 1}
-        <span class="stacks text-sm font-bold {reactions[reactionType].text}"
+        <span class="stacks text-lg font-bold md:text-base {reactions[reactionType].text}"
           >x{stacks}</span
         >
       {/if}
