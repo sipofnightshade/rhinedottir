@@ -181,7 +181,7 @@
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
     <p
-      class="stacks pointer-events-none absolute right-0 top-0 z-10 text-lg font-bold {textColors[
+      class="stacks pointer-events-none absolute right-0 top-0 z-10 select-none text-lg font-bold {textColors[
         type
       ]}"
     >
@@ -200,7 +200,7 @@
         class:opacity-30={stacks <= 0}
         class:active:bg-slate-600={stacks > 0}
       >
-        <Minus class="pointer-events-none h-3 w-3 fill-slate-200" />
+        <Minus class="h-3 w-3 fill-slate-200" />
       </button>
       <div>
         <span>{stacks}</span>
