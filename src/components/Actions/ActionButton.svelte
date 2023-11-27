@@ -48,7 +48,7 @@
 
 <div
   data-testid="action-button"
-  class="pointer-events-none relative flex h-14 w-14 flex-shrink-0 items-center justify-center xs:h-16 xs:w-16"
+  class="relative flex h-14 w-14 flex-shrink-0 items-center justify-center xs:h-16 xs:w-16"
   class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >

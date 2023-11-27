@@ -179,7 +179,11 @@
 >
   <ActionButton {type} isActive={stacks > 0} url={data.url} />
   {#if stacks > 0}
-    <p class="stacks absolute right-0 top-0 z-10 text-lg font-bold {textColors[type]}">
+    <p
+      class="stacks pointer-events-none absolute right-0 top-0 z-10 text-lg font-bold {textColors[
+        type
+      ]}"
+    >
       x{stacks}
     </p>
   {/if}
