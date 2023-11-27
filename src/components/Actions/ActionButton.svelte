@@ -48,7 +48,7 @@
 
 <span class="pointer-events-none hidden">{type} Button</span>
 <div
-  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center"
+  class="pointer-events-none relative flex h-16 w-16 flex-shrink-0 select-none items-center justify-center"
   class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >
