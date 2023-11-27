@@ -70,19 +70,19 @@
   />
   {#if type === 'artifact'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="pointer-events-none h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
       src="https://enka.network/ui/{url}_4.png"
       alt={url}
     />
   {:else if type === 'resonance'}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="pointer-events-none h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
       src="images/resonance/{url}.webp"
       alt={url}
     />
   {:else}
     <img
-      class="pointer-events-none z-10 h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
+      class="pointer-events-none h-[52px] w-[52px] select-none rounded-full border-2 border-slate-200 opacity-95"
       src="https://enka.network/ui/{url}.png"
       alt={url}
     />

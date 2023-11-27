@@ -6,14 +6,7 @@ interface Attributes {
 type LongPressAction = Action<HTMLElement, number, Attributes>;
 
 export const longpress: LongPressAction = (node, threshold = 500) => {
-  const handle_pointerdown = (event: PointerEvent) => {
-    // Check if the target is the button or a descendant
-    const isDescendant = node.contains(event.target as Node);
-
-    if (!isDescendant) {
-      return;
-    }
-
+  const handle_pointerdown = () => {
     const longpressEvent = new CustomEvent('longpress');
 
     const timeout = setTimeout(() => {
