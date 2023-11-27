@@ -48,14 +48,12 @@
 
 <span class="hidden">{type} Button</span>
 <div
-  class="relative flex h-16 w-16 flex-shrink-0 select-none items-center justify-center"
+  class="relative flex h-16 w-16 flex-shrink-0 items-center justify-center"
   class:grayscale-[30%]={!isActive}
   class:opacity-50={!isActive}
 >
   <div
-    class="absolute h-12 w-12 select-none rounded-full {backgrounds[
-      type
-    ]} opacity-0 blur-md"
+    class="absolute h-12 w-12 rounded-full {backgrounds[type]} opacity-0 blur-md"
     class:opacity-50={isActive}
   />
   <div
