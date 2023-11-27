@@ -52,7 +52,9 @@
     <!-- Filters -->
     <LoadoutFilters selected={filter} on:filter={handleFilters} />
     <!-- Loadouts -->
-    <div class="scrollbar flex flex-col gap-y-2 overflow-y-auto pb-0.5 md:pr-2">
+    <div
+      class="scrollbar flex flex-col gap-y-4 overflow-y-auto pb-0.5 md:gap-y-3 md:pr-2"
+    >
       {#each filteredData as loadout (loadout.id)}
         <Loadout item={loadout} {dialog} />
       {/each}

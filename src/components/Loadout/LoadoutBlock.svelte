@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="flex w-full flex-col gap-y-2.5 rounded-2xl border bg-slate-700/80 p-3 transition-all {highlighted
+  class="relative flex w-full flex-col gap-y-2.5 rounded-2xl border bg-slate-700/80 p-3 transition-all {highlighted
     ? elementalBorders[item.character.vision]
     : 'border-slate-600'}"
   class:hover:border-slate-500={!deletable && !highlighted}
@@ -23,7 +23,7 @@
   class:!border-red-500={deletable}
 >
   <!-- Title -->
-  <h3 class="w-full text-left">{item.title}</h3>
+  <h3 class="w-full text-left text-lg">{item.title}</h3>
 
   <!-- Tags -->
   <div class="pointer-events-none flex w-full items-center gap-2 text-sm xs:gap-4">
@@ -62,4 +62,5 @@
   </div>
   <!-- Images -->
   <LoadoutBlockImages {item} />
+  <div class="absolute left-0 top-0 h-full w-full bg-transparent" />
 </div>
