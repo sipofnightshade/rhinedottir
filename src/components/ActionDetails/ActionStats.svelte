@@ -21,9 +21,9 @@
   <section>
     <ul class="leaders flex list-none flex-col gap-y-1.5 overflow-x-hidden">
       {#each values as { scaling, coef } (scaling)}
-        <li class="text-base font-bold text-slate-300">
+        <li class=" text-slate-300">
           <span class={getColoredText(scaling)}>{getStatLabel(scaling)}</span>
-          <span>{formatNumber(coef)}</span>
+          <span class="font-bold">{formatNumber(coef)}</span>
         </li>
       {/each}
     </ul>
