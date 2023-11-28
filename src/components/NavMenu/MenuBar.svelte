@@ -19,6 +19,8 @@
     component: any;
   }
 
+  let pingUser = true;
+
   // Define menuItems array
   const menuItems: MenuItem[] = [
     { id: 'team', img: 'UI_BtnIcon_Team.png', component: Team },
@@ -30,6 +32,7 @@
   // Handle menu click
   function handleMenu(item: MenuItem) {
     currentMenuItem = currentMenuItem === item ? undefined : item;
+    pingUser = false;
   }
 
   // Handle Escape key press
@@ -90,7 +93,7 @@
 
     <button
       on:click={() => handleMenu(menuItems[0])}
-      class="mx-auto flex h-14 transform-gpu items-center justify-center rounded-lg p-1 transition-transform duration-300 ease-out active:scale-90"
+      class="relative mx-auto flex h-14 transform-gpu items-center justify-center rounded-lg p-1 transition-transform duration-300 ease-out active:scale-90"
     >
       <!-- <EmptyLogo
         class="pointer-events-none h-full"
@@ -104,6 +107,14 @@
         hasColor={true}
         vision={$character.selected.vision}
       />
+      {#if pingUser}
+        <FullLogo
+          class="pointer-events-none absolute h-12 animate-ping-slow opacity-50 "
+          selected={currentMenuItem?.id === 'team'}
+          hasColor={true}
+          vision={$character.selected.vision}
+        />
+      {/if}
     </button>
 
     <div class="flex justify-end gap-2">
@@ -135,3 +146,6 @@
     </div>
   {/if}
 </div>
+
+<style lang="postcss">
+</style>
