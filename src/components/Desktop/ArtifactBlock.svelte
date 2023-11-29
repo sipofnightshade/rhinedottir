@@ -88,7 +88,9 @@
         <li
           class="flex h-full items-center justify-between rounded-md bg-slate-800 px-1 py-1"
         >
-          <StatImage stat={$artifact[modal.id].mainStat.stat} />
+          <div class="h-4 lg:h-5">
+            <StatImage stat={$artifact[modal.id].mainStat.stat} sm />
+          </div>
 
           <span class=" text-xs lg:text-sm xl:text-base">
             {artifactStatFormatter(
@@ -99,7 +101,7 @@
         </li>
         {#each $artifact[modal.id].substats as substat}
           <li class="flex h-full items-center justify-between px-1">
-            <StatImage stat={substat.stat} />
+            <StatImage stat={substat.stat} sm />
             <span class=" text-xs lg:text-sm xl:text-base">
               {artifactStatFormatter(substat.stat, substat.value)}
             </span>

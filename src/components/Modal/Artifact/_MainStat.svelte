@@ -44,7 +44,7 @@
         class:border-slate-600={!$listbox.expanded}
       >
         <div class="pointer-events-none flex items-center gap-2">
-          <StatImage stat={$artifact[type].mainStat.stat} />
+          <StatImage stat={$artifact[type].mainStat.stat} sm />
           <span class="hidden truncate xs-300:flex"
             >{StatLabels[$artifact[type].mainStat.stat]}</span
           >
@@ -63,7 +63,7 @@
               class:bg-slate-800={active}
               use:listbox.item={{ value: stat }}
             >
-              <StatImage stat={stat.value} />
+              <StatImage stat={stat.value} sm />
 
               <span
                 class=" center pointer-events-none hidden truncate capitalize xs-300:flex"

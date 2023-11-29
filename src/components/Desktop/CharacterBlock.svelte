@@ -86,7 +86,7 @@
         <div
           class="flex w-full items-center justify-between rounded-full bg-slate-800 px-2 py-1"
         >
-          <StatImage stat={$weapon.selected.specialized} />
+          <StatImage stat={$weapon.selected.specialized} sm/>
 
           <span class="text-xs lg:text-sm xl:text-base">{stats}</span>
         </div>

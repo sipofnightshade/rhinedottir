@@ -2,6 +2,7 @@
   import { settings } from '$lib/stores/settingsStore';
   import { Anemo, Cryo, Dendro, Electro, Hydro, Geo, Pyro } from '$lib/icons';
   import type { Visions } from '$lib/types/global';
+  import StatImage from '../Desktop/StatImage.svelte';
 
   export let vision: Visions | undefined = undefined;
   export let img: string;
@@ -10,16 +11,6 @@
   export let classes: string = '';
   export let imgClasses: string = '';
   export let rating: 5 | 4 | 3 | 1 | undefined = undefined;
-
-  const iconMap = {
-    anemo: Anemo,
-    cryo: Cryo,
-    dendro: Dendro,
-    electro: Electro,
-    geo: Geo,
-    hydro: Hydro,
-    pyro: Pyro
-  };
 
   const ratingColors = {
     5: 'bg-gradient-to-b from-yellow-700 via-yellow-700 to-yellow-600',
@@ -42,8 +33,8 @@
     class="pointer-events-none {imgClasses}"
   />
   {#if vision}
-    <div class="absolute left-1 top-1 w-1/4">
-      <svelte:component this={iconMap[vision]} class="w-full" />
+    <div class="absolute left-1 top-1 h-1/4">
+      <StatImage stat={vision} />
     </div>
   {/if}
 </div>

@@ -29,6 +29,7 @@
 
   export let stat: string;
   export let lg = false;
+  export let sm = false;
 
   type Icons = {
     [key in string]: ComponentType;
@@ -72,7 +73,11 @@
 </script>
 
 {#if iconMap[stat]}
-  <svelte:component this={iconMap[stat]} class={lg ? 'h-5 xs-375:h-6' : 'h-4 lg:h-5'} />
+  <!-- <svelte:component this={iconMap[stat]} class={lg ? 'h-5 xs-375:h-6' : 'h-4 lg:h-5'} /> -->
+  <svelte:component
+    this={iconMap[stat]}
+    class="{lg || sm ? '' : 'h-full'} {lg && 'h-5 xs-375:h-6'} {sm && 'h-4 lg:h-5'}"
+  />
 {:else}
   <span>-</span>
 {/if}

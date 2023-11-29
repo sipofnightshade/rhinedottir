@@ -64,7 +64,7 @@
       >
         <div>
           {#if $artifact[type].substats[id].stat}
-            <StatImage stat={$artifact[type].substats[id].stat} />
+            <StatImage stat={$artifact[type].substats[id].stat} sm />
           {/if}
         </div>
 
@@ -106,7 +106,7 @@
           use:listbox.item={{ value: stat }}
         >
           {#if stat.value}
-            <StatImage stat={stat.value} />
+            <StatImage stat={stat.value} sm />
           {/if}
           <span class="center pointer-events-none flex truncate text-sm capitalize"
             >{stat.label}</span
