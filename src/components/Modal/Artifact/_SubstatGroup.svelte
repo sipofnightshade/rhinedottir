@@ -6,6 +6,7 @@
   import { artifact } from '$lib/stores/artifactStore';
   import StatImage from '../../Desktop/StatImage.svelte';
   import Chevron from '$lib/icons/Chevron.svelte';
+  import { getMaxSubstatValue } from '$lib/helpers/getMaxSubstatValue';
   // import Caret from '$lib/icons/Caret.svelte';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
@@ -78,7 +79,13 @@
     </button>
   </div>
   <input
-    class="col-span-5 h-10 appearance-none rounded-md border border-slate-600 bg-slate-800 p-2 text-right text-sm transition-colors hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300"
+    class="col-span-5 h-10 appearance-none rounded-md border bg-slate-800 p-2 text-right text-sm transition-colors {!getMaxSubstatValue(
+      $artifact[type].isFiveStar,
+      $artifact[type].substats[id].stat,
+      $artifact[type].substats[id].value
+    )
+      ? 'border-rose-600 hover:border-rose-600 focus:border-rose-600 focus:ring-rose-600'
+      : 'border-slate-600 hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300'}"
     class:opacity-60={isBadStat}
     bind:value={$artifact[type].substats[id].value}
     autocomplete="off"
