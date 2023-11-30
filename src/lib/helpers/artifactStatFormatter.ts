@@ -1,5 +1,5 @@
 export function artifactStatFormatter(stat: string, value: number) {
-  if (value === 0) return 0;
+  if (!value) return 0;
 
   switch (stat) {
     case 'em':
@@ -14,7 +14,7 @@ export function artifactStatFormatter(stat: string, value: number) {
 }
 
 export function artifactStatFormatterX(stat: string, value: number) {
-  if (value === 0) return 0;
+  if (!value) return 0;
 
   switch (stat) {
     case 'em':
