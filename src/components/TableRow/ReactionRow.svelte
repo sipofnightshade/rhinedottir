@@ -22,7 +22,7 @@
   $: icon = data.damageBonus as keyof typeof reactions;
 </script>
 
-<div class="grid grid-cols-20 p-1 text-tb">
+<div class="grid grid-cols-20 border-b border-slate-700 p-1 px-1 py-1.5 text-tb">
   <Cell align="start" col="col-span-2 ">
     <svelte:component this={reactions[icon]} class="w-4" />
   </Cell>

@@ -26,7 +26,10 @@
 </script>
 
 {#if !hideEmptyRows}
-  <div class="grid grid-cols-20 px-0.5 py-1 text-tb" class:text-slate-500={zeroRow}>
+  <div
+    class="grid grid-cols-20 border-b border-slate-700 px-1 py-1.5 text-base md:text-tb"
+    class:text-slate-500={zeroRow}
+  >
     <Cell align="start" col="col-span-12" value={label} />
     <Cell align="end" col="col-span-4" value={displayBase} />
     <Cell align="end" col="col-span-4" value={displayTotal} />

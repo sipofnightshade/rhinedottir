@@ -10,7 +10,10 @@
   // $: console.log(data.name, data);
 </script>
 
-<div class="grid grid-cols-20 px-1 py-1 text-tb" class:hidden={!show}>
+<div
+  class="grid grid-cols-20 border-b border-slate-700 px-1 py-1.5 text-base md:text-tb"
+  class:hidden={!show}
+>
   <Cell align="start" col="col-span-2" value={data.tag || '-'} />
   <Cell align="start" col="col-span-10 text-slate-400" value={data.name} />
   <Cell align="center" col="col-span-2">
