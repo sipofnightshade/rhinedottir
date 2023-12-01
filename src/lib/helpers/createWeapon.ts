@@ -15,7 +15,7 @@ export function createWeapon(data: any): SavedWeapon {
   const rating = selectedWeapon?.rating as 3 | 4 | 5;
 
   const refinement = Object.values(data.weapon.affixMap)[0] as number;
-  const lvl = getLevelIndex(data.weapon.promoteLevel, data.weapon.lvl);
+  const lvl = getLevelIndex(data.weapon.promoteLevel, data.weapon.level);
   return { selected: name, lvl, refinement, url, rating };
 }
 
