@@ -90,8 +90,8 @@
   $: charBurstLvl = $character.burst + $character.lvlBonus.burst + 1;
 </script>
 
-<div class="flex h-full flex-col gap-4 overflow-hidden">
-  <div class="grid grid-cols-3 gap-x-2 gap-y-3">
+<div class="flex h-full flex-col gap-1 overflow-hidden">
+  <div class="mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
       img="https://enka.network/ui/{$character.selected.url}.png"
       vision={$character.selected.vision}

@@ -69,8 +69,8 @@
   $: effectDetails = generateWeaponEffect($weapon.selected, $weapon.refinement);
 </script>
 
-<div class="flex h-full flex-col gap-4 overflow-hidden">
-  <div class="grid grid-cols-3 gap-x-2 gap-y-3">
+<div class="flex h-full flex-col gap-1 overflow-hidden">
+  <div class="mb-4 grid grid-cols-3 gap-x-2 gap-y-3">
     <Thumbnail
       img="https://enka.network/ui/{$weapon.selected.url}.png"
       alt={$weapon.selected.fullName}
@@ -78,9 +78,11 @@
     />
     <div class="col-span-2 flex flex-col justify-end">
       <div>
-        <div class="flex items-end justify-between font-bold">
+        <div class="flex items-end justify-between text-base font-bold xs:text-xl">
           <h2>{$weapon.selected.fullName}</h2>
-          <h2 class="ml-2 text-xl">{$weapon.stats?.attack.toFixed(0)}</h2>
+          <h2 class="ml-2">
+            {$weapon.stats?.attack.toFixed(0)}
+          </h2>
         </div>
         <div
           class="flex justify-between text-sm font-bold {visionClasses[
