@@ -26,9 +26,9 @@
     deletable = !deletable;
   }
 
-  function handleDelete(id: string) {
+  function handleDelete() {
     if (deletable) {
-      artifactStorage.removeArtifact(type, id);
+      artifactStorage.removeArtifact(type, storedArtifact.storageID);
     }
   }
 
@@ -47,6 +47,23 @@
 
     return;
   }
+
+  /** @todo Make this work! */
+  function compareArtifacts(a1: any, a2: any) {
+    const propsToCompare = ['selected', 'mainStat', 'substats'];
+    for (const prop of propsToCompare) {
+      if (prop === 'selected') {
+        if (a1.selected.name !== a2.selected) {
+          return false;
+        }
+      } else if (JSON.stringify(a1[prop]) !== JSON.stringify(a2[prop])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  $: selected = compareArtifacts($artifact[type], storedArtifact);
 </script>
 
 <div
@@ -137,7 +154,7 @@
     </button>
     <button
       class="flex w-full items-center justify-center gap-1.5 rounded-md border border-red-700 bg-red-600 p-2 text-slate-100 transition-colors hover:border-red-500 active:bg-red-500"
-      on:click={() => handleDelete(storedArtifact.storageID)}
+      on:click={handleDelete}
     >
       <Delete class="h-4 fill-slate-200" />
       <span>Delete</span>

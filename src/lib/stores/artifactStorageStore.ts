@@ -2,13 +2,14 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import type { ArtifactStats, ArtifactType } from '$lib/types/artifacts';
 import { getCritValue } from '$lib/helpers/getCritValue';
-import { removeDuplicatesFromArray } from '$lib/helpers/removeDuplicatesFromArray';
 import type { SavedArtifactItem } from '$lib/types/loadout';
+import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
 
 export interface ArtifactStorageItem extends SavedArtifactItem {
-  storageID: string;
   tags: ArtifactStats[];
   critValue: number;
+  storageID: string;
+  statsID: string;
 }
 
 type ArtifactStore = Record<ArtifactType, ArtifactStorageItem[]>;
@@ -42,7 +43,7 @@ function createStore(initial_value: ArtifactStore, init = true) {
         if (!Array.isArray(state[type])) {
           state[type] = [];
         }
-
+        const statsID = generateArtifactKey(artifact);
         const storageID = window.crypto.randomUUID();
 
         const tags = [artifact.mainStat.stat]; // used for efficient filtering
@@ -59,31 +60,32 @@ function createStore(initial_value: ArtifactStore, init = true) {
 
         const uniqueTags = new Set(tags);
 
-        state[type].push({ ...artifact, tags: [...uniqueTags], critValue, storageID });
+        state[type].push({
+          ...artifact,
+          tags: [...uniqueTags],
+          critValue,
+          storageID,
+          statsID
+        });
 
         saveToLocalStorage(state);
         return state;
       }),
 
-    removeArtifact: (type: ArtifactType, id: string) =>
+    removeArtifact: (type: ArtifactType, storageID: string) =>
       update((state) => {
-        state[type] = state[type].filter((a) => a.storageID !== id);
+        state[type] = state[type].filter((x) => x.storageID !== storageID);
         saveToLocalStorage(state);
         return state;
       }),
-
-    removeDupliecates: () =>
+    removeDuplicates: () =>
       update((state) => {
-        state.flower = removeDuplicatesFromArray(state.flower, 'storageID');
-        state.feather = removeDuplicatesFromArray(state.feather, 'storageID');
-        state.sands = removeDuplicatesFromArray(state.sands, 'storageID');
-        state.goblet = removeDuplicatesFromArray(state.goblet, 'storageID');
-        state.circlet = removeDuplicatesFromArray(state.circlet, 'storageID');
-
+        state.flower = [
+          ...new Map(state.flower.map((item) => [item.statsID, item])).values()
+        ];
         saveToLocalStorage(state);
         return state;
       }),
-
     reset: () => {
       set(initialState);
       localStorage.removeItem(LOCAL_STORAGE_KEY);
