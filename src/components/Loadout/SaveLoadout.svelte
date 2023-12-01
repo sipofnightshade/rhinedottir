@@ -83,11 +83,11 @@
 </script>
 
 <button
-  class="flex items-center rounded-full border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 active:bg-slate-600 xs:gap-x-1.5 md:p-0.5"
+  class="flex items-center rounded-full border border-slate-600 bg-slate-700 p-0.5 transition-colors hover:border-slate-500 active:bg-slate-600 xs:gap-x-1.5"
   on:click={toggleModal}
 >
   <div
-    class="flex h-12 w-12 items-center justify-center rounded-full md:h-9 md:w-9 md:bg-slate-800"
+    class="flex h-10 w-10 items-center justify-center rounded-full md:h-9 md:w-9 md:bg-slate-800"
   >
     <svg viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg" class="h-[20px] w-[20px]">
       <path

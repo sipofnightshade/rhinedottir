@@ -65,7 +65,6 @@
   >
     <div class="mr-auto flex gap-x-4">
       <SaveLoadout />
-      <SetLoadout />
     </div>
 
     <div class="flex w-full justify-center">
@@ -119,7 +118,6 @@
 
     <div class="flex justify-end gap-2">
       <SaveLoadout />
-      <SetLoadout />
     </div>
   </nav>
 

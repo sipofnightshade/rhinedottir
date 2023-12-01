@@ -1,20 +1,17 @@
 <script lang="ts">
   // components
-  import PartyLoadout from './PartyLoadout.svelte';
+  import Loadout from '../../Loadout/Loadout.svelte';
   import EnkaImport from '../../EnkaImport/EnkaImport.svelte';
   import LoadoutFilters from '../../Loadout/LoadoutFilters.svelte';
   import NoLoadouts from '../../EmptyStates/NoLoadouts.svelte';
 
-  // stores
+  //stores
   import { loadouts } from '$lib/stores/loadoutsStore';
-  import { character } from '$lib/stores/characterStore';
 
   // types
   import type { LoadOutTag } from '$lib/types/loadout';
 
-  // props
-  export let id: 'one' | 'two' | 'three';
-  export let dialog: HTMLDialogElement;
+  let dialog: HTMLDialogElement;
 
   // Filter Logic
   let filter: LoadOutTag | '' = '';
@@ -39,10 +36,8 @@
     <div
       class="scrollbar flex flex-col gap-y-4 overflow-y-auto pb-0.5 md:gap-y-3 md:pr-2"
     >
-      {#each filteredData as item (item.id)}
-        {#if item.character.id !== $character.selected.id}
-          <PartyLoadout {item} {id} {dialog} />
-        {/if}
+      {#each filteredData as loadout (loadout.id)}
+        <Loadout item={loadout} {dialog} />
       {/each}
     </div>
   {:else}
