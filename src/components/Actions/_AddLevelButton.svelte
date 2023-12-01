@@ -94,7 +94,7 @@
   });
 </script>
 
-<div>
+<div class="relative">
   <ActionButton {type} url={data.url} isActive />
   <button
     class="absolute top-0 h-full w-full bg-transparent"
