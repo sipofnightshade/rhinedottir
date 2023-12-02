@@ -27,7 +27,7 @@ const initialState: CurrentWeapon = {
     uid: 11406,
     name: 'prototyperancour',
     fullName: 'Prototype Rancour',
-    url: 'UI_EquipIcon_Sword_Proto',
+    url: 'UI_EquipIcon_Sword_Proto_Awaken',
     rating: 4,
     type: 'sword',
     specialized: 'physical',
