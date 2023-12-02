@@ -19,7 +19,7 @@
 </script>
 
 <!-- Artifact TABS -->
-<div class="flex h-full flex-col gap-2 overflow-hidden xs:gap-4">
+<div class="mb-0.5 flex h-full flex-col gap-2 overflow-hidden xs:gap-4">
   <ul
     class="grid list-none grid-cols-2 justify-between rounded-full border border-slate-600 bg-slate-700 p-0"
   >
