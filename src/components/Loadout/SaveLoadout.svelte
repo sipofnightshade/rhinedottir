@@ -13,6 +13,7 @@
   import MultiModal from '../MultiModal/MultiModal.svelte';
   import LoadoutBlockImages from './LoadoutBlockImages.svelte';
   import LoadoutTags from './LoadoutFilters.svelte';
+  import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
 
   let dialog: HTMLDialogElement;
   let title: string;
@@ -23,13 +24,18 @@
   }
 
   function createArtifactItem(baseArtifact: Artifact) {
+    const { selected, mainStat, substats } = baseArtifact;
+
+    const statsID = generateArtifactKey(selected.name, mainStat, substats);
+
     return {
       ...baseArtifact,
-      selected: baseArtifact.selected.name,
-      uid: baseArtifact.selected.uid,
-      url: baseArtifact.selected.url,
-      rating: baseArtifact.selected.rating,
-      fullName: baseArtifact.selected.fullName
+      selected: selected.name,
+      uid: selected.uid,
+      url: selected.url,
+      rating: selected.rating,
+      fullName: selected.fullName,
+      statsID
     };
   }
 

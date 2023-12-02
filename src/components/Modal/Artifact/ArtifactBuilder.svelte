@@ -12,9 +12,11 @@
   import { ArtifactData } from '$lib/data/Artifacts';
   import { TwoPieceLabels, type TwoPiece_Stats } from '$lib/data/Stats';
   import { artifactStatFormatterX } from '$lib/helpers/artifactStatFormatter';
-  import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
   import { artifactStorage } from '$lib/stores/artifactStorageStore';
   import { isArtifactValid } from '$lib/helpers/isArtifactValid';
+  import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
+
+  import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
 
   export let type: ArtifactType;
 
@@ -47,18 +49,28 @@
 
   // handle saving
   function handleSave() {
-    const { uid, url, name, fullName, rating } = $artifact[type].selected;
+    if ($artifact[type].selected.name === 'none') return;
+    const { lvl, mainStat, substats, selected, isFiveStar } = $artifact[type];
+    const { uid, url, name, fullName, rating } = selected;
+
+    const statsID = generateArtifactKey(name, mainStat, substats);
+    const storageID = window.crypto.randomUUID();
 
     const currentArtifact = {
-      ...$artifact[type],
       selected: name,
-      uid: uid,
+      uid,
       rating,
+      isFiveStar,
+      lvl,
       url,
-      fullName
+      fullName,
+      statsID,
+      storageID,
+      mainStat,
+      substats
     };
 
-    artifactStorage.saveArtifact(type, currentArtifact);
+    artifactStorage.saveArtifact(type, { ...currentArtifact });
   }
 
   function countArtifactSets(artifactSet: ArtifactNames) {

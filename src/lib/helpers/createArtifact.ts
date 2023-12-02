@@ -1,8 +1,9 @@
 import { extractIdNumber } from './extractIDNumber';
 import { ArtifactData } from '$lib/data/Artifacts';
 import { convertStat } from './convertStats';
-import type { ArtifactStats } from '$lib/types/artifacts';
+import type { ArtifactNames, ArtifactStats } from '$lib/types/artifacts';
 import type { SavedArtifactItem } from '$lib/types/loadout';
+import { generateArtifactKey } from './generateArtifactKey';
 
 interface ReliquarySubStat {
   appendPropId: string;
@@ -14,12 +15,15 @@ interface Stats {
   value: number;
 }
 
+// add storage ID and statsID here
 export function createArtifact(data: any): SavedArtifactItem | null {
   // get artifact name
   const artifactID = extractIdNumber(data.flat.icon);
   const artifact = ArtifactData.find((artifact) => {
     return artifact.uid === artifactID;
   });
+
+  if (!artifact) return null;
 
   // get artifact stats
   const mainStat: Stats = {
@@ -33,17 +37,22 @@ export function createArtifact(data: any): SavedArtifactItem | null {
     })
   );
 
-  if (artifact) {
-    return {
-      selected: artifact.name,
-      uid: artifact.uid,
-      rating: artifact.rating,
-      fullName: artifact.fullName,
-      url: artifact.url,
-      lvl: data.reliquary.level - 1,
-      isFiveStar: data.flat.rankLevel === 5,
-      mainStat,
-      substats
-    };
-  } else return null;
+  const selected: ArtifactNames = artifact.name;
+  const lvl = data.reliquary.level - 1;
+  const isFiveStar = data.flat.rankLevel === 5;
+
+  const statsID = generateArtifactKey(selected, mainStat, substats);
+
+  return {
+    selected,
+    statsID,
+    uid: artifact.uid,
+    rating: artifact.rating,
+    fullName: artifact.fullName,
+    url: artifact.url,
+    lvl,
+    isFiveStar,
+    mainStat,
+    substats
+  };
 }

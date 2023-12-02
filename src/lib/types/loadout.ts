@@ -31,6 +31,7 @@ export type SavedWeapon = {
 };
 
 export type SavedArtifactItem = {
+  statsID: string; // key generated based on artifact details; used for uniqueness matching/ is equipped
   uid: number;
   selected: ArtifactNames;
   rating: number[];

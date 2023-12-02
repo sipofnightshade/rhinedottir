@@ -20,6 +20,7 @@ const noArtifact: SavedArtifactItem = {
   selected: 'none',
   uid: 0,
   url: 'none',
+  statsID: 'none',
   fullName: 'None',
   rating: [1],
   lvl: 0,
@@ -72,7 +73,8 @@ export function createEquipment(data: any, showAvatarInfoList: []): Equipment | 
 
         case 'ITEM_RELIQUARY':
           const equipType = equipment.flat.equipType;
-          const artifact = createArtifact(equipment) || noArtifact;
+          const artifact = createArtifact(equipment);
+          if (!artifact) return;
 
           switch (equipType) {
             case 'EQUIP_BRACER':

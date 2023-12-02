@@ -3,13 +3,11 @@ import { browser } from '$app/environment';
 import type { ArtifactStats, ArtifactType } from '$lib/types/artifacts';
 import { getCritValue } from '$lib/helpers/getCritValue';
 import type { SavedArtifactItem } from '$lib/types/loadout';
-import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
 
 export interface ArtifactStorageItem extends SavedArtifactItem {
   tags: ArtifactStats[];
   critValue: number;
-  storageID: string;
-  statsID: string;
+  storageID: string; // randomly generated key; used for deleting/searching
 }
 
 type ArtifactStore = Record<ArtifactType, ArtifactStorageItem[]>;
@@ -43,7 +41,7 @@ function createStore(initial_value: ArtifactStore, init = true) {
         if (!Array.isArray(state[type])) {
           state[type] = [];
         }
-        const statsID = generateArtifactKey(artifact);
+        // const statsID = generateArtifactKey(artifact);
         const storageID = window.crypto.randomUUID();
 
         const tags = [artifact.mainStat.stat]; // used for efficient filtering
@@ -62,10 +60,9 @@ function createStore(initial_value: ArtifactStore, init = true) {
 
         state[type].push({
           ...artifact,
-          tags: [...uniqueTags],
-          critValue,
           storageID,
-          statsID
+          tags: [...uniqueTags],
+          critValue
         });
 
         saveToLocalStorage(state);

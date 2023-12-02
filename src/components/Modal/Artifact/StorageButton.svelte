@@ -15,6 +15,7 @@
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import Delete from '$lib/icons/Delete.svelte';
   import { getImageUrl } from '$lib/helpers/getImageURL';
+  import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
 
   export let storedArtifact: ArtifactStorageItem;
   export let type: ArtifactType;
@@ -48,22 +49,13 @@
     return;
   }
 
-  /** @todo Make this work! */
-  function compareArtifacts(a1: any, a2: any) {
-    const propsToCompare = ['selected', 'mainStat', 'substats'];
-    for (const prop of propsToCompare) {
-      if (prop === 'selected') {
-        if (a1.selected.name !== a2.selected) {
-          return false;
-        }
-      } else if (JSON.stringify(a1[prop]) !== JSON.stringify(a2[prop])) {
-        return false;
-      }
-    }
-    return true;
-  }
+  $: statsID = generateArtifactKey(
+    $artifact[type].selected.name,
+    $artifact[type].mainStat,
+    $artifact[type].substats
+  );
 
-  $: selected = compareArtifacts($artifact[type], storedArtifact);
+  $: usedByMain = storedArtifact.statsID === statsID;
 </script>
 
 <div
@@ -132,14 +124,16 @@
   <button
     on:longpress={handleLongPress}
     use:longpress={300}
-    disabled={deletable}
+    disabled={deletable || usedByMain}
     on:click={() => handleArtifactClick(storedArtifact)}
     class="absolute z-[5] h-full w-full rounded-xl border transition-colors"
-    class:border-slate-600={!deletable}
-    class:hover:border-slate-500={!deletable}
-    class:active:border-slate-300={!deletable}
+    class:border-slate-600={!deletable && !usedByMain}
+    class:hover:border-slate-500={!deletable && !usedByMain}
+    class:active:border-slate-300={!deletable && !usedByMain}
     class:border-red-500={deletable}
     class:hover:border-red-500={deletable}
+    class:border-2={usedByMain}
+    class:border-green-500={usedByMain}
   >
     <span class="hidden">Artifact Button</span>
   </button>
