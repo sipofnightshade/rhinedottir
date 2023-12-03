@@ -1,4 +1,4 @@
-import { createArtifact } from './createArtifact';
+import { createArtifactEnka } from './createArtifact';
 import { createWeapon } from './createWeapon';
 import { createCharacter } from './createCharacter';
 // types
@@ -73,7 +73,7 @@ export function createEquipment(data: any, showAvatarInfoList: []): Equipment | 
 
         case 'ITEM_RELIQUARY':
           const equipType = equipment.flat.equipType;
-          const artifact = createArtifact(equipment);
+          const artifact = createArtifactEnka(equipment);
           if (!artifact) return;
 
           switch (equipType) {
