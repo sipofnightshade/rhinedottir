@@ -6,6 +6,7 @@ export function artifactStatFormatter(stat: string, value: number) {
       return value.toFixed(0);
     case 'atk':
     case 'hp':
+    case 'def':
       return value;
 
     default:
@@ -21,6 +22,7 @@ export function artifactStatFormatterX(stat: string, value: number) {
       return value.toFixed(0);
     case 'atk':
     case 'hp':
+    case 'def':
       return value;
 
     default:
