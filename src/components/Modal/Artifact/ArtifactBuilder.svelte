@@ -51,13 +51,7 @@
     }
 
     if (selectedArtifact.name === 'none') {
-      mainStat.value = 0;
-      substats = [
-        { stat: '', value: 0 },
-        { stat: '', value: 0 },
-        { stat: '', value: 0 },
-        { stat: '', value: 0 }
-      ];
+      resetArtifact();
     } else {
       mainStat.value = getArtifactStat(isFiveStar, mainStat.stat, lvl);
     }
@@ -90,7 +84,7 @@
   $: if (selectedArtifact.name !== 'none') {
     mainStat.value = getArtifactStat(isFiveStar, mainStat.stat, lvl);
   } else {
-    mainStat.value = 0;
+    resetArtifact();
   }
 
   // handle saving
@@ -115,6 +109,22 @@
     };
 
     artifactStorage.saveArtifact(type, { ...currentArtifact });
+    /**
+     * @todo
+     * run an animation in the save button when saved!
+     */
+  }
+
+  function resetArtifact() {
+    lvl = 0;
+    mainStat.value = 0;
+    isFiveStar = false;
+    substats = [
+      { stat: '', value: 0 },
+      { stat: '', value: 0 },
+      { stat: '', value: 0 },
+      { stat: '', value: 0 }
+    ];
   }
 
   // get current artifact set effects
