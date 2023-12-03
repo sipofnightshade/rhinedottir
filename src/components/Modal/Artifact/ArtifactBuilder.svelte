@@ -8,62 +8,106 @@
   import StarButton from './StarButton.svelte';
 
   // stores & helpers
-  import { artifact } from '$lib/stores/artifactStore';
   import { ArtifactData } from '$lib/data/Artifacts';
   import { TwoPieceLabels, type TwoPiece_Stats } from '$lib/data/Stats';
   import { artifactStatFormatterX } from '$lib/helpers/artifactStatFormatter';
   import { artifactStorage } from '$lib/stores/artifactStorageStore';
   import { isArtifactValid } from '$lib/helpers/isArtifactValid';
   import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
+  import { getArtifactStat } from '$lib/helpers/getArtifactStat';
 
-  import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
+  // types
+  import type { ArtifactStats, ArtifactType } from '$lib/types/artifacts';
+
+  type STAT = { stat: ArtifactStats; value: number };
 
   export let type: ArtifactType;
 
-  const substatIDs: [0, 1, 2, 3] = [0, 1, 2, 3];
+  let selectedArtifact = ArtifactData[0];
+  let lvl = 0;
+  let isFiveStar = false;
+  let mainStat: STAT = {
+    stat: 'atk',
+    value: 0
+  };
+  let substats: STAT[] = [
+    { stat: '', value: 0 },
+    { stat: '', value: 0 },
+    { stat: '', value: 0 },
+    { stat: '', value: 0 }
+  ];
 
-  // state methods
+  // select an artifact
   function handleArtifactSelect(event: any) {
-    artifact.setArtifact(type, event.detail.selected);
+    selectedArtifact = event.detail.selected;
+
+    // reset artifact lvl and rating
+    if (selectedArtifact.rating.length > 1) {
+      lvl = 20;
+      isFiveStar = true;
+    } else {
+      lvl = 16;
+      isFiveStar = false;
+    }
+
+    if (selectedArtifact.name === 'none') {
+      mainStat.value = 0;
+      substats = [
+        { stat: '', value: 0 },
+        { stat: '', value: 0 },
+        { stat: '', value: 0 },
+        { stat: '', value: 0 }
+      ];
+    } else {
+      mainStat.value = getArtifactStat(isFiveStar, mainStat.stat, lvl);
+    }
   }
 
-  function handleIncrement(event: any) {
-    artifact.increment(event.detail.groupID);
+  function handleIncrement() {
+    if (isFiveStar && lvl < 20) {
+      lvl++;
+    } else if (isFiveStar === false && lvl < 16) {
+      lvl++;
+    }
   }
 
-  function handleDecrement(event: any) {
-    artifact.decrement(event.detail.groupID);
+  function handleDecrement() {
+    if (lvl > 0) lvl--;
   }
 
-  function handleMainstat(event: CustomEvent) {
-    artifact.setMainStat(type, event.detail.value);
+  function handleRating() {
+    if (selectedArtifact.rating.length > 1) {
+      isFiveStar = !isFiveStar;
+      if (isFiveStar) {
+        lvl = 20;
+      } else {
+        lvl = 16;
+      }
+    }
   }
 
-  function handleSubstats(event: any) {
-    artifact.setSubstats(type, event.detail.id, event.detail.value);
-  }
-
-  function handleInput(event: any) {
-    artifact.setInput(type, event.detail.id, event.detail.value);
+  // update mainStat value when any dependences change
+  $: if (selectedArtifact.name !== 'none') {
+    mainStat.value = getArtifactStat(isFiveStar, mainStat.stat, lvl);
+  } else {
+    mainStat.value = 0;
   }
 
   // handle saving
-  function handleSave() {
-    if ($artifact[type].selected.name === 'none') return;
-    const { lvl, mainStat, substats, selected, isFiveStar } = $artifact[type];
-    const { uid, url, name, fullName, rating } = selected;
+  function saveArtifact() {
+    if (selectedArtifact.name === 'none') return;
 
-    const statsID = generateArtifactKey(name, mainStat, substats);
+    const statsID = generateArtifactKey(selectedArtifact.name, mainStat, substats);
     const storageID = window.crypto.randomUUID();
 
     const currentArtifact = {
-      selected: name,
-      uid,
-      rating,
+      selected: selectedArtifact.name,
+      uid: selectedArtifact.uid,
+      rating: selectedArtifact.rating,
       isFiveStar,
       lvl,
-      url,
-      fullName,
+      url: selectedArtifact.url,
+      fullName: selectedArtifact.fullName,
       statsID,
       storageID,
       mainStat,
@@ -73,80 +117,51 @@
     artifactStorage.saveArtifact(type, { ...currentArtifact });
   }
 
-  function countArtifactSets(artifactSet: ArtifactNames) {
-    if (artifactSet === 'none') return 1;
-
-    const artifactTypes: ArtifactType[] = [
-      'flower',
-      'feather',
-      'sands',
-      'goblet',
-      'circlet'
-    ];
-
-    let count = 0;
-    for (const value of artifactTypes) {
-      if (artifactSet === $artifact[value].selected.name) {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  $: artifactCount = countArtifactSets($artifact[type].selected.name);
-  $: twoPieceDetails = $artifact[type].selected.twoPiece[0].values.map((bonus) => {
+  // get current artifact set effects
+  $: twoPieceDetails = selectedArtifact.twoPiece[0].values.map((bonus) => {
     return `${TwoPieceLabels[bonus.scaling as TwoPiece_Stats]} +${artifactStatFormatterX(
       bonus.scaling,
       bonus.coef as number
     )}`;
   });
-  $: fourPieceDetails = $artifact[type].selected.fourPiece.map(
-    (bonus) => bonus.description
-  );
+  $: fourPieceDetails = selectedArtifact.fourPiece.map((bonus) => bonus.description);
 
-  $: canSave =
-    $artifact[type].selected.uid !== 0 &&
-    isArtifactValid($artifact[type].mainStat, $artifact[type].substats);
+  // minor validation for created artifact
+  $: canSave = selectedArtifact.uid !== 0 && isArtifactValid(mainStat, substats);
 </script>
 
 <div class="flex flex-col gap-2 overflow-hidden xs:gap-4">
   <div class="flex items-end gap-x-2">
     <StarButton
+      on:click={handleRating}
       {type}
-      name={$artifact[type].selected.name}
-      url={$artifact[type].selected.url}
+      {isFiveStar}
+      name={selectedArtifact.name}
+      url={selectedArtifact.url}
     />
     <div class="w-64 xs:w-72">
       <LevelGroup
         label="Lvl"
-        value={$artifact[type].lvl}
+        value={lvl}
         id={type}
-        rating={$artifact[type].isFiveStar}
+        rating={isFiveStar}
         on:increment={handleIncrement}
         on:decrement={handleDecrement}
       />
     </div>
 
-    <MainStat {type} on:selected={handleMainstat} />
+    <MainStat {type} bind:stat={mainStat.stat} bind:value={mainStat.value} />
   </div>
-  <EffectDetails disabled={$artifact[type].selected.name === 'none'}>
+  <EffectDetails disabled={selectedArtifact.name === 'none'}>
     <h3 slot="title">
-      <span>{$artifact[type].selected.fullName}</span>
-      <span
-        class="ml-1"
-        class:text-rd-green={artifactCount > 1}
-        class:font-bold={artifactCount > 1}
-        class:hidden={$artifact[type].selected.name === 'none'}
-      >
-        {`(${artifactCount}/4)`}
-      </span>
+      {selectedArtifact.fullName}
     </h3>
     <div
       slot="details"
       class="flex flex-col gap-3"
-      class:hidden={$artifact[type].selected.name === 'none'}
+      class:hidden={selectedArtifact.name === 'none'}
     >
-      <div class:text-rd-green={artifactCount > 1}>
+      <div>
         <p class="text-sm font-bold uppercase">2-PIECE BONUS:</p>
         <ul>
           {#each twoPieceDetails as bonus}
@@ -157,7 +172,7 @@
         </ul>
       </div>
 
-      <div class:text-rd-green={artifactCount > 3}>
+      <div>
         <p class="text-sm font-bold uppercase">4-PIECE BONUS:</p>
         <ul>
           {#each fourPieceDetails as bonus}
@@ -171,8 +186,8 @@
   </EffectDetails>
 
   <div class="grid grid-cols-2 gap-2">
-    {#each substatIDs as id (id)}
-      <SubstatGroup {type} {id} on:inputBlur={handleInput} on:selected={handleSubstats} />
+    {#each substats as { stat, value }, index (index)}
+      <SubstatGroup {type} bind:stat bind:value {index} />
     {/each}
   </div>
 
@@ -180,7 +195,7 @@
     <div class="h-10 rounded-lg border border-dashed border-slate-700" />
     <div class="h-10 rounded-lg border border-dashed border-slate-700" />
     <button
-      on:click={handleSave}
+      on:click={saveArtifact}
       disabled={!canSave}
       class:opacity-50={!canSave}
       class=" h-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors"

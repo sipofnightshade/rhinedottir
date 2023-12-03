@@ -48,18 +48,19 @@
 
   function saveLoadout() {
     if (currentLoadout) {
-      loadouts.addLoadout({ ...(currentLoadout as LoadoutItem) });
+      loadouts.addLoadout({ ...currentLoadout, id: uid() });
     }
     dialog.close();
   }
 
   $: currentLoadout = {
-    id: uid(),
+    id: 'TBD',
     tag: tag,
     title,
     character: {
       selected: $character.selected.name,
       vision: $character.selected.vision,
+      fullName: $character.selected.fullName,
       id: $character.selected.id,
       url: $character.selected.url,
       atk: $character.atk,

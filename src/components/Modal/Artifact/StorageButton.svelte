@@ -15,7 +15,7 @@
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import Delete from '$lib/icons/Delete.svelte';
   import { getImageUrl } from '$lib/helpers/getImageURL';
-  import { generateArtifactKey } from '$lib/helpers/generateArtifactKey';
+  import { countArtifactSets } from '$lib/helpers/countArtifactSets';
 
   export let storedArtifact: ArtifactStorageItem;
   export let type: ArtifactType;
@@ -34,7 +34,7 @@
   }
 
   function handleArtifactClick(savedArtifact: ArtifactStorageItem) {
-    const { lvl, isFiveStar, mainStat, substats } = savedArtifact;
+    const { lvl, isFiveStar, mainStat, substats, statsID } = savedArtifact;
 
     const currentlySelected = ArtifactData.find(
       (data) => data.name === savedArtifact.selected
@@ -45,17 +45,16 @@
     $artifact[type].isFiveStar = isFiveStar;
     $artifact[type].mainStat = mainStat;
     $artifact[type].substats = substats;
+    $artifact[type].statsID = statsID;
 
     return;
   }
+  /** @todo Use  $artifact[type].statsID */
 
-  $: statsID = generateArtifactKey(
-    $artifact[type].selected.name,
-    $artifact[type].mainStat,
-    $artifact[type].substats
-  );
+  $: usedByMain = storedArtifact.statsID === $artifact[type].statsID;
 
-  $: usedByMain = storedArtifact.statsID === statsID;
+  // count current global artifact pieces
+  $: artifactCount = countArtifactSets($artifact, storedArtifact.selected);
 </script>
 
 <div
@@ -75,6 +74,14 @@
       <h3 class="truncate">
         <span class="mr-1 font-bold text-slate-400">+{storedArtifact.lvl}</span
         >{storedArtifact.fullName ?? 'Unidentifed'}
+        <span
+          class="ml-1 font-bold"
+          class:hidden={artifactCount === 0}
+          class:text-slate-400={artifactCount === 1}
+          class:text-rd-green={artifactCount > 1}
+        >
+          {`(${artifactCount}/4)`}
+        </span>
       </h3>
 
       <span

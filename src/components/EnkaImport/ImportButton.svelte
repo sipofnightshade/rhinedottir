@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { loadouts } from '$lib/stores/loadoutsStore';
-  import { uid } from 'uid';
+  import { loadouts, type LoadoutItem } from '$lib/stores/loadoutsStore';
   import type { LoadOutTag } from '$lib/types/loadout';
+  import { uid } from 'uid';
   import { artifactStorage } from '$lib/stores/artifactStorageStore';
 
   // components
@@ -10,7 +10,7 @@
   import LoadoutTags from '../Loadout/LoadoutFilters.svelte';
   import Thumbnail from '../Thumbnail/Thumbnail.svelte';
 
-  export let build: any;
+  export let build: LoadoutItem;
 
   let dialog: HTMLDialogElement;
   let title: string;
@@ -23,7 +23,7 @@
   function toggleModal() {
     dialog.showModal();
     (tag = 'DPS'),
-      (title = `C${build.character.constellation} ${tag} - ${build.character.selected} - C${build.character.constellation}`);
+      (title = `C${build.character.constellation} ${tag} - ${build.character.fullName} - C${build.character.constellation}`);
   }
 
   function saveLoadout(data: any) {
@@ -34,12 +34,12 @@
       }
     });
 
-    loadouts.addLoadout({ ...currentLoadout });
+    loadouts.addLoadout({ ...currentLoadout, id: uid() });
     dialog.close();
   }
 
   $: currentLoadout = {
-    id: uid(),
+    id: 'TBD',
     tag,
     title,
     character: { ...build.character },

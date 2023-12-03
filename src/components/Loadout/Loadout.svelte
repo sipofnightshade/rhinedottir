@@ -17,7 +17,6 @@
   type PartyID = 'one' | 'two' | 'three';
   // props
   export let item: LoadoutItem;
-  export let dialog: HTMLDialogElement;
 
   let deletable = false;
 
@@ -37,7 +36,6 @@
 
     // remove any of the same character from party
     removeDuplicateParty(item.character.id);
-    dialog.close();
   }
 
   function handleLongPress() {

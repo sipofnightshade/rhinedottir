@@ -1,6 +1,5 @@
 <script lang="ts">
   import { getImageUrl } from '$lib/helpers/getImageURL';
-  import { artifact } from '$lib/stores/artifactStore';
   import type { ArtifactNames, ArtifactType } from '$lib/types/artifacts';
   import Star from '../../Stars/Star.svelte';
   import Thumbnail from '../../Thumbnail/Thumbnail.svelte';
@@ -8,14 +7,15 @@
   export let type: ArtifactType;
   export let name: ArtifactNames;
   export let url: string;
+  export let isFiveStar: boolean;
 
-  $: rating = $artifact[type].isFiveStar ? 5 : 4;
+  $: rating = isFiveStar ? 5 : 4;
 </script>
 
 <button
   class="relative rounded-xl border-2 border-slate-600 transition-colors
   {name !== 'none' && 'hover:bg-slate-700/70 active:bg-slate-600'}"
-  on:click={() => artifact.setRating(type)}
+  on:click
   disabled={name === 'none'}
   class:text-yellow-500={name !== 'none' && rating === 5}
   class:border-yellow-500={name !== 'none' && rating === 5}

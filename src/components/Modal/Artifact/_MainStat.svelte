@@ -3,30 +3,27 @@
   import { artifactStatFormatter } from '$lib/helpers/artifactStatFormatter';
   import { artifactMainStats, StatLabels } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
-  import { createEventDispatcher } from 'svelte';
-  import { artifact } from '$lib/stores/artifactStore';
   import Chevron from '$lib/icons/Chevron.svelte';
   import StatImage from '../../Desktop/StatImage.svelte';
+  import type { ArtifactStats } from '$lib/types/artifacts';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
-
-  const dispatch = createEventDispatcher();
+  export let stat: ArtifactStats;
+  export let value: number;
 
   let listbox = createListbox({
-    label: 'MainStats',
-    selected: $artifact[type].mainStat.stat
+    label: 'MainStat',
+    selected: stat
   });
 
   function onSelect(e: Event) {
-    dispatch('selected', {
-      value: (e as CustomEvent).detail.selected.value
-    });
+    stat = (e as CustomEvent).detail.selected.value;
   }
 </script>
 
 <div class="mt-auto w-full">
   <p class="text-right text-2xl font-bold">
-    {artifactStatFormatter($artifact[type].mainStat.stat, $artifact[type].mainStat.value)}
+    {artifactStatFormatter(stat, value)}
   </p>
   {#if type === 'flower' || type === 'feather'}
     <div
@@ -44,10 +41,8 @@
         class:border-slate-600={!$listbox.expanded}
       >
         <div class="pointer-events-none flex items-center gap-2">
-          <StatImage stat={$artifact[type].mainStat.stat} sm />
-          <span class="hidden truncate xs-300:flex"
-            >{StatLabels[$artifact[type].mainStat.stat]}</span
-          >
+          <StatImage {stat} sm />
+          <span class="hidden truncate xs-300:flex">{StatLabels[stat]}</span>
         </div>
         <Chevron class="w-3 fill-slate-100" flip={!$listbox.expanded} />
       </button>

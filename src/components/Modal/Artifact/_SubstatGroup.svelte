@@ -1,37 +1,26 @@
 <script lang="ts">
   import { createListbox } from 'svelte-headlessui';
-  import { artifactSubStats, StatLabels, type All_Stats } from '$lib/data/Stats';
+  import { artifactSubStats, StatLabels } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
-  import { createEventDispatcher } from 'svelte';
   import { artifact } from '$lib/stores/artifactStore';
   import StatImage from '../../Desktop/StatImage.svelte';
   import Chevron from '$lib/icons/Chevron.svelte';
   import { getMaxSubstatValue } from '$lib/helpers/getMaxSubstatValue';
+  import type { ArtifactStats } from '$lib/types/artifacts';
   // import Caret from '$lib/icons/Caret.svelte';
 
   export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
-  export let id: 0 | 1 | 2 | 3;
+  export let value: number;
+  export let stat: ArtifactStats;
+  export let index: number;
 
-  const dispatch = createEventDispatcher();
-
-  let statValue: number;
   let listbox = createListbox({
     label: 'SubStats',
-    selected: $artifact[type].substats[id].stat
+    selected: stat
   });
 
   function onSelect(e: Event) {
-    dispatch('selected', {
-      value: (e as CustomEvent).detail.selected.value,
-      id: id
-    });
-  }
-
-  function setInputValue() {
-    dispatch('inputBlur', {
-      value: statValue,
-      id: id
-    });
+    stat = (e as CustomEvent).detail.selected.value;
   }
 
   function evaluateStat(stat: string) {
@@ -46,7 +35,7 @@
     }
   }
 
-  $: isBadStat = evaluateStat($artifact[type].substats[id].stat);
+  $: isBadStat = evaluateStat(stat);
 </script>
 
 <div class="relative grid grid-cols-12 gap-x-2 pr-0.5">
@@ -63,15 +52,15 @@
         class:opacity-60={isBadStat}
       >
         <div>
-          {#if $artifact[type].substats[id].stat}
-            <StatImage stat={$artifact[type].substats[id].stat} sm />
+          {#if stat}
+            <StatImage {stat} sm />
           {/if}
         </div>
 
         <span class="hidden text-ellipsis whitespace-nowrap xs:flex"
-          >{StatLabels[$artifact[type].substats[id].stat]}</span
+          >{StatLabels[stat]}</span
         >
-        {#if !$artifact[type].substats[id].stat}
+        {#if !stat}
           <span class="xs:hidden">-</span>
         {/if}
       </div>
@@ -81,15 +70,15 @@
   <input
     class="col-span-5 h-10 appearance-none rounded-md border bg-slate-800 p-2 text-right text-sm transition-colors {!getMaxSubstatValue(
       $artifact[type].isFiveStar,
-      $artifact[type].substats[id].stat,
-      $artifact[type].substats[id].value
+      stat,
+      value
     )
       ? 'border-rose-600 hover:border-rose-600 focus:border-rose-600 focus:ring-rose-600'
       : 'border-slate-600 hover:border-slate-500 focus:border-slate-400 focus:ring-slate-300'}"
     class:opacity-60={isBadStat}
-    bind:value={$artifact[type].substats[id].value}
+    bind:value
     autocomplete="off"
-    id={id.toString()}
+    id={index.toString()}
     type="number"
     inputmode="decimal"
   />

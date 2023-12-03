@@ -6,6 +6,7 @@ import type { WeaponNames } from './weapons';
 export type SavedCharacter = {
   selected: CharacterNames;
   url: string;
+  fullName: string;
   vision: Visions;
   id: CharacterSpecificNames;
   weapon: WeaponCategory;
