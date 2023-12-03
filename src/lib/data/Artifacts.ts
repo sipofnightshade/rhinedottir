@@ -19,7 +19,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15001,
     url: 'UI_RelicIcon_15001',
-    name: 'gladiators',
+    name: 'gladiatorsfinale',
     fullName: "Gladiator's Finale",
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],
@@ -35,7 +35,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15003,
     url: 'UI_RelicIcon_15003',
-    name: 'wanderers',
+    name: 'wandererstroupe',
     fullName: "Wanderer's Troupe",
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'em', coef: 80 }] }],
@@ -69,7 +69,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15008,
     url: 'UI_RelicIcon_15008',
-    name: 'bloodstained',
+    name: 'bloodstainedchivalry',
     fullName: 'Bloodstained Chivalry',
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'physical', coef: 0.25 }] }],
@@ -102,7 +102,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15002,
     url: 'UI_RelicIcon_15002',
-    name: 'viridescent',
+    name: 'viridescentvenerer',
     fullName: 'Viridescent Venerer',
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'anemo', coef: 0.15 }] }],
@@ -221,7 +221,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15006,
     url: 'UI_RelicIcon_15006',
-    name: 'crimsonwitch',
+    name: 'crimsonwitchofflames',
     fullName: 'Crimson Witch of Flames',
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'pyro', coef: 0.15 }] }],
@@ -283,7 +283,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15017,
     url: 'UI_RelicIcon_15017',
-    name: 'tenacityofmillelith',
+    name: 'tenacityofthemillelith',
     fullName: 'Tenacity of the Millelith',
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'hp%', coef: 0.2 }] }],
@@ -322,7 +322,7 @@ export const ArtifactData: SelectedArtifact[] = [
   {
     uid: 15019,
     url: 'UI_RelicIcon_15019',
-    name: 'shimenawa',
+    name: 'shimenawasreminiscence',
     fullName: "Shimenawa's Reminiscence",
     rating: [4, 5],
     twoPiece: [{ values: [{ scaling: 'atk%', coef: 0.18 }] }],

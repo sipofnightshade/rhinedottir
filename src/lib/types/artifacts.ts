@@ -1,26 +1,25 @@
-import type { SvelteComponent } from 'svelte';
 import type { WeaponCategory } from './global';
 import type { All_Stats } from '$lib/data/Stats';
 
 export type ArtifactNames =
   | 'none'
-  | 'gladiators'
-  | 'wanderers'
+  | 'gladiatorsfinale'
+  | 'wandererstroupe'
   | 'noblesseoblige'
-  | 'bloodstained'
+  | 'bloodstainedchivalry'
   | 'maidenbeloved'
-  | 'viridescent'
+  | 'viridescentvenerer'
   | 'archaicpetra'
   | 'retracingbolide'
   | 'thundersoother'
   | 'thunderingfury'
   | 'lavawalker'
-  | 'crimsonwitch'
+  | 'crimsonwitchofflames'
   | 'blizzardstrayer'
   | 'heartofdepth'
-  | 'tenacityofmillelith'
+  | 'tenacityofthemillelith'
   | 'paleflame'
-  | 'shimenawa'
+  | 'shimenawasreminiscence'
   | 'emblemofseveredfate'
   | 'huskofopulentdreams'
   | 'oceanhued'
