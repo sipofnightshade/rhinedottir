@@ -2,17 +2,16 @@
   import { createListbox } from 'svelte-headlessui';
   import { artifactSubStats, StatLabels } from '$lib/data/Stats';
   import Transition from 'svelte-transition';
-  import { artifact } from '$lib/stores/artifactStore';
   import StatImage from '../../Desktop/StatImage.svelte';
   import Chevron from '$lib/icons/Chevron.svelte';
   import { getMaxSubstatValue } from '$lib/helpers/getMaxSubstatValue';
   import type { ArtifactStats } from '$lib/types/artifacts';
   // import Caret from '$lib/icons/Caret.svelte';
 
-  export let type: 'flower' | 'feather' | 'sands' | 'goblet' | 'circlet';
   export let value: number;
   export let stat: ArtifactStats;
   export let index: number;
+  export let isFiveStar: boolean;
 
   let listbox = createListbox({
     label: 'SubStats',
@@ -69,7 +68,7 @@
   </div>
   <input
     class="col-span-5 h-10 appearance-none rounded-md border bg-slate-800 p-2 text-right text-sm transition-colors {!getMaxSubstatValue(
-      $artifact[type].isFiveStar,
+      isFiveStar,
       stat,
       value
     )

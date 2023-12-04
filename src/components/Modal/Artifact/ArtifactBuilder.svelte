@@ -197,7 +197,7 @@
 
   <div class="grid grid-cols-2 gap-2">
     {#each substats as { stat, value }, index (index)}
-      <SubstatGroup {type} bind:stat bind:value {index} />
+      <SubstatGroup {isFiveStar} bind:stat bind:value {index} />
     {/each}
   </div>
 
