@@ -39,6 +39,7 @@ function createParty() {
 
   return {
     subscribe,
+    set,
     setPartyMember: (
       id: 'one' | 'two' | 'three',
       loadout: LoadoutItem // Fix the type here
