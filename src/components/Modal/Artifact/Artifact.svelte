@@ -9,8 +9,8 @@
   export let type: ArtifactType;
 
   const items: any = [
-    { label: 'Builder', value: 1, component: ArtifactBuilder },
-    { label: 'Storage', value: 2, component: ArtifactStorage }
+    { label: 'Storage', value: 1, component: ArtifactStorage },
+    { label: 'Builder', value: 2, component: ArtifactBuilder }
   ];
 
   let activeTabValue = 1;
