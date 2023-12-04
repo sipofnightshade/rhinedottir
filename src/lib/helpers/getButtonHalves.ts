@@ -65,14 +65,32 @@ export function getButtonHalves(dmgType: string, el: string) {
 
   switch (dmgType) {
     case 'pyro':
+      top = `bg-dark-pyro`;
+      bot = `bg-dark-pyro`;
+      break;
     case 'dendro':
+      top = `bg-dark-dendro`;
+      bot = `bg-dark-dendro`;
+      break;
     case 'hydro':
+      top = `bg-dark-hydro`;
+      bot = `bg-dark-hydro`;
+      break;
     case 'cryo':
+      top = `bg-dark-cryo`;
+      bot = `bg-dark-cryo`;
+      break;
     case 'electro':
+      top = `bg-dark-electro`;
+      bot = `bg-dark-electro`;
+      break;
     case 'geo':
+      top = `bg-dark-geo`;
+      bot = `bg-dark-geo`;
+      break;
     case 'anemo':
-      top = `bg-dark-${dmgType}`;
-      bot = `bg-dark-${dmgType}`;
+      top = `bg-dark-anemo`;
+      bot = `bg-dark-anemo`;
       break;
   }
 
