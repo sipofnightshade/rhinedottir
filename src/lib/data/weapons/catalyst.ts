@@ -156,27 +156,27 @@ export const catalyst: Cayalysts[] = [
           [
             { scaling: 'normal', coef: [0.16, 0.16, 0.16] },
             { scaling: 'charged', coef: [0.14, 0.14, 0.14] },
-            { scaling: 'normalAtkSpd', coef: [0, 0, 0.08] }
+            { scaling: 'normalAtkSpd', coef: [0.0001, 0.0001, 0.08] }
           ],
           [
             { scaling: 'normal', coef: [0.2, 0.2, 0.2] },
             { scaling: 'charged', coef: [0.175, 0.175, 0.175] },
-            { scaling: 'normalAtkSpd', coef: [0, 0, 0.1] }
+            { scaling: 'normalAtkSpd', coef: [0.0001, 0.0001, 0.1] }
           ],
           [
             { scaling: 'normal', coef: [0.24, 0.24, 0.24] },
             { scaling: 'charged', coef: [0.21, 0.21, 0.21] },
-            { scaling: 'normalAtkSpd', coef: [0, 0, 0.12] }
+            { scaling: 'normalAtkSpd', coef: [0.0001, 0.0001, 0.12] }
           ],
           [
             { scaling: 'normal', coef: [0.28, 0.28, 0.28] },
             { scaling: 'charged', coef: [0.245, 0.245, 0.245] },
-            { scaling: 'normalAtkSpd', coef: [0, 0, 0.14] }
+            { scaling: 'normalAtkSpd', coef: [0.0001, 0.0001, 0.14] }
           ],
           [
             { scaling: 'normal', coef: [0.32, 0.32, 0.32] },
             { scaling: 'charged', coef: [0.28, 0.28, 0.28] },
-            { scaling: 'normalAtkSpd', coef: [0, 0, 0.16] }
+            { scaling: 'normalAtkSpd', coef: [0.0001, 0.0001, 0.16] }
           ]
         ]
       }
@@ -1008,12 +1008,12 @@ export const catalyst: Cayalysts[] = [
             { scaling: 'em', coef: 360 }
           ],
           [
-            { scaling: 'atk%', coef: 0.105 },
+            { scaling: 'atk%', coef: 1.05 },
             { scaling: 'dmgIncreaseElemental', coef: 0.84 },
             { scaling: 'em', coef: 420 }
           ],
           [
-            { scaling: 'atk%', coef: 0.12 },
+            { scaling: 'atk%', coef: 1.2 },
             { scaling: 'dmgIncreaseElemental', coef: 0.96 },
             { scaling: 'em', coef: 480 }
           ]
