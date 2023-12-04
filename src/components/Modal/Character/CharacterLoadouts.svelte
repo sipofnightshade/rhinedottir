@@ -27,10 +27,9 @@
 
 <div class="flex h-full flex-col gap-4">
   <EnkaImport />
+  <LoadoutFilters selected={filter} on:filter={handleFilters} />
+
   {#if filteredData.length > 0}
-    <!-- Filters -->
-    <LoadoutFilters selected={filter} on:filter={handleFilters} />
-    <!-- Loadouts -->
     <div
       class="scrollbar flex flex-col gap-y-4 overflow-y-auto pb-0.5 md:gap-y-3 md:pr-2"
     >
