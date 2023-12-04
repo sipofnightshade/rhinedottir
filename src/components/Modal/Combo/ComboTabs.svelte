@@ -77,7 +77,7 @@
   {#each tabs as item}
     {#if item.name}
       <button
-        class="flex h-9 w-full items-center justify-center rounded-md border transition-colors
+        class="flex h-10 w-full items-center justify-center rounded-md border transition-colors md:h-9
     {activeTabValue === item.value
           ? visionClasses[item.vision]
           : 'border-slate-600 hover:border-slate-500 '}"
