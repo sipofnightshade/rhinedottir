@@ -9,7 +9,11 @@
   <meta name="title" content="Rhinedottir" />
   <meta
     name="description"
-    content="Genshin Impact Calculator & Team Rotation Simulator! Utilize custom made elements to finally visualize how great your teams really are!."
+    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
+  />
+  <meta
+    name="keywords"
+    content="Genshin Impact,Genshin Impact Calculator, Combo Calculator, Rotation Simulator, Team Optimization"
   />
 
   <!-- Open Graph / Facebook -->
@@ -18,7 +22,7 @@
   <meta property="og:title" content="Rhinedottir" />
   <meta
     property="og:description"
-    content="Genshin Impact Combo Damage Calculator & Rotation Simulator! Utilize custom made elements to finally visualize and optimize your team's performance!"
+    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
   />
   <meta property="og:image" content="/share-screen.png" />
 
@@ -28,7 +32,7 @@
   <meta property="twitter:title" content="Rhinedottir" />
   <meta
     property="twitter:description"
-    content="Genshin Impact Combo Damage Calculator & Rotation Simulator! Utilize custom made elements to finally visualize and optimize your team's performance!"
+    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
   />
   <meta property="twitter:image" content="share-screen-square.png" />
 
