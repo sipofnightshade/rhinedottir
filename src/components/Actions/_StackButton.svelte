@@ -176,9 +176,6 @@
   $: addedStats = data.values.map((stat, i) => {
     return { scaling: stat.scaling, coef: stackCoefs[i] };
   });
-
-  $: console.log('stackCoefs', stackCoefs);
-  $: console.log('lastAddedStats', lastAddedStats);
 </script>
 
 <div class="relative">
