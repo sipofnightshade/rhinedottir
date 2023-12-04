@@ -18,10 +18,12 @@ export type LoadoutItem = {
 
 const initialState: LoadoutItem[] = [];
 
+const LOCAL_STORAGE_KEY = 'LOADOUTS';
+
 function createLoadouts(initial_value: LoadoutItem[], init = true) {
   // Load data from localStorage (if available)
   if (init) {
-    const storedData = localStorage.getItem('loadouts');
+    const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
     initial_value = storedData ? JSON.parse(storedData) : initial_value;
   }
 
@@ -56,13 +58,13 @@ function createLoadouts(initial_value: LoadoutItem[], init = true) {
       }),
     reset: () => {
       set(initialState);
-      localStorage.removeItem('loadouts');
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
   };
 }
 
 function saveToLocalStorage(data: any) {
-  localStorage.setItem('loadouts', JSON.stringify(data));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 }
 
 export const loadouts = createLoadouts(initialState, browser);

@@ -20,7 +20,7 @@ const initialState: ArtifactStore = {
   circlet: []
 };
 
-const LOCAL_STORAGE_KEY = 'artifactStorage';
+const LOCAL_STORAGE_KEY = 'ARTIFACTS';
 
 function createStore(initial_value: ArtifactStore, init = true) {
   // Load data from localStorage (if available)
