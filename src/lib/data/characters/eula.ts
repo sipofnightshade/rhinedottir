@@ -359,12 +359,11 @@ const charName: CharacterRecord = {
       url: 'UI_Talent_S_Eula_05',
       damageBonus: 'burst',
       hasOwnDMGType: 'physical',
-      hasOwnBonusDMG: 'shatteredLightfallSword',
       damage: [
         [
           {
             scaling: 'atk',
-            param: 'param2'
+            param: 'param7'
           }
         ]
       ]
@@ -417,20 +416,6 @@ const charName: CharacterRecord = {
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1
           ]
-        }
-      ]
-    },
-    {
-      name: 'Roiling Rime',
-      url: 'UI_Talent_S_Eula_05',
-      description:
-        'If 2 stacks of Grimheart are consumed upon unleashing the Holding Mode of **Icetide Vortex**, a Shattered Lightfall Sword will be created that will explode immediately, dealing 50% of the basic Physical DMG dealt by a Lightfall Sword created by **Glacial Illumination**.',
-      target: 'self',
-      actionType: 'passive',
-      values: [
-        {
-          scaling: 'shatteredLightfallSword',
-          coef: -0.5
         }
       ]
     },
