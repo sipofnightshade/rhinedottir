@@ -74,7 +74,6 @@
 
   function removeStats() {
     data.values.forEach((value, i) => {
-      console.log(i, stackCoefs[i]);
       action.removeStat(id, target as Target, value.scaling, stackCoefs[i]);
       stackCoefs[i] = 0;
     });
