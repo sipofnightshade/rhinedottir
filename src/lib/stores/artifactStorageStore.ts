@@ -77,9 +77,20 @@ function createStore(initial_value: ArtifactStore, init = true) {
       }),
     removeDuplicates: () =>
       update((state) => {
-        state.flower = [
-          ...new Map(state.flower.map((item) => [item.statsID, item])).values()
+        const categories: ArtifactType[] = [
+          'flower',
+          'feather',
+          'sands',
+          'goblet',
+          'circlet'
         ];
+
+        categories.forEach((type) => {
+          state[type] = [
+            ...new Map(state[type].map((item) => [item.statsID, item])).values()
+          ];
+        });
+
         saveToLocalStorage(state);
         return state;
       }),
