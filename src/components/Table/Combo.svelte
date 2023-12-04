@@ -3,8 +3,10 @@
   import { uid } from 'uid';
 
   import Row from '../Modal/Combo/Row.svelte';
+  import type { CharacterSpecificNames } from '$lib/types/characters';
 
   let rows = [{ id: uid(), title: 'Basic rotation!' }];
+  let characterID = $character.selected.id;
 
   function addRow() {
     rows = [...rows, { id: uid(), title: '' }];
@@ -19,7 +21,16 @@
     rows = [{ id: uid(), title: 'Basic rotation!' }];
   }
 
-  $: $character.selected.name, resetRows();
+  function handleCharacterChange(id: CharacterSpecificNames) {
+    if (id !== characterID) {
+      resetRows();
+      characterID = id;
+      return;
+    }
+    return;
+  }
+
+  $: handleCharacterChange($character.selected.id);
 </script>
 
 <div class="scrollbar flex h-full flex-1 flex-col overflow-auto md:pr-1">
