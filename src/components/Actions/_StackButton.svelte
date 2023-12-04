@@ -44,9 +44,11 @@
 
   let stacks = 0;
   let stackCoefs: number[] = [];
-  let lastAddedStats: { scaling: string; coef: number }[] = [];
+  let lastAddedStats: { scaling: string; coef: number }[][] = [];
 
   function addStats(currentStacks: number) {
+    const statsAddedThisStack: { scaling: string; coef: number }[] = [];
+
     data.values.forEach((value, i) => {
       const { scaling, coef, source } = value;
 
@@ -63,13 +65,16 @@
 
       if (!stackCoefs[i]) stackCoefs[i] = 0;
       stackCoefs[i] += result;
-      lastAddedStats[i] = { scaling, coef: result };
+      statsAddedThisStack[i] = { scaling, coef: result };
       action.addStat(id, target as Target, scaling, result);
     });
+
+    lastAddedStats = [...lastAddedStats, statsAddedThisStack];
   }
 
   function removeStats() {
     data.values.forEach((value, i) => {
+      console.log(i, stackCoefs[i]);
       action.removeStat(id, target as Target, value.scaling, stackCoefs[i]);
       stackCoefs[i] = 0;
     });
@@ -95,9 +100,10 @@
   function handleDecrement() {
     if (stacks > 0 && lastAddedStats.length > 0 && stackCoefs.length > 0) {
       stacks--;
-      lastAddedStats.forEach(({ scaling, coef }, i) => {
+      lastAddedStats[stacks].forEach(({ scaling, coef }, i) => {
         action.removeStat(id, target as Target, scaling, coef);
         stackCoefs[i] -= coef;
+        stackCoefs[i] = parseFloat(stackCoefs[i].toFixed(6));
       });
     }
   }
@@ -170,6 +176,9 @@
   $: addedStats = data.values.map((stat, i) => {
     return { scaling: stat.scaling, coef: stackCoefs[i] };
   });
+
+  $: console.log('stackCoefs', stackCoefs);
+  $: console.log('lastAddedStats', lastAddedStats);
 </script>
 
 <div class="relative">
