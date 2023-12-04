@@ -4,6 +4,7 @@
   import StorageFilters from './StorageFilters.svelte';
 
   import StorageButton from './StorageButton.svelte';
+  import ArtifactImport from './ArtifactImport.svelte';
 
   export let type: ArtifactType;
   // filter data
@@ -68,6 +69,7 @@
 </script>
 
 <div class="flex flex-col gap-4 overflow-hidden">
+  <ArtifactImport {type} />
   {#if type === 'goblet'}
     <StorageFilters
       class="grid-cols-8"
