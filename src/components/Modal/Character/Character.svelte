@@ -4,8 +4,8 @@
   import CharacterLoadouts from './CharacterLoadouts.svelte';
 
   const items: any = [
-    { label: 'Builder', value: 1, component: CharacterBuilder },
-    { label: 'Loadouts', value: 2, component: CharacterLoadouts }
+    { label: 'Loadouts', value: 1, component: CharacterLoadouts },
+    { label: 'Builder', value: 2, component: CharacterBuilder }
   ];
 
   let activeTabValue = 1;
