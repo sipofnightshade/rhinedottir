@@ -94,9 +94,9 @@ export const LongStatLabels = {
 export const weaponStatLabels = {
   critdmg: 'CRIT DMG',
   critrate: 'CRIT Rate',
-  'hp%': 'HP',
-  'atk%': 'ATK',
-  'def%': 'DEF',
+  'hp%': 'HP%',
+  'atk%': 'ATK%',
+  'def%': 'DEF%',
   em: 'Elemental Mastery',
   energy: 'Energy Recharge',
   physical: 'Physical DMG Bonus'
