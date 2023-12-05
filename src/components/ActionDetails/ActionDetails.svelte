@@ -37,7 +37,6 @@
 
   const shortID = createShortID(data.hasLevels, data.level, data.constellation);
 
-  $: showTalentLvl = talentLvl ? `Lv.${talentLvl + 1}` : '';
   $: actionType = data.actionType.includes('vision') ? 'Vision Match' : data.actionType;
 </script>
 
@@ -52,7 +51,9 @@
     {/if}
     <h3>
       {data.name}
-      <span class=" text-[15px] font-bold {actionsText[type]}">{showTalentLvl}</span>
+      {#if talentLvl}
+        <span class=" text-[15px] font-bold {actionsText[type]}">Lv.{talentLvl + 1}</span>
+      {/if}
     </h3>
   </div>
   <div class="scrollbar flex max-h-96 flex-col gap-4 overflow-y-auto text-sm md:pr-2">
