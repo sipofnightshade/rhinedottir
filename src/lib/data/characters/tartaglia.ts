@@ -403,13 +403,14 @@ const charName: CharacterRecord = {
     {
       name: 'Master of Weaponry',
       url: 'UI_Talent_S_Tartaglia_07',
-      description: "Increases your own party members' **Normal Attack** Level by 1.",
+      description:
+        "Increases your own party members' **Normal Attack** Level by 1.\n\n**MODIFIED: Currently Under Construction!**",
       target: 'party',
-      actionType: 'addLevel',
+      actionType: 'passive',
       values: [
         {
-          scaling: 'atk',
-          coef: 1
+          scaling: 'Level Increase',
+          coef: 0
         }
       ]
     }
