@@ -1,6 +1,5 @@
 <script>
   import '../app.css';
-  import Analytics from '../components/Analytics/Analytics.svelte';
 </script>
 
 <svelte:head>
@@ -9,7 +8,7 @@
   <meta name="title" content="Rhinedottir" />
   <meta
     name="description"
-    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
+    content="Genshin Impact Calculator. Rhinedottir empowers you to optimize your team's performance through advanced combo damage simulations. "
   />
   <meta
     name="keywords"
@@ -22,7 +21,7 @@
   <meta property="og:title" content="Rhinedottir" />
   <meta
     property="og:description"
-    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
+    content="Genshin Impact Calculator. Rhinedottir empowers you to optimize your team's performance through advanced combo damage simulations. "
   />
   <meta property="og:image" content="/share-screen.png" />
 
@@ -32,7 +31,7 @@
   <meta property="twitter:title" content="Rhinedottir" />
   <meta
     property="twitter:description"
-    content="Optimize your Genshin Impact team's performance with our Combo Damage Calculator and Rotation Simulator. Visualize and enhance your strategies now!"
+    content="Genshin Impact Calculator. Rhinedottir empowers you to optimize your team's performance through advanced combo damage simulations. "
   />
   <meta property="twitter:image" content="share-screen-square.png" />
 
