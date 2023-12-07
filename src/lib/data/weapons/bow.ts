@@ -99,11 +99,11 @@ export const bow: Bows[] = [
       {
         actionType: 'stack',
         values: [
-          [{ scaling: 'atk', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
-          [{ scaling: 'atk', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
-          [{ scaling: 'atk', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
-          [{ scaling: 'atk', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
-          [{ scaling: 'atk', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
+          [{ scaling: 'dmgIncrease', coef: [0.08, 0.08, 0.08, 0.08, 0.08] }],
+          [{ scaling: 'dmgIncrease', coef: [0.1, 0.1, 0.1, 0.1, 0.1] }],
+          [{ scaling: 'dmgIncrease', coef: [0.12, 0.12, 0.12, 0.12, 0.12] }],
+          [{ scaling: 'dmgIncrease', coef: [0.14, 0.14, 0.14, 0.14, 0.14] }],
+          [{ scaling: 'dmgIncrease', coef: [0.16, 0.16, 0.16, 0.16, 0.16] }]
         ]
       }
     ],
