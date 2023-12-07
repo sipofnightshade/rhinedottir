@@ -160,6 +160,7 @@ const charName: CharacterRecord = {
       tag: 'E',
       damageBonus: 'skill',
       url: 'Skill_S_Rosaria_01',
+      icd: 0,
       damage: [
         [
           {
@@ -202,6 +203,7 @@ const charName: CharacterRecord = {
       tag: 'QC',
       damageBonus: 'burst',
       url: 'Skill_E_Rosaria_01',
+      icd: 0,
       damage: [
         [
           {
