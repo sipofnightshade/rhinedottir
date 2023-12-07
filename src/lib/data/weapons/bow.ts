@@ -1127,11 +1127,11 @@ export const bow: Bows[] = [
       {
         actionType: 'stack',
         values: [
-          [{ scaling: 'normal', coef: [0.12, 0.24, 0.4] }],
-          [{ scaling: 'normal', coef: [0.15, 0.3, 0.5] }],
-          [{ scaling: 'normal', coef: [0.18, 0.36, 0.6] }],
-          [{ scaling: 'normal', coef: [0.21, 0.42, 0.7] }],
-          [{ scaling: 'normal', coef: [0.24, 0.48, 0.8] }]
+          [{ scaling: 'normal', coef: [0.12, 0.12, 0.16] }],
+          [{ scaling: 'normal', coef: [0.15, 0.15, 0.2] }],
+          [{ scaling: 'normal', coef: [0.18, 0.18, 0.24] }],
+          [{ scaling: 'normal', coef: [0.21, 0.21, 0.28] }],
+          [{ scaling: 'normal', coef: [0.24, 0.24, 0.32] }]
         ]
       }
     ],
