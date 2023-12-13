@@ -84,10 +84,10 @@
   >
     <button
       on:click={() => handleMenu(menuItems[1])}
-      class="mr-auto flex items-center justify-center rounded-lg"
-      class:bg-slate-700={currentMenuItem?.id === 'settings'}
+      class="mr-auto flex h-[46px] w-[46px] items-center justify-center rounded-full border border-slate-600 bg-slate-700 p-1"
+      class:bg-slate-00={currentMenuItem?.id === 'settings'}
     >
-      <Gear class="w-10" />
+      <Gear class="w-6" />
     </button>
 
     <button
