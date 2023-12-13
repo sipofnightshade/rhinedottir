@@ -35,7 +35,11 @@
   />
   <meta property="twitter:image" content="share-screen-square.png" />
 
-  <!-- Meta Tags Generated with https://metatags.io -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3936138317575261"
+    crossorigin="anonymous"
+  ></script>
 </svelte:head>
 
 <!-- <Analytics /> -->
