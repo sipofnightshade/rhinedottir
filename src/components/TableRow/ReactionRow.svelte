@@ -3,6 +3,8 @@
 
   import Cell from './Cell.svelte';
   import StatImage from '../Desktop/StatImage.svelte';
+  import { elementalText } from '$lib/data/Colors';
+  import type { Visions } from '$lib/types/global';
 
   export let data: any;
 
@@ -20,6 +22,8 @@
       ? Math.floor(data.damage.shield).toLocaleString()
       : Math.floor(data.damage[data.damageBonus]).toLocaleString();
   $: icon = data.damageBonus as keyof typeof reactions;
+
+  $: textColor = elementalText[data.elemental as Visions] ?? '';
 </script>
 
 <div class="grid grid-cols-20 border-b border-slate-700 p-1 px-1 py-1.5 text-tb">
@@ -32,5 +36,5 @@
       <StatImage stat={data.elemental} />
     </div>
   </Cell>
-  <Cell align="end" col="col-span-6" value={damage} />
+  <Cell align="end" col="col-span-6" value={damage} {textColor} />
 </div>

@@ -1,13 +1,17 @@
 <script lang="ts">
   import Cell from './Cell.svelte';
   import StatImage from '../Desktop/StatImage.svelte';
+  import { elementalText } from '$lib/data/Colors';
+  import type { Visions } from '$lib/types/global';
 
   export let data: any;
   export let constellation: number = 0;
 
   $: show = constellation >= (data.constellation ?? 0);
   $: damage = Math.floor(data.damage[data.elemental]).toLocaleString();
-  // $: console.log(data.name, data);
+
+  $: textColor =
+    data.elemental !== 'physical' ? elementalText[data.elemental as Visions] : '';
 </script>
 
 <div
@@ -22,5 +26,5 @@
     </div>
   </Cell>
   <!-- <Cell align="end" col="col-span-4 text-slate-400" value={nonCritDMG.toFixed(0)} /> -->
-  <Cell align="end" col="col-span-6" value={damage} />
+  <Cell align="end" col="col-span-6" value={damage} {textColor} />
 </div>
