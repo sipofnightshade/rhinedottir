@@ -12,14 +12,15 @@ export function calcCoefficient(
     throw new Error(`Incorrent coef value was passed - coef: ${coef}`);
   }
 
-  const [statType, threshold, max, forEvery, calcMax] = source;
+  const [statType, threshold, max, forEvery] = source;
 
-  // for characters like Hutao where they have 'baseATK*4'
-  const calculatedMax = calcMax ? strEval(calcMax, $stats) : undefined;
+  const calculatedMax = typeof max === 'function' ? max($stats) : undefined;
 
   if ($stats && statType in $stats) {
     const statValue = $stats[statType];
-    const cappedStatValue = max ? Math.min(statValue, max) : statValue;
+    const cappedStatValue = calculatedMax
+      ? statValue
+      : Math.min(statValue, max as number);
 
     if (cappedStatValue > threshold) {
       let calculatedValue;

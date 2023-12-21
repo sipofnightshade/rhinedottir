@@ -1,4 +1,4 @@
-import type { All_Stats } from '$lib/data/Stats';
+import type { All_Stats, Index_Stats } from '$lib/data/Stats';
 import type { Visions, WeaponCategory } from './global';
 import type { DamageValueID } from './talents';
 
@@ -38,9 +38,8 @@ export type ActionBtnID = 'main' | 'one' | 'two' | 'three';
 type CoefStats = All_Stats | 'baseATK' | 'baseDEF' | 'baseHP';
 export type CoefSource =
   | [CoefStats, number] // [ source stat, minimum]
-  | [CoefStats, number, number] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
-  | [CoefStats, number, number, number] // [ source stat, minimum, maximum, forEvery]
-  | [CoefStats, number, number, number, string]; // [ source stat, minimum, maximum, forEvery, calculatedMax] eg: 'baseATK*4'
+  | [CoefStats, number, number | ((stats: Index_Stats) => number)] // [ source stat, minimum, maximum] ❓ maximum here is the maximum source stat value
+  | [CoefStats, number, number | ((stats: Index_Stats) => number), number]; // [ source stat, minimum, maximum, forEvery]
 
 export type ActionValue = {
   scaling: string;

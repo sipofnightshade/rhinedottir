@@ -1,4 +1,5 @@
 import type { CharacterRecord } from '$lib/types/global';
+import type { Index_Stats } from '../Stats';
 
 const charName: CharacterRecord = {
   uid: 10000046,
@@ -239,7 +240,7 @@ const charName: CharacterRecord = {
       name: 'Paramita Papilio State',
       url: 'Skill_S_Hutao_01',
       description:
-        'When a **Paramita Papilio** state activated by **Guide to Afterlife** ends, all allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by 12% for 8s.',
+        "Increases Hu Tao's ATK based on her Max HP at the time of entering this state. ATK Bonus gained this way cannot exceed 400% of Hu Tao's Base ATK.\n·Converts attack DMG to Pyro DMG, which cannot be overridden by any other elemental infusion.\n·Charged Attacks apply the Blood Blossom effect to the enemies hit.\n·Increases Hu Tao's resistance to interruption.",
       target: 'self',
       actionType: 'toggle',
       infusion: 'pyro',
@@ -249,7 +250,7 @@ const charName: CharacterRecord = {
         {
           scaling: 'atk',
           coef: 'param2',
-          source: ['hp', 0, 80000] // that should be baseAtk * 4, but leave it at that for now
+          source: ['hp', 0, calcSkillMax]
         }
       ]
     },
@@ -363,5 +364,10 @@ const charName: CharacterRecord = {
     }
   ]
 };
+
+// helper
+function calcSkillMax(stats: Index_Stats) {
+  return stats.baseATK * 4;
+}
 
 export default charName;
