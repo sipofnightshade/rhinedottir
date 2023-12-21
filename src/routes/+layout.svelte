@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import Analytics from '../components/Analytics/Analytics.svelte';
 </script>
 
 <svelte:head>
@@ -38,7 +39,7 @@
   <meta name="google-adsense-account" content="ca-pub-3936138317575261" />
 </svelte:head>
 
-<!-- <Analytics /> -->
+<Analytics />
 <slot />
 
 <style>
