@@ -920,6 +920,113 @@ export const claymore: Claymores[] = [
     ref: [['24%'], ['30%'], ['36%'], ['42%'], ['48%']]
   },
   {
+    uid: 12427,
+    name: 'ultimateoverlordsmegamagicsword',
+    fullName: '"Ultimate Overlord\'s Mega Magic Sword"',
+    url: 'UI_EquipIcon_Claymore_Champion_Awaken',
+    rating: 4,
+    type: 'claymore',
+    specialized: 'energy',
+    effectname: 'Melussistance!',
+    action: [
+      {
+        actionType: 'passive',
+        values: [
+          [{ scaling: 'atk%', coef: 0.12 }],
+          [{ scaling: 'atk%', coef: 0.15 }],
+          [{ scaling: 'atk%', coef: 0.18 }],
+          [{ scaling: 'atk%', coef: 0.21 }],
+          [{ scaling: 'atk%', coef: 0.24 }]
+        ]
+      },
+      {
+        actionType: 'stack',
+        values: [
+          [
+            {
+              scaling: 'atk%',
+              coef: [0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012]
+            }
+          ],
+          [
+            {
+              scaling: 'atk%',
+              coef: [0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015]
+            }
+          ],
+          [
+            {
+              scaling: 'atk%',
+              coef: [0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018]
+            }
+          ],
+          [
+            {
+              scaling: 'atk%',
+              coef: [0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021]
+            }
+          ],
+          [
+            {
+              scaling: 'atk%',
+              coef: [0.024, 0.024, 0.024, 0.024, 0.024, 0.024, 0.024, 0.024, 0.024, 0.024]
+            }
+          ]
+        ]
+      }
+    ],
+    effect:
+      "ATK increased by {0}. That's not all! The support from all Melusines you've helped in Merusea Village fills you with strength! Based on the number of them you've helped, your ATK is increased by up to an additional {1}.",
+    ref: [
+      ['12%', '12%'],
+      ['15%', '15%'],
+      ['18%', '18%'],
+      ['21%', '21%'],
+      ['24%', '24%']
+    ]
+  },
+  {
+    uid: 12425,
+    name: 'verdict',
+    fullName: 'Verdict',
+    url: 'UI_EquipIcon_Claymore_GoldenVerdict_Awaken',
+    rating: 5,
+    type: 'claymore',
+    specialized: 'critrate',
+    effectname: 'Many Oaths of Dawn and Dusk',
+    action: [
+      {
+        actionType: 'passive',
+        values: [
+          [{ scaling: 'atk%', coef: 0.2 }],
+          [{ scaling: 'atk%', coef: 0.25 }],
+          [{ scaling: 'atk%', coef: 0.3 }],
+          [{ scaling: 'atk%', coef: 0.35 }],
+          [{ scaling: 'atk%', coef: 0.4 }]
+        ]
+      },
+      {
+        actionType: 'stack',
+        values: [
+          [{ scaling: 'skill', coef: [0.18, 0.18] }],
+          [{ scaling: 'skill', coef: [0.225, 0.225] }],
+          [{ scaling: 'skill', coef: [0.27, 0.27] }],
+          [{ scaling: 'skill', coef: [0.315, 0.315] }],
+          [{ scaling: 'skill', coef: [0.36, 0.36] }]
+        ]
+      }
+    ],
+    effect:
+      "Increases ATK by {0}. When party members obtain Elemental Shards from Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by {1}. The Seal lasts for 15s, and the equipper may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG.",
+    ref: [
+      ['20%', '18%'],
+      ['25%', '22.5%'],
+      ['30%', '27%'],
+      ['35%', '31.5%'],
+      ['40%', '36%']
+    ]
+  },
+  {
     uid: 12407,
     name: 'whiteblind',
     fullName: 'Whiteblind',

@@ -77,6 +77,8 @@ import { default as wriothesley } from './wriothesley';
 import { default as neuvillette } from './neuvillette';
 import { default as furina } from './furina';
 import { default as charlotte } from './charlotte';
+import { default as navia } from './navia';
+import { default as chevreuse } from './chevreuse';
 
 export const characterData = [
   traveleranemo,
@@ -95,6 +97,7 @@ export const characterData = [
   bennett,
   candace,
   charlotte,
+  chevreuse,
   chongyun,
   collei,
   cyno,
@@ -128,6 +131,7 @@ export const characterData = [
   mika,
   mona,
   nahida,
+  navia,
   neuvillette,
   nilou,
   ningguang,

@@ -164,4 +164,6 @@ export type WeaponNames =
   | 'tomeoftheeternalflow'
   | 'cashflowsupervision'
   | 'splendoroftranquilwaters'
-  | 'swordofnarzissenkreuz';
+  | 'swordofnarzissenkreuz'
+  | 'verdict'
+  | 'ultimateoverlordsmegamagicsword';
