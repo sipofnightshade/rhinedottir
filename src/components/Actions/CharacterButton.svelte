@@ -13,6 +13,8 @@
   import type { CurrentCharacter } from '$lib/stores/characterStore';
   import type { Index_Stats } from '$lib/data/Stats';
   import type { Action } from '$lib/types/actions';
+  import { visions } from '$lib/stores/visionsStore';
+  import { regions } from '$lib/stores/regionsStore';
 
   // props
   export let data: Action;
@@ -33,17 +35,38 @@
     region: RegionMatchButton
   };
 
-  $: constellationReq = data.constellation ?? 0;
+  // level requirements
   $: levelReq = data.level ?? 0;
 
+  // constellation requirements
+  $: constellationReq = data.constellation ?? 0;
   $: hideConst = data.hideAtConstellation
     ? currentChar.constellation >= data.hideAtConstellation
     : false;
 
+  // vision requirements
+  const hasVisionRequirement = data.hasVisionRequirement
+    ? [...data.hasVisionRequirement]
+    : null;
+  $: visionReq = hasVisionRequirement
+    ? $visions.every((value) => hasVisionRequirement.includes(value))
+    : true;
+
+  // region requirements
+  const hasRegionRequirement = data.hasRegionRequirement
+    ? [...data.hasRegionRequirement]
+    : null;
+  $: regionReq = hasRegionRequirement
+    ? $regions.every((value) => hasRegionRequirement.includes(value))
+    : true;
+
+  // final logic evaluation
   $: isButtonMounted =
     currentChar.constellation >= constellationReq &&
     currentChar.lvl >= levelReq &&
-    !hideConst;
+    !hideConst &&
+    visionReq &&
+    regionReq;
 </script>
 
 {#if isButtonMounted}
