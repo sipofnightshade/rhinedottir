@@ -62,7 +62,7 @@ module.exports = {
         80: '80%'
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans]
+        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans]
       },
       gridTemplateColumns: {
         // Simple 16 column grid

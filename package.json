@@ -50,6 +50,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.16",
     "svelte-headlessui": "^0.0.14",
     "svelte-transition": "^0.0.10"
   }

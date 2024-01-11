@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import Analytics from '../components/Analytics/Analytics.svelte';
+  import '@fontsource-variable/inter'; // installs fonts locally to improve performance
 </script>
 
 <svelte:head>
@@ -41,7 +42,3 @@
 
 <Analytics />
 <slot />
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
-</style>
