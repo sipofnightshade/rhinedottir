@@ -1,6 +1,5 @@
 <script lang="ts">
   import { settings } from '$lib/stores/settingsStore';
-  import { Anemo, Cryo, Dendro, Electro, Hydro, Geo, Pyro } from '$lib/icons';
   import type { Visions } from '$lib/types/global';
   import StatImage from '../Desktop/StatImage.svelte';
 
@@ -14,7 +13,7 @@
 
   const ratingColors = {
     5: 'bg-gradient-to-b from-yellow-700 via-yellow-700 to-yellow-600',
-    4: 'bg-gradient-to-b from-purple-800 via-purple-700 to-purple-600',
+    4: 'bg-gradient-to-b from-purple-600 via-purple-500 to-purple-500',
     3: 'bg-gradient-to-b from-sky-700 via-sky-600 to-sky-600',
     1: ''
   };
