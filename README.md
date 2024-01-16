@@ -1,22 +1,16 @@
-# create-svelte
+# Rhinedottir
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Rhinedottir was built with the average player in mind. It's goal is to allow anyone to test, optimize and compare the effectiveness of their character builds and team compositions.
 
-## Creating a project
+## Website
 
-If you're seeing this, you've probably already done this step. Congrats!
+Visit the live website at [rhinedottir.com](https://docuowl.github.io/demo/)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+<center><img width="1316" alt="Docuowl Screenshot" src="https://i.imgur.com/TohAv1g.png"></center>
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -25,14 +19,5 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+> [!WARNING]  
+> This documentation is a work in progress!.
