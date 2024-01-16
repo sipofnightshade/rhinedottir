@@ -18,9 +18,12 @@ export function calcCoefficient(
 
   if ($stats && statType in $stats) {
     const statValue = $stats[statType];
+
     const cappedStatValue = calculatedMax
       ? statValue
-      : Math.min(statValue, max as number);
+      : max !== undefined
+      ? Math.min(statValue, max as number)
+      : statValue;
 
     if (cappedStatValue > threshold) {
       let calculatedValue;
@@ -41,20 +44,4 @@ export function calcCoefficient(
     }
   }
   return coef;
-}
-
-function strEval(input: string, stats: Index_Stats) {
-  const pattern = /(\D+)\*(-?\d+)/; // Updated regex pattern to include optional negative sign
-  const matches = input.match(pattern);
-
-  if (matches) {
-    const key = matches[1]; // Extract the first part of the string (e.g., 'baseATK')
-    const multiplier = parseInt(matches[2]); // Extract the number at the end of the string
-
-    if (stats[key]) {
-      return stats[key] * multiplier;
-    }
-  }
-
-  return undefined; // Return undefined if the input format is not recognized or the key doesn't exist in the stats object
 }
