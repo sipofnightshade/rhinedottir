@@ -4,7 +4,7 @@ Rhinedottir was built with the average player in mind. It's goal is to allow any
 
 ## Website
 
-Visit the live website at [rhinedottir.com](https://docuowl.github.io/demo/)
+Visit the live website at [rhinedottir.com](https://rhinedottir.com/)
 
 <center><img width="1316" alt="Docuowl Screenshot" src="https://i.imgur.com/TohAv1g.png"></center>
 
