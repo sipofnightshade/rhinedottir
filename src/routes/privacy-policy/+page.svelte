@@ -128,7 +128,7 @@
     <p>
       If you have any questions about this privacy policy, please contact me at <a
         class="font-bold uppercase transition-colors hover:text-slate-300 active:text-slate-400"
-        href="https://discord.com/users/stuckintrees">Kite</a
+        href="https://discord.com/users/sipofnightshade">Kite</a
       > on Discord.
     </p>
     <div class="my-8 h-[1px] bg-slate-600" />

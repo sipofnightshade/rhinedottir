@@ -5,6 +5,7 @@
   </p>
   <div class="flex items-center gap-2 text-slate-400">
     <a
+      target="_blank"
       href="https://discord.gg/tHKkCXmd53"
       class="transition-colors hover:text-slate-300"
     >
