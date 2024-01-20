@@ -1,6 +1,5 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
-  import { SortableList } from '@jhubbardsf/svelte-sortablejs';
   import { talents } from '$lib/stores/talentStore';
   import { createPopover } from 'svelte-headlessui';
   import { createEventDispatcher, onMount } from 'svelte';
@@ -118,12 +117,7 @@
   </div>
 
   <div class="flex w-full items-center justify-start shadow-slate-200">
-    <SortableList
-      animation={300}
-      ghostClass="opacity-0"
-      delay={200}
-      delayOnTouchOnly
-      chosenClass="border-slate-500"
+    <div
       class="horizontalScrollbar grid h-full w-fit auto-cols-max grid-flow-col items-center overflow-x-auto pb-2"
     >
       {#each rowButtons as { id, type, index, btnID } (btnID)}
@@ -152,7 +146,7 @@
           <Delete class="h-3.5 fill-slate-100" />
         </button>
       {/if}
-    </SortableList>
+    </div>
     <Transition
       show={$popover.expanded}
       enter="transition ease-out duration-200"
