@@ -80,10 +80,8 @@
     {#each tabs as item}
       {#if item.name}
         <button
-          class="flex h-10 w-full flex-grow items-center justify-center rounded-md border transition-colors md:h-9
-        {activeTabValue === item.value
-            ? visionClasses[item.vision]
-            : 'border-slate-600 hover:border-slate-500'}"
+          class="flex h-10 w-full flex-grow items-center justify-center rounded-md border transition-colors hover:bg-slate-700 md:h-9
+        {activeTabValue === item.value ? visionClasses[item.vision] : 'border-slate-600'}"
           on:click={handleClick(item.value)}
           class:opacity-30={!item.name}
           disabled={!item.name}
@@ -108,10 +106,8 @@
     {/each}
     <!-- ENEMY TAB BUTTON -->
     <button
-      class="flex h-10 w-full flex-grow items-center justify-center rounded-md border md:h-9
-        {activeTabValue === 4
-        ? 'border-red-600'
-        : 'border-slate-600 hover:border-slate-500'}"
+      class="flex h-10 w-full flex-grow items-center justify-center rounded-md border transition-colors hover:bg-slate-700 md:h-9
+        {activeTabValue === 4 ? 'border-red-600' : 'border-slate-600'}"
       on:click={handleClick(4)}
     >
       <Thumbnail

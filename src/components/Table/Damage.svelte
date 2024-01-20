@@ -81,6 +81,9 @@
   $: if (!tabs[activeTabValue].name) {
     activeTabValue = 0;
   }
+
+  $: disableTabs =
+    !$party.one?.character && !$party.two?.character && !$party.three?.character;
 </script>
 
 <div class="flex h-full flex-1 flex-col overflow-hidden">
@@ -88,19 +91,20 @@
     {#each tabs as item}
       {#if item.name}
         <button
-          class="flex h-10 w-full flex-grow items-center justify-center rounded-md border md:h-9
-      {activeTabValue === item.value
+          class="flex h-10 w-full flex-grow items-center justify-center rounded-md border transition-colors md:h-9
+      {activeTabValue === item.value && !disableTabs
             ? visionClasses[item.vision]
-            : 'border-slate-600 hover:border-slate-500'}"
+            : 'border-slate-600'}"
           on:click={handleClick(item.value)}
+          class:hover:bg-slate-700={!disableTabs}
           class:opacity-30={!item.name}
-          disabled={!item.name}
+          disabled={!item.name || disableTabs}
         >
           {#if item.name}
             <Thumbnail
               alt="{item.name} tab"
               img="https://enka.network/ui/{item.url}.png"
-              classes="h-full"
+              classes="h-full rounded-none"
               hasBG={false}
             />
           {:else}
