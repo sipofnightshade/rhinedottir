@@ -130,7 +130,9 @@
   <ActionButton {type} isActive={selected != undefined} url={data.url} />
   {#if selected != undefined}
     <div class="absolute bottom-0 right-0 flex">
-      <div class="rounded-full bg-slate-800 p-1">
+      <div
+        class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 p-0.5"
+      >
         <StatImage stat={selected.scaling} />
       </div>
     </div>

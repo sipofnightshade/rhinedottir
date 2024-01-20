@@ -145,7 +145,7 @@
   <div class="absolute bottom-0 right-0 flex -space-x-2.5">
     {#each data.values as value}
       <div
-        class="rounded-full bg-slate-800 p-1"
+        class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 p-0.5"
         class:hidden={selectedStats[value.scaling] === false}
       >
         <StatImage stat={value.scaling} />
