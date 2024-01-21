@@ -4,7 +4,7 @@ import { browser } from '$app/environment';
 export type Settings = 'limitedColors' | 'hideZeroStats';
 
 const initialState: Record<Settings, boolean> = {
-  limitedColors: false,
+  limitedColors: true,
   hideZeroStats: false
 };
 
