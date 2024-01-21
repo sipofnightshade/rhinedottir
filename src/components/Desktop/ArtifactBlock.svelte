@@ -63,10 +63,10 @@
 >
   {#each menuModals as modal (modal.id)}
     <button
-      class="relative h-full w-full rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors hover:border-slate-500"
+      class="relative h-full w-full rounded-lg border border-slate-600 bg-slate-700 p-2 transition-colors hover:border-slate-500 hover:bg-slate-600"
       on:click={() => toggleModal(modal.component, modal.title)}
     >
-      <div class="mx-auto flex items-center lg:w-2/3">
+      <div class="mx-auto flex items-center justify-center lg:w-2/3">
         {#if $artifact[modal.id].selected.name === 'none'}
           <Thumbnail img={modal.img} classes="opacity-30" alt="none" hasBG={false} />
         {:else}

@@ -54,7 +54,7 @@
 <section class="relative grid h-full max-h-40 w-full grid-flow-col gap-2 xl:gap-3">
   <!-- CHARACTER Button -->
   <button
-    class="relative h-[120px] w-[120px] rounded-xl border border-slate-600 transition-colors hover:border-slate-500 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
+    class="relative h-[120px] w-[120px] rounded-xl border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 hover:bg-slate-600 lg:h-36 lg:w-36 xl:h-40 xl:w-40"
     on:click={() => toggleModal(Character, 'Character')}
   >
     <Thumbnail
@@ -62,12 +62,13 @@
       vision={$character.selected.vision}
       alt={$character.selected.fullName}
       rating={$character.selected.rating}
+      hasBG={false}
     />
   </button>
   <div class="flex flex-col justify-between">
     <!-- Weapon Button -->
     <button
-      class="col-span-3 flex w-full items-end rounded-xl border border-slate-600 bg-slate-700 p-1 text-sm transition-colors hover:border-slate-500 lg:h-16 lg:text-base xl:h-fit"
+      class="col-span-3 flex w-full items-end rounded-xl border border-slate-600 bg-slate-700 p-1 text-sm transition-colors hover:border-slate-500 hover:bg-slate-600 lg:h-16 lg:text-base xl:h-fit"
       on:click={() => toggleModal(Weapon, 'Weapon')}
     >
       <div class="h-11 w-11 lg:h-[54px] lg:w-[54px] lg:p-0.5 xl:h-16 xl:w-16">
@@ -86,7 +87,7 @@
         <div
           class="flex w-full items-center justify-between rounded-full bg-slate-800 px-2 py-1"
         >
-          <StatImage stat={$weapon.selected.specialized} sm/>
+          <StatImage stat={$weapon.selected.specialized} sm />
 
           <span class="text-xs lg:text-sm xl:text-base">{stats}</span>
         </div>
@@ -96,7 +97,7 @@
     <div class="grid grid-flow-col gap-2 lg:gap-3">
       {#each menuModals as modal (modal.id)}
         <button
-          class="flex h-14 w-14 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
+          class="flex h-14 w-14 items-center justify-center rounded-lg border border-slate-600 bg-slate-700 transition-colors hover:border-slate-500 hover:bg-slate-600 lg:h-[68px] lg:w-[68px] xl:h-[72px] xl:w-[72px]"
           on:click={() => toggleModal(modal.component, 'Select a Teammate')}
           class:border-none={$party[modal.id]}
         >
@@ -108,7 +109,7 @@
               rating={$party[modal.id]?.character.selected.rating}
             />
           {:else}
-            <TeamIcon class="w-3/5" />
+            <TeamIcon class="w-7/12" />
           {/if}
         </button>
       {/each}
