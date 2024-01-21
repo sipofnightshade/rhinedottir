@@ -107,6 +107,7 @@
               vision={$party[modal.id]?.character.selected.vision}
               alt="teammate"
               rating={$party[modal.id]?.character.selected.rating}
+              hasBG={false}
             />
           {:else}
             <TeamIcon class="w-7/12" />
