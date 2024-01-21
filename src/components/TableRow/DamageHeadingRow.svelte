@@ -9,13 +9,17 @@
 </script>
 
 {#if section === 'normal' || section === 'skill' || section === 'burst'}
-  <div class=" grid grid-cols-20 bg-slate-700 p-1.5 text-tb font-bold tracking-wide">
-    <Cell align="start" col="col-span-full" value={value?.[section]} />
+  <div class=" font- grid grid-cols-20 bg-slate-700 p-1.5 text-sm tracking-wide">
+    <Cell
+      align="start"
+      col="col-span-full"
+      value={`${section.toUpperCase()}: ${value?.[section]}`}
+    />
   </div>
 {:else if section === 'charged' || section === 'plunge'}
   <div class="h-[1px] w-full bg-slate-600" />
 {:else if section === 'reactions'}
-  <div class=" grid grid-cols-20 rounded-sm bg-slate-600 p-1.5 text-tb">
+  <div class=" grid grid-cols-20 rounded-sm bg-slate-700 p-1.5 text-tb">
     <Cell align="start" col="col-span-full" value="Reactions" />
   </div>
 {/if}
